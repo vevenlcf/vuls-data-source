@@ -1,0 +1,94 @@
+{
+  "id": "777",
+  "name": "Regular Expression without Anchors",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses a regular expression to perform neutralization, but the regular expression is not anchored and may allow malicious or malformed data to slip through.",
+  "extended_description": "When performing tasks such as validating against a set of allowed inputs (allowlist), data is examined and possibly modified to ensure that it is well-formed and adheres to a list of safe values. If the regular expression is not anchored, malicious or malformed data may be included before or after any string matching the regular expression. The type of malicious data that is allowed will depend on the context of the application and which anchors are omitted from the regular expression.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "625",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {},
+  "background_details": [
+    "Regular expressions are typically used to match a pattern of text. Anchors are used in regular expressions to specify where the pattern should match: at the beginning, the end, or both (the whole input)."
+  ],
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability",
+        "Confidentiality",
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "An unanchored regular expression in the context of an allowlist will possibly result in a protection mechanism failure, allowing malicious or malformed data to enter trusted regions of the program. The specific consequences will depend on what functionality the allowlist was protecting."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Be sure to understand both what will be matched and what will not be matched by a regular expression. Anchoring the ends of the expression will allow the programmer to define an allowlist strictly limited to what is matched by the text in the regular expression. If you are using a package that only matches one line by default, ensure that you can match multi-line inputs if necessary."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eConsider a web application that supports multiple languages. It selects messages for an appropriate language by using the lang parameter.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$dir = \"/home/cwe/languages\";\u003cxhtml:br/\u003e$lang = $_GET['lang'];\u003cxhtml:br/\u003eif (preg_match(\"/[A-Za-z0-9]+/\", $lang)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003einclude(\"$dir/$lang\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eecho \"You shall not pass!\\n\";\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe previous code attempts to match only alphanumeric values so that language values such as \"english\" and \"french\" are valid while also protecting against path traversal, CWE-22. However, the regular expression anchors are omitted, so any text containing at least one alphanumeric character will now pass the validation step. For example, the attack string below will match the regular expression.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003e../../etc/passwd\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf the attacker can inject code sequences into a file, such as the web server's HTTP request log, then the attacker may be able to redirect the lang parameter to the log file and execute arbitrary code.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2009-06-30T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Potential_Mitigations"
+      }
+    ]
+  }
+}

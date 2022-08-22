@@ -1,0 +1,506 @@
+{
+  "id": "252",
+  "name": "Unchecked Return Value",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
+  "extended_description": "Two common programmer assumptions are \"this function call can never fail\" and \"it doesn't matter if this function call fails\". If an attacker can force the function to fail or otherwise return a value that is not expected, then the subsequent program logic could lead to a vulnerability, because the software is not in a state that the programmer assumes. For example, if the program calls a function to drop privileges but does not check the return code to ensure that privileges were successfully dropped, then the program will continue to operate with the higher privileges.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "754",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "754",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "476",
+      "view_id": "1000",
+      "chain_id": "690"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "background_details": [
+    "Many functions will return some value about the success of their actions. This will alert the program whether or not to handle any errors caused by that function."
+  ],
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Low",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability",
+        "Integrity"
+      ],
+      "impact": [
+        "Unexpected State",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "An unexpected return value could place the system in a state that could lead to a crash or other unintended behaviors."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-53",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Check the results of all functions that return a value and verify that the value is expected."
+      ],
+      "effectiveness": "High",
+      "effectiveness_notes": "Checking the return value of the function will typically be sufficient, however beware of race conditions (CWE-362) in a concurrent environment."
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Ensure that you account for all possible return values from the function."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "When designing a function, make sure you return a value or throw an exception in case of an error."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-7",
+      "text": "\n               \u003cIntro_Text\u003eConsider the following code segment:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar buf[10], cp_buf[10];\u003cxhtml:br/\u003efgets(buf, 10, stdin);\u003cxhtml:br/\u003estrcpy(cp_buf, buf);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe programmer expects that when fgets() returns, buf will contain a null-terminated string of length 9 or less. But if an I/O error occurs, fgets() will not null-terminate buf. Furthermore, if the end of the file is reached before any characters are read, fgets() returns without writing anything to buf. In both of these situations, fgets() signals that something unusual has happened by returning NULL, but in this code, the warning will not be noticed. The lack of a null terminator in buf can result in a buffer overflow in the subsequent call to strcpy().\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-114",
+      "text": "\n               \u003cIntro_Text\u003eIn the following example, it is possible to request that memcpy move a much larger segment of memory than assumed:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint returnChunkSize(void *) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* if chunk info is valid, return the size of usable memory,\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e* else, return -1 to indicate an error\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e*/\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eint main() {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003cxhtml:br/\u003ememcpy(destBuf, srcBuf, (returnChunkSize(destBuf)-1));\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf returnChunkSize() happens to encounter an error it will return -1. Notice that the return value is not checked before the memcpy operation (CWE-252), so -1 can be passed as the size argument to memcpy() (CWE-805). Because memcpy() assumes that the value is unsigned, it will be interpreted as MAXINT-1 (CWE-195), and therefore will copy far more memory than is likely available to the destination buffer (CWE-787, CWE-788).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-8",
+      "text": "\n               \u003cIntro_Text\u003eThe following code does not check to see if memory allocation succeeded before attempting to use the pointer returned by malloc().\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003ebuf = (char*) malloc(req_size);\u003cxhtml:br/\u003estrncpy(buf, xfer, req_size);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe traditional defense of this coding error is: \"If my program runs out of memory, it will fail. It doesn't matter whether I handle the error or allow the program to die with a segmentation fault when it tries to dereference the null pointer.\" This argument ignores three important considerations:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ul\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eDepending upon the type and size of the application, it may be possible to free memory that is being used elsewhere so that execution can continue.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eIt is impossible for the program to perform a graceful exit if required. If the program is performing an atomic operation, it can leave the system in an inconsistent state.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe programmer has lost the opportunity to record diagnostic information. Did the call to malloc() fail because req_size was too large or because there were too many requests being handled at the same time? Or was it caused by a memory leak that has built up over time? Without handling the error, there is no way to know.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ul\u003e\n               \u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-9",
+      "text": "\n               \u003cIntro_Text\u003eThe following examples read a file into a byte array.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C#\"\u003e\n                  \u003cxhtml:div\u003echar[] byteArray = new char[1024];\u003cxhtml:br/\u003efor (IEnumerator i=users.GetEnumerator(); i.MoveNext() ;i.Current()) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString userName = (String) i.Current();\u003cxhtml:br/\u003eString pFileName = PFILE_ROOT + \"/\" + userName;\u003cxhtml:br/\u003eStreamReader sr = new StreamReader(pFileName);\u003cxhtml:br/\u003esr.Read(byteArray,0,1024);//the file is always 1k bytes\u003cxhtml:br/\u003esr.Close();\u003cxhtml:br/\u003eprocessPFile(userName, byteArray);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eFileInputStream fis;\u003cxhtml:br/\u003ebyte[] byteArray = new byte[1024];\u003cxhtml:br/\u003efor (Iterator i=users.iterator(); i.hasNext();) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eString userName = (String) i.next();\u003cxhtml:br/\u003eString pFileName = PFILE_ROOT + \"/\" + userName;\u003cxhtml:br/\u003eFileInputStream fis = new FileInputStream(pFileName);\u003cxhtml:br/\u003efis.read(byteArray); // the file is always 1k bytes\u003cxhtml:br/\u003efis.close();\u003cxhtml:br/\u003eprocessPFile(userName, byteArray);\u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code loops through a set of users, reading a private data file for each user. The programmer assumes that the files are always 1 kilobyte in size and therefore ignores the return value from Read(). If an attacker can create a smaller file, the program will recycle the remainder of the data from the previous user and treat it as though it belongs to the attacker.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-10",
+      "text": "\n               \u003cIntro_Text\u003eThe following code does not check to see if the string returned by getParameter() is null before calling the member function compareTo(), potentially causing a NULL dereference.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eString itemName = request.getParameter(ITEM_NAME);\u003cxhtml:br/\u003eif (itemName.compareTo(IMPORTANT_ITEM) == 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe following code does not check to see if the string returned by the Item property is null before calling the member function Equals(), potentially causing a NULL dereference.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eString itemName = request.Item(ITEM_NAME);\u003cxhtml:br/\u003eif (itemName.Equals(IMPORTANT_ITEM)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe traditional defense of this coding error is: \"I know the requested value will always exist because.... If it does not exist, the program cannot perform the desired behavior so it doesn't matter whether I handle the error or allow the program to die dereferencing a null value.\" But attackers are skilled at finding unexpected paths through programs, particularly when exceptions are involved.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-11",
+      "text": "\n               \u003cIntro_Text\u003eThe following code shows a system property that is set to null and later dereferenced by a programmer who mistakenly assumes it will always be defined.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eSystem.clearProperty(\"os.name\");\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003eString os = System.getProperty(\"os.name\");\u003cxhtml:br/\u003eif (os.equalsIgnoreCase(\"Windows 95\")) System.out.println(\"Not supported\");\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe traditional defense of this coding error is: \"I know the requested value will always exist because.... If it does not exist, the program cannot perform the desired behavior so it doesn't matter whether I handle the error or allow the program to die dereferencing a null value.\" But attackers are skilled at finding unexpected paths through programs, particularly when exceptions are involved.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-12",
+      "text": "\n               \u003cIntro_Text\u003eThe following VB.NET code does not check to make sure that it has read 50 bytes from myfile.txt. This can cause DoDangerousOperation() to operate on an unexpected value.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C#\"\u003e\n                  \u003cxhtml:div\u003eDim MyFile As New FileStream(\"myfile.txt\", FileMode.Open, FileAccess.Read, FileShare.Read)\u003cxhtml:br/\u003eDim MyArray(50) As Byte\u003cxhtml:br/\u003eMyFile.Read(MyArray, 0, 50)\u003cxhtml:br/\u003eDoDangerousOperation(MyArray(20))\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn .NET, it is not uncommon for programmers to misunderstand Read() and related methods that are part of many System.IO classes. The stream and reader classes do not consider it to be unusual or exceptional if only a small amount of data becomes available. These classes simply add the small amount of data to the return buffer, and set the return value to the number of bytes or characters read. There is no guarantee that the amount of data returned is equal to the amount of data requested.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIt is not uncommon for Java programmers to misunderstand read() and related methods that are part of many java.io classes. Most errors and unusual events in Java result in an exception being thrown. But the stream and reader classes do not consider it unusual or exceptional if only a small amount of data becomes available. These classes simply add the small amount of data to the return buffer, and set the return value to the number of bytes or characters read. There is no guarantee that the amount of data returned is equal to the amount of data requested. This behavior makes it important for programmers to examine the return value from read() and other IO methods to ensure that they receive the amount of data they expect.\u003c/Intro_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-1",
+      "text": "\n               \u003cIntro_Text\u003eThis example takes an IP address from a user, verifies that it is well formed and then looks up the hostname and copies it into a buffer.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003evoid host_lookup(char *user_supplied_addr){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003estruct hostent *hp;\u003cxhtml:br/\u003ein_addr_t *addr;\u003cxhtml:br/\u003echar hostname[64];\u003cxhtml:br/\u003ein_addr_t inet_addr(const char *cp);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/*routine that ensures user_supplied_addr is in the right format for conversion */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003evalidate_addr_form(user_supplied_addr);\u003cxhtml:br/\u003eaddr = inet_addr(user_supplied_addr);\u003cxhtml:br/\u003ehp = gethostbyaddr( addr, sizeof(struct in_addr), AF_INET);\u003cxhtml:br/\u003estrcpy(hostname, hp-\u0026gt;h_name);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf an attacker provides an address that appears to be well-formed, but the address does not resolve to a hostname, then the call to gethostbyaddr() will return NULL. Since the code does not check the return value from gethostbyaddr (CWE-252), a NULL pointer dereference\n\t       (CWE-476) would then occur in the call to strcpy().\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eNote that this code is also vulnerable to a buffer overflow (CWE-119).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-24",
+      "text": "\n               \u003cIntro_Text\u003eThe following function attempts to acquire a lock in order to perform operations on a shared resource.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003evoid f(pthread_mutex_t *mutex) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003epthread_mutex_lock(mutex);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* access shared resource */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epthread_mutex_unlock(mutex);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the code does not check the value returned by pthread_mutex_lock() for errors. If pthread_mutex_lock() cannot acquire the mutex for any reason, the function may introduce a race condition into the program and result in undefined behavior.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIn order to avoid data races, correctly written programs must check the result of thread synchronization functions and appropriately handle all errors, either by attempting to recover from them or reporting them to higher levels.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint f(pthread_mutex_t *mutex) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eint result;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eresult = pthread_mutex_lock(mutex);\u003cxhtml:br/\u003eif (0 != result)\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn result;\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* access shared resource */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn pthread_mutex_unlock(mutex);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2020-17533",
+      "description": "Chain: unchecked return value (CWE-252) of some functions for policy enforcement leads to authorization bypass (CWE-862)",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-17533"
+    },
+    {
+      "reference": "CVE-2020-6078",
+      "description": "Chain: The return value of a function returning a pointer is not checked for success (CWE-252) resulting in the later use of an uninitialized variable (CWE-456) and a null pointer dereference (CWE-476)",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6078"
+    },
+    {
+      "reference": "CVE-2019-15900",
+      "description": "Chain: sscanf() call is used to check if a username and group exists, but the return value of sscanf() call is not checked (CWE-252), causing an uninitialized variable to be checked (CWE-457), returning success to allow authorization bypass for executing a privileged (CWE-863).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15900"
+    },
+    {
+      "reference": "CVE-2007-3798",
+      "description": "Unchecked return value leads to resultant integer overflow and code execution.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3798"
+    },
+    {
+      "reference": "CVE-2006-4447",
+      "description": "Program does not check return value when invoking functions to drop privileges, which could leave users with higher privileges than expected by forcing those functions to fail.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4447"
+    },
+    {
+      "reference": "CVE-2006-2916",
+      "description": "Program does not check return value when invoking functions to drop privileges, which could leave users with higher privileges than expected by forcing those functions to fail.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2916"
+    },
+    {
+      "reference": "CVE-2008-5183",
+      "description": "chain: unchecked return value can lead to NULL dereference",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5183"
+    },
+    {
+      "reference": "CVE-2010-0211",
+      "description": "chain: unchecked return value (CWE-252) leads to free of invalid, uninitialized pointer (CWE-824).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0211"
+    },
+    {
+      "reference": "CVE-2017-6964",
+      "description": "Linux-based device mapper encryption program does not check the return value of setuid and setgid allowing attackers to execute code with unintended privileges.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6964"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-6",
+      "author": [
+        "Katrina Tsipenyuk",
+        "Brian Chess",
+        "Gary McGraw"
+      ],
+      "title": "Seven Pernicious Kingdoms: A Taxonomy of Software Security Errors",
+      "url": "https://samate.nist.gov/SSATTM_Content/papers/Seven%20Pernicious%20Kingdoms%20-%20Taxonomy%20of%20Sw%20Security%20Errors%20-%20Tsipenyuk%20-%20Chess%20-%20McGraw.pdf",
+      "publication_year": "2005",
+      "publication_month": "--11",
+      "publication_day": "---07",
+      "publication": "NIST Workshop on Software Security Assurance Tools Techniques and Metrics",
+      "publisher": "NIST"
+    },
+    {
+      "section": "Chapter 7, \"Program Building Blocks\" Page 341",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "Chapter 20, \"Checking Returns\" Page 624",
+      "reference_id": "REF-7",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc"
+      ],
+      "title": "Writing Secure Code",
+      "url": "https://www.microsoftpressstore.com/store/writing-secure-code-9780735617223",
+      "publication_year": "2002",
+      "publication_month": "--12",
+      "publication_day": "---04",
+      "publisher": "Microsoft Press",
+      "edition": "2nd Edition"
+    },
+    {
+      "section": "\"Sin 11: Failure to Handle Errors Correctly.\" Page 183",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "section": "ASCRM-CWE-252-data",
+      "reference_id": "REF-961",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Reliability Measure (ASCRM)",
+      "url": "http://www.omg.org/spec/ASCRM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    },
+    {
+      "section": "ASCRM-CWE-252-resource",
+      "reference_id": "REF-961",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Reliability Measure (ASCRM)",
+      "url": "http://www.omg.org/spec/ASCRM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    },
+    {
+      "section": "ASCSM-CWE-252-resource",
+      "reference_id": "REF-962",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Security Measure (ASCSM)",
+      "url": "http://www.omg.org/spec/ASCSM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "7 Pernicious Kingdoms",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Background_Details, Demonstrative_Examples, Description, Observed_Examples, Other_Notes, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Relationships, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_name": "Martin Sebor",
+        "contribution_organization": "Cisco Systems, Inc.",
+        "contribution_date": "2010-04-30T00:00:00Z",
+        "contribution_comment": "Provided Demonstrative Example and suggested CERT reference"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "Unchecked Return Value"
+    },
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Ignored function return value"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Improper Error Handling",
+      "entry_id": "A7",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Detect and handle standard library errors",
+      "entry_id": "ERR33-C",
+      "mapping_fit": "Imprecise"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Detect and handle POSIX library errors",
+      "entry_id": "POS54-C",
+      "mapping_fit": "Imprecise"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not ignore values returned by methods",
+      "entry_id": "EXP00-J"
+    },
+    {
+      "taxonomy_name": "SEI CERT Perl Coding Standard",
+      "entry_name": "Do not ignore function return values",
+      "entry_id": "EXP32-PL",
+      "mapping_fit": "Exact"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Unchecked Status Condition",
+      "entry_id": "SFP4"
+    },
+    {
+      "taxonomy_name": "OMG ASCSM",
+      "entry_id": "ASCSM-CWE-252-resource"
+    },
+    {
+      "taxonomy_name": "OMG ASCRM",
+      "entry_id": "ASCRM-CWE-252-data"
+    },
+    {
+      "taxonomy_name": "OMG ASCRM",
+      "entry_id": "ASCRM-CWE-252-resource"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "1265",
+  "name": "Unintended Reentrant Invocation of Non-reentrant Code Via Nested Calls",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "During execution of non-reentrant code, the software performs a call that unintentionally produces a nested invocation of the non-reentrant code.",
+  "extended_description": "In complex software, a single function call may lead to many different possible code paths, some of which may involve deeply nested calls. It may be difficult to foresee all possible code paths that could emanate from a given function call. In some systems, an external actor can manipulate inputs to the system and thereby achieve a wide range of possible control flows. This is frequently of concern in software that executes script from untrusted sources. Examples of such software are web browsers and PDF readers. A weakness is present when one of the possible code paths resulting from a function call alters program state that the original caller assumes to be unchanged during the call.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "691",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "663",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "416",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Unexpected State"
+      ],
+      "note": "Exploitation of this weakness can leave the application in an unexpected state and cause variables to be reassigned before the first invocation has completed. This may eventually result in memory corruption or unexpected code execution.",
+      "likelihood": "Unknown"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "When architecting a system that will execute untrusted code in response to events, consider executing the untrusted event handlers asynchronously (asynchronous message passing) as opposed to executing them synchronously at the time each event fires. The untrusted code should execute at the start of the next iteration of the thread’s message loop. In this way, calls into non-reentrant code are strictly serialized, so that each operation completes fully before the next operation begins. Special attention must be paid to all places where type coercion may result in script execution. Performing all needed coercions at the very beginning of an operation can help reduce the chance of operations executing at unexpected junctures."
+      ],
+      "effectiveness": "High"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Make sure the code (e.g., function or class) in question is reentrant by not leveraging non-local data, not modifying its own code, and not calling other non-reentrant code."
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\u003cIntro_Text\u003eThe implementation of the Widget class in the following C++ code is an example of code that is not designed to be reentrant. If an invocation of a method of Widget inadvertently produces a second nested invocation of a method of Widget, then data member backgroundImage may unexpectedly change during execution of the outer call.\u003c/Intro_Text\u003e\n\t\t\t\t\u003cExample_Code Language=\"C++\" Nature=\"bad\"\u003e\u003cxhtml:div\u003eclass Widget\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eprivate:\u003cxhtml:div style=\"margin-left:10px;\"\u003eImage* backgroundImage;\u003c/xhtml:div\u003e\u003cxhtml:br/\u003epublic:\u003cxhtml:div style=\"margin-left:10px;\"\u003evoid click()\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (backgroundImage)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003ebackgroundImage-\u0026gt;click();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\u003cxhtml:br/\u003evoid changeBackgroundImage(Image* newImage)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (backgroundImage)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003edelete backgroundImage;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ebackgroundImage = newImage;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\u003cxhtml:br/\u003eclass Image\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003epublic:\u003cxhtml:div style=\"margin-left:10px;\"\u003evoid click()\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003escriptEngine-\u0026gt;fireOnImageClick();\u003cxhtml:br/\u003e/* perform some operations using “this” pointer */\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\u003c/Example_Code\u003e\n\t\t\t\t\u003cBody_Text\u003eLooking closer at this example, Widget::click() calls backgroundImage-\u0026gt;click(), which in turn calls scriptEngine-\u0026gt;fireOnImageClick(). The code within fireOnImageClick() invokes the appropriate script handler routine as defined by the document being rendered. In this scenario this script routine is supplied by an adversary and this malicious script makes a call to Widget::changeBackgroundImage(), deleting the Image object pointed to by backgroundImage. When control returns to Image::click, the function’s \"backgroundImage \"this\" pointer (which is the former value of backgroundImage) is a dangling pointer. The root of this weakness is that while one operation on Widget (click) is in the midst of executing, a second operation on the Widget object may be invoked (in this case, the second invocation is a call to different method, namely changeBackgroundImage) that modifies the non-local variable.\u003c/Body_Text\u003e\n\t\t\t"
+    },
+    {
+      "text": "\n\t\t\t\t\u003cIntro_Text\u003eThis is another example of C++ code that is not designed to be reentrant.\u003c/Intro_Text\u003e\n\t\t\t\t\u003cExample_Code Language=\"C++\" Nature=\"bad\"\u003e\u003cxhtml:div\u003eclass Request\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eprivate:\u003cxhtml:div style=\"margin-left:10px;\"\u003estd::string uri;\u003cxhtml:br/\u003e/* ... */\u003c/xhtml:div\u003e\u003cxhtml:br/\u003epublic:\u003cxhtml:div style=\"margin-left:10px;\"\u003evoid setup(ScriptObject* _uri)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis-\u0026gt;uri = scriptEngine-\u0026gt;coerceToString(_uri);\u003cxhtml:br/\u003e/* ... */\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\u003cxhtml:br/\u003evoid send(ScriptObject* _data)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eCredentials credentials = GetCredentials(uri);\u003cxhtml:br/\u003estd::string data = scriptEngine-\u0026gt;coerceToString(_data);\u003cxhtml:br/\u003edoSend(uri, credentials, data);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\u003c/Example_Code\u003e\n\t\t\t\t\u003cBody_Text\u003eThe expected order of operations is a call to Request::setup(), followed by a call to Request::send(). Request::send() calls scriptEngine-\u0026gt;coerceToString(_data) to coerce a script-provided parameter into a string. This operation may produce script execution. For example, if the script language is ECMAScript, arbitrary script execution may result if _data is an adversary-supplied ECMAScript object having a custom toString method. If the adversary's script makes a new call to Request::setup, then when control returns to Request::send, the field uri and the local variable credentials will no longer be consistent with one another. As a result, credentials for one resource will be shared improperly with a different resource. The root of this weakness is that while one operation on Request (send) is in the midst of executing, a second operation may be invoked (setup).\u003c/Body_Text\u003e\n\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2014-1772",
+      "description": "In this vulnerability, by registering a malicious onerror handler, an adversary can produce unexpected re-entrance of a CDOMRange object. [REF-1098]",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1772"
+    },
+    {
+      "reference": "CVE-2018-8174",
+      "description": "This CVE covers several vulnerable scenarios enabled by abuse of the Class_Terminate feature in Microsoft VBScript. In one scenario, Class_Terminate is used to produce an undesirable re-entrance of ScriptingDictionary during execution of that object’s destructor. In another scenario, a vulnerable condition results from a recursive entrance of a property setter method. This recursive invocation produces a second, spurious call to the Release method of a reference-counted object, causing a UAF when that object is freed prematurely. This vulnerability pattern has been popularized as “Double Kill”. [REF-1099]",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8174"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1098",
+      "author": [
+        "Jack Tang"
+      ],
+      "title": "Root Cause Analysis of CVE-2014-1772 – An Internet Explorer Use After Free Vulnerability",
+      "url": "https://blog.trendmicro.com/trendlabs-security-intelligence/root-cause-analysis-of-cve-2014-1772-an-internet-explorer-use-after-free-vulnerability/",
+      "publication_year": "2014",
+      "publication_month": "--11",
+      "publication_day": "---05"
+    },
+    {
+      "reference_id": "REF-1099",
+      "author": [
+        "Simon Zuckerbraun"
+      ],
+      "title": "It’s Time To Terminate The Terminator",
+      "url": "https://www.zerodayinitiative.com/blog/2018/5/15/its-time-to-terminate-the-terminator",
+      "publication_year": "2018",
+      "publication_month": "--05",
+      "publication_day": "---15"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Simon Zuckerbraun",
+      "submission_organization": "Trend Micro",
+      "submission_date": "2018-12-20T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Related_Attack_Patterns"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "related_attack_patterns": [
+    "74"
+  ]
+}

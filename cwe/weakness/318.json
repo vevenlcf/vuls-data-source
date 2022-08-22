@@ -1,0 +1,142 @@
+{
+  "id": "318",
+  "name": "Cleartext Storage of Sensitive Information in Executable",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The application stores sensitive information in cleartext in an executable.",
+  "extended_description": "Attackers can reverse engineer binary code to obtain secret data. This is especially easy when the cleartext is plain ASCII. Even if the information is encoded in a way that is not human-readable, certain techniques could determine which encoding is being used, then decode the information.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "312",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "OMISSION: This weakness is caused by missing a security tactic during the architecture and design phase."
+      ]
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2005-1794",
+      "description": "Product stores RSA private key in a DLL and uses it to sign a certificate, allowing spoofing of servers and Adversary-in-the-Middle (AITM) attacks.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1794"
+    },
+    {
+      "reference": "CVE-2001-1527",
+      "description": "administration passwords in cleartext in executable",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1527"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Description, Name, Potential_Mitigations, Terminology_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Plaintext Storage in Executable",
+        "date": "2013-07-17T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Plaintext Storage in Executable"
+    }
+  ],
+  "related_attack_patterns": [
+    "37",
+    "65"
+  ],
+  "notes": [
+    {
+      "type": "Terminology",
+      "text": "Different people use \"cleartext\" and \"plaintext\" to mean the same thing: the lack of encryption. However, within cryptography, these have more precise meanings. Plaintext is the information just before it is fed into a cryptographic algorithm, including already-encrypted text. Cleartext is any information that is unencrypted, although it might be in an encoded form that is not easily human-readable (such as base64 encoding)."
+    }
+  ]
+}

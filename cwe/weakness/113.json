@@ -1,0 +1,408 @@
+{
+  "id": "113",
+  "name": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software receives data from an HTTP agent/component (e.g., web server, proxy, browser, etc.), but it does not neutralize or incorrectly neutralizes CR and LF characters before the data is included in outgoing HTTP headers.",
+  "extended_description": "\n\t   \u003cxhtml:p\u003e\n\t     HTTP agents or components may include a web server, load balancer, reverse proxy, web caching proxy, application firewall, web browser, etc. Regardless of the role, they are expected to maintain coherent, consistent HTTP communication state across all components. However, including unexpected data in an HTTP header allows an attacker to specify the entirety of the HTTP message that is rendered by the client HTTP agent (e.g., web browser) or back-end HTTP agent (e.g., web server), whether the message is part of a request or a response.\n\t   \u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eWhen an HTTP request contains unexpected CR and LF characters, the server may respond with an output stream that is interpreted as “splitting” the stream into two different HTTP messages instead of one. CR is carriage return, also given by %0d or \\r, and LF is line feed, also given by %0a or \\n.\u003c/xhtml:p\u003e\n\t    \u003cxhtml:p\u003eIn addition to CR and LF characters, other valid/RFC compliant special characters and unique character encodings can be utilized, such as HT (horizontal tab, also given by %09 or \\t) and SP (space, also given as + sign or %20).\u003c/xhtml:p\u003e\n\t    \u003cxhtml:p\u003eThese types of unvalidated and unexpected data in HTTP message headers allow an attacker to control the second \"split\" message to mount attacks such as server-side request forgery, cross-site scripting, and cache poisoning attacks.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eHTTP response splitting weaknesses may be present when:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ol\u003e\n                  \u003cxhtml:li\u003eData enters a web application through an untrusted source, most frequently an HTTP request.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eThe data is included in an HTTP response header sent to a web user without neutralizing malicious characters that can be interpreted as separator characters for headers.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ol\u003e\n            \u003c/xhtml:div\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "93",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "79",
+      "view_id": "1000"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "20",
+      "view_id": "700",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "436",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Web Based",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Application Data",
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "CR and LF characters in an HTTP header may give attackers control of the remaining headers and body of the message that the application intends to send/receive, as well as allowing them to create additional messages entirely under their control."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Construct HTTP headers very carefully, avoiding the use of non-validated input data."
+      ],
+      "strategy": "Input Validation"
+    },
+    {
+      "mitigation_id": "MIT-5",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eAssume all input is malicious. Use an \"accept known good\" input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. If an input does not strictly conform to specifications, reject it or transform it into something that conforms.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, \"boat\" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as \"red\" or \"blue.\"\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDo not rely exclusively on looking for malicious or malformed inputs.  This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Input Validation"
+    },
+    {
+      "mitigation_id": "MIT-30",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Use and specify an output encoding that can be handled by the downstream component that is reading the output. Common encodings include ISO-8859-1, UTF-7, and UTF-8. When an encoding is not specified, a downstream component may choose a different encoding, either by assuming a default encoding or automatically inferring which encoding is being used, which can be erroneous. When the encodings are inconsistent, the downstream component might treat some character or byte sequences as special, even if they are not special in the original encoding. Attackers might then be able to exploit this discrepancy and conduct injection attacks; they even might be able to bypass protection mechanisms that assume the original encoding is also being used by the downstream component."
+      ],
+      "strategy": "Output Encoding"
+    },
+    {
+      "mitigation_id": "MIT-20",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Inputs should be decoded and canonicalized to the application's current internal representation before being validated (CWE-180). Make sure that the application does not decode the same input twice (CWE-174). Such errors could be used to bypass allowlist validation schemes by introducing dangerous inputs after they have been checked."
+      ],
+      "strategy": "Input Validation"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code segment reads the name of the author of a weblog entry, author, from an HTTP request and sets it in a cookie header of an HTTP response.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eString author = request.getParameter(AUTHOR_PARAM);\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003eCookie cookie = new Cookie(\"author\", author);\u003cxhtml:br/\u003ecookie.setMaxAge(cookieExpiration);\u003cxhtml:br/\u003eresponse.addCookie(cookie);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAssuming a string consisting of standard alpha-numeric characters, such as \"Jane Smith\", is submitted in the request the HTTP response including this cookie might take the following form:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003eHTTP/1.1 200 OK\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003eSet-Cookie: author=Jane Smith\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, because the value of the cookie is composed of unvalidated user input, the response will only maintain this form if the value submitted for AUTHOR_PARAM does not contain any CR and LF characters. If an attacker submits a malicious string, such as\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003eWiley Hacker\\r\\nHTTP/1.1 200 OK\\r\\n\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003ethen the HTTP response would be split into two responses of the following form:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003eHTTP/1.1 200 OK\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003eSet-Cookie: author=Wiley Hacker\u003cxhtml:br/\u003eHTTP/1.1 200 OK\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe second response is completely controlled by the attacker and can be constructed with any header and body content desired. The ability to construct arbitrary HTTP responses permits a variety of resulting attacks, including:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ul\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ecross-user defacement\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eweb and browser cache poisoning\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ecross-site scripting\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003epage hijacking\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ul\u003e\n               \u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eAn attacker can make a single request to a vulnerable server that will cause the server to create two responses, the second of which may be misinterpreted as a response to a different request, possibly one made by another user sharing the same TCP connection with the sever.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:div style=\"color:#32498D; font-weight:bold;\"\u003eCross-User Defacement\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eThis can be accomplished by convincing the user to submit the malicious request themselves, or remotely in situations where the attacker and the user share a common TCP connection to the server, such as a shared proxy server.\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003e\n                              \u003cxhtml:div\u003eIn the best case, an attacker can leverage this ability to convince users that the application has been hacked, causing users to lose confidence in the security of the application.\u003c/xhtml:div\u003e\n                           \u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003e\n                              \u003cxhtml:div\u003eIn the worst case, an attacker may provide specially crafted content designed to mimic the behavior of the application but redirect private information, such as account numbers and passwords, back to the attacker.\u003c/xhtml:div\u003e\n                           \u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:div style=\"color:#32498D; font-weight:bold;\"\u003eCache Poisoning\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eIf a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue receive the malicious content until the cache entry is purged. Similarly, if the response is cached in the browser of an individual user, then that user will continue to receive the malicious content until the cache entry is purged, although the user of the local browser instance will be affected.\u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eOnce attackers have control of the responses sent by an application, they have a choice of a variety of malicious content to provide users.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:div style=\"color:#32498D; font-weight:bold;\"\u003eCross-Site Scripting\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCross-site scripting is common form of attack where malicious JavaScript or other code included in a response is executed in the user's browser.\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eThe variety of attacks based on XSS is almost limitless, but they commonly include transmitting private data like cookies or other session information to the attacker, redirecting the victim to web content controlled by the attacker, or performing other malicious operations on the user's machine under the guise of the vulnerable site.\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eThe most common and dangerous attack vector against users of a vulnerable application uses JavaScript to transmit session and authentication information back to the attacker who can then take complete control of the victim's account.\u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn addition to using a vulnerable application to send malicious content to a user, the same root vulnerability can also be leveraged to redirect sensitive content generated by the server and intended for the user to the attacker instead.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:div style=\"color:#32498D; font-weight:bold;\"\u003ePage Hijacking\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eBy submitting a request that results in two responses, the intended response from the server and the response generated by the attacker, an attacker can cause an intermediate node, such as a shared proxy server, to misdirect a response generated by the server for the user to the attacker.\u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eBecause the request made by the attacker generates two responses, the first is interpreted as a response to the attacker's request, while the second remains in limbo. When the user makes a legitimate request through the same TCP connection, the attacker's request is already waiting and is interpreted as a response to the victim's request. The attacker then sends a second request to the server, to which the proxy server responds with the server generated request intended for the victim, thereby compromising any sensitive information in the headers or body of the response intended for the victim.\u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2020-15811",
+      "description": "Chain: Proxy uses a substring search instead of parsing the Transfer-Encoding header (CWE-697), allowing request splitting (CWE-113) and cache poisoning",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15811"
+    },
+    {
+      "reference": "CVE-2021-41084",
+      "description": "Scala-based HTTP interface allows request splitting and response splitting through header names, header values, status reasons, and URIs",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41084"
+    },
+    {
+      "reference": "CVE-2018-12116",
+      "description": "Javascript-based framework allows request splitting through a path option of an HTTP request",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12116"
+    },
+    {
+      "reference": "CVE-2004-2146",
+      "description": "Application accepts CRLF in an object ID, allowing HTTP response splitting.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2146"
+    },
+    {
+      "reference": "CVE-2004-1656",
+      "description": "Shopping cart allows HTTP response splitting to perform HTML injection via CRLF in a parameter for a url",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1656"
+    },
+    {
+      "reference": "CVE-2005-2060",
+      "description": "Bulletin board allows response splitting via CRLF in parameter.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2060"
+    },
+    {
+      "reference": "CVE-2004-2512",
+      "description": "Response splitting via CRLF in PHPSESSID.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2512"
+    },
+    {
+      "reference": "CVE-2005-1951",
+      "description": "e-commerce app allows HTTP response splitting using CRLF in object id parameters",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1951"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-43",
+      "author": [
+        "OWASP"
+      ],
+      "title": "OWASP TOP 10",
+      "url": "http://www.owasp.org/index.php/Top_10_2007"
+    },
+    {
+      "section": "\"Sin 2: Web-Server Related Vulnerabilities (XSS, XSRF, and Response Splitting).\" Page 31",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-1272",
+      "author": [
+        "Robert Auger"
+      ],
+      "title": "HTTP Request Splitting",
+      "url": "http://projects.webappsec.org/w/page/13246929/HTTP%20Request%20Splitting",
+      "publication_year": "2011",
+      "publication_month": "--02",
+      "publication_day": "---01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated References, Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Observed_Example, Other_Notes, References, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Other_Notes, Theoretical_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-05-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Potential_Mitigations, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "Extended the abstraction of this entry to include both HTTP request and response splitting.",
+        "modification_importance": "Critical"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Common_Consequences, Demonstrative_Examples, Description, Name, Observed_Examples, Potential_Mitigations, References, Relationships, Theoretical_Notes"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "HTTP Response Splitting",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Sanitize CRLF Sequences in HTTP Headers (aka 'HTTP Response Splitting')",
+        "date": "2009-05-27T00:00:00Z"
+      },
+      {
+        "text": "Failure to Sanitize CRLF Sequences in HTTP Headers ('HTTP Response Splitting')",
+        "date": "2010-06-21T00:00:00Z"
+      },
+      {
+        "text": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')",
+        "date": "2022-06-28T00:00:00Z"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "HTTP Request Splitting"
+    },
+    {
+      "term": "HTTP Response Splitting"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "HTTP response splitting"
+    },
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "HTTP Response Splitting"
+    },
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "HTTP Response Splitting",
+      "entry_id": "25"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Tainted input to command",
+      "entry_id": "SFP24"
+    }
+  ],
+  "related_attack_patterns": [
+    "31",
+    "34",
+    "85"
+  ]
+}

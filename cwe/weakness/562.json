@@ -1,0 +1,211 @@
+{
+  "id": "562",
+  "name": "Return of Stack Variable Address",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "A function returns the address of a stack variable, which will cause unintended program behavior, typically in the form of a crash.",
+  "extended_description": "Because local variables are allocated on the stack, when a program returns a pointer to a local variable, it is returning a stack address. A subsequent function call is likely to re-use this same stack address, thereby overwriting the value of the pointer, which no longer corresponds to the same variable since a function's stack frame is invalidated when it returns. At best this will cause the value of the pointer to change unexpectedly. In many cases it causes the program to crash the next time the pointer is dereferenced.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "758",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "672",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "825",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "C"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "C++"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability",
+        "Integrity",
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory",
+        "Modify Memory",
+        "Execute Unauthorized Code or Commands",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "If the returned stack buffer address is dereferenced after the return, then an attacker may be able to modify or read memory, depending on how the address is used.  If the address is used for reading, then the address itself may be exposed, or the contents that the address points to.  If the address is used for writing, this can lead to a crash and possibly code execution."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "Use static analysis tools to spot return of the address of a stack variable."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following function returns a stack address.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar* getName() {\u003cxhtml:div style=\"margin-left:10px;\"\u003echar name[STR_MAX];\u003cxhtml:br/\u003efillInName(name);\u003cxhtml:br/\u003ereturn name;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Anonymous Tool Vendor (under NDA)",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Stack Address Returned",
+        "date": "2008-04-11T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Indirect"
+    },
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Declare objects with appropriate storage durations",
+      "entry_id": "DCL30-C",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Do not call putenv() with a pointer to an automatic variable as the argument",
+      "entry_id": "POS34-C"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Glitch in computation",
+      "entry_id": "SFP1"
+    }
+  ]
+}

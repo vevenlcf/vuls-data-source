@@ -1,0 +1,181 @@
+{
+  "id": "324",
+  "name": "Use of a Key Past its Expiration Date",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product uses a cryptographic key or password past its expiration date, which diminishes its safety significantly by increasing the timing window for cracking attacks against that key.",
+  "extended_description": "While the expiration of keys does not necessarily ensure that they are compromised, it is a significant concern that keys which remain in use for prolonged periods of time have a decreasing probability of integrity. For this reason, it is important to replace keys within a period of time proportional to their strength.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "672",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "298",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Low",
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism",
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "The cryptographic key in question may be compromised, providing a malicious user with a method for authenticating as the victim."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Adequate consideration should be put in to the user interface in order to notify users previous to the key's expiration, to explain the importance of new key generation and to walk users through the process as painlessly as possible."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code attempts to verify that a certificate is valid.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eif (cert = SSL_get_peer_certificate(ssl)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003efoo=SSL_get_verify_result(ssl);\u003cxhtml:br/\u003eif ((X509_V_OK==foo) || (X509_V_ERRCERT_NOT_YET_VALID==foo))\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e//do stuff\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code checks if the certificate is not yet valid, but it fails to check if a certificate is past its expiration date, thus treating expired certificates as valid.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 23: Improper Use of PKI, Especially SSL.\" Page 347",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Using a Key Past its Expiration Date",
+        "date": "2008-04-11T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Using a key past its expiration date"
+    }
+  ]
+}

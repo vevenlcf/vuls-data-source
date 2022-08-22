@@ -1,0 +1,253 @@
+{
+  "id": "674",
+  "name": "Uncontrolled Recursion",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product does not properly control the amount of recursion which takes place,  consuming excessive resources, such as allocated memory or the program stack.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "691",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "The uncontrolled recursion is often due to an improper or missing conditional"
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Resource Consumption (CPU)",
+        "DoS: Resource Consumption (Memory)"
+      ],
+      "note": "Resources including CPU, memory, and stack memory could be rapidly consumed or exhausted, eventually leading to an exit or crash."
+    },
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ],
+      "note": "In some cases, an application's interpreter might kill a process or thread that appears to be consuming too much resources, such as with PHP's memory_limit setting. When the interpreter kills the process/thread, it might report an error containing detailed information such as the application's installation path."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Ensure an end condition will be reached under all logic conditions.  The end condition may include testing against the depth of recursion and exiting with an error if the recursion goes too deep. The complexity of the end condition contributes to the effectiveness of this action."
+      ],
+      "effectiveness": "Moderate"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Increase the stack size."
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "Increasing the stack size might only be a temporary measure, since the stack typically is still not very large, and it might remain easy for attackers to cause an out-of-stack fault."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n          \u003cIntro_Text\u003eIn this example a mistake exists in the code where the exit condition contained in flg is never called. This results in the function calling itself over and over again until the stack is exhausted.\n          \u003c/Intro_Text\u003e\n          \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\nvoid do_something_recursive (int flg)\u003cxhtml:br/\u003e\n{\u003cxhtml:br/\u003e\n\u003cxhtml:div style=\"margin-left:10px;\"\u003e... // Do some real work here, but the value of flg is unmodified\u003cxhtml:br/\u003e\nif (flg) { do_something_recursive (flg); }    // flg is never modified so it is always TRUE - this call will continue until the stack explodes\u003c/xhtml:div\u003e\n}\u003cxhtml:br/\u003e\nint flag = 1; // Set to TRUE\u003cxhtml:br/\u003e\ndo_something_recursive (flag);\n          \u003c/Example_Code\u003e\n          \u003cBody_Text\u003eNote that the only difference between the Good and Bad examples is that the recursion flag will change value and cause the recursive to return.\u003c/Body_Text\u003e\n          \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\nvoid do_something_recursive (int flg)\u003cxhtml:br/\u003e\n{\u003cxhtml:br/\u003e\n\u003cxhtml:div style=\"margin-left:20px;\"\u003e... // Do some real work here\u003c/xhtml:div\u003e\n\u003cxhtml:div style=\"margin-left:10px;\"\u003e// Modify value of flg on done condition\u003c/xhtml:div\u003e\n\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (flg) { do_something_recursive (flg); }    // returns when flg changes to 0\u003c/xhtml:div\u003e\n}\u003cxhtml:br/\u003e\nint flag = 1; // Set to TRUE\u003cxhtml:br/\u003e\ndo_something_recursive (flag);\n          \u003c/Example_Code\u003e\n        "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-1285",
+      "description": "Deeply nested arrays trigger stack exhaustion.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1285"
+    },
+    {
+      "reference": "CVE-2007-3409",
+      "description": "Self-referencing pointers create infinite loop and resultant stack exhaustion.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3409"
+    },
+    {
+      "reference": "CVE-2016-10707",
+      "description": "Javascript application accidentally changes input in a way that prevents a recursive call from detecting an exit condition.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10707"
+    },
+    {
+      "reference": "CVE-2016-3627",
+      "description": "An attempt to recover a corrupted XML file infinite recursion protection counter was not always incremented missing the exit condition.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3627"
+    },
+    {
+      "reference": "CVE-2019-15118",
+      "description": "USB-audio driver's descriptor code parsing allows unlimited recursion leading to stack exhaustion.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15118"
+    }
+  ],
+  "references": [
+    {
+      "section": "ASCRM-CWE-674",
+      "reference_id": "REF-961",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Reliability Measure (ASCRM)",
+      "url": "http://www.omg.org/spec/ASCRM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2008-04-11T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated References, Related_Attack_Patterns, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Modes_of_Introduction, Observed_Examples, Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "Stack Exhaustion"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Denial of Service",
+      "entry_id": "A9",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Unrestricted Consumption",
+      "entry_id": "SFP13"
+    },
+    {
+      "taxonomy_name": "OMG ASCRM",
+      "entry_id": "ASCRM-CWE-674"
+    }
+  ],
+  "related_attack_patterns": [
+    "230",
+    "231"
+  ],
+  "affected_resources": [
+    "CPU"
+  ]
+}

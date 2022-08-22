@@ -1,0 +1,218 @@
+{
+  "id": "379",
+  "name": "Creation of Temporary File in Directory with Insecure Permissions",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software creates a temporary file in a directory whose permissions allow unintended actors to determine the file's existence or otherwise access that file.",
+  "extended_description": "On some operating systems, the fact that the temporary file exists may be apparent to any user with sufficient privileges to access that directory. Since the file is visible, the application that is using the temporary file could be known. If one has access to list the processes on the system, the attacker has gained information about what the user is doing at that time. By correlating this with the applications the user is running, an attacker could potentially discover what a user's actions are. From this, higher levels of security could be breached.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "377",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Low",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ],
+      "note": "Since the file is visible and the application which is using the temp file could be known, the attacker has gained information about what the user is doing at that time."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "Many contemporary languages have functions which properly handle this condition. Older C temp file functions are especially susceptible."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Try to store sensitive tempfiles in a directory which is not world readable -- i.e., per-user directories."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Avoid using vulnerable temp file functions."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-139",
+      "text": "\n               \u003cIntro_Text\u003eIn the following code examples a temporary file is created and written to.  After using the temporary file, the file is closed and deleted from the file system.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eFILE *stream;\u003cxhtml:br/\u003eif( (stream = tmpfile()) == NULL ) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003eperror(\"Could not open new temporary file\\n\");\u003cxhtml:br/\u003ereturn (-1);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// write data to tmp file\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e// remove tmp file\u003cxhtml:br/\u003ermtmp();\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, within this C/C++ code the method tmpfile() is used to create and open the temp file. The tmpfile() method works the same way as the fopen() method would with read/write permission, allowing attackers to read potentially sensitive information contained in the temp file or modify the contents of the file.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eFile temp = File.createTempFile(\"pattern\", \".suffix\");\u003cxhtml:br/\u003etemp.deleteOnExit();\u003cxhtml:br/\u003eBufferedWriter out = new BufferedWriter(new FileWriter(temp));\u003cxhtml:br/\u003eout.write(\"aString\");\u003cxhtml:br/\u003eout.close();\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (IOException e) {\u003cxhtml:br/\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eSimilarly, the createTempFile() method used in the Java code creates a temp file that may be readable and writable to all users.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAdditionally both methods used above place the file into a default directory. On UNIX systems the default directory is usually \"/tmp\" or \"/var/tmp\" and on Windows systems the default directory is usually \"C:\\\\Windows\\\\Temp\", which may be easily accessible to attackers, possibly enabling them to read and modify the contents of the temp file.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    },
+    {
+      "section": "Chapter 9, \"Temporary Files\", Page 538",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Name, References, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Guessed or Visible Temporary File",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Creation of Temporary File in Directory with Insecure Permissions",
+        "date": "2009-05-27T00:00:00Z"
+      },
+      {
+        "text": "Creation of Temporary File in Directory with Incorrect Permissions",
+        "date": "2020-02-24T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Guessed or visible temporary file"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Ensure that file operations are performed in a secure directory",
+      "entry_id": "FIO15-C"
+    }
+  ]
+}

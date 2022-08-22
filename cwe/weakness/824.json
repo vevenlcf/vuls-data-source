@@ -1,0 +1,229 @@
+{
+  "id": "824",
+  "name": "Access of Uninitialized Pointer",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The program accesses or uses a pointer that has not been initialized.",
+  "extended_description": "\n            \u003cxhtml:p\u003eIf the pointer contains an uninitialized value, then the value might not point to a valid memory location. This could cause the program to read from or write to unexpected memory locations, leading to a denial of service. If the uninitialized pointer is used as a function call, then arbitrary functions could be invoked. If an attacker can influence the portion of uninitialized memory that is contained in the pointer, this weakness could be leveraged to execute code or perform other attacks.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eDepending on memory layout, associated memory management behaviors, and program operation, the attacker might be able to influence the contents of the uninitialized pointer, thus gaining more fine-grained control of the memory location to be accessed.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "125",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "787",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {},
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory"
+      ],
+      "note": "If the uninitialized pointer is used in a read operation, an attacker might be able to read sensitive portions of memory."
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "If the uninitialized pointer references a memory location that is not accessible to the program, or points to a location that is \"malformed\" (such as NULL) or larger than expected by a read or write operation, then a crash may occur."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "If the uninitialized pointer is used in a function call, or points to unexpected data in a write operation, then code execution may be possible."
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2010-0211",
+      "description": "chain: unchecked return value (CWE-252) leads to free of invalid, uninitialized pointer (CWE-824).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0211"
+    },
+    {
+      "reference": "CVE-2009-2768",
+      "description": "Pointer in structure is not initialized, leading to NULL pointer dereference (CWE-476) and system crash.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2768"
+    },
+    {
+      "reference": "CVE-2009-1721",
+      "description": "Free of an uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1721"
+    },
+    {
+      "reference": "CVE-2009-1415",
+      "description": "Improper handling of invalid signatures leads to free of invalid pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1415"
+    },
+    {
+      "reference": "CVE-2009-0846",
+      "description": "Invalid encoding triggers free of uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0846"
+    },
+    {
+      "reference": "CVE-2009-0040",
+      "description": "Crafted PNG image leads to free of uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0040"
+    },
+    {
+      "reference": "CVE-2008-2934",
+      "description": "Crafted GIF image leads to free of uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2934"
+    },
+    {
+      "reference": "CVE-2007-4682",
+      "description": "Access of uninitialized pointer might lead to code execution.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4682"
+    },
+    {
+      "reference": "CVE-2007-4639",
+      "description": "Step-based manipulation: invocation of debugging function before the primary initialization function leads to access of an uninitialized pointer and code execution.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4639"
+    },
+    {
+      "reference": "CVE-2007-4000",
+      "description": "Unchecked return values can lead to a write to an uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4000"
+    },
+    {
+      "reference": "CVE-2007-2442",
+      "description": "zero-length input leads to free of uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2442"
+    },
+    {
+      "reference": "CVE-2007-1213",
+      "description": "Crafted font leads to uninitialized function pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1213"
+    },
+    {
+      "reference": "CVE-2006-6143",
+      "description": "Uninitialized function pointer in freed memory is invoked",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6143"
+    },
+    {
+      "reference": "CVE-2006-4175",
+      "description": "LDAP server mishandles malformed BER queries, leading to free of uninitialized memory",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4175"
+    },
+    {
+      "reference": "CVE-2006-0054",
+      "description": "Firewall can crash with certain ICMP packets that trigger access of an uninitialized pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0054"
+    },
+    {
+      "reference": "CVE-2003-1201",
+      "description": "LDAP server does not initialize members of structs, which leads to free of uninitialized pointer if an LDAP request fails.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-1201"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 7, \"Variable Initialization\", Page 312",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2010-09-22T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Research_Gaps"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "There are close relationships between incorrect pointer dereferences and other weaknesses related to buffer operations. There may not be sufficient community agreement regarding these relationships. Further study is needed to determine when these relationships are chains, composites, perspective/layering, or other types of relationships. As of September 2010, most of the relationships are being captured as chains."
+    },
+    {
+      "type": "Terminology",
+      "text": "Many weaknesses related to pointer dereferences fall under the general term of \"memory corruption\" or \"memory safety.\" As of September 2010, there is no commonly-used terminology that covers the lower-level variants."
+    }
+  ]
+}

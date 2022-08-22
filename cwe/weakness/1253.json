@@ -1,0 +1,149 @@
+{
+  "id": "1253",
+  "name": "Incorrect Selection of Fuse Values",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The logic level used to set a system to a secure state relies on a fuse being unblown. An attacker can set the system to an insecure state merely by blowing the fuse.",
+  "extended_description": "\n      \u003cxhtml:p\u003eFuses are often used to store secret data, including security configuration data. When not blown, a fuse is considered to store a logic 0, and, when blown, it indicates a logic 1. Fuses are generally considered to be one-directional, i.e., once blown to logic 1, it cannot be reset to logic 0. However, if the logic used to determine system-security state (by leveraging the values sensed from the fuses) uses negative logic, an attacker might blow the fuse and drive the system to an insecure state.\u003c/xhtml:p\u003e\n     ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "693",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control",
+        "Authorization"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism",
+        "Gain Privileges or Assume Identity"
+      ]
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ]
+    },
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory"
+      ]
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Execute Unauthorized Code or Commands"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Logic should be designed in a way that blown fuses do not put the product into an insecure state that can be leveraged by an attacker.\n        "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n        \u003cIntro_Text\u003e\u003cxhtml:p\u003eA chip implements a secure boot and uses the sensed value of a fuse \n         \"do_secure_boot\" to determine whether to perform a secure boot or not. If this fuse \n         value is \"0\", the system performs secure boot. Otherwise, it does not perform secure \n         boot.\u003c/xhtml:p\u003e\n         \u003cxhtml:p\u003eAn attacker blows the \"do_secure_boot\" fuse to \"1\". After reset, the attacker loads a custom \n         bootloader, and, since the fuse value is now \"1\", the system does not perform secure boot, \n         and the attacker can execute their custom firmware image.\u003c/xhtml:p\u003e\n         \u003cxhtml:p\u003eSince by default, a fuse-configuration value is a \"0\", an attacker can blow it to a \"1\" with \n         inexpensive hardware.\u003c/xhtml:p\u003e\n         \u003cxhtml:p\u003eIf the logic is reversed, an attacker cannot easily reset the fuse. Note that, with \n         specialized and expensive equipment, an attacker with full physical access might be able to \"unblow\" the fuse \n         value to a \"0\".\u003c/xhtml:p\u003e\n        \u003c/Intro_Text\u003e\n      "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1080",
+      "author": [
+        "Christopher Tarnovsky"
+      ],
+      "title": "Security Failures in Secure Devices",
+      "url": "https://www.blackhat.com/presentations/bh-europe-08/Tarnovsky/Presentation/bh-eu-08-tarnovsky.pdf"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2019-10-15T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Description"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "74"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "This entry is still under development and will continue to see updates and content improvements."
+    }
+  ]
+}

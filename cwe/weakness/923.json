@@ -1,0 +1,93 @@
+{
+  "id": "923",
+  "name": "Improper Restriction of Communication Channel to Intended Endpoints",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software establishes a communication channel to (or from) an endpoint for privileged or protected operations, but it does not properly ensure that it is communicating with the correct endpoint.",
+  "extended_description": "\n            \u003cxhtml:p\u003eAttackers might be able to spoof the intended endpoint from a different system or process, thus gaining the same level of access as the intended endpoint.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eWhile this issue frequently involves authentication between network-based clients and servers, other types of communication channels and endpoints can have this weakness.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "If an attacker can spoof the endpoint, the attacker gains all the privileges that were intended for the original endpoint."
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2013-06-23T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Description, Name, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Improper Authentication of Endpoint in a Communication Channel",
+        "date": "2014-02-18T00:00:00Z"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "501"
+  ]
+}

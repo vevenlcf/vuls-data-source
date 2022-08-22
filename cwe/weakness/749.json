@@ -1,0 +1,236 @@
+{
+  "id": "749",
+  "name": "Exposed Dangerous Method or Function",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software provides an Applications Programming Interface (API) or similar interface for interaction with external actors, but the interface includes a dangerous method or function that is not properly restricted.",
+  "extended_description": "\n            \u003cxhtml:p\u003eThis weakness can lead to a wide variety of resultant weaknesses, depending on the behavior of the exposed method. It can apply to any number of technologies and approaches, such as ActiveX controls, Java functions, IOCTLs, and so on.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThe exposure can occur in a few different ways:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:div\u003e1) The function/method was never intended to be exposed to outside actors.\u003c/xhtml:div\u003e\n               \u003cxhtml:div\u003e2) The function/method was only intended to be accessible to a limited set of actors, such as Internet-based access from a single web site.\u003c/xhtml:div\u003e\n            \u003c/xhtml:div\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "664",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "691",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Low",
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability",
+        "Access Control",
+        "Other"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity",
+        "Read Application Data",
+        "Modify Application Data",
+        "Execute Unauthorized Code or Commands",
+        "Other"
+      ],
+      "note": "Exposing critical functionality essentially provides an attacker with the privilege level of the exposed functionality. This could result in the modification or exposure of sensitive data or possibly even execution of arbitrary code."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "If you must expose a method, make sure to perform input validation on all arguments, limit access to authorized parties, and protect against all possible vulnerabilities."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eIdentify all exposed functionality. Explicitly list all functionality that must be exposed to some user or set of users. Identify which functionality may be:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eaccessible to all users\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003erestricted to a small set of privileged users\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eprevented from being directly accessible at all\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n                  \u003cxhtml:p\u003eEnsure that the implemented code follows these expectations. This includes setting the appropriate access modifiers where applicable (public, private, protected, etc.) or not marking ActiveX controls safe-for-scripting.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Attack Surface Reduction"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following Java example the method removeDatabase will delete the database with the name specified in the input parameter.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic void removeDatabase(String databaseName) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eStatement stmt = conn.createStatement();\u003cxhtml:br/\u003estmt.execute(\"DROP DATABASE \" + databaseName);\u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e} catch (SQLException ex) {...}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe method in this example is declared public and therefore is exposed to any class in the application. Deleting a database should be considered a critical operation within an application and access to this potentially dangerous method should be restricted. Within Java this can be accomplished simply by declaring the method private thereby exposing it only to the enclosing class as in the following example.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eprivate void removeDatabase(String databaseName) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eStatement stmt = conn.createStatement();\u003cxhtml:br/\u003estmt.execute(\"DROP DATABASE \" + databaseName);\u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e} catch (SQLException ex) {...}\u003cxhtml:br/\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-109",
+      "text": "\n               \u003cIntro_Text\u003eThese Android and iOS applications intercept URL loading within a WebView and perform special actions if a particular URL scheme is used, thus allowing the Javascript within the WebView to communicate with the application:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:i\u003e// Android\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e@Override\u003cxhtml:br/\u003epublic boolean shouldOverrideUrlLoading(WebView view, String url){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eif (url.substring(0,14).equalsIgnoreCase(\"examplescheme:\")){\u003cxhtml:div style=\"margin-left:10px;\"\u003eif(url.substring(14,25).equalsIgnoreCase(\"getUserInfo\")){\u003cxhtml:div style=\"margin-left:10px;\"\u003ewriteDataToView(view, UserData);\u003cxhtml:br/\u003ereturn false;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse{\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn true;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Objective-C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:i\u003e// iOS\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e-(BOOL) webView:(UIWebView *)exWebView shouldStartLoadWithRequest:(NSURLRequest *)exRequest navigationType:(UIWebViewNavigationType)exNavigationType\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eNSURL *URL = [exRequest URL];\u003cxhtml:br/\u003eif ([[URL scheme] isEqualToString:@\"exampleScheme\"])\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eNSString *functionString = [URL resourceSpecifier];\u003cxhtml:br/\u003eif ([functionString hasPrefix:@\"specialFunction\"])\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// Make data available back in webview.\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003eUIWebView *webView = [self writeDataToView:[URL query]];\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn NO;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn YES;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eA call into native code can then be initiated by passing parameters within the URL:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"JavaScript\"\u003e\n                  \u003cxhtml:div\u003ewindow.location = examplescheme://method?parameter=value\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause the application does not check the source, a malicious website loaded within this WebView has the same access to the API as a trusted site.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis application uses a WebView to display websites, and creates a Javascript interface to a Java object to allow enhanced functionality on a trusted website:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class WebViewGUI extends Activity {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eWebView mainWebView;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic void onCreate(Bundle savedInstanceState) {\u003cxhtml:div style=\"margin-left:10px;\"\u003esuper.onCreate(savedInstanceState);\u003cxhtml:br/\u003emainWebView = new WebView(this);\u003cxhtml:br/\u003emainWebView.getSettings().setJavaScriptEnabled(true);\u003cxhtml:br/\u003emainWebView.addJavascriptInterface(new JavaScriptInterface(), \"userInfoObject\");\u003cxhtml:br/\u003emainWebView.loadUrl(\"file:///android_asset/www/index.html\");\u003cxhtml:br/\u003esetContentView(mainWebView);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003efinal class JavaScriptInterface {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eJavaScriptInterface () {}\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003epublic String getUserInfo() {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn currentUser.Info();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBefore Android 4.2 all methods, including inherited ones, are exposed to Javascript when using addJavascriptInterface(). This means that a malicious website loaded within this WebView can use reflection to acquire a reference to arbitrary Java objects. This will allow the website code to perform any action the parent application is authorized to.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eFor example, if the application has permission to send text messages:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"JavaScript\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;script\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003euserInfoObject.getClass().forName('android.telephony.SmsManager').getMethod('getDefault',null).sendTextMessage(attackNumber, null, attackMessage, null, null);\u003c/xhtml:div\u003e\u0026lt;/script\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis malicious script can use the userInfoObject object to load the SmsManager object and send arbitrary text messages to any recipient.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eAfter Android 4.2, only methods annotated with @JavascriptInterface are available in JavaScript, protecting usage of getClass() by default, as in this example:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003efinal class JavaScriptInterface {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eJavaScriptInterface () { }\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e@JavascriptInterface\u003cxhtml:br/\u003epublic String getUserInfo() {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn currentUser.Info();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code is not vulnerable to the above attack, but still may expose user info to malicious pages loaded in the WebView. Even malicious iframes loaded within a trusted page may access the exposed interface:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"JavaScript\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;script\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003evar info = window.userInfoObject.getUserInfo();\u003cxhtml:br/\u003esendUserInfo(info);\u003c/xhtml:div\u003e\u0026lt;/script\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis malicious code within an iframe is able to access the interface object and steal the user's data.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-6382",
+      "description": "arbitrary Java code execution via exposed method",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6382"
+    },
+    {
+      "reference": "CVE-2007-1112",
+      "description": "security tool ActiveX control allows download or upload of files",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1112"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-503",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Developing Secure ActiveX Controls",
+      "url": "https://msdn.microsoft.com/en-us/library/ms885903.aspx",
+      "publication_year": "2005",
+      "publication_month": "--04",
+      "publication_day": "---13"
+    },
+    {
+      "reference_id": "REF-510",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "How to stop an ActiveX control from running in Internet Explorer",
+      "url": "https://support.microsoft.com/en-us/help/240797/how-to-stop-an-activex-control-from-running-in-internet-explorer"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2008-11-24T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Likelihood_of_Exploit"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Potential_Mitigations, References, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Exposed Insecure Method or Function",
+        "date": "2009-01-12T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Research Gap",
+      "text": "Under-reported and under-studied. This weakness could appear in any technology, language, or framework that allows the programmer to provide a functional interface to external parties, but it is not heavily reported. In 2007, CVE began showing a notable increase in reports of exposed method vulnerabilities in ActiveX applications, as well as IOCTL access to OS-level resources. These weaknesses have been documented for Java applications in various secure programming sources, but there are few reports in CVE, which suggests limited awareness in most parts of the vulnerability research community."
+    }
+  ]
+}

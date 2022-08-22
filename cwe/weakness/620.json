@@ -1,0 +1,216 @@
+{
+  "id": "620",
+  "name": "Unverified Password Change",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "When setting a new password for a user, the product does not require knowledge of the original password, or using another form of authentication.",
+  "extended_description": "This could be used by an attacker to change passwords for another user, thus gaining the privileges associated with that user.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism",
+        "Gain Privileges or Assume Identity"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "When prompting for a password change, force the user to provide the original password in addition to the new password."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Do not use \"forgotten password\" functionality. But if you must, ensure that you are only providing information to the actual user, e.g. by using an email address or challenge question that the legitimate user already provided in the past; do not allow the current user to change this identity information until the correct password has been provided."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-56",
+      "text": "\n               \u003cIntro_Text\u003eThis code changes a user's password.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$user = $_GET['user'];\u003cxhtml:br/\u003e$pass = $_GET['pass'];\u003cxhtml:br/\u003e$checkpass = $_GET['checkpass'];\u003cxhtml:br/\u003eif ($pass == $checkpass) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSetUserPassword($user, $pass);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhile the code confirms that the requesting user typed the same new password twice, it does not confirm that the user requesting the password change is the same user whose password will be changed. An attacker can request a change of another user's password and gain control of the victim's account.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-0681",
+      "description": "Web app allows remote attackers to change the passwords of arbitrary users without providing the original password, and possibly perform other unauthorized actions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0681"
+    },
+    {
+      "reference": "CVE-2000-0944",
+      "description": "Web application password change utility doesn't check the original password.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0944"
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 19: Use of Weak Password-Based Systems.\" Page 279",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2007-05-07T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Relationships, Observed_Example, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Other_Notes, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    },
+    {
+      "ordinality": "Resultant"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Broken Authentication and Session Management",
+      "entry_id": "A3",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Missing authentication",
+      "entry_id": "SFP31"
+    }
+  ]
+}

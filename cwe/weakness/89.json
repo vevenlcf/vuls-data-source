@@ -1,0 +1,825 @@
+{
+  "id": "89",
+  "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Stable",
+  "description": "The software constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.",
+  "extended_description": "\n            \u003cxhtml:p\u003eWithout sufficient removal or quoting of SQL syntax in user-controllable inputs, the generated SQL query can cause those inputs to be interpreted as SQL instead of ordinary user data. This can be used to alter query logic to bypass security checks, or to insert additional statements that modify the back-end database, possibly including execution of system commands.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eSQL injection has become a common issue with database-driven web sites. The flaw is easily detected, and easily exploited, and as such, any site or software package with even a minimal user base is likely to be subject to an attempted attack of this kind. This flaw depends on the fact that SQL makes no real distinction between the control and data planes.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "943",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "74",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Database Server"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "This weakness typically appears in data-rich applications that save user inputs in a database."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ],
+      "note": "Since SQL databases generally hold sensitive data, loss of confidentiality is a frequent problem with SQL injection vulnerabilities."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "If poor SQL commands are used to check user names and passwords, it may be possible to connect to a system as another user with no previous knowledge of the password."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "If authorization information is held in a SQL database, it may be possible to change this information through the successful exploitation of a SQL injection vulnerability."
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Application Data"
+      ],
+      "note": "Just as it may be possible to read sensitive information, it is also possible to make changes or even delete this information with a SQL injection attack."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-4",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, consider using persistence layers such as Hibernate or Enterprise Java Beans, which can provide significant protection against SQL injection if used properly.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "mitigation_id": "MIT-27",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eIf available, use structured mechanisms that automatically enforce the separation between data and code. These mechanisms may be able to provide the relevant quoting, encoding, and validation automatically, instead of relying on the developer to provide this capability at every point where output is generated.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eProcess SQL queries using prepared statements, parameterized queries, or stored procedures. These features should accept parameters or variables and support strong typing. Do not dynamically construct and execute query strings within these features using \"exec\" or similar functionality, since this may re-introduce the possibility of SQL injection. [REF-867]\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Parameterization"
+    },
+    {
+      "mitigation_id": "MIT-17",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eSpecifically, follow the principle of least privilege when creating user accounts to a SQL database. The database users should only have the minimum privileges necessary to use their account. If the requirements of the system indicate that a user can read and modify their own data, then limit their privileges so they cannot read/write others' data. Use the strictest permissions possible on all database objects, such as execute-only for stored procedures.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-15",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-28",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eWhile it is risky to use dynamically-generated query strings, code, or commands that mix control and data together, sometimes it may be unavoidable. Properly quote arguments and escape any special characters within those arguments. The most conservative approach is to escape or filter all characters that do not pass an extremely strict allowlist (such as everything that is not alphanumeric or white space). If some special characters are still needed, such as white space, wrap each argument in quotes after the escaping/filtering step. Be careful of argument injection (CWE-88).\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eInstead of building a new implementation, such features may be available in the database or programming language. For example, the Oracle DBMS_ASSERT package can check or enforce that parameters have certain properties that make them less vulnerable to SQL injection. For MySQL, the mysql_real_escape_string() API function is available in both C and PHP.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Output Encoding"
+    },
+    {
+      "mitigation_id": "MIT-5",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eAssume all input is malicious. Use an \"accept known good\" input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, \"boat\" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as \"red\" or \"blue.\"\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDo not rely exclusively on looking for malicious or malformed inputs.  This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen constructing SQL query strings, use stringent allowlists that limit the character set based on the expected value of the parameter in the request. This will indirectly limit the scope of an attack, but this technique is less important than proper output encoding and escaping.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eNote that proper output encoding, escaping, and quoting is the most effective solution for preventing SQL injection, although input validation may provide some defense-in-depth. This is because it effectively limits what will appear in output. Input validation will not always prevent SQL injection, especially if you are required to support free-form text fields that could contain arbitrary characters. For example, the name \"O'Reilly\" would likely pass the validation step, since it is a common last name in the English language. However, it cannot be directly inserted into the database because it contains the \"'\" apostrophe character, which would need to be escaped or otherwise handled. In this case, stripping the apostrophe might reduce the risk of SQL injection, but it would produce incorrect behavior because the wrong name would be recorded.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen feasible, it may be safest to disallow meta-characters entirely, instead of escaping them. This will provide some defense in depth. After the data is entered into the database, later processes may neglect to escape meta-characters before use, and you may not have control over those processes.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Input Validation"
+    },
+    {
+      "mitigation_id": "MIT-21",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs."
+      ],
+      "strategy": "Enforcement by Conversion"
+    },
+    {
+      "mitigation_id": "MIT-39",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eEnsure that error messages only contain minimal details that are useful to the intended audience and no one else. The messages need to strike the balance between being too cryptic (which can confuse users) or being too detailed (which may reveal more than intended). The messages should not reveal the methods that were used to determine the error. Attackers can use detailed information to refine or optimize their original attack, thereby increasing their chances of success.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eIf errors must be captured in some detail, record them in log messages, but consider what could occur if the log messages can be viewed by attackers. Highly sensitive information such as passwords should never be saved to log files.\u003c/xhtml:p\u003e\n\t\t  \u003cxhtml:p\u003eAvoid inconsistent messaging that might accidentally tip off an attacker about internal state, such as whether a user account exists or not.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eIn the context of SQL Injection, error messages revealing the structure of a SQL query can help attackers tailor successful attack strings.\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "mitigation_id": "MIT-29",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Use an application firewall that can detect attacks against this weakness. It can be beneficial in cases in which the code cannot be fixed (because it is controlled by a third party), as an emergency prevention measure while more comprehensive software assurance measures are applied, or to provide defense in depth."
+      ],
+      "effectiveness": "Moderate",
+      "effectiveness_notes": "An application firewall might not cover all possible input vectors. In addition, attack techniques might be available to bypass the protection mechanism, such as using malformed inputs that can still be processed by the component that receives those inputs. Depending on functionality, an application firewall might inadvertently reject or modify legitimate requests. Finally, some manual effort may be required for customization.",
+      "strategy": "Firewall"
+    },
+    {
+      "mitigation_id": "MIT-16",
+      "phase": [
+        "Operation",
+        "Implementation"
+      ],
+      "description": [
+        "When using PHP, configure the application so that it does not use register_globals. During implementation, develop the application so that it does not rely on this feature, but be wary of implementing a register_globals emulation that is subject to weaknesses such as CWE-95, CWE-621, and similar issues."
+      ],
+      "strategy": "Environment Hardening"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn 2008, a large number of web servers were compromised using the same SQL injection attack string. This single string worked against many different programs. The SQL injection was then used to modify the web sites to serve malicious code.\u003c/Intro_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code dynamically constructs and executes a SQL query that searches for items matching a specified name. The query restricts the items displayed to those where owner matches the user name of the currently-authenticated user.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C#\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003estring userName = ctx.getAuthenticatedUserName();\u003cxhtml:br/\u003estring query = \"SELECT * FROM items WHERE owner = '\" + userName + \"' AND itemname = '\" + ItemName.Text + \"'\";\u003cxhtml:br/\u003esda = new SqlDataAdapter(query, conn);\u003cxhtml:br/\u003eDataTable dt = new DataTable();\u003cxhtml:br/\u003esda.Fill(dt);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe query that this code intends to execute follows:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"informative\"\u003e\n                  \u003cxhtml:div\u003eSELECT * FROM items WHERE owner = \u0026lt;userName\u0026gt; AND itemname = \u0026lt;itemName\u0026gt;;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, because the query is constructed dynamically by concatenating a constant base query string and a user input string, the query only behaves correctly if itemName does not contain a single-quote character. If an attacker with the user name wiley enters the string:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003ename' OR 'a'='a\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003efor itemName, then the query becomes the following:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003eSELECT * FROM items WHERE owner = 'wiley' AND itemname = 'name' OR 'a'='a';\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe addition of the:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003eOR 'a'='a\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003econdition causes the WHERE clause to always evaluate to true, so the query becomes logically equivalent to the much simpler query:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003eSELECT * FROM items;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis simplification of the query allows the attacker to bypass the requirement that the query only return items owned by the authenticated user; the query now returns all entries stored in the items table, regardless of their specified owner.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis example examines the effects of a different malicious value passed to the query constructed and executed in the previous example.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eIf an attacker with the user name wiley enters the string:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003ename'; DELETE FROM items; --\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003efor itemName, then the query becomes the following two queries:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"SQL\"\u003e\n                  \u003cxhtml:div\u003eSELECT * FROM items WHERE owner = 'wiley' AND itemname = 'name';\u003cxhtml:br/\u003eDELETE FROM items;\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e--'\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eMany database servers, including Microsoft(R) SQL Server 2000, allow multiple SQL statements separated by semicolons to be executed at once. While this attack string results in an error on Oracle and other database servers that do not allow the batch-execution of statements separated by semicolons, on databases that do allow batch execution, this type of attack allows the attacker to execute arbitrary commands against the database.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eNotice the trailing pair of hyphens (--), which specifies to most database servers that the remainder of the statement is to be treated as a comment and not executed. In this case the comment character serves to remove the trailing single-quote left over from the modified query. On a database where comments are not allowed to be used in this way, the general attack could still be made effective using a trick similar to the one shown in the previous example.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIf an attacker enters the string\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003ename'; DELETE FROM items; SELECT * FROM items WHERE 'a'='a\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThen the following three valid statements will be created:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003eSELECT * FROM items WHERE owner = 'wiley' AND itemname = 'name';\u003cxhtml:br/\u003eDELETE FROM items;\u003cxhtml:br/\u003eSELECT * FROM items WHERE 'a'='a';\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eOne traditional approach to preventing SQL injection attacks is to handle them as an input validation problem and either accept only characters from an allowlist of safe values or identify and escape a denylist of potentially malicious values. Allowlists can be a very effective means of enforcing strict input validation rules, but parameterized SQL statements require less maintenance and can offer more guarantees with respect to security. As is almost always the case, denylisting is riddled with loopholes that make it ineffective at preventing SQL injection attacks. For example, attackers can:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ul\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eTarget fields that are not quoted\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eFind ways to bypass the need for certain escaped meta-characters\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eUse stored procedures to hide the injected meta-characters.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ul\u003e\n               \u003c/Body_Text\u003e\n               \u003cBody_Text\u003eManually escaping characters in input to SQL queries can help, but it will not make your application secure from SQL injection attacks.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAnother solution commonly proposed for dealing with SQL injection attacks is to use stored procedures. Although stored procedures prevent some types of SQL injection attacks, they do not protect against many others. For example, the following PL/SQL procedure is vulnerable to the same SQL injection attack shown in the first example.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\"\u003e\n                  \u003cxhtml:div\u003eprocedure get_item ( itm_cv IN OUT ItmCurTyp, usr in varchar2, itm in varchar2)\u003cxhtml:br/\u003eis open itm_cv for\u003cxhtml:br/\u003e' SELECT * FROM items WHERE ' || 'owner = '|| usr || ' AND itemname = ' || itm || ';\u003cxhtml:br/\u003eend get_item;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eStored procedures typically help prevent SQL injection attacks by limiting the types of statements that can be passed to their parameters. However, there are many ways around the limitations and many interesting statements that can still be passed to stored procedures. Again, stored procedures can prevent some exploits, but they will not make your application secure against SQL injection attacks.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eMS SQL has a built in function that enables shell command execution. An SQL injection in such a context could be disastrous. For example, a query of the form:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\"\u003e\n                  \u003cxhtml:div\u003eSELECT ITEM,PRICE FROM PRODUCT WHERE ITEM_CATEGORY='$user_input' ORDER BY PRICE\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhere $user_input is taken from an untrusted source.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIf the user provides the string:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003e'; exec master..xp_cmdshell 'dir' --\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe query will take the following form:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003eSELECT ITEM,PRICE FROM PRODUCT WHERE ITEM_CATEGORY=''; exec master..xp_cmdshell 'dir' --' ORDER BY PRICE\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eNow, this query can be broken down into:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ol\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ea first SQL query: SELECT ITEM,PRICE FROM PRODUCT WHERE ITEM_CATEGORY='';\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ea second SQL query, which executes the dir command in the shell: exec master..xp_cmdshell 'dir'\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ean MS SQL comment: --' ORDER BY PRICE\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ol\u003e\n               \u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAs can be seen, the malicious input changes the semantics of the query into a query, a shell command execution and a comment.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis code intends to print a message summary given the message ID.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$id = $_COOKIE[\"mid\"];\u003cxhtml:br/\u003emysql_query(\"SELECT MessageID, Subject FROM messages WHERE MessageID = '$id'\");\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe programmer may have skipped any input validation on $id under the assumption that attackers cannot modify the cookie. However, this is easy to do with custom client code or even in the web browser.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eWhile $id is wrapped in single quotes in the call to mysql_query(), an attacker could simply change the incoming mid cookie to:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003e1432' or '1' = '1\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis would produce the resulting query:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003eSELECT MessageID, Subject FROM messages WHERE MessageID = '1432' or '1' = '1'\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eNot only will this retrieve message number 1432, it will retrieve all other messages.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIn this case, the programmer could apply a simple modification to the code to eliminate the SQL injection:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$id = intval($_COOKIE[\"mid\"]);\u003cxhtml:br/\u003emysql_query(\"SELECT MessageID, Subject FROM messages WHERE MessageID = '$id'\");\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, if this code is intended to support multiple users with different message boxes, the code might also need an access control check (CWE-285) to ensure that the application user has the permission to see that message.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis example attempts to take a last name provided by a user and enter it into a database.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003e$userKey = getUserID();\u003cxhtml:br/\u003e$name = getUserInput();\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e# ensure only letters, hyphens and apostrophe are allowed\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e$name = allowList($name, \"^a-zA-z'-$\");\u003cxhtml:br/\u003e$query = \"INSERT INTO last_names VALUES('$userKey', '$name')\";\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhile the programmer applies a allowlist to the user input, it has shortcomings. First of all, the user is still allowed to provide hyphens, which are used as comment structures in SQL. If a user specifies \"--\" then the remainder of the statement will be treated as a comment, which may bypass security logic. Furthermore, the allowlist permits the apostrophe, which is also a data / command separator in SQL. If a user supplies a name with an apostrophe, they may be able to alter the structure of the whole statement and even change control flow of the program, possibly accessing or modifying confidential information. In this situation, both the hyphen and apostrophe are legitimate characters for a last name and permitting them is required. Instead, a programmer may want to use a prepared statement or apply an encoding routine to the input to prevent any data / directive misinterpretations.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2021-42258",
+      "description": "SQL injection in time and billing software, as exploited in the wild per CISA KEV.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42258"
+    },
+    {
+      "reference": "CVE-2021-27101",
+      "description": "SQL injection in file-transfer system via a crafted Host header, as exploited in the wild per CISA KEV.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27101"
+    },
+    {
+      "reference": "CVE-2020-12271",
+      "description": "SQL injection in firewall product's admin interface or user portal, as exploited in the wild per CISA KEV.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12271"
+    },
+    {
+      "reference": "CVE-2004-0366",
+      "description": "chain: SQL injection in library intended for database authentication allows SQL injection and authentication bypass.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0366"
+    },
+    {
+      "reference": "CVE-2008-2790",
+      "description": "SQL injection through an ID that was supposed to be numeric.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2790"
+    },
+    {
+      "reference": "CVE-2008-2223",
+      "description": "SQL injection through an ID that was supposed to be numeric.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2223"
+    },
+    {
+      "reference": "CVE-2007-6602",
+      "description": "SQL injection via user name.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6602"
+    },
+    {
+      "reference": "CVE-2008-5817",
+      "description": "SQL injection via user name or password fields.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5817"
+    },
+    {
+      "reference": "CVE-2003-0377",
+      "description": "SQL injection in security product, using a crafted group name.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0377"
+    },
+    {
+      "reference": "CVE-2008-2380",
+      "description": "SQL injection in authentication library.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2380"
+    },
+    {
+      "reference": "CVE-2017-11508",
+      "description": "SQL injection in vulnerability management and reporting tool, using a crafted password.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11508"
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 1: SQL Injection.\" Page 3",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "section": "Chapter 12, \"Database Input Issues\" Page 397",
+      "reference_id": "REF-7",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc"
+      ],
+      "title": "Writing Secure Code",
+      "url": "https://www.microsoftpressstore.com/store/writing-secure-code-9780735617223",
+      "publication_year": "2002",
+      "publication_month": "--12",
+      "publication_day": "---04",
+      "publisher": "Microsoft Press",
+      "edition": "2nd Edition"
+    },
+    {
+      "reference_id": "REF-867",
+      "author": [
+        "OWASP"
+      ],
+      "title": "SQL Injection Prevention Cheat Sheet",
+      "url": "http://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet"
+    },
+    {
+      "reference_id": "REF-868",
+      "author": [
+        "Steven Friedl"
+      ],
+      "title": "SQL Injection Attacks by Example",
+      "url": "http://www.unixwiz.net/techtips/sql-injection.html",
+      "publication_year": "2007",
+      "publication_month": "--10",
+      "publication_day": "---10"
+    },
+    {
+      "reference_id": "REF-869",
+      "author": [
+        "Ferruh Mavituna"
+      ],
+      "title": "SQL Injection Cheat Sheet",
+      "url": "http://ferruh.mavituna.com/sql-injection-cheatsheet-oku/",
+      "publication_year": "2007",
+      "publication_month": "--03",
+      "publication_day": "---15"
+    },
+    {
+      "reference_id": "REF-870",
+      "author": [
+        "David Litchfield",
+        "Chris Anley",
+        "John Heasman",
+        "Bill Grindlay"
+      ],
+      "title": "The Database Hacker's Handbook: Defending Database Servers",
+      "publication_year": "2005",
+      "publication_month": "--07",
+      "publication_day": "---14",
+      "publisher": "Wiley"
+    },
+    {
+      "reference_id": "REF-871",
+      "author": [
+        "David Litchfield"
+      ],
+      "title": "The Oracle Hacker's Handbook: Hacking and Defending Oracle",
+      "publication_year": "2007",
+      "publication_month": "--01",
+      "publication_day": "---30",
+      "publisher": "Wiley"
+    },
+    {
+      "reference_id": "REF-872",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "SQL Injection",
+      "url": "http://msdn.microsoft.com/en-us/library/ms161953.aspx",
+      "publication_year": "2008",
+      "publication_month": "--12"
+    },
+    {
+      "reference_id": "REF-873",
+      "author": [
+        "Microsoft Security Vulnerability Research \u0026 Defense"
+      ],
+      "title": "SQL Injection Attack",
+      "url": "http://blogs.technet.com/swi/archive/2008/05/29/sql-injection-attack.aspx"
+    },
+    {
+      "reference_id": "REF-874",
+      "author": [
+        "Michael Howard"
+      ],
+      "title": "Giving SQL Injection the Respect it Deserves",
+      "url": "http://blogs.msdn.com/sdl/archive/2008/05/15/giving-sql-injection-the-respect-it-deserves.aspx",
+      "publication_year": "2008",
+      "publication_month": "--05",
+      "publication_day": "---15"
+    },
+    {
+      "reference_id": "REF-875",
+      "author": [
+        "Frank Kim"
+      ],
+      "title": "Top 25 Series - Rank 2 - SQL Injection",
+      "url": "http://blogs.sans.org/appsecstreetfighter/2010/03/01/top-25-series-rank-2-sql-injection/",
+      "publication_year": "2010",
+      "publication_month": "--03",
+      "publication_day": "---01",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-76",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Least Privilege",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---14"
+    },
+    {
+      "section": "Chapter 8, \"SQL Queries\", Page 431",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "Chapter 17, \"SQL Injection\", Page 1061",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "ASCSM-CWE-89",
+      "reference_id": "REF-962",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Security Measure (ASCSM)",
+      "url": "http://www.omg.org/spec/ASCSM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_organization": "KDM Analytics",
+        "modification_date": "2008-08-01T00:00:00Z",
+        "modification_comment": "added/updated white box definitions"
+      },
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Modes_of_Introduction, Name, Relationships, Other_Notes, Relationship_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Enabling_Factors_for_Exploitation, Modes_of_Introduction, Name, Observed_Examples, Other_Notes, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Name, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "KDM Analytics",
+        "modification_date": "2009-07-17T00:00:00Z",
+        "modification_comment": "Improved the White_Box_Definition"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Description, Name, White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Detection_Factors, Potential_Mitigations, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Description, Detection_Factors, Name, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-05-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Enabling_Factors_for_Exploitation, Likelihood_of_Exploit, Modes_of_Introduction, Observed_Examples, References, Relationships, White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations, Relationship_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "SQL Injection",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Sanitize Data into SQL Queries (aka 'SQL Injection')",
+        "date": "2008-09-09T00:00:00Z"
+      },
+      {
+        "text": "Failure to Sanitize Data within SQL Queries (aka 'SQL Injection')",
+        "date": "2009-01-12T00:00:00Z"
+      },
+      {
+        "text": "Failure to Preserve SQL Query Structure (aka 'SQL Injection')",
+        "date": "2009-05-27T00:00:00Z"
+      },
+      {
+        "text": "Failure to Preserve SQL Query Structure ('SQL Injection')",
+        "date": "2009-07-27T00:00:00Z"
+      },
+      {
+        "text": "Improper Sanitization of Special Elements used in an SQL Command ('SQL Injection')",
+        "date": "2010-06-21T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "detection_method_id": "DM-1",
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eThis weakness can often be detected using automated static analysis tools. Many modern tools use data flow analysis or constraint-based techniques to minimize the number of false positives.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAutomated static analysis might not be able to recognize when proper input validation is being performed, leading to false positives - i.e., warnings that do not have any security consequences or do not require any code changes.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAutomated static analysis might not be able to detect the usage of custom API functions or third-party libraries that indirectly invoke SQL commands, leading to false negatives - especially if the API/library code is not available for analysis.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness_notes": "This is not a perfect solution, since 100% accuracy and coverage are not feasible."
+    },
+    {
+      "detection_method_id": "DM-2",
+      "method": "Automated Dynamic Analysis",
+      "description": "This weakness can be detected using dynamic tools and techniques that interact with the software using large test suites with many diverse inputs, such as fuzz testing (fuzzing), robustness testing, and fault injection. The software's operation may slow down, but it should not become unstable, crash, or generate incorrect results.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "detection_method_id": "DM-9",
+      "method": "Manual Analysis",
+      "description": "Manual analysis can be useful for finding this weakness, but it might not achieve desired code coverage within limited time constraints. This becomes difficult for weaknesses that must be considered for all inputs, since the attack surface can be too large."
+    },
+    {
+      "method": "Automated Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBytecode Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eBinary Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eDatabase Scanners\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Services Scanner\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eSource code Weakness Analyzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "SQL injection"
+    },
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "SQL Injection"
+    },
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "SQL injection"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Injection Flaws",
+      "entry_id": "A2",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Unvalidated Input",
+      "entry_id": "A1",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Injection Flaws",
+      "entry_id": "A6",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "SQL Injection",
+      "entry_id": "19"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Tainted input to command",
+      "entry_id": "SFP24"
+    },
+    {
+      "taxonomy_name": "OMG ASCSM",
+      "entry_id": "ASCSM-CWE-89"
+    },
+    {
+      "taxonomy_name": "SEI CERT Oracle Coding Standard for Java",
+      "entry_name": "Prevent SQL injection",
+      "entry_id": "IDS00-J",
+      "mapping_fit": "Exact"
+    }
+  ],
+  "related_attack_patterns": [
+    "108",
+    "109",
+    "110",
+    "470",
+    "66",
+    "7"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "SQL injection can be resultant from special character mismanagement, MAID, or denylist/allowlist problems. It can be primary to authentication errors."
+    }
+  ]
+}

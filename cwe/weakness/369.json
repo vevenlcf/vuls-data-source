@@ -1,0 +1,215 @@
+{
+  "id": "369",
+  "name": "Divide By Zero",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product divides a value by zero.",
+  "extended_description": "This weakness typically occurs when an unexpected value is provided to the product, or if an error occurs that is not properly detected. It frequently occurs in calculations involving physical dimensions such as size, length, width, and height.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "682",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "682",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "682",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "682",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {},
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "A Divide by Zero results in a crash."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following Java example contains a function to compute an average but does not validate that the input value used as the denominator is not zero. This will create an exception for attempting to divide by zero. If this error is not handled by Java exception handling, unexpected results can occur.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic int computeAverageResponseTime (int totalTime, int numRequests) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn totalTime / numRequests;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBy validating the input value used as the denominator the following code will ensure that a divide by zero error will not cause unexpected results. The following Java code example will validate the input value, output an error message, and throw an exception.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\"\u003e\n                  \u003cxhtml:div\u003epublic int computeAverageResponseTime (int totalTime, int numRequests) throws ArithmeticException {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (numRequests == 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.out.println(\"Division by zero attempted!\");\u003cxhtml:br/\u003ethrow ArithmeticException;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn totalTime / numRequests;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following C/C++ example contains a function that divides two numeric values without verifying that the input value used as the denominator is not zero. This will create an error for attempting to divide by zero, if this error is not caught by the error handling capabilities of the language, unexpected results can occur.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003edouble divide(double x, double y){\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn x/y;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBy validating the input value used as the denominator the following code will ensure that a divide by zero error will not cause unexpected results. If the method is called and a zero is passed as the second argument a DivideByZero error will be thrown and should be caught by the calling block with an output message indicating the error.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\"\u003e\n                  \u003cxhtml:div\u003econst int DivideByZero = 10;\u003cxhtml:br/\u003edouble divide(double x, double y){\u003cxhtml:div style=\"margin-left:10px;\"\u003eif ( 0 == y ){\u003cxhtml:div style=\"margin-left:10px;\"\u003ethrow DivideByZero;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn x/y;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003etry{\u003cxhtml:div style=\"margin-left:10px;\"\u003edivide(10, 0);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch( int i ){\u003cxhtml:div style=\"margin-left:10px;\"\u003eif(i==DivideByZero) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ecerr\u0026lt;\u0026lt;\"Divide by zero error\";\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cReferences\u003e\n                  \u003cReference External_Reference_ID=\"REF-371\"/\u003e\n               \u003c/References\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following C# example contains a function that divides two numeric values without verifying that the input value used as the denominator is not zero. This will create an error for attempting to divide by zero, if this error is not caught by the error handling capabilities of the language, unexpected results can occur.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C#\"\u003e\n                  \u003cxhtml:div\u003eint Division(int x, int y){\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn (x / y);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe method can be modified to raise, catch and handle the DivideByZeroException if the input value used as the denominator is zero.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\"\u003e\n                  \u003cxhtml:div\u003eint SafeDivision(int x, int y){\u003cxhtml:div style=\"margin-left:10px;\"\u003etry{\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn (x / y);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (System.DivideByZeroException dbz){\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.Console.WriteLine(\"Division by zero attempted!\");\u003cxhtml:br/\u003ereturn 0;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cReferences\u003e\n                  \u003cReference External_Reference_ID=\"REF-372\"/\u003e\n               \u003c/References\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-3268",
+      "description": "Invalid size value leads to divide by zero.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3268"
+    },
+    {
+      "reference": "CVE-2007-2723",
+      "description": "\"Empty\" content triggers divide by zero.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2723"
+    },
+    {
+      "reference": "CVE-2007-2237",
+      "description": "Height value of 0 triggers divide by zero.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2237"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Community",
+      "submission_date": "2008-04-11T00:00:00Z",
+      "submission_comment": "Submitted by members of the CWE community to extend early CWE versions"
+    },
+    "modification": [
+      {
+        "modification_name": "Sean Eidemiller",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "added/updated demonstrative examples"
+      },
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Denial of Service",
+      "entry_id": "A9",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Detect and handle floating point errors",
+      "entry_id": "FLP03-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Ensure that division and remainder operations do not result in divide-by-zero errors",
+      "entry_id": "INT33-C",
+      "mapping_fit": "Exact"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Ensure that division and modulo operations do not result in divide-by-zero errors",
+      "entry_id": "NUM02-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Glitch in computation",
+      "entry_id": "SFP1"
+    }
+  ]
+}

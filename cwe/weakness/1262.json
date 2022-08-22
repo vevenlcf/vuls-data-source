@@ -1,0 +1,215 @@
+{
+  "id": "1262",
+  "name": "Improper Access Control for Register Interface",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Stable",
+  "description": "The product uses memory-mapped I/O registers that act as an interface to hardware functionality from software, but there is improper access control to those registers.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eSoftware commonly accesses peripherals in a System-on-Chip (SoC) or other device through a memory-mapped register interface. Malicious software could tamper with any security-critical hardware data that is accessible directly or indirectly through the register interface, which could lead to a loss of confidentiality and integrity.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "This weakness may be exploited if the register interface design does not adequately protect hardware assets from software."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "Mis-implementation of access control policies may inadvertently allow access to hardware assets through the register interface."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Read Memory",
+        "Read Application Data",
+        "Modify Memory",
+        "Modify Application Data",
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism",
+        "Unexpected State",
+        "Alter Execution Logic"
+      ],
+      "note": "Confidentiality of hardware assets may be violated if the protected information can be read out by software through the register interface. Registers storing security state, settings, other security-critical data may be corruptible by software without correctly implemented protections."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Design proper policies for hardware register access from software."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Ensure that access control policies for register access are implemented in accordance with the specified design."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eThe register interface provides software access to hardware functionality. This functionality is an attack surface. This attack surface may be used to run untrusted code on the system through the register interface. As an example, cryptographic accelerators require a mechanism for software to select modes of operation and to provide plaintext or ciphertext data to be encrypted or decrypted as well as other functions. This functionality is commonly provided through registers.\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\"\u003eCryptographic key material stored in registers inside the cryptographic accelerator can be accessed by software.\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\"\u003eKey material stored in registers should never be accessible to software. Even if software can provide a key, all read-back paths to software should be disabled.\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2014-2915",
+      "description": "virtualization product does not restrict access to debug and other processor registers in the hardware, allowing a crash of the host or guest OS",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2915"
+    },
+    {
+      "reference": "CVE-2021-3011",
+      "description": "virtual interrupt controller in a virtualization product allows crash of host by writing a certain invalid value to a register, which triggers a fatal error instead of returning an error code",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3011"
+    },
+    {
+      "reference": "CVE-2020-12446",
+      "description": "Driver exposes access to Model Specific Register (MSR) registers, allowing admin privileges.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12446"
+    },
+    {
+      "reference": "CVE-2015-2150",
+      "description": "Virtualization product does not restrict access to PCI command registers, allowing host crash from the guest.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2150"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Nicole Fern",
+      "submission_organization": "Tortuga Logic",
+      "submission_date": "2020-05-08T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Description, Maintenance_Notes, Modes_of_Introduction, Potential_Mitigations, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Description, Detection_Factors, Name, Observed_Examples, Potential_Mitigations, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Register Interface Allows Software Access to Sensitive Data or Security Settings",
+        "date": "2021-10-28T00:00:00Z"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_name": "Anders Nordstrom, Alric Althoff",
+        "contribution_organization": "Tortuga Logic",
+        "contribution_date": "2021-10-11T00:00:00Z",
+        "contribution_comment": "Provided detection methods and observed examples"
+      },
+      {
+        "type": "Content",
+        "contribution_name": "Nicole Fern",
+        "contribution_organization": "Riscure",
+        "contribution_date": "2021-10-12T00:00:00Z",
+        "contribution_comment": "Provided detection methods"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Manual Analysis",
+      "description": "This is applicable in the Architecture phase before implementation started. Make sure access policy is specified for the entire memory map. Manual analysis may not ensure the implementation is correct.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "method": "Manual Analysis",
+      "description": "Registers controlling hardware should have access control implemented. This access control may be checked manually for correct implementation. Items to check consist of how are trusted parties set, how are trusted parties verified, how are accesses verified, etc. Effectiveness of a manual analysis will vary depending upon how complicated the interface is constructed.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "method": "Simulation / Emulation",
+      "description": "Functional simulation is applicable during the Implementation Phase. Testcases must be created and executed for memory mapped registers to verify adherence to the access control policy. This method can be effective, since functional verification needs to be performed on the design, and verification for this weakness will be included. There can be difficulty covering the entire memory space during the test.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "method": "Formal Verification",
+      "description": "Formal verification is applicable during the Implementation phase. Assertions need to be created in order to capture illegal register access scenarios and prove that they cannot occur. Formal methods are exhaustive and can be very effective, but creating the cases for large designs may be complex and difficult.",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Analysis",
+      "description": "Information flow tracking can be applicable during the Implementation phase. Security sensitive data (assets) - for example, as stored in registers - is automatically tracked over time through the design to verify the data doesn't reach illegal destinations that violate the access policies for the memory map. This method can be very effective when used together with simulation and emulation, since detecting violations doesn't rely on specific scenarios or data values. This method does rely on simulation and emulation, so testcases must exist in order to use this method.",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "Manual documentation review of the system memory map, register specification, and permissions associated with accessing security-relevant functionality exposed via memory-mapped registers.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "method": "Fuzzing",
+      "description": "Perform penetration testing (either manual or semi-automated with fuzzing) to verify that access control mechanisms such as the memory protection units or on-chip bus firewall settings adequately protect critical hardware registers from software access.",
+      "effectiveness": "Moderate"
+    }
+  ],
+  "related_attack_patterns": [
+    "680"
+  ]
+}

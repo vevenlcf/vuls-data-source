@@ -1,0 +1,195 @@
+{
+  "id": "257",
+  "name": "Storing Passwords in a Recoverable Format",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The storage of passwords in a recoverable format makes them subject to password reuse attacks by malicious users. In fact, it should be noted that recoverable encrypted passwords provide no significant benefit over plaintext passwords since they are subject not only to reuse by malicious attackers but also by malicious insiders. If a system administrator can recover a password directly, or use a brute force search on the available information, the administrator can use the password on other accounts.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "522",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "259",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "User's passwords may be revealed."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "Revealed passwords may be reused elsewhere to impersonate the users in question."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use strong, non-reversible encryption to protect stored passwords."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-59",
+      "text": "\n               \u003cIntro_Text\u003eBoth of these examples verify a password by comparing it to a stored compressed version.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint VerifyAdmin(char *password) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (strcmp(compress(password), compressed_password)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprintf(\"Incorrect Password!\\n\");\u003cxhtml:br/\u003ereturn(0);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eprintf(\"Entering Diagnostic Mode...\\n\");\u003cxhtml:br/\u003ereturn(1);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eint VerifyAdmin(String password) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (passwd.Equals(compress(password), compressed_password)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn(0);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                        \u003cxhtml:i\u003e//Diagnostic Mode\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003ereturn(1);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause a compression algorithm is used instead of a one way hashing algorithm, an attacker can recover compressed passwords stored in the database.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-43",
+      "text": "\n               \u003cIntro_Text\u003eThe following examples show a portion of properties and configuration files for Java and ASP.NET applications. The files include username and password information but they are stored in cleartext.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eThis Java example shows a properties file with a cleartext username / password pair.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e# Java Web App ResourceBundle properties file\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003ewebapp.ldap.username=secretUsername\u003cxhtml:br/\u003ewebapp.ldap.password=secretPassword\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe following example shows a portion of a configuration file for an ASP.Net application. This configuration file includes username and password information for a connection to a database but the pair is stored in cleartext.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"ASP.NET\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\u0026lt;connectionStrings\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;add name=\"ud_DEV\" connectionString=\"connectDB=uDB; uid=db2admin; pwd=password; dbalias=uDB;\" providerName=\"System.Data.Odbc\" /\u0026gt;\u003c/xhtml:div\u003e\u0026lt;/connectionStrings\u0026gt;\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eUsername and password information should not be included in a configuration file or a properties file in cleartext as this will allow anyone who can read the file access to the resource. If possible, encrypt this information.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Maintenance_Notes, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature, Demonstrative_Examples, Likelihood_of_Exploit, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Maintenance_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Storing passwords in a recoverable format"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Exposed Data",
+      "entry_id": "SFP23"
+    }
+  ],
+  "related_attack_patterns": [
+    "49"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "The meaning of this entry needs to be investigated more closely, especially with respect to what is meant by \"recoverable.\""
+    }
+  ]
+}

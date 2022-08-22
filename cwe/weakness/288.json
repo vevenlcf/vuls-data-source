@@ -1,0 +1,231 @@
+{
+  "id": "288",
+  "name": "Authentication Bypass Using an Alternate Path or Channel",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "A product requires authentication, but the product has an alternate path or channel that does not require authentication.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "420",
+      "view_id": "1000"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "425",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "This is often seen in web applications that assume that access to a particular CGI program can only be obtained through a \"front\" screen, when the supporting programs are directly accessible. But this problem is not just in web apps."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Funnel all access through a single choke point to simplify how users can access a resource. For every access, perform a check to determine if the user has permissions to access the resource."
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2000-1179",
+      "description": "Router allows remote attackers to read system logs without authentication by directly connecting to the login screen and typing certain control characters.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1179"
+    },
+    {
+      "reference": "CVE-1999-1454",
+      "description": "Attackers with physical access to the machine may bypass the password prompt by pressing the ESC (Escape) key.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1454"
+    },
+    {
+      "reference": "CVE-1999-1077",
+      "description": "OS allows local attackers to bypass the password protection of idled sessions via the programmer's switch or CMD-PWR keyboard sequence, which brings up a debugger that the attacker can use to disable the lock.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1077"
+    },
+    {
+      "reference": "CVE-2003-0304",
+      "description": "Direct request of installation file allows attacker to create administrator accounts.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0304"
+    },
+    {
+      "reference": "CVE-2002-0870",
+      "description": "Attackers may gain additional privileges by directly requesting the web management URL.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0870"
+    },
+    {
+      "reference": "CVE-2002-0066",
+      "description": "Bypass authentication via direct request to named pipe.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0066"
+    },
+    {
+      "reference": "CVE-2003-1035",
+      "description": "User can avoid lockouts by using an API instead of the GUI to conduct brute force password guessing.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-1035"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Modes_of_Introduction, Name, Relationships, Observed_Example, Relationship_Notes, Taxonomy_Mappings, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-05-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Authentication Bypass by Alternate Path/Channel",
+        "date": "2008-09-09T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Authentication Bypass by Alternate Path/Channel"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Failure to Restrict URL Access",
+      "entry_id": "A10",
+      "mapping_fit": "CWE More Specific"
+    }
+  ],
+  "related_attack_patterns": [
+    "127",
+    "665"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "overlaps Unprotected Alternate Channel"
+    }
+  ]
+}

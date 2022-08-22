@@ -1,0 +1,216 @@
+{
+  "id": "268",
+  "name": "Privilege Chaining",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "Two distinct privileges, roles, capabilities, or rights can be combined in a way that allows an entity to perform unsafe actions that would not be allowed without that combination.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "269",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "A user can be given or gain access rights of another user. This can give the user unauthorized access to sensitive information including the access information of another user."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-49",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Consider following the principle of separation of privilege. Require multiple conditions to be met before permitting access to a system resource."
+      ],
+      "strategy": "Separation of Privilege"
+    },
+    {
+      "mitigation_id": "MIT-1",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Very carefully manage the setting, management, and handling of privileges. Explicitly manage trust zones in the software."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-17",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+      ],
+      "strategy": "Environment Hardening"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-128",
+      "text": "\n               \u003cIntro_Text\u003eThis code allows someone with the role of \"ADMIN\" or \"OPERATOR\" to reset a user's password. The role of \"OPERATOR\" is intended to have less privileges than an \"ADMIN\", but still be able to help users with small issues such as forgotten passwords.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic enum Roles {\u003cxhtml:div style=\"margin-left:10px;\"\u003eADMIN,OPERATOR,USER,GUEST\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003epublic void resetPassword(User requestingUser, User user, String password ){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eif(isAuthenticated(requestingUser)){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eswitch(requestingUser.role){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003ecase GUEST:\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.out.println(\"You are not authorized to perform this command\");\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e\n                                       \u003cxhtml:br/\u003ecase USER:\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.out.println(\"You are not authorized to perform this command\");\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e\n                                       \u003cxhtml:br/\u003edefault:\u003cxhtml:div style=\"margin-left:10px;\"\u003esetPassword(user,password);\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003eelse{\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.out.println(\"You must be logged in to perform this command\");\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code does not check the role of the user whose password is being reset. It is possible for an Operator to gain Admin privileges by resetting the password of an Admin account and taking control of that account.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2005-1736",
+      "description": "Chaining of user rights.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1736"
+    },
+    {
+      "reference": "CVE-2002-1772",
+      "description": "Gain certain rights via privilege chaining in alternate channel.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1772"
+    },
+    {
+      "reference": "CVE-2005-1973",
+      "description": "Application is allowed to assign extra permissions to itself.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1973"
+    },
+    {
+      "reference": "CVE-2003-0640",
+      "description": "\"operator\" user can overwrite usernames and passwords to gain admin privileges.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0640"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-76",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Least Privilege",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---14"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Relationship_Notes, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Other_Notes, Potential_Mitigations, Research_Gaps"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature, Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Research_Gaps"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Privilege Chaining"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "There is some conceptual overlap with Unsafe Privilege."
+    }
+  ]
+}

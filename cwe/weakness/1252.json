@@ -1,0 +1,142 @@
+{
+  "id": "1252",
+  "name": "CPU Hardware Not Configured to Support Exclusivity of Write and Execute Operations",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The CPU is not configured to provide hardware support for exclusivity of write and execute operations on memory. This allows an attacker to execute data from all of memory.",
+  "extended_description": "\n                \u003cxhtml:p\u003eCPUs provide a special bit that supports exclusivity of write and execute operations. This bit is used to segregate areas of memory to either mark them as code (instructions, which can be executed) or data (which should not be executed). In this way, if a user can write to a region of memory, the user cannot execute from that region and vice versa. This exclusivity provided by special hardware bit is leveraged by the operating system to protect executable space. While this bit is available in most modern processors by default, in some CPUs the exclusivity is implemented via a memory-protection unit (MPU) and memory-management unit (MMU) in which memory regions can be carved out with exact read, write, and execute permissions. However, if the CPU does not have an MMU/MPU, then there is no write exclusivity. Without configuring exclusivity of operations via segregated areas of memory, an attacker may be able to inject malicious code onto memory and later execute it.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Microcontroller Hardware"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Processor Hardware"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:p\u003eImplement a dedicated bit that can be leveraged by the Operating System to mark data areas as non-executable. If such a bit is not available in the CPU, implement MMU/MPU (memory management unit / memory protection unit).\u003c/xhtml:p\u003e                     \n                    "
+      ]
+    },
+    {
+      "phase": [
+        "Integration"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:p\u003eIf MMU/MPU are not available, then the firewalls need to be implemented in the SoC interconnect to mimic the write-exclusivity operation.\u003c/xhtml:p\u003e                     \n                    "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eMCS51 Microcontroller (based on 8051) does not have a special bit to support write exclusivity. It also does not have an MMU/MPU support. The Cortex-M CPU has an optional MPU that supports up to 8 regions.\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:div\u003eThe optional MPU is not configured.\u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eIf the MPU is not configured, then an attacker will be able to inject malicious data into memory and execute it.\u003c/Body_Text\u003e\n            \t"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1076",
+      "author": [
+        "ARM"
+      ],
+      "title": "Cortex-R4 Manual",
+      "url": "https://developer.arm.com/ip-products/processors/cortex-m/cortex-m4"
+    },
+    {
+      "reference_id": "REF-1077",
+      "author": [
+        "Intel"
+      ],
+      "title": "MCS 51 Microcontroller Family User's Manual",
+      "url": "http://web.mit.edu/6.115/www/document/8051.pdf"
+    },
+    {
+      "reference_id": "REF-1078",
+      "author": [
+        "ARM"
+      ],
+      "title": "Memory Protection Unit (MPU)",
+      "url": "https://static.docs.arm.com/100699/0100/armv8m_architecture_memory_protection_unit_100699_0100_00_en.pdf"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-13T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "679"
+  ]
+}

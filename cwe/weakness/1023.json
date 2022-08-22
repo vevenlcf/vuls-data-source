@@ -1,0 +1,94 @@
+{
+  "id": "1023",
+  "name": "Incomplete Comparison with Missing Factors",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software performs a comparison between entities that must consider multiple factors or characteristics of each entity, but the comparison does not include one or more of these factors.",
+  "extended_description": "\n\tAn incomplete comparison can lead to resultant weaknesses, e.g., by operating on the wrong object or making a security decision without considering a required factor.\n      ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "697",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Access Control"
+      ],
+      "impact": [
+        "Alter Execution Logic",
+        "Bypass Protection Mechanism"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "Thoroughly test the comparison scheme before deploying code into production. Perform positive testing as well as negative testing."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-115",
+      "text": "\n               \u003cIntro_Text\u003eConsider an application in which Truck objects are defined to be the same if they have the same make, the same model, and were manufactured in the same year.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class Truck {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eprivate String make;\u003cxhtml:br/\u003eprivate String model;\u003cxhtml:br/\u003eprivate int year;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic boolean equals(Object o) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eif (o == null) return false;\u003cxhtml:br/\u003eif (o == this) return true;\u003cxhtml:br/\u003eif (!(o instanceof Truck)) return false;\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003eTruck t = (Truck) o;\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003ereturn (this.make.equals(t.getMake()) \u0026amp;\u0026amp; this.model.equals(t.getModel()));\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHere, the equals() method only checks the make and model of the Truck objects, but the year of manufacture is not included.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-116",
+      "text": "\n               \u003cIntro_Text\u003eThis example defines a fixed username and password. The AuthenticateUser() function is intended to accept a username and a password from an untrusted user, and check to ensure that it matches the username and password. If the username and password match, AuthenticateUser() is intended to indicate that authentication succeeded.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:i\u003e/* Ignore CWE-259 (hard-coded password) and CWE-309 (use of password system for authentication) for this example. */\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003echar *username = \"admin\";\u003cxhtml:br/\u003echar *pass = \"password\";\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eint AuthenticateUser(char *inUser, char *inPass) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (strncmp(username, inUser, strlen(inUser))) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elogEvent(\"Auth failure of username using strlen of inUser\");\u003cxhtml:br/\u003ereturn(AUTH_FAIL);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eif (! strncmp(pass, inPass, strlen(inPass))) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elogEvent(\"Auth success of password using strlen of inUser\");\u003cxhtml:br/\u003ereturn(AUTH_SUCCESS);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003elogEvent(\"Auth fail of password using sizeof\");\u003cxhtml:br/\u003ereturn(AUTH_FAIL);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eint main (int argc, char **argv) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n\t\t\t\t\t int authResult;\u003cxhtml:br/\u003e\u003cxhtml:br/\u003eif (argc \u0026lt; 3) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"Usage: Provide a username and password\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eauthResult = AuthenticateUser(argv[1], argv[2]);\u003cxhtml:br/\u003eif (authResult == AUTH_SUCCESS) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eDoAuthenticatedTask(argv[1]);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"Authentication failed\");\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn AuthenticateUser(), the strncmp() call uses the string length of an attacker-provided inPass parameter in order to determine how many characters to check in the password. So, if the attacker only provides a password of length 1, the check will only examine the first byte of the application's password before determining success.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAs a result, this partial comparison leads to improper authentication (CWE-287).\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAny of these passwords would still cause authentication to succeed for the \"admin\" user:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003ep\u003cxhtml:br/\u003epa\u003cxhtml:br/\u003epas\u003cxhtml:br/\u003epass\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis significantly reduces the search space for an attacker, making brute force attacks more feasible.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThe same problem also applies to the username, so values such as \"a\" and \"adm\" will succeed for the username.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eWhile this demonstrative example may not seem realistic, see the Observed Examples for CVE entries that effectively reflect this same weakness.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2018-01-04T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Description, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ]
+}

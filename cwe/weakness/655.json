@@ -1,0 +1,230 @@
+{
+  "id": "655",
+  "name": "Insufficient Psychological Acceptability",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software has a protection mechanism that is too difficult or inconvenient to use, encouraging non-malicious users to disable or bypass the mechanism, whether by accident or on purpose.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "657",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "693",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "By bypassing the security mechanism, a user might leave the system in a less secure state than intended by the administrator, making it more susceptible to compromise."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "Where possible, perform human factors and usability studies to identify where your product's security mechanisms are difficult to use, and why."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Make the security mechanism as seamless as possible, while also providing the user with sufficient details when a security decision produces unexpected results."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn \"Usability of Security: A Case Study\" [REF-540], the authors consider human factors in a cryptography product. Some of the weakness relevant discoveries of this case study were: users accidentally leaked sensitive information, could not figure out how to perform some tasks, thought they were enabling a security option when they were not, and made improper trust decisions.\u003c/Intro_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eEnforcing complex and difficult-to-remember passwords that need to be frequently changed for access to trivial resources, e.g., to use a black-and-white printer. Complex password requirements can also cause users to store the passwords in an unsafe manner so they don't have to remember them, such as using a sticky note or saving them in an unencrypted file.\u003c/Intro_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eSome CAPTCHA utilities produce images that are too difficult for a human to read, causing user frustration.\u003c/Intro_Text\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-196",
+      "author": [
+        "Jerome H. Saltzer",
+        "Michael D. Schroeder"
+      ],
+      "title": "The Protection of Information in Computer Systems",
+      "url": "http://web.mit.edu/Saltzer/www/publications/protection/",
+      "publication_year": "1975",
+      "publication_month": "--09",
+      "publication": "Proceedings of the IEEE 63"
+    },
+    {
+      "reference_id": "REF-539",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Psychological Acceptability",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/354.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---15"
+    },
+    {
+      "reference_id": "REF-540",
+      "author": [
+        "J. D. Tygar",
+        "Alma Whitten"
+      ],
+      "title": "Usability of Security: A Case Study",
+      "url": "http://reports-archive.adm.cs.cmu.edu/anon/1998/CMU-CS-98-155.pdf",
+      "publication_year": "1998",
+      "publication_month": "--12",
+      "publication_day": "---15",
+      "publication": "SCS Technical Report Collection, CMU-CS-98-155"
+    },
+    {
+      "section": "\"Sin 14: Poor Usability.\" Page 217",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Pascal Meunier",
+      "submission_organization": "Purdue University",
+      "submission_date": "2008-01-18T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Design Principle Violation: Failure to Satisfy Psychological Acceptability",
+        "date": "2009-01-12T00:00:00Z"
+      },
+      {
+        "text": "Failure to Satisfy Psychological Acceptability",
+        "date": "2009-05-27T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Other",
+      "text": "This weakness covers many security measures causing user inconvenience, requiring effort or causing frustration, that are disproportionate to the risks or value of the protected assets, or that are perceived to be ineffective."
+    }
+  ]
+}

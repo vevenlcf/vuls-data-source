@@ -1,0 +1,657 @@
+{
+  "id": "129",
+  "name": "Improper Validation of Array Index",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product uses untrusted input when calculating or using an array index, but the product does not validate or incorrectly validates the index to ensure the index references a valid position within the array.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1285",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "20",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "119",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "823",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "789",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Often",
+        "name": "C"
+      },
+      {
+        "prevalence": "Often",
+        "name": "C++"
+      },
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "Use of an index that is outside the bounds of an array will very likely result in the corruption of relevant memory and perhaps instructions, leading to a crash, if the values are outside of the valid memory area."
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory"
+      ],
+      "note": "If the memory corrupted is data, rather than instructions, the system will continue to function with improper values."
+    },
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory"
+      ],
+      "note": "Use of an index that is outside the bounds of an array can also trigger out-of-bounds read or write operations, or operations on the wrong objects; i.e., \"buffer overflows\" are not always the result. This may result in the exposure or modification of sensitive data."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "If the memory accessible by the attacker can be effectively controlled, it may be possible to execute arbitrary code, as with a standard buffer overflow and possibly without the use of large inputs if a precise index can be controlled."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Availability",
+        "Confidentiality"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart",
+        "Execute Unauthorized Code or Commands",
+        "Read Memory",
+        "Modify Memory"
+      ],
+      "note": "A single fault could allow either an overflow (CWE-788) or underflow (CWE-786) of the array index. What happens next will depend on the type of operation being performed out of bounds, but can expose sensitive information, cause a system crash, or possibly lead to arbitrary code execution."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-7",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use an input validation framework such as Struts or the OWASP ESAPI Validation API. Note that using a framework does not automatically address all input validation problems; be mindful of weaknesses that could arise from misusing the framework itself (CWE-1173)."
+      ],
+      "strategy": "Input Validation"
+    },
+    {
+      "mitigation_id": "MIT-15",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eFor any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eEven though client-side checks provide minimal benefits with respect to server-side security, they are still useful. First, they can support intrusion detection. If the server receives input that should have been rejected by the client, then it may be an indication of an attack. Second, client-side error-checking can provide helpful feedback to the user about the expectations for valid input. Third, there may be a reduction in server-side processing time for accidental input errors, although this is typically a small savings.\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "mitigation_id": "MIT-3",
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a language that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, Ada allows the programmer to constrain the values of a variable and languages such as Java and Ruby will allow the programmer to handle exceptions when an out-of-bounds index is accessed.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Language Selection"
+    },
+    {
+      "mitigation_id": "MIT-11",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eExamples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64].\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not a complete solution. However, it forces the attacker to guess an unknown value that changes every program execution. In addition, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-12",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Use a CPU and operating system that offers Data Execution Protection (NX) or its equivalent [REF-60] [REF-61]."
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not a complete solution, since buffer overflows could be used to overwrite nearby variables to modify the software's state in dangerous ways. In addition, it cannot be used in cases in which self-modifying code is required. Finally, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-5",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eAssume all input is malicious. Use an \"accept known good\" input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, \"boat\" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as \"red\" or \"blue.\"\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDo not rely exclusively on looking for malicious or malformed inputs.  This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen accessing a user-controlled array index, use a stringent range of values that are within the target array. Make sure that you do not allow negative values to be used. That is, verify the minimum as well as the maximum of the range of acceptable values.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Input Validation"
+    },
+    {
+      "mitigation_id": "MIT-35",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Be especially careful to validate all input when invoking code that crosses language boundaries, such as from an interpreted language to native code. This could create an unexpected interaction between the language boundaries. Ensure that you are not violating any of the expectations of the language with which you are interfacing. For example, even though Java may not be susceptible to buffer overflows, providing a large argument in a call to native code might trigger an overflow."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-17",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-22",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun the code in a \"jail\" or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eOS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBe careful to avoid CWE-243 and other weaknesses related to jails.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "The effectiveness of this mitigation depends on the prevention capabilities of the specific sandbox or jail being used and might only help to reduce the scope of an attack, such as restricting the attacker to certain system calls or limiting the portion of the file system that can be accessed.",
+      "strategy": "Sandbox or Jail"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the code snippet below, an untrusted integer value is used to reference an object in an array.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic String getValue(int index) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn array[index];\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf index is outside of the range of the array, this may result in an ArrayIndexOutOfBounds Exception being raised.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-34",
+      "text": "\n               \u003cIntro_Text\u003eThe following example takes a user-supplied value to allocate an array of objects and then operates on the array.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eprivate void buildList ( int untrustedListSize ){\u003cxhtml:div style=\"margin-left:10px;\"\u003eif ( 0 \u0026gt; untrustedListSize ){\u003cxhtml:div style=\"margin-left:10px;\"\u003edie(\"Negative value supplied for list size, die evil hacker!\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eWidget[] list = new Widget [ untrustedListSize ];\u003cxhtml:br/\u003elist[0] = new Widget();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis example attempts to build a list from a user-specified value, and even checks to ensure a non-negative value is supplied. If, however, a 0 value is provided, the code will build an array of size 0 and then try to store a new Widget in the first location, causing an exception to be thrown.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-100",
+      "text": "\n               \u003cIntro_Text\u003eIn the following code, the method retrieves a value from an array at a specific array index location that is given as an input parameter to the method\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint getValueFromArray(int *array, int len, int index) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003eint value;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// check that the array index is less than the maximum\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// length of the array\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eif (index \u0026lt; len) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// get the value at the specified index of the array\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003evalue = array[index];\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// if array index is invalid then output error message\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// and return value indicating error\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprintf(\"Value is: %d\\n\", array[index]);\u003cxhtml:br/\u003evalue = -1;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn value;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, this method only verifies that the given array index is less than the maximum length of the array but does not check for the minimum value (CWE-839). This will allow a negative value to be accepted as the input array index, which will result in a out of bounds read (CWE-125) and may allow access to sensitive memory. The input array index should be checked to verify that is within the maximum and minimum range required for the array (CWE-129). In this example the if statement should be modified to include a minimum range check, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// check that the array index is within the correct\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// range of values for the array\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eif (index \u0026gt;= 0 \u0026amp;\u0026amp; index \u0026lt; len) {\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-134",
+      "text": "\n               \u003cIntro_Text\u003eThe following example retrieves the sizes of messages for a pop3 mail server. The message sizes are retrieved from a socket that returns in a buffer the message number and the message size, the message number (num) and size (size) are extracted from the buffer and the message size is placed into an array using the message number for the array index.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e/* capture the sizes of all messages */\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eint getsizes(int sock, int count, int *sizes) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003echar buf[BUFFER_SIZE];\u003cxhtml:br/\u003eint ok;\u003cxhtml:br/\u003eint num, size;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// read values from socket and added to sizes array\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003ewhile ((ok = gen_recv(sock, buf, sizeof(buf))) == 0)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// continue read from socket until buf only contains '.'\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eif (DOTLINE(buf))\u003cxhtml:div style=\"margin-left:10px;\"\u003ebreak;\u003c/xhtml:div\u003e\n                                 \u003cxhtml:br/\u003eelse if (sscanf(buf, \"%d %d\", \u0026amp;num, \u0026amp;size) == 2)\u003cxhtml:div style=\"margin-left:10px;\"\u003esizes[num - 1] = size;\u003c/xhtml:div\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn this example the message number retrieved from the buffer could be a value that is outside the allowable range of indices for the array and could possibly be a negative number. Without proper validation of the value to be used for the array index an array overflow could occur and could potentially lead to unauthorized access to memory addresses and system crashes. The value of the array index should be validated to ensure that it is within the allowable range of indices for the array as in the following code.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e/* capture the sizes of all messages */\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eint getsizes(int sock, int count, int *sizes) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003echar buf[BUFFER_SIZE];\u003cxhtml:br/\u003eint ok;\u003cxhtml:br/\u003eint num, size;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// read values from socket and added to sizes array\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003ewhile ((ok = gen_recv(sock, buf, sizeof(buf))) == 0)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// continue read from socket until buf only contains '.'\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eif (DOTLINE(buf))\u003cxhtml:div style=\"margin-left:10px;\"\u003ebreak;\u003c/xhtml:div\u003e\n                                 \u003cxhtml:br/\u003eelse if (sscanf(buf, \"%d %d\", \u0026amp;num, \u0026amp;size) == 2) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003eif (num \u0026gt; 0 \u0026amp;\u0026amp; num \u0026lt;= (unsigned)count)\u003cxhtml:div style=\"margin-left:10px;\"\u003esizes[num - 1] = size;\u003c/xhtml:div\u003e\n                                       \u003cxhtml:br/\u003eelse\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                          \u003cxhtml:div\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:i\u003e/* warn about possible attempt to induce buffer overflow */\u003c/xhtml:i\u003e\n                                             \u003cxhtml:br/\u003ereport(stderr, \"Warning: ignoring bogus data for message sizes returned by server.\\n\");\u003c/xhtml:div\u003e\n                                       \u003c/xhtml:div\u003e\n                                    \u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-133",
+      "text": "\n               \u003cIntro_Text\u003eIn the following example the method displayProductSummary is called from a Web service servlet to retrieve product summary information for display to the user. The servlet obtains the integer value of the product number from the user and passes it to the displayProductSummary method. The displayProductSummary method passes the integer value of the product number to the getProductSummary method which obtains the product summary from the array object containing the project summaries using the integer value of the product number as the array index.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// Method called from servlet to obtain product information\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003epublic String displayProductSummary(int index) {\u003cxhtml:br/\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eString productSummary = new String(\"\");\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString productSummary = getProductSummary(index);\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e} catch (Exception ex) {...}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn productSummary;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003epublic String getProductSummary(int index) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn products[index];\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn this example the integer value used as the array index that is provided by the user may be outside the allowable range of indices for the array which may provide unexpected results or cause the application to fail. The integer value used for the array index should be validated to ensure that it is within the allowable range of indices for the array as in the following code.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// Method called from servlet to obtain product information\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003epublic String displayProductSummary(int index) {\u003cxhtml:br/\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eString productSummary = new String(\"\");\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString productSummary = getProductSummary(index);\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e} catch (Exception ex) {...}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn productSummary;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003epublic String getProductSummary(int index) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eString productSummary = \"\";\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eif ((index \u0026gt;= 0) \u0026amp;\u0026amp; (index \u0026lt; MAX_PRODUCTS)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eproductSummary = products[index];\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.err.println(\"index is out of bounds\");\u003cxhtml:br/\u003ethrow new IndexOutOfBoundsException();\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn productSummary;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAn alternative in Java would be to use one of the collection objects such as ArrayList that will automatically generate an exception if an attempt is made to access an array index that is out of bounds.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eArrayList productArray = new ArrayList(MAX_PRODUCTS);\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eproductSummary = (String) productArray.get(index);\u003c/xhtml:div\u003e} catch (IndexOutOfBoundsException ex) {...}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-90",
+      "text": "\n               \u003cIntro_Text\u003eThe following example asks a user for an offset into an array to select an item.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003eint main (int argc, char **argv) {\u003cxhtml:div style=\"margin-left:10px;\"\u003echar *items[] = {\"boat\", \"car\", \"truck\", \"train\"};\u003cxhtml:br/\u003eint index = GetUntrustedOffset();\u003cxhtml:br/\u003eprintf(\"You selected %s\\n\", items[index-1]);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe programmer allows the user to specify which element in the list to select, however an attacker can provide an out-of-bounds offset, resulting in a buffer over-read (CWE-126).\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2005-0369",
+      "description": "large ID in packet used as array index",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0369"
+    },
+    {
+      "reference": "CVE-2001-1009",
+      "description": "negative array index as argument to POP LIST command",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1009"
+    },
+    {
+      "reference": "CVE-2003-0721",
+      "description": "Integer signedness error leads to negative array index",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0721"
+    },
+    {
+      "reference": "CVE-2004-1189",
+      "description": "product does not properly track a count and a maximum number, which can lead to resultant array index overflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1189"
+    },
+    {
+      "reference": "CVE-2007-5756",
+      "description": "Chain: device driver for packet-capturing software allows access to an unintended IOCTL with resultant array index error.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5756"
+    },
+    {
+      "reference": "CVE-2005-2456",
+      "description": "Chain: array index error (CWE-129) leads to deadlock (CWE-833)",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2456"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 5, \"Array Indexing Errors\" Page 144",
+      "reference_id": "REF-7",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc"
+      ],
+      "title": "Writing Secure Code",
+      "url": "https://www.microsoftpressstore.com/store/writing-secure-code-9780735617223",
+      "publication_year": "2002",
+      "publication_month": "--12",
+      "publication_day": "---04",
+      "publisher": "Microsoft Press",
+      "edition": "2nd Edition"
+    },
+    {
+      "reference_id": "REF-96",
+      "author": [
+        "Jason Lam"
+      ],
+      "title": "Top 25 Series - Rank 14 - Improper Validation of Array Index",
+      "url": "http://blogs.sans.org/appsecstreetfighter/2010/03/12/top-25-series-rank-14-improper-validation-of-array-index/",
+      "publication_year": "2010",
+      "publication_month": "--03",
+      "publication_day": "---12",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-58",
+      "author": [
+        "Michael Howard"
+      ],
+      "title": "Address Space Layout Randomization in Windows Vista",
+      "url": "http://blogs.msdn.com/michael_howard/archive/2006/05/26/address-space-layout-randomization-in-windows-vista.aspx"
+    },
+    {
+      "reference_id": "REF-60",
+      "title": "PaX",
+      "url": "http://en.wikipedia.org/wiki/PaX"
+    },
+    {
+      "reference_id": "REF-61",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Understanding DEP as a mitigation technology part 1",
+      "url": "http://blogs.technet.com/b/srd/archive/2009/06/12/understanding-dep-as-a-mitigation-technology-part-1.aspx"
+    },
+    {
+      "reference_id": "REF-76",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Least Privilege",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---14"
+    },
+    {
+      "section": "\"Sin 5: Buffer Overruns.\" Page 89",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-64",
+      "author": [
+        "Grant Murphy"
+      ],
+      "title": "Position Independent Executables (PIE)",
+      "url": "https://securityblog.redhat.com/2012/11/28/position-independent-executables-pie/",
+      "publication_year": "2012",
+      "publication_month": "--11",
+      "publication_day": "---28",
+      "publisher": "Red Hat"
+    },
+    {
+      "section": "ASCSM-CWE-129",
+      "reference_id": "REF-962",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Security Measure (ASCSM)",
+      "url": "http://www.omg.org/spec/ASCSM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    },
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Sean Eidemiller",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "added/updated demonstrative examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Applicable_Platforms, Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Description, Name, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Observed_Examples, Other_Notes, Potential_Mitigations, Theoretical_Notes, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Detection_Factors, Likelihood_of_Exploit, Potential_Mitigations, References, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationship_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Causal_Nature, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Unchecked Array Indexing",
+        "date": "2009-10-29T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Resultant",
+      "description": "The most common condition situation leading to an out-of-bounds array index is the use of loop index variables as buffer indexes. If the end condition for the loop is subject to a flaw, the index can grow or shrink unbounded, therefore causing a buffer overflow or underflow. Another common situation leading to this condition is the use of a function's return value, or the resulting value of a calculation directly as an index in to a buffer."
+    }
+  ],
+  "alternate_terms": [
+    {
+      "term": "out-of-bounds array index"
+    },
+    {
+      "term": "index-out-of-range"
+    },
+    {
+      "term": "array index underflow"
+    }
+  ],
+  "detection_methods": [
+    {
+      "detection_method_id": "DM-1",
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eThis weakness can often be detected using automated static analysis tools. Many modern tools use data flow analysis or constraint-based techniques to minimize the number of false positives.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAutomated static analysis generally does not account for environmental considerations when reporting out-of-bounds memory operations. This can make it difficult for users to determine which warnings should be investigated first. For example, an analysis tool might report array index errors that originate from command line arguments in a program that is not expected to run with setuid or other special privileges.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness": "High",
+      "effectiveness_notes": "This is not a perfect solution, since 100% accuracy and coverage are not feasible."
+    },
+    {
+      "detection_method_id": "DM-2",
+      "method": "Automated Dynamic Analysis",
+      "description": "This weakness can be detected using dynamic tools and techniques that interact with the software using large test suites with many diverse inputs, such as fuzz testing (fuzzing), robustness testing, and fault injection. The software's operation may slow down, but it should not become unstable, crash, or generate incorrect results."
+    },
+    {
+      "method": "Black Box",
+      "description": "Black box methods might not get the needed code coverage within limited time constraints, and a dynamic test might not produce any noticeable side effects even if it is successful."
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Unchecked array indexing"
+    },
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "INDEX - Array index overflow"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Understand how arrays work",
+      "entry_id": "ARR00-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Do not form or use out-of-bounds pointers or array subscripts",
+      "entry_id": "ARR30-C",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Do not add or subtract an integer to a pointer if the resulting value does not refer to a valid array element",
+      "entry_id": "ARR38-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Ensure that operations on signed integers do not result in overflow",
+      "entry_id": "INT32-C"
+    },
+    {
+      "taxonomy_name": "SEI CERT Perl Coding Standard",
+      "entry_name": "Validate any integer that is used as an array index",
+      "entry_id": "IDS32-PL",
+      "mapping_fit": "Imprecise"
+    },
+    {
+      "taxonomy_name": "OMG ASCSM",
+      "entry_id": "ASCSM-CWE-129"
+    }
+  ],
+  "related_attack_patterns": [
+    "100"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "This weakness can precede uncontrolled memory allocation (CWE-789) in languages that automatically expand an array when an index is used that is larger than the size of the array, such as JavaScript."
+    },
+    {
+      "type": "Theoretical",
+      "text": "An improperly validated array index might lead directly to the always-incorrect behavior of \"access of array using out-of-bounds index.\""
+    }
+  ],
+  "affected_resources": [
+    "Memory"
+  ]
+}

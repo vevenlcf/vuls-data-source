@@ -1,0 +1,607 @@
+{
+  "id": "311",
+  "name": "Missing Encryption of Sensitive Data",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not encrypt sensitive or critical information before storage or transmission.",
+  "extended_description": "The lack of proper data encryption passes up the guarantees of confidentiality, integrity, and accountability that properly implemented encryption conveys.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "693",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "OMISSION: This weakness is caused by missing a security tactic during the architecture and design phase."
+      ]
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ],
+      "note": "If the application does not use a secure channel, such as SSL, to exchange sensitive information, it is possible for an attacker with access to the network traffic to sniff packets from the connection and uncover the data. This attack is not technically difficult, but does require physical access to some portion of the network over which the sensitive data travels. This access is usually somewhere near where the user is connected to the network (such as a colleague on the company network) but can be anywhere along the path from the user to the end server."
+    },
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Application Data"
+      ],
+      "note": "Omitting the use of encryption in any program which transfers data over a network of any kind should be considered on par with delivering the data sent to each user on the local networks of both the sender and receiver. Worse, this omission allows for the injection of data into a stream of communication between two parties -- with no means for the victims to separate valid data from invalid. In this day of widespread network attacks and password collection sniffers, it is an unnecessary risk to omit encryption from the design of any system which might benefit from it."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "Clearly specify which data or resources are valuable enough that they should be protected by encryption. Require that any transmission or storage of this data/resource should use well-vetted encryption algorithms."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eEnsure that encryption is properly integrated into the system design, including but not necessarily limited to:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eEncryption that is needed to store or transmit private data of the users of the system\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eEncryption that is needed to protect the system itself from unauthorized disclosure or tampering\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n                  \u003cxhtml:p\u003eIdentify the separate needs and contexts for encryption:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eOne-way (i.e., only the user or recipient needs to have the key). This can be achieved using public key cryptography, or other techniques in which the encrypting party (i.e., the software) does not need to have access to a private key.\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eTwo-way (i.e., the encryption can be automatically performed on behalf of a user, but the key must be available so that the plaintext can be automatically recoverable by that user). This requires storage of the private key in a format that is recoverable only by the user (or perhaps by the operating system) in a way that cannot be recovered by others.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n                  \u003cxhtml:p\u003eUsing threat modeling or other techniques, assume that data can be compromised through a separate vulnerability or weakness, and determine where encryption will be most effective. Ensure that data that should be private is not being inadvertently exposed using weaknesses such as insecure permissions (CWE-732). [REF-7]\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "mitigation_id": "MIT-24",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eWhen there is a need to store or transmit sensitive data, use strong, up-to-date cryptographic algorithms to encrypt that data. Select a well-vetted algorithm that is currently considered to be strong by experts in the field, and use well-tested implementations. As with all cryptographic mechanisms, the source code should be available for analysis.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, US government systems require FIPS 140-2 certification.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDo not develop custom or private cryptographic algorithms. They will likely be exposed to attacks that are well-understood by cryptographers. Reverse engineering techniques are mature. If the algorithm can be compromised if attackers find out how it works, then it is especially weak.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003ePeriodically ensure that the cryptography has not become obsolete. Some older algorithms, once thought to require a billion years of computing time, can now be broken in days or hours. This includes MD4, MD5, SHA1, DES, and other algorithms that were once regarded as strong. [REF-267]\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "mitigation_id": "MIT-46",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eCompartmentalize the system to have \"safe\" areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eEnsure that appropriate compartmentalization is built into the system design, and the compartmentalization allows for and reinforces privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide the appropriate time to use privileges and the time to drop privileges.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Separation of Privilege"
+    },
+    {
+      "mitigation_id": "MIT-25",
+      "phase": [
+        "Implementation",
+        "Architecture and Design"
+      ],
+      "description": [
+        "When using industry-approved techniques, use them correctly. Don't cut corners by skipping resource-intensive steps (CWE-325). These steps are often essential for preventing common attacks."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-33",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Use naming conventions and strong types to make it easier to spot when sensitive data is being used. When creating structures, objects, or other complex entities, separate the sensitive and non-sensitive data as much as possible."
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This makes it easier to spot places in the code where data is being used that is unencrypted.",
+      "strategy": "Attack Surface Reduction"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-40",
+      "text": "\n               \u003cIntro_Text\u003eThis code writes a user's login information to a cookie so the user does not have to login again later.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003efunction persistLogin($username, $password){\u003cxhtml:div style=\"margin-left:10px;\"\u003e$data = array(\"username\" =\u0026gt; $username, \"password\"=\u0026gt; $password);\u003cxhtml:br/\u003esetcookie (\"userdata\", $data);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code stores the user's username and password in plaintext in a cookie on the user's machine. This exposes the user's login information if their computer is compromised by an attacker. Even if the user's machine is not compromised, this weakness combined with cross-site scripting (CWE-79) could allow an attacker to remotely copy the cookie.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAlso note this example code also exhibits Plaintext Storage in a Cookie (CWE-315).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-41",
+      "text": "\n               \u003cIntro_Text\u003eThe following code attempts to establish a connection, read in a password, then store it to a buffer.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eserver.sin_family = AF_INET; hp = gethostbyname(argv[1]);\u003cxhtml:br/\u003eif (hp==NULL) error(\"Unknown host\");\u003cxhtml:br/\u003ememcpy( (char *)\u0026amp;server.sin_addr,(char *)hp-\u0026gt;h_addr,hp-\u0026gt;h_length);\u003cxhtml:br/\u003eif (argc \u0026lt; 3) port = 80;\u003cxhtml:br/\u003eelse port = (unsigned short)atoi(argv[3]);\u003cxhtml:br/\u003eserver.sin_port = htons(port);\u003cxhtml:br/\u003eif (connect(sock, (struct sockaddr *)\u0026amp;server, sizeof server) \u0026lt; 0) error(\"Connecting\");\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003ewhile ((n=read(sock,buffer,BUFSIZE-1))!=-1) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003ewrite(dfd,password_buffer,n);\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhile successful, the program does not encrypt the data before writing it to a buffer, possibly exposing it to unauthorized actors.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-42",
+      "text": "\n               \u003cIntro_Text\u003eThe following code attempts to establish a connection to a site to communicate sensitive information.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eURL u = new URL(\"http://www.secret.example.org/\");\u003cxhtml:br/\u003eHttpURLConnection hu = (HttpURLConnection) u.openConnection();\u003cxhtml:br/\u003ehu.setRequestMethod(\"PUT\");\u003cxhtml:br/\u003ehu.connect();\u003cxhtml:br/\u003eOutputStream os = hu.getOutputStream();\u003cxhtml:br/\u003ehu.disconnect();\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (IOException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e//...\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThough a connection is successfully made, the connection is unencrypted and it is possible that all sensitive data sent to or received from the server will be read by unintended actors.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2009-2272",
+      "description": "password and username stored in cleartext in a cookie",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2272"
+    },
+    {
+      "reference": "CVE-2009-1466",
+      "description": "password stored in cleartext in a file with insecure permissions",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1466"
+    },
+    {
+      "reference": "CVE-2009-0152",
+      "description": "chat program disables SSL in some circumstances even when the user says to use SSL.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0152"
+    },
+    {
+      "reference": "CVE-2009-1603",
+      "description": "Chain: product uses an incorrect public exponent when generating an RSA key, which effectively disables the encryption",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1603"
+    },
+    {
+      "reference": "CVE-2009-0964",
+      "description": "storage of unencrypted passwords in a database",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0964"
+    },
+    {
+      "reference": "CVE-2008-6157",
+      "description": "storage of unencrypted passwords in a database",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6157"
+    },
+    {
+      "reference": "CVE-2008-6828",
+      "description": "product stores a password in cleartext in memory",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6828"
+    },
+    {
+      "reference": "CVE-2008-1567",
+      "description": "storage of a secret key in cleartext in a temporary file",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1567"
+    },
+    {
+      "reference": "CVE-2008-0174",
+      "description": "SCADA product uses HTTP Basic Authentication, which is not encrypted",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0174"
+    },
+    {
+      "reference": "CVE-2007-5778",
+      "description": "login credentials stored unencrypted in a registry key",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5778"
+    },
+    {
+      "reference": "CVE-2002-1949",
+      "description": "Passwords transmitted in cleartext.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1949"
+    },
+    {
+      "reference": "CVE-2008-4122",
+      "description": "Chain: Use of HTTPS cookie without \"secure\" flag causes it to be transmitted across unencrypted HTTP.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4122"
+    },
+    {
+      "reference": "CVE-2008-3289",
+      "description": "Product sends password hash in cleartext in violation of intended policy.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3289"
+    },
+    {
+      "reference": "CVE-2008-4390",
+      "description": "Remote management feature sends sensitive information including passwords in cleartext.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4390"
+    },
+    {
+      "reference": "CVE-2007-5626",
+      "description": "Backup routine sends password in cleartext in email.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5626"
+    },
+    {
+      "reference": "CVE-2004-1852",
+      "description": "Product transmits Blowfish encryption key in cleartext.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1852"
+    },
+    {
+      "reference": "CVE-2008-0374",
+      "description": "Printer sends configuration information, including administrative password, in cleartext.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0374"
+    },
+    {
+      "reference": "CVE-2007-4961",
+      "description": "Chain: cleartext transmission of the MD5 hash of password enables attacks against a server that is susceptible to replay (CWE-294).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4961"
+    },
+    {
+      "reference": "CVE-2007-4786",
+      "description": "Product sends passwords in cleartext to a log server.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4786"
+    },
+    {
+      "reference": "CVE-2005-3140",
+      "description": "Product sends file with cleartext passwords in e-mail message intended for diagnostic purposes.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3140"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    },
+    {
+      "section": "Chapter 9, \"Protecting Secret Data\" Page 299",
+      "reference_id": "REF-7",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc"
+      ],
+      "title": "Writing Secure Code",
+      "url": "https://www.microsoftpressstore.com/store/writing-secure-code-9780735617223",
+      "publication_year": "2002",
+      "publication_month": "--12",
+      "publication_day": "---04",
+      "publisher": "Microsoft Press",
+      "edition": "2nd Edition"
+    },
+    {
+      "section": "\"Sin 17: Failure to Protect Stored Data.\" Page 253",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-265",
+      "author": [
+        "Frank Kim"
+      ],
+      "title": "Top 25 Series - Rank 10 - Missing Encryption of Sensitive Data",
+      "url": "http://blogs.sans.org/appsecstreetfighter/2010/02/26/top-25-series-rank-10-missing-encryption-of-sensitive-data/",
+      "publication_year": "2010",
+      "publication_month": "--02",
+      "publication_day": "---26",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "section": "Chapter 2, \"Common Vulnerabilities of Encryption\", Page 43",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "reference_id": "REF-267",
+      "author": [
+        "Information Technology Laboratory, National Institute of Standards and Technology"
+      ],
+      "title": "SECURITY REQUIREMENTS FOR CRYPTOGRAPHIC MODULES",
+      "url": "http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf",
+      "publication_year": "2001",
+      "publication_month": "--05",
+      "publication_day": "---25"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Demonstrative_Examples, Description, Detection_Factors, Likelihood_of_Exploit, Name, Observed_Examples, Potential_Mitigations, References, Related_Attack_Patterns, Relationships, Taxonomy_Mappings, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated Relationship_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-01-19T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-05-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit, Modes_of_Introduction, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Failure to Encrypt Data",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Encrypt Sensitive Data",
+        "date": "2010-02-16T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "method": "Manual Analysis",
+      "description": "The characterizaton of sensitive data often requires domain-specific understanding, so manual methods are useful. However, manual efforts might not achieve desired code coverage within limited time constraints. Black box methods may produce artifacts (e.g. stored data or unencrypted network transfer) that require manual evaluation.",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Analysis",
+      "description": "Automated measurement of the entropy of an input/output source may indicate the use or lack of encryption, but human analysis is still required to distinguish intentionally-unencrypted data (e.g. metadata) from sensitive data."
+    },
+    {
+      "method": "Manual Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBinary / Bytecode disassembler - then use manual analysis for vulnerabilities \u0026amp; anomalies\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Services Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eDatabase Scanners\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eNetwork Sniffer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eAutomated Monitored Execution\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eMan-in-the-middle attack tool\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eAttack Modeling\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Failure to encrypt data"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Insecure Cryptographic Storage",
+      "entry_id": "A8",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Insecure Communications",
+      "entry_id": "A9",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Insecure Storage",
+      "entry_id": "A8",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "Insufficient Transport Layer Protection",
+      "entry_id": "4"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Use SSLSocket rather than Socket for secure data exchange",
+      "entry_id": "MSC00-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Exposed Data",
+      "entry_id": "SFP23"
+    }
+  ],
+  "related_attack_patterns": [
+    "157",
+    "158",
+    "204",
+    "31",
+    "37",
+    "383",
+    "384",
+    "385",
+    "386",
+    "387",
+    "388",
+    "477",
+    "609",
+    "65"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "There is an overlapping relationship between insecure storage of sensitive information (CWE-922) and missing encryption of sensitive information (CWE-311). Encryption is often used to prevent an attacker from reading the sensitive data. However, encryption does not prevent the attacker from erasing or overwriting the data."
+    }
+  ]
+}

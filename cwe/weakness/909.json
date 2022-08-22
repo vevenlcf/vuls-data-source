@@ -1,0 +1,162 @@
+{
+  "id": "909",
+  "name": "Missing Initialization of Resource",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software does not initialize a critical resource.",
+  "extended_description": "Many resources require initialization before they can be properly used. If a resource is not initialized, it could contain unpredictable or expired data, or it could be initialized to defaults that are invalid. This can have security implications when the resource is expected to have certain properties or values.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "665",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "665",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "908",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory",
+        "Read Application Data"
+      ],
+      "note": "When reusing a resource such as memory or a program variable, the original contents of that resource may not be cleared before it is sent to an untrusted party."
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "The uninitialized resource may contain values that cause program flow to change in ways that the programmer did not intend."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Explicitly initialize the resource before use. If this is performed through an API function or standard procedure, follow all specified steps."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Pay close attention to complex conditionals that affect initialization, since some branches might not perform the initialization."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Avoid race conditions (CWE-362) during initialization routines."
+      ]
+    },
+    {
+      "phase": [
+        "Build and Compilation"
+      ],
+      "description": [
+        "Run or compile your software with settings that generate warnings about uninitialized variables or data."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-105",
+      "text": "\n               \u003cIntro_Text\u003eHere, a boolean initiailized field is consulted to ensure that initialization tasks are only completed once. However, the field is mistakenly set to true during static initialization, so the initialization code is never reached.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eprivate boolean initialized = true;\u003cxhtml:br/\u003epublic void someMethod() {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eif (!initialized) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// perform initialization tasks\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003einitialized = true;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-54",
+      "text": "\n               \u003cIntro_Text\u003eThe following code intends to limit certain operations to the administrator only.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003e$username = GetCurrentUser();\u003cxhtml:br/\u003e$state = GetStateData($username);\u003cxhtml:br/\u003eif (defined($state)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e$uid = ExtractUserID($state);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e# do stuff\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eif ($uid == 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eDoAdminThings();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf the application is unable to extract the state information - say, due to a database timeout - then the $uid variable will not be explicitly set by the programmer. This will cause $uid to be regarded as equivalent to \"0\" in the conditional, allowing the original user to perform administrator actions. Even if the attacker cannot directly influence the state data, unexpected errors could cause incorrect privileges to be assigned to a user just by accident.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code intends to concatenate a string to a variable and print the string.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar str[20];\u003cxhtml:br/\u003estrcat(str, \"hello world\");\u003cxhtml:br/\u003eprintf(\"%s\", str);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis might seem innocent enough, but str was not initialized, so it contains random memory. As a result, str[0] might not contain the null terminator, so the copy might start at an offset other than 0. The consequences can vary, depending on the underlying memory.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIf a null terminator is found before str[8], then some bytes of random garbage will be printed before the \"hello world\" string. The memory might contain sensitive information from previous uses, such as a password (which might occur as a result of CWE-14 or CWE-244). In this example, it might not be a big deal, but consider what could happen if large amounts of memory are printed out before the null terminator is found.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIf a null terminator isn't found before str[8], then a buffer overflow could occur, since strcat will first look for the null terminator, then copy 12 bytes starting with that location. Alternately, a buffer over-read might occur (CWE-126) if a null terminator isn't found before the end of the memory segment is reached, leading to a segmentation fault and crash.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-144",
+      "text": "\n\t\t\t  \u003cIntro_Text\u003eThis example will leave test_string in an\n\t\t\t  unknown condition when i is the same value as err_val,\n\t\t\t  because test_string is not initialized\n\t\t\t  (CWE-456). Depending on where this code segment appears\n\t\t\t  (e.g. within a function body), test_string might be\n\t\t\t  random if it is stored on the heap or stack. If the\n\t\t\t  variable is declared in static memory, it might be zero\n\t\t\t  or NULL. Compiler optimization might contribute to the\n\t\t\t  unpredictability of this address.\u003c/Intro_Text\u003e\n\t\t\t  \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                char *test_string;\u003cxhtml:br/\u003e\n                if (i != err_val)\u003cxhtml:br/\u003e\n                {\u003cxhtml:br/\u003e\n                \u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Hello World!\";\u003c/xhtml:div\u003e\n                }\u003cxhtml:br/\u003e\n                printf(\"%s\", test_string);\n              \u003c/Example_Code\u003e\n              \u003cBody_Text\u003e\u003cxhtml:p\u003eWhen the printf() is reached,\n              test_string might be an unexpected address, so the\n              printf might print junk strings (CWE-457).\u003c/xhtml:p\u003e\n\t\t\t  \u003cxhtml:p\u003e\n\t\t\t  To fix this code, there are a couple approaches to\n\t\t\t  making sure that test_string has been properly set once\n\t\t\t  it reaches the printf().\u003c/xhtml:p\u003e\n\t\t\t  \u003cxhtml:p\u003eOne solution would be to set test_string to an\n\t\t\t  acceptable default before the conditional:\u003c/xhtml:p\u003e\n\t\t\t  \u003c/Body_Text\u003e\n\t\t\t  \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n\t\t\t\tchar *test_string = \"Done at the beginning\";\u003cxhtml:br/\u003e\n\t\t\t\tif (i != err_val)\u003cxhtml:br/\u003e\n\t\t\t\t{\u003cxhtml:br/\u003e\n\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Hello World!\";\u003c/xhtml:div\u003e\n\t\t\t\t}\u003cxhtml:br/\u003e\n\t\t\t\tprintf(\"%s\", test_string);\n\t\t\t  \u003c/Example_Code\u003e\n\t\t\t  \u003cBody_Text\u003eAnother solution is to ensure that each\n\t\t\t  branch of the conditional - including the default/else\n\t\t\t  branch - could ensure that test_string is set:\u003c/Body_Text\u003e\n\t\t\t  \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n\t\t\t\tchar *test_string;\u003cxhtml:br/\u003e\n\t\t\t\tif (i != err_val)\u003cxhtml:br/\u003e\n\t\t\t\t{\u003cxhtml:br/\u003e\n\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Hello World!\";\u003c/xhtml:div\u003e\n\t\t\t\t}\u003cxhtml:br/\u003e\n\t\t\t\telse {\u003cxhtml:br/\u003e\n\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Done on the other side!\";\u003c/xhtml:div\u003e\n\t\t\t\t}\u003cxhtml:br/\u003e\n\t\t\t\tprintf(\"%s\", test_string);\n\t\t\t  \u003c/Example_Code\u003e\n\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2020-20739",
+      "description": "A variable that has its value set in a conditional statement is sometimes used when the conditional fails, sometimes causing data leakage",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-20739"
+    },
+    {
+      "reference": "CVE-2005-1036",
+      "description": "Chain: Bypass of access restrictions due to improper authorization (CWE-862) of a user results from an improperly initialized (CWE-909) I/O permission bitmap",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1036"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2012-12-21T00:00:00Z",
+      "submission_comment": "New weakness based on discussion on the CWE research list in December 2012."
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    },
+    {
+      "ordinality": "Resultant"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "id": "307",
+  "name": "Improper Restriction of Excessive Authentication Attempts",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not implement sufficient measures to prevent multiple failed authentication attempts within in a short time frame, making it more susceptible to brute force attacks.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "799",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "An attacker could perform an arbitrary number of authentication attempts using different passwords, and eventually gain access to the targeted account."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eCommon protection mechanisms include:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eDisconnecting the user after a small number of failed attempts\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eImplementing a timeout\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eLocking out a targeted account\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eRequiring a computational task on the user's part.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n               "
+      ]
+    },
+    {
+      "mitigation_id": "MIT-4",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eConsider using libraries with authentication capabilities such as OpenSSL or the ESAPI Authenticator. [REF-45]\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-117",
+      "text": "\n               \u003cIntro_Text\u003eIn January 2009, an attacker was able to gain administrator access to a Twitter server because the server did not restrict the number of login attempts. The attacker targeted a member of Twitter's support team and was able to successfully guess the member's password using a brute force attack by guessing a large number of common words. After gaining access as the member of the support staff, the attacker used the administrator panel to gain access to 33 accounts that belonged to celebrities and politicians. Ultimately, fake Twitter messages were sent that appeared to come from the compromised accounts.\u003c/Intro_Text\u003e\n               \u003cReferences\u003e\n                  \u003cReference External_Reference_ID=\"REF-236\"/\u003e\n               \u003c/References\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code, extracted from a servlet's doPost() method, performs an authentication lookup every time the servlet is invoked.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eString username = request.getParameter(\"username\");\u003cxhtml:br/\u003eString password = request.getParameter(\"password\");\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eint authResult = authenticateUser(username, password);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the software makes no attempt to restrict excessive authentication attempts.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis code attempts to limit the number of login attempts by causing the process to sleep before completing the authentication.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$username = $_POST['username'];\u003cxhtml:br/\u003e$password = $_POST['password'];\u003cxhtml:br/\u003esleep(2000);\u003cxhtml:br/\u003e$isAuthenticated = authenticateUser($username, $password);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, there is no limit on parallel connections, so this does not increase the amount of time an attacker needs to complete an attack.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following C/C++ example the validateUser method opens a socket connection, reads a username and password from the socket and attempts to authenticate the username and password.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint validateUser(char *host, int port)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eint socket = openSocketConnection(host, port);\u003cxhtml:br/\u003eif (socket \u0026lt; 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprintf(\"Unable to open socket connection\");\u003cxhtml:br/\u003ereturn(FAIL);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eint isValidUser = 0;\u003cxhtml:br/\u003echar username[USERNAME_SIZE];\u003cxhtml:br/\u003echar password[PASSWORD_SIZE];\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ewhile (isValidUser == 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eif (getNextMessage(socket, username, USERNAME_SIZE) \u0026gt; 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (getNextMessage(socket, password, PASSWORD_SIZE) \u0026gt; 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eisValidUser = AuthenticateUser(username, password);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn(SUCCESS);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe validateUser method will continuously check for a valid username and password without any restriction on the number of authentication attempts made. The method should limit the number of authentication attempts made to prevent brute force attacks as in the following example code.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint validateUser(char *host, int port)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eint count = 0;\u003cxhtml:br/\u003ewhile ((isValidUser == 0) \u0026amp;\u0026amp; (count \u0026lt; MAX_ATTEMPTS)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eif (getNextMessage(socket, username, USERNAME_SIZE) \u0026gt; 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (getNextMessage(socket, password, PASSWORD_SIZE) \u0026gt; 0) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eisValidUser = AuthenticateUser(username, password);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecount++;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eif (isValidUser) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn(SUCCESS);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn(FAIL);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n\t\t    \u003cIntro_Text\u003eConsider this example from a\n\t\t    real-world attack against the iPhone\n\t\t    [REF-1218]. An attacker can use brute force\n\t\t    methods; each time there is a failed guess, the\n\t\t    attacker quickly cuts the power before the failed\n\t\t    entry is recorded, effectively bypassing the\n\t\t    intended limit on the number of failed\n\t\t    authentication attempts. Note that this attack\n\t\t    requires removal of the cell phone battery and\n\t\t    connecting directly to the phone's power source,\n\t\t    and the brute force attack is still\n\t\t    time-consuming.\u003c/Intro_Text\u003e\n\t\t  "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-1999-1152",
+      "description": "Product does not disconnect or timeout after multiple failed logins.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1152"
+    },
+    {
+      "reference": "CVE-2001-1291",
+      "description": "Product does not disconnect or timeout after multiple failed logins.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1291"
+    },
+    {
+      "reference": "CVE-2001-0395",
+      "description": "Product does not disconnect or timeout after multiple failed logins.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0395"
+    },
+    {
+      "reference": "CVE-2001-1339",
+      "description": "Product does not disconnect or timeout after multiple failed logins.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1339"
+    },
+    {
+      "reference": "CVE-2002-0628",
+      "description": "Product does not disconnect or timeout after multiple failed logins.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0628"
+    },
+    {
+      "reference": "CVE-1999-1324",
+      "description": "User accounts not disabled when they exceed a threshold; possibly a resultant problem.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1324"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-45",
+      "author": [
+        "OWASP"
+      ],
+      "title": "OWASP Enterprise Security API (ESAPI) Project",
+      "url": "http://www.owasp.org/index.php/ESAPI"
+    },
+    {
+      "reference_id": "REF-1218",
+      "author": [
+        "Graham Cluley"
+      ],
+      "title": "This Black Box Can Brute Force Crack iPhone PIN Passcodes",
+      "url": "https://www.intego.com/mac-security-blog/iphone-pin-pass-code/",
+      "publication_year": "2015",
+      "publication_month": "--03",
+      "publication_day": "---16",
+      "publication": "The Mac Security Blog"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Sean Eidemiller",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "added/updated demonstrative examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Name, Potential_Mitigations, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Multiple Failed Authentication Attempts not Prevented",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Restrict Excessive Authentication Attempts",
+        "date": "2010-02-16T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Services Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eDatabase Scanners\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eHost-based Vulnerability Scanners - Examine configuration for flaws, verifying that audit mechanisms work, ensure host configuration meets certain predefined criteria\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eForced Path Execution\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eSource code Weakness Analyzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eConfiguration Checker\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Multiple Failed Authentication Attempts not Prevented",
+      "entry_id": "AUTHENT.MULTFAIL"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Unrestricted authentication",
+      "entry_id": "SFP34"
+    }
+  ],
+  "related_attack_patterns": [
+    "16",
+    "49",
+    "560",
+    "565",
+    "600",
+    "652",
+    "653"
+  ]
+}

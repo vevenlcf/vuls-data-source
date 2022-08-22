@@ -1,0 +1,172 @@
+{
+  "id": "786",
+  "name": "Access of Memory Location Before Start of Buffer",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+  "extended_description": "This typically occurs when a pointer or its index is decremented to a position before the buffer, when pointer arithmetic results in a position before the beginning of the valid memory location, or when a negative index is used.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {},
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory"
+      ],
+      "note": "For an out-of-bounds read, the attacker may have access to sensitive information. If the sensitive information contains system details, such as the current buffers position in memory, this knowledge can be used to craft further attacks, possibly with more severe consequences."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Modify Memory",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "Out of bounds memory access will very likely result in the corruption of relevant memory, and perhaps instructions, possibly leading to a crash."
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "If the corrupted memory can be effectively controlled, it may be possible to execute arbitrary code. If the corrupted memory is data rather than instructions, the system will continue to function with improper changes, possibly in violation of an implicit or explicit policy."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-87",
+      "text": "\n               \u003cIntro_Text\u003eIn the following C/C++ example, a utility function is used to trim trailing whitespace from a character string. The function copies the input string to a local character string and uses a while statement to remove the trailing whitespace by moving backward through the string and overwriting whitespace with a NUL character.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar* trimTrailingWhitespace(char *strMessage, int length) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003echar *retMessage;\u003cxhtml:br/\u003echar *message = malloc(sizeof(char)*(length+1));\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// copy input string to a temporary string\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003echar message[length+1];\u003cxhtml:br/\u003eint index;\u003cxhtml:br/\u003efor (index = 0; index \u0026lt; length; index++) {\u003cxhtml:div style=\"margin-left:10px;\"\u003emessage[index] = strMessage[index];\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003emessage[index] = '\\0';\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// trim trailing whitespace\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eint len = index-1;\u003cxhtml:br/\u003ewhile (isspace(message[len])) {\u003cxhtml:div style=\"margin-left:10px;\"\u003emessage[len] = '\\0';\u003cxhtml:br/\u003elen--;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// return string without trailing whitespace\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eretMessage = message;\u003cxhtml:br/\u003ereturn retMessage;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, this function can cause a buffer underwrite if the input character string contains all whitespace. On some systems the while statement will move backwards past the beginning of a character string and will call the isspace() function on an address outside of the bounds of the local buffer.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-90",
+      "text": "\n               \u003cIntro_Text\u003eThe following example asks a user for an offset into an array to select an item.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003eint main (int argc, char **argv) {\u003cxhtml:div style=\"margin-left:10px;\"\u003echar *items[] = {\"boat\", \"car\", \"truck\", \"train\"};\u003cxhtml:br/\u003eint index = GetUntrustedOffset();\u003cxhtml:br/\u003eprintf(\"You selected %s\\n\", items[index-1]);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe programmer allows the user to specify which element in the list to select, however an attacker can provide an out-of-bounds offset, resulting in a buffer over-read (CWE-126).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-88",
+      "text": "\n               \u003cIntro_Text\u003eThe following is an example of code that may result in a buffer underwrite, if find() returns a negative value to indicate that ch is not found in srcBuf:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint main() {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003cxhtml:br/\u003estrncpy(destBuf, \u0026amp;srcBuf[find(srcBuf, ch)], 1024);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf the index to srcBuf is somehow under user control, this is an arbitrary write-what-where condition.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2002-2227",
+      "description": "Unchecked length of SSLv2 challenge value leads to buffer underflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2227"
+    },
+    {
+      "reference": "CVE-2007-4580",
+      "description": "Buffer underflow from a small size value with a large buffer (length parameter inconsistency, CWE-130)",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4580"
+    },
+    {
+      "reference": "CVE-2007-1584",
+      "description": "Buffer underflow from an all-whitespace string, which causes a counter to be decremented before the buffer while looking for a non-whitespace character.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1584"
+    },
+    {
+      "reference": "CVE-2007-0886",
+      "description": "Buffer underflow resultant from encoded data that triggers an integer overflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0886"
+    },
+    {
+      "reference": "CVE-2006-6171",
+      "description": "Product sets an incorrect buffer size limit, leading to \"off-by-two\" buffer underflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6171"
+    },
+    {
+      "reference": "CVE-2006-4024",
+      "description": "Negative value is used in a memcpy() operation, leading to buffer underflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4024"
+    },
+    {
+      "reference": "CVE-2004-2620",
+      "description": "Buffer underflow due to mishandled special characters",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2620"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2009-10-21T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Do not form or use out-of-bounds pointers or array subscripts",
+      "entry_id": "ARR30-C",
+      "mapping_fit": "CWE More Specific"
+    }
+  ]
+}

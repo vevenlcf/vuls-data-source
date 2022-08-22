@@ -1,0 +1,580 @@
+{
+  "id": "352",
+  "name": "Cross-Site Request Forgery (CSRF)",
+  "abstraction": "Compound",
+  "structure": "Composite",
+  "status": "Stable",
+  "description": "The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request.",
+  "extended_description": "When a web server is designed to receive a request from a client without any mechanism for verifying that it was intentionally sent, then it might be possible for an attacker to trick a client into making an unintentional request to the web server which will be treated as an authentic request. This can be done via a URL, image load, XMLHttpRequest, etc. and can result in exposure of data or unintended code execution.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "345",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "345",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "346",
+      "view_id": "1000"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "441",
+      "view_id": "1000"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "642",
+      "view_id": "1000"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "613",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Web Server"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Non-Repudiation",
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism",
+        "Read Application Data",
+        "Modify Application Data",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "The consequences will vary depending on the nature of the functionality that is vulnerable to CSRF. An attacker could effectively perform any operations as the victim. If the victim is an administrator or privileged user, the consequences may include obtaining complete control over the web application - deleting or stealing data, uninstalling the product, or using it to launch other attacks against all of the product's users. Because the attacker has the identity of the victim, the scope of CSRF is limited only by the victim's privileges."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-4",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, use anti-CSRF packages such as the OWASP CSRFGuard. [REF-330]\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAnother example is the ESAPI Session Management control, which includes a component for CSRF. [REF-45]\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Ensure that the application is free of cross-site scripting issues (CWE-79), because most CSRF defenses can be bypassed using attacker-controlled script."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330). [REF-332]"
+      ],
+      "effectiveness_notes": "Note that this can be bypassed using XSS (CWE-79)."
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation."
+      ],
+      "effectiveness_notes": "Note that this can be bypassed using XSS (CWE-79)."
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse the \"double-submitted cookie\" method as described by Felten and Zeller:\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen a user visits a site, the site should generate a pseudorandom value and set it as a cookie on the user's machine. The site should require every form submission to include this value as a form value and also as a cookie value. When a POST request is sent to the site, the request should only be considered valid if the form value and the cookie value are the same.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBecause of the same-origin policy, an attacker cannot read or modify the value stored in the cookie. To successfully submit a form on behalf of the user, the attacker would have to correctly guess the pseudorandom value. If the pseudorandom value is cryptographically strong, this will be prohibitively difficult.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis technique requires Javascript, so it may not work for browsers that have Javascript disabled. [REF-331]\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness_notes": "Note that this can probably be bypassed using XSS (CWE-79), or when using web technologies that enable the attacker to read raw headers from HTTP requests."
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Do not use the GET method for any request that triggers a state change."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons."
+      ],
+      "effectiveness_notes": "Note that this can be bypassed using XSS (CWE-79). An attacker could use XSS to generate a spoofed Referer, or to generate a malicious request from a page whose Referer would be allowed."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis example PHP code attempts to secure the form submission process by validating that the user submitting the form has a valid session. A CSRF attack would not be prevented by this countermeasure because the attacker forges a request through the user's web browser in which a valid session already exists.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eThe following HTML is intended to allow a user to update a profile.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"HTML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;form action=\"/url/profile.php\" method=\"post\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"text\" name=\"firstname\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"text\" name=\"lastname\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;br/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"text\" name=\"email\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"submit\" name=\"submit\" value=\"Update\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/form\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eprofile.php contains the following code.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e// initiate the session in order to validate sessions\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003esession_start();\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e//if the session is registered to a valid user then allow update\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eif (! session_is_registered(\"username\")) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003eecho \"invalid session detected!\";\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// Redirect user to login page\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e[...]\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eexit;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// The user session is valid, so process the request\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// and update the information\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eupdate_profile();\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003efunction update_profile {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// read in the data from $POST and send an update\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// to the database\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eSendUpdateToDatabase($_SESSION['username'], $_POST['email']);\u003cxhtml:br/\u003e[...]\u003cxhtml:br/\u003eecho \"Your profile has been successfully updated.\";\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code may look protected since it checks for a valid session. However, CSRF attacks can be staged from virtually any tag or HTML construct, including image tags, links, embed or object tags, or other attributes that load background images.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThe attacker can then host code that will silently change the username and email address of any user that visits the page while remaining logged in to the target web application. The code might be an innocent-looking web page such as:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"HTML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;SCRIPT\u0026gt;\u003cxhtml:br/\u003efunction SendAttack () {\u003cxhtml:div style=\"margin-left:10px;\"\u003eform.email = \"attacker@example.com\";\u003cxhtml:br/\u003e\n                        \u003cxhtml:i\u003e// send to profile.php\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003eform.submit();\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\u0026lt;/SCRIPT\u0026gt;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\u0026lt;BODY onload=\"javascript:SendAttack();\"\u0026gt;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\u0026lt;form action=\"http://victim.example.com/profile.php\" id=\"form\" method=\"post\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"hidden\" name=\"firstname\" value=\"Funny\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"hidden\" name=\"lastname\" value=\"Joke\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;br/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;input type=\"hidden\" name=\"email\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/form\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eNotice how the form contains hidden fields, so when it is loaded into the browser, the user will not notice it. Because SendAttack() is defined in the body's onload attribute, it will be automatically called when the victim loads the web page.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAssuming that the user is already logged in to victim.example.com, profile.php will see that a valid user session has been established, then update the email address to the attacker's own address. At this stage, the user's identity has been compromised, and messages sent through this profile could be sent to the attacker's address.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2004-1703",
+      "description": "Add user accounts via a URL in an img tag",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1703"
+    },
+    {
+      "reference": "CVE-2004-1995",
+      "description": "Add user accounts via a URL in an img tag",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1995"
+    },
+    {
+      "reference": "CVE-2004-1967",
+      "description": "Arbitrary code execution by specifying the code in a crafted img tag or URL",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1967"
+    },
+    {
+      "reference": "CVE-2004-1842",
+      "description": "Gain administrative privileges via a URL in an img tag",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1842"
+    },
+    {
+      "reference": "CVE-2005-1947",
+      "description": "Delete a victim's information via a URL or an img tag",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1947"
+    },
+    {
+      "reference": "CVE-2005-2059",
+      "description": "Change another user's settings via a URL or an img tag",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2059"
+    },
+    {
+      "reference": "CVE-2005-1674",
+      "description": "Perform actions as administrator via a URL or an img tag",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1674"
+    },
+    {
+      "reference": "CVE-2009-3520",
+      "description": "modify password for the administrator",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3520"
+    },
+    {
+      "reference": "CVE-2009-3022",
+      "description": "CMS allows modification of configuration via CSRF attack against the administrator",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3022"
+    },
+    {
+      "reference": "CVE-2009-3759",
+      "description": "web interface allows password changes or stopping a virtual machine via CSRF",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3759"
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 2: Web-Server Related Vulnerabilities (XSS, XSRF, and\n Response Splitting).\" Page 37",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-329",
+      "author": [
+        "Peter W"
+      ],
+      "title": "Cross-Site Request Forgeries (Re: The Dangers of Allowing Users to Post Images)",
+      "url": "http://marc.info/?l=bugtraq\u0026m=99263135911884\u0026w=2",
+      "publication": "Bugtraq"
+    },
+    {
+      "reference_id": "REF-330",
+      "author": [
+        "OWASP"
+      ],
+      "title": "Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet",
+      "url": "http://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet"
+    },
+    {
+      "reference_id": "REF-331",
+      "author": [
+        "Edward W. Felten",
+        "William Zeller"
+      ],
+      "title": "Cross-Site Request Forgeries: Exploitation and Prevention",
+      "url": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.147.1445",
+      "publication_year": "2008",
+      "publication_month": "--10",
+      "publication_day": "---18"
+    },
+    {
+      "reference_id": "REF-332",
+      "author": [
+        "Robert Auger"
+      ],
+      "title": "CSRF - The Cross-Site Request Forgery (CSRF/XSRF) FAQ",
+      "url": "http://www.cgisecurity.com/articles/csrf-faq.shtml"
+    },
+    {
+      "reference_id": "REF-333",
+      "title": "Cross-site request forgery",
+      "url": "http://en.wikipedia.org/wiki/Cross-site_request_forgery",
+      "publication_year": "2008",
+      "publication_month": "--12",
+      "publication_day": "---22",
+      "publisher": "Wikipedia"
+    },
+    {
+      "reference_id": "REF-334",
+      "author": [
+        "Jason Lam"
+      ],
+      "title": "Top 25 Series - Rank 4 - Cross Site Request Forgery",
+      "url": "http://software-security.sans.org/blog/2010/03/03/top-25-series-rank-4-cross-site-request-forgery",
+      "publication_year": "2010",
+      "publication_month": "--03",
+      "publication_day": "---03",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-335",
+      "author": [
+        "Jeff Atwood"
+      ],
+      "title": "Preventing CSRF and XSRF Attacks",
+      "url": "http://www.codinghorror.com/blog/2008/10/preventing-csrf-and-xsrf-attacks.html",
+      "publication_year": "2008",
+      "publication_month": "--10",
+      "publication_day": "---14"
+    },
+    {
+      "reference_id": "REF-45",
+      "author": [
+        "OWASP"
+      ],
+      "title": "OWASP Enterprise Security API (ESAPI) Project",
+      "url": "http://www.owasp.org/index.php/ESAPI"
+    },
+    {
+      "reference_id": "REF-956",
+      "author": [
+        "Wikipedia"
+      ],
+      "title": "Samy (computer worm)",
+      "url": "https://en.wikipedia.org/wiki/Samy_(computer_worm)",
+      "url_date": "2018-01-16"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Description, Relationships, Other_Notes, Relationship_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Description, Likelihood_of_Exploit, Observed_Examples, Other_Notes, Potential_Mitigations, References, Relationship_Notes, Relationships, Research_Gaps, Theoretical_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "Tom Stracener",
+        "modification_date": "2009-05-20T00:00:00Z",
+        "modification_comment": "Added demonstrative example for profile."
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Detection_Factors, Likelihood_of_Exploit, Observed_Examples, Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Detection_Factors, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Detection_Factors, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Likelihood_of_Exploit, Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References, Relationship_Notes, Research_Gaps"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Relationships, Theoretical_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "Session Riding"
+    },
+    {
+      "term": "Cross Site Reference Forgery"
+    },
+    {
+      "term": "XSRF"
+    }
+  ],
+  "detection_methods": [
+    {
+      "detection_method_id": "DM-7",
+      "method": "Manual Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eThis weakness can be detected using tools and techniques that require manual (human) analysis, such as penetration testing, threat modeling, and interactive tools that allow the tester to record and modify an active session.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eSpecifically, manual analysis can be useful for finding this weakness, and for minimizing false positives assuming an understanding of business logic. However, it might not achieve desired code coverage within limited time constraints. For black-box analysis, if credentials are not known for privileged accounts, then the most security-critical portions of the application may not receive sufficient attention.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eConsider using OWASP CSRFTester to identify potential issues and aid in manual analysis.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness": "High",
+      "effectiveness_notes": "These may be more effective than strictly automated techniques. This is especially the case with weaknesses that are related to design and business rules."
+    },
+    {
+      "method": "Automated Static Analysis",
+      "description": "CSRF is currently difficult to detect reliably using automated techniques. This is because each application has its own implicit security policy that dictates which requests can be influenced by an outsider and automatically performed on behalf of a user, versus which requests require strong confidence that the user intends to make the request. For example, a keyword search of the public portion of a web site is typically expected to be encoded within a link that can be launched automatically when the user clicks on the link.",
+      "effectiveness": "Limited"
+    },
+    {
+      "method": "Automated Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBytecode Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eBinary Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Manual Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBinary / Bytecode disassembler - then use manual analysis for vulnerabilities \u0026amp; anomalies\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eSource code Weakness Analyzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Cross-Site Request Forgery (CSRF)"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Cross Site Request Forgery (CSRF)",
+      "entry_id": "A5",
+      "mapping_fit": "Exact"
+    },
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "Cross-site Request Forgery",
+      "entry_id": "9"
+    }
+  ],
+  "related_attack_patterns": [
+    "111",
+    "462",
+    "467",
+    "62"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "\n               \u003cxhtml:p\u003eThere can be a close relationship between XSS and CSRF (CWE-352).  An attacker might use CSRF in order to trick the victim into submitting requests to the server in which the requests contain an XSS payload.  A well-known example of this was the Samy worm on MySpace [REF-956]. The worm used XSS to insert malicious HTML sequences into a user's profile and add the attacker as a MySpace friend.  MySpace friends of that victim would then execute the payload to modify their own profiles, causing the worm to propagate exponentially. Since the victims did not intentionally insert the malicious script themselves, CSRF was a root cause.\u003c/xhtml:p\u003e\n            "
+    },
+    {
+      "type": "Theoretical",
+      "text": "\n               \u003cxhtml:p\u003eThe CSRF topology is multi-channel:\u003c/xhtml:p\u003e\n               \u003cxhtml:ol\u003e\n                  \u003cxhtml:li\u003eAttacker (as outsider) to intermediary (as user). The interaction point is either an external or internal channel.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eIntermediary (as user) to server (as victim). The activation point is an internal channel.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ol\u003e\n            "
+    }
+  ]
+}

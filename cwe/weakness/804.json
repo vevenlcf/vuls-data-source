@@ -1,0 +1,118 @@
+{
+  "id": "804",
+  "name": "Guessable CAPTCHA",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses a CAPTCHA challenge, but the challenge can be guessed or automatically recognized by a non-human actor.",
+  "extended_description": "\n            \u003cxhtml:p\u003eAn automated attacker could bypass the intended protection of the CAPTCHA challenge and perform actions at a higher frequency than humanly possible, such as launching spam attacks.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThere can be several different causes of a guessable CAPTCHA:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003eAn audio or visual image that does not have sufficient distortion from the unobfuscated source image.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eA question is generated that with a format that can be automatically recognized, such as a math question.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eA question for which the number of possible answers is limited, such as birth years or favorite sports teams.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eA general-knowledge or trivia question for which the answer can be accessed using a data base, such as country capitals or popular actors.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eOther data associated with the CAPTCHA may provide hints about its contents, such as an image whose filename contains the word that is used in the CAPTCHA.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "863",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "330",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Sometimes",
+        "name": "Web Server"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control",
+        "Other"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism",
+        "Other"
+      ],
+      "note": "When authorization, authentication, or another protection mechanism relies on CAPTCHA entities to ensure that only human actors can access certain functionality, then an automated attacker such as a bot may access the restricted functionality by guessing the CAPTCHA."
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-731",
+      "author": [
+        "Web Application Security Consortium"
+      ],
+      "title": "Insufficient Anti-automation",
+      "url": "http://projects.webappsec.org/Insufficient+Anti-automation"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2010-01-15T00:00:00Z",
+      "submission_comment": "New entry to handle anti-automation as identified in WASC."
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Likelihood_of_Exploit"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "Insufficient Anti-Automation",
+      "entry_id": "21"
+    }
+  ]
+}

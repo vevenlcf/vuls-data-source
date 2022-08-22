@@ -1,0 +1,96 @@
+{
+  "id": "1286",
+  "name": "Improper Validation of Syntactic Correctness of Input",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product receives input that is expected to be well-formed - i.e., to comply with a certain syntax - but it does not validate or incorrectly validates that the input complies with the syntax.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eOften, complex inputs are expected to follow a particular syntax, which is either assumed by the input itself, or declared within metadata such as headers. The syntax could be for data exchange formats, markup languages, or even programming languages.  When untrusted input is not properly validated for the expected syntax, attackers could cause parsing failures, trigger unexpected errors, or expose latent vulnerabilities that might not be directly exploitable if the input had conformed to the syntax.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "20",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Often"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Varies by Context"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-5",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eAssume all input is malicious. Use an \"accept known good\" input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, \"boat\" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as \"red\" or \"blue.\"\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDo not rely exclusively on looking for malicious or malformed inputs.  This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "High",
+      "strategy": "Input Validation"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code loads and parses an XML file.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// Read DOM\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003cxhtml:br/\u003eDocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();\u003cxhtml:br/\u003efactory.setValidating( false );\u003cxhtml:br/\u003e....\u003cxhtml:br/\u003ec_dom = factory.newDocumentBuilder().parse( xmlFile );\u003c/xhtml:div\u003e} catch(Exception ex) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe XML file is loaded without validating it against a known XML Schema or DTD.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-5893",
+      "description": "HTTP request with missing protocol version number leads to crash",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5893"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2020-06-24T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "66",
+    "676"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "This entry is still under development and will continue to see updates and content improvements."
+    }
+  ]
+}

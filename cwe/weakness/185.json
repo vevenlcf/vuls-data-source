@@ -1,0 +1,296 @@
+{
+  "id": "185",
+  "name": "Incorrect Regular Expression",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software specifies a regular expression in a way that causes data to be improperly matched or compared.",
+  "extended_description": "When the regular expression is used in protection mechanisms such as filtering or validation, this may allow an attacker to bypass the intended restrictions on the incoming data.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "697",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "187",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "182",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Unexpected State",
+        "Varies by Context"
+      ],
+      "note": "When the regular expression is not correctly specified, data might have a different format or type than the rest of the program expects, producing resultant weaknesses or errors."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "In PHP, regular expression checks can sometimes be bypassed with a null byte, leading to any number of weaknesses."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-45",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Regular expressions can become error prone when defining a complex language even for those experienced in writing grammars. Determine if several smaller regular expressions simplify one large regular expression. Also, subject the regular expression to thorough testing techniques such as equivalence partitioning, boundary value analysis, and robustness. After testing and a reasonable confidence level is achieved, a regular expression may not be foolproof. If an exploit is allowed to slip through, then record the exploit and refactor the regular expression."
+      ],
+      "strategy": "Refactoring"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-37",
+      "text": "\n               \u003cIntro_Text\u003eThe following code takes phone numbers as input, and uses a regular expression to reject invalid phone numbers.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003e$phone = GetPhoneNumber();\u003cxhtml:br/\u003eif ($phone =~ /\\d+-\\d+/) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:i\u003e# looks like it only has hyphens and digits\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003esystem(\"lookup-phone $phone\");\u003c/xhtml:div\u003e}\n\t\t\t\t  \u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eerror(\"malformed number!\");\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAn attacker could provide an argument such as: \"; ls -l ; echo 123-456\" This would pass the check, since \"123-456\" is sufficient to match the \"\\d+-\\d+\" portion of the regular expression.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2002-2109",
+      "description": "Regexp isn't \"anchored\" to the beginning or end, which allows spoofed values that have trusted values as substrings.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2109"
+    },
+    {
+      "reference": "CVE-2005-1949",
+      "description": "Regexp for IP address isn't anchored at the end, allowing appending of shell metacharacters.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1949"
+    },
+    {
+      "reference": "CVE-2001-1072",
+      "description": "Bypass access restrictions via multiple leading slash, which causes a regular expression to fail.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1072"
+    },
+    {
+      "reference": "CVE-2000-0115",
+      "description": "Local user DoS via invalid regular expressions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0115"
+    },
+    {
+      "reference": "CVE-2002-1527",
+      "description": "chain: Malformed input generates a regular expression error that leads to information exposure.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1527"
+    },
+    {
+      "reference": "CVE-2005-1061",
+      "description": "Certain strings are later used in a regexp, leading to a resultant crash.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1061"
+    },
+    {
+      "reference": "CVE-2005-2169",
+      "description": "MFV. Regular expression intended to protect against directory traversal reduces \".../...//\" to \"../\".",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2169"
+    },
+    {
+      "reference": "CVE-2005-0603",
+      "description": "Malformed regexp syntax leads to information exposure in error message.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0603"
+    },
+    {
+      "reference": "CVE-2005-1820",
+      "description": "Code injection due to improper quoting of regular expression.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1820"
+    },
+    {
+      "reference": "CVE-2005-3153",
+      "description": "Null byte bypasses PHP regexp check.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3153"
+    },
+    {
+      "reference": "CVE-2005-4155",
+      "description": "Null byte bypasses PHP regexp check.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4155"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 10, \"Using Regular Expressions for Checking Input\" Page 350",
+      "reference_id": "REF-7",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc"
+      ],
+      "title": "Writing Secure Code",
+      "url": "https://www.microsoftpressstore.com/store/writing-secure-code-9780735617223",
+      "publication_year": "2002",
+      "publication_month": "--12",
+      "publication_day": "---04",
+      "publisher": "Microsoft Press",
+      "edition": "2nd Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Name, Relationships, Observed_Example, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Other_Notes, Relationship_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Relationship_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Regular Expression Error",
+        "date": "2008-09-09T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Regular Expression Error"
+    }
+  ],
+  "related_attack_patterns": [
+    "15",
+    "6",
+    "79"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "While there is some overlap with allowlist/denylist problems, this entry is intended to deal with incorrectly written regular expressions, regardless of their intended use. Not every regular expression is intended for use as an allowlist or denylist. In addition, allowlists and denylists can be implemented using other mechanisms besides regular expressions."
+    },
+    {
+      "type": "Research Gap",
+      "text": "Regexp errors are likely a primary factor in many MFVs, especially those that require multiple manipulations to exploit. However, they are rarely diagnosed at this level of detail."
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "id": "1222",
+  "name": "Insufficient Granularity of Address Regions Protected by Register Locks",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product defines a large address region protected from modification by the same register lock control bit. This results in a conflict between the functional requirement that some addresses need to be writable by software during operation and the security requirement that the system configuration lock bit must be set during the boot process.",
+  "extended_description": "\n                \u003cxhtml:p\u003eIntegrated circuits and hardware IPs can expose the device configuration controls that need to be programmed after device power reset by a trusted firmware or software module (commonly set by BIOS/bootloader) and then locked from any further modification. In hardware design, this is commonly implemented using a programmable lock bit which enables/disables writing to a protected set of registers or address regions. When the programmable lock bit is set, the relevant address region can be implemented as a hardcoded value in hardware logic that cannot be changed later.\u003c/xhtml:p\u003e\n                \u003cxhtml:p\u003eA problem can arise wherein the protected region definition is not granular enough. After the programmable lock bit has been set, then this new functionality cannot be implemented without change to the hardware design.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1220",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "Such issues are introduced during hardware architecture and design since software controls and configuration are defined during these phases and identified later during Testing or System Configuration phases."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Other"
+      ],
+      "note": "System security configuration cannot be defined in a way that does not conflict with functional requirements of device."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:p\u003eThe defining of protected locked registers should be reviewed or tested early in the design phase with software teams to ensure software flows are not blocked by the security locks.\u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003eAs an alternative to using register lock control bits and fixed access control regions, the hardware design could use programmable security access control configuration so that device trusted firmware can configure and change the protected regions based on software usage and security models.\u003c/xhtml:p\u003e\n                    "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eFor example, consider a hardware unit with a 32 kilobyte configuration address space where the first 8 kilobyte address contains security sensitive controls that must only be writable by device bootloader. One way to protect the security configuration could be to define a 32 bit system configuration locking register (SYS_LOCK) where each bit lock locks the corresponding 1 kilobyte region. \u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tbody\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:th\u003eAddress\u003c/xhtml:th\u003e\n                                    \u003cxhtml:th\u003eRegister\u003c/xhtml:th\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e0x0000\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td\u003eSYS_LOCK: 32 bit system configuration lock register, each bit is write-1-once\u003c/xhtml:td\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e0x0004\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td\u003eSECURITY_FEATURE_ENABLE: 32 bit register controlling enabling of security features\u003c/xhtml:td\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e...\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td/\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e0x0310\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td\u003eSW_MODE: 32 bit Software Mode indication register \u003c/xhtml:td\u003e\n                                \u003c/xhtml:tr\u003e\n                            \u003c/xhtml:tbody\u003e\n                        \u003c/xhtml:table\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tbody\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:th\u003eAddress region\u003c/xhtml:th\u003e\n                                    \u003cxhtml:th\u003eLock bit\u003c/xhtml:th\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e0x0000 - 0x03FF\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td\u003eSYS_LOCK[0]\u003c/xhtml:td\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e0x0400 - 0x07FF\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td\u003eSYS_LOCK[1]\u003c/xhtml:td\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e...\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td/\u003e\n                                \u003c/xhtml:tr\u003e\n                                \u003cxhtml:tr\u003e\n                                    \u003cxhtml:td\u003e0x7C00 - 0x7FFF\u003c/xhtml:td\u003e\n                                    \u003cxhtml:td\u003eSYS_LOCK[31]\u003c/xhtml:td\u003e\n                                \u003c/xhtml:tr\u003e\n                            \u003c/xhtml:tbody\u003e\n                        \u003c/xhtml:table\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eIf a register exists within the first kilobyte address range (e.g. SW_MODE, address 0x310) and needs to be software writable at runtime, then this register cannot be written in a securely configured system since SYS_LOCK register lock bit 0 must be set to protect other security settings (e.g. SECURITY_FEATURE_ENABLE, address 0x0004). The only fix would be to change the hardware logic or not set the security lock bit.\u003c/Body_Text\u003e\n                "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2019-12-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "679"
+  ]
+}

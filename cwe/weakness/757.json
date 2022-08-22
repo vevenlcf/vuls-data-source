@@ -1,0 +1,149 @@
+{
+  "id": "757",
+  "name": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "A protocol or its implementation supports interaction between multiple actors and allows those actors to negotiate which algorithm should be used as a protection mechanism such as encryption or authentication, but it does not select the strongest algorithm that is available to both parties.",
+  "extended_description": "When a security mechanism can be forced to downgrade to use a less secure algorithm, this can make it easier for attackers to compromise the software by exploiting weaker algorithm. The victim might not be aware that the less secure algorithm is being used. For example, if an attacker can force a communications channel to use cleartext instead of strongly-encrypted data, then the attacker could read the channel by sniffing, instead of going through extra effort of trying to decrypt the data using brute force techniques.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "693",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {},
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2006-4302",
+      "description": "Attacker can select an older version of the software to exploit its vulnerabilities.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4302"
+    },
+    {
+      "reference": "CVE-2006-4407",
+      "description": "Improper prioritization of encryption ciphers during negotiation leads to use of a weaker cipher.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4407"
+    },
+    {
+      "reference": "CVE-2005-2969",
+      "description": "chain: SSL/TLS implementation disables a verification step (CWE-325) that enables a downgrade attack to a weaker protocol.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2969"
+    },
+    {
+      "reference": "CVE-2001-1444",
+      "description": "Telnet protocol implementation allows downgrade to weaker authentication and encryption using an Adversary-in-the-Middle AITM attack.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1444"
+    },
+    {
+      "reference": "CVE-2002-1646",
+      "description": "SSH server implementation allows override of configuration setting to use weaker authentication schemes. This may be a composite with CWE-642.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1646"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2009-03-03T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-01-19T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationship_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "220",
+    "606",
+    "620"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "This is related to CWE-300, although not all downgrade attacks necessarily require an entity that redirects or interferes with the network.  See examples."
+    }
+  ]
+}

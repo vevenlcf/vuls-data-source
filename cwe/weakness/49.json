@@ -1,0 +1,171 @@
+{
+  "id": "49",
+  "name": "Path Equivalence: 'filename/' (Trailing Slash)",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "A software system that accepts path input in the form of trailing slash ('filedir/') without appropriate validation can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "41",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "162",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Read Files or Directories",
+        "Modify Files or Directories"
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2002-0253",
+      "description": "Overlaps infoleak",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0253"
+    },
+    {
+      "reference": "CVE-2001-0446",
+      "description": "Application server allows remote attackers to read source code for .jsp files by appending a / to the requested URL.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0446"
+    },
+    {
+      "reference": "CVE-2004-0334",
+      "description": "Bypass Basic Authentication for files using trailing \"/\"",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0334"
+    },
+    {
+      "reference": "CVE-2001-0893",
+      "description": "Read sensitive files with trailing \"/\"",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0893"
+    },
+    {
+      "reference": "CVE-2001-0892",
+      "description": "Web server allows remote attackers to view sensitive files under the document root (such as .htpasswd) via a GET request with a trailing /.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0892"
+    },
+    {
+      "reference": "CVE-2004-1814",
+      "description": "Directory traversal vulnerability in server allows remote attackers to read protected files via .. (dot dot) sequences in an HTTP request.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1814"
+    },
+    {
+      "reference": "BID:3518",
+      "description": "Source code disclosure",
+      "link": "http://www.securityfocus.com/bid/3518"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Path Issue - Trailing Slash - filedir/",
+        "date": "2008-04-11T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "filedir/ (trailing slash, trailing /)"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Path Traversal",
+      "entry_id": "SFP16"
+    }
+  ]
+}

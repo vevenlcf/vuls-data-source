@@ -1,0 +1,202 @@
+{
+  "id": "325",
+  "name": "Missing Cryptographic Step",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product does not implement a required step in a cryptographic algorithm, resulting in weaker encryption than advertised by the algorithm.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "573",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "358",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "Developers sometimes omit \"expensive\" (resource-intensive) steps in order to improve performance, especially in devices with limited memory or slower CPUs. This step may be taken under a mistaken impression that the step is unnecessary for the cryptographic algorithm.\n               "
+      ]
+    },
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Requirements",
+      "note": [
+        "This issue may happen when the requirements for the cryptographic algorithm are not clearly stated.\n               "
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ]
+    },
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Read Application Data",
+        "Modify Application Data"
+      ]
+    },
+    {
+      "scope": [
+        "Accountability",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Hide Activities"
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2001-1585",
+      "description": "Missing challenge-response step allows authentication bypass using public key.",
+      "link": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1585"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Functional_Areas, Modes_of_Introduction, Relationships, Observed_Example, Relationship_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Description, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Modes_of_Introduction, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Missing Required Cryptographic Step",
+        "date": "2020-08-20T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Missing Required Cryptographic Step"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Insecure Cryptographic Storage",
+      "entry_id": "A8",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Insecure Communications",
+      "entry_id": "A9",
+      "mapping_fit": "CWE More Specific"
+    }
+  ],
+  "related_attack_patterns": [
+    "68"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "Overlaps incomplete/missing security check."
+    },
+    {
+      "type": "Relationship",
+      "text": "Can be resultant."
+    }
+  ],
+  "functional_areas": [
+    "Cryptography"
+  ]
+}

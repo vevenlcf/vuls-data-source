@@ -1,0 +1,180 @@
+{
+  "id": "110",
+  "name": "Struts: Validator Without Form Field",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "Validation fields that do not appear in forms they are associated with indicate that the validation logic is out of date.",
+  "extended_description": "\n            \u003cxhtml:p\u003eIt is easy for developers to forget to update validation logic when they make changes to an ActionForm class. One indication that validation logic is not being properly maintained is inconsistencies between the action form and the validation form.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eAlthough J2EE applications are not generally susceptible to memory corruption attacks, if a J2EE application interfaces with native code that does not perform array bounds checking, an attacker may be able to use an input validation mistake in the J2EE application to launch a buffer overflow attack.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1164",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "20",
+      "view_id": "700",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Java"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Other"
+      ],
+      "note": "It is critically important that validation logic be maintained and kept in sync with the rest of the application. Unchecked input is the root cause of some of today's worst and most common software security problems. Cross-site scripting, SQL injection, and process control vulnerabilities all stem from incomplete or absent input validation."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis example shows an inconsistency between an action form and a validation form. with a third field.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eThis first block of code shows an action form that has two fields, startDate and endDate.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class DateRangeForm extends ValidatorForm {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eString startDate, endDate;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic void setStartDate(String startDate) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.startDate = startDate;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic void setEndDate(String endDate) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.endDate = endDate;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis second block of related code shows a validation form with a third field: scale. The presence of the third field suggests that DateRangeForm was modified without taking validation into account.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"XML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;form name=\"DateRangeForm\"\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;field property=\"startDate\" depends=\"date\"\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;arg0 key=\"start.date\"/\u0026gt;\u003c/xhtml:div\u003e\u0026lt;/field\u0026gt;\u003cxhtml:br/\u003e\u0026lt;field property=\"endDate\" depends=\"date\"\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;arg0 key=\"end.date\"/\u0026gt;\u003c/xhtml:div\u003e\u0026lt;/field\u0026gt;\u003cxhtml:br/\u003e\u0026lt;field property=\"scale\" depends=\"integer\"\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;arg0 key=\"range.scale\"/\u0026gt;\u003c/xhtml:div\u003e\u0026lt;/field\u0026gt;\u003c/xhtml:div\u003e\u0026lt;/form\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-6",
+      "author": [
+        "Katrina Tsipenyuk",
+        "Brian Chess",
+        "Gary McGraw"
+      ],
+      "title": "Seven Pernicious Kingdoms: A Taxonomy of Software Security Errors",
+      "url": "https://samate.nist.gov/SSATTM_Content/papers/Seven%20Pernicious%20Kingdoms%20-%20Taxonomy%20of%20Sw%20Security%20Errors%20-%20Tsipenyuk%20-%20Chess%20-%20McGraw.pdf",
+      "publication_year": "2005",
+      "publication_month": "--11",
+      "publication_day": "---07",
+      "publication": "NIST Workshop on Software Security Assurance Tools Techniques and Metrics",
+      "publisher": "NIST"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "7 Pernicious Kingdoms",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Causal_Nature, Demonstrative_Examples, Detection_Factors, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Automated Static Analysis",
+      "description": "To find the issue in the implementation, manual checks or automated static analysis could be applied to the XML configuration files.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "method": "Manual Static Analysis",
+      "description": "To find the issue in the implementation, manual checks or automated static analysis could be applied to the XML configuration files.",
+      "effectiveness": "Moderate"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "Struts: Validator Without Form Field"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Tainted input to command",
+      "entry_id": "SFP24"
+    }
+  ]
+}

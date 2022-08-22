@@ -1,0 +1,129 @@
+{
+  "id": "1209",
+  "name": "Failure to Disable Reserved Bits",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The reserved bits in a hardware design are not disabled prior to production. Typically, reserved bits are used for future capabilities and should not support any functional logic in the design.   However, designers might covertly use these bits to debug or further develop new capabilities in production hardware. Adversaries with access to these bits will write to them in hopes of compromising hardware state.",
+  "extended_description": "\n                \u003cxhtml:p\u003eReserved bits are labeled as such so they can be allocated for a later purpose. They are not to do anything in the current design.  However, designers might want to use these bits to debug or control/configure a future capability to help minimize time to market (TTM). If the logic being controlled by these bits is still enabled in production, an adversary could use the logic to induce unwanted/unsupported behavior in the hardware.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "710",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "The Designer and Implementer have to make a conscious choice to do this"
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "The Designer and Implementer have to make a conscious choice to do this"
+      ]
+    },
+    {
+      "phase": "Documentation",
+      "note": [
+        "If documentation labels anything \"for future use\", \"reserved\", or the like, such labeling could indicate to an attacker a potential attack point"
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control",
+        "Accountability",
+        "Authentication",
+        "Authorization",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Varies by Context"
+      ],
+      "note": "This type of weakness all depends on the capabilities of the logic being controlled or configured by the reserved bits"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:p\u003eInclude a feature to disable reserved bits.\u003c/xhtml:p\u003e                     \n                    "
+      ]
+    },
+    {
+      "phase": [
+        "Integration"
+      ],
+      "description": [
+        "\n                    \t\u003cxhtml:p\u003eAny writes to these reserve bits are blocked (e.g., ignored, access-protected, etc.), or an exception can be asserted.\u003c/xhtml:p\u003e\n                    "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eAn adversary may perform writes to reserve space in hopes to change the behavior of the hardware.\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:div\u003e// Assume an IP has address space 0x0-0x0F for its configuration registers, with the last one labeled reserved (i.e. 0x0F).  Therefore inside the Finite State Machine (FSM), the code is as follows:\n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003ereg gpio_out = 0;  //gpio should remain low for normal operation\n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003ecase (register_address)\n                        \u003cxhtml:br/\u003e\t\t4'b1111 : //0x0F\n                        \u003cxhtml:br/\u003e\t\t\tbegin\n                        \u003cxhtml:br/\u003e\t\t\t\tgpio_out = 1;  \n                        \u003cxhtml:br/\u003e\t\t\tend\u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eIn the code above, the GPIO pin should remain low for normal operation.  However, it can be asserted by accessing the reserved address space (0x0F).  This may be a concern if the GPIO state is being used as an indicator of health (e.g. if asserted the hardware may respond by shutting down or resetting the system which may not be the correct action the system should perform).\u003c/Body_Text\u003e\n                \t\u003cExample_Code Nature=\"informative\"\u003e\n                  \t\t\u003cxhtml:div\u003ereg gpio_out = 0;  //gpio should remain low for normal operation\n                  \t\t\u003cxhtml:br/\u003ecase (register_address)\n                  \t\t\u003cxhtml:br/\u003e\t\t//4'b1111 : //0x0F\n                  \t\t\u003cxhtml:br/\u003e\t\tdefault: gpio_out = gpio_out;\u003c/xhtml:div\u003e\n               \t\t\u003c/Example_Code\u003e\n            \t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Brent Sherman",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-06T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "121"
+  ]
+}

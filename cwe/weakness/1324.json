@@ -1,0 +1,137 @@
+{
+  "id": "1324",
+  "name": "Sensitive Information Accessible by Physical Probing of JTAG Interface",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "Sensitive information in clear text on the JTAG\n                interface may be examined by an eavesdropper, e.g.\n                by placing a probe device on the interface such as a logic\n                analyzer, or a corresponding software technique.\n            ",
+  "extended_description": "\n                \u003cxhtml:p\u003eOn a debug configuration with a remote host,\n                    unbeknownst to the host/user, an attacker with physical\n                    access to a target system places a probing device on the\n                    debug interface or software related to the JTAG port e.g.\n                    device driver. While the authorized host/user performs\n                    sensitive operations to the target system, the attacker\n                    uses the probe to collect the JTAG traffic. \n                \u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "300",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Test/Debug Hardware"
+      },
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "May be introduced when design does not plan for an attacker having physical access while legitimate user is remotely operating device"
+      ]
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory",
+        "Read Files or Directories",
+        "Read Application Data"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Manufacturing"
+      ],
+      "description": [
+        "Disable permanently the JTAG interface before releasing the system to untrusted users."
+      ],
+      "effectiveness": "High"
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Encrypt all information (traffic) on the JTAG interface using an approved algorithm (such as recommended by NIST). Encrypt the path from inside the chip to the trusted user application."
+      ],
+      "effectiveness": "High"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Block access to secret data from JTAG."
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003e\n                        A TAP accessible register is read/written by a JTAG\n                        based tool, for internal tool use for an authorized\n                        user.  The JTAG based tool does not provide access to\n                        this data to an unauthorized user of the tool.\n                        However, the user can connect a probing device and\n                        collect the values directly from the JTAG interface, if\n                        no additional protections are employed.\n                    \u003c/Intro_Text\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Accellera IP Security Assurance (IPSA) Working Group",
+      "submission_organization": "Accellera Systems Initiative",
+      "submission_date": "2020-10-01T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "150",
+    "167",
+    "545"
+  ]
+}

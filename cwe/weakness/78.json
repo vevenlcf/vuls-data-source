@@ -1,0 +1,879 @@
+{
+  "id": "78",
+  "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Stable",
+  "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
+  "extended_description": "\n            \u003cxhtml:p\u003eThis could allow attackers to execute unexpected, dangerous commands directly on the operating system. This weakness can lead to a vulnerability in environments in which the attacker does not have direct access to the operating system, such as in web applications. Alternately, if the weakness occurs in a privileged program, it could allow the attacker to specify commands that normally would not be accessible, or to call alternate commands with privileges that the attacker does not have. The problem is exacerbated if the compromised process does not follow the principle of least privilege, because the attacker-controlled commands may run with special system privileges that increases the amount of damage.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThere are at least two subtypes of OS command injection:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ol\u003e\n                  \u003cxhtml:li\u003eThe application intends to execute a single, fixed program that is under its own control. It intends to use externally-supplied inputs as arguments to that program. For example, the program might use system(\"nslookup [HOSTNAME]\") to run nslookup and allow the user to supply a HOSTNAME, which is used as an argument. Attackers cannot prevent nslookup from executing. However, if the program does not remove command separators from the HOSTNAME argument, attackers could place the separators into the arguments, which allows them to execute their own program after nslookup has finished executing.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eThe application accepts an input that it uses to fully select which program to run, as well as which commands to use. The application simply redirects this entire command to the operating system. For example, the program might use \"exec([COMMAND])\" to execute the [COMMAND] that was supplied by the user. If the COMMAND is under attacker control, then the attacker can execute arbitrary commands or programs. If the command is being executed using functions like exec() and CreateProcess(), the attacker might not be able to combine multiple commands together in the same line.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ol\u003e\n            \u003c/xhtml:div\u003e\n            \u003cxhtml:p\u003eFrom a weakness standpoint, these variants represent distinct programmer errors. In the first variant, the programmer clearly intends that input from untrusted parties will be part of the arguments in the command to be executed. In the second variant, the programmer does not intend for the command to be accessible to any untrusted party, but the programmer probably has not accounted for alternate ways in which malicious attackers can provide input.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "77",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "74",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "77",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "77",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanAlsoBe",
+      "cweid": "88",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands",
+        "DoS: Crash, Exit, or Restart",
+        "Read Files or Directories",
+        "Modify Files or Directories",
+        "Read Application Data",
+        "Modify Application Data",
+        "Hide Activities"
+      ],
+      "note": "Attackers could execute unauthorized commands, which could then be used to disable the software, or read and modify data for which the attacker does not have permissions to access directly. Since the targeted application is directly executing the commands instead of the attacker, any malicious activities may appear to come from the application or the application's owner."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "If at all possible, use library calls rather than external processes to recreate the desired functionality."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-22",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun the code in a \"jail\" or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eOS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBe careful to avoid CWE-243 and other weaknesses related to jails.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "The effectiveness of this mitigation depends on the prevention capabilities of the specific sandbox or jail being used and might only help to reduce the scope of an attack, such as restricting the attacker to certain system calls or limiting the portion of the file system that can be accessed.",
+      "strategy": "Sandbox or Jail"
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "For any data that will be used to generate a command to be executed, keep as much of that data out of external control as possible. For example, in web applications, this may require storing the data locally in the session's state instead of sending it out to the client in a hidden form field."
+      ],
+      "strategy": "Attack Surface Reduction"
+    },
+    {
+      "mitigation_id": "MIT-15",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-4.3",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, consider using the ESAPI Encoding control [REF-45] or a similar tool, library, or framework. These will help the programmer encode outputs in a manner less prone to error.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "mitigation_id": "MIT-28",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "While it is risky to use dynamically-generated query strings, code, or commands that mix control and data together, sometimes it may be unavoidable. Properly quote arguments and escape any special characters within those arguments. The most conservative approach is to escape or filter all characters that do not pass an extremely strict allowlist (such as everything that is not alphanumeric or white space). If some special characters are still needed, such as white space, wrap each argument in quotes after the escaping/filtering step. Be careful of argument injection (CWE-88)."
+      ],
+      "strategy": "Output Encoding"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If the program to be executed allows arguments to be specified within an input file or from standard input, then consider using that mode to pass arguments instead of the command line."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-27",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eIf available, use structured mechanisms that automatically enforce the separation between data and code. These mechanisms may be able to provide the relevant quoting, encoding, and validation automatically, instead of relying on the developer to provide this capability at every point where output is generated.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eSome languages offer multiple functions that can be used to invoke commands. Where possible, identify any function that invokes a command shell using a single string, and replace it with a function that requires individual arguments. These functions typically perform appropriate quoting and filtering of arguments. For example, in C, the system() function accepts a string that contains the entire command to be executed, whereas execl(), execve(), and others require an array of strings, one for each argument. In Windows, CreateProcess() only accepts one command at a time. In Perl, if system() is provided with an array of arguments, then it will quote each of the arguments.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Parameterization"
+    },
+    {
+      "mitigation_id": "MIT-5",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eAssume all input is malicious. Use an \"accept known good\" input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, \"boat\" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as \"red\" or \"blue.\"\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDo not rely exclusively on looking for malicious or malformed inputs.  This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen constructing OS command strings, use stringent allowlists that limit the character set based on the expected value of the parameter in the request. This will indirectly limit the scope of an attack, but this technique is less important than proper output encoding and escaping.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eNote that proper output encoding, escaping, and quoting is the most effective solution for preventing OS command injection, although input validation may provide some defense-in-depth. This is because it effectively limits what will appear in output. Input validation will not always prevent OS command injection, especially if you are required to support free-form text fields that could contain arbitrary characters. For example, when invoking a mail program, you might need to allow the subject field to contain otherwise-dangerous inputs like \";\" and \"\u0026gt;\" characters, which would need to be escaped or otherwise handled. In this case, stripping the character might reduce the risk of OS command injection, but it would produce incorrect behavior because the subject field would not be recorded as the user intended. This might seem to be a minor inconvenience, but it could be more important when the program relies on well-structured subject lines in order to pass messages to other components.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eEven if you make a mistake in your validation (such as forgetting one out of 100 input fields), appropriate encoding is still likely to protect you from injection-based attacks. As long as it is not done in isolation, input validation is still a useful technique, since it may significantly reduce your attack surface, allow you to detect some attacks, and provide other security benefits that proper encoding does not address.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Input Validation"
+    },
+    {
+      "mitigation_id": "MIT-21",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs."
+      ],
+      "strategy": "Enforcement by Conversion"
+    },
+    {
+      "mitigation_id": "MIT-32",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Run the code in an environment that performs automatic taint propagation and prevents any command execution that uses tainted variables, such as Perl's \"-T\" switch. This will force the program to perform validation steps that remove the taint, although you must be careful to correctly validate your inputs so that you do not accidentally mark dangerous inputs as untainted (see CWE-183 and CWE-184)."
+      ],
+      "strategy": "Compilation or Build Hardening"
+    },
+    {
+      "mitigation_id": "MIT-32",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Run the code in an environment that performs automatic taint propagation and prevents any command execution that uses tainted variables, such as Perl's \"-T\" switch. This will force the program to perform validation steps that remove the taint, although you must be careful to correctly validate your inputs so that you do not accidentally mark dangerous inputs as untainted (see CWE-183 and CWE-184)."
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-39",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eEnsure that error messages only contain minimal details that are useful to the intended audience and no one else. The messages need to strike the balance between being too cryptic (which can confuse users) or being too detailed (which may reveal more than intended). The messages should not reveal the methods that were used to determine the error. Attackers can use detailed information to refine or optimize their original attack, thereby increasing their chances of success.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eIf errors must be captured in some detail, record them in log messages, but consider what could occur if the log messages can be viewed by attackers. Highly sensitive information such as passwords should never be saved to log files.\u003c/xhtml:p\u003e\n\t\t  \u003cxhtml:p\u003eAvoid inconsistent messaging that might accidentally tip off an attacker about internal state, such as whether a user account exists or not.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eIn the context of OS Command Injection, error information passed back to the user might reveal whether an OS command is being executed and possibly which command is being used.\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Use runtime policy enforcement to create an allowlist of allowable commands, then prevent use of any command that does not appear in the allowlist. Technologies such as AppArmor are available to do this."
+      ],
+      "strategy": "Sandbox or Jail"
+    },
+    {
+      "mitigation_id": "MIT-29",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Use an application firewall that can detect attacks against this weakness. It can be beneficial in cases in which the code cannot be fixed (because it is controlled by a third party), as an emergency prevention measure while more comprehensive software assurance measures are applied, or to provide defense in depth."
+      ],
+      "effectiveness": "Moderate",
+      "effectiveness_notes": "An application firewall might not cover all possible input vectors. In addition, attack techniques might be available to bypass the protection mechanism, such as using malformed inputs that can still be processed by the component that receives those inputs. Depending on functionality, an application firewall might inadvertently reject or modify legitimate requests. Finally, some manual effort may be required for customization.",
+      "strategy": "Firewall"
+    },
+    {
+      "mitigation_id": "MIT-17",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-16",
+      "phase": [
+        "Operation",
+        "Implementation"
+      ],
+      "description": [
+        "When using PHP, configure the application so that it does not use register_globals. During implementation, develop the application so that it does not rely on this feature, but be wary of implementing a register_globals emulation that is subject to weaknesses such as CWE-95, CWE-621, and similar issues."
+      ],
+      "strategy": "Environment Hardening"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-151",
+      "text": "\n               \u003cIntro_Text\u003eThis example code intends to take the name of a user and list the contents of that user's home directory. It is subject to the first variant of OS command injection.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$userName = $_POST[\"user\"];\u003cxhtml:br/\u003e$command = 'ls -l /home/' . $userName;\u003cxhtml:br/\u003esystem($command);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe $userName variable is not checked for malicious input. An attacker could set the $userName variable to an arbitrary OS command such as:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003e;rm -rf /\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhich would result in $command being:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003els -l /home/;rm -rf /\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eSince the semi-colon is a command separator in Unix, the OS would first execute the ls command, then the rm command, deleting the entire file system.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAlso note that this example code is vulnerable to Path Traversal (CWE-22) and Untrusted Search Path (CWE-426) attacks.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-30",
+      "text": "\n               \u003cIntro_Text\u003eThe following simple program accepts a filename as a command line argument and displays the contents of the file back to the user. The program is installed setuid root because it is intended for use as a learning tool to allow system administrators in-training to inspect privileged system files without giving them the ability to modify them or damage the system.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint main(int argc, char** argv) {\u003cxhtml:div style=\"margin-left:10px;\"\u003echar cmd[CMD_MAX] = \"/usr/bin/cat \";\u003cxhtml:br/\u003estrcat(cmd, argv[1]);\u003cxhtml:br/\u003esystem(cmd);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause the program runs with root privileges, the call to system() also executes with root privileges. If a user specifies a standard filename, the call works as expected. However, if an attacker passes a string of the form \";rm -rf /\", then the call to system() fails to execute cat due to a lack of arguments and then plows on to recursively delete the contents of the root partition.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eNote that if argv[1] is a very long argument, then this issue might also be subject to a buffer overflow (CWE-120).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis example is a web application that intends to perform a DNS lookup of a user-supplied domain name. It is subject to the first variant of OS command injection.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003euse CGI qw(:standard);\u003cxhtml:br/\u003e$name = param('name');\u003cxhtml:br/\u003e$nslookup = \"/path/to/nslookup\";\u003cxhtml:br/\u003eprint header;\u003cxhtml:br/\u003eif (open($fh, \"$nslookup $name|\")) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ewhile (\u0026lt;$fh\u0026gt;) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprint escapeHTML($_);\u003cxhtml:br/\u003eprint \"\u0026lt;br\u0026gt;\\n\";\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eclose($fh);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eSuppose an attacker provides a domain name like this:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\"\u003e\n                  \u003cxhtml:div\u003ecwe.mitre.org%20%3B%20/bin/ls%20-l\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe \"%3B\" sequence decodes to the \";\" character, and the %20 decodes to a space. The open() statement would then process a string like this:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003e/path/to/nslookup cwe.mitre.org ; /bin/ls -l\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAs a result, the attacker executes the \"/bin/ls -l\" command and gets a list of all the files in the program's working directory. The input could be replaced with much more dangerous commands, such as installing a malicious program on the server.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe example below reads the name of a shell script to execute from the system properties. It is subject to the second variant of OS command injection.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eString script = System.getProperty(\"SCRIPTNAME\");\u003cxhtml:br/\u003eif (script != null)\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.exec(script);\u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf an attacker has control over this property, then they could modify the property to point to a dangerous program.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the example below, a method is used to transform geographic coordinates from latitude and longitude format to UTM format. The method gets the input coordinates from a user through a HTTP request and executes a program local to the application server that performs the transformation. The method passes the latitude and longitude coordinates as a command-line option to the external program and will perform some processing to retrieve the results of the transformation and return the resulting UTM coordinates.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic String coordinateTransformLatLonToUTM(String coordinates)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eString utmCoords = null;\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eString latlonCoords = coordinates;\u003cxhtml:br/\u003eRuntime rt = Runtime.getRuntime();\u003cxhtml:br/\u003eProcess exec = rt.exec(\"cmd.exe /C latlon2utm.exe -\" + latlonCoords);\u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// process results of coordinate transform\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// ...\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch(Exception e) {...}\u003cxhtml:br/\u003ereturn utmCoords;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the method does not verify that the contents of the coordinates input parameter includes only correctly-formatted latitude and longitude coordinates. If the input coordinates were not validated prior to the call to this method, a malicious user could execute another program local to the application server by appending '\u0026amp;' followed by the command for another program to the end of the coordinate string. The '\u0026amp;' instructs the Windows operating system to execute another program.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-28",
+      "text": "\n               \u003cIntro_Text\u003eThe following code is from an administrative web application designed to allow users to kick off a backup of an Oracle database using a batch-file wrapper around the rman utility and then run a cleanup.bat script to delete some temporary files. The script rmanDB.bat accepts a single command line parameter, which specifies what type of backup to perform. Because access to the database is restricted, the application runs the backup as a privileged user.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003eString btype = request.getParameter(\"backuptype\");\u003cxhtml:br/\u003eString cmd = new String(\"cmd.exe /K \\\"\u003cxhtml:div style=\"margin-left:10px;\"\u003ec:\\\\util\\\\rmanDB.bat \"\u003cxhtml:br/\u003e+btype+\u003cxhtml:br/\u003e\"\u0026amp;\u0026amp;c:\\\\utl\\\\cleanup.bat\\\"\")\u003c/xhtml:div\u003e\n                     \u003cxhtml:br/\u003eSystem.Runtime.getRuntime().exec(cmd);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe problem here is that the program does not do any validation on the backuptype parameter read from the user. Typically the Runtime.exec() function will not execute multiple commands, but in this case the program first runs the cmd.exe shell in order to run multiple commands with a single call to Runtime.exec(). Once the shell is invoked, it will happily execute multiple commands separated by two ampersands. If an attacker passes a string of the form \"\u0026amp; del c:\\\\dbms\\\\*.*\", then the application will execute this command along with the others specified by the program. Because of the nature of the application, it runs with the privileges necessary to interact with the database, which means whatever command the attacker injects will run with those privileges as well.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2020-10987",
+      "description": "OS command injection in Wi-Fi router, as exploited in the wild per CISA KEV.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10987"
+    },
+    {
+      "reference": "CVE-2020-10221",
+      "description": "Template functionality in network configuration management tool allows OS command injection, as exploited in the wild per CISA KEV.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10221"
+    },
+    {
+      "reference": "CVE-2020-9054",
+      "description": "Chain: improper input validation (CWE-20) in username parameter, leading to OS command injection (CWE-78), as exploited in the wild per CISA KEV.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9054"
+    },
+    {
+      "reference": "CVE-1999-0067",
+      "description": "Canonical example of OS command injection. CGI program does not neutralize \"|\" metacharacter when invoking a phonebook program.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0067"
+    },
+    {
+      "reference": "CVE-2001-1246",
+      "description": "Language interpreter's mail function accepts another argument that is concatenated to a string used in a dangerous popen() call. Since there is no neutralization of this argument, both OS Command Injection (CWE-78) and Argument Injection (CWE-88) are possible.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1246"
+    },
+    {
+      "reference": "CVE-2002-0061",
+      "description": "Web server allows command execution using \"|\" (pipe) character.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0061"
+    },
+    {
+      "reference": "CVE-2003-0041",
+      "description": "FTP client does not filter \"|\" from filenames returned by the server, allowing for OS command injection.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0041"
+    },
+    {
+      "reference": "CVE-2008-2575",
+      "description": "Shell metacharacters in a filename in a ZIP archive",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2575"
+    },
+    {
+      "reference": "CVE-2002-1898",
+      "description": "Shell metacharacters in a telnet:// link are not properly handled when the launching application processes the link.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1898"
+    },
+    {
+      "reference": "CVE-2008-4304",
+      "description": "OS command injection through environment variable.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4304"
+    },
+    {
+      "reference": "CVE-2008-4796",
+      "description": "OS command injection through https:// URLs",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4796"
+    },
+    {
+      "reference": "CVE-2007-3572",
+      "description": "Chain: incomplete denylist for OS command injection",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3572"
+    },
+    {
+      "reference": "CVE-2012-1988",
+      "description": "Product allows remote users to execute arbitrary commands by creating a file whose pathname contains shell metacharacters.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1988"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-140",
+      "author": [
+        "Greg Hoglund",
+        "Gary McGraw"
+      ],
+      "title": "Exploiting Software: How to Break Code",
+      "url": "https://www.amazon.com/Exploiting-Software-How-Break-Code/dp/0201786958",
+      "publication_year": "2004",
+      "publication_month": "--02",
+      "publication_day": "---27",
+      "publisher": "Addison-Wesley"
+    },
+    {
+      "reference_id": "REF-685",
+      "author": [
+        "Pascal Meunier"
+      ],
+      "title": "Meta-Character Vulnerabilities",
+      "url": "http://www.cs.purdue.edu/homes/cs390s/slides/week09.pdf",
+      "publication_year": "2008",
+      "publication_month": "--02",
+      "publication_day": "---20"
+    },
+    {
+      "reference_id": "REF-686",
+      "author": [
+        "Robert Auger"
+      ],
+      "title": "OS Commanding",
+      "url": "http://projects.webappsec.org/OS-Commanding",
+      "publication_year": "2009",
+      "publication_month": "--06"
+    },
+    {
+      "section": "chapter: \"CGI Scripts\"",
+      "reference_id": "REF-687",
+      "author": [
+        "Lincoln Stein",
+        "John Stewart"
+      ],
+      "title": "The World Wide Web Security FAQ",
+      "url": "http://www.w3.org/Security/Faq/wwwsf4.html",
+      "publication_year": "2002",
+      "publication_month": "--02",
+      "publication_day": "---04"
+    },
+    {
+      "reference_id": "REF-688",
+      "author": [
+        "Jordan Dimov, Cigital"
+      ],
+      "title": "Security Issues in Perl Scripts",
+      "url": "http://www.cgisecurity.com/lib/sips.html"
+    },
+    {
+      "section": "\"Sin 10: Command Injection.\" Page 171",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-690",
+      "author": [
+        "Frank Kim"
+      ],
+      "title": "Top 25 Series - Rank 9 - OS Command Injection",
+      "url": "http://blogs.sans.org/appsecstreetfighter/2010/02/24/top-25-series-rank-9-os-command-injection/",
+      "publication_year": "2010",
+      "publication_month": "--02",
+      "publication_day": "---24",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-45",
+      "author": [
+        "OWASP"
+      ],
+      "title": "OWASP Enterprise Security API (ESAPI) Project",
+      "url": "http://www.owasp.org/index.php/ESAPI"
+    },
+    {
+      "reference_id": "REF-76",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Least Privilege",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---14"
+    },
+    {
+      "section": "Chapter 8, \"Shell Metacharacters\", Page 425",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "ASCSM-CWE-78",
+      "reference_id": "REF-962",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Security Measure (ASCSM)",
+      "url": "http://www.omg.org/spec/ASCSM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Sean Eidemiller",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "added/updated demonstrative examples"
+      },
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_organization": "KDM Analytics",
+        "modification_date": "2008-08-01T00:00:00Z",
+        "modification_comment": "added/updated white box definitions"
+      },
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Description, Likelihood_of_Exploit, Name, Observed_Examples, Other_Notes, Potential_Mitigations, Relationships, Research_Gaps, Terminology_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Name, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "KDM Analytics",
+        "modification_date": "2009-07-17T00:00:00Z",
+        "modification_comment": "Improved the White_Box_Definition"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Description, Name, White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Detection_Factors"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Potential_Mitigations, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Detection_Factors, Name, Observed_Examples, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Description, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Terminology_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, References, Relationships, Taxonomy_Mappings, White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "OS Command Injection",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Sanitize Data into an OS Command (aka 'OS Command Injection')",
+        "date": "2009-01-12T00:00:00Z"
+      },
+      {
+        "text": "Failure to Preserve OS Command Structure (aka 'OS Command Injection')",
+        "date": "2009-05-27T00:00:00Z"
+      },
+      {
+        "text": "Failure to Preserve OS Command Structure ('OS Command Injection')",
+        "date": "2009-07-27T00:00:00Z"
+      },
+      {
+        "text": "Improper Sanitization of Special Elements used in an OS Command ('OS Command Injection')",
+        "date": "2010-06-21T00:00:00Z"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "Shell injection"
+    },
+    {
+      "term": "Shell metacharacters"
+    }
+  ],
+  "detection_methods": [
+    {
+      "detection_method_id": "DM-1",
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eThis weakness can often be detected using automated static analysis tools. Many modern tools use data flow analysis or constraint-based techniques to minimize the number of false positives.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAutomated static analysis might not be able to recognize when proper input validation is being performed, leading to false positives - i.e., warnings that do not have any security consequences or require any code changes.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAutomated static analysis might not be able to detect the usage of custom API functions or third-party libraries that indirectly invoke OS commands, leading to false negatives - especially if the API/library code is not available for analysis.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness_notes": "This is not a perfect solution, since 100% accuracy and coverage are not feasible."
+    },
+    {
+      "detection_method_id": "DM-2",
+      "method": "Automated Dynamic Analysis",
+      "description": "This weakness can be detected using dynamic tools and techniques that interact with the software using large test suites with many diverse inputs, such as fuzz testing (fuzzing), robustness testing, and fault injection. The software's operation may slow down, but it should not become unstable, crash, or generate incorrect results.",
+      "effectiveness": "Moderate"
+    },
+    {
+      "detection_method_id": "DM-10",
+      "method": "Manual Static Analysis",
+      "description": "Since this weakness does not typically appear frequently within a single software package, manual white box techniques may be able to provide sufficient code coverage and reduction of false positives if all potentially-vulnerable operations can be assessed within limited time constraints.",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBytecode Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eBinary Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Services Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eDatabase Scanners\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eSource code Weakness Analyzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "OS Command Injection"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Malicious File Execution",
+      "entry_id": "A3",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Injection Flaws",
+      "entry_id": "A6",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Sanitize the environment when invoking external programs",
+      "entry_id": "ENV03-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Do not call system()",
+      "entry_id": "ENV33-C",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Sanitize data passed to complex subsystems",
+      "entry_id": "STR02-C"
+    },
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "OS Commanding",
+      "entry_id": "31"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not pass untrusted, unsanitized data to the Runtime.exec() method",
+      "entry_id": "IDS07-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Tainted input to command",
+      "entry_id": "SFP24"
+    },
+    {
+      "taxonomy_name": "OMG ASCSM",
+      "entry_id": "ASCSM-CWE-78"
+    }
+  ],
+  "related_attack_patterns": [
+    "108",
+    "15",
+    "43",
+    "6",
+    "88"
+  ],
+  "notes": [
+    {
+      "type": "Terminology",
+      "text": "The \"OS command injection\" phrase carries different meanings to different people. For some people, it only refers to cases in which the attacker injects command separators into arguments for an application-controlled program that is being invoked. For some people, it refers to any type of attack that can allow the attacker to execute OS commands of their own choosing. This usage could include untrusted search path weaknesses (CWE-426) that cause the application to find and execute an attacker-controlled program. Further complicating the issue is the case when argument injection (CWE-88) allows alternate command-line switches or options to be inserted into the command line, such as an \"-exec\" switch whose purpose may be to execute the subsequent argument as a command (this -exec switch exists in the UNIX \"find\" command, for example). In this latter case, however, CWE-88 could be regarded as the primary weakness in a chain with CWE-78."
+    },
+    {
+      "type": "Research Gap",
+      "text": "More investigation is needed into the distinction between the OS command injection variants, including the role with argument injection (CWE-88). Equivalent distinctions may exist in other injection-related problems such as SQL injection."
+    }
+  ],
+  "affected_resources": [
+    "System Process"
+  ],
+  "functional_areas": [
+    "Program Invocation"
+  ]
+}

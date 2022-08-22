@@ -1,0 +1,134 @@
+{
+  "id": "1384",
+  "name": "Improper Handling of Physical or Environmental Conditions",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product does not properly handle unexpected physical or environmental conditions that occur naturally or are artificially induced.",
+  "extended_description": "\n      \u003cxhtml:p\u003eHardware products are typically only guaranteed to behave correctly within certain physical limits or environmental conditions. Such products cannot necessarily control the physical or external conditions to which they are subjected. However, the inability to handle such conditions can undermine a product's security. For example, an unexpected physical or environmental condition may cause the flipping of a bit that is used for an authentication decision. This unexpected condition could occur naturally or be induced artificially by an adversary.\u003c/xhtml:p\u003e\n      \u003cxhtml:p\u003ePhysical or environmental conditions of concern are:\u003c/xhtml:p\u003e\n      \u003cxhtml:ul\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eAtmospheric characteristics: \u003c/xhtml:b\u003eextreme temperature ranges, etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eInterference: \u003c/xhtml:b\u003eelectromagnetic interference (EMI), radio frequency interference (RFI), etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eAssorted light sources: \u003c/xhtml:b\u003ewhite light, ultra-violet light (UV), lasers, infrared (IR), etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003ePower variances: \u003c/xhtml:b\u003eunder-voltages, over-voltages, under-current, over-current, etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eClock variances: \u003c/xhtml:b\u003eglitching, overclocking, clock stretching, etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eComponent aging and degradation\u003c/xhtml:b\u003e\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eMaterials manipulation: \u003c/xhtml:b\u003efocused ion beams (FIB), etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n        \u003cxhtml:li\u003e\n          \u003cxhtml:div\u003e\u003cxhtml:b\u003eExposure to radiation: \u003c/xhtml:b\u003ex-rays, cosmic radiation, etc.\u003c/xhtml:div\u003e\n        \u003c/xhtml:li\u003e\n      \u003c/xhtml:ul\u003e\n    ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "703",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "The product's design might not consider checking and handling extreme conditions."
+      ]
+    },
+    {
+      "phase": "Manufacturing",
+      "note": [
+        "For hardware manufacturing, sub-par components might be chosen that are not able to handle the expected environmental conditions."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Varies by Context",
+        "Unexpected State"
+      ],
+      "note": "Consequences of this weakness are highly dependent on the role of affected components within the larger product."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "In requirements, be specific about expectations for how the product will perform when it exceeds physical and environmental boundary conditions, e.g., by shutting down."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Where possible, include independent components that can detect excess environmental conditions and have the capability to shut down the product."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Where possible, use shielding or other materials that can increase the adversary's workload and reduce the likelihood of being able to successfully trigger a security-related failure."
+      ]
+    }
+  ],
+  "references": [
+    {
+      "section": "ICS Communications / 2. Unreliability",
+      "reference_id": "REF-1248",
+      "author": [
+        "Securing Energy Infrastructure Executive Task Force (SEI ETF)"
+      ],
+      "title": "Categories of Security Vulnerabilities in ICS",
+      "url": "https://inl.gov/wp-content/uploads/2022/03/SEI-ETF-NCSV-TPT-Categories-of-Security-Vulnerabilities-ICS-v1_03-09-22.pdf",
+      "publication_year": "2022",
+      "publication_month": "--03",
+      "publication_day": "---09"
+    },
+    {
+      "reference_id": "REF-1255",
+      "author": [
+        "Sergei P. Skorobogatov"
+      ],
+      "title": "Semi-invasive attacks – A new approach to hardware security analysis",
+      "url": "https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-630.pdf",
+      "publication_year": "2005",
+      "publication_month": "--04"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2022-04-21T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Description, Name, Potential_Mitigations, Relationships, Type"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Improper Handling of Extreme Physical Environment Conditions",
+        "date": "2022-06-28T00:00:00Z"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Feedback",
+        "contribution_name": "Members of the Hardware CWE Special Interest Group",
+        "contribution_date": "2022-05-13T00:00:00Z",
+        "contribution_comment": "Provided feedback on descriptions"
+      }
+    ]
+  }
+}

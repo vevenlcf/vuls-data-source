@@ -1,0 +1,141 @@
+{
+  "id": "1273",
+  "name": "Device Unlock Credential Sharing",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The credentials necessary for unlocking a device are shared across multiple parties and may expose sensitive information.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003e“Unlocking a device” often means activating certain, unadvertised, debug and manufacturer-specific capabilities of a device using sensitive credentials. Unlocking a device might be necessary for the purpose of troubleshooting device problems. For example, suppose a device contains the ability to dump the content of the full system memory by disabling the memory-protection mechanisms. Since this is a highly security-sensitive capability, this capability is “locked” in the production part. Unless the device gets unlocked by supplying the proper credentials the debug capabilities are not available. For cases where the chip designer, chip manufacturer (fabricator), and manufacturing and assembly testers are the all employed by the same company, the compromise of the credentials are greatly reduced. However, when the chip designer is employed by one company, the chip manufacturer is employed by another company (a foundry), and the assemblers and testers are employed by yet a third company. Since these different companies will need to perform various tests on the device to verify correct device function, they all need to share the unlock key. Unfortunately, the level of secrecy and policy might be quite different at each company, greatly increasing the risk of sensitive credentials being compromised.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "200",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "VHDL"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Verilog"
+      },
+      {
+        "class": "Compiled",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Other"
+      },
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Integration"
+    },
+    {
+      "phase": "Manufacturing"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control",
+        "Accountability",
+        "Authentication",
+        "Authorization",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "Modify Files or Directories",
+        "Read Files or Directories",
+        "Modify Application Data",
+        "Execute Unauthorized Code or Commands",
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism"
+      ],
+      "note": "Once unlock credentials are compromised, an attacker can use the credentials to unlock the device and gain unauthorized access to the hidden functionalities protected by those credentials."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Integration"
+      ],
+      "description": [
+        "Ensure the unlock credentials are shared with the minimum number of parties and with utmost secrecy. To limit the risk associated with compromised credentials, where possible, the credentials should be part-specific."
+      ]
+    },
+    {
+      "phase": [
+        "Manufacturing"
+      ],
+      "description": [
+        "Ensure the unlock credentials are shared with the minimum number of parties and with utmost secrecy. To limit the risk associated with compromised credentials, where possible, the credentials should be part-specific."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eThis example shows how an attacker can take advantage of compromised credentials.\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\"\u003eSuppose a semiconductor chipmaker, “C”, uses the foundry “F” for fabricating its chips. Now, F has many other customers in addition to C, and some of the other customers are much smaller companies. F has dedicated teams for each of its customers, but somehow it mixes up the unlock credentials and sends the unlock credentials of C to the wrong team. This other team does not take adequate precautions to protect the credentials that have nothing to do with them, and eventually the unlock credentials of C get leaked.\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eWhen the credentials of multiple organizations are stored together, exposure to third parties occurs frequently.\u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\"\u003eVertical integration of a production company is one effective method of protecting sensitive credentials. Where vertical integration is not possible, strict access control and need-to-know are methods which can be implemented to reduce these risks.\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Parbati Kumar Manna, Hareesh Khattri, Arun Kanuparthi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-05-29T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "560"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "This entry is still under development and will continue to see updates and content improvements."
+    }
+  ]
+}

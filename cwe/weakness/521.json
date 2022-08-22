@@ -1,0 +1,217 @@
+{
+  "id": "521",
+  "name": "Weak Password Requirements",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product does not require that users should have strong passwords, which makes it easier for attackers to compromise user accounts.",
+  "extended_description": "Authentication mechanisms often rely on a memorized secret (also known as a password) to provide an assertion of identity for a user of a system. It is therefore important that this password be of sufficient complexity and impractical for an adversary to guess. The specific requirements around how complex a password needs to be depends on the type of system being protected. Selecting the correct password requirements and enforcing them through implementation are critical to the overall success of the authentication mechanism.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "Not enforcing the password policy stated in a products design can allow users to create passwords that do not provide the necessary level of protection."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "An attacker could easily guess user passwords and gain access user accounts."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                 \u003cxhtml:p\u003eA product's design should require adherance to an appropriate password policy. Specific password requirements depend strongly on contextual factors, but it is recommended to contain the following attributes:\u003c/xhtml:p\u003e\n                \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                 \u003cxhtml:ol\u003e\n                   \u003cxhtml:li\u003eEnforcement of a minimum and maximum length\u003c/xhtml:li\u003e\n                   \u003cxhtml:li\u003eRestrictions against password reuse\u003c/xhtml:li\u003e\n                   \u003cxhtml:li\u003eRestrictions against using common passwords\u003c/xhtml:li\u003e\n                   \u003cxhtml:li\u003eRestrictions against using contextual string in the password (e.g., user id, app name)\u003c/xhtml:li\u003e\n                 \u003c/xhtml:ol\u003e\n                 \u003cxhtml:p\u003eDepending on the threat model, the password policy may include several additional attributes.\u003c/xhtml:p\u003e\n                 \u003cxhtml:ol\u003e\n                   \u003cxhtml:li\u003eComplex passwords requiring mixed character sets (alpha, numeric, special, mixed case)\n                     \u003cxhtml:ul\u003e\n                       \u003cxhtml:li\u003eIncreasing the range of characters makes the password harder to crack and may be appropriate for systems relying on single factor authentication.\u003c/xhtml:li\u003e\n                       \u003cxhtml:li\u003eUnfortunately, a complex password may be difficult to memorize, encouraging a user to select a short password or to incorrectly manage the password (write it down).\u003c/xhtml:li\u003e\n                       \u003cxhtml:li\u003eAnother disadvantage of this approach is that it often does not result in a significant increases in overal password complexity due to people's predictable usage of various symbols.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                   \u003c/xhtml:li\u003e\n                   \u003cxhtml:li\u003eLarge Minimum Length (encouraging passphrases instead of passwords)\n                     \u003cxhtml:ol\u003e\n                       \u003cxhtml:li\u003eIncreasing the number of characters makes the password harder to crack and may be appropriate for systems relying on single factor authentication.\u003c/xhtml:li\u003e\n                       \u003cxhtml:li\u003eA disadvantage of this approach is that selecting a good passphrase is not easy and poor passwords can still be generated. Some prompting may be needed to encourage long un-predictable passwords.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ol\u003e\n                   \u003c/xhtml:li\u003e\n                   \u003cxhtml:li\u003eRandomly Chosen Secrets\n                     \u003cxhtml:ol\u003e\n                       \u003cxhtml:li\u003eGenerating a password for the user can help make sure that length and complexity requirements are met, and can result in secure passwords being used.\u003c/xhtml:li\u003e\n                       \u003cxhtml:li\u003eA disadvantage of this approach is that the resulting password or passpharse may be too difficult to memorize, encouraging them to be written down.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ol\u003e\n                   \u003c/xhtml:li\u003e\n                   \u003cxhtml:li\u003ePassword Expiration\n                     \u003cxhtml:ol\u003e\n                       \u003cxhtml:li\u003eRequiring a periodic password change can reduce the time window that an adversary has to crack a password, while also limiting the damage caused by password exposures at other locations.\u003c/xhtml:li\u003e\n\t\t\t\t\t   \u003cxhtml:li\u003ePassword expiration may be a good mitigating technique when long complex passwords are not desired.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ol\u003e\n                   \u003c/xhtml:li\u003e\n                 \u003c/xhtml:ol\u003e\n                 \u003c/xhtml:div\u003e\n                 \u003cxhtml:p\u003e See NIST 800-63B https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf Sections: 5.1.1, 10.2.1, and Appendix A for further information on password requirements. \u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Consider a second\n                 authentication factor beyond the password, which prevents the\n                 password from being a single point of failure. See CWE-308 for\n                 further information."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Consider implementing a password complexity meter to inform users when a chosen password meets the required attributes."
+      ]
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 19: Use of Weak Password-Based Systems.\" Page 279",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "section": "Sections: 5.1.1, 10.2.1, and Appendix A",
+      "reference_id": "REF-1053",
+      "author": [
+        "NIST"
+      ],
+      "title": "Digital Identity Guidelines (SP 800-63B)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+      "publication_year": "2017",
+      "publication_month": "--06"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Anonymous Tool Vendor (under NDA)",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Description, Modes_of_Introduction, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Broken Authentication and Session Management",
+      "entry_id": "A3",
+      "mapping_fit": "CWE More Specific"
+    }
+  ],
+  "related_attack_patterns": [
+    "112",
+    "16",
+    "49",
+    "509",
+    "55",
+    "555",
+    "561",
+    "565",
+    "70"
+  ]
+}

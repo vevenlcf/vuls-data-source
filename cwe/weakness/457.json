@@ -1,0 +1,385 @@
+{
+  "id": "457",
+  "name": "Use of Uninitialized Variable",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+  "extended_description": "In some languages such as C and C++, stack variables are not initialized by default. They generally contain junk data with the contents of stack memory before the function was invoked. An attacker can sometimes control or read these contents. In other languages or conditions, a variable that is not explicitly initialized can be given a default value that has security implications, depending on the logic of the program. The presence of an uninitialized variable can sometimes indicate a typographic error in the code.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "908",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "665",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "665",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Sometimes",
+        "name": "C"
+      },
+      {
+        "prevalence": "Sometimes",
+        "name": "C++"
+      },
+      {
+        "prevalence": "Often",
+        "name": "Perl"
+      },
+      {
+        "prevalence": "Often",
+        "name": "PHP"
+      },
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "In C, using an uninitialized char * in some string libraries will return incorrect results, as the libraries expect the null terminator to always be at the end of a string, even if the string is empty."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability",
+        "Integrity",
+        "Other"
+      ],
+      "impact": [
+        "Other"
+      ],
+      "note": "Initial variables usually contain junk, which can not be trusted for consistency. This can lead to denial of service conditions, or modify control flow in unexpected ways. In some cases, an attacker can \"pre-initialize\" the variable using previous actions, which might enable code execution. This can cause a race condition if a lock variable check passes when it should not."
+    },
+    {
+      "scope": [
+        "Authorization",
+        "Other"
+      ],
+      "impact": [
+        "Other"
+      ],
+      "note": "Strings that are not initialized are especially dangerous, since many functions expect a null at the end -- and only at the end -- of a string."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Assign all variables to an initial value."
+      ],
+      "strategy": "Attack Surface Reduction"
+    },
+    {
+      "phase": [
+        "Build and Compilation"
+      ],
+      "description": [
+        "Most compilers will complain about the use of uninitialized variables if warnings are turned on."
+      ],
+      "strategy": "Compilation or Build Hardening"
+    },
+    {
+      "phase": [
+        "Implementation",
+        "Operation"
+      ],
+      "description": [
+        "When using a language that does not require explicit declaration of variables, run or compile the software in a mode that reports undeclared or unknown variables. This may indicate the presence of a typographic error in the variable's name."
+      ]
+    },
+    {
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "The choice could be made to use a language that is not susceptible to these issues."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Mitigating technologies such as safe string libraries and container abstractions could be introduced."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis code prints a greeting using information stored in a POST request:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003eif (isset($_POST['names'])) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e$nameArray = $_POST['names'];\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eecho \"Hello \" . $nameArray['first'];\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code checks if the POST array 'names' is set before assigning it to the $nameArray variable. However, if the array is not in the POST request, $nameArray will remain uninitialized. This will cause an error when the array is accessed to print the greeting message, which could lead to further exploit.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following switch statement is intended to set the values of the variables aN and bN before they are used:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint aN, Bn;\u003cxhtml:br/\u003eswitch (ctl) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003ecase -1:\u003cxhtml:div style=\"margin-left:10px;\"\u003eaN = 0;\u003cxhtml:br/\u003ebN = 0;\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003ecase 0:\u003cxhtml:div style=\"margin-left:10px;\"\u003eaN = i;\u003cxhtml:br/\u003ebN = -i;\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003ecase 1:\u003cxhtml:div style=\"margin-left:10px;\"\u003eaN = i + NEXT_SZ;\u003cxhtml:br/\u003ebN = i - NEXT_SZ;\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003edefault:\u003cxhtml:div style=\"margin-left:10px;\"\u003eaN = -1;\u003cxhtml:br/\u003eaN = -1;\u003cxhtml:br/\u003ebreak;\u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003erepaint(aN, bN);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn the default case of the switch statement, the programmer has accidentally set the value of aN twice. As a result, bN will have an undefined value. Most uninitialized variable issues result in general software reliability problems, but if attackers can intentionally trigger the use of an uninitialized variable, they might be able to launch a denial of service attack by crashing the program. Under the right circumstances, an attacker may be able to control the value of an uninitialized variable by affecting the values on the stack prior to the invocation of the function.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-144",
+      "text": "\n\t\t\t  \u003cIntro_Text\u003eThis example will leave test_string in an\n\t\t\t  unknown condition when i is the same value as err_val,\n\t\t\t  because test_string is not initialized\n\t\t\t  (CWE-456). Depending on where this code segment appears\n\t\t\t  (e.g. within a function body), test_string might be\n\t\t\t  random if it is stored on the heap or stack. If the\n\t\t\t  variable is declared in static memory, it might be zero\n\t\t\t  or NULL. Compiler optimization might contribute to the\n\t\t\t  unpredictability of this address.\u003c/Intro_Text\u003e\n\t\t\t  \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                char *test_string;\u003cxhtml:br/\u003e\n                if (i != err_val)\u003cxhtml:br/\u003e\n                {\u003cxhtml:br/\u003e\n                \u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Hello World!\";\u003c/xhtml:div\u003e\n                }\u003cxhtml:br/\u003e\n                printf(\"%s\", test_string);\n              \u003c/Example_Code\u003e\n              \u003cBody_Text\u003e\u003cxhtml:p\u003eWhen the printf() is reached,\n              test_string might be an unexpected address, so the\n              printf might print junk strings (CWE-457).\u003c/xhtml:p\u003e\n\t\t\t  \u003cxhtml:p\u003e\n\t\t\t  To fix this code, there are a couple approaches to\n\t\t\t  making sure that test_string has been properly set once\n\t\t\t  it reaches the printf().\u003c/xhtml:p\u003e\n\t\t\t  \u003cxhtml:p\u003eOne solution would be to set test_string to an\n\t\t\t  acceptable default before the conditional:\u003c/xhtml:p\u003e\n\t\t\t  \u003c/Body_Text\u003e\n\t\t\t  \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n\t\t\t\tchar *test_string = \"Done at the beginning\";\u003cxhtml:br/\u003e\n\t\t\t\tif (i != err_val)\u003cxhtml:br/\u003e\n\t\t\t\t{\u003cxhtml:br/\u003e\n\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Hello World!\";\u003c/xhtml:div\u003e\n\t\t\t\t}\u003cxhtml:br/\u003e\n\t\t\t\tprintf(\"%s\", test_string);\n\t\t\t  \u003c/Example_Code\u003e\n\t\t\t  \u003cBody_Text\u003eAnother solution is to ensure that each\n\t\t\t  branch of the conditional - including the default/else\n\t\t\t  branch - could ensure that test_string is set:\u003c/Body_Text\u003e\n\t\t\t  \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n\t\t\t\tchar *test_string;\u003cxhtml:br/\u003e\n\t\t\t\tif (i != err_val)\u003cxhtml:br/\u003e\n\t\t\t\t{\u003cxhtml:br/\u003e\n\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Hello World!\";\u003c/xhtml:div\u003e\n\t\t\t\t}\u003cxhtml:br/\u003e\n\t\t\t\telse {\u003cxhtml:br/\u003e\n\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003etest_string = \"Done on the other side!\";\u003c/xhtml:div\u003e\n\t\t\t\t}\u003cxhtml:br/\u003e\n\t\t\t\tprintf(\"%s\", test_string);\n\t\t\t  \u003c/Example_Code\u003e\n\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2019-15900",
+      "description": "Chain: sscanf() call is used to check if a username and group exists, but the return value of sscanf() call is not checked (CWE-252), causing an uninitialized variable to be checked (CWE-457), returning success to allow authorization bypass for executing a privileged (CWE-863).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15900"
+    },
+    {
+      "reference": "CVE-2008-3688",
+      "description": "Chain: A denial of service may be caused by an uninitialized variable (CWE-457) allowing an infinite loop (CWE-835) resulting from a connection to an unresponsive server.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3688"
+    },
+    {
+      "reference": "CVE-2008-0081",
+      "description": "Uninitialized variable leads to code execution in popular desktop application.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0081"
+    },
+    {
+      "reference": "CVE-2007-4682",
+      "description": "Crafted input triggers dereference of an uninitialized object pointer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4682"
+    },
+    {
+      "reference": "CVE-2007-3468",
+      "description": "Crafted audio file triggers crash when an uninitialized variable is used.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3468"
+    },
+    {
+      "reference": "CVE-2007-2728",
+      "description": "Uninitialized random seed variable used.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2728"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    },
+    {
+      "reference_id": "REF-436",
+      "author": [
+        "mercy"
+      ],
+      "title": "Exploiting Uninitialized Data",
+      "url": "http://www.felinemenace.org/~mercy/papers/UBehavior/UBehavior.zip",
+      "publication_year": "2006",
+      "publication_month": "--01"
+    },
+    {
+      "reference_id": "REF-437",
+      "author": [
+        "Microsoft Security Vulnerability Research \u0026 Defense"
+      ],
+      "title": "MS08-014 : The Case of the Uninitialized Stack Variable Vulnerability",
+      "url": "http://blogs.technet.com/swi/archive/2008/03/11/the-case-of-the-uninitialized-stack-variable-vulnerability.aspx",
+      "publication_year": "2008",
+      "publication_month": "--03",
+      "publication_day": "---11"
+    },
+    {
+      "section": "\"Sin 8: C++ Catastrophes.\" Page 143",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "section": "Chapter 7, \"Variable Initialization\", Page 312",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_organization": "KDM Analytics",
+        "modification_date": "2008-08-01T00:00:00Z",
+        "modification_comment": "added/updated white box definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Description, Relationships, Observed_Example, Other_Notes, References, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Description, Other_Notes, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings, White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Uninitialized Variable",
+        "date": "2008-04-11T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Uninitialized variable"
+    },
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "Uninitialized Variable"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Glitch in computation",
+      "entry_id": "SFP1"
+    },
+    {
+      "taxonomy_name": "SEI CERT Perl Coding Standard",
+      "entry_name": "Declare identifiers before using them",
+      "entry_id": "DCL33-PL",
+      "mapping_fit": "Imprecise"
+    }
+  ]
+}

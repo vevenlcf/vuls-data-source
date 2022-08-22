@@ -1,0 +1,298 @@
+{
+  "id": "364",
+  "name": "Signal Handler Race Condition",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses a signal handler that introduces a race condition.",
+  "extended_description": "\n            \u003cxhtml:p\u003eRace conditions frequently occur in signal handlers, since signal handlers support asynchronous actions. These race conditions have a variety of root causes and symptoms. Attackers may be able to exploit a signal handler race condition to cause the software state to be corrupted, possibly leading to a denial of service or even code execution.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThese issues occur when non-reentrant functions, or state-sensitive actions occur in the signal handler, where they may be called at any time. These behaviors can violate assumptions being made by the \"regular\" code that is interrupted, or by other signal handlers that may also be invoked. If these functions are called at an inopportune moment - such as while a non-reentrant function is already running - memory corruption could occur that may be exploitable for code execution. Another signal race condition commonly found occurs when free is called within a signal handler, resulting in a double free and therefore a write-what-where condition. Even if a given pointer is set to NULL after it has been freed, a race condition still exists between the time the memory was freed and the pointer was set to NULL. This is especially problematic if the same signal handler has been set for more than one signal -- since it means that the signal handler itself may be reentered.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThere are several known behaviors related to signal handlers that have received the label of \"signal handler race condition\":\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003eShared state (e.g. global data or static variables) that are accessible to both a signal handler and \"regular\" code\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eShared state between a signal handler and other signal handlers\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eUse of non-reentrant functionality within a signal handler - which generally implies that shared state is being used. For example, malloc() and free() are non-reentrant because they may use global or static data structures for managing memory, and they are indirectly used by innocent-seeming functions such as syslog(); these functions could be exploited for memory corruption and, possibly, code execution.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eAssociation of the same signal handler function with multiple signals - which might imply shared state, since the same code and resources are accessed. For example, this can be a source of double-free and use-after-free weaknesses.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eUse of setjmp and longjmp, or other mechanisms that prevent a signal handler from returning control back to the original functionality\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eWhile not technically a race condition, some signal handlers are designed to be called at most once, and being called more than once can introduce security problems, even when there are not any concurrent calls to the signal handler. This can be a source of double-free and use-after-free weaknesses.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n            \u003cxhtml:p\u003eSignal handler vulnerabilities are often classified based on the absence of a specific protection mechanism, although this style of classification is discouraged in CWE because programmers often have a choice of several different mechanisms for addressing the weakness. Such protection mechanisms may preserve exclusivity of access to the shared resource, and behavioral atomicity for the relevant code:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003eAvoiding shared state\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eUsing synchronization in the signal handler\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eUsing synchronization in the regular code\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eDisabling or masking other signals, which provides atomicity (which effectively ensures exclusivity)\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "362",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "415",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "416",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "123",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Sometimes",
+        "name": "C"
+      },
+      {
+        "prevalence": "Sometimes",
+        "name": "C++"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Modify Application Data",
+        "Modify Memory",
+        "DoS: Crash, Exit, or Restart",
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "It may be possible to cause data corruption and possibly execute arbitrary code by modifying global variables or data structures at unexpected times, violating the assumptions of code that uses this global data."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "If a signal handler interrupts code that is executing with privileges, it may be possible that the signal handler will also be executed with elevated privileges, possibly making subsequent exploits more severe."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-3",
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "Use a language that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid."
+      ],
+      "strategy": "Language Selection"
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Design signal handlers to only set flags, rather than perform complex functionality. These flags can then be checked and acted upon within the main program loop."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Only use reentrant functions within signal handlers. Also, use validation to ensure that state is consistent while performing asynchronous actions that affect the state of execution."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-26",
+      "text": "\n               \u003cIntro_Text\u003eThis code registers the same signal handler function with two different signals (CWE-831). If those signals are sent to the process, the handler creates a log message (specified in the first argument to the program) and exits.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar *logMessage;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003evoid handler (int sigNum) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003esyslog(LOG_NOTICE, \"%s\\n\", logMessage);\u003cxhtml:br/\u003efree(logMessage);\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* artificially increase the size of the timing window to make demonstration of this weakness easier. */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003esleep(10);\u003cxhtml:br/\u003eexit(0);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eint main (int argc, char* argv[]) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003elogMessage = strdup(argv[1]);\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* Register signal handlers. */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003esignal(SIGHUP, handler);\u003cxhtml:br/\u003esignal(SIGTERM, handler);\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* artificially increase the size of the timing window to make demonstration of this weakness easier. */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003esleep(10);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe handler function uses global state (globalVar and logMessage), and it can be called by both the SIGHUP and SIGTERM signals. An attack scenario might follow these lines:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ul\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe program begins execution, initializes logMessage, and registers the signal handlers for SIGHUP and SIGTERM.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe program begins its \"normal\" functionality, which is simplified as sleep(), but could be any functionality that consumes some time.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe attacker sends SIGHUP, which invokes handler (call this \"SIGHUP-handler\").\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eSIGHUP-handler begins to execute, calling syslog().\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003esyslog() calls malloc(), which is non-reentrant. malloc() begins to modify metadata to manage the heap.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe attacker then sends SIGTERM.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eSIGHUP-handler is interrupted, but syslog's malloc call is still executing and has not finished modifying its metadata.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe SIGTERM handler is invoked.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eSIGTERM-handler records the log message using syslog(), then frees the logMessage variable.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ul\u003e\n               \u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAt this point, the state of the heap is uncertain, because malloc is still modifying the metadata for the heap; the metadata might be in an inconsistent state. The SIGTERM-handler call to free() is assuming that the metadata is inconsistent, possibly causing it to write data to the wrong location while managing the heap. The result is memory corruption, which could lead to a crash or even code execution, depending on the circumstances under which the code is running.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eNote that this is an adaptation of a classic example as originally presented by Michal Zalewski [REF-360]; the original example was shown to be exploitable for code execution.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAlso note that the strdup(argv[1]) call contains a potential buffer over-read (CWE-126) if the program is called without any arguments, because argc would be 0, and argv[1] would point outside the bounds of the array.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-48",
+      "text": "\n               \u003cIntro_Text\u003eThe following code registers a signal handler with multiple signals in order to log when a specific event occurs and to free associated memory before exiting.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e#include \u0026lt;signal.h\u0026gt;\u003cxhtml:br/\u003e#include \u0026lt;syslog.h\u0026gt;\u003cxhtml:br/\u003e#include \u0026lt;string.h\u0026gt;\u003cxhtml:br/\u003e#include \u0026lt;stdlib.h\u0026gt;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003evoid *global1, *global2;\u003cxhtml:br/\u003echar *what;\u003cxhtml:br/\u003evoid sh (int dummy) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003esyslog(LOG_NOTICE,\"%s\\n\",what);\u003cxhtml:br/\u003efree(global2);\u003cxhtml:br/\u003efree(global1);\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* Sleep statements added to expand timing window for race condition */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003esleep(10);\u003cxhtml:br/\u003eexit(0);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eint main (int argc,char* argv[]) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003ewhat=argv[1];\u003cxhtml:br/\u003eglobal1=strdup(argv[2]);\u003cxhtml:br/\u003eglobal2=malloc(340);\u003cxhtml:br/\u003esignal(SIGHUP,sh);\u003cxhtml:br/\u003esignal(SIGTERM,sh);\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* Sleep statements added to expand timing window for race condition */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003esleep(10);\u003cxhtml:br/\u003eexit(0);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the following sequence of events may result in a double-free (CWE-415):\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ol\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ea SIGHUP is delivered to the process\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003esh() is invoked to process the SIGHUP\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThis first invocation of sh() reaches the point where global1 is freed\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eAt this point, a SIGTERM is sent to the process\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ethe second invocation of sh() might do another free of global1\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003ethis results in a double-free (CWE-415)\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ol\u003e\n               \u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThis is just one possible exploitation of the above code. As another example, the syslog call may use malloc calls which are not async-signal safe. This could cause corruption of the heap management structures. For more details, consult the example within \"Delivering Signals for Fun and Profit\" [REF-360].\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-1999-0035",
+      "description": "Signal handler does not disable other signal handlers, allowing it to be interrupted, causing other functionality to access files/etc. with raised privileges",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0035"
+    },
+    {
+      "reference": "CVE-2001-0905",
+      "description": "Attacker can send a signal while another signal handler is already running, leading to crash or execution with root privileges",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0905"
+    },
+    {
+      "reference": "CVE-2001-1349",
+      "description": "unsafe calls to library functions from signal handler",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1349"
+    },
+    {
+      "reference": "CVE-2004-0794",
+      "description": "SIGURG can be used to remotely interrupt signal handler; other variants exist",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0794"
+    },
+    {
+      "reference": "CVE-2004-2259",
+      "description": "SIGCHLD signal to FTP server can cause crash under heavy load while executing non-reentrant functions like malloc/free.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2259"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    },
+    {
+      "reference_id": "REF-360",
+      "author": [
+        "Michal Zalewski"
+      ],
+      "title": "Delivering Signals for Fun and Profit",
+      "url": "http://lcamtuf.coredump.cx/signals.txt"
+    },
+    {
+      "reference_id": "REF-361",
+      "title": "Race Condition: Signal Handling",
+      "url": "http://www.fortify.com/vulncat/en/vulncat/cpp/race_condition_signal_handling.html"
+    },
+    {
+      "section": "\"Sin 13: Race Conditions.\" Page 205",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "section": "Chapter 13, \"Signal Vulnerabilities\", Page 791",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Description, Observed_Examples, Other_Notes, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Relationships, Research_Gaps"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Signal handler race condition"
+    },
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "Signal Handling Race Conditions"
+    },
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Race condition in signal handler"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Missing Lock",
+      "entry_id": "SFP19"
+    }
+  ],
+  "affected_resources": [
+    "System Process"
+  ],
+  "functional_areas": [
+    "Signals",
+    "Interprocess Communication"
+  ]
+}

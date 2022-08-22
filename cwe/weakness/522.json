@@ -1,0 +1,285 @@
+{
+  "id": "522",
+  "name": "Insufficiently Protected Credentials",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product transmits or stores authentication credentials, but it uses an insecure method that is susceptible to unauthorized interception and/or retrieval.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "668",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {},
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "An attacker could gain access to user accounts and access sensitive data used by the user accounts."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use an appropriate security mechanism to protect the credentials."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Make appropriate use of cryptography to protect the credentials."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Use industry standards to protect the credentials (e.g. LDAP, keystore, etc.)."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-56",
+      "text": "\n               \u003cIntro_Text\u003eThis code changes a user's password.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e$user = $_GET['user'];\u003cxhtml:br/\u003e$pass = $_GET['pass'];\u003cxhtml:br/\u003e$checkpass = $_GET['checkpass'];\u003cxhtml:br/\u003eif ($pass == $checkpass) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSetUserPassword($user, $pass);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhile the code confirms that the requesting user typed the same new password twice, it does not confirm that the user requesting the password change is the same user whose password will be changed. An attacker can request a change of another user's password and gain control of the victim's account.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-57",
+      "text": "\n               \u003cIntro_Text\u003eThe following code reads a password from a properties file and uses the password to connect to a database.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003eProperties prop = new Properties();\u003cxhtml:br/\u003eprop.load(new FileInputStream(\"config.properties\"));\u003cxhtml:br/\u003eString password = prop.getProperty(\"password\");\u003cxhtml:br/\u003eDriverManager.getConnection(url, usr, password);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code will run successfully, but anyone who has access to config.properties can read the value of password. If a devious employee has access to this information, they can use it to break into the system.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-58",
+      "text": "\n               \u003cIntro_Text\u003eThe following code reads a password from the registry and uses the password to create a new network credential.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003eString password = regKey.GetValue(passKey).toString();\u003cxhtml:br/\u003eNetworkCredential netCred = new NetworkCredential(username,password,domain);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code will run successfully, but anyone who has access to the registry key used to store the password can read the value of password. If a devious employee has access to this information, they can use it to break into the system\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-59",
+      "text": "\n               \u003cIntro_Text\u003eBoth of these examples verify a password by comparing it to a stored compressed version.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint VerifyAdmin(char *password) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (strcmp(compress(password), compressed_password)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprintf(\"Incorrect Password!\\n\");\u003cxhtml:br/\u003ereturn(0);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eprintf(\"Entering Diagnostic Mode...\\n\");\u003cxhtml:br/\u003ereturn(1);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eint VerifyAdmin(String password) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (passwd.Equals(compress(password), compressed_password)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn(0);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                        \u003cxhtml:i\u003e//Diagnostic Mode\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003ereturn(1);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause a compression algorithm is used instead of a one way hashing algorithm, an attacker can recover compressed passwords stored in the database.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-43",
+      "text": "\n               \u003cIntro_Text\u003eThe following examples show a portion of properties and configuration files for Java and ASP.NET applications. The files include username and password information but they are stored in cleartext.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eThis Java example shows a properties file with a cleartext username / password pair.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e# Java Web App ResourceBundle properties file\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003ewebapp.ldap.username=secretUsername\u003cxhtml:br/\u003ewebapp.ldap.password=secretPassword\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe following example shows a portion of a configuration file for an ASP.Net application. This configuration file includes username and password information for a connection to a database but the pair is stored in cleartext.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"ASP.NET\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\u0026lt;connectionStrings\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;add name=\"ud_DEV\" connectionString=\"connectDB=uDB; uid=db2admin; pwd=password; dbalias=uDB;\" providerName=\"System.Data.Odbc\" /\u0026gt;\u003c/xhtml:div\u003e\u0026lt;/connectionStrings\u0026gt;\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eUsername and password information should not be included in a configuration file or a properties file in cleartext as this will allow anyone who can read the file access to the resource. If possible, encrypt this information.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-0681",
+      "description": "Web app allows remote attackers to change the passwords of arbitrary users without providing the original password, and possibly perform other unauthorized actions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0681"
+    },
+    {
+      "reference": "CVE-2000-0944",
+      "description": "Web application password change utility doesn't check the original password.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0944"
+    },
+    {
+      "reference": "CVE-2005-3435",
+      "description": "product authentication succeeds if user-provided MD5 hash matches the hash in its database; this can be subjected to replay attacks.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3435"
+    },
+    {
+      "reference": "CVE-2005-0408",
+      "description": "chain: product generates predictable MD5 hashes using a constant value combined with username, allowing authentication bypass.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0408"
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 19: Use of Weak Password-Based Systems.\" Page 279",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Anonymous Tool Vendor (under NDA)",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Observed_Examples, References, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Other_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-05-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Modes_of_Introduction, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Description, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Broken Authentication and Session Management",
+      "entry_id": "A7",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Broken Authentication and Session Management",
+      "entry_id": "A3",
+      "mapping_fit": "CWE More Specific"
+    }
+  ],
+  "related_attack_patterns": [
+    "102",
+    "474",
+    "50",
+    "509",
+    "551",
+    "555",
+    "560",
+    "561",
+    "600",
+    "644",
+    "645",
+    "652",
+    "653"
+  ]
+}

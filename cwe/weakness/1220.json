@@ -1,0 +1,136 @@
+{
+  "id": "1220",
+  "name": "Insufficient Granularity of Access Control",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product implements access controls via a policy or other feature with the intention to disable or restrict accesses (reads and/or writes) to assets in a system from untrusted agents. However, implemented access controls lack required granularity, which renders the control policy too broad because it allows accesses from unauthorized agents to the security-sensitive assets.",
+  "extended_description": "\n                \u003cxhtml:p\u003eIntegrated circuits and hardware engines can expose accesses to assets (device configuration, keys, etc.) to trusted firmware or a software module (commonly set by BIOS/bootloader). This access is typically access-controlled. Upon a power reset, the hardware or system usually starts with default values in registers, and the trusted firmware (Boot firmware) configures the necessary access-control protection.\u003c/xhtml:p\u003e\n                \u003cxhtml:p\u003eA common weakness that can exist in such protection schemes is that access controls or policies are not granular enough. This condition allows agents beyond trusted agents to access assets and could lead to a loss of functionality or the ability to set up the device securely. This further results in security risks from leaked, sensitive, key material to modification of device configuration.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "Such issues could be introduced during hardware architecture and design and identified later during Testing or System Configuration phases."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "Such issues could be introduced during hardware implementation and identified later during Testing or System Configuration phases."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "Execute Unauthorized Code or Commands",
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism",
+        "Other"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation",
+        "Testing"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:ul\u003e\n                            \u003cxhtml:li\u003eAccess-control-policy protections must be reviewed for design inconsistency and common weaknesses.\u003c/xhtml:li\u003e\n                            \u003cxhtml:li\u003eAccess-control-policy definition and programming flow must be tested in pre-silicon, post-silicon testing.\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                    "
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003e\n                        \u003cxhtml:p\u003eConsider a system with a register for storing AES key for encryption or decryption. The key is 128 bits, implemented as a set of four 32-bit registers. The key registers are assets and registers, AES_KEY_READ_POLICY and AES_KEY_WRITE_POLICY, and are defined to provide necessary access controls.\u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003eThe read-policy register defines which agents can read the AES-key registers, and write-policy register defines which agents can program or write to those registers. Each register is a 32-bit register, and it can support access control for a maximum of 32 agents. The number of the bit when set (i.e., \"1\") allows respective action from an agent whose identity matches the number of the bit and, if \"0\" (i.e., Clear), disallows the respective action to that corresponding agent.\u003c/xhtml:p\u003e\n                    \u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:th\u003eRegister\u003c/xhtml:th\u003e\n                                \u003cxhtml:th\u003eField description\u003c/xhtml:th\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_ENC_DEC_KEY_0\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003eAES key [0:31] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_ENC_DEC_KEY_1\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003eAES key [32:63] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_ENC_DEC_KEY_2\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003eAES key [64:95] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_ENC_DEC_KEY_4\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003eAES key [96:127] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_KEY_READ_WRITE_POLICY\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:0] Default 0x00000006 - meaning agent with identities \"1\" and \"2\" can both read from and write to key registers\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                        \u003c/xhtml:table\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eIn the above example, there is only one policy register that controls access to both read and write accesses to the AES-key registers, and thus the design is not granular enough to separate read and writes access for different agents. Here, agent with identities \"1\" and \"2\" can both read and write.\u003c/Body_Text\u003e\n                    \u003cBody_Text\u003eA good design should be granular enough to provide separate access controls to separate actions. Access control for reads should be separate from writes. Below is an example of such implementation where two policy registers are defined for each of these actions. The policy is defined such that: the AES-key registers can only be read or used by a crypto agent with identity \"1\" when bit #1 is set. The AES-key registers can only be programmed by a trusted firmware with identity \"2\" when bit #2 is set.\u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"mitigation\"\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_KEY_READ_POLICY\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:0] Default 0x00000002 - meaning only Crypto engine with identity \"1\" can read registers: AES_ENC_DEC_KEY_0, AES_ENC_DEC_KEY_1, AES_ENC_DEC_KEY_2, AES_ENC_DEC_KEY_3\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eAES_KEY_WRITE_POLICY\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:0] Default 0x00000004 - meaning only trusted firmware with identity \"2\" can program registers: AES_ENC_DEC_KEY_0, AES_ENC_DEC_KEY_1, AES_ENC_DEC_KEY_2, AES_ENC_DEC_KEY_3\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                        \u003c/xhtml:table\u003e\n                    \u003c/Example_Code\u003e\n                "
+    },
+    {
+      "text": "\n\t      \u003cIntro_Text\u003eConsider the following SoC\n\t      design. The sram in HRoT has an address range that is readable and writable by unprivileged\n\t      software and it has an area that is only readable by unprivileged software. The tbus\n\t      interconnect enforces access control for slaves on the bus but uses only one bit to control\n\t      both read and write access. Address 0xA0000000 - 0xA000FFFF is readable and writable\n\t      by the untrusted cores core{0-N} and address 0xA0010000 - 0xA001FFFF is only\n\t      readable by the untrusted cores core{0-N}.\u003c/Intro_Text\u003e\n\t    \u003cBody_Text\u003e\n\t    \u003cxhtml:img src=\"https://cwe.mitre.org/data/images/HRoT-CWE.png\" alt=\"Hardware Root of Trust\"/\u003e\n\t    \u003cxhtml:p\u003e\n\t      The security policy access control is not granular enough, as it uses one bit to enable both\n\t      read and write access. This gives write access to an area that should only be readable\n\t      by unprivileged agents.\n\t      \u003c/xhtml:p\u003e\n\t    \u003cxhtml:p\u003e\n\t      Access control logic should differentiate between read and write access and to have\n\t      sufficient address granularity.\n\t    \u003c/xhtml:p\u003e\n\t    \u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-05T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_organization": "Tortuga Logic",
+        "contribution_date": "2021-07-16T00:00:00Z",
+        "contribution_comment": "Provided Demonstrative Example for Hardware Root of Trust"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "1",
+    "180"
+  ]
+}

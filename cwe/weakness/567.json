@@ -1,0 +1,201 @@
+{
+  "id": "567",
+  "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+  "extended_description": "\n            \u003cxhtml:p\u003eWithin servlets, shared static variables are not protected from concurrent access, but servlets are multithreaded. This is a typical programming mistake in J2EE applications, since the multithreading is handled by the framework. When a shared variable can be influenced by an attacker, one thread could wind up modifying the variable to contain data that is not valid for a different thread that is also using the data within the variable.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eNote that this weakness is not unique to servlets.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "820",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "662",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "662",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "488",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Java"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Read Application Data",
+        "Modify Application Data",
+        "DoS: Instability",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "If the shared variable contains sensitive data, it may be manipulated or displayed in another user session. If this data is used to control the application, its value can be manipulated to cause the application to crash or perform poorly."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Remove the use of static variables used between servlets. If this cannot be avoided, use synchronized access for these variables."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code implements a basic counter for how many times the page has been accesed.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic static class Counter extends HttpServlet {\u003cxhtml:div style=\"margin-left:10px;\"\u003estatic int count = 0;\u003cxhtml:br/\u003eprotected void doGet(HttpServletRequest in, HttpServletResponse out)\u003cxhtml:br/\u003ethrows ServletException, IOException {\u003cxhtml:div style=\"margin-left:10px;\"\u003eout.setContentType(\"text/plain\");\u003cxhtml:br/\u003ePrintWriter p = out.getWriter();\u003cxhtml:br/\u003ecount++;\u003cxhtml:br/\u003ep.println(count + \" hits so far!\");\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eConsider when two separate threads, Thread A and Thread B, concurrently handle two different requests:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ul\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eAssume this is the first occurrence of doGet, so the value of count is 0.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003edoGet() is called within Thread A.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThe execution of doGet() in Thread A continues to the point AFTER the value of the count variable is read, then incremented, but BEFORE it is saved back to count. At this stage, the incremented value is 1, but the value of count is 0.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003edoGet() is called within Thread B, and due to a higher thread priority, Thread B progresses to the point where the count variable is accessed (where it is still 0), incremented, and saved. After the save, count is 1.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eThread A continues. It saves the intermediate, incremented value to the count variable - but the incremented value is 1, so count is \"re-saved\" to 1.\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ul\u003e\n               \u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAt this point, both Thread A and Thread B print that one hit has been seen, even though two separate requests have been processed. The value of count should be 2, not 1.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eWhile this example does not have any real serious implications, if the shared variable in question is used for resource tracking, then resource consumption could occur. Other scenarios exist.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Community",
+      "submission_date": "2006-12-15T00:00:00Z",
+      "submission_comment": "Submitted by members of the CWE community to extend early CWE versions"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-09T00:00:00Z",
+        "modification_comment": "Made name and description more specific to match the essence of the rest of the entry.",
+        "modification_importance": "Critical"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Demonstrative_Examples, Description, Name, Other_Notes, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Unsynchronized Access to Shared Data",
+        "date": "2010-12-13T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Ensure visibility when accessing shared primitive variables",
+      "entry_id": "VNA00-J"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Ensure that compound operations on shared variables are atomic",
+      "entry_id": "VNA02-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Missing Lock",
+      "entry_id": "SFP19"
+    }
+  ],
+  "related_attack_patterns": [
+    "25"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "id": "779",
+  "name": "Logging of Excessive Data",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software logs too much information, making log files hard to process and possibly hindering recovery efforts or forensic analysis after an attack.",
+  "extended_description": "While logging is a good practice in general, and very high levels of logging are appropriate for debugging stages of development, too much logging in a production environment might hinder a system administrator's ability to detect anomalous conditions. This can provide cover for an attacker while attempting to penetrate a system, clutter the audit trail for forensic analysis, or make it more difficult to debug problems in a production environment.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "400",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Operation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Low",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Resource Consumption (CPU)",
+        "DoS: Resource Consumption (Other)"
+      ],
+      "note": "Log files can become so large that they consume excessive resources, such as disk and CPU, which can hinder the performance of the system."
+    },
+    {
+      "scope": [
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Hide Activities"
+      ],
+      "note": "Logging too much information can make the log files of less use to forensics analysts and developers when trying to diagnose a problem or recover from an attack."
+    },
+    {
+      "scope": [
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Hide Activities"
+      ],
+      "note": "If system administrators are unable to effectively process log files, attempted attacks may go undetected, possibly leading to eventual system compromise."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Suppress large numbers of duplicate log messages and replace them with periodic summaries. For example, syslog may include an entry that states \"last message repeated X times\" when recording repeated events."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Support a maximum size for the log file that can be controlled by the administrator. If the maximum size is reached, the admin should be notified. Also, consider reducing functionality of the software. This may result in a denial-of-service to legitimate software users, but it will prevent the software from adversely impacting the entire system."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Adjust configurations appropriately when software is transitioned from a debug state to production."
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2007-0421",
+      "description": "server records a large amount of data to the server log when it receives malformed headers",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0421"
+    },
+    {
+      "reference": "CVE-2002-1154",
+      "description": "chain: application does not restrict access to front-end for updates, which allows attacker to fill the error log",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1154"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2009-07-02T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  }
+}

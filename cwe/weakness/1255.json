@@ -1,0 +1,205 @@
+{
+  "id": "1255",
+  "name": "Comparison Logic is Vulnerable to Power Side-Channel Attacks",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "A device's real time power consumption may be monitored during security token evaluation and the information gleaned may be used to determine the value of the reference token.",
+  "extended_description": "\n        \u003cxhtml:p\u003eThe power consumed by a device may be instrumented and monitored in real time. If the algorithm for evaluating security tokens is not sufficiently robust, the power consumption may vary by token entry comparison against the reference value. Further, if retries are unlimited, the power difference between a \"good\" entry and a \"bad\" entry may be observed and used to determine whether each entry itself is correct thereby allowing unauthorized parties to calculate the reference value.\u003c/xhtml:p\u003e\n      ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1300",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "1259",
+      "view_id": "1194",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "The design of the algorithm itself may intrinsically allow the power side channel attack to be effective"
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "This weakness may be introduced during implementation despite a robust design that otherwise prevents exploitation"
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control",
+        "Accountability",
+        "Authentication",
+        "Authorization",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "Read Files or Directories",
+        "Modify Files or Directories",
+        "Execute Unauthorized Code or Commands",
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism",
+        "Read Application Data",
+        "Modify Application Data",
+        "Hide Activities"
+      ],
+      "note": "As compromising a security token may result in complete system control, the impacts are relatively universal"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "The design phase must consider each check of a security token against a standard and the amount of power consumed during the check of a good token versus a bad token. The alternative is an all at once check where a retry counter is incremented PRIOR to the check."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Another potential mitigation is to parallelize shifting of secret data (see example 2 below). Note that the wider the bus the more effective the result."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "An additional potential mitigation is to add random data to each crypto operation then subtract it out afterwards. This is highly effective but costly in performance, area, and power consumption. It also requires a random number generator."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If the architecture is unable to prevent the attack, using filtering components may reduce the ability to implement an attack, however, consideration must be given to the physical removal of the filter elements."
+      ]
+    },
+    {
+      "phase": [
+        "Integration"
+      ],
+      "description": [
+        "During integration, avoid use of a single secret for an extended period (e.g. frequent key updates). This limits the amount of data compromised but at the cost of complexity of use."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n          \u003cIntro_Text\u003eConsider an example hardware module that checks a user-provided password (or PIN) to grant access to a user. The user-provided password is compared against a stored value byte-by-byte.\u003c/Intro_Text\u003e\n          \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n            \u003cxhtml:br/\u003estatic nonvolatile password_tries = NUM_RETRIES;\n            \u003cxhtml:br/\u003edo\n            \u003cxhtml:br/\u003e  while (password_tries == 0) ; // Hang here if no more password tries\n            \u003cxhtml:br/\u003e  password_ok = 0;\n            \u003cxhtml:br/\u003e  for (i = 0; i \u0026lt; NUM_PW_DIGITS; i++)\n            \u003cxhtml:br/\u003e    if (GetPasswordByte() == stored_password([i])\n            \u003cxhtml:br/\u003e      password_ok |= 1; // Power consumption is different here\n            \u003cxhtml:br/\u003e    else\n            \u003cxhtml:br/\u003e      password_ok |= 0; // than from here\n            \u003cxhtml:br/\u003e  end\n            \u003cxhtml:br/\u003e  if (password_ok \u0026gt; 0)\n            \u003cxhtml:br/\u003e    password_tries = NUM_RETRIES;\n            \u003cxhtml:br/\u003e    break_to_Ok_to_proceed\n            \u003cxhtml:br/\u003e  password_tries--;\n            \u003cxhtml:br/\u003ewhile (true)\n            \u003cxhtml:br/\u003e// Password OK\n          \u003c/Example_Code\u003e\n          \u003cBody_Text\u003eSince the algorithm uses a different number of 1's and 0's for password validation, a different amount of power is consumed for the good byte versus the bad byte comparison. Using this information, an attacker may be able to guess the correct password for that byte-by-byte iteration with several repeated attempts by stopping the password evaluation before it completes.\u003c/Body_Text\u003e\n          \u003cExample_Code Nature=\"good\"\u003e\n            \u003cxhtml:br/\u003e\n            \u003cxhtml:br/\u003eAmong various options for mitigating the string comparison is obscuring the power comsumption by having opposing bit flips during bit operations. Note that in this example, the initial change of the bit values could still provide power indication depending upon the hardware itself. This possibility needs to be measured for verification.\n            \u003cxhtml:br/\u003estatic nonvolatile password_tries = NUM_RETRIES;\n            \u003cxhtml:br/\u003edo\n            \u003cxhtml:br/\u003e  while (password_tries == 0) ; // Hang here if no more password tries\n            \u003cxhtml:br/\u003e  password_tries--;  // Put retry code here to catch partial retries\n            \u003cxhtml:br/\u003e  password_ok = 0;\n            \u003cxhtml:br/\u003e  for (i = 0; i \u0026lt; NUM_PW_DIGITS; i++)\n            \u003cxhtml:br/\u003e    if (GetPasswordByte() == stored_password([i])\n            \u003cxhtml:br/\u003e      password_ok |= 0x10; // Power consumption here\n            \u003cxhtml:br/\u003e    else\n            \u003cxhtml:br/\u003e      password_ok |= 0x01; // is now the same here\n            \u003cxhtml:br/\u003e  end\n            \u003cxhtml:br/\u003e  if ((password_ok \u0026amp; 1) == 0)\n            \u003cxhtml:br/\u003e    password_tries = NUM_RETRIES;\n            \u003cxhtml:br/\u003e    break_to_Ok_to_proceed\n            \u003cxhtml:br/\u003ewhile (true)\n            \u003cxhtml:br/\u003e// Password OK\n          \u003c/Example_Code\u003e\n          \u003cBody_Text\u003eSince the algorithm uses a different number of 1's and 0's for password validation, a different amount of power is consumed for the good byte versus the bad byte comparison. Using this information, an attacker may be able to guess the correct password for that byte-by-byte iteration with several repeated attempts by stopping the password evaluation before it completes.\u003c/Body_Text\u003e\n          \u003cExample_Code Nature=\"good\"\u003e\n            \u003cxhtml:br/\u003eAn alternative to the previous example is simply comparing the whole password simultaneously.\n            \u003cxhtml:br/\u003e\n            \u003cxhtml:br/\u003estatic nonvolatile password_tries = NUM_RETRIES;\n            \u003cxhtml:br/\u003edo\n            \u003cxhtml:br/\u003e  while (password_tries == 0) ; // Hang here if no more password tries\n            \u003cxhtml:br/\u003e  password_tries--;  // Put retry code here to catch partial retries\n            \u003cxhtml:br/\u003e  for (i = 0; i \u0026lt; NUM_PW_DIGITS; i++)\n            \u003cxhtml:br/\u003e    stored_password([i] = GetPasswordByte();\n            \u003cxhtml:br/\u003e  end\n            \u003cxhtml:br/\u003e  if (stored_password == saved_password)\n            \u003cxhtml:br/\u003e    password_tries = NUM_RETRIES;\n            \u003cxhtml:br/\u003e    break_to_Ok_to_proceed\n            \u003cxhtml:br/\u003ewhile (true)\n            \u003cxhtml:br/\u003e// Password OK\n          \u003c/Example_Code\u003e\n           \u003cBody_Text\u003eSince comparison is done atomically, there is no indication which bytes fail forcing the attacker to brute force the whole password at once. Note that other mitigations may exist such as masking - causing a large current draw to mask individual bit flips.\u003c/Body_Text\u003e\n       "
+    },
+    {
+      "text": "\n          \u003cIntro_Text\u003eThis code demonstrates the transfer of a secret key using Serial-In/Serial-Out shift. It's easy to extract the secret using simple power analysis as each shift gives data on a single bit of the key.\u003c/Intro_Text\u003e\n          \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n            \u003cxhtml:br/\u003emodule siso(clk,rst,a,q);\n            \u003cxhtml:br/\u003e  input a;\n            \u003cxhtml:br/\u003e  input clk,rst;\n            \u003cxhtml:br/\u003e  output q;\n            \u003cxhtml:br/\u003e  reg q;\n            \u003cxhtml:br/\u003e  \n            \u003cxhtml:br/\u003e  always@(posedge clk,posedge rst)\n            \u003cxhtml:br/\u003e  begin\n            \u003cxhtml:br/\u003e    if(rst==1'b1)\n            \u003cxhtml:br/\u003e      q\u0026lt;1'b0;\n            \u003cxhtml:br/\u003e    else\n            \u003cxhtml:br/\u003e      q\u0026lt;a;\n            \u003cxhtml:br/\u003e  end\n            \u003cxhtml:br/\u003eendmodule\n          \u003c/Example_Code\u003e\n            \u003cBody_Text\u003eThis code demonstrates the transfer of a secret key using a Parallel-In/Parallel-Out shift. In a parallel shift, data confounded by multiple bits of the key, not just one.\u003c/Body_Text\u003e\n            \u003cExample_Code Nature=\"good\" Language=\"Other\"\u003e\n            \u003cxhtml:br/\u003emodule pipo(clk,rst,a,q);\n            \u003cxhtml:br/\u003e  input clk,rst;\n            \u003cxhtml:br/\u003e  input[3:0]a;\n            \u003cxhtml:br/\u003e  output[3:0]q;\n            \u003cxhtml:br/\u003e  reg[3:0]q;\n            \u003cxhtml:br/\u003e  \n            \u003cxhtml:br/\u003e  always@(posedge clk,posedge rst)\n            \u003cxhtml:br/\u003e  begin\n            \u003cxhtml:br/\u003e    if (rst==1'b1)\n            \u003cxhtml:br/\u003e      q\u0026lt;4'b0000;\n            \u003cxhtml:br/\u003e    else\n            \u003cxhtml:br/\u003e      q\u0026lt;a;\n            \u003cxhtml:br/\u003e  end\n            \u003cxhtml:br/\u003eendmodule\n          \u003c/Example_Code\u003e\n        "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2020-12788",
+      "description": "CMAC verification vulnerable to timing and power attacks.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12788"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1184",
+      "author": [
+        "Wikipedia"
+      ],
+      "title": "Power Analysis",
+      "url": "https://en.wikipedia.org/wiki/Power_analysis"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2020-05-29T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Functional_Areas, Maintenance_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Modes_of_Introduction, Observed_Examples, Potential_Mitigations, References, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes, References, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_name": "Accellera IP Security Assurance (IPSA) Working Group",
+        "contribution_organization": "Accellera Systems Initiative",
+        "contribution_date": "2020-09-09T00:00:00Z",
+        "contribution_comment": "Submitted new material that could be added to already-existing entry CWE-1255. Added new Potential Mitigations, a new example, an observed example, and an additional reference.\n        "
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "189"
+  ],
+  "functional_areas": [
+    "Power"
+  ]
+}

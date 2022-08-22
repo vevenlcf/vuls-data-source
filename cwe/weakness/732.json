@@ -1,0 +1,612 @@
+{
+  "id": "732",
+  "name": "Incorrect Permission Assignment for Critical Resource",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+  "extended_description": "When a resource is given a permissions setting that provides access to a wider range of actors than required, it could lead to the exposure of sensitive information, or the modification of that resource by unintended parties. This is especially dangerous when the resource is related to program configuration, execution or sensitive user data.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "285",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "668",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "\n                  \u003cxhtml:p\u003eREALIZATION: This weakness is caused during implementation of an architectural security tactic.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThe developer might make certain assumptions about the environment in which the product operates - e.g., that the software is running on a single-user system, or the software is only accessible to trusted administrators. When the software is running in a different environment, the permissions become a problem.\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "phase": "Installation",
+      "note": [
+        "The developer may set loose permissions in order to minimize problems when the user first runs the program, then create documentation stating that permissions should be tightened. Since system administrators and users do not always read the documentation, this can result in insecure permissions being left unchanged."
+      ]
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data",
+        "Read Files or Directories"
+      ],
+      "note": "An attacker may be able to read sensitive information from the associated resource, such as credentials or configuration information stored in a file."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "An attacker may be able to modify critical properties of the associated resource to gain privileges, such as replacing a world-writable executable with a Trojan horse."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Other"
+      ],
+      "impact": [
+        "Modify Application Data",
+        "Other"
+      ],
+      "note": "An attacker may be able to destroy or corrupt critical data in the associated resource, such as deletion of records from a database."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "When using a critical resource such as a configuration file, check to see if the resource has insecure permissions (such as being modifiable by any regular user) [REF-62], and generate an error or even exit the software if there is a possibility that the resource could have been modified by an unauthorized party."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Divide the software into anonymous, normal, privileged, and administrative areas. Reduce the attack surface by carefully defining distinct user groups, privileges, and/or roles. Map these against data, functionality, and the related resources. Then set the permissions accordingly. This will allow you to maintain more fine-grained control over your resources. [REF-207]"
+      ],
+      "effectiveness": "Moderate",
+      "effectiveness_notes": "This can be an effective strategy. However, in practice, it may be difficult or time consuming to define these areas when there are many different resources or user types, or if the applications features change rapidly."
+    },
+    {
+      "mitigation_id": "MIT-22",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun the code in a \"jail\" or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eOS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBe careful to avoid CWE-243 and other weaknesses related to jails.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "The effectiveness of this mitigation depends on the prevention capabilities of the specific sandbox or jail being used and might only help to reduce the scope of an attack, such as restricting the attacker to certain system calls or limiting the portion of the file system that can be accessed.",
+      "strategy": "Sandbox or Jail"
+    },
+    {
+      "phase": [
+        "Implementation",
+        "Installation"
+      ],
+      "description": [
+        "During program startup, explicitly set the default permissions or umask to the most restrictive setting possible. Also set the appropriate permissions during program installation. This will prevent you from inheriting insecure permissions from any user who installs or runs the program."
+      ],
+      "effectiveness": "High"
+    },
+    {
+      "phase": [
+        "System Configuration"
+      ],
+      "description": [
+        "For all configuration files, executables, and libraries, make sure that they are only readable and writable by the software's administrator."
+      ],
+      "effectiveness": "High"
+    },
+    {
+      "phase": [
+        "Documentation"
+      ],
+      "description": [
+        "Do not suggest insecure configuration changes in documentation, especially if those configurations can extend to resources and other programs that are outside the scope of the application."
+      ]
+    },
+    {
+      "phase": [
+        "Installation"
+      ],
+      "description": [
+        "Do not assume that a system administrator will manually change the configuration to the settings that are recommended in the software's manual."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-37",
+      "phase": [
+        "Operation",
+        "System Configuration"
+      ],
+      "description": [
+        "Ensure that the software runs properly under the Federal Desktop Core Configuration (FDCC) [REF-199] or an equivalent hardening configuration guide, which many organizations use to limit the attack surface and potential risk of deployed software."
+      ],
+      "strategy": "Environment Hardening"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code sets the umask of the process to 0 before creating a file and writing \"Hello world\" into the file.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e#define OUTFILE \"hello.out\"\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eumask(0);\u003cxhtml:br/\u003eFILE *out;\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e/* Ignore CWE-59 (link following) for brevity */\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eout = fopen(OUTFILE, \"w\");\u003cxhtml:br/\u003eif (out) {\u003cxhtml:div style=\"margin-left:10px;\"\u003efprintf(out, \"hello world!\\n\");\u003cxhtml:br/\u003efclose(out);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAfter running this program on a UNIX system, running the \"ls -l\" command might return the following output:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003e-rw-rw-rw- 1 username 13 Nov 24 17:58 hello.out\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe \"rw-rw-rw-\" string indicates that the owner, group, and world (all users) can read the file and write to it.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis code creates a home directory for a new user, and makes that user the owner of the directory. If the new directory cannot be owned by the user, the directory is deleted.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003efunction createUserDir($username){\u003cxhtml:div style=\"margin-left:10px;\"\u003e$path = '/home/'.$username;\u003cxhtml:br/\u003eif(!mkdir($path)){\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn false;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eif(!chown($path,$username)){\u003cxhtml:div style=\"margin-left:10px;\"\u003ermdir($path);\u003cxhtml:br/\u003ereturn false;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn true;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause the optional \"mode\" argument is omitted from the call to mkdir(), the directory is created with the default permissions 0777. Simply setting the new user as the owner of the directory does not explicitly change the permissions of the directory, leaving it with the default. This default allows any user to read and write to the directory, allowing an attack on the user's files. The code also fails to change the owner group of the directory, which may result in access by unexpected groups.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThis code may also be vulnerable to Path Traversal (CWE-22) attacks if an attacker supplies a non alphanumeric username.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code snippet might be used as a monitor to periodically record whether a web site is alive. To ensure that the file can always be modified, the code uses chmod() to make the file world-writable.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003e$fileName = \"secretFile.out\";\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eif (-e $fileName) {\u003cxhtml:div style=\"margin-left:10px;\"\u003echmod 0777, $fileName;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003emy $outFH;\u003cxhtml:br/\u003eif (! open($outFH, \"\u0026gt;\u0026gt;$fileName\")) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"Couldn't append to $fileName: $!\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003emy $dateString = FormatCurrentTime();\u003cxhtml:br/\u003emy $status = IsHostAlive(\"cwe.mitre.org\");\u003cxhtml:br/\u003eprint $outFH \"$dateString cwe status: $status!\\n\";\u003cxhtml:br/\u003eclose($outFH);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe first time the program runs, it might create a new file that inherits the permissions from its environment. A file listing might look like:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003e-rw-r--r-- 1 username 13 Nov 24 17:58 secretFile.out\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis listing might occur when the user has a default umask of 022, which is a common setting. Depending on the nature of the file, the user might not have intended to make it readable by everyone on the system.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThe next time the program runs, however - and all subsequent executions - the chmod will set the file's permissions so that the owner, group, and world (all users) can read the file and write to it:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003e-rw-rw-rw- 1 username 13 Nov 24 17:58 secretFile.out\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003ePerhaps the programmer tried to do this because a different process uses different permissions that might prevent the file from being updated.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following command recursively sets world-readable permissions for a directory and all of its children:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Shell\"\u003e\n                  \u003cxhtml:div\u003echmod -R ugo+r DIRNAME\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf this command is run from a program, the person calling the program might not expect that all the files under the directory will be world-readable. If the directory is expected to contain private data, this could become a security problem.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2009-3482",
+      "description": "Anti-virus product sets insecure \"Everyone: Full Control\" permissions for files under the \"Program Files\" folder, allowing attackers to replace executables with Trojan horses.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3482"
+    },
+    {
+      "reference": "CVE-2009-3897",
+      "description": "Product creates directories with 0777 permissions at installation, allowing users to gain privileges and access a socket used for authentication.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3897"
+    },
+    {
+      "reference": "CVE-2009-3489",
+      "description": "Photo editor installs a service with an insecure security descriptor, allowing users to stop or start the service, or execute commands as SYSTEM.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3489"
+    },
+    {
+      "reference": "CVE-2020-15708",
+      "description": "socket created with insecure permissions",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15708"
+    },
+    {
+      "reference": "CVE-2009-3289",
+      "description": "Library function copies a file to a new target and uses the source file's permissions for the target, which is incorrect when the source file is a symbolic link, which typically has 0777 permissions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3289"
+    },
+    {
+      "reference": "CVE-2009-0115",
+      "description": "Device driver uses world-writable permissions for a socket file, allowing attackers to inject arbitrary commands.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0115"
+    },
+    {
+      "reference": "CVE-2009-1073",
+      "description": "LDAP server stores a cleartext password in a world-readable file.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1073"
+    },
+    {
+      "reference": "CVE-2009-0141",
+      "description": "Terminal emulator creates TTY devices with world-writable permissions, allowing an attacker to write to the terminals of other users.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0141"
+    },
+    {
+      "reference": "CVE-2008-0662",
+      "description": "VPN product stores user credentials in a registry key with \"Everyone: Full Control\" permissions, allowing attackers to steal the credentials.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0662"
+    },
+    {
+      "reference": "CVE-2008-0322",
+      "description": "Driver installs its device interface with \"Everyone: Write\" permissions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0322"
+    },
+    {
+      "reference": "CVE-2009-3939",
+      "description": "Driver installs a file with world-writable permissions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3939"
+    },
+    {
+      "reference": "CVE-2009-3611",
+      "description": "Product changes permissions to 0777 before deleting a backup; the permissions stay insecure for subsequent backups.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3611"
+    },
+    {
+      "reference": "CVE-2007-6033",
+      "description": "Product creates a share with \"Everyone: Full Control\" permissions, allowing arbitrary program execution.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6033"
+    },
+    {
+      "reference": "CVE-2007-5544",
+      "description": "Product uses \"Everyone: Full Control\" permissions for memory-mapped files (shared memory) in inter-process communication, allowing attackers to tamper with a session.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5544"
+    },
+    {
+      "reference": "CVE-2005-4868",
+      "description": "Database product uses read/write permissions for everyone for its shared memory, allowing theft of credentials.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4868"
+    },
+    {
+      "reference": "CVE-2004-1714",
+      "description": "Security product uses \"Everyone: Full Control\" permissions for its configuration files.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1714"
+    },
+    {
+      "reference": "CVE-2001-0006",
+      "description": "\"Everyone: Full Control\" permissions assigned to a mutex allows users to disable network connectivity.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0006"
+    },
+    {
+      "reference": "CVE-2002-0969",
+      "description": "Chain: database product contains buffer overflow that is only reachable through a .ini configuration file - which has \"Everyone: Full Control\" permissions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0969"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 9, \"File Permissions.\" Page 495",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "Chapter 8, \"Access Control.\" Page 194",
+      "reference_id": "REF-207",
+      "author": [
+        "John Viega",
+        "Gary McGraw"
+      ],
+      "title": "Building Secure Software: How to Avoid Security Problems the Right Way",
+      "publication_year": "2002",
+      "publisher": "Addison-Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "reference_id": "REF-594",
+      "author": [
+        "Jason Lam"
+      ],
+      "title": "Top 25 Series - Rank 21 - Incorrect Permission Assignment for Critical Response",
+      "url": "http://software-security.sans.org/blog/2010/03/24/top-25-series-rank-21-incorrect-permission-assignment-for-critical-response",
+      "publication_year": "2010",
+      "publication_month": "--03",
+      "publication_day": "---24",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-199",
+      "author": [
+        "NIST"
+      ],
+      "title": "Federal Desktop Core Configuration",
+      "url": "http://nvd.nist.gov/fdcc/index.cfm"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2008-09-08T00:00:00Z",
+      "submission_comment": "new weakness-focused entry for Research view."
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Description, Likelihood_of_Exploit, Name, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Demonstrative_Examples, Detection_Factors, Modes_of_Introduction, Observed_Examples, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Detection_Factors, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Related_Attack_Patterns, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-01-19T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit, Modes_of_Introduction, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Description, Detection_Factors, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Insecure Permission Assignment for Resource",
+        "date": "2009-01-12T00:00:00Z"
+      },
+      {
+        "text": "Insecure Permission Assignment for Critical Resource",
+        "date": "2009-05-27T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eAutomated static analysis may be effective in detecting permission problems for system resources such as files, directories, shared memory, device interfaces, etc. Automated techniques may be able to detect the use of library functions that modify permissions, then analyze function calls for arguments that contain potentially insecure values.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eHowever, since the software's intended security policy might allow loose permissions for certain operations (such as publishing a file on a web server), automated static analysis may produce some false positives - i.e., warnings that do not have any security consequences or require any code changes.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen custom permissions models are used - such as defining who can read messages in a particular forum in a bulletin board system - these can be difficult to detect using automated static analysis. It may be possible to define custom signatures that identify any custom functions that implement the permission checks and assignments.\u003c/xhtml:p\u003e\n               "
+    },
+    {
+      "method": "Automated Dynamic Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eAutomated dynamic analysis may be effective in detecting permission problems for system resources such as files, directories, shared memory, device interfaces, etc.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eHowever, since the software's intended security policy might allow loose permissions for certain operations (such as publishing a file on a web server), automated dynamic analysis may produce some false positives - i.e., warnings that do not have any security consequences or require any code changes.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen custom permissions models are used - such as defining who can read messages in a particular forum in a bulletin board system - these can be difficult to detect using automated dynamic analysis. It may be possible to define custom signatures that identify any custom functions that implement the permission checks and assignments.\u003c/xhtml:p\u003e\n               "
+    },
+    {
+      "detection_method_id": "DM-7",
+      "method": "Manual Analysis",
+      "description": "This weakness can be detected using tools and techniques that require manual (human) analysis, such as penetration testing, threat modeling, and interactive tools that allow the tester to record and modify an active session.",
+      "effectiveness_notes": "These may be more effective than strictly automated techniques. This is especially the case with weaknesses that are related to design and business rules."
+    },
+    {
+      "method": "Manual Static Analysis",
+      "description": "Manual static analysis may be effective in detecting the use of custom permissions models and functions. The code could then be examined to identifying usage of the related functions. Then the human analyst could evaluate permission assignments in the context of the intended security model of the software."
+    },
+    {
+      "method": "Manual Dynamic Analysis",
+      "description": "Manual dynamic analysis may be effective in detecting the use of custom permissions models and functions. The program could then be executed with a focus on exercising code paths that are related to the custom permissions. Then the human analyst could evaluate permission assignments in the context of the intended security model of the software."
+    },
+    {
+      "method": "Fuzzing",
+      "description": "Fuzzing is not effective in detecting this weakness."
+    },
+    {
+      "detection_method_id": "DM-11.1",
+      "method": "Black Box",
+      "description": "\n                  \u003cxhtml:p\u003eUse monitoring tools that examine the software's process as it interacts with the operating system and the network. This technique is useful in cases when source code is unavailable, if the software was not developed by you, or if you want to verify that the build phase did not introduce any new weaknesses. Examples include debuggers that directly attach to the running process; system-call tracing utilities such as truss (Solaris) and strace (Linux); system activity monitors such as FileMon, RegMon, Process Monitor, and other Sysinternals utilities (Windows); and sniffers and protocol analyzers that monitor network traffic.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAttach the monitor to the process and watch for library functions or system calls on OS resources such as files, directories, and shared memory. Examine the arguments to these calls to infer which permissions are being used.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness_notes": "Note that this technique is only useful for permissions issues related to system resources. It is not likely to detect application-level business rules that are related to permissions, such as if a user of a blog system marks a post as \"private,\" but the blog system inadvertently marks it as \"public.\""
+    },
+    {
+      "method": "Automated Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInter-application Flow Analysis\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Manual Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBinary / Bytecode disassembler - then use manual analysis for vulnerabilities \u0026amp; anomalies\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eHost-based Vulnerability Scanners - Examine configuration for flaws, verifying that audit mechanisms work, ensure host configuration meets certain predefined criteria\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Services Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eDatabase Scanners\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eHost Application Interface Scanner\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eAutomated Monitored Execution\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eForced Path Execution\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eConfiguration Checker\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Create files with appropriate access permission",
+      "entry_id": "FIO03-J"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not allow tainted variables in privileged blocks",
+      "entry_id": "SEC01-J"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not grant dangerous combinations of permissions",
+      "entry_id": "ENV03-J"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Create files with appropriate access permissions",
+      "entry_id": "FIO06-C"
+    }
+  ],
+  "related_attack_patterns": [
+    "1",
+    "122",
+    "127",
+    "17",
+    "180",
+    "206",
+    "234",
+    "60",
+    "61",
+    "62",
+    "642"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "The relationships between privileges, permissions, and actors (e.g. users and groups) need further refinement within the Research view. One complication is that these concepts apply to two different pillars, related to control of resources (CWE-664) and protection mechanism failures (CWE-693)."
+    }
+  ]
+}

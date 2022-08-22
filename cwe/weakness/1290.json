@@ -1,0 +1,139 @@
+{
+  "id": "1290",
+  "name": "Incorrect Decoding of Security Identifiers ",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product implements a decoding mechanism to decode certain bus-transaction signals to security identifiers. If the decoding is implemented incorrectly, then untrusted agents can now gain unauthorized access to the asset.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eIn a System-On-Chip (SoC), various integrated circuits and hardware engines generate transactions such as to access (reads/writes) assets or perform certain actions (e.g., reset, fetch, compute, etc.). Among various types of message information, a typical transaction is comprised of source identity (to identify the originator of the transaction) and a destination identity (to route the transaction to the respective entity). Sometimes the transactions are qualified with a security identifier. The security identifier helps the destination agent decide on the set of allowed actions (e.g., access an asset for read and writes). A decoder decodes the bus transactions to map security identifiers into necessary access-controls/protections.\u003c/xhtml:p\u003e\n\t\t\t\t\u003cxhtml:p\u003eA common weakness that can exist in this scenario is incorrect decoding because an untrusted agent’s security identifier is decoded into a trusted agent’s security identifier. Thus, an untrusted agent previously without access to an asset can now gain access to the asset.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "1294",
+      "view_id": "1194",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Bus/Interface Hardware"
+      },
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    },
+    {
+      "phase": "Architecture and Design"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "DoS: Resource Consumption (Other)",
+        "Execute Unauthorized Code or Commands",
+        "Gain Privileges or Assume Identity",
+        "Quality Degradation"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Security identifier decoders must be reviewed for design consistency and common weaknesses."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Access and programming flows must be tested in pre-silicon and post-silicon testing in order to check for this weakness."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003e\n                        \u003cxhtml:p\u003e\n                            Consider a system that has four bus masters and a decoder. The table below provides bus masters as well as their security identifiers and trust assumptions:\n                        \u003c/xhtml:p\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    Bus Master\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Security Identifier Decoding\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Trust Assumptions\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    Master_0\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    \"00\"\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Untrusted\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    Master_1\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    \"01\"\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Trusted\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    Master_2\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    \"10\"\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Untrusted\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    Master_3\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    \"11\"\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Untrusted\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                        \u003c/xhtml:table\u003e\n                        \u003cxhtml:p\u003e\n                            The decoder is supposed to decode every bus transaction and assign a corresponding security identifier. The security identifier is used to determine accesses to the assets.\n                        \u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003e\n                            The bus transaction that contains the security information is Bus_transaction [15:14], and the bits 15 through 14 contain the security identifier in formation.\n                        \u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003e\n                            The assets are the AES-Key register’s AES key for encryption or decryption. The key is128 bits implemented as a set of four 32-bit registers. The key registers are assets, and register AES_KEY_ACCESS_POLICY is defined to provide the necessary access controls.\nThe access-policy register defines which agents with a security identifier in the transaction can access the AES-key registers. The size of the security identifier is 4 bits (i.e., bit 3 through 0. Each bit in these 4 bits defines a security identifier. There are only 4 security identifiers that are allowed accesses to the AES-key registers. The number of the bit when set (i.e., “1”) allows respective action from an agent whose identity matches the number of the bit and, if “0” (i.e., Clear), disallows the respective action to that corresponding agent.\n                        \u003c/xhtml:p\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    Register\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    Field description\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    AES_ENC_DEC_KEY_0\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    AES key [0:31] for encryption or decryption\nDefault 0x00000000\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    AES_ENC_DEC_KEY_1\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    AES key [32:63] for encryption or decryption\nDefault 0x00000000\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    AES_ENC_DEC_KEY_2\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    AES key [64:95] for encryption or decryption\nDefault 0x00000000\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    AES_ENC_DEC_KEY_3\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    AES key [96:127] for encryption or decryption\nDefault 0x00000000\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003e\n                                    AES_KEY_ACCESS_POLICY\n                                \u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e\n                                    [31:4] Default 0x000000\n[3:0] – 0x02 agent with Security Identifier “1” has access to AES_ENC_DEC_KEY_0 through AES_ENC_DEC_KEY_4 registers\n\n                                \u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                        \u003c/xhtml:table\u003e\n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:div\u003e\n                            Pseudo Code\n                            \u003cxhtml:br/\u003e\n                                If (AES_KEY_ACCESS_POLICY[Security_Identifier] == “1”)\n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Allow access to AES-Key registers\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003e\n                                Else\n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Deny access to AES-Key registers\n                            \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                    \u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:div\u003e\n                            Below is a decoder’s Pseudo code that only checks for bit [14] of the bus transaction to determine what Security Identifier it must assign. \n                            \u003cxhtml:br/\u003e\n                            If (Bus_transaction[14] == “1”) \n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Security_Identifier == “1”\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003e\n                                Else\n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Security_Identifier == “0”\n                            \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eUpon close observation of the security identifiers and the above code, it looks like the Master_3, an untrusted agent, has access to the AES-Key registers in addition to the intended trusted Master_1 because both have their bit “0” set to “1”.\u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"good\" Language=\"Other\"\u003e\n                        \u003cxhtml:div\u003e\n                            The decoder should check for the entire size of the security identifier in the bus-transaction signal to assign a corresponding security identifier. The following is good Pseudo code:\n                            \u003cxhtml:br/\u003e\n                            If (Bus_transaction[15:14] == “00”) \n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Security_Identifier == “0”\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003e\n                            If (Bus_transaction[15:14] == “01”) \n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Security_Identifier == “1”\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003e\n                            If (Bus_transaction[15:14] == “10”) \n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Security_Identifier == “2”\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003e\n                            If (Bus_transaction[15:14] == “11”) \n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                Security_Identifier == “3”\n                            \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-04-29T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "629"
+  ]
+}

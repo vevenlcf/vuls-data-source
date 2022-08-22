@@ -1,0 +1,193 @@
+{
+  "id": "433",
+  "name": "Unparsed Raw Web Content Delivery",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software stores raw content or supporting code under the web document root with an extension that is not specifically handled by the server.",
+  "extended_description": "If code is stored in a file with an extension such as \".inc\" or \".pl\", and the web server does not have a handler for that extension, then the server will likely send the contents of the file directly to the requester without the pre-processing that was expected. When that file contains sensitive information such as database credentials, this may allow the attacker to compromise the application or associated components.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "219",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Perform a type check before interpreting files."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Do not store sensitive information in files which may be misinterpreted."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-104",
+      "text": "\n               \u003cIntro_Text\u003eThe following code uses an include file to store database credentials:\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003edatabase.inc\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;?php\u003cxhtml:br/\u003e$dbName = 'usersDB';\u003cxhtml:br/\u003e$dbPassword = 'skjdh#67nkjd3$3$';\u003cxhtml:br/\u003e?\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003elogin.php\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;?php\u003cxhtml:br/\u003einclude('database.inc');\u003cxhtml:br/\u003e$db = connectToDB($dbName, $dbPassword);\u003cxhtml:br/\u003e$db.authenticateUser($username, $password);\u003cxhtml:br/\u003e?\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf the server does not have an explicit handler set for .inc files it may send the contents of database.inc to an attacker without pre-processing, if the attacker requests the file directly. This will expose the database name and password.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2002-1886",
+      "description": "\".inc\" file stored under web document root and returned unparsed by the server",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1886"
+    },
+    {
+      "reference": "CVE-2002-2065",
+      "description": "\".inc\" file stored under web document root and returned unparsed by the server",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2065"
+    },
+    {
+      "reference": "CVE-2005-2029",
+      "description": "\".inc\" file stored under web document root and returned unparsed by the server",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2029"
+    },
+    {
+      "reference": "CVE-2001-0330",
+      "description": "direct request to .pl file leaves it unparsed",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0330"
+    },
+    {
+      "reference": "CVE-2002-0614",
+      "description": ".inc file",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0614"
+    },
+    {
+      "reference": "CVE-2004-2353",
+      "description": "unparsed config.conf file",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2353"
+    },
+    {
+      "reference": "CVE-2007-3365",
+      "description": "Chain: uppercase file extensions causes web server to return script source code instead of executing the script.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3365"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 3, \"File Handlers\", Page 74",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes, Relationship_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Description, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Observed_Examples"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Unparsed Raw Web Content Delivery"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "This overlaps direct requests (CWE-425), alternate path (CWE-424), permissions (CWE-275), and sensitive file under web root (CWE-219)."
+    }
+  ]
+}

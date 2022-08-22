@@ -1,0 +1,177 @@
+{
+  "id": "1299",
+  "name": "Missing Protection Mechanism for Alternate Hardware Interface",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The lack of protections on alternate paths to access\n                control-protected assets (such as unprotected shadow registers\n                and other external facing unguarded interfaces) allows an\n                attacker to bypass existing protections to the asset that are\n\t\tonly performed against the primary path.",
+  "extended_description": "\n                \u003cxhtml:p\u003eAn asset inside a chip might have access-control\n                    protections through one interface. However, if all paths to\n                    the asset are not protected, an attacker might compromise\n                    the asset through alternate paths. These alternate paths\n                    could be through shadow or mirror registers inside the IP\n                    core, or could be paths from other external-facing\n                    interfaces to the IP core or SoC.\u003c/xhtml:p\u003e\n                \u003cxhtml:p\u003eConsider an SoC with various interfaces such as UART,\n                    SMBUS, PCIe, USB, etc. If access control is implemented for\n                    SoC internal registers only over the PCIe interface, then\n                    an attacker could still modify the SoC internal registers\n                    through alternate paths by coming through interfaces such\n                    as UART, SMBUS, USB, etc. \u003c/xhtml:p\u003e\n                \u003cxhtml:p\u003eAlternatively, attackers might be able to bypass\n                    existing protections by exploiting unprotected, shadow\n                    registers. Shadow registers and mirror registers typically\n                    refer to registers that can be accessed from multiple\n                    addresses. Writing to or reading from the aliased/mirrored\n                    address has the same effect as writing to the address of\n                    the main register. They are typically implemented within an\n                    IP core or SoC to temporarily hold certain data. These data\n                    will later be updated to the main register, and both\n                    registers will be in synch. If the shadow registers are not\n                    access-protected, attackers could simply initiate\n                    transactions to the shadow registers and compromise system\n                    security. \u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "PeerOf",
+      "cweid": "1191",
+      "view_id": "1194",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "420",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "288",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Microcontroller Hardware"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Processor Hardware"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Bus/Interface Hardware"
+      },
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "DoS: Resource Consumption (Other)",
+        "Execute Unauthorized Code or Commands",
+        "Gain Privileges or Assume Identity",
+        "Alter Execution Logic",
+        "Bypass Protection Mechanism",
+        "Quality Degradation"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "Protect assets from accesses against all potential interfaces and alternate paths. "
+      ],
+      "effectiveness": "Defense in Depth"
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Protect assets from accesses against all potential interfaces and alternate paths. "
+      ],
+      "effectiveness": "Defense in Depth"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Protect assets from accesses against all potential interfaces and alternate paths. "
+      ],
+      "effectiveness": "Defense in Depth"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003e\n                        \u003cxhtml:p\u003e\n                            Register SECURE_ME is located at address 0xF00. A\n                            mirror of this register called COPY_OF_SECURE_ME is\n                            at location 0x800F00. The register SECURE_ME is\n                            protected from malicious agents and only allows\n                            access to select, while COPY_OF_SECURE_ME is not. \n                        \u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003e\n                            Access control is implemented using an allowlist (as\n                            indicated by acl_oh_allowlist). The identity of the\n                            initiator of the transaction is indicated by the\n                            one hot input, incoming_id. This is checked against\n                            the acl_oh_allowlist (which contains a list of\n                            initiators that are allowed to access the asset). \n                        \u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003e\n                            Though this example is shown in Verilog, it will\n                            apply to VHDL as well. \n                        \u003c/xhtml:p\u003e\n                    \u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"informative\" Language=\"Verilog\"\u003e\n                        module foo_bar(data_out, data_in, incoming_id, address, clk, rst_n);\u003cxhtml:br/\u003e\n                        output [31:0] data_out;\u003cxhtml:br/\u003e\n                        input [31:0] data_in, incoming_id, address;\u003cxhtml:br/\u003e\n                        input clk, rst_n;\u003cxhtml:br/\u003e\n                        wire write_auth, addr_auth;\u003cxhtml:br/\u003e\n                        reg [31:0] data_out, acl_oh_allowlist, q;\u003cxhtml:br/\u003e\n                        assign write_auth = | (incoming_id \u0026amp; acl_oh_allowlist) ? 1 : 0; \u003cxhtml:br/\u003e\n                        always @*\u003cxhtml:br/\u003e\n                        \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                            acl_oh_allowlist \u0026lt;= 32’h8312; \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                        assign addr_auth = (address == 32’hF00) ? 1: 0;\u003cxhtml:br/\u003e\n                        always @ (posedge clk or negedge rst_n)\u003cxhtml:br/\u003e\n                        \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                            if (!rst_n)\u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                begin\u003cxhtml:br/\u003e\n                                \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    q \u0026lt;= 32’h0;\u003cxhtml:br/\u003e\n                                    data_out \u0026lt;= 32’h0;\u003cxhtml:br/\u003e\n                                \u003c/xhtml:div\u003e\n                                end\u003cxhtml:br/\u003e\n                            \u003c/xhtml:div\u003e\n                            else\u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                begin\u003cxhtml:br/\u003e\n                                \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    q \u0026lt;= (addr_auth \u0026amp; write_auth) ? data_in: q;\u003cxhtml:br/\u003e\n                                    data_out \u0026lt;= q;\u003cxhtml:br/\u003e\n                                \u003c/xhtml:div\u003e\n                                end\u003cxhtml:br/\u003e\n                            \u003c/xhtml:div\u003e\n                            end\u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                        endmodule\u003cxhtml:br/\u003e\n                    \u003c/Example_Code\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003eassign addr_auth = (address == 32’hF00) ? 1: 0;\u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eThe bugged line of code is repeated in the Bad\n                        example above. Weakness arises from the fact that the\n                        SECURE_ME register can be modified by writing to the\n                        shadow register COPY_OF_SECURE_ME, the address of\n                        COPY_OF_SECURE_ME should also be included in the check.\n                        That buggy line of code should instead be replaced as\n                        shown in the Good Code Snippet below. \n                    \u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\" Language=\"Verilog\"\u003eassign addr_auth = (address == 32’hF00 || address == 32’h800F00) ? 1: 0;\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2017-18293",
+      "description": "When GPIO is protected by blocking access\n                        to corresponding GPIO resource registers,\n                        protection can be bypassed by writing to the\n                        corresponding banked GPIO registers instead.\n                    ",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18293"
+    },
+    {
+      "reference": "CVE-2020-15483",
+      "description": "monitor device allows access to physical UART debug port without authentication",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15483"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2019-10-02T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "554"
+  ]
+}

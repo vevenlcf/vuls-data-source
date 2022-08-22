@@ -1,0 +1,108 @@
+{
+  "id": "780",
+  "name": "Use of RSA Algorithm without OAEP",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses the RSA algorithm but does not incorporate Optimal Asymmetric Encryption Padding (OAEP), which might weaken the encryption.",
+  "extended_description": "Padding schemes are often used with cryptographic algorithms to make the plaintext less predictable and complicate attack efforts. The OAEP scheme is often used with RSA to nullify the impact of predictable common text.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "327",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {},
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "Without OAEP in RSA encryption, it will take less work for an attacker to decrypt the data or to infer patterns from the ciphertext."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe example below attempts to build an RSA cipher.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic Cipher getRSACipher() {\u003cxhtml:div style=\"margin-left:10px;\"\u003eCipher rsa = null;\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003ersa = javax.crypto.Cipher.getInstance(\"RSA/NONE/NoPadding\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (java.security.NoSuchAlgorithmException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elog(\"this should never happen\", e);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (javax.crypto.NoSuchPaddingException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elog(\"this should never happen\", e);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn rsa;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhile the previous code successfully creates an RSA cipher, the cipher does not use padding. The following code creates an RSA cipher using OAEP.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic Cipher getRSACipher() {\u003cxhtml:div style=\"margin-left:10px;\"\u003eCipher rsa = null;\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003ersa = javax.crypto.Cipher.getInstance(\"RSA/ECB/OAEPWithMD5AndMGF1Padding\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (java.security.NoSuchAlgorithmException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elog(\"this should never happen\", e);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ecatch (javax.crypto.NoSuchPaddingException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elog(\"this should never happen\", e);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn rsa;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-694",
+      "author": [
+        "Ronald L. Rivest",
+        "Burt Kaliski"
+      ],
+      "title": "RSA Problem",
+      "url": "http://people.csail.mit.edu/rivest/RivestKaliski-RSAProblem.pdf",
+      "publication_year": "2003",
+      "publication_month": "--12",
+      "publication_day": "---10"
+    },
+    {
+      "reference_id": "REF-695",
+      "title": "Optimal Asymmetric Encryption Padding",
+      "url": "http://en.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding",
+      "publication_year": "2009",
+      "publication_month": "--07",
+      "publication_day": "---08",
+      "publisher": "Wikipedia"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_organization": "Fortify Software",
+      "submission_date": "2009-07-08T00:00:00Z",
+      "submission_comment": "Based on information from Fortify Software."
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "This entry could probably have a new parent related to improper padding, however the role of padding in cryptographic algorithms can vary, such as hiding the length of the plaintext and providing additional random bits for the cipher. In general, cryptographic problems in CWE are not well organized and further research is needed."
+    }
+  ]
+}

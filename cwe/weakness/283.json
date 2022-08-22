@@ -1,0 +1,186 @@
+{
+  "id": "283",
+  "name": "Unverified Ownership",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not properly verify that a critical resource is owned by the proper entity.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "282",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "An attacker could gain unauthorized access to system resources."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-1",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Very carefully manage the setting, management, and handling of privileges. Explicitly manage trust zones in the software."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-49",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Consider following the principle of separation of privilege. Require multiple conditions to be met before permitting access to a system resource."
+      ],
+      "strategy": "Separation of Privilege"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis function is part of a privileged program that takes input from users with potentially lower privileges.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Python\"\u003e\n                  \u003cxhtml:div\u003edef killProcess(processID):\u003cxhtml:div style=\"margin-left:10px;\"\u003eos.kill(processID, signal.SIGKILL)\u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code does not confirm that the process to be killed is owned by the requesting user, thus allowing an attacker to kill arbitrary processes.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThis function remedies the problem by checking the owner of the process before killing it:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Python\"\u003e\n                  \u003cxhtml:div\u003edef killProcess(processID):\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003euser = getCurrentUser()\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e#Check process owner against requesting user\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eif getProcessOwner(processID) == user:\u003cxhtml:div style=\"margin-left:10px;\"\u003eos.kill(processID, signal.SIGKILL)\u003cxhtml:br/\u003ereturn\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003eelse:\u003cxhtml:div style=\"margin-left:10px;\"\u003eprint(\"You cannot kill a process you don't own\")\u003cxhtml:br/\u003ereturn\u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2001-0178",
+      "description": "Program does not verify the owner of a UNIX socket that is used for sending a password.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0178"
+    },
+    {
+      "reference": "CVE-2004-2012",
+      "description": "Owner of special device not checked, allowing root.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2012"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Relationship_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Unverified Ownership"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "This overlaps insufficient comparison, verification errors, permissions, and privileges."
+    }
+  ]
+}

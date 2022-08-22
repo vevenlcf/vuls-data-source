@@ -1,0 +1,260 @@
+{
+  "id": "459",
+  "name": "Incomplete Cleanup",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not properly \"clean up\" and remove temporary or supporting resources after they have been used.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "404",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "404",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other",
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Other",
+        "Read Application Data",
+        "Modify Application Data",
+        "DoS: Resource Consumption (Other)"
+      ],
+      "note": "It is possible to overflow the number of temporary files because directories typically have limits on the number of files allowed. This could create a denial of service problem."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Temporary files and other supporting resources should be deleted/released immediately after they are no longer needed."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eStream resources in a Java application should be released in a finally block, otherwise an exception thrown before the call to close() would result in an unreleased I/O resource. In the example below, the close() method is called in the try block (incorrect).\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eInputStream is = new FileInputStream(path);\u003cxhtml:br/\u003ebyte b[] = new byte[is.available()];\u003cxhtml:br/\u003eis.read(b);\u003cxhtml:br/\u003eis.close();\u003c/xhtml:div\u003e} catch (Throwable t) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elog.error(\"Something bad happened: \" + t.getMessage());\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2000-0552",
+      "description": "World-readable temporary file not deleted after use.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0552"
+    },
+    {
+      "reference": "CVE-2005-2293",
+      "description": "Temporary file not deleted after use, leaking database usernames and passwords.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2293"
+    },
+    {
+      "reference": "CVE-2002-0788",
+      "description": "Interaction error creates a temporary file that can not be deleted due to strong permissions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0788"
+    },
+    {
+      "reference": "CVE-2002-2066",
+      "description": "Alternate data streams for NTFS files are not cleared when files are wiped (alternate channel / infoleak).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2066"
+    },
+    {
+      "reference": "CVE-2002-2067",
+      "description": "Alternate data streams for NTFS files are not cleared when files are wiped (alternate channel / infoleak).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2067"
+    },
+    {
+      "reference": "CVE-2002-2068",
+      "description": "Alternate data streams for NTFS files are not cleared when files are wiped (alternate channel / infoleak).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2068"
+    },
+    {
+      "reference": "CVE-2002-2069",
+      "description": "Alternate data streams for NTFS files are not cleared when files are wiped (alternate channel / infoleak).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2069"
+    },
+    {
+      "reference": "CVE-2002-2070",
+      "description": "Alternate data streams for NTFS files are not cleared when files are wiped (alternate channel / infoleak).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2070"
+    },
+    {
+      "reference": "CVE-2005-1744",
+      "description": "Users not logged out when application is restarted after security-relevant changes were made.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1744"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Sean Eidemiller",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "added/updated demonstrative examples"
+      },
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Relationship_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Other_Notes, Relationship_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "Insufficient Cleanup"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Incomplete Cleanup"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Insecure Configuration Management",
+      "entry_id": "A10",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Close files when they are no longer needed",
+      "entry_id": "FIO42-C",
+      "mapping_fit": "CWE More Abstract"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Free dynamically allocated memory when no longer needed",
+      "entry_id": "MEM31-C",
+      "mapping_fit": "CWE More Abstract"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Release resources when they are no longer needed",
+      "entry_id": "FIO04-J"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not operate on files in shared directories",
+      "entry_id": "FIO00-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Failure to release resource",
+      "entry_id": "SFP14"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "CWE-459 is a child of CWE-404 because, while CWE-404 covers any type of improper shutdown or release of a resource, CWE-459 deals specifically with a multi-step shutdown process in which a crucial step for \"proper\" cleanup is omitted or impossible. That is, CWE-459 deals specifically with a cleanup or shutdown process that does not successfully remove all potentially sensitive data."
+    },
+    {
+      "type": "Relationship",
+      "text": "Overlaps other categories such as permissions and containment. Concept needs further development. This could be primary (e.g. leading to infoleak) or resultant (e.g. resulting from unhandled error conditions or early termination)."
+    }
+  ],
+  "functional_areas": [
+    "File Processing"
+  ]
+}

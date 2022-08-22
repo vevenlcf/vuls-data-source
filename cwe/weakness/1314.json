@@ -1,0 +1,135 @@
+{
+  "id": "1314",
+  "name": "Missing Write Protection for Parametric Data Values",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The device does not write-protect the parametric data values for sensors that scale the sensor value, allowing untrusted software to manipulate the apparent result and potentially damage hardware or cause operational failure.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eVarious sensors are used by hardware to detect any devices operating outside of the design limits. The threshold limit values are set by hardware fuses or trusted software such as the BIOS. These limits may be related to thermal, power, voltage, current, and frequency. Hardware mechanisms may be used to protect against alteration of the threshold limit values by untrusted software.\u003c/xhtml:p\u003e\n\t\t\t\t\u003cxhtml:p\u003eThe limit values are generally programmed in standard units for the type of value being read. However, the hardware-sensor blocks may report the settings in different units depending upon sensor design and operation. The raw sensor output value is converted to the desired units using a scale conversion based on the parametric data programmed into the sensor. The final converted value is then compared with the previously programmed limits.\u003c/xhtml:p\u003e\n\t\t\t\t\u003cxhtml:p\u003eWhile the limit values are usually protected, the sensor parametric data values may not be. By changing the parametric data, safe operational limits may be bypassed.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "862",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "1299",
+      "view_id": "1194",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Sensor Hardware"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "The lack of a requirement to protect parametric values may contribute to this weakness."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "The lack of parametric value protection may be a cause of this weakness."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "Quality Degradation",
+        "DoS: Resource Consumption (Other)"
+      ],
+      "note": "Sensor value manipulation, particularly thermal or power, may allow physical damage to occur or disabling of the device by a false fault shutdown causing a Denial-Of-Service.",
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Access controls for sensor blocks should ensure that only trusted software is allowed to change threshold limits and sensor parametric data."
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003e\n\t\t\t\t\t\t\u003cxhtml:p\u003eMalicious software executes instructions to increase power consumption to the highest possible level while causing the clock frequency to increase to its maximum value.\n\t\t\t\t\t\t\tSuch a program executing for an extended period of time would likely overheat the device, possibly resulting in permanent damage to the device.\n\t\t\t\t\t\t\u003c/xhtml:p\u003e\n\t\t\t\t\t\t\u003cxhtml:p\u003eA ring, oscillator-based temperature sensor will generally report the sensed value as\n\t\t\t\t\t\t\toscillator frequency rather than degrees centigrade.  The temperature sensor will have\n\t\t\t\t\t\t\tcalibration values that are used to convert the detected frequency into the corresponding temperature in degrees centigrade.\n\t\t\t\t\t\t\u003c/xhtml:p\u003e\n\t\t\t\t\t\t\u003cxhtml:p\u003eConsider a SoC design where the critical maximum temperature limit is set in fuse values to 100C and\n\t\t\t\t\t\t\tis not modifiable by software.  If the scaled thermal sensor output equals or exceeds this limit, the system is commanded to shut itself down.\n\t\t\t\t\t\t\u003c/xhtml:p\u003e\n\t\t\t\t\t\t\u003cxhtml:p\u003eThe thermal sensor calibration values are programmable through registers that are exposed to system software.\n\t\t\t\t\t\tThese registers allow software to affect the converted temperature output such that the output will never exceed the maximum temperature limit.\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eThe sensor frequency value is scaled by applying the function:\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003eSensed Temp = a + b * Sensor Freq\u003c/xhtml:div\u003e\n\t\t\t\t\t\u003cxhtml:p\u003ewhere a and b are the programmable calibration data coefficients. Software sets a and b to zero ensuring the sensed\n\t\t\t\t\t\t\ttemperature is always zero.\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eThis weakness may be addressed by preventing access to a and b.\u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\" Language=\"Other\"\u003e\n\t\t\t\t\t\t\u003cxhtml:p\u003eThe sensor frequency value is scaled by applying the function:\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003eSensed Temp = a + b * Sensor Freq\u003c/xhtml:div\u003e\n\t\t\t\t\t\t\u003cxhtml:p\u003ewhere a and b are the programmable calibration data coefficients. Untrusted software is prevented from changing the values of either a or b, \n\t\t\t\t\t\t\tpreventing this method of manipulating the temperature.\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2017-8252",
+      "description": "Kernel can inject faults in computations during the execution of TrustZone leading to information disclosure in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer Electronics Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon IoT, Snapdragon Mobile, Snapdragon Voice and Music, Snapdragon Wearables, Snapdragon Wired Infrastructure and Networking.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8252"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1082",
+      "author": [
+        "Adrian Tang",
+        "Simha Sethumadhavan",
+        "Salvatore Stolfo"
+      ],
+      "title": "CLKSCREW: Exposing the Perils of Security-Oblivious Energy Management",
+      "url": "https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-tang.pdf"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Hareesh Khattri, Parbati K. Manna, and Arun Kanuparthi",
+      "submission_organization": "The Intel Corporation",
+      "submission_date": "2020-07-14T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "1"
+  ]
+}

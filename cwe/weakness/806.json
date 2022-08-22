@@ -1,0 +1,264 @@
+{
+  "id": "806",
+  "name": "Buffer Access Using Size of Source Buffer",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses the size of a source buffer when reading from or writing to a destination buffer, which may cause it to access memory that is outside of the bounds of the buffer.",
+  "extended_description": "When the size of the destination is smaller than the size of the source, a buffer overflow could occur.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "805",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Sometimes",
+        "name": "C"
+      },
+      {
+        "prevalence": "Sometimes",
+        "name": "C++"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "Modify Memory",
+        "DoS: Crash, Exit, or Restart",
+        "DoS: Resource Consumption (CPU)"
+      ],
+      "note": "Buffer overflows generally lead to crashes. Other attacks leading to lack of availability are possible, including putting the program into an infinite loop."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Read Memory",
+        "Modify Memory",
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "Buffer overflows often can be used to execute arbitrary code, which is usually outside the scope of a program's implicit security policy."
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "When the consequence is arbitrary code execution, this can often be used to subvert any other security service."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use an abstraction library to abstract away risky APIs. Examples include the Safe C String Library (SafeStr) by Viega, and the Strsafe.h library from Microsoft. This is not a complete solution, since many buffer overflows are not related to strings."
+      ]
+    },
+    {
+      "phase": [
+        "Build and Compilation"
+      ],
+      "description": [
+        "Use automatic buffer overflow detection mechanisms that are offered by certain compilers or compiler extensions. Examples include StackGuard, ProPolice and the Microsoft Visual Studio /GS flag. This is not necessarily a complete solution, since these canary-based mechanisms only detect certain types of overflows. In addition, the result is still a denial of service, since the typical response is to exit the application."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Programmers should adhere to the following rules when allocating and managing their applications memory: Double check that your buffer is as large as you specify. When using functions that accept a number of bytes to copy, such as strncpy(), be aware that if the destination buffer size is equal to the source buffer size, it may not NULL-terminate the string. Check buffer boundaries if calling this function in a loop and make sure there is no danger of writing past the allocated space. Truncate all input strings to a reasonable length before passing them to the copy and concatenation functions"
+      ]
+    },
+    {
+      "mitigation_id": "MIT-11",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eExamples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64].\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not a complete solution. However, it forces the attacker to guess an unknown value that changes every program execution. In addition, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-12",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Use a CPU and operating system that offers Data Execution Protection (NX) or its equivalent [REF-60] [REF-61]."
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not a complete solution, since buffer overflows could be used to overwrite nearby variables to modify the software's state in dangerous ways. In addition, it cannot be used in cases in which self-modifying code is required. Finally, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Environment Hardening"
+    },
+    {
+      "phase": [
+        "Build and Compilation",
+        "Operation"
+      ],
+      "description": [
+        "Most mitigating technologies at the compiler or OS level to date address only a subset of buffer overflow problems and rarely provide complete protection against even that subset. It is good practice to implement strategies to increase the workload of an attacker, such as leaving the attacker to guess an unknown value that changes every program execution."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following example, the source character string is copied to the dest character string using the method strncpy.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003echar source[21] = \"the character string\";\u003cxhtml:br/\u003echar dest[12];\u003cxhtml:br/\u003estrncpy(dest, source, sizeof(source)-1);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, in the call to strncpy the source character string is used within the sizeof call to determine the number of characters to copy. This will create a buffer overflow as the size of the source character string is greater than the dest character string. The dest character string should be used within the sizeof call to ensure that the correct number of characters are copied, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003echar source[21] = \"the character string\";\u003cxhtml:br/\u003echar dest[12];\u003cxhtml:br/\u003estrncpy(dest, source, sizeof(dest)-1);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn this example, the method outputFilenameToLog outputs a filename to a log file. The method arguments include a pointer to a character string containing the file name and an integer for the number of characters in the string. The filename is copied to a buffer where the buffer size is set to a maximum size for inputs to the log file. The method then calls another method to save the contents of the buffer to the log file.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e#define LOG_INPUT_SIZE 40\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// saves the file name to a log file\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eint outputFilenameToLog(char *filename, int length) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eint success;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// buffer with size set to maximum size for input to log file\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003echar buf[LOG_INPUT_SIZE];\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// copy filename to buffer\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003estrncpy(buf, filename, length);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// save to log file\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003esuccess = saveToLogFile(buf);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn success;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, in this case the string copy method, strncpy, mistakenly uses the length method argument to determine the number of characters to copy rather than using the size of the local character string, buf. This can lead to a buffer overflow if the number of characters contained in character string pointed to by filename is larger then the number of characters allowed for the local character string. The string copy method should use the buf character string within a sizeof call to ensure that only characters up to the size of the buf array are copied to avoid a buffer overflow, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// copy filename to buffer\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003estrncpy(buf, filename, sizeof(buf)-1);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-56",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Using the Strsafe.h Functions",
+      "url": "http://msdn.microsoft.com/en-us/library/ms647466.aspx"
+    },
+    {
+      "reference_id": "REF-57",
+      "author": [
+        "Matt Messier",
+        "John Viega"
+      ],
+      "title": "Safe C String Library v1.0.3",
+      "url": "http://www.zork.org/safestr/"
+    },
+    {
+      "reference_id": "REF-58",
+      "author": [
+        "Michael Howard"
+      ],
+      "title": "Address Space Layout Randomization in Windows Vista",
+      "url": "http://blogs.msdn.com/michael_howard/archive/2006/05/26/address-space-layout-randomization-in-windows-vista.aspx"
+    },
+    {
+      "reference_id": "REF-59",
+      "author": [
+        "Arjan van de Ven"
+      ],
+      "title": "Limiting buffer overflows with ExecShield",
+      "url": "http://www.redhat.com/magazine/009jul05/features/execshield/"
+    },
+    {
+      "reference_id": "REF-60",
+      "title": "PaX",
+      "url": "http://en.wikipedia.org/wiki/PaX"
+    },
+    {
+      "reference_id": "REF-61",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Understanding DEP as a mitigation technology part 1",
+      "url": "http://blogs.technet.com/b/srd/archive/2009/06/12/understanding-dep-as-a-mitigation-technology-part-1.aspx"
+    },
+    {
+      "reference_id": "REF-64",
+      "author": [
+        "Grant Murphy"
+      ],
+      "title": "Position Independent Executables (PIE)",
+      "url": "https://securityblog.redhat.com/2012/11/28/position-independent-executables-pie/",
+      "publication_year": "2012",
+      "publication_month": "--11",
+      "publication_day": "---28",
+      "publisher": "Red Hat"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2010-01-15T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Causal_Nature, Demonstrative_Examples, Likelihood_of_Exploit, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Resultant"
+    },
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "affected_resources": [
+    "Memory"
+  ]
+}

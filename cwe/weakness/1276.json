@@ -1,0 +1,99 @@
+{
+  "id": "1276",
+  "name": "Hardware Child Block Incorrectly Connected to Parent System",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Signals between a hardware IP and the parent system design are incorrectly connected causing security risks.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eIndividual hardware IP must communicate with the parent system in order for the product to function correctly and as intended. If implemented incorrectly, while not causing any apparent functional issues, may cause security issues. For example, if the IP should only be reset by a system-wide hard reset, but instead the reset input is connected to a software-triggered debug mode reset (which is also asserted during a hard reset), integrity of data inside the IP can be violated.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "This weakness is introduced when integrating IP into a parent design."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Varies by Context"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "System-level verification may be used to ensure that components are correctly connected and that design security requirements are not violated due to interactions between various IP blocks."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eMany SoCs use hardware to partition system resources between trusted and un-trusted entities. One example of this concept is the Arm TrustZone, in which the processor and all security-aware IP attempt to isolate resources based on the status of a privilege bit. This privilege bit is part of the input interface in all TrustZone-aware IP. If this privilege bit is accidentally grounded or left unconnected when the IP is instantiated, privilege escalation of all input data may occur.\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003e\n\t\t\t\t\t\n\t\t\t\t\t\u003cxhtml:p\u003e// IP definition\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003emodule tz_peripheral(clk, reset, data_in, data_in_security_level, ...);\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003einput clk, reset;\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003einput [31:0] data_in;\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003einput data_in_security_level;\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e...\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eendmodule\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003e// Instantiation of IP in a parent system\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003emodule soc(...)\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e...\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003etz_peripheral u_tz_peripheral(\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.clk(clk),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.rst(rst),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.data_in(rdata),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e//Copy-and-paste error or typo grounds data_in_security_level (in this example 0=secure, 1=non-secure) effectively promoting all data to “secure”)\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.data_in_security_level(1'b0),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e);\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e...\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eendmodule\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eIn the Verilog code below, the security level input to the TrustZone aware peripheral is correctly driven by an appropriate signal instead of being grounded.\u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\" Language=\"Verilog\"\u003e\n\t\t\t\t\t\u003cxhtml:p\u003e// Instantiation of IP in a parent system\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003emodule soc(...)\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e...\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003etz_peripheral u_tz_peripheral(\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.clk(clk),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.rst(rst),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.data_in(rdata),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e// This port is no longer grounded, but instead drive by the appropriate signal\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 30px;\"\u003e.data_in_security_level(rdata_security_level),\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e);\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p style=\"text-indent: 15px;\"\u003e...\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eendmodule\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Nicole Fern",
+      "submission_organization": "Tortuga Logic",
+      "submission_date": "2020-05-22T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Modes_of_Introduction, Name, Potential_Mitigations"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Hardware Block Incorrectly Connected to Larger System",
+        "date": "2020-08-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "id": "766",
+  "name": "Critical Data Element Declared Public",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software declares a critical variable, field, or member to be public when intended security policy requires it to be private.",
+  "extended_description": "\u003cxhtml:p\u003eThis issue makes it more difficult to maintain the software, which indirectly affects security by making it more difficult or time-consuming to find and/or fix vulnerabilities.  It also might make it easier to introduce vulnerabilities.\u003c/xhtml:p\u003e",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1061",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "C++"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "C#"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Java"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data",
+        "Modify Application Data"
+      ],
+      "note": "Making a critical variable public allows anyone with access to the object in which the variable is contained to alter or read the value."
+    },
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Reduce Maintainability"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Data should be private, static, and final whenever possible. This will assure that your code is protected by instantiating early, preventing access, and preventing tampering."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following example declares a critical variable public, making it accessible to anyone with access to the object in which it is contained.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C++\"\u003e\n                  \u003cxhtml:div\u003epublic: char* password;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eInstead, the critical data should be declared private.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C++\"\u003e\n                  \u003cxhtml:div\u003eprivate: char* password;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eEven though this example declares the password to be private, there are other possible issues with this implementation, such as the possibility of recovering the password from process memory (CWE-257).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following example shows a basic user account class that includes member variables for the username and password as well as a public constructor for the class and a public method to authorize access to the user account.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C++\"\u003e\n                  \u003cxhtml:div\u003e#define MAX_PASSWORD_LENGTH 15\u003cxhtml:br/\u003e#define MAX_USERNAME_LENGTH 15\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eclass UserAccount\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003epublic:\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eUserAccount(char *username, char *password)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eif ((strlen(username) \u0026gt; MAX_USERNAME_LENGTH) ||\u003cxhtml:br/\u003e(strlen(password) \u0026gt; MAX_PASSWORD_LENGTH)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"Invalid username or password\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003estrcpy(this-\u0026gt;username, username);\u003cxhtml:br/\u003estrcpy(this-\u0026gt;password, password);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eint authorizeAccess(char *username, char *password)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eif ((strlen(username) \u0026gt; MAX_USERNAME_LENGTH) ||\u003cxhtml:br/\u003e(strlen(password) \u0026gt; MAX_PASSWORD_LENGTH)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"Invalid username or password\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// if the username and password in the input parameters are equal to\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// the username and password of this account class then authorize access\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eif (strcmp(this-\u0026gt;username, username) ||\u003cxhtml:br/\u003estrcmp(this-\u0026gt;password, password))\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn 0;\u003c/xhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// otherwise do not authorize access\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eelse\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn 1;\u003c/xhtml:div\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003echar username[MAX_USERNAME_LENGTH+1];\u003cxhtml:br/\u003echar password[MAX_PASSWORD_LENGTH+1];\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e};\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the member variables username and password are declared public and therefore will allow access and changes to the member variables to anyone with access to the object. These member variables should be declared private as shown below to prevent unauthorized access and changes.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C++\"\u003e\n                  \u003cxhtml:div\u003eclass UserAccount\u003cxhtml:br/\u003e{\u003cxhtml:br/\u003epublic:\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eprivate:\u003cxhtml:div style=\"margin-left:10px;\"\u003echar username[MAX_USERNAME_LENGTH+1];\u003cxhtml:br/\u003echar password[MAX_PASSWORD_LENGTH+1];\u003c/xhtml:div\u003e};\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2010-3860",
+      "description": "variables declared public allows remote read of system properties such as user name and home directory.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3860"
+    }
+  ],
+  "references": [
+    {
+      "section": "ASCMM-MNT-15",
+      "reference_id": "REF-960",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Maintainability Measure (ASCMM)",
+      "url": "http://www.omg.org/spec/ASCMM/1.0",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2009-03-03T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Name, References, Relationships, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Critical Variable Declared Public",
+        "date": "2019-01-03T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    },
+    {
+      "ordinality": "Indirect"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Failure to protect stored data from modification"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Declare data members as private and provide accessible wrapper methods",
+      "entry_id": "OBJ01-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Unexpected access points",
+      "entry_id": "SFP28"
+    },
+    {
+      "taxonomy_name": "OMG ASCMM",
+      "entry_id": "ASCMM-MNT-15"
+    }
+  ]
+}

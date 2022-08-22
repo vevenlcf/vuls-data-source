@@ -1,0 +1,137 @@
+{
+  "id": "1357",
+  "name": "Reliance on Uncontrolled Component",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product's design or architecture is built from multiple separate components, but one or more components are not under complete control of the developer, such as a third-party software library or a physical component that is built by an original equipment manufacturer (OEM).",
+  "extended_description": "\n      \u003cxhtml:p\u003eMany modern hardware and software products are built by combining multiple smaller components together into one larger entity. These components might be provided by external parties or otherwise unable to be modified, i.e., they are \"uncontrolled.\" For example, a hardware component might be built by a separate manufacturer, or the product might use an open source library that is developed by people who have no formal contract with the product vendor. Alternately, a component's vendor might no longer be in business and therefore cannot provide updates or changes to the component.\u003c/xhtml:p\u003e\n      \u003cxhtml:p\u003eThis dependency on \"uncontrolled\" components means that if security risks are found in the uncontrolled component, the product vendor is not necessarily able to fix them. The product vendor cannot necessarily be certain that the uncontrolled component was built following the security expectations.\u003c/xhtml:p\u003e\n    ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "710",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Requirements",
+      "note": [
+        "Requirements might include criteria for which the only available solutions are provided by uncontrolled components."
+      ]
+    },
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "An uncontrolled component might be selected because it is less expensive to do in-house, requires expertise that is not available in-house, or might allow the product to reach the market faster."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Reduce Maintainability"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation",
+        "Integration",
+        "Manufacturing"
+      ],
+      "description": [
+        "Maintain a Bill of Materials for all components and sub-components of the product. For software, maintain a Software Bill of Materials (SBOM). According to [REF-1247], \"An SBOM is a formal, machine-readable inventory of software components and dependencies, information about those components, and their hierarchical relationships.\""
+      ]
+    },
+    {
+      "phase": [
+        "Operation",
+        "Patching and Maintenance"
+      ],
+      "description": [
+        "Continue to monitor changes in each of the product's components, especially when the changes indicate new vulnerabilities, end-of-life (EOL) plans, etc."
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2020-9054",
+      "description": "Chain: network-attached storage (NAS) device has a critical OS command injection (CWE-78) vulnerability that is actively exploited to place IoT devices into a botnet, but some products are \"end-of-support\" and cannot be patched (CWE-1277). [REF-1097]",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9054"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1212",
+      "title": "A06:2021 – Vulnerable and Outdated Components",
+      "url": "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/",
+      "publication_year": "2021",
+      "publication_month": "--09",
+      "publication_day": "---24",
+      "publisher": "OWASP"
+    },
+    {
+      "reference_id": "REF-1246",
+      "author": [
+        "National Telecommunications and Information Administration"
+      ],
+      "title": "SOFTWARE BILL OF MATERIALS",
+      "url": "https://www.ntia.gov/SBOM"
+    },
+    {
+      "reference_id": "REF-1247",
+      "author": [
+        "NTIA Multistakeholder Process on Software Component Transparency Framing Working Group"
+      ],
+      "title": "Framing Software Component Transparency: Establishing a Common Software Bill of Materials (SBOM)",
+      "url": "https://www.ntia.gov/files/ntia/publications/ntia_sbom_framing_2nd_edition_20211021.pdf",
+      "publication_year": "2021",
+      "publication_month": "--10",
+      "publication_day": "---21"
+    },
+    {
+      "reference_id": "REF-1097",
+      "author": [
+        "Brian Krebs"
+      ],
+      "title": "Zyxel Flaw Powers New Mirai IoT Botnet Strain",
+      "url": "https://krebsonsecurity.com/2020/03/zxyel-flaw-powers-new-mirai-iot-botnet-strain/",
+      "publication_year": "2020",
+      "publication_month": "--03",
+      "publication_day": "---20"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2022-04-20T00:00:00Z"
+    }
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Indirect"
+    }
+  ]
+}

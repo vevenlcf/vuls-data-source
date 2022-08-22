@@ -1,0 +1,257 @@
+{
+  "id": "192",
+  "name": "Integer Coercion Error",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Integer coercion refers to a set of flaws pertaining to the type casting, extension, or truncation of primitive data types.",
+  "extended_description": "Several flaws fall under the category of integer coercion errors. For the most part, these errors in and of themselves result only in availability and data integrity issues. However, in some circumstances, they may result in other, more complicated security related flaws, such as buffer overflow conditions.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "681",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "C"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "C++"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Java"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "C#"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Resource Consumption (CPU)",
+        "DoS: Resource Consumption (Memory)",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "Integer coercion often leads to undefined states of execution resulting in infinite loops or crashes."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "In some cases, integer coercion errors can lead to exploitable buffer overflow conditions, resulting in the execution of arbitrary code."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Other"
+      ],
+      "impact": [
+        "Other"
+      ],
+      "note": "Integer coercion errors result in an incorrect value being stored for the variable in question."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "A language which throws exceptions on ambiguous data casts might be chosen."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Design objects and program flow such that multiple or complex casts are unnecessary"
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Ensure that any data type casting that you must used is entirely understood in order to reduce the plausibility of error in use."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-21",
+      "text": "\n               \u003cIntro_Text\u003eThe following code is intended to read an incoming packet from a socket and extract one or more headers.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eDataPacket *packet;\u003cxhtml:br/\u003eint numHeaders;\u003cxhtml:br/\u003ePacketHeader *headers;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003esock=AcceptSocketConnection();\u003cxhtml:br/\u003eReadPacket(packet, sock);\u003cxhtml:br/\u003enumHeaders =packet-\u0026gt;headers;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eif (numHeaders \u0026gt; 100) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"too many headers!\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eheaders = malloc(numHeaders * sizeof(PacketHeader);\u003cxhtml:br/\u003eParsePacketHeaders(packet, headers);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code performs a check to make sure that the packet does not contain too many headers. However, numHeaders is defined as a signed int, so it could be negative. If the incoming packet specifies a value such as -3, then the malloc calculation will generate a negative number (say, -300 if each header can be a maximum of 100 bytes). When this result is provided to malloc(), it is first converted to a size_t type. This conversion then produces a large value such as 4294966996, which may cause malloc() to fail or to allocate an extremely large amount of memory (CWE-195). With the appropriate negative numbers, an attacker could trick malloc() into using a very small positive number, which then allocates a buffer that is much smaller than expected, potentially leading to a buffer overflow.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-23",
+      "text": "\n               \u003cIntro_Text\u003eThe following code reads a maximum size and performs validation on that size. It then performs a strncpy, assuming it will not exceed the boundaries of the array. While the use of \"short s\" is forced in this particular example, short int's are frequently used within real-world code, such as code that processes structured data.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint GetUntrustedInt () {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn(0x0000FFFF);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003evoid main (int argc, char **argv) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003echar path[256];\u003cxhtml:br/\u003echar *input;\u003cxhtml:br/\u003eint i;\u003cxhtml:br/\u003eshort s;\u003cxhtml:br/\u003eunsigned int sz;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ei = GetUntrustedInt();\u003cxhtml:br/\u003es = i;\u003cxhtml:br/\u003e/* s is -1 so it passes the safety check - CWE-697 */\u003cxhtml:br/\u003eif (s \u0026gt; 256) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eDiePainfully(\"go away!\\n\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e/* s is sign-extended and saved in sz */\u003cxhtml:br/\u003esz = s;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e/* output: i=65535, s=-1, sz=4294967295 - your mileage may vary */\u003cxhtml:br/\u003eprintf(\"i=%d, s=%d, sz=%u\\n\", i, s, sz);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003einput = GetUserInput(\"Enter pathname:\");\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e/* strncpy interprets s as unsigned int, so it's treated as MAX_INT\u003cxhtml:br/\u003e(CWE-195), enabling buffer overflow (CWE-119) */\u003cxhtml:br/\u003estrncpy(path, input, s);\u003cxhtml:br/\u003epath[255] = '\\0'; /* don't want CWE-170 */\u003cxhtml:br/\u003eprintf(\"Path is: %s\\n\", path);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code first exhibits an example of CWE-839, allowing \"s\" to be a negative number. When the negative short \"s\" is converted to an unsigned integer, it becomes an extremely large positive integer. When this converted integer is used by strncpy() it will lead to a buffer overflow (CWE-119).\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "section": "\"Sin 7: Integer Overflows.\" Page 119",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "section": "Chapter 6, \"Sign Extension\", Page 248",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Maintenance_Notes, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Maintenance_Notes, References"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Integer coercion error"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Understand integer conversion rules",
+      "entry_id": "INT02-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Do not use input functions to convert character data if they cannot handle all possible inputs",
+      "entry_id": "INT05-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Ensure that integer conversions do not result in lost or misinterpreted data",
+      "entry_id": "INT31-C",
+      "mapping_fit": "Exact"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "Within C, it might be that \"coercion\" is semantically different than \"casting\", possibly depending on whether the programmer directly specifies the conversion, or if the compiler does it implicitly. This has implications for the presentation of this entry and others, such as CWE-681, and whether there is enough of a difference for these entries to be split."
+    }
+  ]
+}

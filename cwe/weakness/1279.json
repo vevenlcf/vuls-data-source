@@ -1,0 +1,148 @@
+{
+  "id": "1279",
+  "name": "Cryptographic Operations are run Before Supporting Units are Ready",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Performing cryptographic operations without ensuring that the supporting inputs are ready to supply valid data may compromise the cryptographic result.",
+  "extended_description": "Many cryptographic hardware units depend upon other hardware units to supply information to them to produce a securely encrypted result. For example, a cryptographic unit that depends on an external random-number-generator (RNG) unit for entropy must wait until the RNG unit is producing random numbers. If a cryptographic unit retrieves a private encryption key from a fuse unit, the fuse unit must be up and running before a key may be supplied.\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "665",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Verilog"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "VHDL"
+      },
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Processor Hardware"
+      },
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "The decision to continue using a cryptographic unit even though the input units to it are not producing valid data will compromise the encrypted result."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control",
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Accountability",
+        "Authentication",
+        "Authorization",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Varies by Context"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Best practices should be used to design cryptographic systems."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Continuously ensuring that cryptographic inputs are supplying valid information is necessary to ensure that the encrypted output is secure. "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eThe following pseudocode illustrates the weak encryption resulting from the use of a pseudo-random-number generator output. \u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n\t\t\t\t\t\n\t\t\t\t\t\u003cxhtml:p\u003eIf random_number_generator_self_test_passed() == TRUE\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003ethen Seed = get_random_number_from_RNG()\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eelse Seed = hardcoded_number\u003c/xhtml:p\u003e\n\t\t\t\t\t\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eIn the example above, first a check of RNG ready is performed. If the check fails, the RNG is ignored and a hard coded value is used instead. The hard coded value severely weakens the encrypted output. \u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\" Language=\"Other\"\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eIf random_number_generator_self_test_passed() == TRUE\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003ethen Seed = get_random_number_from_RNG()\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eelse enter_error_state()\u003c/xhtml:p\u003e\t\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Description, Maintenance_Notes, Modes_of_Introduction, Name, Potential_Mitigations, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Cryptographic Primitives used without Successful Self-Test",
+        "date": "2020-08-20T00:00:00Z"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "97"
+  ]
+}

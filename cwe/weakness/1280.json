@@ -1,0 +1,111 @@
+{
+  "id": "1280",
+  "name": "Access Control Check Implemented After Asset is Accessed",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "A product's hardware-based access control check occurs after the asset has been accessed.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eThe product implements a hardware-based access control check. The asset should be accessible only after the check is successful. If, however, this operation is not atomic and the asset is accessed before the check is complete, the security of the system may be compromised.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "696",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Verilog"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "VHDL"
+      },
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control",
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "Modify Application Data",
+        "Read Application Data",
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Implement the access control check first. Access should only be given to asset if agent is authorized. "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eAssume that the module foo_bar implements a protected register. The register content is the asset. Only transactions made by user id (indicated by signal usr_id) 0x4 are allowed to modify the register contents. The signal grant_access is used to provide access. \u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003e\n       \t\t\t\t\t\u003cxhtml:div\u003emodule foo_bar(data_out, usr_id, data_in, clk, rst_n);\n       \t\t\t\t\t\u003cxhtml:p\u003eoutput reg [7:0] data_out;\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003einput wire [2:0] usr_id;\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003einput wire [7:0] data_in; \u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003einput wire clk, rst_n;\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003ewire grant_access;\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003ealways @ (posedge clk or negedge rst_n)\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003ebegin\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:div style=\"margin-left:10px\"\u003eif (!rst_n)\u003cxhtml:br/\u003e\u003cxhtml:div style=\"margin-left:10px\"\u003edata_out = 0;\u003c/xhtml:div\u003eelse\u003cxhtml:div style=\"margin-left:10px\"\u003edata_out = (grant_access) ? data_in : data_out;\u003cxhtml:br/\u003eassign grant_access = (usr_id == 3’h4) ? 1’b1 : 1’b0;\u003c/xhtml:div\u003eend\u003c/xhtml:div\u003eendmodule\u003c/xhtml:div\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eThis code uses Verilog blocking assignments for data_out and grant_access. Therefore, these assignments happen sequentially (i.e., data_out is updated to new value first, and grant_access is updated the next cycle) and not in parallel. Therefore, the asset data_out is allowed to be modified even before the access control check is complete and grant_access signal is set. Since grant_access does not have a reset value, it will be meta-stable and will randomly go to either 0 or 1.\u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\" Language=\"Verilog\"\u003e\n       \t\t\t\t\t\u003cxhtml:p\u003eFlipping the order of the assignment of data_out and grant_access should solve the problem. The correct snippet of code is shown below.\u003c/xhtml:p\u003e\n       \t\t\t\t\t\u003cxhtml:div\u003ealways @ (posedge clk or negedge rst_n)\u003c/xhtml:div\u003e\n       \t\t\t\t\t\u003cxhtml:div\u003ebegin\u003c/xhtml:div\u003e\n\t\t\t\t\t    \u003cxhtml:div style=\"margin-left:10px\"\u003eif (!rst_n)\u003cxhtml:div style=\"margin-left:10px\"\u003edata_out = 0;\u003c/xhtml:div\u003eelse\u003cxhtml:div style=\"margin-left:10px\"\u003eassign grant_access = (usr_id == 3’h4) ? 1’b1 : 1’b0;\u003cxhtml:br/\u003edata_out = (grant_access) ? data_in : data_out;\u003c/xhtml:div\u003eend\u003c/xhtml:div\u003e\n       \t\t\t\t\t\u003cxhtml:div\u003eendmodule\u003c/xhtml:div\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "180"
+  ]
+}

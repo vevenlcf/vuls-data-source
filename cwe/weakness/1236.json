@@ -1,0 +1,202 @@
+{
+  "id": "1236",
+  "name": "Improper Neutralization of Formula Elements in a CSV File",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software saves user-provided information into a Comma-Separated Value (CSV) file, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as a command when the file is opened by spreadsheet software.",
+  "extended_description": "User-provided data is often saved to traditional databases.  This data can be exported to a CSV file, which allows users to read the data using spreadsheet software such as Excel, Numbers, or Calc.  This software interprets entries beginning with '=' as formulas, which are then executed by the spreadsheet software.  The software's formula language often allows methods to access hyperlinks or the local command line, and frequently allows enough characters to invoke an entire script. Attackers can populate data fields which, when saved to a CSV file, may attempt information exfiltration or other malicious activity when automatically executed by the spreadsheet software.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "74",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "74",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Other"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "The weakness is in the implementation of a software's CSV export feature, in particular how it formats formula entries as the output gets flattened into a text file."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data",
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "Current versions of Excel warn users of untrusted content.",
+      "likelihood": "Low"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "When generating CSV output, ensure that formula-sensitive metacharacters are effectively escaped or removed from all data before storage in the resultant CSV.  Risky characters include '=' (equal), '+' (plus), '-' (minus), and '@' (at)."
+      ],
+      "effectiveness": "Moderate",
+      "effectiveness_notes": "Unfortunately, there is no perfect solution, since different spreadsheet products act differently."
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If a field starts with a formula character, prepend it with a ' (single apostrophe), which prevents Excel from executing the formula."
+      ],
+      "effectiveness": "Moderate",
+      "effectiveness_notes": "It is not clear how effective this mitigation is with other spreadsheet software."
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Certain implementations of spreadsheet software might disallow formulas from executing if the file is untrusted, or if the file is not authored by the current user."
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "This mitigation has limited effectiveness because it often depends on end users opening spreadsheet software safely."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eHyperlinks or other commands can be executed when a cell begins with the formula identifier, '='\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"attack\" Language=\"Other\"\u003e\n                        \u003cxhtml:p\u003e=HYPERLINK(link_location, [friendly_name])\u003c/xhtml:p\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eStripping the leading equals sign, or simply not executing formulas from untrusted sources, impedes malicious activity.\u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"good\"\u003e\n                        \u003cxhtml:p\u003eHYPERLINK(link_location, [friendly_name])\u003c/xhtml:p\u003e\n                    \u003c/Example_Code\u003e\n                "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2019-12134",
+      "description": "Low privileged user can trigger CSV injection through a contact form field value",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-12134"
+    },
+    {
+      "reference": "CVE-2019-4521",
+      "description": "Cloud management product allows arbitrary command execution via CSV injection",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-4521"
+    },
+    {
+      "reference": "CVE-2019-17661",
+      "description": "CSV injection in content management system via formula code in a first or last name",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17661"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-21",
+      "author": [
+        "OWASP"
+      ],
+      "title": "CSV Injection",
+      "url": "https://owasp.org/www-community/attacks/CSV_Injection",
+      "publication_year": "2020",
+      "publication_month": "--02",
+      "publication_day": "---02"
+    },
+    {
+      "reference_id": "REF-22",
+      "author": [
+        "Jamie Rougvie"
+      ],
+      "title": "Data Extraction to Command Execution CSV Injection",
+      "url": "https://www.veracode.com/blog/secure-development/data-extraction-command-execution-csv-injection",
+      "publication_year": "2019",
+      "publication_month": "--09",
+      "publication_day": "---06"
+    },
+    {
+      "reference_id": "REF-23",
+      "author": [
+        "George Mauer"
+      ],
+      "title": "The Absurdly Underestimated Dangers of CSV Injection",
+      "url": "http://georgemauer.net/2017/10/07/csv-injection.html",
+      "publication_year": "2017",
+      "publication_month": "--10",
+      "publication_day": "---07"
+    },
+    {
+      "reference_id": "REF-24",
+      "author": [
+        "James Kettle"
+      ],
+      "title": "Comma Separated Vulnerabilities",
+      "url": "https://www.contextis.com/en/blog/comma-separated-vulnerabilities",
+      "publication_year": "2014",
+      "publication_month": "--08",
+      "publication_day": "---29"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2019-11-21T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Description, Potential_Mitigations"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "CSV Injection"
+    },
+    {
+      "term": "Formula Injection"
+    },
+    {
+      "term": "Excel Macro Injection"
+    }
+  ]
+}

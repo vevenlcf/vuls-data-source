@@ -1,0 +1,434 @@
+{
+  "id": "401",
+  "name": "Missing Release of Memory after Effective Lifetime",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not sufficiently track and release allocated memory after it has been used, which slowly consumes remaining memory.",
+  "extended_description": "This is often triggered by improper handling of malformed data or unexpectedly interrupted sessions.  In some languages, developers are responsible for tracking memory allocation and releasing the memory.  If there are no more pointers or references to the memory, then it can no longer be tracked and identified for release.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "772",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "404",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "404",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "C"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "C++"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "\n                  \u003cxhtml:p\u003eMemory leaks have two common and sometimes overlapping causes:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eError conditions and other exceptional circumstances\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eConfusion over which part of the program is responsible for freeing the memory\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n               "
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart",
+        "DoS: Instability",
+        "DoS: Resource Consumption (CPU)",
+        "DoS: Resource Consumption (Memory)"
+      ],
+      "note": "Most memory leaks result in general software reliability problems, but if an attacker can intentionally trigger a memory leak, the attacker might be able to launch a denial of service attack (by crashing or hanging the program) or take advantage of other unexpected program behavior resulting from a low memory condition."
+    },
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Reduce Performance"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-41",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eChoose a language or tool that provides automatic memory management, or makes manual memory management less error-prone.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, glibc in Linux provides protection against free of invalid pointers.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen using Xcode to target OS X or iOS, enable automatic reference counting (ARC) [REF-391].\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eTo help correctly and consistently manage memory when programming in C++, consider using a smart pointer class such as std::auto_ptr (defined by ISO/IEC ISO/IEC 14882:2003), std::shared_ptr and std::unique_ptr (specified by an upcoming revision of the C++ standard, informally referred to as C++ 1x), or equivalent solutions such as Boost.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use an abstraction library to abstract away risky APIs. Not a complete solution."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Build and Compilation"
+      ],
+      "description": [
+        "The Boehm-Demers-Weiser Garbage Collector or valgrind can be used to detect leaks in code."
+      ],
+      "effectiveness_notes": "This is not a complete solution as it is not 100% effective."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following C function leaks a block of allocated memory if the call to read() does not return the expected number of bytes:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar* getBlock(int fd) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003echar* buf = (char*) malloc(BLOCK_SIZE);\u003cxhtml:br/\u003eif (!buf) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn NULL;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eif (read(fd, buf, BLOCK_SIZE) != BLOCK_SIZE) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003ereturn NULL;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn buf;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2005-3119",
+      "description": "Memory leak because function does not free() an element of a data structure.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3119"
+    },
+    {
+      "reference": "CVE-2004-0427",
+      "description": "Memory leak when counter variable is not decremented.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0427"
+    },
+    {
+      "reference": "CVE-2002-0574",
+      "description": "chain: reference count is not decremented, leading to memory leak in OS by sending ICMP packets.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0574"
+    },
+    {
+      "reference": "CVE-2005-3181",
+      "description": "Kernel uses wrong function to release a data structure, preventing data from being properly tracked by other code.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3181"
+    },
+    {
+      "reference": "CVE-2004-0222",
+      "description": "Memory leak via unknown manipulations as part of protocol test suite.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0222"
+    },
+    {
+      "reference": "CVE-2001-0136",
+      "description": "Memory leak via a series of the same command.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0136"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    },
+    {
+      "reference_id": "REF-390",
+      "author": [
+        "J. Whittaker",
+        "H. Thompson"
+      ],
+      "title": "How to Break Software Security",
+      "publication_year": "2003",
+      "publisher": "Addison Wesley"
+    },
+    {
+      "reference_id": "REF-391",
+      "author": [
+        "iOS Developer Library"
+      ],
+      "title": "Transitioning to ARC Release Notes",
+      "url": "https://developer.apple.com/library/ios/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html",
+      "publication_year": "2013",
+      "publication_month": "--08",
+      "publication_day": "---08"
+    },
+    {
+      "section": "ASCPEM-PRF-14",
+      "reference_id": "REF-959",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Performance Efficiency Measure (ASCPEM)",
+      "url": "http://www.omg.org/spec/ASCPEM/1.0",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_organization": "KDM Analytics",
+        "modification_date": "2008-08-01T00:00:00Z",
+        "modification_comment": "added/updated white box definitions"
+      },
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Relationships, Other_Notes, References, Relationship_Notes, Taxonomy_Mappings, Terminology_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Name"
+      },
+      {
+        "modification_name": "KDM Analytics",
+        "modification_date": "2009-07-17T00:00:00Z",
+        "modification_comment": "Improved the White_Box_Definition"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Other_Notes, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings, White_Box_Definitions"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Name, References, Relationships, Taxonomy_Mappings, Type, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Memory Leak",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Release Memory Before Removing Last Reference (aka 'Memory Leak')",
+        "date": "2009-05-27T00:00:00Z"
+      },
+      {
+        "text": "Failure to Release Memory Before Removing Last Reference ('Memory Leak')",
+        "date": "2010-12-13T00:00:00Z"
+      },
+      {
+        "text": "Improper Release of Memory Before Removing Last Reference ('Memory Leak')",
+        "date": "2019-01-03T00:00:00Z"
+      },
+      {
+        "text": "Improper Release of Memory Before Removing Last Reference",
+        "date": "2019-06-20T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Resultant"
+    }
+  ],
+  "alternate_terms": [
+    {
+      "term": "Memory Leak"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Memory leak"
+    },
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "Memory Leak"
+    },
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Failure to deallocate data"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Denial of Service",
+      "entry_id": "A9",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Free dynamically allocated memory when no longer needed",
+      "entry_id": "MEM31-C",
+      "mapping_fit": "Exact"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not leak memory",
+      "entry_id": "MSC04-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Failure to Release Memory",
+      "entry_id": "SFP38"
+    },
+    {
+      "taxonomy_name": "OMG ASCPEM",
+      "entry_id": "ASCPEM-PRF-14"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "This is often a resultant weakness due to improper handling of malformed data or early termination of sessions."
+    },
+    {
+      "type": "Terminology",
+      "text": "\"memory leak\" has sometimes been used to describe other kinds of issues, e.g. for information leaks in which the contents of memory are inadvertently leaked (CVE-2003-0400 is one such example of this terminology conflict)."
+    }
+  ],
+  "affected_resources": [
+    "Memory"
+  ],
+  "functional_areas": [
+    "Memory Management"
+  ]
+}

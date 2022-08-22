@@ -1,0 +1,122 @@
+{
+  "id": "1243",
+  "name": "Sensitive Non-Volatile Information Not Protected During Debug",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Access to security-sensitive information stored in fuses is not limited during debug.",
+  "extended_description": "\n                \u003cxhtml:p\u003eSeveral security-sensitive values are programmed into fuses to be used during early-boot flows or later at runtime. Examples of these security-sensitive values include root keys, encryption keys, manufacturing-specific information, chip-manufacturer-specific information, and original-equipment-manufacturer (OEM) data. After the chip is powered on, these values are sensed from fuses and stored in temporary locations such as registers and local memories. These locations are typically access-control protected from untrusted agents capable of accessing them. Even to trusted agents, only read-access is provided. However, these locations are not blocked during debug operations, allowing a user to access this sensitive information.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1263",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Bypass Protection Mechanism"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:p\u003eDisable access to security-sensitive information stored in fuses directly and also reflected from  temporary storage locations when in debug mode.\u003c/xhtml:p\u003e                     \n                    "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eSensitive manufacturing data (such as die information) are stored in fuses. When the chip powers on, these values are read from the fuses and stored in microarchitectural registers. These registers are only given read access to trusted software running on the core. Untrusted software running on the core is not allowed to access these registers.\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:div\u003eAll microarchitectural registers in this chip can be accessed through the debug interface. As a result, even an untrusted debugger can access this data and retrieve sensitive manufacturing data.\u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                \t\u003cExample_Code Nature=\"informative\"\u003e\n                  \t\t\u003cxhtml:div\u003eRegisters used to store sensitive values read from fuses should be blocked during debug. These registers should be disconnected from the debug interface.\u003c/xhtml:div\u003e\n               \t\t\u003c/Example_Code\u003e\n            \t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Name, Potential_Mitigations, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Exposure of Security-Sensitive Fuse Values During Debug",
+        "date": "2020-08-20T00:00:00Z"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "116",
+    "545"
+  ]
+}

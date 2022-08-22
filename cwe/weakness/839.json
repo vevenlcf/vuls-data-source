@@ -1,0 +1,235 @@
+{
+  "id": "839",
+  "name": "Numeric Range Comparison Without Minimum Check",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The program checks a value to ensure that it is less than or equal to a maximum, but it does not also verify that the value is greater than or equal to the minimum.",
+  "extended_description": "\n            \u003cxhtml:p\u003eSome programs use signed integers or floats even when their values are only expected to be positive or 0. An input validation check might assume that the value is positive, and only check for the maximum value. If the value is negative, but the code assumes that the value is positive, this can produce an error. The error may have security consequences if the negative value is used for memory allocation, array access, buffer access, etc. Ultimately, the error could lead to a buffer overflow or other type of memory corruption.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThe use of a negative number in a positive-only context could have security implications for other types of resources. For example, a shopping cart might check that the user is not requesting more than 10 items, but a request for -3 items could cause the application to calculate a negative price and credit the attacker's account.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "1023",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "195",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "682",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "119",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "124",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Often",
+        "name": "C"
+      },
+      {
+        "prevalence": "Often",
+        "name": "C++"
+      }
+    ]
+  },
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Modify Application Data",
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "An attacker could modify the structure of the message or data being sent to the downstream component, possibly injecting commands."
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Resource Consumption (Other)"
+      ],
+      "note": "in some contexts, a negative value could lead to resource consumption."
+    },
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory"
+      ],
+      "note": "If a negative value is used to access memory, buffers, or other indexable structures, it could access memory outside the bounds of the buffer."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If the number to be used is always expected to be positive, change the variable type from signed to unsigned or size_t."
+      ],
+      "strategy": "Enforcement by Conversion"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If the number to be used could have a negative value based on the specification (thus requiring a signed value), but the number should only be positive to preserve code correctness, then include a check to ensure that the value is positive."
+      ],
+      "strategy": "Input Validation"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-21",
+      "text": "\n               \u003cIntro_Text\u003eThe following code is intended to read an incoming packet from a socket and extract one or more headers.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eDataPacket *packet;\u003cxhtml:br/\u003eint numHeaders;\u003cxhtml:br/\u003ePacketHeader *headers;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003esock=AcceptSocketConnection();\u003cxhtml:br/\u003eReadPacket(packet, sock);\u003cxhtml:br/\u003enumHeaders =packet-\u0026gt;headers;\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eif (numHeaders \u0026gt; 100) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eExitError(\"too many headers!\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eheaders = malloc(numHeaders * sizeof(PacketHeader);\u003cxhtml:br/\u003eParsePacketHeaders(packet, headers);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code performs a check to make sure that the packet does not contain too many headers. However, numHeaders is defined as a signed int, so it could be negative. If the incoming packet specifies a value such as -3, then the malloc calculation will generate a negative number (say, -300 if each header can be a maximum of 100 bytes). When this result is provided to malloc(), it is first converted to a size_t type. This conversion then produces a large value such as 4294966996, which may cause malloc() to fail or to allocate an extremely large amount of memory (CWE-195). With the appropriate negative numbers, an attacker could trick malloc() into using a very small positive number, which then allocates a buffer that is much smaller than expected, potentially leading to a buffer overflow.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-23",
+      "text": "\n               \u003cIntro_Text\u003eThe following code reads a maximum size and performs a sanity check on that size. It then performs a strncpy, assuming it will not exceed the boundaries of the array. While the use of \"short s\" is forced in this particular example, short int's are frequently used within real-world code, such as code that processes structured data.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint GetUntrustedInt () {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn(0x0000FFFF);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003evoid main (int argc, char **argv) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003echar path[256];\u003cxhtml:br/\u003echar *input;\u003cxhtml:br/\u003eint i;\u003cxhtml:br/\u003eshort s;\u003cxhtml:br/\u003eunsigned int sz;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ei = GetUntrustedInt();\u003cxhtml:br/\u003es = i;\u003cxhtml:br/\u003e/* s is -1 so it passes the safety check - CWE-697 */\u003cxhtml:br/\u003eif (s \u0026gt; 256) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eDiePainfully(\"go away!\\n\");\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e/* s is sign-extended and saved in sz */\u003cxhtml:br/\u003esz = s;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e/* output: i=65535, s=-1, sz=4294967295 - your mileage may vary */\u003cxhtml:br/\u003eprintf(\"i=%d, s=%d, sz=%u\\n\", i, s, sz);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003einput = GetUserInput(\"Enter pathname:\");\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e/* strncpy interprets s as unsigned int, so it's treated as MAX_INT\u003cxhtml:br/\u003e(CWE-195), enabling buffer overflow (CWE-119) */\u003cxhtml:br/\u003estrncpy(path, input, s);\u003cxhtml:br/\u003epath[255] = '\\0'; /* don't want CWE-170 */\u003cxhtml:br/\u003eprintf(\"Path is: %s\\n\", path);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code first exhibits an example of CWE-839, allowing \"s\" to be a negative number. When the negative short \"s\" is converted to an unsigned integer, it becomes an extremely large positive integer. When this converted integer is used by strncpy() it will lead to a buffer overflow (CWE-119).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-100",
+      "text": "\n               \u003cIntro_Text\u003eIn the following code, the method retrieves a value from an array at a specific array index location that is given as an input parameter to the method\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint getValueFromArray(int *array, int len, int index) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003eint value;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// check that the array index is less than the maximum\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// length of the array\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eif (index \u0026lt; len) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// get the value at the specified index of the array\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003evalue = array[index];\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// if array index is invalid then output error message\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// and return value indicating error\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprintf(\"Value is: %d\\n\", array[index]);\u003cxhtml:br/\u003evalue = -1;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn value;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, this method only verifies that the given array index is less than the maximum length of the array but does not check for the minimum value (CWE-839). This will allow a negative value to be accepted as the input array index, which will result in a out of bounds read (CWE-125) and may allow access to sensitive memory. The input array index should be checked to verify that is within the maximum and minimum range required for the array (CWE-129). In this example the if statement should be modified to include a minimum range check, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// check that the array index is within the correct\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// range of values for the array\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eif (index \u0026gt;= 0 \u0026amp;\u0026amp; index \u0026lt; len) {\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following code shows a simple BankAccount class with deposit and withdraw methods.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003epublic final int MAXIMUM_WITHDRAWAL_LIMIT = 350;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// variable for bank account balance\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate double accountBalance;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// constructor for BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic BankAccount() {\u003cxhtml:div style=\"margin-left:10px;\"\u003eaccountBalance = 0;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to deposit amount into BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void deposit(double depositAmount) {...}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to withdraw amount from BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void withdraw(double withdrawAmount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003eif (withdrawAmount \u0026lt; MAXIMUM_WITHDRAWAL_LIMIT) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003edouble newBalance = accountBalance - withdrawAmount;\u003cxhtml:br/\u003eaccountBalance = newBalance;\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.err.println(\"Withdrawal amount exceeds the maximum limit allowed, please try again...\");\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// other methods for accessing the BankAccount object\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe withdraw method includes a check to ensure that the withdrawal amount does not exceed the maximum limit allowed, however the method does not check to ensure that the withdrawal amount is greater than a minimum value (CWE-129). Performing a range check on a value that does not include a minimum check can have significant security implications, in this case not including a minimum range check can allow a negative value to be used which would cause the financial application using this class to deposit money into the user account rather than withdrawing. In this example the if statement should the modified to include a minimum range check, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003epublic final int MINIMUM_WITHDRAWAL_LIMIT = 0;\u003cxhtml:br/\u003epublic final int MAXIMUM_WITHDRAWAL_LIMIT = 350;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to withdraw amount from BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void withdraw(double withdrawAmount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003eif (withdrawAmount \u0026lt; MAXIMUM_WITHDRAWAL_LIMIT \u0026amp;\u0026amp;\u003cxhtml:br/\u003ewithdrawAmount \u0026gt; MINIMUM_WITHDRAWAL_LIMIT) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eNote that this example does not protect against concurrent access to the BankAccount balance variable, see CWE-413 and CWE-362.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eWhile it is out of scope for this example, note that the use of doubles or floats in financial calculations may be subject to certain kinds of attacks where attackers use rounding errors to steal money.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2010-1866",
+      "description": "Chain: integer overflow causes a negative signed value, which later bypasses a maximum-only check, leading to heap-based buffer overflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1866"
+    },
+    {
+      "reference": "CVE-2009-1099",
+      "description": "Chain: 16-bit counter can be interpreted as a negative value, compared to a 32-bit maximum value, leading to buffer under-write.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1099"
+    },
+    {
+      "reference": "CVE-2011-0521",
+      "description": "Chain: kernel's lack of a check for a negative value leads to memory corruption.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0521"
+    },
+    {
+      "reference": "CVE-2010-3704",
+      "description": "Chain: parser uses atoi() but does not check for a negative value, which can happen on some platforms, leading to buffer under-write.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3704"
+    },
+    {
+      "reference": "CVE-2010-2530",
+      "description": "Chain: Negative value stored in an int bypasses a size check and causes allocation of large amounts of memory.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2530"
+    },
+    {
+      "reference": "CVE-2009-3080",
+      "description": "Chain: negative offset value to IOCTL bypasses check for maximum index, then used as an array index for buffer under-read.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3080"
+    },
+    {
+      "reference": "CVE-2008-6393",
+      "description": "chain: file transfer client performs signed comparison, leading to integer overflow and heap-based buffer overflow.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6393"
+    },
+    {
+      "reference": "CVE-2008-4558",
+      "description": "chain: negative ID in media player bypasses check for maximum index, then used as an array index for buffer under-read.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4558"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 6, \"Type Conversion Vulnerabilities\" Page 246",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "Chapter 6, \"Comparisons\", Page 265",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2011-03-24T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "Signed comparison",
+      "description": "The \"signed comparison\" term is often used to describe when the program uses a signed variable and checks it to ensure that it is less than a maximum value (typically a maximum buffer size), but does not verify that it is greater than 0."
+    }
+  ]
+}

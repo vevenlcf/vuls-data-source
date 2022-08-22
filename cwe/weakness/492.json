@@ -1,0 +1,186 @@
+{
+  "id": "492",
+  "name": "Use of Inner Class Containing Sensitive Data",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "Inner classes are translated into classes that are accessible at package scope and may expose code that the programmer intended to keep private to attackers.",
+  "extended_description": "Inner classes quietly introduce several security concerns because of the way they are translated into Java bytecode. In Java source code, it appears that an inner class can be declared to be accessible only by the enclosing class, but Java bytecode has no concept of an inner class, so the compiler must transform an inner class declaration into a peer class with package level access to the original outer class. More insidiously, since an inner class can access private fields in its enclosing class, once an inner class becomes a peer class in bytecode, the compiler converts private fields accessed by the inner class into protected fields.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "668",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Java"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ],
+      "note": "\"Inner Classes\" data confidentiality aspects can often be overcome."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Using sealed classes protects object-oriented encapsulation paradigms and therefore protects code from being extended in unforeseen ways."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Inner Classes do not provide security. Warning: Never reduce the security of the object from an outer class, going to an inner class. If an outer class is final or private, ensure that its inner class is private as well."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following Java Applet code mistakenly makes use of an inner class.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic final class urlTool extends Applet {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprivate final class urlHelper {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following example shows a basic use of inner classes. The class OuterClass contains the private member inner class InnerClass. The private inner class InnerClass includes the method concat that accesses the private member variables of the class OuterClass to output the value of one of the private member variables of the class OuterClass and returns a string that is a concatenation of one of the private member variables of the class OuterClass, the separator input parameter of the method and the private member variable of the class InnerClass.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class OuterClass {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:i\u003e// private member variables of OuterClass\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003eprivate String memberOne;\u003cxhtml:br/\u003eprivate String memberTwo;\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:i\u003e// constructor of OuterClass\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003epublic OuterClass(String varOne, String varTwo) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.memberOne = varOne;\u003cxhtml:br/\u003ethis.memberTwo = varTwo;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:i\u003e// InnerClass is a member inner class of OuterClass\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003eprivate class InnerClass {\u003cxhtml:div style=\"margin-left:10px;\"\u003eprivate String innerMemberOne;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic InnerClass(String innerVarOne) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.innerMemberOne = innerVarOne;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic String concat(String separator) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:i\u003e// InnerClass has access to private member variables of OuterClass\u003c/xhtml:i\u003e\n                              \u003cxhtml:br/\u003eSystem.out.println(\"Value of memberOne is: \" + memberOne);\u003cxhtml:br/\u003ereturn OuterClass.this.memberTwo + separator + this.innerMemberOne;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAlthough this is an acceptable use of inner classes it demonstrates one of the weaknesses of inner classes that inner classes have complete access to all member variables and methods of the enclosing class even those that are declared private and protected. When inner classes are compiled and translated into Java bytecode the JVM treats the inner class as a peer class with package level access to the enclosing class.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eTo avoid this weakness of inner classes, consider using either static inner classes, local inner classes, or anonymous inner classes.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThe following Java example demonstrates the use of static inner classes using the previous example. The inner class InnerClass is declared using the static modifier that signifies that InnerClass is a static member of the enclosing class OuterClass. By declaring an inner class as a static member of the enclosing class, the inner class can only access other static members and methods of the enclosing class and prevents the inner class from accessing nonstatic member variables and methods of the enclosing class. In this case the inner class InnerClass can only access the static member variable memberTwo of the enclosing class OuterClass but cannot access the nonstatic member variable memberOne.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class OuterClass {\u003cxhtml:br/\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// private member variables of OuterClass\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate String memberOne;\u003cxhtml:br/\u003eprivate static String memberTwo;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// constructor of OuterClass\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic OuterClass(String varOne, String varTwo) {\u003cxhtml:br/\u003e\n                           \u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.memberOne = varOne;\u003cxhtml:br/\u003ethis.memberTwo = varTwo;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// InnerClass is a static inner class of OuterClass\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate static class InnerClass {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003eprivate String innerMemberOne;\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003epublic InnerClass(String innerVarOne) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.innerMemberOne = innerVarOne;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003epublic String concat(String separator) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// InnerClass only has access to static member variables of OuterClass\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003ereturn memberTwo + separator + this.innerMemberOne;\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe only limitation with using a static inner class is that as a static member of the enclosing class the inner class does not have a reference to instances of the enclosing class. For many situations this may not be ideal. An alternative is to use a local inner class or an anonymous inner class as shown in the next examples.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following example the BankAccount class contains the private member inner class InterestAdder that adds interest to the bank account balance. The start method of the BankAccount class creates an object of the inner class InterestAdder, the InterestAdder inner class implements the ActionListener interface with the method actionPerformed. A Timer object created within the start method of the BankAccount class invokes the actionPerformed method of the InterestAdder class every 30 days to add the interest to the bank account balance based on the interest rate passed to the start method as an input parameter. The inner class InterestAdder needs access to the private member variable balance of the BankAccount class in order to add the interest to the bank account balance.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eHowever as demonstrated in the previous example, because InterestAdder is a non-static member inner class of the BankAccount class, InterestAdder also has access to the private member variables of the BankAccount class - including the sensitive data contained in the private member variables for the bank account owner's name, Social Security number, and the bank account number.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// private member variables of BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate String accountOwnerName;\u003cxhtml:br/\u003eprivate String accountOwnerSSN;\u003cxhtml:br/\u003eprivate int accountNumber;\u003cxhtml:br/\u003eprivate double balance;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// constructor for BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic BankAccount(String accountOwnerName, String accountOwnerSSN,\u003cxhtml:br/\u003eint accountNumber, double initialBalance, int initialRate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.accountOwnerName = accountOwnerName;\u003cxhtml:br/\u003ethis.accountOwnerSSN = accountOwnerSSN;\u003cxhtml:br/\u003ethis.accountNumber = accountNumber;\u003cxhtml:br/\u003ethis.balance = initialBalance;\u003cxhtml:br/\u003ethis.start(initialRate);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// start method will add interest to balance every 30 days\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// creates timer object and interest adding action listener object\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void start(double rate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003eActionListener adder = new InterestAdder(rate);\u003cxhtml:br/\u003eTimer t = new Timer(1000 * 3600 * 24 * 30, adder);\u003cxhtml:br/\u003et.start();\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// InterestAdder is an inner class of BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// that implements the ActionListener interface\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate class InterestAdder implements ActionListener\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eprivate double rate;\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003epublic InterestAdder(double aRate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.rate = aRate;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003epublic void actionPerformed(ActionEvent event)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// update interest\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003edouble interest = BankAccount.this.balance * rate / 100;\u003cxhtml:br/\u003eBankAccount.this.balance += interest;\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn the following example the InterestAdder class from the above example is declared locally within the start method of the BankAccount class. As a local inner class InterestAdder has its scope restricted to the method (or enclosing block) where it is declared, in this case only the start method has access to the inner class InterestAdder, no other classes including the enclosing class has knowledge of the inner class outside of the start method. This allows the inner class to access private member variables of the enclosing class but only within the scope of the enclosing method or block.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// private member variables of BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate String accountOwnerName;\u003cxhtml:br/\u003eprivate String accountOwnerSSN;\u003cxhtml:br/\u003eprivate int accountNumber;\u003cxhtml:br/\u003eprivate double balance;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// constructor for BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic BankAccount(String accountOwnerName, String accountOwnerSSN,\u003cxhtml:br/\u003eint accountNumber, double initialBalance, int initialRate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.accountOwnerName = accountOwnerName;\u003cxhtml:br/\u003ethis.accountOwnerSSN = accountOwnerSSN;\u003cxhtml:br/\u003ethis.accountNumber = accountNumber;\u003cxhtml:br/\u003ethis.balance = initialBalance;\u003cxhtml:br/\u003ethis.start(initialRate);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// start method will add interest to balance every 30 days\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// creates timer object and interest adding action listener object\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void start(final double rate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// InterestAdder is a local inner class\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// that implements the ActionListener interface\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eclass InterestAdder implements ActionListener\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003epublic void actionPerformed(ActionEvent event)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                          \u003cxhtml:div\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:i\u003e// update interest\u003c/xhtml:i\u003e\n                                             \u003cxhtml:br/\u003edouble interest = BankAccount.this.balance * rate / 100;\u003cxhtml:br/\u003eBankAccount.this.balance += interest;\u003c/xhtml:div\u003e\n                                       \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eActionListener adder = new InterestAdder();\u003cxhtml:br/\u003eTimer t = new Timer(1000 * 3600 * 24 * 30, adder);\u003cxhtml:br/\u003et.start();\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eA similar approach would be to use an anonymous inner class as demonstrated in the next example. An anonymous inner class is declared without a name and creates only a single instance of the inner class object. As in the previous example the anonymous inner class has its scope restricted to the start method of the BankAccount class.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// private member variables of BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate String accountOwnerName;\u003cxhtml:br/\u003eprivate String accountOwnerSSN;\u003cxhtml:br/\u003eprivate int accountNumber;\u003cxhtml:br/\u003eprivate double balance;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// constructor for BankAccount class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic BankAccount(String accountOwnerName, String accountOwnerSSN,\u003cxhtml:br/\u003eint accountNumber, double initialBalance, int initialRate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003ethis.accountOwnerName = accountOwnerName;\u003cxhtml:br/\u003ethis.accountOwnerSSN = accountOwnerSSN;\u003cxhtml:br/\u003ethis.accountNumber = accountNumber;\u003cxhtml:br/\u003ethis.balance = initialBalance;\u003cxhtml:br/\u003ethis.start(initialRate);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// start method will add interest to balance every 30 days\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// creates timer object and interest adding action listener object\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void start(final double rate)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// anonymous inner class that implements the ActionListener interface\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eActionListener adder = new ActionListener()\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003epublic void actionPerformed(ActionEvent event)\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                          \u003cxhtml:div\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:i\u003e// update interest\u003c/xhtml:i\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:i\u003edouble interest = BankAccount.this.balance * rate / 100;\u003c/xhtml:i\u003e\n                                             \u003cxhtml:br/\u003eBankAccount.this.balance += interest;\u003c/xhtml:div\u003e\n                                       \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e};\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003eTimer t = new Timer(1000 * 3600 * 24 * 30, adder);\u003cxhtml:br/\u003et.start();\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following Java example a simple applet provides the capability for a user to input a URL into a text field and have the URL opened in a new browser window. The applet contains an inner class that is an action listener for the submit button, when the user clicks the submit button the inner class action listener's actionPerformed method will open the URL entered into the text field in a new browser window. As with the previous examples using inner classes in this manner creates a security risk by exposing private variables and methods. Inner classes create an additional security risk with applets as applets are executed on a remote machine through a web browser within the same JVM and therefore may run side-by-side with other potentially malicious code.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\"\u003e\n                  \u003cxhtml:div\u003epublic class UrlToolApplet extends Applet {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// private member variables for applet components\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate Label enterUrlLabel;\u003cxhtml:br/\u003eprivate TextField enterUrlTextField;\u003cxhtml:br/\u003eprivate Button submitButton;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// init method that adds components to applet\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// and creates button listener object\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void init() {\u003cxhtml:div style=\"margin-left:10px;\"\u003esetLayout(new FlowLayout());\u003cxhtml:br/\u003eenterUrlLabel = new Label(\"Enter URL: \");\u003cxhtml:br/\u003eenterUrlTextField = new TextField(\"\", 20);\u003cxhtml:br/\u003esubmitButton = new Button(\"Submit\");\u003cxhtml:br/\u003eadd(enterUrlLabel);\u003cxhtml:br/\u003eadd(enterUrlTextField);\u003cxhtml:br/\u003eadd(submitButton);\u003cxhtml:br/\u003eActionListener submitButtonListener = new SubmitButtonListener();\u003cxhtml:br/\u003esubmitButton.addActionListener(submitButtonListener);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// button listener inner class for UrlToolApplet class\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate class SubmitButtonListener implements ActionListener {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003epublic void actionPerformed(ActionEvent evt) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003eif (evt.getSource() == submitButton) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString urlString = enterUrlTextField.getText();\u003cxhtml:br/\u003eURL url = null;\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eurl = new URL(urlString);\u003c/xhtml:div\u003e} catch (MalformedURLException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.err.println(\"Malformed URL: \" + urlString);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eif (url != null) {\u003cxhtml:div style=\"margin-left:10px;\"\u003egetAppletContext().showDocument(url);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAs with the previous examples a solution to this problem would be to use a static inner class, a local inner class or an anonymous inner class. An alternative solution would be to have the applet implement the action listener rather than using it as an inner class as shown in the following example.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class UrlToolApplet extends Applet implements ActionListener {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// private member variables for applet components\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate Label enterUrlLabel;\u003cxhtml:br/\u003eprivate TextField enterUrlTextField;\u003cxhtml:br/\u003eprivate Button submitButton;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// init method that adds components to applet\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void init() {\u003cxhtml:div style=\"margin-left:10px;\"\u003esetLayout(new FlowLayout());\u003cxhtml:br/\u003eenterUrlLabel = new Label(\"Enter URL: \");\u003cxhtml:br/\u003eenterUrlTextField = new TextField(\"\", 20);\u003cxhtml:br/\u003esubmitButton = new Button(\"Submit\");\u003cxhtml:br/\u003eadd(enterUrlLabel);\u003cxhtml:br/\u003eadd(enterUrlTextField);\u003cxhtml:br/\u003eadd(submitButton);\u003cxhtml:br/\u003esubmitButton.addActionListener(this);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// implementation of actionPerformed method of ActionListener interface\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void actionPerformed(ActionEvent evt) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eif (evt.getSource() == submitButton) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString urlString = enterUrlTextField.getText();\u003cxhtml:br/\u003eURL url = null;\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eurl = new URL(urlString);\u003c/xhtml:div\u003e} catch (MalformedURLException e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eSystem.err.println(\"Malformed URL: \" + urlString);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eif (url != null) {\u003cxhtml:div style=\"margin-left:10px;\"\u003egetAppletContext().showDocument(url);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-6",
+      "author": [
+        "Katrina Tsipenyuk",
+        "Brian Chess",
+        "Gary McGraw"
+      ],
+      "title": "Seven Pernicious Kingdoms: A Taxonomy of Software Security Errors",
+      "url": "https://samate.nist.gov/SSATTM_Content/papers/Seven%20Pernicious%20Kingdoms%20-%20Taxonomy%20of%20Sw%20Security%20Errors%20-%20Tsipenyuk%20-%20Chess%20-%20McGraw.pdf",
+      "publication_year": "2005",
+      "publication_month": "--11",
+      "publication_day": "---07",
+      "publication": "NIST Workshop on Software Security Assurance Tools Techniques and Metrics",
+      "publisher": "NIST"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "7 Pernicious Kingdoms",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Description, References, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Mobile Code: Use of Inner Class",
+        "date": "2008-04-11T00:00:00Z"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "7 Pernicious Kingdoms",
+      "entry_name": "Mobile Code: Use of Inner Class"
+    },
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Publicizing of private data when using inner classes"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not expose private members of an outer class from within a nested class",
+      "entry_id": "OBJ08-J"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Other",
+      "text": "Mobile code, in this case a Java Applet, is code that is transmitted across a network and executed on a remote machine. Because mobile code developers have little if any control of the environment in which their code will execute, special security concerns become relevant. One of the biggest environmental threats results from the risk that the mobile code will run side-by-side with other, potentially malicious, mobile code. Because all of the popular web browsers execute code from multiple sources together in the same JVM, many of the security guidelines for mobile code are focused on preventing manipulation of your objects' state and behavior by adversaries who have access to the same virtual machine where your program is running."
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "id": "1260",
+  "name": "Improper Handling of Overlap Between Protected Memory Ranges",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Stable",
+  "description": "The product allows address regions to overlap, which can result in the bypassing of intended memory protection.",
+  "extended_description": "\n            \u003cxhtml:p\u003eIsolated memory regions and access control (read/write) policies are used by hardware to protect privileged software. Software components are often allowed to change or remap memory region definitions in order to enable flexible and dynamically changeable memory management by system software.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eIf a software component running at lower privilege can program a memory address region to overlap with other memory regions used by software running at higher privilege, privilege escalation may be available to attackers. The memory protection unit (MPU) logic can incorrectly handle such an address overlap and allow the lower-privilege software to read or write into the protected memory region, resulting in privilege escalation attack. An address overlap weakness can also be used to launch a denial of service attack on the higher-privilege software memory regions.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "119",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Memory Hardware"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Processor Hardware"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "Such issues could be introduced during hardware architecture and design or implementation and identified later during the Testing phase."
+      ]
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "DoS: Instability"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                   \u003cxhtml:p\u003eEnsure that memory regions are isolated as intended and that access control (read/write) policies are used by hardware to protect privileged software.\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                 \u003cxhtml:p\u003eFor all of the programmable memory protection regions, the memory protection unit (MPU) design can define a priority scheme.\u003c/xhtml:p\u003e\n                 \u003cxhtml:p\u003eFor example: if three memory regions can be programmed (Region_0, Region_1, and Region_2), the design can enforce a priority scheme, such that, if a system address is within multiple regions, then the region with the lowest ID takes priority and the access-control policy of that region will be applied.  In some MPU designs, the priority scheme can also be programmed by trusted software.\u003c/xhtml:p\u003e\n                 \u003cxhtml:p\u003eHardware logic or trusted firmware can also check for region definitions and block programming of memory regions with overlapping addresses. \u003c/xhtml:p\u003e\n                 \u003cxhtml:p\u003eThe memory-access-control-check filter can also be designed to apply a policy filter to all of the overlapping ranges, i.e., if an address is within Region_0 and Region_1, then access to this address is only granted if both Region_0 and Region_1 policies allow the access.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t      \u003cIntro_Text\u003e\n\t\t\u003cxhtml:p\u003eFor example, consider a design with a 16-bit address that has two software privilege levels: Privileged_SW and Non_privileged_SW. To isolate the system memory regions accessible by these two privilege levels, the design supports three memory regions: Region_0, Region_1, and Region_2.\u003c/xhtml:p\u003e\n\t\t\u003cxhtml:p\u003eEach region is defined by two 32 bit registers: its range and its access policy.\u003c/xhtml:p\u003e\n\t\t\u003cxhtml:ul\u003e\n\t\t  \u003cxhtml:li\u003eAddress_range[15:0]: specifies the Base address of the region\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAddress_range[31:16]: specifies the size of the region\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy[31:0]: specifies what types of software can access a region and which actions are allowed\u003c/xhtml:li\u003e\n\t\t\u003c/xhtml:ul\u003e\n\t\t\u003cxhtml:p\u003eCertain bits of the access policy are defined symbolically as follows:\u003c/xhtml:p\u003e\n\t\t\u003cxhtml:ul\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy.read_np: if set to one, allows reads from Non_privileged_SW\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy.write_np: if set to one, allows writes from Non_privileged_SW\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy.execute_np: if set to one, allows code execution by Non_privileged_SW\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy.read_p: if set to one, allows reads from Privileged_SW\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy.write_p: if set to one, allows writes from Privileged_SW\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eAccess_policy.execute_p: if set to one, allows code execution by Privileged_SW\u003c/xhtml:li\u003e\n\t\t\u003c/xhtml:ul\u003e\n\t\t\u003cxhtml:p\u003eFor any requests from software, an address-protection filter checks the address range and access policies for each of the three regions, and only allows software access if all three filters allow access.\u003c/xhtml:p\u003e\n\t\t\u003cxhtml:p\u003eConsider the following goals for access control as intended by the designer:\u003c/xhtml:p\u003e\n\t\t\u003cxhtml:ul\u003e\n\t\t  \u003cxhtml:li\u003eRegion_0 \u0026amp; Region_1: registers are programmable by Privileged_SW\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eRegion_2: registers are programmable by Non_privileged_SW\u003c/xhtml:li\u003e\n\t\t\u003c/xhtml:ul\u003e\n\t\t\u003cxhtml:p\u003eThe intention is that Non_privileged_SW cannot modify memory region and policies defined by Privileged_SW in Region_0 and Region_1. Thus, it cannot read or write the memory regions that Privileged_SW is using.\u003c/xhtml:p\u003e\n\t      \u003c/Intro_Text\u003e\n            \u003cExample_Code Nature=\"bad\"\u003e\n               \u003cxhtml:p\u003eNon_privileged_SW can program the Address_range register for Region_2 so that its address overlaps with the ranges defined by Region_0 or Region_1. Using this capability, it is possible for Non_privileged_SW to block any memory region from being accessed by Privileged_SW, i.e., Region_0 and Region_1.\u003c/xhtml:p\u003e\n            \u003c/Example_Code\u003e\n\t    \u003cBody_Text\u003eThis design could be improved in several ways.\u003c/Body_Text\u003e\n            \u003cExample_Code Nature=\"good\"\u003eEnsure that software accesses to memory regions are only permitted if all three filters permit access. Additionally, the scheme could define a memory region priority to ensure that Region_2 (the memory region defined by Non_privileged_SW) cannot overlap Region_0 or Region_1 (which are used by Privileged_SW).\u003c/Example_Code\u003e\n\t    "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2008-7096",
+      "description": "virtualization product allows compromise of hardware product by accessing certain remapping registers.",
+      "link": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7096"
+    },
+    {
+      "reference": "[REF-1100]",
+      "description": "processor design flaw allows ring 0 code to access more privileged rings by causing a register window to overlap a range of protected system RAM [REF-1100]",
+      "link": "https://github.com/xoreaxeaxeax/sinkhole/blob/master/us-15-Domas-TheMemorySinkhole-wp.pdf"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1100",
+      "author": [
+        "Christopher Domas"
+      ],
+      "title": "The Memory Sinkhole",
+      "url": "https://github.com/xoreaxeaxeax/sinkhole/blob/master/us-15-Domas-TheMemorySinkhole-wp.pdf",
+      "publication_year": "2015",
+      "publication_month": "--07",
+      "publication_day": "---20"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-10T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Modes_of_Introduction, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Detection_Factors, Maintenance_Notes, Observed_Examples, Relationships, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Feedback",
+        "contribution_name": "Narasimha Kumar V Mangipudi",
+        "contribution_organization": "Lattice Semiconductor",
+        "contribution_date": "2021-10-20T00:00:00Z",
+        "contribution_comment": "suggested content improvements"
+      },
+      {
+        "type": "Content",
+        "contribution_name": "Hareesh Khattri",
+        "contribution_organization": "Intel Corporation",
+        "contribution_date": "2021-10-22T00:00:00Z",
+        "contribution_comment": "suggested observed examples"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    },
+    {
+      "ordinality": "Resultant"
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Manual Analysis",
+      "description": "Create a high privilege memory block of any arbitrary size. Attempt to create a lower privilege memory block with an overlap of the high privilege memory block. If the creation attempt works, fix the hardware. Repeat the test.",
+      "effectiveness": "High"
+    }
+  ],
+  "related_attack_patterns": [
+    "679"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "As of CWE 4.6, CWE-1260 and CWE-1316 are siblings under view 1000, but CWE-1260 might be a parent of CWE-1316. More analysis is warranted."
+    }
+  ]
+}

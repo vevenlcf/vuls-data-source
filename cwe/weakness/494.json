@@ -1,0 +1,467 @@
+{
+  "id": "494",
+  "name": "Download of Code Without Integrity Check",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product downloads source code or an executable from a remote location and executes the code without sufficiently verifying the origin and integrity of the code.",
+  "extended_description": "An attacker can execute malicious code by compromising the host server, performing DNS spoofing, or modifying the code in transit.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "345",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "669",
+      "view_id": "1000"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "669",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "79",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "OMISSION: This weakness is caused by missing a security tactic during the architecture and design phase."
+      ]
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Availability",
+        "Confidentiality",
+        "Other"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands",
+        "Alter Execution Logic",
+        "Other"
+      ],
+      "note": "Executing untrusted code could compromise the control flow of the program. The untrusted code could execute attacker-controlled commands, read or modify sensitive resources, or prevent the software from functioning correctly for legitimate users."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-42",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Perform proper forward and reverse DNS lookups to detect DNS spoofing."
+      ],
+      "effectiveness_notes": "This is only a partial solution since it will not prevent your code from being modified on the hosting site or in transit."
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eEncrypt the code with a reliable encryption scheme before transmitting.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis will only be a partial solution, since it will not detect DNS spoofing and it will not prevent your code from being modified on the hosting site.\u003c/xhtml:p\u003e\n               "
+      ]
+    },
+    {
+      "mitigation_id": "MIT-4",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eSpeficially, it may be helpful to use tools or frameworks to perform integrity checking on the transmitted code.\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eWhen providing the code that is to be downloaded, such as for automatic updates of the software, then use cryptographic signatures for the code and modify the download clients to verify the signatures. Ensure that the implementation does not contain CWE-295, CWE-320, CWE-347, and related weaknesses.\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eUse code signing technologies such as Authenticode. See references [REF-454] [REF-455] [REF-456].\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n               "
+      ],
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "mitigation_id": "MIT-17",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-22",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun the code in a \"jail\" or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eOS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBe careful to avoid CWE-243 and other weaknesses related to jails.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "The effectiveness of this mitigation depends on the prevention capabilities of the specific sandbox or jail being used and might only help to reduce the scope of an attack, such as restricting the attacker to certain system calls or limiting the portion of the file system that can be accessed.",
+      "strategy": "Sandbox or Jail"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis example loads an external class from a local subdirectory.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eURL[] classURLs= new URL[]{\u003cxhtml:div style=\"margin-left:10px;\"\u003enew URL(\"file:subdir/\")\u003c/xhtml:div\u003e};\u003cxhtml:br/\u003eURLClassLoader loader = new URLClassLoader(classURLs);\u003cxhtml:br/\u003eClass loadedClass = Class.forName(\"loadMe\", true, loader);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code does not ensure that the class loaded is the intended one, for example by verifying the class's checksum. An attacker may be able to modify the class file to execute malicious code.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis code includes an external script to get database credentials, then authenticates a user against the database, allowing access to the application.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:i\u003e//assume the password is already encrypted, avoiding CWE-312\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003efunction authenticate($username,$password){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:br/\u003einclude(\"http://external.example.com/dbInfo.php\");\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:i\u003e//dbInfo.php makes $dbhost, $dbuser, $dbpass, $dbname available\u003c/xhtml:i\u003e\n                        \u003cxhtml:br/\u003emysql_connect($dbhost, $dbuser, $dbpass) or die ('Error connecting to mysql');\u003cxhtml:br/\u003emysql_select_db($dbname);\u003cxhtml:br/\u003e$query = 'Select * from users where username='.$username.' And password='.$password;\u003cxhtml:br/\u003e$result = mysql_query($query);\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003eif(mysql_numrows($result) == 1){\u003cxhtml:div style=\"margin-left:10px;\"\u003emysql_close();\u003cxhtml:br/\u003ereturn true;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse{\u003cxhtml:div style=\"margin-left:10px;\"\u003emysql_close();\u003cxhtml:br/\u003ereturn false;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003cxhtml:br/\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis code does not verify that the external domain accessed is the intended one. An attacker may somehow cause the external domain name to resolve to an attack server, which would provide the information for a false database. The attacker may then steal the usernames and encrypted passwords from real user login attempts, or simply allow themself to access the application without a real user account.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eThis example is also vulnerable to an Adversary-in-the-Middle AITM (CWE-300) attack.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2019-9534",
+      "description": "Satellite phone does not validate its firmware image.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9534"
+    },
+    {
+      "reference": "CVE-2021-22909",
+      "description": "Chain: router's firmware update procedure uses curl with \"-k\" (insecure) option that disables certificate validation (CWE-295), allowing adversary-in-the-middle (AITM) compromise with a malicious firmware image (CWE-494).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22909"
+    },
+    {
+      "reference": "CVE-2008-3438",
+      "description": "OS does not verify authenticity of its own updates.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3438"
+    },
+    {
+      "reference": "CVE-2008-3324",
+      "description": "online poker client does not verify authenticity of its own updates.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3324"
+    },
+    {
+      "reference": "CVE-2001-1125",
+      "description": "anti-virus product does not verify automatic updates for itself.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1125"
+    },
+    {
+      "reference": "CVE-2002-0671",
+      "description": "VOIP phone downloads applications from web sites without verifying integrity.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0671"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-454",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Introduction to Code Signing",
+      "url": "http://msdn.microsoft.com/en-us/library/ms537361(VS.85).aspx"
+    },
+    {
+      "reference_id": "REF-455",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Authenticode",
+      "url": "http://msdn.microsoft.com/en-us/library/ms537359(v=VS.85).aspx"
+    },
+    {
+      "reference_id": "REF-456",
+      "author": [
+        "Apple"
+      ],
+      "title": "Code Signing Guide",
+      "url": "http://developer.apple.com/documentation/Security/Conceptual/CodeSigningGuide/Introduction/chapter_1_section_1.html",
+      "publication_year": "2008",
+      "publication_month": "--11",
+      "publication_day": "---19",
+      "publication": "Apple Developer Connection"
+    },
+    {
+      "reference_id": "REF-457",
+      "author": [
+        "Anthony Bellissimo",
+        "John Burgess",
+        "Kevin Fu"
+      ],
+      "title": "Secure Software Updates: Disappointments and New Challenges",
+      "url": "http://prisms.cs.umass.edu/~kevinfu/papers/secureupdates-hotsec06.pdf"
+    },
+    {
+      "section": "\"Sin 18: The Sins of Mobile Code.\" Page 267",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-459",
+      "author": [
+        "Johannes Ullrich"
+      ],
+      "title": "Top 25 Series - Rank 20 - Download of Code Without Integrity Check",
+      "url": "http://blogs.sans.org/appsecstreetfighter/2010/04/05/top-25-series-rank-20-download-code-integrity-check/",
+      "publication_year": "2010",
+      "publication_month": "--04",
+      "publication_day": "---05",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-76",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Least Privilege",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---14"
+    },
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-01-12T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Description, Name, Other_Notes, Potential_Mitigations, References, Relationships, Research_Gaps, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Description, Observed_Examples, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Detection_Factors, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated References, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Mobile Code: Invoking Untrusted Mobile Code",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Download of Untrusted Mobile Code Without Integrity Check",
+        "date": "2009-01-12T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "detection_method_id": "DM-7.4",
+      "method": "Manual Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eThis weakness can be detected using tools and techniques that require manual (human) analysis, such as penetration testing, threat modeling, and interactive tools that allow the tester to record and modify an active session.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eSpecifically, manual static analysis is typically required to find the behavior that triggers the download of code, and to determine whether integrity-checking methods are in use.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness_notes": "These may be more effective than strictly automated techniques. This is especially the case with weaknesses that are related to design and business rules."
+    },
+    {
+      "detection_method_id": "DM-11",
+      "method": "Black Box",
+      "description": "\n                  \u003cxhtml:p\u003eUse monitoring tools that examine the software's process as it interacts with the operating system and the network. This technique is useful in cases when source code is unavailable, if the software was not developed by you, or if you want to verify that the build phase did not introduce any new weaknesses. Examples include debuggers that directly attach to the running process; system-call tracing utilities such as truss (Solaris) and strace (Linux); system activity monitors such as FileMon, RegMon, Process Monitor, and other Sysinternals utilities (Windows); and sniffers and protocol analyzers that monitor network traffic.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAttach the monitor to the process and also sniff the network connection. Trigger features related to product updates or plugin installation, which is likely to force a code download. Monitor when files are downloaded and separately executed, or if they are otherwise read back into the process. Look for evidence of cryptographic library calls that use integrity checking.\u003c/xhtml:p\u003e\n               "
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Invoking untrusted mobile code"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Do not rely on the default automatic signature verification provided by URLClassLoader and java.util.jar",
+      "entry_id": "SEC06-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Tainted input to environment",
+      "entry_id": "SFP27"
+    }
+  ],
+  "related_attack_patterns": [
+    "184",
+    "185",
+    "186",
+    "187",
+    "533",
+    "657",
+    "662"
+  ],
+  "notes": [
+    {
+      "type": "Research Gap",
+      "text": "This is critical for mobile code, but it is likely to become more and more common as developers continue to adopt automated, network-based product distributions and upgrades. Software-as-a-Service (SaaS) might introduce additional subtleties. Common exploitation scenarios may include ad server compromises and bad upgrades."
+    }
+  ]
+}

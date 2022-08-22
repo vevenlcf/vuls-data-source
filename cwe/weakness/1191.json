@@ -1,0 +1,277 @@
+{
+  "id": "1191",
+  "name": "On-Chip Debug and Test Interface With Improper Access Control",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Stable",
+  "description": "The chip does not implement or does not correctly perform access control to check whether users are authorized to access internal registers and test modes through the physical debug/test interface.",
+  "extended_description": "\n      \u003cxhtml:p\u003eA device's internal information may be accessed through a scan chain of interconnected internal registers, usually through a JTAG interface. The JTAG interface provides access to these registers in a serial fashion in the form of a scan chain for the purposes of debugging programs running on a device. Since almost all information contained within a device may be accessed over this interface, device manufacturers typically insert some form of authentication and authorization to prevent unintended use of this sensitive information. This mechanism is implemented in addition to on-chip protections that are already present.\u003c/xhtml:p\u003e\n      \u003cxhtml:p\u003eIf authorization, authentication, or some other form of access control is not implemented or not implemented correctly, a user may be able to bypass on-chip protection mechanisms through the debug interface.\u003c/xhtml:p\u003e\n     ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ],
+      "likelihood": "High"
+    },
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory"
+      ],
+      "likelihood": "High"
+    },
+    {
+      "scope": [
+        "Authorization"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ],
+      "likelihood": "High"
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Memory"
+      ],
+      "likelihood": "High"
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Application Data"
+      ],
+      "likelihood": "High"
+    },
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n\t   If feasible, the manufacturer should disable the JTAG interface or implement authentication and authorization for the JTAG interface. If authentication logic is added, it should be resistant to timing attacks. Security-sensitive data stored in registers, such as keys, etc. should be cleared when entering debug mode.\n\t "
+      ],
+      "effectiveness": "High",
+      "strategy": "Separation of Privilege"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n        \u003cIntro_Text\u003eA home, WiFi-router device implements a login prompt which prevents an unauthorized user from issuing any commands on the device until appropriate credentials are provided. The credentials are protected on the device and are checked for strength against attack.\u003c/Intro_Text\u003e\n        \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n\t  \u003cxhtml:p\u003eIf the JTAG interface on this device is not hidden by the manufacturer, the interface may be identified using tools such as JTAGulator. If it is hidden but not disabled, it can be exposed by physically wiring to the board.\u003c/xhtml:p\u003e\n\t  \u003cxhtml:p\u003eBy issuing a \u003cxhtml:b\u003ehalt\u003c/xhtml:b\u003e command before the OS starts, the unauthorized user pauses the watchdog timer and prevents the router from restarting (once the watchdog timer would have expired). Having paused the router, an unauthorized user is able to execute code and inspect and modify data in the device, even extracting all of the router's firmware. This allows the user to examine the router and potentially exploit it.\u003c/xhtml:p\u003e\n\t\u003c/Example_Code\u003e\n\t\u003cBody_Text\u003eJTAG is useful to chip and device manufacturers during design, testing, and production and is included in nearly every product. Without proper authentication and authorization, the interface may allow tampering with a product.\u003c/Body_Text\u003e\n\t\u003cExample_Code Nature=\"good\" Language=\"Other\"\u003eIn order to prevent exposing the debugging interface, manufacturers might try to obfuscate the JTAG interface or blow device internal fuses to disable the JTAG interface. Adding authentication and authorization to this interface makes use by unauthorized individuals much more difficult.\u003c/Example_Code\u003e\n    "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2019-18827",
+      "description": "chain: JTAG interface is not disabled (CWE-1191) during ROM code execution, introducing a race condition (CWE-362) to extract encryption keys",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18827"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1037",
+      "author": [
+        "Kurt Rosenfeld",
+        "Ramesh Karri"
+      ],
+      "title": "Attacks and Defenses for JTAG",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=\u0026arnumber=5406671",
+      "publication_year": "2010",
+      "publication_month": "--02"
+    },
+    {
+      "reference_id": "REF-1043",
+      "author": [
+        "Gopal Vishwakarma",
+        "Wonjun Lee"
+      ],
+      "title": "Exploiting JTAG and Its Mitigation in IOT: A Survey",
+      "url": "https://www.mdpi.com/1999-5903/10/12/121/pdf",
+      "publication_year": "2018",
+      "publication_month": "--12",
+      "publication_day": "---03"
+    },
+    {
+      "reference_id": "REF-1084",
+      "author": [
+        "Gopal Vishwakarma",
+        "Wonjun Lee"
+      ],
+      "title": "JTAG Explained (finally!): Why “IoT”, Software Security Engineers, and Manufacturers Should Care",
+      "url": "https://www.mdpi.com/1999-5903/10/12/121/pdf "
+    },
+    {
+      "reference_id": "REF-1085",
+      "author": [
+        "Bob Molyneaux",
+        "Mark McDermott",
+        "Anil Sabbavarapu"
+      ],
+      "title": "Design for Testability \u0026 Design for Debug",
+      "url": "http://users.ece.utexas.edu/~mcdermot/vlsi-2/Lecture_17.pdf"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2019-10-15T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Demonstrative_Examples, Description, Name, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Name, Potential_Mitigations, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Detection_Factors, Maintenance_Notes, Name, Potential_Mitigations, Relationship_Notes, Relationships, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Exposed Chip Debug Interface With Insufficient Access Control",
+        "date": "2020-02-26T00:00:00Z"
+      },
+      {
+        "text": "Exposed Chip Debug and or Test Interface With Insufficient Access Control",
+        "date": "2020-08-20T00:00:00Z"
+      },
+      {
+        "text": "Exposed Chip Debug and Test Interface With Insufficient or Missing Authorization",
+        "date": "2021-10-28T00:00:00Z"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_name": "Parbati K. Manna",
+        "contribution_organization": "Intel Corporation",
+        "contribution_date": "2021-10-18T00:00:00Z",
+        "contribution_comment": "provided detection methods"
+      },
+      {
+        "type": "Feedback",
+        "contribution_name": "Narasimha Kumar V Mangipudi",
+        "contribution_organization": "Lattice Semiconductor",
+        "contribution_date": "2021-10-20T00:00:00Z",
+        "contribution_comment": "reviewed content changes"
+      },
+      {
+        "type": "Content",
+        "contribution_name": "Hareesh Khattri",
+        "contribution_organization": "Intel Corporation",
+        "contribution_date": "2021-10-22T00:00:00Z",
+        "contribution_comment": "clarified differences between CWE-1191 and CWE-1244"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\u003cxhtml:p\u003eAuthentication and authorization of debug and test interfaces should be part of the architecture and design review process. Withholding of private register documentation from the debug and test interface public specification (\"Security by obscurity\") should not be considered as sufficient security.\u003c/xhtml:p\u003e"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\u003cxhtml:p\u003eDynamic tests should be done in the pre-silicon and post-silicon stages to verify that the debug and test interfaces are not open by default.\u003c/xhtml:p\u003e"
+    },
+    {
+      "method": "Fuzzing",
+      "description": "Tests that fuzz Debug and Test Interfaces should ensure that no access without appropriate authentication and authorization is possible.",
+      "effectiveness": "Moderate"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "\n\t  CWE-1191 and CWE-1244 both involve physical debug access,\n\t  but the weaknesses are different. CWE-1191 is effectively\n\t  about missing authorization for a debug interface,\n\t  i.e. JTAG.  CWE-1244 is about providing internal assets with\n\t  the wrong debug access level, exposing the asset to\n\t  untrusted debug agents."
+    }
+  ]
+}

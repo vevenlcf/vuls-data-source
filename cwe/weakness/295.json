@@ -1,0 +1,413 @@
+{
+  "id": "295",
+  "name": "Improper Certificate Validation",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not validate, or incorrectly validates, a certificate.",
+  "extended_description": "When a certificate is invalid or malicious, it might allow an attacker to spoof a trusted entity by interfering in the communication path between the host and client. The software might connect to a malicious host while believing it is a trusted host, or the software might be deceived into accepting spoofed data that appears to originate from a trusted host.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "287",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "322",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Mobile",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "background_details": [
+    "A certificate is a token that associates an identity (principal) to a cryptographic key. Certificates can be used to check if a public key belongs to the assumed owner."
+  ],
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "When the software uses certificate pinning, the developer might not properly validate all relevant components of the certificate before pinning the certificate. This can make it difficult or expensive to test after the pinning is complete."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Authentication"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism",
+        "Gain Privileges or Assume Identity"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Certificates should be carefully managed and checked to assure that data are encrypted with the intended owner's public key."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If certificate pinning is being used, ensure that all relevant properties of the certificate are fully validated before the certificate is pinned, including the hostname."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-121",
+      "text": "\n               \u003cIntro_Text\u003eThis code checks the certificate of a connected peer.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eif ((cert = SSL_get_peer_certificate(ssl)) \u0026amp;\u0026amp; host)\u003cxhtml:div style=\"margin-left:10px;\"\u003efoo=SSL_get_verify_result(ssl);\u003c/xhtml:div\u003e\n                     \u003cxhtml:br/\u003eif ((X509_V_OK==foo) || X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN==foo))\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// certificate looks good, host can be trusted\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn this case, because the certificate is self-signed, there was no external authority that could prove the identity of the host. The program could be communicating with a different system that is spoofing the host, e.g. by poisoning the DNS cache or using an Adversary-in-the-Middle (AITM) attack to modify the traffic from server to client.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-122",
+      "text": "\n               \u003cIntro_Text\u003eThe following OpenSSL code obtains a certificate and verifies it.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003ecert = SSL_get_peer_certificate(ssl);\u003cxhtml:br/\u003eif (cert \u0026amp;\u0026amp; (SSL_get_verify_result(ssl)==X509_V_OK)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// do secret things\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eEven though the \"verify\" step returns X509_V_OK, this step does not include checking the Common Name against the name of the host. That is, there is no guarantee that the certificate is for the desired host. The SSL connection could have been established with a malicious host that provided a valid certificate.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-123",
+      "text": "\n               \u003cIntro_Text\u003eThe following OpenSSL code ensures that there is a certificate and allows the use of expired certificates.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eif (cert = SSL_get_peer(certificate(ssl)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003efoo=SSL_get_verify_result(ssl);\u003cxhtml:br/\u003eif ((X509_V_OK==foo) || (X509_V_ERR_CERT_HAS_EXPIRED==foo))\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e//do stuff\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf the call to SSL_get_verify_result() returns X509_V_ERR_CERT_HAS_EXPIRED, this means that the certificate has expired. As time goes on, there is an increasing chance for attackers to compromise the certificate.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-124",
+      "text": "\n               \u003cIntro_Text\u003eThe following OpenSSL code ensures that there is a certificate before continuing execution.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eif (cert = SSL_get_peer_certificate(ssl)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// got a certificate, do secret things\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause this code does not use SSL_get_verify_results() to check the certificate, it could accept certificates that have been revoked (X509_V_ERR_CERT_REVOKED). The software could be communicating with a malicious host.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-125",
+      "text": "\n               \u003cIntro_Text\u003eThe following OpenSSL code ensures that the host has a certificate.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eif (cert = SSL_get_peer_certificate(ssl)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// got certificate, host can be trusted\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e//foo=SSL_get_verify_result(ssl);\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e//if (X509_V_OK==foo) ...\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eNote that the code does not call SSL_get_verify_result(ssl), which effectively disables the validation step that checks the certificate.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2014-1266",
+      "description": "chain: incorrect \"goto\" in Apple SSL product bypasses certificate validation, allowing Adversary-in-the-Middle (AITM) attack (Apple \"goto fail\" bug). CWE-705 (Incorrect Control Flow Scoping) -\u003e CWE-561 (Dead Code) -\u003e CWE-295 (Improper Certificate Validation) -\u003e CWE-393 (Return of Wrong Status Code) -\u003e CWE-300 (Channel Accessible by Non-Endpoint).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1266"
+    },
+    {
+      "reference": "CVE-2021-22909",
+      "description": "Chain: router's firmware update procedure uses curl with \"-k\" (insecure) option that disables certificate validation (CWE-295), allowing adversary-in-the-middle (AITM) compromise with a malicious firmware image (CWE-494).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22909"
+    },
+    {
+      "reference": "CVE-2008-4989",
+      "description": "Verification function trusts certificate chains in which the last certificate is self-signed.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989"
+    },
+    {
+      "reference": "CVE-2012-5821",
+      "description": "Web browser uses a TLS-related function incorrectly, preventing it from verifying that a server's certificate is signed by a trusted certification authority (CA)",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5821"
+    },
+    {
+      "reference": "CVE-2009-3046",
+      "description": "Web browser does not check if any intermediate certificates are revoked.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3046"
+    },
+    {
+      "reference": "CVE-2011-0199",
+      "description": "Operating system does not check Certificate Revocation List (CRL) in some cases, allowing spoofing using a revoked certificate.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0199"
+    },
+    {
+      "reference": "CVE-2012-5810",
+      "description": "Mobile banking application does not verify hostname, leading to financial loss.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5810"
+    },
+    {
+      "reference": "CVE-2012-3446",
+      "description": "Cloud-support library written in Python uses incorrect regular expression when matching hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3446"
+    },
+    {
+      "reference": "CVE-2009-2408",
+      "description": "Web browser does not correctly handle '\\0' character (NUL) in Common Name, allowing spoofing of https sites.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2408"
+    },
+    {
+      "reference": "CVE-2012-2993",
+      "description": "Smartphone device does not verify hostname, allowing spoofing of mail services.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2993"
+    },
+    {
+      "reference": "CVE-2012-5822",
+      "description": "Application uses third-party library that does not validate hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5822"
+    },
+    {
+      "reference": "CVE-2012-5819",
+      "description": "Cloud storage management application does not validate hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5819"
+    },
+    {
+      "reference": "CVE-2012-5817",
+      "description": "Java library uses JSSE SSLSocket and SSLEngine classes, which do not verify the hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5817"
+    },
+    {
+      "reference": "CVE-2010-1378",
+      "description": "chain: incorrect calculation allows attackers to bypass certificate checks.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1378"
+    },
+    {
+      "reference": "CVE-2005-3170",
+      "description": "LDAP client accepts certificates even if they are not from a trusted CA.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3170"
+    },
+    {
+      "reference": "CVE-2009-0265",
+      "description": "chain: DNS server does not correctly check return value from the OpenSSL EVP_VerifyFinal function allows bypass of validation of the certificate chain.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0265"
+    },
+    {
+      "reference": "CVE-2003-1229",
+      "description": "chain: product checks if client is trusted when it intended to check if the server is trusted, allowing validation of signed code.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-1229"
+    },
+    {
+      "reference": "CVE-2002-0862",
+      "description": "Cryptographic API, as used in web browsers, mail clients, and other software, does not properly validate Basic Constraints.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0862"
+    },
+    {
+      "reference": "CVE-2009-1358",
+      "description": "chain: OS package manager does not check properly check the return value, allowing bypass using a revoked certificate.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1358"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-243",
+      "author": [
+        "Sascha Fahl, Marian Harbach, Thomas Muders, Matthew Smith",
+        "Lars Baumgärtner, Bernd Freisleben"
+      ],
+      "title": "Why Eve and Mallory Love Android: An Analysis of Android SSL (In)Security",
+      "url": "http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf",
+      "publication_year": "2012",
+      "publication_month": "--10",
+      "publication_day": "---16"
+    },
+    {
+      "reference_id": "REF-244",
+      "author": [
+        "M. Bishop"
+      ],
+      "title": "Computer Security: Art and Science",
+      "publication_year": "2003",
+      "publisher": "Addison-Wesley"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Community",
+      "submission_date": "2006-07-19T00:00:00Z",
+      "submission_comment": "Submitted by members of the CWE community to extend early CWE versions"
+    },
+    "modification": [
+      {
+        "modification_organization": "Veracode",
+        "modification_date": "2008-08-15T00:00:00Z",
+        "modification_comment": "Suggested OWASP Top Ten 2004 mapping"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Background_Details, Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-12-28T00:00:00Z",
+        "modification_comment": "Converted from category to weakness class.",
+        "modification_importance": "Critical"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Common_Consequences, Description, Name, Observed_Examples, Potential_Mitigations, References, Relationships, Time_of_Introduction, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-01-19T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Background_Details, Modes_of_Introduction, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Certificate Issues",
+        "date": "2013-02-21T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "method": "Automated Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBytecode Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eBinary Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Manual Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBinary / Bytecode disassembler - then use manual analysis for vulnerabilities \u0026amp; anomalies\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eMan-in-the-middle attack tool\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFocused Manual Spotcheck - Focused manual analysis of source\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eSource code Weakness Analyzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OWASP Top Ten 2004",
+      "entry_name": "Insecure Configuration Management",
+      "entry_id": "A10",
+      "mapping_fit": "CWE More Specific"
+    }
+  ],
+  "related_attack_patterns": [
+    "459",
+    "475"
+  ]
+}

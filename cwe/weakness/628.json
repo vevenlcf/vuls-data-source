@@ -1,0 +1,218 @@
+{
+  "id": "628",
+  "name": "Function Call with Incorrectly Specified Arguments",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product calls a function, procedure, or routine with arguments that are not correctly specified, leading to always-incorrect behavior and resultant weaknesses.",
+  "extended_description": "\n            \u003cxhtml:p\u003eThere are multiple ways in which this weakness can be introduced, including:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003ethe wrong variable or reference;\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ean incorrect number of arguments;\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eincorrect order of arguments;\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ewrong type of arguments; or\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ewrong value.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "573",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other",
+        "Access Control"
+      ],
+      "impact": [
+        "Quality Degradation",
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "This weakness can cause unintended behavior and can lead to additional weaknesses such as allowing an attacker to gain unintended access to system resources."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Build and Compilation"
+      ],
+      "description": [
+        "Once found, these issues are easy to fix. Use code inspection tools and relevant compiler features to identify potential violations. Pay special attention to code that is not likely to be exercised heavily during QA."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Make sure your API's are stable before you use them in production code."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-62",
+      "text": "\n               \u003cIntro_Text\u003eThe following PHP method authenticates a user given a username/password combination but is called with the parameters in reverse order.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"PHP\"\u003e\n                  \u003cxhtml:div\u003efunction authenticate($username, $password) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// authenticate user\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eauthenticate($_POST['password'], $_POST['username']);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-63",
+      "text": "\n               \u003cIntro_Text\u003eThis Perl code intends to record whether a user authenticated successfully or not, and to exit if the user fails to authenticate. However, when it calls ReportAuth(), the third argument is specified as 0 instead of 1, so it does not exit.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003esub ReportAuth {\u003cxhtml:div style=\"margin-left:10px;\"\u003emy ($username, $result, $fatal) = @_;\u003cxhtml:br/\u003ePrintLog(\"auth: username=%s, result=%d\", $username, $result);\u003cxhtml:br/\u003eif (($result ne \"success\") \u0026amp;\u0026amp; $fatal) {\u003cxhtml:div style=\"margin-left:10px;\"\u003edie \"Failed!\\n\";\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003esub PrivilegedFunc\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003emy $result = CheckAuth($username);\u003cxhtml:br/\u003eReportAuth($username, $result, 0);\u003cxhtml:br/\u003eDoReallyImportantStuff();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-64",
+      "text": "\n               \u003cIntro_Text\u003eIn the following Java snippet, the accessGranted() method is accidentally called with the static ADMIN_ROLES array rather than the user roles.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eprivate static final String[] ADMIN_ROLES = ...;\u003cxhtml:br/\u003epublic boolean void accessGranted(String resource, String user) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString[] userRoles = getUserRoles(user);\u003cxhtml:br/\u003ereturn accessGranted(resource, ADMIN_ROLES);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003eprivate boolean void accessGranted(String resource, String[] userRoles) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// grant or deny access based on user roles\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2006-7049",
+      "description": "The method calls the functions with the wrong argument order, which allows remote attackers to bypass intended access restrictions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7049"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2007-05-07T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Relationships, Other_Notes, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Other_Notes, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Detection_Factors"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Incorrectly Specified Arguments",
+        "date": "2008-04-11T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary",
+      "description": "This is usually primary to other weaknesses, but it can be resultant if the function's API or function prototype changes."
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Other",
+      "description": "Since these bugs typically introduce incorrect behavior that is obvious to users, they are found quickly, unless they occur in rarely-tested code paths. Managing the correct number of arguments can be made more difficult in cases where format strings are used, or when variable numbers of arguments are supported."
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Maintain the contract between the writer and caller of variadic functions",
+      "entry_id": "DCL10-C"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Call functions with the correct number and type of arguments",
+      "entry_id": "EXP37-C",
+      "mapping_fit": "CWE More Abstract"
+    },
+    {
+      "taxonomy_name": "SEI CERT Perl Coding Standard",
+      "entry_name": "Do not use subroutine prototypes",
+      "entry_id": "DCL00-PL",
+      "mapping_fit": "CWE More Abstract"
+    },
+    {
+      "taxonomy_name": "SEI CERT Perl Coding Standard",
+      "entry_name": "Do not invoke a function in a context for which it is not defined",
+      "entry_id": "EXP33-PL",
+      "mapping_fit": "Imprecise"
+    }
+  ]
+}

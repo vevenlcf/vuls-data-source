@@ -1,0 +1,136 @@
+{
+  "id": "578",
+  "name": "EJB Bad Practices: Use of Class Loader",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The program violates the Enterprise JavaBeans (EJB) specification by using the class loader.",
+  "extended_description": "The Enterprise JavaBeans specification requires that every bean provider follow a set of programming guidelines designed to ensure that the bean will be portable and behave consistently in any EJB container. In this case, the program violates the following EJB guideline: \"The enterprise bean must not attempt to create a class loader; obtain the current class loader; set the context class loader; set security manager; create a new security manager; stop the JVM; or change the input, output, and error streams.\" The specification justifies this requirement in the following way: \"These functions are reserved for the EJB container. Allowing the enterprise bean to use these functions could compromise security and decrease the container's ability to properly manage the runtime environment.\"",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "573",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Java"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Other"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands",
+        "Varies by Context"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Do not use the Class Loader when writing EJBs."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe following Java example is a simple stateless Enterprise JavaBean that retrieves the interest rate for the number of points for a mortgage. The interest rates for various points are retrieved from an XML document on the local file system, and the EJB uses the Class Loader for the EJB class to obtain the XML document from the local file system as an input stream.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e@Stateless\u003cxhtml:br/\u003epublic class InterestRateBean implements InterestRateRemote {\u003cxhtml:br/\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eprivate Document interestRateXMLDocument = null;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic InterestRateBean() {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// get XML document from the local filesystem as an input stream\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// using the ClassLoader for this class\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003eClassLoader loader = this.getClass().getClassLoader();\u003cxhtml:br/\u003eInputStream in = loader.getResourceAsStream(Constants.INTEREST_RATE_FILE);\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eDocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();\u003cxhtml:div style=\"margin-left:10px;\"\u003eDocumentBuilder db = dbf.newDocumentBuilder();\u003cxhtml:br/\u003einterestRateXMLDocument = db.parse(interestRateFile);\u003c/xhtml:div\u003e} catch (IOException ex) {...}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003epublic BigDecimal getInterestRate(Integer points) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn getInterestRateFromXML(points);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* member function to retrieve interest rate from XML document on the local file system */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eprivate BigDecimal getInterestRateFromXML(Integer points) {...}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis use of the Java Class Loader class within any kind of Enterprise JavaBean violates the restriction of the EJB specification against obtaining the current class loader as this could compromise the security of the application using the EJB.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eAn EJB is also restricted from creating a custom class loader and creating a class and instance of a class from the class loader, as shown in the following example.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e@Stateless\u003cxhtml:br/\u003epublic class LoaderSessionBean implements LoaderSessionRemote {\u003cxhtml:br/\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003epublic LoaderSessionBean() {\u003cxhtml:div style=\"margin-left:10px;\"\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eClassLoader loader = new CustomClassLoader();\u003cxhtml:br/\u003eClass c = loader.loadClass(\"someClass\");\u003cxhtml:br/\u003eObject obj = c.newInstance();\u003cxhtml:br/\u003e/* perform some task that uses the new class instance member variables or functions */\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e} catch (Exception ex) {...}\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epublic class CustomClassLoader extends ClassLoader {\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Community",
+      "submission_date": "2006-12-15T00:00:00Z",
+      "submission_comment": "Submitted by members of the CWE community to extend early CWE versions"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-10-29T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Use of an improper API",
+      "entry_id": "SFP3"
+    }
+  ]
+}

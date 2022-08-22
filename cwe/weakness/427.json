@@ -1,0 +1,503 @@
+{
+  "id": "427",
+  "name": "Uncontrolled Search Path Element",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product uses a fixed or controlled search path to find resources, but one or more locations in that path can be under the control of unintended actors.",
+  "extended_description": "\n            \u003cxhtml:p\u003eAlthough this weakness can occur with any type of resource, it is frequently introduced when a product uses a directory search path to find executables or code libraries, but the path contains a directory that can be modified by an attacker, such as \"/tmp\" or the current working directory.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eIn Windows-based systems, when the LoadLibrary or LoadLibraryEx function is called with a DLL name that does not contain a fully qualified path, the function follows a search order that includes two path elements that might be uncontrolled:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003ethe directory from which the program has been loaded\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ethe current working directory.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n            \u003cxhtml:p\u003eIn some cases, the attack can be conducted remotely, such as when SMB or WebDAV network shares are used.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eIn some Unix-based systems, a PATH might be created that contains an empty element, e.g. by splicing an empty variable into the PATH. This empty element can be interpreted as equivalent to the current working directory, which might be an untrusted search element.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eIn software package management frameworks (e.g., npm, RubyGems, or PyPi), the framework may identify dependencies on third-party libraries or other packages, then consult a repository that contains the desired package. The framework may search a public repository before a private repository. This could be exploited by attackers by placing a malicious package in the public repository that has the same name as a package from the private repository. The search path might not be directly under control of the developer relying on the framework, but this search order effectively contains an untrusted element.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "668",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "668",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Hard-code the search path to a set of known-safe values (such as system directories), or only allow them to be specified by the administrator in a configuration file. Do not allow these settings to be modified by an external party. Be careful to avoid related weaknesses such as CWE-426 and CWE-428."
+      ],
+      "strategy": "Attack Surface Reduction"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "When invoking other programs, specify those programs using fully-qualified pathnames. While this is an effective approach, code that uses fully-qualified pathnames might not be portable to other systems that do not use the same pathnames. The portability can be improved by locating the full-qualified paths in a centralized, easily-modifiable location within the source code, and having the code refer to these paths."
+      ],
+      "strategy": "Attack Surface Reduction"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Remove or restrict all environment settings before invoking other programs. This includes the PATH environment variable, LD_LIBRARY_PATH, and other settings that identify the location of code libraries, and any application-specific search paths."
+      ],
+      "strategy": "Attack Surface Reduction"
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Check your search path before use and remove any elements that are likely to be unsafe, such as the current working directory or a temporary files directory. Since this is a denylist approach, it might not be a complete solution."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Use other functions that require explicit paths. Making use of any of the other readily available functions that require explicit paths is a safe way to avoid this problem. For example, system() in C does not require a full path since the shell can take care of finding the program using the PATH environment variable, while execl() and execv() require a full path."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-29",
+      "text": "\n               \u003cIntro_Text\u003eThe following code is from a web application that allows users access to an interface through which they can update their password on the system. In this environment, user passwords can be managed using the Network Information System (NIS), which is commonly used on UNIX systems. When performing NIS updates, part of the process for updating passwords is to run a make command in the /var/yp directory. Performing NIS updates requires extra privileges.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003eSystem.Runtime.getRuntime().exec(\"make\");\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe problem here is that the program does not specify an absolute path for make and does not clean its environment prior to executing the call to Runtime.exec(). If an attacker can modify the $PATH variable to point to a malicious binary called make and cause the program to be executed in their environment, then the malicious binary will be loaded instead of the one intended. Because of the nature of the application, it runs with the privileges necessary to perform system operations, which means the attacker's make will now be run with these privileges, possibly giving the attacker complete control of the system.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn February 2021 [REF-1169], a researcher was able to demonstrate the ability to breach major technology companies by using \"dependency confusion\" where the companies would download and execute untrusted packages.\u003c/Intro_Text\u003e\n\t       \u003cBody_Text\u003eThe researcher discovered the names of some internal, private packages by looking at dependency lists in public source code, such as package.json. The researcher then created new, untrusted packages with the same name as the internal packages, then uploaded them to package hosting services. These services included the npm registry for Node, PyPi for Python, and RubyGems. In affected companies, their dependency resolution would search the public hosting services first before consulting their internal service, causing the untrusted packages to be automatically downloaded and executed.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2010-3402",
+      "description": "\"DLL hijacking\" issue in document editor.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3402"
+    },
+    {
+      "reference": "CVE-2010-3397",
+      "description": "\"DLL hijacking\" issue in encryption software.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3397"
+    },
+    {
+      "reference": "CVE-2010-3138",
+      "description": "\"DLL hijacking\" issue in library used by multiple media players.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3138"
+    },
+    {
+      "reference": "CVE-2010-3152",
+      "description": "\"DLL hijacking\" issue in illustration program.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3152"
+    },
+    {
+      "reference": "CVE-2010-3147",
+      "description": "\"DLL hijacking\" issue in address book.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3147"
+    },
+    {
+      "reference": "CVE-2010-3135",
+      "description": "\"DLL hijacking\" issue in network monitoring software.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3135"
+    },
+    {
+      "reference": "CVE-2010-3131",
+      "description": "\"DLL hijacking\" issue in web browser.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3131"
+    },
+    {
+      "reference": "CVE-2010-1795",
+      "description": "\"DLL hijacking\" issue in music player/organizer.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1795"
+    },
+    {
+      "reference": "CVE-2002-1576",
+      "description": "Product uses the current working directory to find and execute a program, which allows local users to gain privileges by creating a symlink that points to a malicious version of the program.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1576"
+    },
+    {
+      "reference": "CVE-1999-1461",
+      "description": "Product trusts the PATH environmental variable to find and execute a program, which allows local users to obtain root access by modifying the PATH to point to a malicous version of that program.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1461"
+    },
+    {
+      "reference": "CVE-1999-1318",
+      "description": "Software uses a search path that includes the current working directory (.), which allows local users to gain privileges via malicious programs.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1318"
+    },
+    {
+      "reference": "CVE-2003-0579",
+      "description": "Admin software trusts the user-supplied -uv.install command line option to find and execute the uv.install program, which allows local users to gain privileges by providing a pathname that is under control of the user.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0579"
+    },
+    {
+      "reference": "CVE-2000-0854",
+      "description": "When a document is opened, the directory of that document is first used to locate DLLs , which could allow an attacker to execute arbitrary commands by inserting malicious DLLs into the same directory as the document.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0854"
+    },
+    {
+      "reference": "CVE-2001-0943",
+      "description": "Database trusts the PATH environment variable to find and execute programs, which allows local users to modify the PATH to point to malicious programs.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0943"
+    },
+    {
+      "reference": "CVE-2001-0942",
+      "description": "Database uses an environment variable to find and execute a program, which allows local users to execute arbitrary programs by changing the environment variable.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0942"
+    },
+    {
+      "reference": "CVE-2001-0507",
+      "description": "Server uses relative paths to find system files that will run in-process, which allows local users to gain privileges via a malicious file.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0507"
+    },
+    {
+      "reference": "CVE-2002-2017",
+      "description": "Product allows local users to execute arbitrary code by setting an environment variable to reference a malicious program.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2017"
+    },
+    {
+      "reference": "CVE-1999-0690",
+      "description": "Product includes the current directory in root's PATH variable.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0690"
+    },
+    {
+      "reference": "CVE-2001-0912",
+      "description": "Error during packaging causes product to include a hard-coded, non-standard directory in search path.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0912"
+    },
+    {
+      "reference": "CVE-2001-0289",
+      "description": "Product searches current working directory for configuration file.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0289"
+    },
+    {
+      "reference": "CVE-2005-1705",
+      "description": "Product searches current working directory for configuration file.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1705"
+    },
+    {
+      "reference": "CVE-2005-1307",
+      "description": "Product executable other program from current working directory.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1307"
+    },
+    {
+      "reference": "CVE-2002-2040",
+      "description": "Untrusted path.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-2040"
+    },
+    {
+      "reference": "CVE-2005-2072",
+      "description": "Modification of trusted environment variable leads to untrusted path vulnerability.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2072"
+    },
+    {
+      "reference": "CVE-2005-1632",
+      "description": "Product searches /tmp for modules before other paths.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1632"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-409",
+      "author": [
+        "Georgi Guninski"
+      ],
+      "title": "Double clicking on MS Office documents from Windows Explorer may execute arbitrary programs in some cases",
+      "publication_year": "2000",
+      "publication_month": "--09",
+      "publication_day": "---18",
+      "publication": "Bugtraq"
+    },
+    {
+      "reference_id": "REF-410",
+      "author": [
+        "Mitja Kolsek"
+      ],
+      "title": "ACROS Security: Remote Binary Planting in Apple iTunes for Windows (ASPR #2010-08-18-1)",
+      "publication_year": "2010",
+      "publication_month": "--08",
+      "publication_day": "---18",
+      "publication": "Bugtraq"
+    },
+    {
+      "reference_id": "REF-411",
+      "author": [
+        "Taeho Kwon",
+        "Zhendong Su"
+      ],
+      "title": "Automatic Detection of Vulnerable Dynamic Component Loadings",
+      "url": "http://www.cs.ucdavis.edu/research/tech-reports/2010/CSE-2010-2.pdf"
+    },
+    {
+      "reference_id": "REF-412",
+      "title": "Dynamic-Link Library Search Order",
+      "url": "http://msdn.microsoft.com/en-us/library/ms682586%28v=VS.85%29.aspx",
+      "publication_year": "2010",
+      "publication_month": "--09",
+      "publication_day": "---02",
+      "publisher": "Microsoft"
+    },
+    {
+      "reference_id": "REF-413",
+      "title": "Dynamic-Link Library Security",
+      "url": "http://msdn.microsoft.com/en-us/library/ff919712%28VS.85%29.aspx",
+      "publication_year": "2010",
+      "publication_month": "--09",
+      "publication_day": "---02",
+      "publisher": "Microsoft"
+    },
+    {
+      "reference_id": "REF-414",
+      "title": "An update on the DLL-preloading remote attack vector",
+      "url": "http://blogs.technet.com/b/srd/archive/2010/08/23/an-update-on-the-dll-preloading-remote-attack-vector.aspx",
+      "publication_year": "2010",
+      "publication_month": "--08",
+      "publication_day": "---31",
+      "publisher": "Microsoft"
+    },
+    {
+      "reference_id": "REF-415",
+      "title": "Insecure Library Loading Could Allow Remote Code Execution",
+      "url": "http://www.microsoft.com/technet/security/advisory/2269637.mspx",
+      "publication_year": "2010",
+      "publication_month": "--08",
+      "publication_day": "---23",
+      "publisher": "Microsoft"
+    },
+    {
+      "reference_id": "REF-416",
+      "author": [
+        "HD Moore"
+      ],
+      "title": "Application DLL Load Hijacking",
+      "url": "http://blog.rapid7.com/?p=5325",
+      "publication_year": "2010",
+      "publication_month": "--08",
+      "publication_day": "---23"
+    },
+    {
+      "reference_id": "REF-417",
+      "author": [
+        "Oliver Lavery"
+      ],
+      "title": "DLL Hijacking: Facts and Fiction",
+      "url": "http://threatpost.com/en_us/blogs/dll-hijacking-facts-and-fiction-082610",
+      "publication_year": "2010",
+      "publication_month": "--08",
+      "publication_day": "---26"
+    },
+    {
+      "reference_id": "REF-1168",
+      "author": [
+        "Catalin Cimpanu"
+      ],
+      "title": "Microsoft warns enterprises of new 'dependency confusion' attack technique",
+      "url": "https://www.zdnet.com/article/microsoft-warns-enterprises-of-new-dependency-confusion-attack-technique/",
+      "publication_year": "2021",
+      "publication_month": "--02",
+      "publication_day": "---10",
+      "publication": "ZDNet"
+    },
+    {
+      "reference_id": "REF-1169",
+      "author": [
+        "Alex Birsan"
+      ],
+      "title": "Dependency Confusion: How I Hacked Into Apple, Microsoft and Dozens of Other Companies",
+      "url": "https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610",
+      "publication_year": "2021",
+      "publication_month": "--02",
+      "publication_day": "---09"
+    },
+    {
+      "reference_id": "REF-1170",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "3 Ways to Mitigate Risk When Using Private Package Feeds",
+      "url": "https://azure.microsoft.com/mediahandler/files/resourcefiles/3-ways-to-mitigate-risk-using-private-package-feeds/3%20Ways%20to%20Mitigate%20Risk%20When%20Using%20Private%20Package%20Feeds%20-%20v1.0.pdf",
+      "publication_year": "2021",
+      "publication_month": "--02",
+      "publication_day": "---09"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Observed_Example, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Description, Maintenance_Notes, Observed_Examples, Other_Notes, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Applicable_Platforms, Description, Maintenance_Notes, Observed_Examples, References, Relationship_Notes, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Description, Maintenance_Notes, References, Theoretical_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "DLL preloading",
+      "description": "This term is one of several that are used to describe exploitation of untrusted search path elements in Windows systems, which received wide attention in August 2010. From a weakness perspective, the term is imprecise because it can apply to both CWE-426 and CWE-427."
+    },
+    {
+      "term": "Binary planting",
+      "description": "This term is one of several that are used to describe exploitation of untrusted search path elements in Windows systems, which received wide attention in August 2010. From a weakness perspective, the term is imprecise because it can apply to both CWE-426 and CWE-427."
+    },
+    {
+      "term": "Insecure library loading",
+      "description": "This term is one of several that are used to describe exploitation of untrusted search path elements in Windows systems, which received wide attention in August 2010. From a weakness perspective, the term is imprecise because it can apply to both CWE-426 and CWE-427."
+    },
+    {
+      "term": "Dependency confusion",
+      "description": "As of February 2021, this term is used to describe CWE-427 in the context of managing installation of software package dependencies, in which attackers release packages on public sites where the names are the same as package names used by private repositories, and the search for the dependent package tries the public site first, downloading untrusted code. It may also be referred to as a \"substitution attack.\""
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Uncontrolled Search Path Element"
+    }
+  ],
+  "related_attack_patterns": [
+    "38",
+    "471"
+  ],
+  "notes": [
+    {
+      "type": "Relationship",
+      "text": "Unlike untrusted search path (CWE-426), which inherently involves control over the definition of a control sphere (i.e., modification of a search path), this entry concerns a fixed control sphere in which some part of the sphere may be under attacker control (i.e., the search path cannot be modified by an attacker, but one element of the path can be under attacker control)."
+    },
+    {
+      "type": "Theoretical",
+      "text": "This weakness is not a clean fit under CWE-668 or CWE-610, which suggests that the control sphere model might need enhancement or clarification."
+    }
+  ]
+}

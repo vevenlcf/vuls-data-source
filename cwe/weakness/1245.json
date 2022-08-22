@@ -1,0 +1,111 @@
+{
+  "id": "1245",
+  "name": "Improper Finite State Machines (FSMs) in Hardware Logic",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Faulty finite state machines (FSMs) in the hardware logic allow an attacker to put the system in an undefined state, to cause a denial of service (DoS) or gain privileges on the victim's system.",
+  "extended_description": "\n                \u003cxhtml:p\u003eThe functionality and security of the system heavily depend on the implementation of FSMs. FSMs can be used to indicate the current security state of the system. Lots of secure data operations and data transfers rely on the state reported by the FSM. Faulty FSM designs that do not account for all states, either through undefined states (left as don't cares) or through incorrect implementation, might lead an attacker to drive the system into an unstable state from which the system cannot recover without a reset, thus causing a DoS. Depending on what the FSM is used for, an attacker might also gain additional privileges to launch further attacks and compromise the security guarantees.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "684",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Unexpected State",
+        "DoS: Crash, Exit, or Restart",
+        "DoS: Instability",
+        "Gain Privileges or Assume Identity"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Define all possible states and handle all unused states through default statements. Ensure that system defaults to a secure state."
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eThe FSM shown in the \"bad\" code snippet below assigns the output out based on the value of state, which is determined based on the user provided input, user_input.\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003e\n                        \u003cxhtml:div\u003emodule fsm_1(out, user_input, clk, rst_n);\n                            \u003cxhtml:br/\u003einput [2:0] user_input; \n                            \u003cxhtml:br/\u003einput clk, rst_n;\n                            \u003cxhtml:br/\u003eoutput reg [2:0] out;\n                            \u003cxhtml:br/\u003ereg [1:0] state;\n                            \u003cxhtml:br/\u003ealways @ (posedge clk or negedge rst_n )\n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:div style=\"margin-left:10px;\"\u003ebegin\n                                \u003cxhtml:br/\u003e\n                                \u003cxhtml:div style=\"margin-left:10px;\"\u003eif (!rst_n)\n                                    \u003cxhtml:br/\u003estate = 3'h0;\n                                    \u003cxhtml:br/\u003eelse\n                                    \u003cxhtml:br/\u003ecase (user_input)\n                                    \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                        \u003cxhtml:br/\u003e3'h0:\n                                        \u003cxhtml:br/\u003e3'h1:\n                                        \u003cxhtml:br/\u003e3'h2:\n                                        \u003cxhtml:br/\u003e3'h3: state = 2'h3;\n                                        \u003cxhtml:br/\u003e3'h4: state = 2'h2;\n                                        \u003cxhtml:br/\u003e3'h5: state = 2'h1;\n                                    \u003c/xhtml:div\u003e\n                                    \u003cxhtml:br/\u003eendcase\n                                \u003c/xhtml:div\u003e\n                                \u003cxhtml:br/\u003eend\n                                \u003cxhtml:br/\u003eout \u0026lt;= {1'h1, state};\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003eendmodule\n                        \u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003e\n                        \u003cxhtml:p\u003eThe case statement does not handle the scenario when user provides inputs of 3'h6 and 3'h7 using a default statement.  Those inputs push the system to an undefined state and might cause a crash (denial of service) or any other unanticipated outcome.\u003c/xhtml:p\u003e\n                        \u003cxhtml:p\u003eAdding a default statement to handle undefined inputs mitigates this issue.  This is shown in the \"Good\" code snippet below.  The default statement is in bold.\u003c/xhtml:p\u003e\n                    \u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"good\" Language=\"Other\"\u003e\n                        \u003cxhtml:div\u003ecase (user_input)\n                            \u003cxhtml:br/\u003e\u003cxhtml:div style=\"margin-left:10px;\"\u003e3'h0:\n                                \u003cxhtml:br/\u003e3'h1:\n                                \u003cxhtml:br/\u003e3'h2:\n                                \u003cxhtml:br/\u003e3'h3: state = 2'h3;\n                                \u003cxhtml:br/\u003e3'h4: state = 2'h2;\n                                \u003cxhtml:br/\u003e3'h5: state = 2'h1;\n                                \u003cxhtml:br/\u003e\u003cxhtml:b\u003edefault: state = 2'h0;\u003c/xhtml:b\u003e\n                            \u003c/xhtml:div\u003e\n                            \u003cxhtml:br/\u003eendcase\u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n            \t"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1060",
+      "author": [
+        "Farimah Farahmandi",
+        "Prabhat Mishra"
+      ],
+      "title": "FSM Anomaly Detection using Formal Analysis",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=\u0026arnumber=8119228\u0026tag=1"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "The Intel Corporation",
+      "submission_date": "2020-02-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "74"
+  ]
+}

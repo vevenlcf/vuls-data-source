@@ -1,0 +1,192 @@
+{
+  "id": "663",
+  "name": "Use of a Non-reentrant Function in a Concurrent Context",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software calls a non-reentrant function in a concurrent context in which a competing code sequence (e.g. thread or signal handler) may have an opportunity to call the same function or otherwise influence its state.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "662",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {},
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Other"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "Modify Application Data",
+        "Read Application Data",
+        "Alter Execution Logic"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Use reentrant functions if available."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Add synchronization to your non-reentrant function."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "In Java, use the ReentrantLock Class."
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2001-1349",
+      "description": "unsafe calls to library functions from signal handler",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1349"
+    },
+    {
+      "reference": "CVE-2004-2259",
+      "description": "SIGCHLD signal to FTP server can cause crash under heavy load while executing non-reentrant functions like malloc/free.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2259"
+    }
+  ],
+  "references": [
+    {
+      "section": "Class ReentrantLock",
+      "reference_id": "REF-547",
+      "author": [
+        "SUN"
+      ],
+      "title": "Java Concurrency API",
+      "url": "http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/locks/ReentrantLock.html"
+    },
+    {
+      "reference_id": "REF-548",
+      "author": [
+        "Dipak Jha, Software Engineer, IBM"
+      ],
+      "title": "Use reentrant functions for safer signal handling",
+      "url": "http://www.ibm.com/developerworks/linux/library/l-reent.html"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Community",
+      "submission_date": "2008-04-11T00:00:00Z",
+      "submission_comment": "Submitted by members of the CWE community to extend early CWE versions"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated References, Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Name, Observed_Examples, Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Description, Name, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Use of a Non-reentrant Function in an Unsynchronized Context",
+        "date": "2010-09-27T00:00:00Z"
+      },
+      {
+        "text": "Use of a Non-reentrant Function in a Multithreaded Context",
+        "date": "2010-12-13T00:00:00Z"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "29"
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "id": "273",
+  "name": "Improper Check for Dropped Privileges",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software attempts to drop privileges but does not check or incorrectly checks to see if the drop succeeded.",
+  "extended_description": "If the drop fails, the software will continue to run with the raised privileges, which might provide additional access to unprivileged users.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "754",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "754",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "271",
+      "view_id": "1000"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "252",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "background_details": [
+    "In Windows based environments that have access control, impersonation is used so that access checks can be performed on a client identity by a server with higher privileges. By impersonating the client, the server is restricted to client-level security -- although in different threads it may have much higher privileges."
+  ],
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "\n                  \u003cxhtml:p\u003eREALIZATION: This weakness is caused during implementation of an architectural security tactic.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis issue is likely to occur in restrictive environments in which the operating system or application provides fine-grained control over privilege management.\u003c/xhtml:p\u003e\n               "
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "If privileges are not dropped, neither are access rights of the user. Often these rights can be prevented from being dropped."
+    },
+    {
+      "scope": [
+        "Access Control",
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity",
+        "Hide Activities"
+      ],
+      "note": "If privileges are not dropped, in some cases the system may record actions as the user which is being impersonated rather than the impersonator."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-46",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eCompartmentalize the system to have \"safe\" areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eEnsure that appropriate compartmentalization is built into the system design, and the compartmentalization allows for and reinforces privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide the appropriate time to use privileges and the time to drop privileges.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Separation of Privilege"
+    },
+    {
+      "mitigation_id": "MIT-53",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Check the results of all functions that return a value and verify that the value is expected."
+      ],
+      "effectiveness": "High",
+      "effectiveness_notes": "Checking the return value of the function will typically be sufficient, however beware of race conditions (CWE-362) in a concurrent environment."
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "In Windows, make sure that the process token has the SeImpersonatePrivilege(Microsoft Server 2003). Code that relies on impersonation for security must ensure that the impersonation succeeded, i.e., that a proper privilege demotion happened."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis code attempts to take on the privileges of a user before creating a file, thus avoiding performing the action with unnecessarily high privileges:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C++\"\u003e\n                  \u003cxhtml:div\u003ebool DoSecureStuff(HANDLE hPipe) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ebool fDataWritten = false;\u003cxhtml:br/\u003eImpersonateNamedPipeClient(hPipe);\u003cxhtml:br/\u003eHANDLE hFile = CreateFile(...);\u003cxhtml:br/\u003e/../\u003cxhtml:br/\u003eRevertToSelf()\u003cxhtml:br/\u003e/../\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe call to ImpersonateNamedPipeClient may fail, but the return value is not checked. If the call fails, the code may execute with higher privileges than intended. In this case, an attacker could exploit this behavior to write a file to a location that the attacker does not have access to.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2006-4447",
+      "description": "Program does not check return value when invoking functions to drop privileges, which could leave users with higher privileges than expected by forcing those functions to fail.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4447"
+    },
+    {
+      "reference": "CVE-2006-2916",
+      "description": "Program does not check return value when invoking functions to drop privileges, which could leave users with higher privileges than expected by forcing those functions to fail.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2916"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Modes_of_Introduction, Relationships, Other_Notes, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-11-24T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Description, Name, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Background_Details, Other_Notes, Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature, Demonstrative_Examples, Modes_of_Introduction, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Failure to Check Whether Privileges Were Dropped Successfully",
+        "date": "2009-03-10T00:00:00Z"
+      },
+      {
+        "text": "Improper Check for Successfully Dropped Privileges",
+        "date": "2009-05-27T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Failure to check whether privileges were dropped successfully"
+    },
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Ensure that privilege relinquishment is successful",
+      "entry_id": "POS37-C",
+      "mapping_fit": "Exact"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Unchecked Status Condition",
+      "entry_id": "SFP4"
+    }
+  ],
+  "affected_resources": [
+    "System Process"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "id": "1254",
+  "name": "Incorrect Comparison Logic Granularity",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product's comparison logic is performed over a series of steps rather than across the entire string in one operation. If there is a comparison logic failure on one of these steps, the operation may be vulnerable to a timing attack that can result in the interception of the process for nefarious purposes.",
+  "extended_description": "\n            \u003cxhtml:p\u003eComparison logic is used to compare a variety of objects including passwords, Message \n         Authentication Codes (MACs), and responses to verification challenges. When comparison logic is \n         implemented at a finer granularity (e.g., byte-by-byte comparison) and breaks in the case of a \n         comparison failure, an attacker can exploit this implementation to identify when exactly \n         the failure occurred. With multiple attempts, the attacker may be able to guesses the correct \n         password/response to challenge and elevate their privileges.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "208",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "697",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Authorization"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                 \u003cxhtml:p\u003eThe hardware designer should ensure that comparison logic is implemented so as to compare in one operation instead in smaller chunks.\u003c/xhtml:p\u003e\n               "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                \u003cIntro_Text\u003eConsider an example hardware module that checks a user-provided password to grant access to a user. The user-provided password is compared against a golden value in a byte-by-byte manner.\u003c/Intro_Text\u003e\n                \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                    \u003cxhtml:div/\u003ealways_comb @ (posedge clk)\n                    \u003cxhtml:br/\u003ebegin\n                    \u003cxhtml:br/\u003e\tassign check_pass[3:0] = 4’b0;\n                    \u003cxhtml:br/\u003e\tfor (i = 0; i \u0026lt; 4; i++) begin\n                    \u003cxhtml:br/\u003e\t\tif (entered_pass[(i*8 – 1) : i] eq golden_pass([i*8 -1) : i])\n                    \u003cxhtml:br/\u003e\t\t\tassign check_pass[i] = 1;\n                    \u003cxhtml:br/\u003e\t\t\tcontinue;\n                    \u003cxhtml:br/\u003e\t\telse\n                    \u003cxhtml:br/\u003e\t\t\tassign check_pass[i] = 0;\n                    \u003cxhtml:br/\u003e\t\t\tbreak;\n                    \u003cxhtml:br/\u003e\tend\n                    \u003cxhtml:br/\u003e\tassign grant_access = (check_pass == 4’b1111) ? 1’b1: 1’b0;\n                    \u003cxhtml:br/\u003eend\n\t\t\t    \u003c/Example_Code\u003e\n                \u003cBody_Text\u003eSince the code breaks on an incorrect entry of password, an attacker can guess the correct password for that byte-check iteration with few repeat attempts.\u003c/Body_Text\u003e\n                \u003cExample_Code Nature=\"informative\"\u003e\n                \u003cxhtml:br/\u003eEither the comparison of the entire string should be done all at once or the attacker is not given an indication whether pass or fail happened by allowing the comparison to run through all bits before the grant_access signal is set. \n                \u003cxhtml:br/\u003e\n                \u003cxhtml:br/\u003ealways_comb @ (posedge clk)\n                \u003cxhtml:br/\u003e\n                \u003cxhtml:br/\u003ebegin\n                \u003cxhtml:br/\u003e     assign check_pass[3:0] = 4’b0;\n                \u003cxhtml:br/\u003e\t    for (i = 0; i \u0026lt; 4; i++) begin\n                \u003cxhtml:br/\u003e\t\t    if (entered_pass[(i*8 – 1) : i] eq golden_pass([i*8 -1) : i])\n                \u003cxhtml:br/\u003e\t\t    \tassign check_pass[i] = 1;\n                \u003cxhtml:br/\u003e\t\t\t    continue;\n                \u003cxhtml:br/\u003e\t\t    else\n                \u003cxhtml:br/\u003e\t\t    \tassign check_pass[i] = 0;\n                \u003cxhtml:br/\u003e\t\t\t    continue;\n                \u003cxhtml:br/\u003e\t    end\n                \u003cxhtml:br/\u003e\t    assign grant_access = (check_pass == 4’b1111) ? 1’b1: 1’b0;\n                \u003cxhtml:br/\u003eend\n\t\t\t\t\u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2014-0984",
+      "description": "The passwordCheck function in SAP Router 721 patch 117, 720 patch 411, 710 patch 029, and earlier terminates validation of a Route Permission Table entry password upon encountering the first incorrect character, which allows remote attackers to obtain passwords via a brute-force attack that relies on timing differences in responses to incorrect password guesses, aka a timing side-channel attack.",
+      "link": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0984"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1079",
+      "author": [
+        "Joe Fitzpatrick"
+      ],
+      "title": "SCA4n00bz - Timing-based Sidechannel Attacks for Hardware N00bz workshop",
+      "url": "https://github.com/securelyfitz/SCA4n00bz"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "26"
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "id": "825",
+  "name": "Expired Pointer Dereference",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The program dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+  "extended_description": "When a program releases memory, but it maintains a pointer to that memory, then the memory might be re-allocated at a later time. If the original pointer is accessed to read or write data, then this could cause the program to read or modify data that is in use by a different function or process. Depending on how the newly-allocated memory is used, this could lead to a denial of service, information exposure, or code execution.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "672",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "125",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "787",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {},
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Memory"
+      ],
+      "note": "If the expired pointer is used in a read operation, an attacker might be able to control data read in by the application."
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "If the expired pointer references a memory location that is not accessible to the program, or points to a location that is \"malformed\" (such as NULL) or larger than expected by a read or write operation, then a crash may occur."
+    },
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "If the expired pointer is used in a function call, or points to unexpected data in a write operation, then code execution may be possible."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Choose a language that provides automatic memory management."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "When freeing pointers, be sure to set them to NULL once they are freed. However, the utilization of multiple or complex data structures may lower the usefulness of this strategy."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-71",
+      "text": "\n               \u003cIntro_Text\u003eThe following code shows a simple example of a use after free error:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar* ptr = (char*)malloc (SIZE);\u003cxhtml:br/\u003eif (err) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eabrt = 1;\u003cxhtml:br/\u003efree(ptr);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003eif (abrt) {\u003cxhtml:div style=\"margin-left:10px;\"\u003elogError(\"operation aborted before commit\", ptr);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhen an error occurs, the pointer is immediately freed. However, this pointer is later incorrectly used in the logError function.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-72",
+      "text": "\n               \u003cIntro_Text\u003eThe following code shows a simple example of a double free error:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003echar* ptr = (char*)malloc (SIZE);\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003eif (abrt) {\u003cxhtml:div style=\"margin-left:10px;\"\u003efree(ptr);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003cxhtml:br/\u003efree(ptr);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eDouble free vulnerabilities have two common (and sometimes overlapping) causes:\u003c/Body_Text\u003e\n               \u003cBody_Text\u003e\n                  \u003cxhtml:ul\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eError conditions and other exceptional circumstances\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                     \u003cxhtml:li\u003e\n                        \u003cxhtml:div\u003eConfusion over which part of the program is responsible for freeing the memory\u003c/xhtml:div\u003e\n                     \u003c/xhtml:li\u003e\n                  \u003c/xhtml:ul\u003e\n               \u003c/Body_Text\u003e\n               \u003cBody_Text\u003eAlthough some double free vulnerabilities are not much more complicated than the previous example, most are spread out across hundreds of lines of code or even different files. Programmers seem particularly susceptible to freeing global variables more than once.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2008-5013",
+      "description": "access of expired memory address leads to arbitrary code execution",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5013"
+    },
+    {
+      "reference": "CVE-2010-3257",
+      "description": "stale pointer issue leads to denial of service and possibly other consequences",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3257"
+    },
+    {
+      "reference": "CVE-2008-0062",
+      "description": "Chain: a message having an unknown message type may cause a reference to uninitialized memory resulting in a null pointer dereference (CWE-476) or dangling pointer (CWE-825), possibly crashing the system or causing heap corruption.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0062"
+    },
+    {
+      "reference": "CVE-2007-1211",
+      "description": "read of value at an offset into a structure after the offset is no longer valid",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1211"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2010-09-22T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Research_Gaps"
+      }
+    ]
+  },
+  "alternate_terms": [
+    {
+      "term": "Dangling pointer"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "There are close relationships between incorrect pointer dereferences and other weaknesses related to buffer operations. There may not be sufficient community agreement regarding these relationships. Further study is needed to determine when these relationships are chains, composites, perspective/layering, or other types of relationships. As of September 2010, most of the relationships are being captured as chains."
+    },
+    {
+      "type": "Terminology",
+      "text": "Many weaknesses related to pointer dereferences fall under the general term of \"memory corruption\" or \"memory safety.\" As of September 2010, there is no commonly-used terminology that covers the lower-level variants."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "1221",
+  "name": "Incorrect Register Defaults or Module Parameters",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Hardware description language code incorrectly defines register defaults or hardware IP parameters to insecure values.",
+  "extended_description": "\n                \u003cxhtml:p\u003eIntegrated circuits and hardware IP software programmable controls and settings are commonly stored in register circuits. These register contents have to be initialized at hardware reset to defined default values that are hard coded in the hardware description language (HDL) code of the hardware unit. Hardware descriptive languages also support definition of parameter variables, which can be defined in code during instantiation of the hardware IP module. Such parameters are generally used to configure a specific instance of a hardware IP in the design.\u003c/xhtml:p\u003e\n                \u003cxhtml:p\u003eThe system security settings of a hardware design can be affected by incorrectly defined default values or IP parameters. The hardware IP would be in an insecure state at power reset, and this can be exposed or exploited by untrusted software running on the system. Both register defaults and parameters are hardcoded values, which cannot be changed using software or firmware patches but must be changed in hardware silicon. Thus, such security issues are considerably more difficult to address later in the lifecycle. Hardware designs can have a large number of such parameters and register defaults settings, and it is important to have design tool support to check these settings in an automated way and be able to identify which settings are security sensitive.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "665",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Verilog"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "VHDL"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "Such issues could be introduced during implementation of hardware design, since IP parameters and defaults are defined in HDL code and identified later during Testing or System Configuration phases."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Varies by Context"
+      ],
+      "note": "Degradation of system functionality, or loss of access control enforcement can occur."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "During hardware design, all the system parameters and register defaults must be reviewed to identify security sensitive settings."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "The default values of these security sensitive settings need to be defined as part of the design review phase."
+      ]
+    },
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "Testing phase should use automated tools to test that values are configured per design specifications."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eConsider example design module system verilog code shown below.register_example module is an example parameterized module that defines two parameters, REGISTER_WIDTH and REGISTER_DEFAULT. Register_example module defines a Secure_mode setting, which when set makes the register content read-only and not modifiable by software writes. register_top module instantiates two registers, Insecure_Device_ID_1 and Insecure_Device_ID_2. Generally, registers containing device identifier values are required to be read only to prevent any possibility of software modifying these values. \u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003e\n                        \u003cxhtml:div\u003e// Parameterized Register module example \u003cxhtml:br/\u003e// Secure_mode : REGISTER_DEFAULT[0] : When set to 1 register is read only and not writable// \u003cxhtml:br/\u003e/module register_example \u003cxhtml:br/\u003es#( \u003cxhtml:br/\u003e parameter REGISTER_WIDTH = 8, // Parameter defines width of register, default 8 bits \u003cxhtml:br/\u003e parameter [REGISTER_WIDTH-1:0] REGISTER_DEFAULT = 2**REGISTER_WIDTH -2 // Default value of register computed from Width. Sets all bits to 1s except bit 0 (Secure _mode) \u003cxhtml:br/\u003e) \u003cxhtml:br/\u003e( \u003cxhtml:br/\u003einput [REGISTER_WIDTH-1:0] Data_in, \u003cxhtml:br/\u003einput Clk, \u003cxhtml:br/\u003einput resetn, \u003cxhtml:br/\u003einput write, \u003cxhtml:br/\u003eoutput reg [REGISTER_WIDTH-1:0] Data_out \u003cxhtml:br/\u003e); \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003ereg Secure_mode; \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003ealways @(posedge Clk or negedge resetn) \u003cxhtml:br/\u003e if (~resetn) \u003cxhtml:br/\u003e begin \u003cxhtml:br/\u003e Data_out \u0026lt;= REGISTER_DEFAULT; // Register content set to Default at reset \u003cxhtml:br/\u003e Secure_mode \u0026lt;= REGISTER_DEFAULT[0]; // Register Secure_mode set at reset \u003cxhtml:br/\u003eend \u003cxhtml:br/\u003eelse if (write \u0026amp; ~Secure_mode) \u003cxhtml:br/\u003ebegin \u003cxhtml:br/\u003e Data_out \u0026lt;= Data_in; \u003cxhtml:br/\u003eend \u003cxhtml:br/\u003eendmodule \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003emodule register_top \u003cxhtml:br/\u003e( \u003cxhtml:br/\u003einput Clk, \u003cxhtml:br/\u003einput resetn, \u003cxhtml:br/\u003einput write, \u003cxhtml:br/\u003einput [31:0] Data_in, \u003cxhtml:br/\u003eoutput reg [31:0] Secure_reg, \u003cxhtml:br/\u003eoutput reg [31:0] Insecure_reg \u003cxhtml:br/\u003e); \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003eregister_example #( \u003cxhtml:br/\u003e .REGISTER_WIDTH (32), \u003cxhtml:br/\u003e .REGISTER_DEFAULT (1224) // Incorrect Default value used bit 0 is 0. \u003cxhtml:br/\u003e) Insecure_Device_ID_1 ( \u003cxhtml:br/\u003e .Data_in (Data_in), \u003cxhtml:br/\u003e .Data_out (Secure_reg), \u003cxhtml:br/\u003e .Clk (Clk), \u003cxhtml:br/\u003e .resetn (resetn), \u003cxhtml:br/\u003e .write (write) \u003cxhtml:br/\u003e); \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003eregister_example #( \u003cxhtml:br/\u003e .REGISTER_WIDTH (32) // Default not defined 2^32-2 value will be used as default. \u003cxhtml:br/\u003e) Insecure_Device_ID_2 ( \u003cxhtml:br/\u003e .Data_in (Data_in), \u003cxhtml:br/\u003e .Data_out (Insecure_reg), \u003cxhtml:br/\u003e .Clk (Clk), \u003cxhtml:br/\u003e .resetn (resetn), \u003cxhtml:br/\u003e .write (write) \u003cxhtml:br/\u003e); \u003cxhtml:br/\u003e\n                            \u003cxhtml:br/\u003eendmodule \u003cxhtml:br/\u003e\u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eThese example instantiations show how, in a hardware design, it would be possible to instantiate the register module with insecure defaults and parameters.\u003c/Body_Text\u003e\n                    \u003cBody_Text\u003eIn the example design, both registers will be software writable since Secure_mode is defined as zero. \u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"informative\"\u003e\n                        \u003cxhtml:div\u003eregister_example #( \u003cxhtml:br/\u003e .REGISTER_WIDTH (32), \u003cxhtml:br/\u003e .REGISTER_DEFAULT (1225) // Correct default value set, to enable Secure_mode \u003cxhtml:br/\u003e) Secure_Device_ID_example ( \u003cxhtml:br/\u003e .Data_in (Data_in), \u003cxhtml:br/\u003e .Data_out (Secure_reg), \u003cxhtml:br/\u003e .Clk (Clk), \u003cxhtml:br/\u003e .resetn (resetn), \u003cxhtml:br/\u003e .write (write) \u003cxhtml:br/\u003e); \u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2019-12-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "166"
+  ]
+}

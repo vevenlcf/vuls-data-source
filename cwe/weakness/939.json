@@ -1,0 +1,116 @@
+{
+  "id": "939",
+  "name": "Improper Authorization in Handler for Custom URL Scheme",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses a handler for a custom URL scheme, but it does not properly restrict which actors can invoke the handler using the scheme.",
+  "extended_description": "Mobile platforms and other architectures allow the use of custom URL schemes to facilitate communication between applications. In the case of iOS, this is the only method to do inter-application communication. The implementation is at the developer's discretion which may open security flaws in the application. An example could be potentially dangerous functionality such as modifying files through a custom URL scheme.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "862",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "technology": [
+      {
+        "class": "Mobile",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUtilize a user prompt pop-up to authorize potentially harmful actions such as those modifying data or dealing with sensitive information.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eWhen designing functionality of actions in the URL scheme, consider whether the action should be accessible to all mobile applications, or if an allowlist of applications to interface with is appropriate.\u003c/xhtml:p\u003e\n               "
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis iOS application uses a custom URL scheme. The replaceFileText action in the URL scheme allows an external application to interface with the file incomingMessage.txt and replace the contents with the text field of the query string.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eExternal Application\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Objective-C\"\u003e\n                  \u003cxhtml:div\u003eNSString *stringURL = @\"appscheme://replaceFileText?file=incomingMessage.txt\u0026amp;text=hello\";\u003cxhtml:br/\u003eNSURL *url = [NSURL URLWithString:stringURL];\u003cxhtml:br/\u003e[[UIApplication sharedApplication] openURL:url];\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eApplication URL Handler\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:br/\u003e- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (!url) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn NO;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eNSString *action = [url host];\u003cxhtml:br/\u003eif([action isEqualToString: @\"replaceFileText\"]) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eNSDictionary *dict = [self parseQueryStringExampleFunction:[url query]];\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e//this function will write contents to a specified file\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eFileObject *objectFile = [self writeToFile:[dict objectForKey: @\"file\"] withText:[dict objectForKey: @\"text\"]];\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn YES;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe handler has no restriction on who can use its functionality. The handler can be invoked using any method that invokes the URL handler such as the following malicious iframe embedded on a web page opened by Safari.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"HTML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;iframe src=\"appscheme://replaceFileText?file=Bookmarks.dat\u0026amp;text=listOfMaliciousWebsites\"\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe attacker can host a malicious website containing the iframe and trick users into going to the site via a crafted phishing email. Since Safari automatically executes iframes, the user is not prompted when the handler executes the iframe code which automatically invokes the URL handler replacing the bookmarks file with a list of malicious websites. Since replaceFileText is a potentially dangerous action, an action that modifies data, there should be a sanity check before the writeToFile:withText: function.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-109",
+      "text": "\n               \u003cIntro_Text\u003eThese Android and iOS applications intercept URL loading within a WebView and perform special actions if a particular URL scheme is used, thus allowing the Javascript within the WebView to communicate with the application:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:i\u003e// Android\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e@Override\u003cxhtml:br/\u003epublic boolean shouldOverrideUrlLoading(WebView view, String url){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eif (url.substring(0,14).equalsIgnoreCase(\"examplescheme:\")){\u003cxhtml:div style=\"margin-left:10px;\"\u003eif(url.substring(14,25).equalsIgnoreCase(\"getUserInfo\")){\u003cxhtml:div style=\"margin-left:10px;\"\u003ewriteDataToView(view, UserData);\u003cxhtml:br/\u003ereturn false;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eelse{\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn true;\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Objective-C\"\u003e\n                  \u003cxhtml:div\u003e\n                     \u003cxhtml:i\u003e// iOS\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e-(BOOL) webView:(UIWebView *)exWebView shouldStartLoadWithRequest:(NSURLRequest *)exRequest navigationType:(UIWebViewNavigationType)exNavigationType\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eNSURL *URL = [exRequest URL];\u003cxhtml:br/\u003eif ([[URL scheme] isEqualToString:@\"exampleScheme\"])\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003eNSString *functionString = [URL resourceSpecifier];\u003cxhtml:br/\u003eif ([functionString hasPrefix:@\"specialFunction\"])\u003cxhtml:br/\u003e{\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// Make data available back in webview.\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003eUIWebView *webView = [self writeDataToView:[URL query]];\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn NO;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn YES;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eA call into native code can then be initiated by passing parameters within the URL:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"attack\" Language=\"JavaScript\"\u003e\n                  \u003cxhtml:div\u003ewindow.location = examplescheme://method?parameter=value\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eBecause the application does not check the source, a malicious website loaded within this WebView has the same access to the API as a trusted site.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2013-5725",
+      "description": "URL scheme has action replace which requires no user prompt and allows remote attackers to perform undesired actions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-5725"
+    },
+    {
+      "reference": "CVE-2013-5726",
+      "description": "URL scheme has action follow and favorite which allows remote attackers to force user to perform undesired actions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-5726"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-938",
+      "author": [
+        "Guillaume Ross"
+      ],
+      "title": "Scheming for Privacy and Security",
+      "url": "http://brooksreview.net/2013/11/guest-post_scheming-for-privacy-and-security/",
+      "publication_year": "2013",
+      "publication_month": "--11",
+      "publication_day": "---11"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2014-01-14T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-01-19T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ]
+  }
+}

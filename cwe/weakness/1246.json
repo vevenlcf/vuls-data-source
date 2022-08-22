@@ -1,0 +1,152 @@
+{
+  "id": "1246",
+  "name": "Improper Write Handling in Limited-write Non-Volatile Memories",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The product does not implement or incorrectly implements wear leveling operations in limited-write non-volatile memories.",
+  "extended_description": "\n                \u003cxhtml:p\u003eNon-volatile memories such as NAND Flash, EEPROM, etc. have individually erasable segments, each of which can be put through a limited number of program/erase or write cycles. For example, the device can only endure a limited number of writes, after which the device becomes unreliable. In order to wear out the cells in a uniform manner, non-volatile memory and storage products based on the above-mentioned technologies implement a technique called wear leveling. Once a set threshold is reached, wear leveling maps writes of a logical block to a different physical block. This prevents a single physical block from prematurely failing due to a high concentration of writes. If wear leveling is improperly implemented, attackers may be able to programmatically cause the storage to become unreliable within a much shorter time than would normally be expected.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "664",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Memory Hardware"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "Storage Hardware"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Instability"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation",
+        "Testing"
+      ],
+      "description": [
+        "\n                        Include secure wear leveling algorithms and ensure they may not be bypassed.                     \n                    "
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eAn attacker can render a memory line unusable by repeatedly causing a write to the memory line.\u003c/Intro_Text\u003e\n                    \u003cBody_Text\u003eBelow is example code from [REF-1058] that the user can execute repeatedly to cause line failure. W is the maximum associativity of any cache in the system; S is the size of the largest cache in the system.\u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n\t\t\t\t\t\u003cxhtml:div\u003eDo aligned alloc of (W+1) arrays each of size S\n\t\t\t\t\t\u003cxhtml:br/\u003e\n\t\t\t\t\t\u003cxhtml:div\u003ewhile(1) {\n\t\t\t\t\t\u003cxhtml:br/\u003e\n\t\t\t\t\t\t\u003cxhtml:div\u003efor (ii = 0; i \u0026lt; W + 1; ii++)\n\t\t\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n\t\t\t\t\t\t  array[ii].element[0]++;\n\t\t\t\t\t\t  \u003cxhtml:br/\u003e\n\t\t\t\t\t\t\u003c/xhtml:div\u003e\n\t\t\t\t\t\t\u003c/xhtml:div\u003e\n\t\t\t\t\t\u003c/xhtml:div\u003e\n\t\t\t\t\t}\n\t\t\t\t\t\u003c/xhtml:div\u003e\t\t\t\t\t\n               \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eWithout wear leveling, the above attack will be successful. Simple randomization of blocks will not suffice as instead of the original physical block, the randomized physical block will be worn out.\u003c/Body_Text\u003e\n                \t\u003cExample_Code Nature=\"informative\"\u003e\n                  \t\t\u003cxhtml:div\u003eWear leveling must be used to even out writes to the device.\u003c/xhtml:div\u003e\n               \t\t\u003c/Example_Code\u003e\n            \t"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1058",
+      "author": [
+        "Moinuddin Qureshi",
+        "Michele Franchescini",
+        "Vijayalakshmi Srinivasan",
+        "Luis Lastras",
+        "Bulent Abali",
+        "John Karidis"
+      ],
+      "title": "Enhancing Lifetime and Security of PCM-Based Main Memory with Start-Gap Wear Leveling",
+      "url": "https://researcher.watson.ibm.com/researcher/files/us-moinqureshi/papers-sgap.pdf"
+    },
+    {
+      "reference_id": "REF-1059",
+      "author": [
+        "Micron"
+      ],
+      "title": "Bad Block Management in NAND Flash Memory",
+      "url": "https://www.micron.com/-/media/client/global/documents/products/technical-note/nand-flash/tn2959_bbm_in_nand_flash.pdf"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-10T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Potential_Mitigations, Research_Gaps"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-06-28T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "212"
+  ],
+  "notes": [
+    {
+      "type": "Research Gap",
+      "text": "The Technology-Class should be Memory.\n\t\t\t\t\t\t"
+    }
+  ]
+}

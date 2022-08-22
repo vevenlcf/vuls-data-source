@@ -1,0 +1,174 @@
+{
+  "id": "778",
+  "name": "Insufficient Logging",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "When a security-critical event occurs, the software either does not record the event or omits important details about the event when logging it.",
+  "extended_description": "When security-critical events are not logged properly, such as a failed login attempt, this can make malicious behavior more difficult to detect and may hinder forensic analysis after an attack succeeds.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "223",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "693",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Operation",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "Medium",
+  "common_consequences": [
+    {
+      "scope": [
+        "Non-Repudiation"
+      ],
+      "impact": [
+        "Hide Activities"
+      ],
+      "note": "If security critical information is not recorded, there will be no trail for forensic analysis and discovering the cause of problems or the source of attacks may become more difficult or impossible."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use a centralized logging mechanism that supports multiple levels of detail. Ensure that all security-related successes and failures can be logged."
+      ]
+    },
+    {
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Be sure to set the level of logging appropriately in a production environment. Sufficient data should be logged to enable system administrators to detect attacks, diagnose errors, and recover from attacks. At the same time, logging too much data (CWE-779) can cause the same problems."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThe example below shows a configuration for the service security audit feature in the Windows Communication Foundation (WCF).\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"XML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;system.serviceModel\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;behaviors\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;serviceBehaviors\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;behavior name=\"NewBehavior\"\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;serviceSecurityAudit auditLogLocation=\"Default\"\u003cxhtml:br/\u003esuppressAuditFailure=\"false\"\u003cxhtml:br/\u003eserviceAuthorizationAuditLevel=\"None\"\u003cxhtml:br/\u003emessageAuthenticationAuditLevel=\"None\" /\u0026gt;\u003c/xhtml:div\u003e\n                              \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                           \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\u0026lt;/system.serviceModel\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe previous configuration file has effectively disabled the recording of security-critical events, which would force the administrator to look to other sources during debug or recovery efforts.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eLogging failed authentication attempts can warn administrators of potential brute force attacks. Similarly, logging successful authentication events can provide a useful audit trail when a legitimate account is compromised. The following configuration shows appropriate settings, assuming that the site does not have excessive traffic, which could fill the logs if there are a large number of success or failure events (CWE-779).\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"XML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;system.serviceModel\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;behaviors\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;serviceBehaviors\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;behavior name=\"NewBehavior\"\u0026gt;\u003cxhtml:div style=\"margin-left:10px;\"\u003e\u0026lt;serviceSecurityAudit auditLogLocation=\"Default\"\u003cxhtml:br/\u003esuppressAuditFailure=\"false\"\u003cxhtml:br/\u003eserviceAuthorizationAuditLevel=\"SuccessAndFailure\"\u003cxhtml:br/\u003emessageAuthenticationAuditLevel=\"SuccessAndFailure\" /\u0026gt;\u003c/xhtml:div\u003e\n                              \u003cxhtml:br/\u003e...\u003cxhtml:br/\u003e\n                           \u003c/xhtml:div\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\u0026lt;/system.serviceModel\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2008-4315",
+      "description": "server does not log failed authentication attempts, making it easier for attackers to perform brute force password guessing without being detected",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4315"
+    },
+    {
+      "reference": "CVE-2008-1203",
+      "description": "admin interface does not log failed authentication attempts, making it easier for attackers to perform brute force password guessing without being detected",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1203"
+    },
+    {
+      "reference": "CVE-2007-3730",
+      "description": "default configuration for POP server does not log source IP or username for login attempts",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3730"
+    },
+    {
+      "reference": "CVE-2007-1225",
+      "description": "proxy does not log requests without \"http://\" in the URL, allowing web surfers to access restricted web content without detection",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1225"
+    },
+    {
+      "reference": "CVE-2003-1566",
+      "description": "web server does not log requests for a non-standard request type",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-1566"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 2, \"Accountability\", Page 40",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2009-07-02T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_organization": "Fortify Software",
+        "contribution_date": "2009-07-02T00:00:00Z",
+        "contribution_comment": "Provided code example and additional information for description and consequences."
+      }
+    ]
+  }
+}

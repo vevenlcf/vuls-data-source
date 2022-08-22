@@ -1,0 +1,152 @@
+{
+  "id": "1281",
+  "name": "Sequence of Processor Instructions Leads to Unexpected Behavior",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "Specific combinations of processor instructions lead to undesirable behavior such as locking the processor until a hard reset performed.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eIf the instruction set architecture (ISA) and processor logic are not designed carefully, and tested thoroughly, certain combinations of instructions may lead to locking the processor or other unexpected and undesirable behavior.  Upon encountering unimplemented instruction opcodes or illegal instruction operands the processor should throw an exception and carry on without negatively impacting security.  However, specific combinations of legal and illegal instructions may cause unexpected behavior with security implications such as allowing unprivileged programs to completely lock the CPU. \n                \u003c/xhtml:p\u003e\n\t\t\t\t\u003cxhtml:p\u003eSome examples are the Pentium f00f bug, MC6800 HCF, the Cyrix comma bug, and more generally other \"Halt and Catch Fire\" instructions.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "691",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "Unexpected behavior from certain instruction combinations can arise from bugs in the ISA"
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "Unexpected behavior from certain instruction combinations can arise because of implementation details such as speculative execution, caching etc."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Varies by Context"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "Implement a rigorous testing strategy that incorporates randomization to explore instruction sequences that are unlikely to appear in normal workloads in order to identify halt and catch fire instruction sequences."
+      ]
+    },
+    {
+      "phase": [
+        "Patching and Maintenance"
+      ],
+      "description": [
+        "Patch operating system to avoid running Halt and Catch Fire type sequences or to mitigate the damage caused by unexpected behavior.  See [REF-1108]."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eThe Pentium F00F bug is a real-world example of how a sequence of instructions can lock a processor. The “cmpxchg8b” instruction compares contents of registers with a memory location.  The operand is expected to be a memory location, but in the bad code snippet it is the eax register. Because the specified operand is illegal, an exception is generated, which is the correct behavior and not a security issue in itself. However, when prefixed with the “lock” instruction, the processor deadlocks because locked memory transactions require a read and write pair of transactions to occur before the lock on the memory bus is released. The exception causes a read to occur but there is no corresponding write, as there would have been if a legal operand had been supplied to the cmpxchg8b instruction.\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003elock cmpxchg8b eax\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-1999-1476",
+      "description": "A bug in some Intel Pentium processors allow DoS (hang) via an invalid \"CMPXCHG8B\" instruction, causing a deadlock",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1476"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1094",
+      "author": [
+        "Christopher Domas"
+      ],
+      "title": "Breaking the x86 ISA",
+      "url": "https://github.com/xoreaxeaxeax/sandsifter/blob/master/references/domas_breaking_the_x86_isa_wp.pdf"
+    },
+    {
+      "reference_id": "REF-1108",
+      "author": [
+        "Intel Corporation"
+      ],
+      "title": "Deep Dive: Retpoline: A Branch Target Injection Mitigation",
+      "url": "https://software.intel.com/security-software-guidance/insights/deep-dive-retpoline-branch-target-injection-mitigation"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Nicole Fern",
+      "submission_organization": "Tortuga Logic",
+      "submission_date": "2020-05-15T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Name, Observed_Examples"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Sequence of Processor Instructions Leads to Unexpected Behavior (Halt and Catch Fire)",
+        "date": "2021-07-20T00:00:00Z"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "212"
+  ]
+}

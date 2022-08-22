@@ -1,0 +1,430 @@
+{
+  "id": "297",
+  "name": "Improper Validation of Certificate with Host Mismatch",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software communicates with a host that provides a certificate, but the software does not properly ensure that the certificate is actually associated with that host.",
+  "extended_description": "\n            \u003cxhtml:p\u003eEven if a certificate is well-formed, signed, and follows the chain of trust, it may simply be a valid certificate for a different site than the site that the software is interacting with. If the certificate's host-specific data is not properly checked - such as the Common Name (CN) in the Subject or the Subject Alternative Name (SAN) extension of an X.509 certificate - it may be possible for a redirection or spoofing attack to allow a malicious host with a valid certificate to provide data, impersonating a trusted host. In order to ensure data integrity, the certificate must be valid and it must pertain to the site that is being accessed.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eEven if the software attempts to check the hostname, it is still possible to incorrectly check the hostname. For example, attackers could create a certificate with a name that begins with a trusted name followed by a NUL byte, which could cause some string-based comparisons to only examine the portion that contains the trusted name.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eThis weakness can occur even when the software uses Certificate Pinning, if the software does not verify the hostname at the time a certificate is pinned.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "923",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "295",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Mobile",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "When the software uses certificate pinning, the developer might not properly validate all relevant components of the certificate before pinning the certificate. This can make it difficult or expensive to test after the pinning is complete."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Gain Privileges or Assume Identity"
+      ],
+      "note": "The data read from the system vouched for by the certificate may not be from the expected system."
+    },
+    {
+      "scope": [
+        "Authentication",
+        "Other"
+      ],
+      "impact": [
+        "Other"
+      ],
+      "note": "Trust afforded to the system in question - based on the malicious certificate - may allow for spoofing or redirection attacks."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Fully check the hostname of the certificate and provide the user with adequate information about the nature of the problem and how to proceed."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "If certificate pinning is being used, ensure that all relevant properties of the certificate are fully validated before the certificate is pinned, including the hostname."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-122",
+      "text": "\n               \u003cIntro_Text\u003eThe following OpenSSL code obtains a certificate and verifies it.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003ecert = SSL_get_peer_certificate(ssl);\u003cxhtml:br/\u003eif (cert \u0026amp;\u0026amp; (SSL_get_verify_result(ssl)==X509_V_OK)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// do secret things\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eEven though the \"verify\" step returns X509_V_OK, this step does not include checking the Common Name against the name of the host. That is, there is no guarantee that the certificate is for the desired host. The SSL connection could have been established with a malicious host that provided a valid certificate.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2012-5810",
+      "description": "Mobile banking application does not verify hostname, leading to financial loss.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5810"
+    },
+    {
+      "reference": "CVE-2012-5811",
+      "description": "Mobile application for printing documents does not verify hostname, allowing attackers to read sensitive documents.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5811"
+    },
+    {
+      "reference": "CVE-2012-5807",
+      "description": "Software for electronic checking does not verify hostname, leading to financial loss.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5807"
+    },
+    {
+      "reference": "CVE-2012-3446",
+      "description": "Cloud-support library written in Python uses incorrect regular expression when matching hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3446"
+    },
+    {
+      "reference": "CVE-2009-2408",
+      "description": "Web browser does not correctly handle '\\0' character (NUL) in Common Name, allowing spoofing of https sites.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2408"
+    },
+    {
+      "reference": "CVE-2012-0867",
+      "description": "Database program truncates the Common Name during hostname verification, allowing spoofing.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0867"
+    },
+    {
+      "reference": "CVE-2010-2074",
+      "description": "Incorrect handling of '\\0' character (NUL) in hostname verification allows spoofing.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2074"
+    },
+    {
+      "reference": "CVE-2009-4565",
+      "description": "Mail server's incorrect handling of '\\0' character (NUL) in hostname verification allows spoofing.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4565"
+    },
+    {
+      "reference": "CVE-2009-3767",
+      "description": "LDAP server's incorrect handling of '\\0' character (NUL) in hostname verification allows spoofing.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3767"
+    },
+    {
+      "reference": "CVE-2012-5806",
+      "description": "Payment processing module does not verify hostname when connecting to PayPal using PHP fsockopen function.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5806"
+    },
+    {
+      "reference": "CVE-2012-2993",
+      "description": "Smartphone device does not verify hostname, allowing spoofing of mail services.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2993"
+    },
+    {
+      "reference": "CVE-2012-5804",
+      "description": "E-commerce module does not verify hostname when connecting to payment site.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5804"
+    },
+    {
+      "reference": "CVE-2012-5824",
+      "description": "Chat application does not validate hostname, leading to loss of privacy.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5824"
+    },
+    {
+      "reference": "CVE-2012-5822",
+      "description": "Application uses third-party library that does not validate hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5822"
+    },
+    {
+      "reference": "CVE-2012-5819",
+      "description": "Cloud storage management application does not validate hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5819"
+    },
+    {
+      "reference": "CVE-2012-5817",
+      "description": "Java library uses JSSE SSLSocket and SSLEngine classes, which do not verify the hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5817"
+    },
+    {
+      "reference": "CVE-2012-5784",
+      "description": "SOAP platform does not verify the hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5784"
+    },
+    {
+      "reference": "CVE-2012-5782",
+      "description": "PHP library for payments does not verify the hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5782"
+    },
+    {
+      "reference": "CVE-2012-5780",
+      "description": "Merchant SDK for payments does not verify the hostname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5780"
+    },
+    {
+      "reference": "CVE-2003-0355",
+      "description": "Web browser does not validate Common Name, allowing spoofing of https sites.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0355"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-18",
+      "author": [
+        "Secure Software, Inc."
+      ],
+      "title": "The CLASP Application Security Process",
+      "url": "https://cwe.mitre.org/documents/sources/TheCLASPApplicationSecurityProcess.pdf",
+      "publication_year": "2005"
+    },
+    {
+      "reference_id": "REF-245",
+      "author": [
+        "Martin Georgiev",
+        "Subodh Iyengar",
+        "Suman Jana",
+        "Rishita Anubhai",
+        "Dan Boneh",
+        "Vitaly Shmatikov"
+      ],
+      "title": "The Most Dangerous Code in the World: Validating SSL Certificates in Non-Browser Software",
+      "url": "http://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf",
+      "publication_year": "2012",
+      "publication_month": "--10",
+      "publication_day": "---25"
+    },
+    {
+      "reference_id": "REF-243",
+      "author": [
+        "Sascha Fahl, Marian Harbach, Thomas Muders, Matthew Smith",
+        "Lars Baumgärtner, Bernd Freisleben"
+      ],
+      "title": "Why Eve and Mallory Love Android: An Analysis of Android SSL (In)Security",
+      "url": "http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf",
+      "publication_year": "2012",
+      "publication_month": "--10",
+      "publication_day": "---16"
+    },
+    {
+      "reference_id": "REF-249",
+      "author": [
+        "Kenneth Ballard"
+      ],
+      "title": "Secure programming with the OpenSSL API, Part 2: Secure handshake",
+      "url": "http://www.ibm.com/developerworks/library/l-openssl2/index.html",
+      "publication_year": "2005",
+      "publication_month": "--05",
+      "publication_day": "---03"
+    },
+    {
+      "reference_id": "REF-250",
+      "author": [
+        "Eric Rescorla"
+      ],
+      "title": "An Introduction to OpenSSL Programming (Part I)",
+      "url": "http://www.rtfm.com/openssl-examples/part1.pdf",
+      "publication_year": "2001",
+      "publication_month": "--10",
+      "publication_day": "---05"
+    },
+    {
+      "section": "\"Sin 23: Improper Use of PKI, Especially SSL.\" Page 347",
+      "reference_id": "REF-44",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc",
+        "John Viega"
+      ],
+      "title": "24 Deadly Sins of Software Security",
+      "publication_year": "2010",
+      "publication": "McGraw-Hill"
+    },
+    {
+      "reference_id": "REF-955",
+      "author": [
+        "Chris McMahon Stone",
+        "Tom Chothia",
+        "Flavio D. Garcia"
+      ],
+      "title": "Spinner: Semi-Automatic Detection of Pinning without Hostname Verification",
+      "url": "http://www.cs.bham.ac.uk/~garciaf/publications/spinner.pdf",
+      "url_date": "2018-01-16"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CLASP",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Other_Notes, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Description, Name, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Description, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Name, Observed_Examples, References, Relationships, Type"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-07-17T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-01-16T00:00:00Z",
+        "modification_comment": "Integrated mitigations and detection methods for Certificate Pinning based on feedback from the CWE Researcher List in December 2017."
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Description, Detection_Factors, Modes_of_Introduction, Potential_Mitigations, References, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Failure to Validate Host-specific Certificate Data",
+        "date": "2009-03-10T00:00:00Z"
+      },
+      {
+        "text": "Improper Validation of Host-specific Certificate Data",
+        "date": "2013-02-21T00:00:00Z"
+      }
+    ]
+  },
+  "detection_methods": [
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "Set up an untrusted endpoint (e.g. a server) with which the software will connect.  Create a test certificate that uses an invalid hostname but is signed by a trusted CA and provide this certificate from the untrusted endpoint. If the software performs any operations instead of disconnecting and reporting an error, then this indicates that the hostname is not being checked and the test certificate has been accepted."
+    },
+    {
+      "method": "Black Box",
+      "description": "When Certificate Pinning is being used in a mobile application, consider using a tool such as Spinner [REF-955].  This methodology might be extensible to other technologies."
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CLASP",
+      "entry_name": "Failure to validate host-specific certificate data"
+    }
+  ]
+}

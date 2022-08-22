@@ -1,0 +1,312 @@
+{
+  "id": "36",
+  "name": "Absolute Path Traversal",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as \"/abs/path\" that can resolve to a location that is outside of that directory.",
+  "extended_description": "This allows attackers to traverse the file system to access files or directories that are outside of the restricted directory.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "22",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "22",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "22",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "The attacker may be able to create or overwrite critical files that are used to execute code, such as programs or libraries."
+    },
+    {
+      "scope": [
+        "Integrity"
+      ],
+      "impact": [
+        "Modify Files or Directories"
+      ],
+      "note": "The attacker may be able to overwrite or create critical files, such as programs, libraries, or important data. If the targeted file is used for a security mechanism, then the attacker may be able to bypass that mechanism. For example, appending a new account at the end of a password file may allow an attacker to bypass authentication."
+    },
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Files or Directories"
+      ],
+      "note": "The attacker may be able read the contents of unexpected files and expose sensitive data. If the targeted file is used for a security mechanism, then the attacker may be able to bypass that mechanism. For example, by reading a password file, the attacker could conduct brute force password guessing attacks in order to break into an account on the system."
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "The attacker may be able to overwrite, delete, or corrupt unexpected critical files such as programs, libraries, or important data. This may prevent the software from working at all and in the case of a protection mechanisms such as authentication, it has the potential to lockout every user of the software."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-18",
+      "text": "\n               \u003cIntro_Text\u003eIn the example below, the path to a dictionary file is read from a system property and used to initialize a File object.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003eString filename = System.getProperty(\"com.domain.application.dictionaryFile\");\u003cxhtml:br/\u003eFile dictionaryFile = new File(filename);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the path is not validated or modified to prevent it from containing relative or absolute path sequences before creating the File object. This allows anyone who can control the system property to determine what file is used. Ideally, the path should be resolved relative to some kind of application or user home directory.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2002-1345",
+      "description": "Multiple FTP clients write arbitrary files via absolute paths in server responses",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1345"
+    },
+    {
+      "reference": "CVE-2001-1269",
+      "description": "ZIP file extractor allows full path",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1269"
+    },
+    {
+      "reference": "CVE-2002-1818",
+      "description": "Path traversal using absolute pathname",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1818"
+    },
+    {
+      "reference": "CVE-2002-1913",
+      "description": "Path traversal using absolute pathname",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1913"
+    },
+    {
+      "reference": "CVE-2005-2147",
+      "description": "Path traversal using absolute pathname",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2147"
+    },
+    {
+      "reference": "CVE-2000-0614",
+      "description": "Arbitrary files may be overwritten via compressed attachments that specify absolute path names for the decompressed output.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0614"
+    },
+    {
+      "reference": "CVE-1999-1263",
+      "description": "Mail client allows remote attackers to overwrite arbitrary files via an e-mail message containing a uuencoded attachment that specifies the full pathname for the file to be modified.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1263"
+    },
+    {
+      "reference": "CVE-2003-0753",
+      "description": "Remote attackers can read arbitrary files via a full pathname to the target file in config parameter.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0753"
+    },
+    {
+      "reference": "CVE-2002-1525",
+      "description": "Remote attackers can read arbitrary files via an absolute pathname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1525"
+    },
+    {
+      "reference": "CVE-2001-0038",
+      "description": "Remote attackers can read arbitrary files by specifying the drive letter in the requested URL.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0038"
+    },
+    {
+      "reference": "CVE-2001-0255",
+      "description": "FTP server allows remote attackers to list arbitrary directories by using the \"ls\" command and including the drive letter name (e.g. C:) in the requested pathname.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0255"
+    },
+    {
+      "reference": "CVE-2001-0933",
+      "description": "FTP server allows remote attackers to list the contents of arbitrary drives via a ls command that includes the drive letter as an argument.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0933"
+    },
+    {
+      "reference": "CVE-2002-0466",
+      "description": "Server allows remote attackers to browse arbitrary directories via a full pathname in the arguments to certain dynamic pages.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0466"
+    },
+    {
+      "reference": "CVE-2002-1483",
+      "description": "Remote attackers can read arbitrary files via an HTTP request whose argument is a filename of the form \"C:\" (Drive letter), \"//absolute/path\", or \"..\" .",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1483"
+    },
+    {
+      "reference": "CVE-2004-2488",
+      "description": "FTP server read/access arbitrary files using \"C:\\\" filenames",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2488"
+    },
+    {
+      "reference": "CVE-2001-0687",
+      "description": "FTP server allows a remote attacker to retrieve privileged web server system information by specifying arbitrary paths in the UNC format (\\\\computername\\sharename).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0687"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 9, \"Filenames and Paths\", Page 503",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Sean Eidemiller",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "added/updated demonstrative examples"
+      },
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Demonstrative_Examples, Observed_Examples, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-01-19T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Absolute Path Traversal"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Path Traversal",
+      "entry_id": "SFP16"
+    }
+  ],
+  "related_attack_patterns": [
+    "597"
+  ]
+}

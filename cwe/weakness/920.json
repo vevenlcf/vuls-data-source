@@ -1,0 +1,75 @@
+{
+  "id": "920",
+  "name": "Improper Restriction of Power Consumption",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software operates in an environment in which power is a limited resource that cannot be automatically replenished, but the software does not properly restrict the amount of power that its operation consumes.",
+  "extended_description": "\n            \u003cxhtml:p\u003eIn environments such as embedded or mobile devices, power can be a limited resource such as a battery, which cannot be automatically replenished by the software itself, and the device might not always be directly attached to a reliable power source. If the software uses too much power too quickly, then this could cause the device (and subsequently, the software) to stop functioning until power is restored, or increase the financial burden on the device owner because of increased power costs.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eNormal operation of an application will consume power. However, in some cases, an attacker could cause the application to consume more power than intended, using components such as:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003eDisplay\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eCPU\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eDisk I/O\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eGPS\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eSound\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eMicrophone\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003eUSB interface\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "400",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "400",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Mobile",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Resource Consumption (Other)",
+        "DoS: Crash, Exit, or Restart"
+      ],
+      "note": "The power source could be drained, causing the application - and the entire device - to cease functioning."
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2013-06-11T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Relationships"
+      }
+    ]
+  }
+}

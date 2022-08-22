@@ -1,0 +1,95 @@
+{
+  "id": "1223",
+  "name": "Race Condition for Write-Once Attributes",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "A write-once register in hardware design is programmable by an untrusted software component earlier than the trusted software component, resulting in a race condition issue.",
+  "extended_description": "\n                \u003cxhtml:p\u003eIntegrated circuits and hardware IP software programmable controls and settings are commonly stored in register circuits. These register contents have to be initialized at hardware reset to defined default values that are hard coded in the hardware description language (HDL) code of the hardware unit. A common security protection method used to protect register settings from modification by software is to make them write-once. This means the hardware implementation only allows writing to such registers once, and they become read-only after having been written once by software. This is useful to allow initial boot software to configure systems settings to secure values while blocking runtime software from modifying such hardware settings.\u003c/xhtml:p\u003e\n                \u003cxhtml:p\u003eImplementation issues in hardware design of such controls can expose such registers to a race condition security flaw. For example, consider a hardware design that has two different software/firmware modules executing in parallel. One module is trusted (module A) and another is untrusted (module B). In this design it could be possible for Module B to send write cycles to the write-once register before Module A. Since the field is write-once the programmed value from Module A will be ignored and the pre-empted value programmed by Module B will be used by hardware.\u003c/xhtml:p\u003e\n            ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "362",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Verilog"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "VHDL"
+      }
+    ],
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "This weakness can appear in designs that use register write-once attributes with two or more software/firmware modules with varying levels of trust executing in parallel."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism"
+      ],
+      "note": "System configuration cannot be programmed in a secure way."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "During hardware design all register write-once or sticky fields must be evaluated for proper configuration."
+      ]
+    },
+    {
+      "phase": [
+        "Testing"
+      ],
+      "description": [
+        "The testing phase should use automated tools to test that values are not reprogrammable and that write-once fields lock on writing zeros."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003econsider the example design module system verilog code shown below. register_write_once_example module is an example of register that has a write-once field defined. Bit 0 field captures the write_once_status value.\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003e\n                        \u003cxhtml:div\u003emodule register_write_once_example \n                        \u003cxhtml:br/\u003e( \n                        \u003cxhtml:br/\u003e  input [15:0] Data_in, \n                        \u003cxhtml:br/\u003e  input Clk, \n                        \u003cxhtml:br/\u003e  input ip_resetn, \n                        \u003cxhtml:br/\u003e  input global_resetn, \n                        \u003cxhtml:br/\u003e  input write, \n                        \u003cxhtml:br/\u003e  output reg [15:0] Data_out \n                        \u003cxhtml:br/\u003e); \n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003ereg Write_once_status; \n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003ealways @(posedge Clk or negedge ip_resetn)\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003eif (~ip_resetn) \n                        \u003cxhtml:br/\u003e  begin \n                        \u003cxhtml:br/\u003e    Data_out \u0026lt;= 16'h0000; \n                        \u003cxhtml:br/\u003e    Write_once_status \u0026lt;= 1'b0; \n                        \u003cxhtml:br/\u003e  end \n                        \u003cxhtml:br/\u003eelse if (write \u0026amp; ~Write_once_status) \n                        \u003cxhtml:br/\u003e  begin \n                        \u003cxhtml:br/\u003e    Data_out \u0026lt;= Data_in \u0026amp; 16'hFFFE; // Input data written to register after masking bit 0 \n                        \u003cxhtml:br/\u003e    Write_once_status \u0026lt;= 1'b1; // Write once status set after first write. \n                        \u003cxhtml:br/\u003e  end \n                        \u003cxhtml:br/\u003eelse if (~write) \n                        \u003cxhtml:br/\u003e  begin \n                        \u003cxhtml:br/\u003e    Data_out[15:1] \u0026lt;= Data_out[15:1]; \n                        \u003cxhtml:br/\u003e    Data_out[0] \u0026lt;= Write_once_status; \n                        \u003cxhtml:br/\u003e  end \n                        \u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003eendmodule \u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eThe first system component that sends a write cycle to this register can program the value. This could result in a race condition security issue in SoC design, if an untrusted agent is running in the system in parallel with the trusted component that is expected to program the register.\u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"informative\"\u003e\n                        \u003cxhtml:div\u003eTrusted firmware or software trying to set the write-once field. \u003cxhtml:br/\u003e - Must confirm the Write_once_status (bit 0) value is zero, before programming register. If another agent has programmed the register before, then Write_once_status value will be one. \u003cxhtml:br/\u003e - After writing to the register, the trusted software can issue a read to confirm that the valid setting has been programmed. \u003c/xhtml:div\u003e\n                    \u003c/Example_Code\u003e\n                "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2019-12-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "26"
+  ]
+}

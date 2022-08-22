@@ -1,0 +1,498 @@
+{
+  "id": "805",
+  "name": "Buffer Access with Incorrect Length Value",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses a sequential operation to read or write a buffer, but it uses an incorrect length value that causes it to access memory that is outside of the bounds of the buffer.",
+  "extended_description": "When the length value exceeds the size of the destination, a buffer overflow could occur.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1305",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "119",
+      "view_id": "1340",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Often",
+        "name": "C"
+      },
+      {
+        "prevalence": "Often",
+        "name": "C++"
+      },
+      {
+        "class": "Assembly",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Confidentiality",
+        "Availability"
+      ],
+      "impact": [
+        "Read Memory",
+        "Modify Memory",
+        "Execute Unauthorized Code or Commands"
+      ],
+      "note": "Buffer overflows often can be used to execute arbitrary code, which is usually outside the scope of a program's implicit security policy. This can often be used to subvert any other security service."
+    },
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "Modify Memory",
+        "DoS: Crash, Exit, or Restart",
+        "DoS: Resource Consumption (CPU)"
+      ],
+      "note": "Buffer overflows generally lead to crashes. Other attacks leading to lack of availability are possible, including putting the program into an infinite loop."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-3",
+      "phase": [
+        "Requirements"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a language that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, many languages that perform their own memory management, such as Java and Perl, are not subject to buffer overflows. Other languages, such as Ada and C#, typically provide overflow protection, but the protection can be disabled by the programmer.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBe wary that a language's interface to native code may still be subject to overflows, even if the language itself is theoretically safe.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Language Selection"
+    },
+    {
+      "mitigation_id": "MIT-4.1",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eUse a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eExamples include the Safe C String Library (SafeStr) by Messier and Viega [REF-57], and the Strsafe.h library from Microsoft [REF-56]. These libraries provide safer versions of overflow-prone string-handling functions.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness_notes": "This is not a complete solution, since many buffer overflows are not related to strings.",
+      "strategy": "Libraries or Frameworks"
+    },
+    {
+      "mitigation_id": "MIT-10",
+      "phase": [
+        "Build and Compilation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun or compile the software using features or extensions that automatically provide a protection mechanism that mitigates or eliminates buffer overflows.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eFor example, certain compilers and extensions provide automatic buffer overflow detection mechanisms that are built into the compiled code. Examples include the Microsoft Visual Studio /GS flag, Fedora/Red Hat FORTIFY_SOURCE GCC flag, StackGuard, and ProPolice.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not necessarily a complete solution, since these mechanisms can only detect certain types of overflows. In addition, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Compilation or Build Hardening"
+    },
+    {
+      "mitigation_id": "MIT-9",
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eConsider adhering to the following rules when allocating and managing an application's memory:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:ul\u003e\n                        \u003cxhtml:li\u003eDouble check that the buffer is as large as specified.\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eWhen using functions that accept a number of bytes to copy, such as strncpy(), be aware that if the destination buffer size is equal to the source buffer size, it may not NULL-terminate the string.\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eCheck buffer boundaries if accessing the buffer in a loop and make sure there is no danger of writing past the allocated space.\u003c/xhtml:li\u003e\n                        \u003cxhtml:li\u003eIf necessary, truncate all input strings to a reasonable length before passing them to the copy and concatenation functions.\u003c/xhtml:li\u003e\n                     \u003c/xhtml:ul\u003e\n                  \u003c/xhtml:div\u003e\n               "
+      ]
+    },
+    {
+      "mitigation_id": "MIT-15",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-11",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eExamples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64].\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not a complete solution. However, it forces the attacker to guess an unknown value that changes every program execution. In addition, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-12",
+      "phase": [
+        "Operation"
+      ],
+      "description": [
+        "Use a CPU and operating system that offers Data Execution Protection (NX) or its equivalent [REF-60] [REF-61]."
+      ],
+      "effectiveness": "Defense in Depth",
+      "effectiveness_notes": "This is not a complete solution, since buffer overflows could be used to overwrite nearby variables to modify the software's state in dangerous ways. In addition, it cannot be used in cases in which self-modifying code is required. Finally, an attack could still cause a denial of service, since the typical response is to exit the application.",
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-17",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "mitigation_id": "MIT-22",
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eRun the code in a \"jail\" or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eOS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eThis may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eBe careful to avoid CWE-243 and other weaknesses related to jails.\u003c/xhtml:p\u003e\n               "
+      ],
+      "effectiveness": "Limited",
+      "effectiveness_notes": "The effectiveness of this mitigation depends on the prevention capabilities of the specific sandbox or jail being used and might only help to reduce the scope of an attack, such as restricting the attacker to certain system calls or limiting the portion of the file system that can be accessed.",
+      "strategy": "Sandbox or Jail"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-1",
+      "text": "\n               \u003cIntro_Text\u003eThis example takes an IP address from a user, verifies that it is well formed and then looks up the hostname and copies it into a buffer.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003evoid host_lookup(char *user_supplied_addr){\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003estruct hostent *hp;\u003cxhtml:br/\u003ein_addr_t *addr;\u003cxhtml:br/\u003echar hostname[64];\u003cxhtml:br/\u003ein_addr_t inet_addr(const char *cp);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/*routine that ensures user_supplied_addr is in the right format for conversion */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003evalidate_addr_form(user_supplied_addr);\u003cxhtml:br/\u003eaddr = inet_addr(user_supplied_addr);\u003cxhtml:br/\u003ehp = gethostbyaddr( addr, sizeof(struct in_addr), AF_INET);\u003cxhtml:br/\u003estrcpy(hostname, hp-\u0026gt;h_name);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThis function allocates a buffer of 64 bytes to store the hostname under the assumption that the maximum length value of hostname is 64 bytes, however there is no guarantee that the hostname will not be larger than 64 bytes. If an attacker specifies an address which resolves to a very large hostname, then the function may overwrite sensitive data or even relinquish control flow to the attacker.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eNote that this example also contains an unchecked return value (CWE-252) that can lead to a NULL pointer dereference (CWE-476).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-114",
+      "text": "\n               \u003cIntro_Text\u003eIn the following example, it is possible to request that memcpy move a much larger segment of memory than assumed:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint returnChunkSize(void *) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* if chunk info is valid, return the size of usable memory,\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e* else, return -1 to indicate an error\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e*/\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003eint main() {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003cxhtml:br/\u003ememcpy(destBuf, srcBuf, (returnChunkSize(destBuf)-1));\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf returnChunkSize() happens to encounter an error it will return -1. Notice that the return value is not checked before the memcpy operation (CWE-252), so -1 can be passed as the size argument to memcpy() (CWE-805). Because memcpy() assumes that the value is unsigned, it will be interpreted as MAXINT-1 (CWE-195), and therefore will copy far more memory than is likely available to the destination buffer (CWE-787, CWE-788).\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following example, the source character string is copied to the dest character string using the method strncpy.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003echar source[21] = \"the character string\";\u003cxhtml:br/\u003echar dest[12];\u003cxhtml:br/\u003estrncpy(dest, source, sizeof(source)-1);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, in the call to strncpy the source character string is used within the sizeof call to determine the number of characters to copy. This will create a buffer overflow as the size of the source character string is greater than the dest character string. The dest character string should be used within the sizeof call to ensure that the correct number of characters are copied, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003echar source[21] = \"the character string\";\u003cxhtml:br/\u003echar dest[12];\u003cxhtml:br/\u003estrncpy(dest, source, sizeof(dest)-1);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn this example, the method outputFilenameToLog outputs a filename to a log file. The method arguments include a pointer to a character string containing the file name and an integer for the number of characters in the string. The filename is copied to a buffer where the buffer size is set to a maximum size for inputs to the log file. The method then calls another method to save the contents of the buffer to the log file.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e#define LOG_INPUT_SIZE 40\u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// saves the file name to a log file\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003eint outputFilenameToLog(char *filename, int length) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eint success;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// buffer with size set to maximum size for input to log file\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003echar buf[LOG_INPUT_SIZE];\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// copy filename to buffer\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003estrncpy(buf, filename, length);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// save to log file\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003esuccess = saveToLogFile(buf);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn success;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, in this case the string copy method, strncpy, mistakenly uses the length method argument to determine the number of characters to copy rather than using the size of the local character string, buf. This can lead to a buffer overflow if the number of characters contained in character string pointed to by filename is larger then the number of characters allowed for the local character string. The string copy method should use the buf character string within a sizeof call to ensure that only characters up to the size of the buf array are copied to avoid a buffer overflow, as shown below.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e// copy filename to buffer\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003estrncpy(buf, filename, sizeof(buf)-1);\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2011-1959",
+      "description": "Chain: large length value causes buffer over-read (CWE-126)",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1959"
+    },
+    {
+      "reference": "CVE-2011-1848",
+      "description": "Use of packet length field to make a calculation, then copy into a fixed-size buffer",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1848"
+    },
+    {
+      "reference": "CVE-2011-0105",
+      "description": "Chain: retrieval of length value from an uninitialized memory location",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0105"
+    },
+    {
+      "reference": "CVE-2011-0606",
+      "description": "Crafted length value in document reader leads to buffer overflow",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0606"
+    },
+    {
+      "reference": "CVE-2011-0651",
+      "description": "SSL server overflow when the sum of multiple length fields exceeds a given value",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0651"
+    },
+    {
+      "reference": "CVE-2010-4156",
+      "description": "Language interpreter API function doesn't validate length argument, leading to information exposure",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4156"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 6, \"Why ACLs Are Important\" Page 171",
+      "reference_id": "REF-7",
+      "author": [
+        "Michael Howard",
+        "David LeBlanc"
+      ],
+      "title": "Writing Secure Code",
+      "url": "https://www.microsoftpressstore.com/store/writing-secure-code-9780735617223",
+      "publication_year": "2002",
+      "publication_month": "--12",
+      "publication_day": "---04",
+      "publisher": "Microsoft Press",
+      "edition": "2nd Edition"
+    },
+    {
+      "reference_id": "REF-58",
+      "author": [
+        "Michael Howard"
+      ],
+      "title": "Address Space Layout Randomization in Windows Vista",
+      "url": "http://blogs.msdn.com/michael_howard/archive/2006/05/26/address-space-layout-randomization-in-windows-vista.aspx"
+    },
+    {
+      "reference_id": "REF-59",
+      "author": [
+        "Arjan van de Ven"
+      ],
+      "title": "Limiting buffer overflows with ExecShield",
+      "url": "http://www.redhat.com/magazine/009jul05/features/execshield/"
+    },
+    {
+      "reference_id": "REF-60",
+      "title": "PaX",
+      "url": "http://en.wikipedia.org/wiki/PaX"
+    },
+    {
+      "reference_id": "REF-741",
+      "author": [
+        "Jason Lam"
+      ],
+      "title": "Top 25 Series - Rank 12 - Buffer Access with Incorrect Length Value",
+      "url": "http://blogs.sans.org/appsecstreetfighter/2010/03/11/top-25-series-rank-12-buffer-access-with-incorrect-length-value/",
+      "publication_year": "2010",
+      "publication_month": "--03",
+      "publication_day": "---11",
+      "publisher": "SANS Software Security Institute"
+    },
+    {
+      "reference_id": "REF-57",
+      "author": [
+        "Matt Messier",
+        "John Viega"
+      ],
+      "title": "Safe C String Library v1.0.3",
+      "url": "http://www.zork.org/safestr/"
+    },
+    {
+      "reference_id": "REF-56",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Using the Strsafe.h Functions",
+      "url": "http://msdn.microsoft.com/en-us/library/ms647466.aspx"
+    },
+    {
+      "reference_id": "REF-61",
+      "author": [
+        "Microsoft"
+      ],
+      "title": "Understanding DEP as a mitigation technology part 1",
+      "url": "http://blogs.technet.com/b/srd/archive/2009/06/12/understanding-dep-as-a-mitigation-technology-part-1.aspx"
+    },
+    {
+      "reference_id": "REF-76",
+      "author": [
+        "Sean Barnum",
+        "Michael Gegick"
+      ],
+      "title": "Least Privilege",
+      "url": "https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html",
+      "publication_year": "2005",
+      "publication_month": "--09",
+      "publication_day": "---14"
+    },
+    {
+      "reference_id": "REF-64",
+      "author": [
+        "Grant Murphy"
+      ],
+      "title": "Position Independent Executables (PIE)",
+      "url": "https://securityblog.redhat.com/2012/11/28/position-independent-executables-pie/",
+      "publication_year": "2012",
+      "publication_month": "--11",
+      "publication_day": "---28",
+      "publisher": "Red Hat"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2010-01-15T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-27T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-09-13T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-02-18T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature, Demonstrative_Examples, Likelihood_of_Exploit, References, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2018-03-27T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Potential_Mitigations"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Resultant"
+    },
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "detection_methods": [
+    {
+      "detection_method_id": "DM-1",
+      "method": "Automated Static Analysis",
+      "description": "\n                  \u003cxhtml:p\u003eThis weakness can often be detected using automated static analysis tools. Many modern tools use data flow analysis or constraint-based techniques to minimize the number of false positives.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eAutomated static analysis generally does not account for environmental considerations when reporting out-of-bounds memory operations. This can make it difficult for users to determine which warnings should be investigated first. For example, an analysis tool might report buffer overflows that originate from command line arguments in a program that is not expected to run with setuid or other special privileges.\u003c/xhtml:p\u003e\n               ",
+      "effectiveness": "High",
+      "effectiveness_notes": "Detection techniques for buffer-related errors are more mature than for most other weakness types."
+    },
+    {
+      "detection_method_id": "DM-2",
+      "method": "Automated Dynamic Analysis",
+      "description": "This weakness can be detected using dynamic tools and techniques that interact with the software using large test suites with many diverse inputs, such as fuzz testing (fuzzing), robustness testing, and fault injection. The software's operation may slow down, but it should not become unstable, crash, or generate incorrect results.",
+      "effectiveness": "Moderate",
+      "effectiveness_notes": "Without visibility into the code, black box methods may not be able to sufficiently distinguish this weakness from others, requiring manual methods to diagnose the underlying problem."
+    },
+    {
+      "detection_method_id": "DM-9",
+      "method": "Manual Analysis",
+      "description": "Manual analysis can be useful for finding this weakness, but it might not achieve desired code coverage within limited time constraints. This becomes difficult for weaknesses that must be considered for all inputs, since the attack surface can be too large."
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "CERT C Secure Coding",
+      "entry_name": "Guarantee that library functions do not form invalid pointers",
+      "entry_id": "ARR38-C",
+      "mapping_fit": "Imprecise"
+    }
+  ],
+  "related_attack_patterns": [
+    "100",
+    "256"
+  ],
+  "affected_resources": [
+    "Memory"
+  ]
+}

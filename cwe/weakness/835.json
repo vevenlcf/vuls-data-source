@@ -1,0 +1,200 @@
+{
+  "id": "835",
+  "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The program contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
+  "extended_description": "If the loop can be influenced by an attacker, this weakness could allow attackers to consume excessive resources such as CPU or memory.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "834",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "834",
+      "view_id": "1003",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "common_consequences": [
+    {
+      "scope": [
+        "Availability"
+      ],
+      "impact": [
+        "DoS: Resource Consumption (CPU)",
+        "DoS: Resource Consumption (Memory)",
+        "DoS: Amplification"
+      ],
+      "note": "An infinite loop will cause unexpected consumption of resources, such as CPU cycles or memory. The software's operation may slow down, or cause a long time to respond."
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eIn the following code the method processMessagesFromServer attempts to establish a connection to a server and read and process messages from the server. The method uses a do/while loop to continue trying to establish the connection to the server when an attempt fails.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint processMessagesFromServer(char *hostaddr, int port) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003eint servsock;\u003cxhtml:br/\u003eint connected;\u003cxhtml:br/\u003estruct sockaddr_in servaddr;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// create socket to connect to server\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eservsock = socket( AF_INET, SOCK_STREAM, 0);\u003cxhtml:br/\u003ememset( \u0026amp;servaddr, 0, sizeof(servaddr));\u003cxhtml:br/\u003eservaddr.sin_family = AF_INET;\u003cxhtml:br/\u003eservaddr.sin_port = htons(port);\u003cxhtml:br/\u003eservaddr.sin_addr.s_addr = inet_addr(hostaddr);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003edo {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// establish connection to server\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003econnected = connect(servsock, (struct sockaddr *)\u0026amp;servaddr, sizeof(servaddr));\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// if connected then read and process messages from server\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eif (connected \u0026gt; -1) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// read and process messages\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// keep trying to establish connection to the server\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e} while (connected \u0026lt; 0);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// close socket and return success or failure\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, this will create an infinite loop if the server does not respond. This infinite loop will consume system resources and can be used to create a denial of service attack. To resolve this a counter should be used to limit the number of attempts to establish a connection to the server, as in the following code.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint processMessagesFromServer(char *hostaddr, int port) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// initialize number of attempts counter\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eint count = 0;\u003cxhtml:br/\u003edo {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// establish connection to server\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003econnected = connect(servsock, (struct sockaddr *)\u0026amp;servaddr, sizeof(servaddr));\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// increment counter\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003ecount++;\u003cxhtml:br/\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// if connected then read and process messages from server\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003eif (connected \u0026gt; -1) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// read and process messages\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// keep trying to establish connection to the server\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// up to a maximum number of attempts\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e} while (connected \u0026lt; 0 \u0026amp;\u0026amp; count \u0026lt; MAX_ATTEMPTS);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// close socket and return success or failure\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eFor this example the method isReorderNeeded as part of a bookstore application that determines if a particular book needs to be reordered based on the current inventory count and the rate at which the book is being sold.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic boolean isReorderNeeded(String bookISBN, int rateSold) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003eboolean isReorder = false;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eint minimumCount = 10;\u003cxhtml:br/\u003eint days = 0;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// get inventory count for book\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eint inventoryCount = inventory.getIventoryCount(bookISBN);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// find number of days until inventory count reaches minimum\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003ewhile (inventoryCount \u0026gt; minimumCount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003einventoryCount = inventoryCount - rateSold;\u003cxhtml:br/\u003edays++;\u003cxhtml:br/\u003e\n                              \u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// if number of days within reorder timeframe\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// set reorder return boolean to true\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eif (days \u0026gt; 0 \u0026amp;\u0026amp; days \u0026lt; 5) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eisReorder = true;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn isReorder;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the while loop will become an infinite loop if the rateSold input parameter has a value of zero since the inventoryCount will never fall below the minimumCount. In this case the input parameter should be validated to ensure that a value of zero does not cause an infinite loop,as in the following code.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic boolean isReorderNeeded(String bookISBN, int rateSold) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// validate rateSold variable\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eif (rateSold \u0026lt; 1) {\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn isReorder;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2011-1027",
+      "description": "Chain: off-by-one error leads to infinite loop using invalid hex-encoded characters.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1027"
+    },
+    {
+      "reference": "CVE-2011-1142",
+      "description": "Chain: self-referential values in recursive definitions lead to infinite loop.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1142"
+    },
+    {
+      "reference": "CVE-2011-1002",
+      "description": "NULL UDP packet is never cleared from a queue, leading to infinite loop.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1002"
+    },
+    {
+      "reference": "CVE-2006-6499",
+      "description": "Chain: web browser crashes due to infinite loop - \"bad\n\t      looping logic [that relies on] floating point math [CWE-1339] to exit\n\t      the loop [CWE-835]\"",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6499"
+    },
+    {
+      "reference": "CVE-2010-4476",
+      "description": "Floating point conversion routine cycles back and forth between two different values.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4476"
+    },
+    {
+      "reference": "CVE-2010-4645",
+      "description": "Floating point conversion routine cycles back and forth between two different values.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4645"
+    },
+    {
+      "reference": "CVE-2010-2534",
+      "description": "Chain: improperly clearing a pointer in a linked list leads to infinite loop.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2534"
+    },
+    {
+      "reference": "CVE-2013-1591",
+      "description": "Chain: an integer overflow (CWE-190) in the image size calculation causes an infinite loop (CWE-835) which sequentially allocates buffers without limits (CWE-1325) until the stack is full.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1591"
+    },
+    {
+      "reference": "CVE-2008-3688",
+      "description": "Chain: A denial of service may be caused by an uninitialized variable (CWE-457) allowing an infinite loop (CWE-835) resulting from a connection to an unresponsive server.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3688"
+    }
+  ],
+  "references": [
+    {
+      "section": "Chapter 7, \"Looping Constructs\", Page 327",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    },
+    {
+      "section": "ASCSM-CWE-835",
+      "reference_id": "REF-962",
+      "author": [
+        "Object Management Group (OMG)"
+      ],
+      "title": "Automated Source Code Security Measure (ASCSM)",
+      "url": "http://www.omg.org/spec/ASCSM/1.0/",
+      "publication_year": "2016",
+      "publication_month": "--01"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2011-03-22T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated References, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "OMG ASCSM",
+      "entry_id": "ASCSM-CWE-835"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "id": "274",
+  "name": "Improper Handling of Insufficient Privileges",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not handle or incorrectly handles when it has insufficient privileges to perform an operation, leading to resultant weaknesses.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "703",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "269",
+      "view_id": "1000"
+    },
+    {
+      "nature": "PeerOf",
+      "cweid": "271",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanAlsoBe",
+      "cweid": "280",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "REALIZATION: This weakness is caused during implementation of an architectural security tactic."
+      ]
+    },
+    {
+      "phase": "Operation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Other"
+      ],
+      "impact": [
+        "Other",
+        "Alter Execution Logic"
+      ]
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2001-1564",
+      "description": "System limits are not properly enforced after privileges are dropped.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1564"
+    },
+    {
+      "reference": "CVE-2005-3286",
+      "description": "Firewall crashes when it can't read a critical memory block that was protected by a malicious process.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3286"
+    },
+    {
+      "reference": "CVE-2005-1641",
+      "description": "Does not give admin sufficient privileges to overcome otherwise legitimate user actions.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1641"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Description, Maintenance_Notes, Relationships, Relationship_Notes, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-03-10T00:00:00Z",
+        "modification_comment": "updated Maintenance_Notes, Theoretical_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-05-27T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature, Modes_of_Introduction, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Relationship_Notes, Theoretical_Notes"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Insufficient Privileges",
+        "date": "2008-04-11T00:00:00Z"
+      },
+      {
+        "text": "Failure to Handle Insufficient Privileges",
+        "date": "2009-05-27T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Insufficient privileges"
+    }
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "CWE-280 and CWE-274 are too similar. It is likely that CWE-274 will be deprecated in the future."
+    },
+    {
+      "type": "Relationship",
+      "text": "Overlaps dropped privileges, insufficient permissions."
+    },
+    {
+      "type": "Theoretical",
+      "text": "This has a layering relationship with Unchecked Error Condition and Unchecked Return Value."
+    },
+    {
+      "type": "Theoretical",
+      "text": "Within the context of vulnerability theory, privileges and permissions are two sides of the same coin. Privileges are associated with actors, and permissions are associated with resources. To perform access control, at some point the software makes a decision about whether the actor (and the privileges that have been assigned to that actor) is allowed to access the resource (based on the permissions that have been specified for that resource)."
+    }
+  ]
+}

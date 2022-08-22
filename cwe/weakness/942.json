@@ -1,0 +1,230 @@
+{
+  "id": "942",
+  "name": "Permissive Cross-domain Policy with Untrusted Domains",
+  "abstraction": "Variant",
+  "structure": "Simple",
+  "status": "Incomplete",
+  "description": "The software uses a cross-domain policy file that includes domains that should not be trusted.",
+  "extended_description": "\n            \u003cxhtml:p\u003eA cross-domain policy file (\"crossdomain.xml\" in Flash and \"clientaccesspolicy.xml\" in Silverlight) defines a list of domains from which a server is allowed to make cross-domain requests. When making a cross-domain request, the Flash or Silverlight client will first look for the policy file on the target server. If it is found, and the domain hosting the application is explicitly allowed to make requests, the request is made.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eTherefore, if a cross-domain policy file includes domains that should not be trusted, such as when using wildcards, then the application could be attacked by these untrusted domains.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eAn overly permissive policy file allows many of the same attacks seen in Cross-Site Scripting (CWE-79). Once the user has executed a malicious Flash or Silverlight application, they are vulnerable to a variety of attacks. The attacker could transfer private information, such as cookies that may include session information, from the victim's machine to the attacker. The attacker could send malicious requests to a web site on behalf of the victim, which could be especially dangerous to the site if the victim has administrator privileges to manage that site.\u003c/xhtml:p\u003e\n            \u003cxhtml:p\u003eIn many cases, the attack can be launched without the victim even being aware of it.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "ChildOf",
+      "cweid": "183",
+      "view_id": "1000"
+    },
+    {
+      "nature": "CanPrecede",
+      "cweid": "668",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Web Based",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation"
+    },
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "COMMISSION: This weakness refers to an incorrect design related to an architectural security tactic."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Execute Unauthorized Code or Commands",
+        "Bypass Protection Mechanism",
+        "Read Application Data",
+        "Varies by Context"
+      ],
+      "note": "An attacker may be able to bypass the web browser's same-origin policy. An attacker can exploit the weakness to manipulate or steal cookies, create requests that can be mistaken for those of a valid user, compromise confidential information, or execute malicious code on the end user systems for a variety of nefarious purposes. Other damaging attacks include the disclosure of end user files, installation of Trojan horse programs, redirecting the user to some other page or site, running ActiveX controls (under Microsoft Internet Explorer) from sites that a user perceives as trustworthy, and modifying presentation of content."
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Avoid using wildcards in the cross-domain policy file. Any domain matching the wildcard expression will be implicitly trusted, and can perform two-way interaction with the target server."
+      ],
+      "strategy": "Attack Surface Reduction"
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "For Flash, modify crossdomain.xml to use meta-policy options such as 'master-only' or 'none' to reduce the possibility of an attacker planting extraneous cross-domain policy files on a server."
+      ],
+      "strategy": "Environment Hardening"
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Operation"
+      ],
+      "description": [
+        "For Flash, modify crossdomain.xml to use meta-policy options such as 'master-only' or 'none' to reduce the possibility of an attacker planting extraneous cross-domain policy files on a server."
+      ],
+      "strategy": "Attack Surface Reduction"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n               \u003cIntro_Text\u003eThese cross-domain policy files mean to allow Flash and Silverlight applications hosted on other domains to access its data:\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eFlash crossdomain.xml :\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"XML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;cross-domain-policy xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\u003cxhtml:br/\u003exsi:noNamespaceSchemaLocation=\"http://www.adobe.com/xml/schemas/PolicyFile.xsd\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;allow-access-from domain=\"*.example.com\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;allow-access-from domain=\"*\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/cross-domain-policy\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eSilverlight clientaccesspolicy.xml :\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"XML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;?xml version=\"1.0\" encoding=\"utf-8\"?\u0026gt;\u003cxhtml:br/\u003e\u0026lt;access-policy\u0026gt;\u003cxhtml:br/\u003e\u0026lt;cross-domain-access\u0026gt;\u003cxhtml:br/\u003e\u0026lt;policy\u0026gt;\u003cxhtml:br/\u003e\u0026lt;allow-from http-request-headers=\"SOAPAction\"\u0026gt;\u003cxhtml:br/\u003e\u0026lt;domain uri=\"*\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/allow-from\u0026gt;\u003cxhtml:br/\u003e\u0026lt;grant-to\u0026gt;\u003cxhtml:br/\u003e\u0026lt;resource path=\"/\" include-subpaths=\"true\"/\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/grant-to\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/policy\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/cross-domain-access\u0026gt;\u003cxhtml:br/\u003e\u0026lt;/access-policy\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThese entries are far too permissive, allowing any Flash or Silverlight application to send requests. A malicious application hosted on any other web site will be able to send requests on behalf of any user tricked into executing it.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2012-2292",
+      "description": "Product has a Silverlight cross-domain policy that does not restrict access to another application, which allows remote attackers to bypass the Same Origin Policy.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2292"
+    },
+    {
+      "reference": "CVE-2014-2049",
+      "description": "The default Flash Cross Domain policies in a product allows remote attackers to access user files.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2049"
+    },
+    {
+      "reference": "CVE-2007-6243",
+      "description": "Chain: Adobe Flash Player does not sufficiently restrict the interpretation and usage of cross-domain policy files, which makes it easier for remote attackers to conduct cross-domain and cross-site scripting (XSS) attacks.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6243"
+    },
+    {
+      "reference": "CVE-2008-4822",
+      "description": "Chain: Adobe Flash Player and earlier does not properly interpret policy files, which allows remote attackers to bypass a non-root domain policy.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4822"
+    },
+    {
+      "reference": "CVE-2010-3636",
+      "description": "Chain: Adobe Flash Player does not properly handle unspecified encodings during the parsing of a cross-domain policy file, which allows remote web servers to bypass intended access restrictions via unknown vectors.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3636"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-943",
+      "author": [
+        "Apurva Udaykumar"
+      ],
+      "title": "Setting a crossdomain.xml file for HTTP streaming",
+      "url": "http://www.adobe.com/devnet/adobe-media-server/articles/cross-domain-xml-for-streaming.html",
+      "publication_year": "2012",
+      "publication_month": "--11",
+      "publication_day": "---19",
+      "publisher": "Adobe"
+    },
+    {
+      "reference_id": "REF-944",
+      "author": [
+        "Adobe"
+      ],
+      "title": "Cross-domain policy for Flash movies",
+      "url": "http://kb2.adobe.com/cps/142/tn_14213.html",
+      "publisher": "Adobe"
+    },
+    {
+      "reference_id": "REF-945",
+      "author": [
+        "Microsoft Corporation"
+      ],
+      "title": "HTTP Communication and Security with Silverlight",
+      "url": "http://msdn.microsoft.com/en-us/library/cc838250.aspx"
+    },
+    {
+      "reference_id": "REF-946",
+      "author": [
+        "Microsoft Corporation"
+      ],
+      "title": "Network Security Access Restrictions in Silverlight",
+      "url": "http://msdn.microsoft.com/en-us/library/cc645032.aspx"
+    },
+    {
+      "reference_id": "REF-947",
+      "author": [
+        "Dongseok Jang",
+        "Aishwarya Venkataraman",
+        "G. Michael Sawka",
+        "Hovav Shacham"
+      ],
+      "title": "Analyzing the Crossdomain Policies of Flash Applications",
+      "url": "http://cseweb.ucsd.edu/~hovav/dist/crossdomain.pdf",
+      "publication_year": "2011",
+      "publication_month": "--05"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "CWE Content Team",
+      "submission_organization": "MITRE",
+      "submission_date": "2014-06-05T00:00:00Z",
+      "submission_comment": "Created by MITRE with input from members of the CWE-Research mailing list."
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Overly Permissive Cross-domain Whitelist",
+        "date": "2020-02-26T00:00:00Z"
+      }
+    ]
+  }
+}

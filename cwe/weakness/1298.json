@@ -1,0 +1,115 @@
+{
+  "id": "1298",
+  "name": "Hardware Logic Contains Race Conditions",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "A race condition in the hardware logic results in undermining security guarantees of the system.",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eA race condition in logic circuits typically occurs when a logic gate gets inputs from signals that have traversed different paths while originating from the same source. Such inputs to the gate can change at slightly different times in response to a change in the source signal. This results in a timing error or a glitch (temporary or permanent) that causes the output to change to an unwanted state before settling back to the desired state. If such timing errors occur in access control logic or finite state machines that are implemented in security sensitive flows, an attacker might exploit them to circumvent existing protections.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "362",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "prevalence": "Undetermined",
+        "name": "Verilog"
+      },
+      {
+        "prevalence": "Undetermined",
+        "name": "VHDL"
+      }
+    ],
+    "technology": [
+      {
+        "class": "System on Chip",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Bypass Protection Mechanism",
+        "Gain Privileges or Assume Identity",
+        "Alter Execution Logic"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Adopting design practices that encourage designers to recognize and eliminate race conditions, such as Karnaugh maps, could result in the decrease in occurrences of race conditions."
+      ]
+    },
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Logic redundancy can be implemented along security critical paths to prevent race conditions. To avoid metastability, it is a good practice in general to default to a secure state in which access is not given to untrusted agents."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003eThe code below shows a 2x1 multiplexor using logic gates. Though the code shown below results in the minimum gate solution, it is disjoint and causes glitches.\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\" Language=\"Verilog\"\u003e\n\t\t\t\t\t\t// 2x1 Multiplexor using logic-gates\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003e\n\t\t\t\t\t\tmodule glitchEx(\u003cxhtml:br/\u003e\n\t\t\t\t\t\t\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n\t\t\t\t\t\t\tinput wire in0, in1, sel,\u003cxhtml:br/\u003e\n\t\t\t\t\t\t\toutput wire z\u003cxhtml:br/\u003e\n\t\t\t\t\t\t\u003c/xhtml:div\u003e\n\t\t\t\t\t\t);\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003e\n\t\t\t\t\t\twire not_sel;\u003cxhtml:br/\u003e\n\t\t\t\t\t\twire and_out1, and_out2;\u003cxhtml:br/\u003e\n\t\t\t\t\t\t\u003cxhtml:br/\u003e\n\t\t\t\t\t\tassign not_sel = ~sel;\u003cxhtml:br/\u003e\n\t\t\t\t\t\tassign and_out1 = not_sel \u0026amp; in0;\u003cxhtml:br/\u003e\n\t\t\t\t\t\tassign and_out2 = sel \u0026amp; in1;\u003cxhtml:br/\u003e\n                        \u003cxhtml:br/\u003e\n\t\t\t\t\t\t// Buggy line of code:\u003cxhtml:br/\u003e\n\t\t\t\t\t\tassign z = and_out1 | and_out2; // glitch in signal z\u003cxhtml:br/\u003e\n\t\t\t\t\t\t\u003cxhtml:br/\u003e\n\t\t\t\t\t\tendmodule\u003cxhtml:br/\u003e\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eThe buggy line of code, commented above, results in signal 'z' periodically changing to an unwanted state. Thus, any logic that references signal 'z' may access it at a time when it is in this unwanted state. This line should be replaced with the line shown below in the Good Code Snippet which results in signal 'z' remaining in a continuous, known, state. Reference for the above code, along with waveforms for simulation can be found in the references below.\u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\" Language=\"Verilog\"\u003e\n\t\t\t\t\t\tassign z \u0026lt;= and_out1 or and_out2 or (in0 and in1);\n\t\t\t\t\t\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003eThis line of code removes the glitch in signal z.\u003c/Body_Text\u003e\n\t\t\t\t"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-1115",
+      "author": [
+        "Meher Krishna Patel"
+      ],
+      "title": "FPGA designs with Verilog (section 7.4 Glitches)",
+      "url": "https://verilogguide.readthedocs.io/en/latest/verilog/fsm.html"
+    },
+    {
+      "reference_id": "REF-1116",
+      "author": [
+        "Clifford E. Cummings"
+      ],
+      "title": "Non-Blocking Assignments in Verilog Synthesis, Coding Styles that Kill!",
+      "url": "http://www.sunburst-design.com/papers/CummingsSNUG2000SJ_NBA.pdf",
+      "publication_year": "2000"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-10T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "26"
+  ]
+}

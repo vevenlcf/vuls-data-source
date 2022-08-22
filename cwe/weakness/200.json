@@ -1,0 +1,495 @@
+{
+  "id": "200",
+  "name": "Exposure of Sensitive Information to an Unauthorized Actor",
+  "abstraction": "Class",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product exposes sensitive information to an actor that is not explicitly authorized to have access to that information.",
+  "extended_description": "\n\t   \u003cxhtml:p\u003eThere are many different kinds of mistakes that introduce information exposures. The severity of the error can range widely, depending on the context in which the product operates, the type of sensitive information that is revealed, and the benefits it may provide to an attacker.  Some kinds of sensitive information include:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003eprivate, personal information, such as personal messages, financial data, health records, geographic location, or contact details\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003esystem status and environment, such as the operating system and installed packages\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003ebusiness secrets and intellectual property\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003enetwork status and configuration\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003ethe product's own code or internal state\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003emetadata, e.g. logging of connections or message headers\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003eindirect information, such as a discrepancy between two internal operations that can be observed by an outsider\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n\t    \u003cxhtml:p\u003eInformation might be sensitive to different parties, each of which may have their own expectations for whether the information should be protected.  These parties include:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003ethe product's own users\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003epeople or organizations whose information is created or used by the product, even if they are not direct product users\u003c/xhtml:li\u003e\n\t\t  \u003cxhtml:li\u003ethe product's administrators, including the admins of the system(s) and/or networks on which the product operates\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ethe developer\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n\t    \u003cxhtml:p\u003eInformation exposures can occur in different ways:\u003c/xhtml:p\u003e\n            \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n               \u003cxhtml:ul\u003e\n                  \u003cxhtml:li\u003ethe code \u003cxhtml:b\u003eexplicitly inserts\u003c/xhtml:b\u003e sensitive information into resources or messages that are intentionally made accessible to unauthorized actors, but should not contain the information - i.e., the information should have been \"scrubbed\" or \"sanitized\"\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ea different weakness or mistake \u003cxhtml:b\u003eindirectly inserts\u003c/xhtml:b\u003e the sensitive information into resources, such as a web script error revealing the full system path of the program.\u003c/xhtml:li\u003e\n                  \u003cxhtml:li\u003ethe code manages resources that intentionally contain sensitive information, but the resources are \u003cxhtml:b\u003eunintentionally made accessible\u003c/xhtml:b\u003e to unauthorized actors. In this case, the information exposure is resultant - i.e., a different weakness enabled the access to the information in the first place.\u003c/xhtml:li\u003e\n               \u003c/xhtml:ul\u003e\n            \u003c/xhtml:div\u003e\n\t    \u003cxhtml:p\u003eIt is common practice to describe any loss of confidentiality as an \"information exposure,\" but this can lead to overuse of CWE-200 in CWE mapping. From the CWE perspective, loss of confidentiality is a technical impact that can arise from dozens of different weaknesses, such as insecure file permissions or out-of-bounds read.  CWE-200 and its lower-level descendants are intended to cover the mistakes that occur in behaviors that explicitly manage, store,  transfer, or cleanse sensitive information.\u003c/xhtml:p\u003e\n         ",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "668",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Mobile",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality"
+      ],
+      "impact": [
+        "Read Application Data"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "mitigation_id": "MIT-46",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eCompartmentalize the system to have \"safe\" areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eEnsure that appropriate compartmentalization is built into the system design, and the compartmentalization allows for and reinforces privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide the appropriate time to use privileges and the time to drop privileges.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Separation of Privilege"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-38",
+      "text": "\n               \u003cIntro_Text\u003eThe following code checks validity of the supplied username and password and notifies the user of a successful or failed login.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Perl\"\u003e\n                  \u003cxhtml:div\u003emy $username=param('username');\n                  \u003cxhtml:br/\u003emy $password=param('password');\n                  \u003cxhtml:br/\u003e\n                  \u003cxhtml:br/\u003eif (IsValidUsername($username) == 1)\n                  \u003cxhtml:br/\u003e{\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003eif (IsValidPassword($username, $password) == 1)\n                  \u003cxhtml:br/\u003e{\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003eprint \"Login Successful\";\n                  \u003c/xhtml:div\u003e}\n                  \u003cxhtml:br/\u003eelse\n                  \u003cxhtml:br/\u003e{\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003eprint \"Login Failed - incorrect password\";\n                  \u003c/xhtml:div\u003e}\n                  \u003c/xhtml:div\u003e}\n                  \u003cxhtml:br/\u003eelse\n                  \u003cxhtml:br/\u003e{\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003eprint \"Login Failed - unknown username\";\n                  \u003c/xhtml:div\u003e}\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIn the above code, there are different messages for when an incorrect username is supplied, versus when the username is correct but the password is wrong. This difference enables a potential attacker to understand the state of the login function, and could allow an attacker to discover a valid username by trying different values until the incorrect password message is returned. In essence, this makes it easier for an attacker to obtain half of the necessary authentication credentials.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eWhile this type of information may be helpful to a user, it is also useful to a potential attacker. In the above example, the message for both failed cases should be the same, such as:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"result\"\u003e\n                  \u003cxhtml:div\u003e\"Login Failed - incorrect username or password\"\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-118",
+      "text": "\n               \u003cIntro_Text\u003eThis code tries to open a database connection, and prints any exceptions that occur.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eopenDbConnection();\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e//print exception message that includes exception message and configuration file location\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003ecatch (Exception $e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eecho 'Caught exception: ', $e-\u0026gt;getMessage(), '\\n';\u003cxhtml:br/\u003eecho 'Check credentials in config file at: ', $Mysql_config_location, '\\n';\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eIf an exception occurs, the printed message exposes the location of the configuration file the script is using. An attacker can use this information to target the configuration file (perhaps exploiting a Path Traversal weakness). If the file can be read, the attacker could gain credentials for accessing the database. The attacker may also be able to replace the file with a malicious one, causing the application to use an arbitrary database.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-119",
+      "text": "\n               \u003cIntro_Text\u003eIn the example below, the method getUserBankAccount retrieves a bank account object from a database using the supplied username and account number to query the database. If an SQLException is raised when querying the database, an error message is created and output to a log file.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic BankAccount getUserBankAccount(String username, String accountNumber) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eBankAccount userAccount = null;\u003cxhtml:br/\u003eString query = null;\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003eif (isAuthorizedUser(username)) {\u003cxhtml:div style=\"margin-left:10px;\"\u003equery = \"SELECT * FROM accounts WHERE owner = \"\u003cxhtml:br/\u003e+ username + \" AND accountID = \" + accountNumber;\u003cxhtml:br/\u003eDatabaseManager dbManager = new DatabaseManager();\u003cxhtml:br/\u003eConnection conn = dbManager.getConnection();\u003cxhtml:br/\u003eStatement stmt = conn.createStatement();\u003cxhtml:br/\u003eResultSet queryResult = stmt.executeQuery(query);\u003cxhtml:br/\u003euserAccount = (BankAccount)queryResult.getObject(accountNumber);\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e} catch (SQLException ex) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eString logMessage = \"Unable to retrieve account information from database,\\nquery: \" + query;\u003cxhtml:br/\u003eLogger.getLogger(BankManager.class.getName()).log(Level.SEVERE, logMessage, ex);\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003ereturn userAccount;\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe error message that is created includes information about the database query that may contain sensitive information about the database or query logic. In this case, the error message will expose the table name and column names used in the database. This data could be used to simplify other attacks, such as SQL injection (CWE-89) to directly access the database.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-120",
+      "text": "\n               \u003cIntro_Text\u003eThis code stores location information about the current user:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003elocationClient = new LocationClient(this, this, this);\u003cxhtml:br/\u003elocationClient.connect();\u003cxhtml:br/\u003ecurrentUser.setLocation(locationClient.getLastLocation());\u003cxhtml:br/\u003e\n                     \u003cxhtml:i\u003e...\u003c/xhtml:i\u003e\n                     \u003cxhtml:br/\u003e\n                     \u003cxhtml:br/\u003ecatch (Exception e) {\u003cxhtml:div style=\"margin-left:10px;\"\u003eAlertDialog.Builder builder = new AlertDialog.Builder(this);\u003cxhtml:br/\u003ebuilder.setMessage(\"Sorry, this application has experienced an error.\");\u003cxhtml:br/\u003eAlertDialog alert = builder.create();\u003cxhtml:br/\u003ealert.show();\u003cxhtml:br/\u003eLog.e(\"ExampleActivity\", \"Caught exception: \" + e + \" While on User:\" + User.toString());\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhen the application encounters an exception it will write the user object to the log. Because the user object contains location information, the user's location is also written to the log.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-129",
+      "text": "\n               \u003cIntro_Text\u003eThe following is an actual MySQL error statement:\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"result\" Language=\"SQL\"\u003e\n                  \u003cxhtml:div\u003eWarning: mysql_pconnect(): Access denied for user: 'root@localhost' (Using password: N1nj4) in /usr/local/www/wi-data/includes/database.inc on line 4\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe error clearly exposes the database credentials.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-130",
+      "text": "\n               \u003cIntro_Text\u003eThis code displays some information on a web page.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"JSP\"\u003e\n                  \u003cxhtml:div\u003eSocial Security Number: \u0026lt;%= ssn %\u0026gt;\u0026lt;/br\u0026gt;Credit Card Number: \u0026lt;%= ccn %\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code displays a user's credit card and social security numbers, even though they aren't absolutely necessary.\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-131",
+      "text": "\n               \u003cIntro_Text\u003eThe following program changes its behavior based on a debug flag.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"JSP\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;% if (Boolean.getBoolean(\"debugEnabled\")) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e%\u0026gt;\u003cxhtml:br/\u003eUser account number: \u0026lt;%= acctNo %\u0026gt;\u003cxhtml:br/\u003e\u0026lt;%\u003cxhtml:br/\u003e} %\u0026gt;\u003cxhtml:br/\u003e\n                        \u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eThe code writes sensitive debug information to the client browser if the \"debugEnabled\" flag is set to true .\u003c/Body_Text\u003e\n            "
+    },
+    {
+      "demonstrative_example_id": "DX-111",
+      "text": "\n               \u003cIntro_Text\u003eThis code uses location to determine the user's current US State location.\u003c/Intro_Text\u003e\n               \u003cBody_Text\u003eFirst the application must declare that it requires the ACCESS_FINE_LOCATION permission in the application's manifest.xml:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"XML\"\u003e\n                  \u003cxhtml:div\u003e\u0026lt;uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/\u0026gt;\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eDuring execution, a call to getLastLocation() will return a location based on the application's location permissions. In this case the application has permission for the most accurate location possible:\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003elocationClient = new LocationClient(this, this, this);\u003cxhtml:br/\u003elocationClient.connect();\u003cxhtml:br/\u003eLocation userCurrLocation;\u003cxhtml:br/\u003euserCurrLocation = locationClient.getLastLocation();\u003cxhtml:br/\u003ederiveStateFromCoords(userCurrLocation);\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eWhile the application needs this information, it does not need to use the ACCESS_FINE_LOCATION permission, as the ACCESS_COARSE_LOCATION permission will be sufficient to identify which US state the user is in.\u003c/Body_Text\u003e\n            "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2001-1483",
+      "description": "Enumeration of valid usernames based on inconsistent responses",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1483"
+    },
+    {
+      "reference": "CVE-2001-1528",
+      "description": "Account number enumeration via inconsistent responses.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1528"
+    },
+    {
+      "reference": "CVE-2004-2150",
+      "description": "User enumeration via discrepancies in error messages.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2150"
+    },
+    {
+      "reference": "CVE-2005-1205",
+      "description": "Telnet protocol allows servers to obtain sensitive environment information from clients.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1205"
+    },
+    {
+      "reference": "CVE-2002-1725",
+      "description": "Script calls phpinfo(), revealing system configuration to web user",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1725"
+    },
+    {
+      "reference": "CVE-2002-0515",
+      "description": "Product sets a different TTL when a port is being filtered than when it is not being filtered, which allows remote attackers to identify filtered ports by comparing TTLs.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0515"
+    },
+    {
+      "reference": "CVE-2004-0778",
+      "description": "Version control system allows remote attackers to determine the existence of arbitrary files and directories via the -X command for an alternate history file, which causes different error messages to be returned.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0778"
+    },
+    {
+      "reference": "CVE-2000-1117",
+      "description": "Virtual machine allows malicious web site operators to determine the existence of files on the client by measuring delays in the execution of the getSystemResource method.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1117"
+    },
+    {
+      "reference": "CVE-2003-0190",
+      "description": "Product immediately sends an error message when a user does not exist, which allows remote attackers to determine valid usernames via a timing attack.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0190"
+    },
+    {
+      "reference": "CVE-2008-2049",
+      "description": "POP3 server reveals a password in an error message after multiple APOP commands are sent. Might be resultant from another weakness.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2049"
+    },
+    {
+      "reference": "CVE-2007-5172",
+      "description": "Program reveals password in error message if attacker can trigger certain database errors.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5172"
+    },
+    {
+      "reference": "CVE-2008-4638",
+      "description": "Composite: application running with high privileges (CWE-250) allows user to specify a restricted file to process, which generates a parsing error that leaks the contents of the file (CWE-209).",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4638"
+    },
+    {
+      "reference": "CVE-2007-1409",
+      "description": "Direct request to library file in web application triggers pathname leak in error message.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1409"
+    },
+    {
+      "reference": "CVE-2005-0603",
+      "description": "Malformed regexp syntax leads to information exposure in error message.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0603"
+    },
+    {
+      "reference": "CVE-2004-2268",
+      "description": "Password exposed in debug information.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2268"
+    },
+    {
+      "reference": "CVE-2003-1078",
+      "description": "FTP client with debug option enabled shows password to the screen.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-1078"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-172",
+      "author": [
+        "Chris Wysopal"
+      ],
+      "title": "Mobile App Top 10 List",
+      "url": "http://www.veracode.com/blog/2010/12/mobile-app-top-10-list/",
+      "publication_year": "2010",
+      "publication_month": "--12",
+      "publication_day": "---13"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Likelihood_of_Exploit, Relationships, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-12-28T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-02-16T00:00:00Z",
+        "modification_comment": "updated Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-04-05T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-03-29T00:00:00Z",
+        "modification_comment": "updated Description, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2013-02-21T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Applicable_Platforms, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Detection_Factors, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2015-12-07T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-05-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-06-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-09-19T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Observed_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Demonstrative_Examples, Description, Name, Observed_Examples, Related_Attack_Patterns, Relationships, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Alternate_Terms, Description, Maintenance_Notes, Related_Attack_Patterns, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-12-10T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-07-20T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Information Leak (Information Disclosure)",
+        "date": "2009-12-28T00:00:00Z"
+      },
+      {
+        "text": "Information Exposure",
+        "date": "2020-02-24T00:00:00Z"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary",
+      "description": "Developers may insert sensitive information that they do not believe, or they might forget to remove the sensitive information after it has been processed"
+    },
+    {
+      "ordinality": "Resultant",
+      "description": "Separate mistakes or weaknesses could inadvertently make the sensitive information available to an attacker, such as in a detailed error message that can be read by an unauthorized party"
+    }
+  ],
+  "alternate_terms": [
+    {
+      "term": "Information Disclosure",
+      "description": "This term is frequently used in vulnerability advisories to describe a consequence or technical impact, for any vulnerability that has a loss of confidentiality. Often, CWE-200 can be misused to represent the loss of confidentiality, even when the mistake - i.e., the weakness - is not directly related to the mishandling of the information itself, such as an out-of-bounds read that accesses sensitive memory contents; here, the out-of-bounds read is the primary weakness, not the disclosure of the memory.  In addition, this phrase is also used frequently in policies and legal documents, but it does not refer to any disclosure of security-relevant information."
+    },
+    {
+      "term": "Information Leak",
+      "description": "This is a frequently used term, however the \"leak\" term has multiple uses within security. In some cases it deals with the accidental exposure of information from a different weakness, but in other cases (such as \"memory leak\"), this deals with improper tracking of resources, which can lead to exhaustion. As a result, CWE is actively avoiding usage of the \"leak\" term."
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Automated Static Analysis - Binary or Bytecode",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eBytecode Weakness Analysis - including disassembler + source code weakness analysis\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eInter-application Flow Analysis\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Dynamic Analysis with Automated Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eWeb Application Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eWeb Services Scanner\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eDatabase Scanners\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Dynamic Analysis with Manual Results Interpretation",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFuzz Tester\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eFramework-based Fuzzer\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eAutomated Monitored Execution\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eMonitored Virtual Environment - run potentially malicious code in sandbox / wrapper / virtual machine, see if it does anything suspicious\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "SOAR Partial"
+    },
+    {
+      "method": "Manual Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eManual Source Code Review (not inspections)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Automated Static Analysis - Source Code",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eContext-configured Source Code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eSource code Weakness Analyzer\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    },
+    {
+      "method": "Architecture or Design Review",
+      "description": "\n                  \u003cxhtml:p\u003eAccording to SOAR, the following detection techniques may be useful:\u003c/xhtml:p\u003e\n                  \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                     \u003cxhtml:div\u003eHighly cost effective:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eFormal Methods / Correct-By-Construction\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                     \u003cxhtml:div\u003eCost effective for partial coverage:\u003c/xhtml:div\u003e\n                     \u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:ul\u003e\n                           \u003cxhtml:li\u003eAttack Modeling\u003c/xhtml:li\u003e\n                           \u003cxhtml:li\u003eInspection (IEEE 1028 standard) (can apply to requirements, design, source code, etc.)\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                     \u003c/xhtml:div\u003e\n                  \u003c/xhtml:div\u003e\n               ",
+      "effectiveness": "High"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Information Leak (information disclosure)"
+    },
+    {
+      "taxonomy_name": "OWASP Top Ten 2007",
+      "entry_name": "Information Leakage and Improper Error Handling",
+      "entry_id": "A6",
+      "mapping_fit": "CWE More Specific"
+    },
+    {
+      "taxonomy_name": "WASC",
+      "entry_name": "Information Leakage",
+      "entry_id": "13"
+    }
+  ],
+  "related_attack_patterns": [
+    "116",
+    "13",
+    "169",
+    "22",
+    "224",
+    "285",
+    "287",
+    "290",
+    "291",
+    "292",
+    "293",
+    "294",
+    "295",
+    "296",
+    "297",
+    "298",
+    "299",
+    "300",
+    "301",
+    "302",
+    "303",
+    "304",
+    "305",
+    "306",
+    "307",
+    "308",
+    "309",
+    "310",
+    "312",
+    "313",
+    "317",
+    "318",
+    "319",
+    "320",
+    "321",
+    "322",
+    "323",
+    "324",
+    "325",
+    "326",
+    "327",
+    "328",
+    "329",
+    "330",
+    "472",
+    "497",
+    "508",
+    "573",
+    "574",
+    "575",
+    "576",
+    "577",
+    "59",
+    "60",
+    "616",
+    "643",
+    "646",
+    "651",
+    "79"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "As a result of mapping analysis in the 2020 Top 25, this weakness is under review, since it is frequently misused in mapping to cover many problems that lead to loss of confidentiality. See Extended Decription and Alternate Terms."
+    }
+  ]
+}

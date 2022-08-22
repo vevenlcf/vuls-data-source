@@ -1,0 +1,136 @@
+{
+  "id": "1268",
+  "name": "Policy Privileges are not Assigned Consistently Between Control and Data Agents",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The product's hardware-enforced access control for a particular resource improperly accounts for privilege discrepancies between control and write policies.\n\t\t\t   ",
+  "extended_description": "\n\t\t\t\t\u003cxhtml:p\u003eIntegrated circuits and hardware engines may provide access to resources (device-configuration, encryption keys, etc.) belonging to trusted firmware or software modules (commonly set by a BIOS or a bootloader). These accesses are typically controlled and limited by the hardware. Hardware design access control is sometimes implemented using a policy. A policy defines which entity or agent may or may not be allowed to perform an action. When a system implements multiple levels of policies, a control policy may allow direct access to a resource as well as changes to the policies themselves.\u003c/xhtml:p\u003e\n\t\t\t\t\u003cxhtml:p\u003eResources that include agents in their control policy but not in their write policy could unintentionally allow an untrusted agent to insert itself in the write policy register. Inclusion in the write policy register could allow a malicious or misbehaving agent write access to resources. This action could result in security compromises including leaked information, leaked encryption keys, or modification of device configuration.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "This weakness may be introduced during the design of a device when the architect does not comprehensively specify all of the policies required by an agent."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "This weakness may be introduced during implementation if device policy restrictions do not sufficiently constrain less-privileged clients."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Memory",
+        "Read Memory",
+        "DoS: Crash, Exit, or Restart",
+        "Execute Unauthorized Code or Commands",
+        "Gain Privileges or Assume Identity",
+        "Bypass Protection Mechanism",
+        "Read Files or Directories",
+        "Reduce Reliability"
+      ],
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Access-control-policy definition and programming flow must be sufficiently tested in pre-silicon and post-silicon testing."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n\t\t\t\t\t\u003cIntro_Text\u003e\u003cxhtml:p\u003eConsider a system with a register for storing an AES key for encryption or decryption. The key is composed of 128 bits implemented as a set of four 32-bit registers. The key registers are resources and registers, AES_KEY_CONTROL_POLICY, AES_KEY_READ_POLICY and AES_KEY_WRITE_POLICY, and are defined to provide necessary, access controls.\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:p\u003eThe control-policy register defines which agents can write to the read-policy and write-policy registers. The read-policy register defines which agents can read the AES-key registers, and write-policy register defines which agents can program or write to those registers. Each 32-bit register can support access control for a maximum of 32 agents. The number of the bit when set (i.e., \"1\") allows respective action from an agent whose identity matches the number of the bit and, if \"0\" (i.e., Clear), disallows the respective action to that corresponding agent.\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003c/Intro_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"bad\"\u003e\u003cxhtml:table\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:th\u003eRegister\u003c/xhtml:th\u003e\u003cxhtml:th\u003eField description\u003c/xhtml:th\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_ENC_DEC_KEY_0\u003c/xhtml:td\u003e\u003cxhtml:td\u003eAES key [0:31] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_ENC_DEC_KEY_1\u003c/xhtml:td\u003e\u003cxhtml:td\u003eAES key [32:63] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_ENC_DEC_KEY_2\u003c/xhtml:td\u003e\u003cxhtml:td\u003eAES key [64:95] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_ENC_DEC_KEY_3\u003c/xhtml:td\u003e\u003cxhtml:td\u003eAES key [96:127] for encryption or decryption\u003cxhtml:br/\u003eDefault 0x00000000\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_KEY_CONTROL_POLICY\u003c/xhtml:td\u003e\u003cxhtml:td\u003e[31:0] Default 0x00000018, meaning agent with identities \"4\" and \"3\" has read/write access to this register (i.e., AES_KEY_CONTROL_POLICY), AES_KEY_READ_POLICY, and AES_KEY_WRITE_POLICY registers\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_KEY_READ_POLICY\u003c/xhtml:td\u003e\u003cxhtml:td\u003e[31:0] Default 0x00000002, agent with identity \"1\" can only read AES_ENC_DEC_KEY_0 through AES_ENC_DEC_KEY_3 registers\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_KEY_WRITE_POLICY\u003c/xhtml:td\u003e\u003cxhtml:td\u003e[31:0] Default 0x00000004, agent with identity \"2\" can only write to AES_ENC_DEC_KEY_0 through AES_ENC_DEC_KEY_3 registers\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003c/xhtml:table\u003e\u003c/Example_Code\u003e\n\t\t\t\t\t\u003cBody_Text\u003e\u003cxhtml:p\u003eIn the above example, the AES_KEY_CONTROL_POLICY register has agents with identities \"4\"and \"3\" in its policy. Assuming the agent with identity \"4\" is trusted and the agent with identity \"3\" is untrusted. The untrusted agent \"3\" can write to AES_KEY_WRITE_POLICY with a value of 0x0000000C thus allowing write access to AES_ENC_DEC_KEY_0 through AES_ENC_DEC_KEY_3 registers.\u003c/xhtml:p\u003e\n\t\t\t\t\t\u003cxhtml:ol\u003e\n\u003cxhtml:li\u003eThe AES_KEY_CONTROL_POLICY defines which agents have write access to the AES_KEY_CONTROL_POLICY, AES_KEY_READ_POLICY, and the AES_KEY_WRITE_POLICY registers,\u003c/xhtml:li\u003e\n\u003cxhtml:li\u003eThe AES-key registers can only be read or used by a crypto agent with identity \"1\" when bit #1 is set.\u003c/xhtml:li\u003e\n\u003cxhtml:li\u003eThe AES-key registers can only be programmed by a trusted firmware with identity \"2\" when bit #2 is set.\u003c/xhtml:li\u003e\u003c/xhtml:ol\u003e\n\u003cxhtml:p\u003eFor the above example, the control, read-and-write-policy registers’ values are defined as below.\u003c/xhtml:p\u003e\u003c/Body_Text\u003e\n\t\t\t\t\t\u003cExample_Code Nature=\"good\"\u003e\n\u003cxhtml:table\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:th\u003eRegister\u003c/xhtml:th\u003e\u003cxhtml:th\u003eField description\u003c/xhtml:th\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_KEY_CONTROL_POLICY\u003c/xhtml:td\u003e\u003cxhtml:td\u003e[31:0] Default 0x00000010, meaning only agents with an identity of \"4\" have read/write access to this register (i.e., AES_KEY_CONTROL_POLICY), AES_KEY_READ_POLICY, and AES_KEY_WRITE_POLICY registers\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_KEY_READ_POLICY\u003c/xhtml:td\u003e\u003cxhtml:td\u003e[31:0] Default 0x00000002, meaning only trusted firmware with an identity of \"1\" can program registers: \nAES_ENC_DEC_KEY_0, AES_ENC_DEC_KEY_1, AES_ENC_DEC_KEY_2, AES_ENC_DEC_KEY_3\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003cxhtml:tr\u003e\u003cxhtml:td\u003eAES_KEY_WRITE_POLICY\u003c/xhtml:td\u003e\u003cxhtml:td\u003e[31:0] Default 0x00000004, meaning only trusted firmware with an identity of \"2\" can program registers: \nAES_ENC_DEC_KEY_0, AES_ENC_DEC_KEY_1, AES_ENC_DEC_KEY_2, AES_ENC_DEC_KEY_3\u003c/xhtml:td\u003e\u003c/xhtml:tr\u003e\n\u003c/xhtml:table\u003e\u003c/Example_Code\u003e\n\t\t\t\t"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-02-12T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Modes_of_Introduction, Name, Potential_Mitigations, Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Agents Included in Control Policy are not Contained in Less-Privileged Policy",
+        "date": "2020-08-20T00:00:00Z"
+      }
+    ]
+  },
+  "related_attack_patterns": [
+    "180"
+  ],
+  "notes": [
+    {
+      "type": "Maintenance",
+      "text": "This entry is still under development and will continue to see updates and content improvements."
+    }
+  ]
+}

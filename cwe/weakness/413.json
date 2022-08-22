@@ -1,0 +1,201 @@
+{
+  "id": "413",
+  "name": "Improper Resource Locking",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Draft",
+  "description": "The software does not lock or does not correctly lock a resource when the software must have exclusive access to the resource.",
+  "extended_description": "When a resource is not properly locked, an attacker could modify the resource while it is being operated on by the software. This might violate the software's assumption that the resource will not change, potentially leading to unexpected behaviors.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "667",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design"
+    },
+    {
+      "phase": "Implementation"
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Integrity",
+        "Availability"
+      ],
+      "impact": [
+        "Modify Application Data",
+        "DoS: Instability",
+        "DoS: Crash, Exit, or Restart"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "Use a non-conflicting privilege scheme."
+      ]
+    },
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation"
+      ],
+      "description": [
+        "Use synchronization when locking a resource."
+      ]
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "demonstrative_example_id": "DX-24",
+      "text": "\n               \u003cIntro_Text\u003eThe following function attempts to acquire a lock in order to perform operations on a shared resource.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003evoid f(pthread_mutex_t *mutex) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003epthread_mutex_lock(mutex);\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* access shared resource */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003epthread_mutex_unlock(mutex);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the code does not check the value returned by pthread_mutex_lock() for errors. If pthread_mutex_lock() cannot acquire the mutex for any reason, the function may introduce a race condition into the program and result in undefined behavior.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eIn order to avoid data races, correctly written programs must check the result of thread synchronization functions and appropriately handle all errors, either by attempting to recover from them or reporting them to higher levels.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"C\"\u003e\n                  \u003cxhtml:div\u003eint f(pthread_mutex_t *mutex) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003eint result;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003eresult = pthread_mutex_lock(mutex);\u003cxhtml:br/\u003eif (0 != result)\u003cxhtml:div style=\"margin-left:10px;\"\u003ereturn result;\u003c/xhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e/* access shared resource */\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003ereturn pthread_mutex_unlock(mutex);\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    },
+    {
+      "text": "\n               \u003cIntro_Text\u003eThis Java example shows a simple BankAccount class with deposit and withdraw methods.\u003c/Intro_Text\u003e\n               \u003cExample_Code Nature=\"bad\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// variable for bank account balance\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate double accountBalance;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// constructor for BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic BankAccount() {\u003cxhtml:div style=\"margin-left:10px;\"\u003eaccountBalance = 0;\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to deposit amount into BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void deposit(double depositAmount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003edouble newBalance = accountBalance + depositAmount;\u003cxhtml:br/\u003eaccountBalance = newBalance;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to withdraw amount from BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void withdraw(double withdrawAmount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003edouble newBalance = accountBalance - withdrawAmount;\u003cxhtml:br/\u003eaccountBalance = newBalance;\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// other methods for accessing the BankAccount object\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eHowever, the deposit and withdraw methods have shared access to the account balance private class variable. This can result in a race condition if multiple threads attempt to call the deposit and withdraw methods simultaneously where the account balance is modified by one thread before another thread has completed modifying the account balance. For example, if a thread attempts to withdraw funds using the withdraw method before another thread that is depositing funds using the deposit method completes the deposit then there may not be sufficient funds for the withdraw transaction.\u003c/Body_Text\u003e\n               \u003cBody_Text\u003eTo prevent multiple threads from having simultaneous access to the account balance variable the deposit and withdraw methods should be synchronized using the synchronized modifier.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// synchronized method to deposit amount into BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic synchronized void deposit(double depositAmount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// synchronized method to withdraw amount from BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic synchronized void withdraw(double withdrawAmount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e...\u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n               \u003cBody_Text\u003eAn alternative solution is to use a lock object to ensure exclusive access to the bank account balance variable. As shown below, the deposit and withdraw methods use the lock object to set a lock to block access to the BankAccount object from other threads until the method has completed updating the bank account balance variable.\u003c/Body_Text\u003e\n               \u003cExample_Code Nature=\"good\" Language=\"Java\"\u003e\n                  \u003cxhtml:div\u003epublic class BankAccount {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                        \u003cxhtml:div\u003e...\u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// lock object for thread access to methods\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate ReentrantLock balanceChangeLock;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// condition object to temporarily release lock to other threads\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003eprivate Condition sufficientFundsCondition;\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to deposit amount into BankAccount\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void deposit(double amount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// set lock to block access to BankAccount from other threads\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003ebalanceChangeLock.lock();\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003edouble newBalance = balance + amount;\u003cxhtml:br/\u003ebalance = newBalance;\u003cxhtml:br/\u003e\n                                       \u003cxhtml:br/\u003e\n                                       \u003cxhtml:i\u003e// inform other threads that funds are available\u003c/xhtml:i\u003e\n                                       \u003cxhtml:br/\u003esufficientFundsCondition.signalAll();\u003cxhtml:br/\u003e\n                                    \u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e} catch (Exception e) {...}\u003cxhtml:br/\u003efinally {\u003cxhtml:div style=\"margin-left:10px;\"\u003e// unlock lock object\u003cxhtml:br/\u003ebalanceChangeLock.unlock();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e\n                           \u003cxhtml:br/\u003e\n                           \u003cxhtml:i\u003e// method to withdraw amount from bank account\u003c/xhtml:i\u003e\n                           \u003cxhtml:br/\u003epublic void withdraw(double amount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                              \u003cxhtml:div\u003e\n                                 \u003cxhtml:br/\u003e\n                                 \u003cxhtml:i\u003e// set lock to block access to BankAccount from other threads\u003c/xhtml:i\u003e\n                                 \u003cxhtml:br/\u003ebalanceChangeLock.lock();\u003cxhtml:br/\u003etry {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                    \u003cxhtml:div\u003ewhile (balance \u0026lt; amount) {\u003cxhtml:div style=\"margin-left:10px;\"\u003e\n                                          \u003cxhtml:div\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:i\u003e// temporarily unblock access\u003c/xhtml:i\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:br/\u003e\n                                             \u003cxhtml:i\u003e// until sufficient funds are available\u003c/xhtml:i\u003e\n                                             \u003cxhtml:br/\u003esufficientFundsCondition.await();\u003c/xhtml:div\u003e\n                                       \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003edouble newBalance = balance - amount;\u003cxhtml:br/\u003ebalance = newBalance;\u003cxhtml:br/\u003e\n                                    \u003c/xhtml:div\u003e\n                                 \u003c/xhtml:div\u003e} catch (Exception e) {...}\u003cxhtml:br/\u003efinally {\u003cxhtml:div style=\"margin-left:10px;\"\u003e// unlock lock object\u003cxhtml:br/\u003ebalanceChangeLock.unlock();\u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n                           \u003c/xhtml:div\u003e}\u003cxhtml:br/\u003e...\u003c/xhtml:div\u003e\n                     \u003c/xhtml:div\u003e}\u003c/xhtml:div\u003e\n               \u003c/Example_Code\u003e\n            "
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations, Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-06-21T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-09-27T00:00:00Z",
+        "modification_comment": "updated Description, Name"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2010-12-13T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences, Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-07-30T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2019-01-03T00:00:00Z",
+        "modification_comment": "updated Relationships, Taxonomy_Mappings"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-03-15T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Insufficient Resource Locking",
+        "date": "2010-09-27T00:00:00Z"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Content",
+        "contribution_name": "Martin Sebor",
+        "contribution_organization": "Cisco Systems, Inc.",
+        "contribution_date": "2010-04-30T00:00:00Z",
+        "contribution_comment": "Provided Demonstrative Example"
+      }
+    ]
+  },
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "Insufficient Resource Locking"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Ensure visibility when accessing shared primitive variables",
+      "entry_id": "VNA00-J"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Ensure that compound operations on shared variables are atomic",
+      "entry_id": "VNA02-J"
+    },
+    {
+      "taxonomy_name": "The CERT Oracle Secure Coding Standard for Java (2011)",
+      "entry_name": "Use private final lock objects to synchronize classes that may interact with untrusted code",
+      "entry_id": "LCK00-J"
+    },
+    {
+      "taxonomy_name": "Software Fault Patterns",
+      "entry_name": "Missing Lock",
+      "entry_id": "SFP19"
+    }
+  ]
+}

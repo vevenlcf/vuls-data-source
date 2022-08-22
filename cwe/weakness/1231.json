@@ -1,0 +1,164 @@
+{
+  "id": "1231",
+  "name": "Improper Prevention of Lock Bit Modification",
+  "abstraction": "Base",
+  "structure": "Simple",
+  "status": "Stable",
+  "description": "The product uses a trusted lock bit for restricting access to registers, address regions, or other resources, but the product does not prevent the value of the lock bit from being modified after it has been set.",
+  "extended_description": "\n\t\t\t  \u003cxhtml:p\u003eIn integrated circuits and hardware\n\t\t\t  intellectual property (IP) cores, device configuration\n\t\t\t  controls are commonly programmed after a device power\n\t\t\t  reset by a trusted firmware or software module (e.g.,\n\t\t\t  BIOS/bootloader) and then locked from any further\n\t\t\t  modification.\u003c/xhtml:p\u003e\n\n\t\t\t  \u003cxhtml:p\u003eThis behavior is commonly implemented using a trusted lock bit. \n\t\t\t  When set, the lock bit disables writes to a protected set of\n\t\t\t  registers or address regions. Design or coding errors in\n\t\t\t  the implementation of the lock bit protection feature\n\t\t\t  may allow the lock bit to be modified or cleared by\n\t\t\t  software after it has been set. Attackers might be able to unlock the system and\n\t\t\t  features that the bit is intended to protect.\u003c/xhtml:p\u003e\n\t\t\t",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "284",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "technology": [
+      {
+        "class": "Technology-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "operating_system": [
+      {
+        "class": "OS-Independent",
+        "prevalence": "Undetermined"
+      }
+    ],
+    "architecture": [
+      {
+        "class": "Architecture-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Architecture and Design",
+      "note": [
+        "Such issues could be introduced during hardware architecture and design and identified later during Testing or System Configuration phases."
+      ]
+    },
+    {
+      "phase": "Implementation",
+      "note": [
+        "Such issues could be introduced during implementation and identified later during Testing or System Configuration phases."
+      ]
+    }
+  ],
+  "common_consequences": [
+    {
+      "scope": [
+        "Access Control"
+      ],
+      "impact": [
+        "Modify Memory"
+      ],
+      "note": "Registers protected by lock bit can be modified even when lock is set.",
+      "likelihood": "High"
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Architecture and Design",
+        "Implementation",
+        "Testing"
+      ],
+      "description": [
+        "\n                        \u003cxhtml:ul\u003e\n                            \u003cxhtml:li\u003eSecurity lock bit protections must be reviewed for design inconsistency and common weaknesses.\u003c/xhtml:li\u003e\n                            \u003cxhtml:li\u003eSecurity lock programming flow and lock properties must be tested in pre-silicon and post-silicon testing.\u003c/xhtml:li\u003e\n                        \u003c/xhtml:ul\u003e\n                    "
+      ],
+      "effectiveness": "High"
+    }
+  ],
+  "demonstrative_examples": [
+    {
+      "text": "\n                    \u003cIntro_Text\u003eConsider the example design below for a digital thermal sensor that detects overheating of the silicon and triggers system shutdown. The system critical temperature limit (CRITICAL_TEMP_LIMIT) and thermal sensor calibration (TEMP_SENSOR_CALIB) data have to be programmed by firmware, and then the register needs to be locked (TEMP_SENSOR_LOCK).\u003c/Intro_Text\u003e\n                    \u003cExample_Code Nature=\"bad\" Language=\"Other\"\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:th\u003eRegister\u003c/xhtml:th\u003e\n                                \u003cxhtml:th\u003eField description\u003c/xhtml:th\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eCRITICAL_TEMP_LIMIT\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:8] Reserved field; Read only; Default 0\u003cxhtml:p/\u003e[7:0] Critical temp 0-255 Centigrade; Read-write-lock; Default 125\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eTEMP_SENSOR_CALIB\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:0] Thermal sensor calibration data. Slope value used to map sensor reading to degrees Centigrade.\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eTEMP_SENSOR_LOCK\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:1] Reserved field; Read only; Default 0\u003cxhtml:p/\u003e[0] Lock bit, locks CRITICAL_TEMP_LIMIT and TEMP_SENSOR_CALIB registers; Write-1-once; Default 0\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eTEMP_HW_SHUTDOWN\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:2] Reserved field; Read only; Default 0\u003cxhtml:p/\u003e[1] Enable hardware shutdown on critical temperature detection; Read-write; Default 0\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eCURRENT_TEMP\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e [31:8] Reserved field; Read only; Default 0\u003cxhtml:p/\u003e[7:0] Current Temp 0-255 Centigrade; Read-only; Default 0\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                        \u003c/xhtml:table\u003e\n                    \u003c/Example_Code\u003e\n                    \u003cBody_Text\u003eIn this example, note that if the system heats to critical temperature, the response of the system is controlled by the TEMP_HW_SHUTDOWN bit [1], which is not lockable. Thus, the intended security property of the critical temperature sensor cannot be fully protected, since software can misconfigure the TEMP_HW_SHUTDOWN register even after the lock bit is set to disable the shutdown response.\u003c/Body_Text\u003e\n                    \u003cExample_Code Nature=\"good\"\u003e\n                        \u003cxhtml:p\u003eTo fix this weakness, one could change the TEMP_HW_SHUTDOWN field to be locked by TEMP_SENSOR_LOCK.\u003c/xhtml:p\u003e\n                        \u003cxhtml:table\u003e\n                            \u003cxhtml:tr\u003e\n                                \u003cxhtml:td\u003eTEMP_HW_SHUTDOWN\u003c/xhtml:td\u003e\n                                \u003cxhtml:td\u003e[31:2] Reserved field; Read only; Default 0 \u003cxhtml:p/\u003e[1] Enable hardware shutdown on critical temperature detection; Read-write-Lock; Default 0\u003cxhtml:p/\u003e[0] Locked by TEMP_SENSOR_LOCK\u003c/xhtml:td\u003e\n                            \u003c/xhtml:tr\u003e\n                        \u003c/xhtml:table\u003e\n                    \u003c/Example_Code\u003e\n                "
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-2017-6283",
+      "description": "chip reset clears critical read/write lock permissions for RSA function",
+      "link": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6283"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "Arun Kanuparthi, Hareesh Khattri, Parbati Kumar Manna, Narasimha Kumar V Mangipudi",
+      "submission_organization": "Intel Corporation",
+      "submission_date": "2020-01-15T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-06-25T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-08-20T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2021-10-28T00:00:00Z",
+        "modification_comment": "updated Demonstrative_Examples, Description, Detection_Factors, Name, Observed_Examples, Potential_Mitigations, Relationships, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Related_Attack_Patterns, Relationships"
+      }
+    ],
+    "previous_entry_name": [
+      {
+        "text": "Improper Implementation of Lock Protection Registers",
+        "date": "2021-10-28T00:00:00Z"
+      }
+    ],
+    "contribution": [
+      {
+        "type": "Feedback",
+        "contribution_name": "Narasimha Kumar V Mangipudi",
+        "contribution_organization": "Lattice Semiconductor",
+        "contribution_date": "2021-10-20T00:00:00Z",
+        "contribution_comment": "reviewed content changes"
+      },
+      {
+        "type": "Content",
+        "contribution_name": "Hareesh Khattri",
+        "contribution_organization": "Intel Corporation",
+        "contribution_date": "2021-10-22T00:00:00Z",
+        "contribution_comment": "provided observed example"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Primary"
+    }
+  ],
+  "detection_methods": [
+    {
+      "method": "Manual Analysis",
+      "description": "Set the lock bit. Power cycle the\n\t     device. Attempt to clear the lock bit.  If the\n\t     information is changed, implement a design\n\t     fix. Retest. Also, attempt to indirectly clear the lock\n\t     bit or bypass it.",
+      "effectiveness": "High"
+    }
+  ],
+  "related_attack_patterns": [
+    "680"
+  ]
+}

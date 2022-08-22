@@ -1,0 +1,279 @@
+{
+  "id": "61",
+  "name": "UNIX Symbolic Link (Symlink) Following",
+  "abstraction": "Compound",
+  "structure": "Composite",
+  "status": "Incomplete",
+  "description": "The software, when opening a file or directory, does not sufficiently account for when the file is a symbolic link that resolves to a target outside of the intended control sphere. This could allow an attacker to cause the software to operate on unauthorized files.",
+  "extended_description": "A software system that allows UNIX symbolic links (symlink) as part of paths whether in internal code or through user input can allow an attacker to spoof the symbolic link and traverse the file system to unintended locations or access arbitrary files. The symbolic link can permit an attacker to read/write/corrupt a file that they originally did not have permissions to access.",
+  "related_weaknesses": [
+    {
+      "nature": "ChildOf",
+      "cweid": "59",
+      "view_id": "1000",
+      "ordinal": "Primary"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "362",
+      "view_id": "1000"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "340",
+      "view_id": "1000"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "386",
+      "view_id": "1000"
+    },
+    {
+      "nature": "Requires",
+      "cweid": "732",
+      "view_id": "1000"
+    }
+  ],
+  "applicable_platforms": {
+    "language": [
+      {
+        "class": "Language-Independent",
+        "prevalence": "Undetermined"
+      }
+    ]
+  },
+  "modes_of_introduction": [
+    {
+      "phase": "Implementation",
+      "note": [
+        "These are typically reported for temporary files or privileged programs."
+      ]
+    }
+  ],
+  "likelihood_of_exploit": "High",
+  "common_consequences": [
+    {
+      "scope": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "impact": [
+        "Read Files or Directories",
+        "Modify Files or Directories"
+      ]
+    }
+  ],
+  "potential_mitigations": [
+    {
+      "phase": [
+        "Implementation"
+      ],
+      "description": [
+        "Symbolic link attacks often occur when a program creates a tmp directory that stores files/links. Access to the directory should be restricted to the program as to prevent attackers from manipulating the files."
+      ]
+    },
+    {
+      "mitigation_id": "MIT-48.1",
+      "phase": [
+        "Architecture and Design"
+      ],
+      "description": [
+        "\n                  \u003cxhtml:p\u003eFollow the principle of least privilege when assigning access rights to entities in a software system.\u003c/xhtml:p\u003e\n                  \u003cxhtml:p\u003eDenying access to a file can prevent an attacker from replacing that file with a link to a sensitive file. Ensure good compartmentalization in the system to provide protected areas that can be trusted.\u003c/xhtml:p\u003e\n               "
+      ],
+      "strategy": "Separation of Privilege"
+    }
+  ],
+  "observed_examples": [
+    {
+      "reference": "CVE-1999-1386",
+      "description": "Some versions of Perl follows symbolic links when running with the -e option, which allows local users to overwrite arbitrary files via a symlink attack.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1386"
+    },
+    {
+      "reference": "CVE-2000-1178",
+      "description": "Text editor follows symbolic links when creating a rescue copy during an abnormal exit, which allows local users to overwrite the files of other users.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1178"
+    },
+    {
+      "reference": "CVE-2004-0217",
+      "description": "Antivirus update allows local users to create or append to arbitrary files via a symlink attack on a logfile.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0217"
+    },
+    {
+      "reference": "CVE-2003-0517",
+      "description": "Symlink attack allows local users to overwrite files.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0517"
+    },
+    {
+      "reference": "CVE-2004-0689",
+      "description": "Possible interesting example",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0689"
+    },
+    {
+      "reference": "CVE-2005-1879",
+      "description": "Second-order symlink vulnerabilities",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1879"
+    },
+    {
+      "reference": "CVE-2005-1880",
+      "description": "Second-order symlink vulnerabilities",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1880"
+    },
+    {
+      "reference": "CVE-2005-1916",
+      "description": "Symlink in Python program",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1916"
+    },
+    {
+      "reference": "CVE-2000-0972",
+      "description": "Setuid product allows file reading by replacing a file being edited with a symlink to the targeted file, leaking the result in error messages when parsing fails.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0972"
+    },
+    {
+      "reference": "CVE-2005-0824",
+      "description": "Signal causes a dump that follows symlinks.",
+      "link": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0824"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "REF-493",
+      "author": [
+        "Steve Christey"
+      ],
+      "title": "Second-Order Symlink Vulnerabilities",
+      "url": "http://www.securityfocus.com/archive/1/401682",
+      "publication_year": "2005",
+      "publication_month": "--06",
+      "publication_day": "---07",
+      "publication": "Bugtraq"
+    },
+    {
+      "reference_id": "REF-494",
+      "author": [
+        "Shaun Colley"
+      ],
+      "title": "Crafting Symlinks for Fun and Profit",
+      "url": "http://www.infosecwriters.com/texts.php?op=display\u0026id=159",
+      "publication_year": "2004",
+      "publication_month": "--04",
+      "publication_day": "---12",
+      "publication": "Infosec Writers Text Library"
+    },
+    {
+      "section": "Chapter 9, \"Symbolic Link Attacks\", Page 518",
+      "reference_id": "REF-62",
+      "author": [
+        "Mark Dowd",
+        "John McDonald",
+        "Justin Schuh"
+      ],
+      "title": "The Art of Software Security Assessment",
+      "publication_year": "2006",
+      "publisher": "Addison Wesley",
+      "edition": "1st Edition"
+    }
+  ],
+  "content_history": {
+    "submission": {
+      "submission_name": "PLOVER",
+      "submission_date": "2006-07-19T00:00:00Z"
+    },
+    "modification": [
+      {
+        "modification_name": "Eric Dalci",
+        "modification_organization": "Cigital",
+        "modification_date": "2008-07-01T00:00:00Z",
+        "modification_comment": "updated Time_of_Introduction"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-09-08T00:00:00Z",
+        "modification_comment": "updated Relationships, Observed_Example, Other_Notes, Research_Gaps, Taxonomy_Mappings, Weakness_Ordinalities"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2008-10-14T00:00:00Z",
+        "modification_comment": "updated Description"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2009-07-27T00:00:00Z",
+        "modification_comment": "updated Observed_Examples"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2011-06-01T00:00:00Z",
+        "modification_comment": "updated Common_Consequences"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-05-11T00:00:00Z",
+        "modification_comment": "updated Observed_Examples, References"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2012-10-30T00:00:00Z",
+        "modification_comment": "updated Potential_Mitigations"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2014-06-23T00:00:00Z",
+        "modification_comment": "updated Modes_of_Introduction, Other_Notes"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2017-11-08T00:00:00Z",
+        "modification_comment": "updated Applicable_Platforms, Causal_Nature, Likelihood_of_Exploit, References, Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2020-02-24T00:00:00Z",
+        "modification_comment": "updated Relationships"
+      },
+      {
+        "modification_name": "CWE Content Team",
+        "modification_organization": "MITRE",
+        "modification_date": "2022-04-28T00:00:00Z",
+        "modification_comment": "updated Research_Gaps"
+      }
+    ]
+  },
+  "weakness_ordinalities": [
+    {
+      "ordinality": "Resultant"
+    }
+  ],
+  "alternate_terms": [
+    {
+      "term": "Symlink following"
+    },
+    {
+      "term": "symlink vulnerability"
+    }
+  ],
+  "taxonomy_mappings": [
+    {
+      "taxonomy_name": "PLOVER",
+      "entry_name": "UNIX symbolic link following"
+    }
+  ],
+  "related_attack_patterns": [
+    "27"
+  ],
+  "notes": [
+    {
+      "type": "Research Gap",
+      "text": "\n               \u003cxhtml:p\u003eSymlink vulnerabilities are regularly found in C and shell programs, but all programming languages can have this problem. Even shell programs are probably under-reported.\u003c/xhtml:p\u003e\n               \u003cxhtml:p\u003e\"Second-order symlink vulnerabilities\" may exist in programs that invoke other programs that follow symlinks. They are rarely reported but are likely to be fairly common when process invocation is used [REF-493].\u003c/xhtml:p\u003e\n            "
+    }
+  ]
+}
