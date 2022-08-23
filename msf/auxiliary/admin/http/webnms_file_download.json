@@ -1,0 +1,37 @@
+{
+  "name": "WebNMS Framework Server Arbitrary Text File Download",
+  "fullname": "auxiliary/admin/http/webnms_file_download",
+  "rank": 300,
+  "disclosure_date": "2016-07-04T00:00:00Z",
+  "type": "auxiliary",
+  "author": [
+    "Pedro Ribeiro \u003cpedrib@gmail.com\u003e"
+  ],
+  "description": "This module abuses a vulnerability in WebNMS Framework Server 5.2 that allows an\nunauthenticated user to download files off the file system by using a directory\ntraversal attack on the FetchFile servlet.\nNote that only text files can be downloaded properly, as any binary file will get\nmangled by the servlet. Also note that for Windows targets you can only download\nfiles that are in the same drive as the WebNMS installation.\nThis module has been tested with WebNMS Framework Server 5.2 and 5.2 SP1 on\nWindows and Linux.",
+  "references": [
+    "CVE-2016-6601",
+    "URL-https://blogs.securiteam.com/index.php/archives/2712",
+    "URL-https://seclists.org/fulldisclosure/2016/Aug/54"
+  ],
+  "rport": 9090,
+  "autofilter_ports": [
+    80,
+    8080,
+    443,
+    8000,
+    8888,
+    8880,
+    8008,
+    3000,
+    8443
+  ],
+  "autofilter_services": [
+    "http",
+    "https"
+  ],
+  "mod_time": "2020-10-02T17:38:06Z",
+  "path": "/modules/auxiliary/admin/http/webnms_file_download.rb",
+  "is_install_path": true,
+  "ref_name": "admin/http/webnms_file_download",
+  "needs_cleanup": false
+}

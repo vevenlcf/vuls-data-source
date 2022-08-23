@@ -1,0 +1,41 @@
+{
+  "name": "TrendMicro Data Loss Prevention 5.5 Directory Traversal",
+  "fullname": "auxiliary/admin/http/trendmicro_dlp_traversal",
+  "rank": 300,
+  "disclosure_date": "2009-01-09T00:00:00Z",
+  "type": "auxiliary",
+  "author": [
+    "aushack \u003cpatrick@osisecurity.com.au\u003e"
+  ],
+  "description": "This module tests whether a directory traversal vulnerablity is present\n        in Trend Micro DLP (Data Loss Prevention) Appliance v5.5 build \u003c= 1294.\n        The vulnerability appears to be actually caused by the Tomcat UTF-8\n        bug which is implemented in module tomcat_utf8_traversal CVE 2008-2938.\n        This module simply tests for the same bug with Trend Micro specific settings.\n        Note that in the Trend Micro appliance, /etc/shadow is not used and therefore\n        password hashes are stored and anonymously accessible in the passwd file.",
+  "references": [
+    "URL-http://tomcat.apache.org/",
+    "OSVDB-47464",
+    "OSVDB-73447",
+    "CVE-2008-2938",
+    "URL-http://www.securityfocus.com/archive/1/499926",
+    "EDB-17388",
+    "BID-48225"
+  ],
+  "rport": 8443,
+  "autofilter_ports": [
+    80,
+    8080,
+    443,
+    8000,
+    8888,
+    8880,
+    8008,
+    3000,
+    8443
+  ],
+  "autofilter_services": [
+    "http",
+    "https"
+  ],
+  "mod_time": "2022-03-10T18:03:35Z",
+  "path": "/modules/auxiliary/admin/http/trendmicro_dlp_traversal.rb",
+  "is_install_path": true,
+  "ref_name": "admin/http/trendmicro_dlp_traversal",
+  "needs_cleanup": false
+}

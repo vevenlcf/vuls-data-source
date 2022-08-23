@@ -1,0 +1,22 @@
+{
+  "name": "OSX Gather Safari LastSession.plist",
+  "fullname": "post/osx/gather/safari_lastsession",
+  "rank": 300,
+  "type": "post",
+  "author": [
+    "sinn3r \u003csinn3r@metasploit.com\u003e"
+  ],
+  "description": "This module downloads the LastSession.plist file from the target machine.\n        LastSession.plist is used by Safari to track active websites in the current session,\n        and sometimes contains sensitive information such as usernames and passwords.\n\n        This module will first download the original LastSession.plist, and then attempt\n        to find the credential for Gmail. The Gmail's last session state may contain the\n        user's credential if his/her first login attempt failed (likely due to a typo),\n        and then the page got refreshed or another login attempt was made. This also means\n        the stolen credential might contain typos.",
+  "references": [
+    "URL-http://www.securelist.com/en/blog/8168/Loophole_in_Safari"
+  ],
+  "platform": "OSX",
+  "mod_time": "2017-09-17T16:00:04Z",
+  "path": "/modules/post/osx/gather/safari_lastsession.rb",
+  "is_install_path": true,
+  "ref_name": "osx/gather/safari_lastsession",
+  "session_types": [
+    "meterpreter",
+    "shell"
+  ]
+}
