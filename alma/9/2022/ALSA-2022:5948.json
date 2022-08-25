@@ -1,7 +1,7 @@
 {
   "id": "ALSA-2022:5948",
   "type": "security",
-  "title": "ALSA-2022:5948: galera, mariadb, and mysql-selinux security, bug fix, and enhancement update (Moderate)",
+  "title": "Moderate: galera, mariadb, and mysql-selinux security, bug fix, and enhancement update",
   "description": "MariaDB is a multi-user, multi-threaded SQL database server that is binary compatible with MySQL. \nThe following packages have been upgraded to a later upstream version: galera (26.4.11), mariadb (10.5.16), mysql-selinux (1.0.5).\nSecurity Fix(es):\n* mariadb: MariaDB through 10.5.9 allows attackers to trigger a convert_const_to_int use-after-free when the BIGINT data type is used (CVE-2021-46669)\n* mariadb: lack of proper validation of the length of user-supplied data prior to copying it to a fixed-length stack-based buffer (CVE-2022-24048)\n* mariadb: lack of validating the existence of an object prior to performing operations on the object (CVE-2022-24050)\n* mariadb: lack of proper validation of a user-supplied string before using it as a format specifier (CVE-2022-24051)\n* mariadb: CONNECT Storage Engine Heap-based Buffer Overflow Privilege Escalation Vulnerability (CVE-2022-24052)\n* mariadb: assertion failure in Item_args::walk_arg (CVE-2022-27376)\n* mariadb: use-after-poison when complex conversion is involved in blob (CVE-2022-27377)\n* mariadb: server crash in create_tmp_table::finalize (CVE-2022-27378)\n* mariadb: server crash in component arg_comparator::compare_real_fixed (CVE-2022-27379)\n* mariadb: server crash at my_decimal::operator= (CVE-2022-27380)\n* mariadb: server crash at Field::set_default via specially crafted SQL statements (CVE-2022-27381)\n* mariadb: assertion failure via component Item_field::used_tables/update_depend_map_for_order (CVE-2022-27382)\n* mariadb: use-after-poison in my_strcasecmp_8bit() of ctype-simple.c (CVE-2022-27383)\n* mariadb: crash via component Item_subselect::init_expr_cache_tracker (CVE-2022-27384)\n* mariadb: server crashes in query_arena::set_query_arena upon SELECT from view (CVE-2022-27386)\n* mariadb: assertion failures in decimal_bin_size (CVE-2022-27387)\n* mariadb: crash when using HAVING with NOT EXIST predicate in an equality (CVE-2022-27444)\n* mariadb: assertion failure in compare_order_elements (CVE-2022-27445)\n* mariadb: crash when using HAVING with IS NULL predicate in an equality (CVE-2022-27446)\n* mariadb: use-after-poison in Binary_string::free_buffer (CVE-2022-27447)\n* mariadb: crash in multi-update and implicit grouping (CVE-2022-27448)\n* mariadb: assertion failure in sql/item_func.cc (CVE-2022-27449)\n* mariadb: crash via window function in expression in ORDER BY (CVE-2022-27451)\n* mariadb: assertion failure in sql/item_cmpfunc.cc (CVE-2022-27452)\n* mariadb: use-after-free when WHERE has subquery with an outer reference in HAVING (CVE-2022-27455)\n* mariadb: assertion failure in VDec::VDec at /sql/sql_type.cc (CVE-2022-27456)\n* mariadb: incorrect key in \"dup value\" error after long unique (CVE-2022-27457)\n* mariadb: use-after-poison in Binary_string::free_buffer (CVE-2022-27458)\n* mariadb: improper locking due to the unreleased lock in extra/mariabackup/ds_compress.cc (CVE-2022-31622)\n* mariadb: improper locking due to the unreleased lock in extra/mariabackup/ds_compress.cc (CVE-2022-31623)\n* mariadb: Crash executing query with VIEW, aggregate and subquery (CVE-2021-46659)\n* mariadb: MariaDB allows an application crash in find_field_in_tables and find_order_in_list via an unused common table expression (CTE) (CVE-2021-46661)\n* mariadb: MariaDB through 10.5.13 allows a ha_maria::extra application crash via certain SELECT statements (CVE-2021-46663)\n* mariadb: MariaDB through 10.5.9 allows an application crash in sub_select_postjoin_aggr for a NULL value of aggr (CVE-2021-46664)\n* mariadb: MariaDB through 10.5.9 allows a sql_parse.cc application crash because of incorrect used_tables expectations (CVE-2021-46665)\n* mariadb: MariaDB through 10.5.9 allows an application crash via certain long SELECT DISTINCT statements (CVE-2021-46668)\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
   "severity": "Moderate",
   "packages": [
@@ -114,6 +114,30 @@
       "reboot_suggested": 0
     },
     {
+      "name": "mariadb-test",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "x86_64",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-test-10.5.16-2.el9_0.x86_64.rpm",
+      "checksum": "7ccd64432f350c45d01ede492e4d3abf7ee3d94f52c52d7b76efd94d28690a39",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "x86_64",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-devel-10.5.16-2.el9_0.x86_64.rpm",
+      "checksum": "7fe611ae97bd95b391d569ed68f1159848b7253653059b79fb1e1a7dc89d3c1c",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
       "name": "mariadb-common",
       "epoch": "3",
       "version": "10.5.16",
@@ -122,6 +146,18 @@
       "src": "mariadb-10.5.16-2.el9_0.src.rpm",
       "filename": "mariadb-common-10.5.16-2.el9_0.x86_64.rpm",
       "checksum": "b97941f1930c4dae49f4327a6827497cf718253bc0bb8ec04191d89a193b4f3a",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-embedded-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "x86_64",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.x86_64.rpm",
+      "checksum": "bbc665ce6563a480a408856b934a5ccb283023bdfd241fe41930eb71fb81dd87",
       "checksum_type": "sha256",
       "reboot_suggested": 0
     },
@@ -246,6 +282,18 @@
       "reboot_suggested": 0
     },
     {
+      "name": "mariadb-test",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "ppc64le",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-test-10.5.16-2.el9_0.ppc64le.rpm",
+      "checksum": "955334f64ca1b6e73a1083f038645e5c6e7dc023537c22583bab1b8a05eddaae",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
       "name": "mariadb-pam",
       "epoch": "3",
       "version": "10.5.16",
@@ -254,6 +302,30 @@
       "src": "mariadb-10.5.16-2.el9_0.src.rpm",
       "filename": "mariadb-pam-10.5.16-2.el9_0.ppc64le.rpm",
       "checksum": "bba2cb5810487bed524de2dae61465b56902b3409833b6f45286dd5b5d4b79b6",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-embedded-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "ppc64le",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.ppc64le.rpm",
+      "checksum": "c65bfa02c475aee5ee614910b80a637fc3db353485810874b36d83ab8fa6f84e",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "ppc64le",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-devel-10.5.16-2.el9_0.ppc64le.rpm",
+      "checksum": "fb695453f8836fd714a583a9ec33b6e0b11c4e5f5062955bf10533eaeb88da38",
       "checksum_type": "sha256",
       "reboot_suggested": 0
     },
@@ -270,6 +342,18 @@
       "reboot_suggested": 0
     },
     {
+      "name": "mariadb-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "aarch64",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-devel-10.5.16-2.el9_0.aarch64.rpm",
+      "checksum": "146b0b5217618b0304f10a2470a8d5e0db6a99349d360b6807e62181f5475b3d",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
       "name": "mariadb-server-galera",
       "epoch": "3",
       "version": "10.5.16",
@@ -278,6 +362,18 @@
       "src": "mariadb-10.5.16-2.el9_0.src.rpm",
       "filename": "mariadb-server-galera-10.5.16-2.el9_0.aarch64.rpm",
       "checksum": "2898ec19d2d60a138ab94f958ee9c6e9697e8aa391b0f955262f781ef3871786",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-test",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "aarch64",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-test-10.5.16-2.el9_0.aarch64.rpm",
+      "checksum": "62c8765ac5fa9cb1770372d8976b45f4151feefb69c5f129c318d3cea0309c8f",
       "checksum_type": "sha256",
       "reboot_suggested": 0
     },
@@ -362,6 +458,18 @@
       "src": "mariadb-10.5.16-2.el9_0.src.rpm",
       "filename": "mariadb-embedded-10.5.16-2.el9_0.aarch64.rpm",
       "checksum": "b1e67dc923d61ed166201cecd3c02e333474085bd5ce030977a14fe6d3f95807",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-embedded-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "aarch64",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.aarch64.rpm",
+      "checksum": "bfad67f9e719f3a6daba746d8c53914062e6e4fa08c97f3e757d0ae0cab7736e",
       "checksum_type": "sha256",
       "reboot_suggested": 0
     },
@@ -486,6 +594,18 @@
       "reboot_suggested": 0
     },
     {
+      "name": "mariadb-test",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "s390x",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-test-10.5.16-2.el9_0.s390x.rpm",
+      "checksum": "b2dcbba4ed23cf529d96b736292034086c6914479b6a39e6d91039427219975a",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
       "name": "mariadb-gssapi-server",
       "epoch": "3",
       "version": "10.5.16",
@@ -498,6 +618,18 @@
       "reboot_suggested": 0
     },
     {
+      "name": "mariadb-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "s390x",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-devel-10.5.16-2.el9_0.s390x.rpm",
+      "checksum": "bd2f1ed7cfb768fe1ec4ede49366f7d3f90fac87363d3dd97ee7ce64ed42d38c",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
       "name": "mariadb-embedded",
       "epoch": "3",
       "version": "10.5.16",
@@ -506,6 +638,18 @@
       "src": "mariadb-10.5.16-2.el9_0.src.rpm",
       "filename": "mariadb-embedded-10.5.16-2.el9_0.s390x.rpm",
       "checksum": "f2e6037e84dbd95103119d290e7972b72c4052717964e9d18590eb8688a62396",
+      "checksum_type": "sha256",
+      "reboot_suggested": 0
+    },
+    {
+      "name": "mariadb-embedded-devel",
+      "epoch": "3",
+      "version": "10.5.16",
+      "release": "2.el9_0",
+      "arch": "s390x",
+      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
+      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.s390x.rpm",
+      "checksum": "fa1e775a824f64274a62358ac5e0df3fd48a356ef74cab87073ee864ead2522a",
       "checksum_type": "sha256",
       "reboot_suggested": 0
     },
@@ -530,150 +674,6 @@
       "src": "mariadb-10.5.16-2.el9_0.src.rpm",
       "filename": "mariadb-server-galera-10.5.16-2.el9_0.s390x.rpm",
       "checksum": "fefd371740d55e6748ad87e7a5dc218a8825baae9316e4069a6e279df3053103",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "aarch64",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-devel-10.5.16-2.el9_0.aarch64.rpm",
-      "checksum": "146b0b5217618b0304f10a2470a8d5e0db6a99349d360b6807e62181f5475b3d",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-test",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "aarch64",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-test-10.5.16-2.el9_0.aarch64.rpm",
-      "checksum": "62c8765ac5fa9cb1770372d8976b45f4151feefb69c5f129c318d3cea0309c8f",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-embedded-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "aarch64",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.aarch64.rpm",
-      "checksum": "bfad67f9e719f3a6daba746d8c53914062e6e4fa08c97f3e757d0ae0cab7736e",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-test",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "s390x",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-test-10.5.16-2.el9_0.s390x.rpm",
-      "checksum": "b2dcbba4ed23cf529d96b736292034086c6914479b6a39e6d91039427219975a",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "s390x",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-devel-10.5.16-2.el9_0.s390x.rpm",
-      "checksum": "bd2f1ed7cfb768fe1ec4ede49366f7d3f90fac87363d3dd97ee7ce64ed42d38c",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-embedded-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "s390x",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.s390x.rpm",
-      "checksum": "fa1e775a824f64274a62358ac5e0df3fd48a356ef74cab87073ee864ead2522a",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-test",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "x86_64",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-test-10.5.16-2.el9_0.x86_64.rpm",
-      "checksum": "7ccd64432f350c45d01ede492e4d3abf7ee3d94f52c52d7b76efd94d28690a39",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "x86_64",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-devel-10.5.16-2.el9_0.x86_64.rpm",
-      "checksum": "7fe611ae97bd95b391d569ed68f1159848b7253653059b79fb1e1a7dc89d3c1c",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-embedded-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "x86_64",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.x86_64.rpm",
-      "checksum": "bbc665ce6563a480a408856b934a5ccb283023bdfd241fe41930eb71fb81dd87",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-test",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "ppc64le",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-test-10.5.16-2.el9_0.ppc64le.rpm",
-      "checksum": "955334f64ca1b6e73a1083f038645e5c6e7dc023537c22583bab1b8a05eddaae",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-embedded-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "ppc64le",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-embedded-devel-10.5.16-2.el9_0.ppc64le.rpm",
-      "checksum": "c65bfa02c475aee5ee614910b80a637fc3db353485810874b36d83ab8fa6f84e",
-      "checksum_type": "sha256",
-      "reboot_suggested": 0
-    },
-    {
-      "name": "mariadb-devel",
-      "epoch": "3",
-      "version": "10.5.16",
-      "release": "2.el9_0",
-      "arch": "ppc64le",
-      "src": "mariadb-10.5.16-2.el9_0.src.rpm",
-      "filename": "mariadb-devel-10.5.16-2.el9_0.ppc64le.rpm",
-      "checksum": "fb695453f8836fd714a583a9ec33b6e0b11c4e5f5062955bf10533eaeb88da38",
       "checksum_type": "sha256",
       "reboot_suggested": 0
     }
