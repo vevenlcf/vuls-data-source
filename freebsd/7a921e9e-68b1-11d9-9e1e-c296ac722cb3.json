@@ -1,0 +1,38 @@
+{
+  "vid": "7a921e9e-68b1-11d9-9e1e-c296ac722cb3",
+  "topic": "squid -- no sanity check of usernames in squid_ldap_auth",
+  "description": "\n\t\u003cp\u003eThe LDAP authentication helper did not strip\n\t  leading or trailing spaces from the login name.\n\t  According to the squid patches page:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squid-cache.org/Versions/v2/2.5/bugs/#squid-2.5.STABLE7-ldap_spaces\"\u003e\n\t  \u003cp\u003eLDAP is very forgiving about spaces in search\n\t    filters and this could be abused to log in\n\t    using several variants of the login name,\n\t    possibly bypassing explicit access controls\n\t    or confusing accounting.\u003c/p\u003e\n\t  \u003cp\u003eWorkaround: Block logins with spaces\u003c/p\u003e\n\t    \u003cpre\u003e\n\t    acl login_with_spaces proxy_auth_regex [:space:]\n\t\t    http_access deny login_with_spaces\n\t    \u003c/pre\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "squid",
+      "range": [
+        {
+          "lt": "2.5.7_7"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-01-10T00:00:00Z",
+    "entry": "2005-01-19T00:00:00Z",
+    "modified": "2005-02-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/Versions/v2/2.5/bugs/#squid-2.5.STABLE7-ldap_spaces"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/bugs/show_bug.cgi?id=1187"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0173"
+    },
+    {
+      "source": "CertVU",
+      "text": "924198"
+    }
+  ]
+}

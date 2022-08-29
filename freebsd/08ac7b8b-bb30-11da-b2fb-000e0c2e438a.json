@@ -1,0 +1,56 @@
+{
+  "vid": "08ac7b8b-bb30-11da-b2fb-000e0c2e438a",
+  "topic": "sendmail -- race condition vulnerability",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eA race condition has been reported to exist in the handling\n\t  by sendmail of asynchronous signals.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eA remote attacker may be able to execute arbitrary code with\n\t  the privileges of the user running sendmail, typically\n\t  root.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eThere is no known workaround other than disabling\n\t  sendmail.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "sendmail",
+      "range": [
+        {
+          "lt": "8.13.6",
+          "gt": "8.13"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_6",
+          "ge": "6.0"
+        },
+        {
+          "lt": "5.4_13",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_28",
+          "ge": "5.3"
+        },
+        {
+          "lt": "4.11_16",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_22",
+          "ge": "4.10"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-03-22T00:00:00Z",
+    "entry": "2006-03-24T00:00:00Z",
+    "modified": "2006-06-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0058"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:13.sendmail"
+    }
+  ]
+}

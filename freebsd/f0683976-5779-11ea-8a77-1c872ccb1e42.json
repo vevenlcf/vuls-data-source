@@ -1,0 +1,38 @@
+{
+  "vid": "f0683976-5779-11ea-8a77-1c872ccb1e42",
+  "topic": "OpenSMTPd -- LPE and RCE in OpenSMTPD's default install",
+  "description": "\n\t\u003cp\u003eOpenSMTPD developers reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://opensmtpd.org/security.html\"\u003e\n\t  \u003cp\u003eAn out of bounds read in smtpd allows an attacker to inject arbitrary\n\t    commands into the envelope file which are then executed as root.\n\t    Separately, missing privilege revocation in smtpctl allows arbitrary\n\t    commands to be run with the _smtpq group.\u003c/p\u003e\n\t  \u003cp\u003eAn unprivileged local attacker can read the first line of an arbitrary\n\t    file (for example, root's password hash in /etc/master.passwd) or the\n\t    entire contents of another user's file (if this file and\n\t    /var/spool/smtpd/ are on the same filesystem).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "opensmtpd",
+      "range": [
+        {
+          "lt": "6.6.4,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-02-22T00:00:00Z",
+    "entry": "2020-02-24T00:00:00Z",
+    "modified": "2020-02-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.openwall.com/lists/oss-security/2020/02/24/4"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.openwall.com/lists/oss-security/2020/02/24/5"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-8793"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-8794"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "vid": "6d68618a-7199-11db-a2ad-000c6ec775d9",
+  "topic": "bugzilla -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eA Bugzilla Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.bugzilla.org/security/2.18.5/\"\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eSometimes the information put into the \u0026lt;h1\u0026gt; and\n\t      \u0026lt;h2\u0026gt; tags in Bugzilla was not properly escaped,\n\t      leading to a possible XSS vulnerability.\u003c/li\u003e\n\t    \u003cli\u003eBugzilla administrators were allowed to put raw,\n\t      unfiltered HTML into many fields in Bugzilla, leading to\n\t      a possible XSS vulnerability.  Now, the HTML allowed in\n\t      those fields is limited.\u003c/li\u003e\n\t    \u003cli\u003eattachment.cgi could leak the names of private\n\t      attachments\u003c/li\u003e\n\t    \u003cli\u003eThe \"deadline\" field was visible in the XML format of\n\t      a bug, even to users who were not a member of the\n\t      \"timetrackinggroup.\"\u003c/li\u003e\n\t    \u003cli\u003eA malicious user could pass a URL to an admin, and\n\t      make the admin delete or change something that he had\n\t      not intended to delete or change.\u003c/li\u003e\n\t    \u003cli\u003eIt is possible to inject arbitrary HTML into the\n\t      showdependencygraph.cgi page, allowing for a cross-site\n\t      scripting attack.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bugzilla",
+      "range": [
+        {
+          "lt": "2.22.1",
+          "gt": "2.*"
+        }
+      ]
+    },
+    {
+      "name": "ja-bugzilla",
+      "range": [
+        {
+          "lt": "2.22.1",
+          "gt": "2.*"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-10-15T00:00:00Z",
+    "entry": "2006-11-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.bugzilla.org/security/2.18.5/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-5453"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-5454"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-5455"
+    }
+  ]
+}

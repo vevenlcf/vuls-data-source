@@ -1,0 +1,34 @@
+{
+  "vid": "3decc87d-2498-11e2-b0c7-000d601460a4",
+  "topic": "ruby -- Unintentional file creation caused by inserting an illegal NUL character",
+  "description": "\n\t\u003cp\u003eThe official ruby site reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.ruby-lang.org/en/news/2012/10/12/poisoned-NUL-byte-vulnerability/\"\u003e\n\t  \u003cp\u003eA vulnerability was found that file creation routines can create\n\t    unintended files by strategically inserting NUL(s) in file paths.\n\t    This vulnerability has been reported as CVE-2012-4522.\u003c/p\u003e\n\t  \u003cp\u003eRuby can handle arbitrary binary patterns as Strings, including\n\t    NUL chars. On the other hand OSes and other libraries tend not.\n\t    They usually treat a NUL as an End of String mark. So to interface\n\t    them with Ruby, NUL chars should properly be avoided.\u003c/p\u003e\n\t  \u003cp\u003eHowever methods like IO#open did not check the filename passed to\n\t    them, and just passed those strings to lower layer routines. This\n\t    led to create unintentional files.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ruby",
+      "range": [
+        {
+          "lt": "1.9.3.286,1",
+          "gt": "1.9.3,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-10-12T00:00:00Z",
+    "entry": "2012-11-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.ruby-lang.org/en/news/2012/10/12/poisoned-NUL-byte-vulnerability/"
+    },
+    {
+      "source": "URL",
+      "text": "https://access.redhat.com/security/cve/CVE-2012-4522/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4522"
+    }
+  ]
+}

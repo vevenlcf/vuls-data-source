@@ -1,0 +1,77 @@
+{
+  "vid": "c7a135f4-66a4-11e8-9e63-3085a9a47796",
+  "topic": "Git -- Fix memory out-of-bounds and remote code execution vulnerabilities (CVE-2018-11233 and CVE-2018-11235)",
+  "description": "\n\t\u003cp\u003eThe Git community  reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://marc.info/?l=git\u0026amp;m=152761328506724\u0026amp;=2\"\u003e\n\t  \u003cul\u003e\u003cli\u003eIn affected versions of Git, code to sanity-check pathnames on\n\t    NTFS can result in reading out-of-bounds memory.\u003c/li\u003e\n\t    \u003cli\u003eIn affected versions of Git, remote code execution can\n\t    occur. With a crafted .gitmodules file, a malicious project can\n\t    execute an arbitrary script on a machine that runs \"git clone\n\t    --recurse-submodules\" because submodule \"names\" are obtained from\n\t    this file, and then appended to $GIT_DIR/modules, leading to\n\t    directory traversal with \"../\" in a name. Finally, post-checkout\n\t    hooks from a submodule are executed, bypassing the intended design\n\t    in which hooks are not obtained from a remote server.\u003c/li\u003e\n\t \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "git",
+      "range": [
+        {
+          "lt": "2.13.7"
+        },
+        {
+          "lt": "2.14.4",
+          "ge": "2.14"
+        },
+        {
+          "lt": "2.15.2",
+          "ge": "2.15"
+        },
+        {
+          "lt": "2.16.4",
+          "ge": "2.16"
+        },
+        {
+          "lt": "2.17.1",
+          "ge": "2.17"
+        }
+      ]
+    },
+    {
+      "name": "git-lite",
+      "range": [
+        {
+          "lt": "2.13.7"
+        },
+        {
+          "lt": "2.14.4",
+          "ge": "2.14"
+        },
+        {
+          "lt": "2.15.2",
+          "ge": "2.15"
+        },
+        {
+          "lt": "2.16.4",
+          "ge": "2.16"
+        },
+        {
+          "lt": "2.17.1",
+          "ge": "2.17"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-05-29T00:00:00Z",
+    "entry": "2018-06-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11233"
+    },
+    {
+      "source": "URL",
+      "text": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-11233"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-11235"
+    }
+  ]
+}

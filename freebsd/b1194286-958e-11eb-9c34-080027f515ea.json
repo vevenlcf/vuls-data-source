@@ -1,0 +1,30 @@
+{
+  "vid": "b1194286-958e-11eb-9c34-080027f515ea",
+  "topic": "curl -- Automatic referer leaks credentials",
+  "description": "\n\t\u003cp\u003eDaniel Stenberg reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.se/docs/CVE-2021-22876.html\"\u003e\n\t  \u003cp\u003e\n\t    libcurl does not strip off user credentials from the URL when\n\t    automatically populating the Referer: HTTP request header field\n\t    in outgoing HTTP requests, and therefore risks leaking sensitive\n\t    data to the server that is the target of the second HTTP request.\n\t  \u003c/p\u003e\n\t  \u003cp\u003e\n\t    libcurl automatically sets the Referer: HTTP request header field\n\t    in outgoing HTTP requests if the CURLOPT_AUTOREFERER option is set.\n\t    With the curl tool, it is enabled with --referer \";auto\".\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.76.0",
+          "ge": "7.1.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-03-31T00:00:00Z",
+    "entry": "2021-04-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.se/docs/CVE-2021-22876.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-22876"
+    }
+  ]
+}

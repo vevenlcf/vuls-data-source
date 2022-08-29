@@ -1,0 +1,33 @@
+{
+  "vid": "cd7e260a-6bff-11d9-a5df-00065be4b5b6",
+  "topic": "newsgrab -- insecure file and directory creation",
+  "description": "\n     \u003cp\u003eThe newsgrab script uses insecure permissions during the\n     creation of the local output directory and downloaded files.\u003c/p\u003e\n     \u003cp\u003eAfter a file is created, permissions on it are set using the mode\n     value of the newsgroup posting. This can potentially be a problem\n     when the mode is not restrictive enough. In addition, the output\n     directory is created with world writable permissions allowing other\n     users to drop symlinks or other files at that location.\u003c/p\u003e\n    ",
+  "affects": [
+    {
+      "name": "newsgrab",
+      "range": [
+        {
+          "le": "0.4.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-01-18T00:00:00Z",
+    "entry": "2005-02-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://people.freebsd.org/~niels/issues/newsgrab-20050114.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://sourceforge.net/project/shownotes.php?release_id=300562"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0154"
+    }
+  ]
+}

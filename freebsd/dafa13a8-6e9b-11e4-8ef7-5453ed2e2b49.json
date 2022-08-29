@@ -1,0 +1,29 @@
+{
+  "vid": "dafa13a8-6e9b-11e4-8ef7-5453ed2e2b49",
+  "topic": "kde-workspace -- privilege escalation",
+  "description": "\n\t\u003cp\u003eDavid Edmundson reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.kde.org/info/security/advisory-20141106-1.txt\"\u003e\n\t  \u003cp\u003eKDE workspace configuration module for setting the date and time\n\t    has a helper program which runs as root for performing actions.\n\t    This is secured with polkit.\u003c/p\u003e\n\t  \u003cp\u003eThis helper takes the name of the ntp utility to run as an\n\t    argument. This allows a hacker to run any arbitrary command as root\n\t    under the guise of updating the time.\u003c/p\u003e\n\t  \u003cp\u003eAn application can gain root priveledges from an admin user with\n\t    either misleading information or no interaction.\u003c/p\u003e\n\t  \u003cp\u003eOn some systems the user will be shown a prompt to change the\n\t    time. However, if the system has policykit-desktop-privileges\n\t    installed, the datetime helper will be invoked by an admin user\n\t    without any prompts.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "kde-workspace",
+      "range": [
+        {
+          "lt": "4.11.13_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-11-06T00:00:00Z",
+    "entry": "2014-11-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2014-8651"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://seclists.org/oss-sec/2014/q4/520"
+    }
+  ]
+}

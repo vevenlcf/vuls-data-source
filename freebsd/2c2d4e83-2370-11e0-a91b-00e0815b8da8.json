@@ -1,0 +1,26 @@
+{
+  "vid": "2c2d4e83-2370-11e0-a91b-00e0815b8da8",
+  "topic": "tarsnap -- cryptographic nonce reuse",
+  "description": "\n\t\u003cp\u003eColin Percival reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.daemonology.net/blog/2011-01-18-tarsnap-critical-security-bug.html\"\u003e\n\t  \u003cp\u003eIn versions 1.0.22 through 1.0.27 of Tarsnap, the CTR nonce value\n\t    is not incremented after each chunk is encrypted. (The CTR counter\n\t    is correctly incremented after each 16 bytes of data was processed,\n\t    but this counter is reset to zero for each new chunk.)\u003c/p\u003e\n\t  \u003cp\u003eNote that since the Tarsnap client-server protocol is encrypted,\n\t    being able to intercept Tarsnap client-server traffic does not\n\t    provide an attacker with access to the data.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "tarsnap",
+      "range": [
+        {
+          "ge": "1.0.22",
+          "le": "1.0.27"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-01-18T00:00:00Z",
+    "entry": "2011-01-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.daemonology.net/blog/2011-01-18-tarsnap-critical-security-bug.html"
+    }
+  ]
+}

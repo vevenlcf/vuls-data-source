@@ -1,0 +1,71 @@
+{
+  "vid": "c93533a3-24f1-11e5-8b74-3c970e169bc2",
+  "topic": "bind -- denial of service vulnerability",
+  "description": "\n\t\u003cp\u003eISC reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01267/\"\u003e\n\t  \u003cp\u003eA very uncommon combination of zone data has been found\n\t    that triggers a bug in BIND, with the result that named\n\t    will exit with a \"REQUIRE\" failure in name.c when validating\n\t    the data returned in answer to a recursive query.\u003c/p\u003e\n\t  \u003cp\u003eA recursive resolver that is performing DNSSEC validation\n\t    can be deliberately terminated by any attacker who can\n\t    cause a query to be performed against a maliciously\n\t    constructed zone.  This will result in a denial of\n\t    service to clients who rely on that resolver.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind910",
+      "range": [
+        {
+          "lt": "9.10.2P2"
+        }
+      ]
+    },
+    {
+      "name": "bind99",
+      "range": [
+        {
+          "lt": "9.9.7P1"
+        }
+      ]
+    },
+    {
+      "name": "bind910-base",
+      "range": [
+        {
+          "gt": "0"
+        }
+      ]
+    },
+    {
+      "name": "bind99-base",
+      "range": [
+        {
+          "gt": "0"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "9.3_19",
+          "ge": "9.3"
+        },
+        {
+          "lt": "8.4_33",
+          "ge": "8.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-07-07T00:00:00Z",
+    "entry": "2015-07-07T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01267/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4620"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-15:11.bind"
+    }
+  ]
+}

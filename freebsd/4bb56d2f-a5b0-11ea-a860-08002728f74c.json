@@ -1,0 +1,37 @@
+{
+  "vid": "4bb56d2f-a5b0-11ea-a860-08002728f74c",
+  "topic": "nghttp2 -- DoS vulnerability",
+  "description": "\n\t\u003cp\u003enghttp2 security advisories:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/nghttp2/nghttp2/security/advisories/GHSA-q5wr-xfw9-q7xr\"\u003e\n\t  \u003cp\u003eThe overly large HTTP/2 SETTINGS frame payload causes denial of service.\u003c/p\u003e\n\t  \u003cp\u003eThe proof of concept attack involves a malicious client constructing a\n\t    SETTINGS frame with a length of 14,400 bytes (2400 individual settings\n\t    entries) over and over again. The attack causes the CPU to spike at 100%.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "nghttp2",
+      "range": [
+        {
+          "lt": "1.41.0"
+        }
+      ]
+    },
+    {
+      "name": "libnghttp2",
+      "range": [
+        {
+          "lt": "1.41.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-06-02T00:00:00Z",
+    "entry": "2020-06-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/nghttp2/nghttp2/security/advisories/GHSA-q5wr-xfw9-q7xr"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-11080"
+    }
+  ]
+}

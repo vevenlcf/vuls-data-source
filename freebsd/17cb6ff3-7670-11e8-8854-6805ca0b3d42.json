@@ -1,0 +1,37 @@
+{
+  "vid": "17cb6ff3-7670-11e8-8854-6805ca0b3d42",
+  "topic": "phpmyadmin -- remote code inclusion and XSS scripting",
+  "description": "\n\t\u003cp\u003eThe phpMyAdmin development team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2018-3/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eXSS in Designer feature\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eA Cross-Site Scripting vulnerability was found in the\n\t    Designer feature, where an attacker can deliver a\n\t    payload to a user through a specially-crafted database\n\t    name.\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this attack to be of moderate severity.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2018-4/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eFile inclusion and remote code execution attack\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eA flaw has been discovered where an attacker can include\n\t    (view and potentially execute) files on the server.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability comes from a portion of code where\n\t    pages are redirected and loaded within phpMyAdmin, and an\n\t    improper test for whitelisted pages.\u003c/p\u003e\n\t  \u003cp\u003eAn attacker must be authenticated, except in these\n\t    situations:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e$cfg['AllowArbitraryServer'] = true: attacker can\n\t    specify any host he/she is already in control of, and\n\t    execute arbitrary code on phpMyAdmin\u003c/li\u003e\n\t    \u003cli\u003e$cfg['ServerDefault'] = 0: this bypasses the login and\n\t    runs the vulnerable code without any authentication\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this to be severe.\u003c/p\u003e \u003ch3\u003eMitigation\n\t    factor\u003c/h3\u003e \u003cp\u003eConfiguring PHP with a restrictive\n\t    `open_basedir` can greatly restrict an attacker's ability to\n\t    view files on the server.  Vulnerable systems should not be\n\t    run with the phpMyAdmin directives\n\t    $cfg['AllowArbitraryServer'] = true or $cfg['ServerDefault']\n\t    = 0\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "phpmyadmin",
+      "range": [
+        {
+          "lt": "4.8.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-06-21T00:00:00Z",
+    "entry": "2018-06-22T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2018-3/"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2018-4/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-12581"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-12613"
+    }
+  ]
+}

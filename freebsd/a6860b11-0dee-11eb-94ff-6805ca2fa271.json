@@ -1,0 +1,38 @@
+{
+  "vid": "a6860b11-0dee-11eb-94ff-6805ca2fa271",
+  "topic": "powerdns-recursor -- cache pollution",
+  "description": "\n\t\u003cp\u003ePowerDNS Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://doc.powerdns.com/recursor/changelog/4.3.html#change-4.3.5\"\u003e\n\t  \u003cp\u003eCVE-2020-25829: An issue has been found in PowerDNS Recursor where a\n\t    remote attacker can cause the cached records for a given name to be\n\t    updated to the ‘Bogus’ DNSSEC validation state, instead of their actual\n\t    DNSSEC ‘Secure’ state, via a DNS ANY query. This results in a denial\n\t    of service for installations that always validate (dnssec=validate)\n\t    and for clients requesting validation when on-demand validation is\n\t    enabled (dnssec=process).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "powerdns-recursor",
+      "range": [
+        {
+          "lt": "4.3.5",
+          "ge": "4.3.0"
+        },
+        {
+          "lt": "4.2.5",
+          "ge": "4.2.0"
+        },
+        {
+          "lt": "4.1.18",
+          "ge": "4.1.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-10-13T00:00:00Z",
+    "entry": "2020-10-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2020-07.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-25829"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "vid": "757ee63b-269a-11ec-a616-6c3be5272acd",
+  "topic": "Grafana -- Snapshot authentication bypass",
+  "description": "\n\t\u003cp\u003eGrafana Labs reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://grafana.com/blog/2021/10/05/grafana-7.5.11-and-8.1.6-released-with-critical-security-fix/\"\u003e\n\t  \u003cp\u003eUnauthenticated and authenticated users are able to view the snapshot with the lowest database key by accessing the literal paths:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e\u003ccode\u003e/dashboard/snapshot/:key\u003c/code\u003e, or\u003c/li\u003e\n\t    \u003cli\u003e\u003ccode\u003e/api/snapshots/:key\u003c/code\u003e\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eIf the snapshot \"public_mode\" configuration setting is set to true (vs default of false), unauthenticated users are able to delete the snapshot with the lowest database key by accessing the literal path:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e\u003ccode\u003e/api/snapshots-delete/:deleteKey\u003c/code\u003e\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eRegardless of the snapshot \"public_mode\" setting, authenticated users are able to delete the snapshot with the lowest database key by accessing the literal paths:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e\u003ccode\u003e/api/snapshots/:key\u003c/code\u003e, or\u003c/li\u003e\n\t    \u003cli\u003e\u003ccode\u003e/api/snapshots-delete/:deleteKey\u003c/code\u003e\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eThe combination of deletion and viewing enables a complete walk through all snapshot data while resulting in complete snapshot data loss.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "grafana8",
+      "range": [
+        {
+          "lt": "8.1.6",
+          "ge": "8.0.0"
+        },
+        {
+          "lt": "7.5.11",
+          "ge": "2.0.1"
+        }
+      ]
+    },
+    {
+      "name": "grafana7",
+      "range": [
+        {
+          "lt": "8.1.6",
+          "ge": "8.0.0"
+        },
+        {
+          "lt": "7.5.11",
+          "ge": "2.0.1"
+        }
+      ]
+    },
+    {
+      "name": "grafana6",
+      "range": [
+        {
+          "lt": "8.1.6",
+          "ge": "8.0.0"
+        },
+        {
+          "lt": "7.5.11",
+          "ge": "2.0.1"
+        }
+      ]
+    },
+    {
+      "name": "grafana",
+      "range": [
+        {
+          "lt": "8.1.6",
+          "ge": "8.0.0"
+        },
+        {
+          "lt": "7.5.11",
+          "ge": "2.0.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-09-15T00:00:00Z",
+    "entry": "2021-10-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://grafana.com/blog/2021/10/05/grafana-7.5.11-and-8.1.6-released-with-critical-security-fix/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-39226"
+    }
+  ]
+}

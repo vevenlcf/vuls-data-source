@@ -1,0 +1,218 @@
+{
+  "vid": "edabe438-542f-11db-a5ae-00508d6a62df",
+  "topic": "php -- open_basedir Race Condition Vulnerability",
+  "description": "\n\t\u003cp\u003eStefan Esser reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.hardened-php.net/advisory_082006.132.html\"\u003e\n\t  \u003cp\u003ePHP's open_basedir feature is meant to disallow scripts to\n\t    access files outside a set of configured base directories.\n\t    The checks for this are placed within PHP functions dealing\n\t    with files before the actual open call is performed.\u003c/p\u003e\n\t  \u003cp\u003eObviously there is a little span of time between the check\n\t    and the actual open call. During this time span the checked\n\t    path could have been altered and point to a file that is\n\t    forbidden to be accessed due to open_basedir restrictions.\u003c/p\u003e\n\t  \u003cp\u003eBecause the open_basedir restrictions often not call PHP\n\t    functions but 3rd party library functions to actually open\n\t    the file it is impossible to close this time span in a\n\t    general way. It would only be possible to close it when PHP\n\t    handles the actual opening on it's own.\u003c/p\u003e\n\t  \u003cp\u003eWhile it seems hard to change the path during this little\n\t    time span it is very simple with the use of the symlink()\n\t    function combined with a little trick. PHP's symlink()\n\t    function ensures that source and target of the symlink\n\t    operation are allowed by open_basedir restrictions (and\n\t    safe_mode). However it is possible to point a symlink to\n\t    any file by the use of mkdir(), unlink() and at least two\n\t    symlinks.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "php4",
+      "range": [
+        {
+          "lt": "4.4.4_1"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php5",
+      "range": [
+        {
+          "lt": "4.4.4_1"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php-suhosin",
+      "range": [
+        {
+          "lt": "0.9.6"
+        }
+      ]
+    },
+    {
+      "name": "php4-cli",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php5-cli",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php4-cgi",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php5-cgi",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php4-dtc",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php5-dtc",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php4-horde",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php5-horde",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php4-nms",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "php5-nms",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "mod_php4",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    },
+    {
+      "name": "mod_php5",
+      "range": [
+        {
+          "lt": "4.4.4_1",
+          "ge": "4"
+        },
+        {
+          "lt": "5.1.6_2",
+          "ge": "5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-10-02T00:00:00Z",
+    "entry": "2006-10-05T00:00:00Z",
+    "modified": "2013-04-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.hardened-php.net/advisory_082006.132.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/22235/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-5178"
+    },
+    {
+      "source": "BID",
+      "text": "20326"
+    }
+  ]
+}

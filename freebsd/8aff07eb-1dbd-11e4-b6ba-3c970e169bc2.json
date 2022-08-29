@@ -1,0 +1,101 @@
+{
+  "vid": "8aff07eb-1dbd-11e4-b6ba-3c970e169bc2",
+  "topic": "OpenSSL -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe OpenSSL Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.openssl.org/news/secadv_20140806.txt\"\u003e\n\t  \u003cp\u003eA flaw in OBJ_obj2txt may cause pretty printing functions\n\t    such as X509_name_oneline, X509_name_print_ex et al. to leak\n\t    some information from the stack. [CVE-2014-3508]\u003c/p\u003e\n\t  \u003cp\u003eThe issue affects OpenSSL clients and allows a malicious\n\t    server to crash the client with a null pointer dereference\n\t    (read) by specifying an SRP ciphersuite even though it was\n\t    not properly negotiated with the client. [CVE-2014-5139]\u003c/p\u003e\n\t  \u003cp\u003eIf a multithreaded client connects to a malicious server\n\t    using a resumed session and the server sends an ec point\n\t    format extension it could write up to 255 bytes to freed\n\t    memory. [CVE-2014-3509]\u003c/p\u003e\n\t  \u003cp\u003eAn attacker can force an error condition which causes\n\t    openssl to crash whilst processing DTLS packets due to\n\t    memory being freed twice. This can be exploited through\n\t    a Denial of Service attack. [CVE-2014-3505]\u003c/p\u003e\n\t  \u003cp\u003eAn attacker can force openssl to consume large amounts\n\t    of memory whilst processing DTLS handshake messages.\n\t    This can be exploited through a Denial of Service\n\t    attack. [CVE-2014-3506]\u003c/p\u003e\n\t  \u003cp\u003eBy sending carefully crafted DTLS packets an attacker\n\t    could cause openssl to leak memory. This can be exploited\n\t    through a Denial of Service attack. [CVE-2014-3507]\u003c/p\u003e\n\t  \u003cp\u003eOpenSSL DTLS clients enabling anonymous (EC)DH\n\t    ciphersuites are subject to a denial of service attack.\n\t    A malicious server can crash the client with a null pointer\n\t    dereference (read) by specifying an anonymous (EC)DH\n\t    ciphersuite and sending carefully crafted handshake\n\t    messages. [CVE-2014-3510]\u003c/p\u003e\n\t  \u003cp\u003eA flaw in the OpenSSL SSL/TLS server code causes the\n\t    server to negotiate TLS 1.0 instead of higher protocol\n\t    versions when the ClientHello message is badly\n\t    fragmented. This allows a man-in-the-middle attacker\n\t    to force a downgrade to TLS 1.0 even if both the server\n\t    and the client support a higher protocol version, by\n\t    modifying the client's TLS records. [CVE-2014-3511]\u003c/p\u003e\n\t  \u003cp\u003eA malicious client or server can send invalid SRP\n\t    parameters and overrun an internal buffer.  Only\n\t    applications which are explicitly set up for SRP\n\t    use are affected. [CVE-2014-3512]\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.0.1_14",
+          "ge": "1.0.1"
+        }
+      ]
+    },
+    {
+      "name": "mingw32-openssl",
+      "range": [
+        {
+          "lt": "1.0.1i",
+          "ge": "1.0.1"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "8.4_15",
+          "ge": "8.4"
+        },
+        {
+          "lt": "9.1_18",
+          "ge": "9.1"
+        },
+        {
+          "lt": "9.2_11",
+          "ge": "9.2"
+        },
+        {
+          "lt": "9.3_1",
+          "ge": "9.3"
+        },
+        {
+          "lt": "10.0_8",
+          "ge": "10.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-08-06T00:00:00Z",
+    "entry": "2014-08-06T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.openssl.org/news/secadv_20140806.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3505"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3506"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3507"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3508"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3509"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3510"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3511"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3512"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-5139"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-14:18.openssl"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "vid": "f1331504-8849-11df-89b8-00151735203a",
+  "topic": "bugzilla -- information disclosure",
+  "description": "\n\t\u003cp\u003eA Bugzilla Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.bugzilla.org/security/3.2.6/\"\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eNormally, information about time-tracking (estimated\n\t      hours, actual hours, hours worked, and deadlines) is\n\t      restricted to users in the \"time-tracking group\".\n\t      However, any user was able, by crafting their own\n\t      search URL, to search for bugs based using those\n\t      fields as criteria, thus possibly exposing sensitive\n\t      time-tracking information by a user seeing that a bug\n\t      matched their search.\u003c/li\u003e\n\t    \u003cli\u003eIf $use_suexec was set to \"1\" in the localconfig file,\n\t      then the localconfig file's permissions were set as\n\t      world-readable by checksetup.pl. This allowed any user\n\t      with local shell access to see the contents of the file,\n\t      including the database password and the site_wide_secret\n\t      variable used for CSRF protection.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bugzilla",
+      "range": [
+        {
+          "lt": "3.6.1",
+          "gt": "2.17.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-06-24T00:00:00Z",
+    "entry": "2010-07-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=309952"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=561797"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-1204"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-0180"
+    }
+  ]
+}

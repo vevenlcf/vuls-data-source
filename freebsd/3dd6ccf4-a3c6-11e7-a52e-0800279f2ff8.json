@@ -1,0 +1,54 @@
+{
+  "vid": "3dd6ccf4-a3c6-11e7-a52e-0800279f2ff8",
+  "topic": "OpenVPN -- out-of-bounds write in legacy key-method 1",
+  "description": "\n\t\u003cp\u003eSteffan Karger reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://community.openvpn.net/openvpn/wiki/CVE-2017-12166\"\u003e\n\t  \u003cp\u003eThe bounds check in read_key() was performed after using the value,\n\t    instead of before. If 'key-method 1' is used, this allowed an\n\t    attacker to send a malformed packet to trigger a stack buffer\n\t    overflow. [...]\u003c/p\u003e\n\t  \u003cp\u003eNote that 'key-method 1' has been replaced by 'key method 2' as the\n\t    default in OpenVPN 2.0 (released on 2005-04-17), and explicitly\n\t    deprecated in 2.4 and marked for removal in 2.5. This should limit\n\t    the amount of users impacted by this issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openvpn-polarssl",
+      "range": [
+        {
+          "lt": "2.3.18"
+        }
+      ]
+    },
+    {
+      "name": "openvpn-mbedtls",
+      "range": [
+        {
+          "lt": "2.4.4",
+          "ge": "2.4.0"
+        }
+      ]
+    },
+    {
+      "name": "openvpn",
+      "range": [
+        {
+          "lt": "2.4.4",
+          "ge": "2.4.0"
+        },
+        {
+          "lt": "2.3.18"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-09-21T00:00:00Z",
+    "entry": "2017-09-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://community.openvpn.net/openvpn/wiki/CVE-2017-12166"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg15492.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-12166"
+    }
+  ]
+}

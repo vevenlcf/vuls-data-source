@@ -1,0 +1,153 @@
+{
+  "vid": "b0e54dc1-45d2-11e5-adde-14dae9d210b8",
+  "topic": "django -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eTim Graham reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.djangoproject.com/weblog/2015/aug/18/security-releases/\"\u003e\n\t  \u003cp\u003eDenial-of-service possibility in logout() view by filling\n\t    session store\u003c/p\u003e\n\t  \u003cp\u003ePreviously, a session could be created when anonymously\n\t    accessing the django.contrib.auth.views.logout view\n\t    (provided it wasn't decorated with django.contrib.auth.decorators.login_required\n\t    as done in the admin). This could allow an attacker to\n\t    easily create many new session records by sending repeated\n\t    requests, potentially filling up the session store or\n\t    causing other users' session records to be evicted.\u003c/p\u003e\n\t  \u003cp\u003eThe django.contrib.sessions.middleware.SessionMiddleware\n\t    has been modified to no longer create empty session records.\u003c/p\u003e\n\t  \u003cp\u003eThis portion of the fix has been assigned CVE-2015-5963.\u003c/p\u003e\n\t  \u003cp\u003eAdditionally, on the 1.4 and 1.7 series only, the\n\t    contrib.sessions.backends.base.SessionBase.flush() and\n\t    cache_db.SessionStore.flush() methods have been modified\n\t    to avoid creating a new empty session. Maintainers of\n\t    third-party session backends should check if the same\n\t    vulnerability is present in their backend and correct\n\t    it if so.\u003c/p\u003e\n\t  \u003cp\u003eThis portion of the fix has been assigned CVE-2015-5964.\n\t    Anyone reporting a similar vulnerability in a third-party\n\t    session backend should not use this CVE ID.\u003c/p\u003e\n\t  \u003cp\u003eThanks Lin Hua Cheng for reporting the issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-django",
+      "range": [
+        {
+          "lt": "1.8.4"
+        }
+      ]
+    },
+    {
+      "name": "py32-django",
+      "range": [
+        {
+          "lt": "1.8.4"
+        }
+      ]
+    },
+    {
+      "name": "py33-django",
+      "range": [
+        {
+          "lt": "1.8.4"
+        }
+      ]
+    },
+    {
+      "name": "py34-django",
+      "range": [
+        {
+          "lt": "1.8.4"
+        }
+      ]
+    },
+    {
+      "name": "py27-django17",
+      "range": [
+        {
+          "lt": "1.7.10"
+        }
+      ]
+    },
+    {
+      "name": "py32-django17",
+      "range": [
+        {
+          "lt": "1.7.10"
+        }
+      ]
+    },
+    {
+      "name": "py33-django17",
+      "range": [
+        {
+          "lt": "1.7.10"
+        }
+      ]
+    },
+    {
+      "name": "py34-django17",
+      "range": [
+        {
+          "lt": "1.7.10"
+        }
+      ]
+    },
+    {
+      "name": "py27-django14",
+      "range": [
+        {
+          "lt": "1.4.22"
+        }
+      ]
+    },
+    {
+      "name": "py32-django14",
+      "range": [
+        {
+          "lt": "1.4.22"
+        }
+      ]
+    },
+    {
+      "name": "py33-django14",
+      "range": [
+        {
+          "lt": "1.4.22"
+        }
+      ]
+    },
+    {
+      "name": "py34-django14",
+      "range": [
+        {
+          "lt": "1.4.22"
+        }
+      ]
+    },
+    {
+      "name": "py27-django-devel",
+      "range": [
+        {
+          "le": "20150709,1"
+        }
+      ]
+    },
+    {
+      "name": "py32-django-devel",
+      "range": [
+        {
+          "le": "20150709,1"
+        }
+      ]
+    },
+    {
+      "name": "py33-django-devel",
+      "range": [
+        {
+          "le": "20150709,1"
+        }
+      ]
+    },
+    {
+      "name": "py34-django-devel",
+      "range": [
+        {
+          "le": "20150709,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-18T00:00:00Z",
+    "entry": "2015-08-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.djangoproject.com/weblog/2015/aug/18/security-releases/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5963"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5964"
+    }
+  ]
+}

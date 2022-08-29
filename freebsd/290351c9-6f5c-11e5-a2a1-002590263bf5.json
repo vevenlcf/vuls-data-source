@@ -1,0 +1,49 @@
+{
+  "vid": "290351c9-6f5c-11e5-a2a1-002590263bf5",
+  "topic": "devel/ipython -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eMatthias Bussonnier reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/09/02/3\"\u003e\n\t  \u003cp\u003eSummary: Local folder name was used in HTML templates without\n\t    escaping, allowing XSS in said pages by carefully crafting folder\n\t    name and URL to access it.\u003c/p\u003e\n\t  \u003cp\u003eURI with issues:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eGET /tree/**\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eBenjamin RK reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/09/16/3\"\u003e\n\t  \u003cp\u003eVulnerability: A maliciously forged file opened for editing can\n\t    execute javascript, specifically by being redirected to /files/ due\n\t    to a failure to treat the file as plain text.\u003c/p\u003e\n\t  \u003cp\u003eURI with issues:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eGET /edit/**\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ipython",
+      "range": [
+        {
+          "lt": "3.2.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-09-01T00:00:00Z",
+    "entry": "2015-10-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/09/02/3"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/ipython/ipython/commit/3ab41641cf6fce3860c73d5cf4645aa12e1e5892"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/09/16/3"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/ipython/ipython/commit/0a8096adf165e2465550bd5893d7e352544e5967"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-6938"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-7337"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/203668"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "vid": "4ccbd40d-03f7-11e0-bf50-001a926c7637",
+  "topic": "krb5 -- client impersonation vulnerability",
+  "description": "\n\t\u003cp\u003eThe MIT Kerberos team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2010-007.txt\"\u003e\n\t  \u003cp\u003eMIT krb5 KDC may issue tickets not requested\n\t    by a client, based on an attacker-chosen KrbFastArmoredReq.\u003c/p\u003e\n\t  \u003cp\u003eAn authenticated remote attacker that controls a legitimate service\n\t    principal could obtain a valid service ticket to itself containing\n\t    valid KDC-generated authorization data for a client whose TGS-REQ it\n\t    has intercepted. The attacker could then use this ticket for\n\t    S4U2Proxy to impersonate the targeted client even if the client\n\t    never authenticated to the subverted service. The vulnerable\n\t    configuration is believed to be rare.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "krb5",
+      "range": [
+        {
+          "lt": "1.7.2",
+          "ge": "1.7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-11-30T00:00:00Z",
+    "entry": "2010-12-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2010-007.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://osvdb.org/69607"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-4021"
+    },
+    {
+      "source": "BID",
+      "text": "45122"
+    }
+  ]
+}

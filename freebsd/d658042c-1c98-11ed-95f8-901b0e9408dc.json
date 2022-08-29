@@ -1,0 +1,30 @@
+{
+  "vid": "d658042c-1c98-11ed-95f8-901b0e9408dc",
+  "topic": "dendrite -- Incorrect parsing of the event default power level in event auth",
+  "description": "\n\t\u003cp\u003eDendrite team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/matrix-org/gomatrixserverlib/security/advisories/GHSA-grvv-h2f9-7v9c\"\u003e\n\t  \u003cp\u003eThe power level parsing within gomatrixserverlib was failing to parse the \"events_default\"\n\t  key of the m.room.power_levels event, defaulting the event default power level to zero in all cases.\u003c/p\u003e\n\t  \u003cp\u003e In rooms where the \"events_default\" power level had been changed, this could result in\n\t  events either being incorrectly authorised or rejected by Dendrite servers.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "dendrite",
+      "range": [
+        {
+          "lt": "0.9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-08-15T00:00:00Z",
+    "entry": "2022-08-15T00:00:00Z",
+    "modified": "2022-08-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/matrix-org/gomatrixserverlib/security/advisories/GHSA-grvv-h2f9-7v9c"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-36009"
+    }
+  ]
+}

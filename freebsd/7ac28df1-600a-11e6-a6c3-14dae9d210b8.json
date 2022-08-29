@@ -1,0 +1,38 @@
+{
+  "vid": "7ac28df1-600a-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Linux compatibility layer issetugid(2) system call",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eA programming error in the Linux compatibility layer\n\tcould cause the issetugid(2) system call to return incorrect\n\tinformation.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eIf an application relies on output of the issetugid(2)\n\tsystem call and that information is incorrect, this could\n\tlead to a privilege escalation.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "10.2_11",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_28",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_35",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-01-27T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2016-1883"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:10.linux"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "vid": "ada8db8a-8471-11e9-8170-0050562a4d7b",
+  "topic": "buildbot -- OAuth Authentication Vulnerability",
+  "description": "\n\t\u003cblockquote cite=\"https://github.com/buildbot/buildbot/wiki/OAuth-vulnerability-in-using-submitted-authorization-token-for-authentication\"\u003e\n\t  \u003cp\u003eBuildbot accepted user-submitted authorization token from OAuth and used\n\t  it to authenticate user.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability can lead to malicious attackers to authenticate as legitimate users\n\t  of a Buildbot instance without knowledge of the victim's login credentials on certain\n\t  scenarios.\u003c/p\u003e\n\t  \u003cp\u003eIf an attacker has an application authorized to access data of another user at the\n\t  same Identity Provider as the used by the Buildbot instance, then he can acquire a token\n\t  to access the data of that user, supply the token to the Buildbot instance and successfully\n\t  login as the victim.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-buildbot",
+      "range": [
+        {
+          "lt": "2.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py35-buildbot",
+      "range": [
+        {
+          "lt": "2.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py36-buildbot",
+      "range": [
+        {
+          "lt": "2.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py37-buildbot",
+      "range": [
+        {
+          "lt": "2.3.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-05-07T00:00:00Z",
+    "entry": "2019-06-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/buildbot/buildbot/wiki/OAuth-vulnerability-in-using-submitted-authorization-token-for-authentication"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/buildbot/buildbot/pull/4763"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-12300"
+    }
+  ]
+}

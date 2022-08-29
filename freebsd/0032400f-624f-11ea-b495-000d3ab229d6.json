@@ -1,0 +1,53 @@
+{
+  "vid": "0032400f-624f-11ea-b495-000d3ab229d6",
+  "topic": "Node.js -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eNode.js reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/\"\u003e\n\t  \u003cp\u003eUpdates are now available for all active Node.js release lines for the following issues.\u003c/p\u003e\n\t  \u003ch1\u003eHTTP request smuggling using malformed Transfer-Encoding header (Critical) (CVE-2019-15605)HTTP request smuggling using malformed Transfer-Encoding header (Critical) (CVE-2019-15605)\u003c/h1\u003e\n\t  \u003cp\u003eAffected Node.js versions can be exploited to perform HTTP desync attacks and deliver malicious payloads to unsuspecting users. The payloads can be crafted by an attacker to hijack user sessions, poison cookies, perform clickjacking, and a multitude of other attacks depending on the architecture of the underlying system.\u003c/p\u003e\n\t  \u003ch1\u003eHTTP header values do not have trailing OWS trimmed (High) (CVE-2019-15606)\u003c/h1\u003e\n\t  \u003cp\u003eOptional whitespace should be trimmed from HTTP header values. Its presence may allow attackers to bypass security checks based on HTTP header values.\u003c/p\u003e\n\t  \u003ch1\u003eRemotely trigger an assertion on a TLS server with a malformed certificate string (High) (CVE-2019-15604)\u003c/h1\u003e\n\t  \u003cp\u003eConnecting to a NodeJS TLS server with a client certificate that has a type 19 string in its subjectAltName will crash the TLS server if it tries to read the peer certificate.\u003c/p\u003e\n\t  \u003ch1\u003eStrict HTTP header parsing (None)\u003c/h1\u003e\n\t  \u003cp\u003eIncrease the strictness of HTTP header parsing. There are no known vulnerabilities addressed, but lax HTTP parsing has historically been a source of problems. Some commonly used sites are known to generate invalid HTTP headers, a --insecure-http-parser CLI option or insecureHTTPParser http option can be used if necessary for interoperability, but is not recommended.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "node",
+      "range": [
+        {
+          "lt": "13.8.0"
+        }
+      ]
+    },
+    {
+      "name": "node12",
+      "range": [
+        {
+          "lt": "12.15.0"
+        }
+      ]
+    },
+    {
+      "name": "node10",
+      "range": [
+        {
+          "lt": "10.19.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-02-06T00:00:00Z",
+    "entry": "2020-03-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-15605"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-15606"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-15604"
+    }
+  ]
+}

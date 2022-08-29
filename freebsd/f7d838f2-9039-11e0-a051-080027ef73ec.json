@@ -1,0 +1,33 @@
+{
+  "vid": "f7d838f2-9039-11e0-a051-080027ef73ec",
+  "topic": "fetchmail -- STARTTLS denial of service",
+  "description": "\n\t\u003cp\u003eMatthias Andree reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.fetchmail.info/fetchmail-SA-2011-01.txt\"\u003e\n\t  \u003cp\u003eFetchmail version 5.9.9 introduced STLS support for POP3,\n\t    version 6.0.0 added STARTTLS for IMAP.  However, the actual\n\t    S(TART)TLS-initiated in-band SSL/TLS negotiation was not guarded\n\t    by a timeout.\u003c/p\u003e\n\t  \u003cp\u003eDepending on the operating system defaults as to TCP stream\n\t    keepalive mode, fetchmail hangs in excess of one week after\n\t    sending STARTTLS were observed if the connection failed without\n\t    notifying the operating system, for instance, through network\n\t    outages or hard server crashes.\u003c/p\u003e\n\t  \u003cp\u003eA malicious server that does not respond, at the network level,\n\t    after acknowledging fetchmail's STARTTLS or STLS request, can\n\t    hold fetchmail in this protocol state, and thus render fetchmail\n\t    unable to complete the poll, or proceed to the next server,\n\t    effecting a denial of service.\u003c/p\u003e\n\t  \u003cp\u003eSSL-wrapped mode on dedicated ports was unaffected by this\n\t    problem, so can be used as a workaround.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "fetchmail",
+      "range": [
+        {
+          "lt": "6.3.20"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-04-28T00:00:00Z",
+    "entry": "2011-06-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.fetchmail.info/fetchmail-SA-2011-01.txt"
+    },
+    {
+      "source": "URL",
+      "text": "https://gitorious.org/fetchmail/fetchmail/commit/7dc67b8cf06f74aa57525279940e180c99701314"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-1947"
+    }
+  ]
+}

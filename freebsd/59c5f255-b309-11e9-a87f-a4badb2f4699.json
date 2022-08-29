@@ -1,0 +1,34 @@
+{
+  "vid": "59c5f255-b309-11e9-a87f-a4badb2f4699",
+  "topic": "FreeBSD -- ICMP/ICMP6 packet filter bypass in pf",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eStates in pf(4) let ICMP and ICMP6 packets pass if they\n\thave a packet in their payload matching an existing condition.\n\tpf(4) does not check if the outer ICMP or ICMP6 packet has\n\tthe same destination IP as the source IP of the inner\n\tprotocol packet.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA maliciously crafted ICMP/ICMP6 packet could bypass the\n\tpacket filter rules and be passed to a host that would\n\totherwise be unavailable.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.0_4",
+          "ge": "12.0"
+        },
+        {
+          "lt": "11.2_10",
+          "ge": "11.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-05-14T00:00:00Z",
+    "entry": "2019-07-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-5598"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-19:06.pf"
+    }
+  ]
+}

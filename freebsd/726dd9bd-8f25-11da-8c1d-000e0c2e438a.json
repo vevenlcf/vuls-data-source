@@ -1,0 +1,50 @@
+{
+  "vid": "726dd9bd-8f25-11da-8c1d-000e0c2e438a",
+  "topic": "ee -- temporary file privilege escalation",
+  "description": "\n\t\u003cp\u003eProblem description\u003c/p\u003e\n\t\u003cp\u003eThe ispell_op function used by ee(1) while executing spell\n\t  check operations employs an insecure method of temporary file\n\t  generation.  This method produces predictable file names based\n\t  on the process ID and fails to confirm which path will be over\n\t  written with the user.\u003cbr/\u003e\n\t  It should be noted that ispell does not have to be installed\n\t  in order for this to be exploited.  The option simply needs to\n\t  be selected.\u003c/p\u003e\n\t\u003cp\u003eImpact\u003c/p\u003e\n\t\u003cp\u003eThese predictable temporary file names are problematic\n\t  because they allow an attacker to take advantage of a race\n\t  condition in order to execute a symlink attack, which could\n\t  allow them to overwrite files on the system in the context of\n\t  the user running the ee(1) editor.\u003c/p\u003e\n\t\u003cp\u003eWorkaround\u003c/p\u003e\n\t\u003cp\u003eInstead of invoking ispell through ee(1), invoke it directly.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_2",
+          "ge": "6.0"
+        },
+        {
+          "lt": "5.4_9",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_24",
+          "ge": "5.3"
+        },
+        {
+          "lt": "4.11_14",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_20",
+          "ge": "4.10"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-01-11T00:00:00Z",
+    "entry": "2006-01-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0055"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:02.ee"
+    },
+    {
+      "source": "BID",
+      "text": "16207"
+    }
+  ]
+}

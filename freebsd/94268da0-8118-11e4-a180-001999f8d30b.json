@@ -1,0 +1,30 @@
+{
+  "vid": "94268da0-8118-11e4-a180-001999f8d30b",
+  "topic": "asterisk -- Remote Crash Vulnerability in WebSocket Server",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.asterisk.org/downloads/security-advisories\"\u003e\n\t  \u003cp\u003eWhen handling a WebSocket frame the res_http_websocket\n\t  module dynamically changes the size of the memory used\n\t  to allow the provided payload to fit. If a payload length\n\t  of zero was received the code would incorrectly attempt\n\t  to resize to zero. This operation would succeed and end\n\t  up freeing the memory but be treated as a failure. When\n\t  the session was subsequently torn down this memory would\n\t  get freed yet again causing a crash.\u003c/p\u003e\n\t  \u003cp\u003eUsers of the WebSocket functionality also did not take\n\t  into account that provided text frames are not guaranteed\n\t  to be NULL terminated. This has been fixed in chan_sip\n\t  and chan_pjsip in the applicable versions.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk11",
+      "range": [
+        {
+          "lt": "11.14.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-10-30T00:00:00Z",
+    "entry": "2014-12-11T00:00:00Z",
+    "modified": "2015-01-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://downloads.asterisk.org/pub/security/AST-2014-019.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-9374"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "vid": "cc7548ef-06e1-11e5-8fda-002590263bf5",
+  "topic": "libmspack -- frame_end overflow which could cause infinite loop",
+  "description": "\n\t\u003cp\u003eThere is a denial of service vulnerability in libmspack.  The\n\t  libmspack code is built into cabextract, so it is also\n\t  vulnerable.\u003c/p\u003e\n\t\u003cp\u003eMITRE reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9556\"\u003e\n\t  \u003cp\u003eInteger overflow in the qtmd_decompress function in libmspack 0.4\n\t    allows remote attackers to cause a denial of service (hang) via a\n\t    crafted CAB file, which triggers an infinite loop.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libmspack",
+      "range": [
+        {
+          "lt": "0.5"
+        }
+      ]
+    },
+    {
+      "name": "cabextract",
+      "range": [
+        {
+          "lt": "1.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-12-11T00:00:00Z",
+    "entry": "2015-05-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugs.debian.org/773041"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-9556"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://www.openwall.com/lists/oss-security/2015/01/07/2"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "vid": "baf74e0b-497a-11da-a4f4-0060084a00e5",
+  "topic": "fetchmail -- fetchmailconf local password exposure",
+  "description": "\n\t\u003cp\u003eThe fetchmail team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.fetchmail.info/fetchmail-SA-2005-02.txt\"\u003e\n\t  \u003cp\u003eThe fetchmailconf program before and excluding version\n\t    1.49 opened the run control file, wrote the configuration\n\t    to it, and only then changed the mode to 0600 (rw-------).\n\t    Writing the file, which usually contains passwords, before\n\t    making it unreadable to other users, can expose sensitive\n\t    password information.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "fetchmail",
+      "range": [
+        {
+          "lt": "6.2.5.2_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-10-21T00:00:00Z",
+    "entry": "2005-10-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.fetchmail.info/fetchmail-SA-2005-02.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-3088"
+    }
+  ]
+}

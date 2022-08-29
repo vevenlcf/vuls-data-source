@@ -1,0 +1,30 @@
+{
+  "vid": "e6f0edd8-0b40-11d9-8a8a-000c41e2cdad",
+  "topic": "gnu-radius -- SNMP-related denial-of-service",
+  "description": "\n\t\u003cp\u003eAn iDEFENSE security advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.idefense.com/application/poi/display?id=141\u0026amp;type=vulnerabilities\"\u003e\n\t  \u003cp\u003eRemote exploitation of an input validation error in\n\t    version 1.2 of GNU radiusd could allow a denial of\n\t    service.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability specifically exists within\n\t    the asn_decode_string() function defined in\n\t    snmplib/asn1.c. When a very large unsigned number is\n\t    supplied, it is possible that an integer overflow will\n\t    occur in the bounds-checking code. The daemon will then\n\t    attempt to reference unallocated memory, resulting in an\n\t    access violation that causes the process to terminate.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "gnu-radius",
+      "range": [
+        {
+          "lt": "1.2.94"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-09-15T00:00:00Z",
+    "entry": "2004-09-20T00:00:00Z",
+    "modified": "2005-05-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.idefense.com/application/poi/display?id=141\u0026type=vulnerabilities"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0849"
+    }
+  ]
+}

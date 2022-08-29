@@ -1,0 +1,57 @@
+{
+  "vid": "24ce5597-acab-11e4-a847-206a8a720317",
+  "topic": "krb5 -- Vulnerabilities in kadmind, libgssrpc, gss_process_context_token VU#540092",
+  "description": "\n\t\u003cp\u003eSO-AND-SO reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2015-001.txt\"\u003e\n\t  \u003cp\u003eCVE-2014-5352: In the MIT krb5 libgssapi_krb5 library, after\n\t     gss_process_context_token() is used to process a valid context\n\t     deletion token, the caller is left with a security context handle\n\t     containing a dangling pointer.  Further uses of this handle will\n\t     result in use-after-free and double-free memory access violations.\n\t     libgssrpc server applications such as kadmind are vulnerable as\n\t     they can be instructed to call gss_process_context_token().\u003c/p\u003e\n\t  \u003cp\u003eCVE-2014-9421: If the MIT krb5 kadmind daemon receives invalid XDR\n\t     data from an authenticated user, it may perform use-after-free and\n\t     double-free memory access violations while cleaning up the partial\n\t     deserialization results.  Other libgssrpc server applications may\n\t     also be vulnerable if they contain insufficiently defensive XDR\n\t     functions.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2014-9422: The MIT krb5 kadmind daemon incorrectly accepts\n\t     authentications to two-component server principals whose first\n\t     component is a left substring of \"kadmin\" or whose realm is a left\n\t     prefix of the default realm.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2014-9423: libgssrpc applications including kadmind output\n\t     four or eight bytes of uninitialized memory to the network as\n\t     part of an unused \"handle\" field in replies to clients.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "krb5",
+      "range": [
+        {
+          "lt": "1.13_1"
+        }
+      ]
+    },
+    {
+      "name": "krb5-112",
+      "range": [
+        {
+          "lt": "1.12.2_1"
+        }
+      ]
+    },
+    {
+      "name": "krb5-111",
+      "range": [
+        {
+          "lt": "1.11.5_4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-02-03T00:00:00Z",
+    "entry": "2015-02-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2015-001.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-5352"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-9421"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-9422"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-9423"
+    }
+  ]
+}

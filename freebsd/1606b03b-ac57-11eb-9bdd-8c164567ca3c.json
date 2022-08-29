@@ -1,0 +1,43 @@
+{
+  "vid": "1606b03b-ac57-11eb-9bdd-8c164567ca3c",
+  "topic": "redis -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eRedis project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://groups.google.com/g/redis-db/c/6GSWzTW0PR8\"\u003e\n\t  \u003cdl\u003e\n\t    \u003cdt\u003eVulnerability in the STRALGO LCS command\u003c/dt\u003e\n\t    \u003cdd\u003e\n\t      An integer overflow bug in Redis version 6.0 or newer could be\n\t      exploited using the STRALGO LCS command to corrupt the heap and\n\t      potentially result with remote code execution.\n\t    \u003c/dd\u003e\n\t    \u003cdt\u003eVulnerability in the COPY command for large intsets\u003c/dt\u003e\n\t    \u003cdd\u003e\n\t      An integer overflow bug in Redis 6.2 could be exploited to corrupt\n\t      the heap and potentially result with remote code execution.\n\t      The vulnerability involves changing the default set-max-intset-entries\n\t      configuration value, creating a large set key that consists of\n\t      integer values and using the COPY command to duplicate it.\n\t      The integer overflow bug exists in all versions of Redis starting\n\t      with 2.6, where it could result with a corrupted RDB or DUMP payload,\n\t      but not exploited through COPY (which did not exist before 6.2).\n\t    \u003c/dd\u003e\n\t  \u003c/dl\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "redis",
+      "range": [
+        {
+          "lt": "6.0.13",
+          "ge": "6.0.0"
+        }
+      ]
+    },
+    {
+      "name": "redis-devel",
+      "range": [
+        {
+          "lt": "6.2.3",
+          "ge": "6.2.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-05-03T00:00:00Z",
+    "entry": "2021-05-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://groups.google.com/g/redis-db/c/6GSWzTW0PR8"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-29477"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-29478"
+    }
+  ]
+}

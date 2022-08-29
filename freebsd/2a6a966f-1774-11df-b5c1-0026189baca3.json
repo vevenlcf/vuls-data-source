@@ -1,0 +1,38 @@
+{
+  "vid": "2a6a966f-1774-11df-b5c1-0026189baca3",
+  "topic": "fetchmail -- heap overflow on verbose X.509 display",
+  "description": "\n\t\u003cp\u003eMatthias Andree reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.fetchmail.info/fetchmail-SA-2010-01.txt\"\u003e\n\t  \u003cp\u003eIn verbose mode, fetchmail prints X.509 certificate subject and\n\t    issuer information to the user, and counts and allocates a malloc()\n\t    buffer for that purpose.\u003c/p\u003e\n\t  \u003cp\u003eIf the material to be displayed contains characters with high bit\n\t    set and the platform treats the \"char\" type as signed, this can cause\n\t    a heap buffer overrun because non-printing characters are escaped as\n\t    \\xFF..FFnn, where nn is 80..FF in hex.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "fetchmail",
+      "range": [
+        {
+          "lt": "6.3.14",
+          "ge": "6.3.11"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-02-04T00:00:00Z",
+    "entry": "2010-02-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.fetchmail.info/fetchmail-SA-2010-01.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-0562"
+    },
+    {
+      "source": "MLIST: 20100205014643.GA25506@merlin.emma.line.org",
+      "text": "https://lists.berlios.de/pipermail/fetchmail-announce/2010-February/000073.html"
+    },
+    {
+      "source": "BID",
+      "text": "38088"
+    }
+  ]
+}

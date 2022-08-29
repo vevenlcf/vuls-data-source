@@ -1,0 +1,33 @@
+{
+  "vid": "d8382a69-4728-11e8-ba83-0011d823eebd",
+  "topic": "mbed TLS (PolarSSL) -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eSimon Butcher reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://tls.mbed.org/tech-updates/releases/mbedtls-2.8.0-2.7.2-and-2.1.11-released\"\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eDefend against Bellcore glitch attacks by verifying the results\n\t      of RSA private key operations.\u003c/li\u003e\n\t    \u003cli\u003eFix implementation of the truncated HMAC extension. The\n\t      previous implementation allowed an offline 2^80 brute force\n\t      attack on the HMAC key of a single, uninterrupted connection\n\t      (with no resumption of the session).\u003c/li\u003e\n\t    \u003cli\u003eReject CRLs containing unsupported critical extensions. Found\n\t      by Falko Strenzke and Evangelos Karatsiolis.\u003c/li\u003e\n\t    \u003cli\u003eFix a buffer overread in ssl_parse_server_key_exchange() that\n\t      could cause a crash on invalid input.\u003c/li\u003e\n\t    \u003cli\u003eFix a buffer overread in ssl_parse_server_psk_hint() that could\n\t      cause a crash on invalid input.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "mbedtls",
+      "range": [
+        {
+          "lt": "2.7.2"
+        }
+      ]
+    },
+    {
+      "name": "polarssl13",
+      "range": [
+        {
+          "ge": "*"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-03-21T00:00:00Z",
+    "entry": "2018-04-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://tls.mbed.org/tech-updates/releases/mbedtls-2.8.0-2.7.2-and-2.1.11-released"
+    }
+  ]
+}

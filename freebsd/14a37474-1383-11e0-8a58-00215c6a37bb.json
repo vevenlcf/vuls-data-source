@@ -1,0 +1,176 @@
+{
+  "vid": "14a37474-1383-11e0-8a58-00215c6a37bb",
+  "topic": "django -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eDjango project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.djangoproject.com/weblog/2010/dec/22/security/\"\u003e\n\t  \u003cp\u003eToday the Django team is issuing multiple releases\n\t    -- Django 1.2.4, Django 1.1.3 and Django 1.3 beta 1 --\n\t    to remedy two security issues reported to us. All users\n\t    of affected versions of Django are urged to upgrade\n\t    immediately.\u003c/p\u003e\n\t  \u003ch3\u003eInformation leakage in Django administrative interface\u003c/h3\u003e\n\t  \u003cp\u003eThe Django administrative interface, django.contrib.admin\n\t    supports filtering of displayed lists of objects by fields\n\t    on the corresponding models, including across database-level\n\t    relationships. This is implemented by passing lookup arguments\n\t    in the querystring portion of the URL, and options on the\n\t    ModelAdmin class allow developers to specify particular\n\t    fields or relationships which will generate automatic links\n\t    for filtering.\u003c/p\u003e\n\t  \u003ch3\u003eDenial-of-service attack in password-reset mechanism\u003c/h3\u003e\n\t  \u003cp\u003eDjango's bundled authentication framework,\n\t    django.contrib.auth, offers views which allow users to\n\t    reset a forgotten password. The reset mechanism involves\n\t    generating a one-time token composed from the user's ID,\n\t    the timestamp of the reset request converted to a base36\n\t    integer, and a hash derived from the user's current password\n\t    hash (which will change once the reset is complete, thus\n\t    invalidating the token).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py23-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py24-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py25-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py26-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py27-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py30-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py31-django",
+      "range": [
+        {
+          "lt": "1.2.4",
+          "gt": "1.2"
+        },
+        {
+          "lt": "1.1.3",
+          "gt": "1.1"
+        }
+      ]
+    },
+    {
+      "name": "py23-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    },
+    {
+      "name": "py24-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    },
+    {
+      "name": "py25-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    },
+    {
+      "name": "py26-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    },
+    {
+      "name": "py27-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    },
+    {
+      "name": "py30-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    },
+    {
+      "name": "py31-django-devel",
+      "range": [
+        {
+          "lt": "15032,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-12-22T00:00:00Z",
+    "entry": "2010-12-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.redhat.com/show_bug.cgi?id=665373"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/42715/"
+    },
+    {
+      "source": "BID",
+      "text": "45562"
+    },
+    {
+      "source": "BID",
+      "text": "45563"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "vid": "a267cd6c-b0c4-11e5-8d13-bc5ff45d0f28",
+  "topic": "qemu -- stack buffer overflow while parsing SCSI commands",
+  "description": "\n\t\u003cp\u003ePrasad J Pandit, Red Hat Product Security Team, reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://openwall.com/lists/oss-security/2015/07/23/6\"\u003e\n\t  \u003cp\u003eQemu emulator built with the SCSI device emulation support is\n\t    vulnerable to a stack buffer overflow issue. It could occur while\n\t    parsing SCSI command descriptor block with an invalid operation\n\t    code.\u003c/p\u003e\n\t  \u003cp\u003eA privileged(CAP_SYS_RAWIO) user inside guest could use this flaw\n\t    to crash the Qemu instance resulting in DoS.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "2.4.0"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "2.4.0"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-07-23T00:00:00Z",
+    "entry": "2016-01-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://openwall.com/lists/oss-security/2015/07/23/6"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=c170aad8b057223b1139d72e5ce7acceafab4fa9"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/seanbruno/qemu-bsd-user/commit/c170aad8b057223b1139d72e5ce7acceafab4fa9"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5158"
+    }
+  ]
+}

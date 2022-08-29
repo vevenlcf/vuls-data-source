@@ -1,0 +1,37 @@
+{
+  "vid": "a28e8b7e-fc70-11ec-856e-d4c9ef517024",
+  "topic": "OpenSSL -- AES OCB fails to encrypt some bytes",
+  "description": "\n\t\u003cp\u003eThe OpenSSL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.openssl.org/news/secadv/20220705.txt\"\u003e\n\t  \u003cp\u003eAES OCB mode for 32-bit x86 platforms using the AES-NI assembly optimised\n\t    implementation will not encrypt the entirety of the data under some\n\t    circumstances.  This could reveal sixteen bytes of data that was\n\t    preexisting in the memory that wasn't written.  In the special case of\n\t    \"in place\" encryption, sixteen bytes of the plaintext would be revealed.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.1.1q,1"
+        }
+      ]
+    },
+    {
+      "name": "openssl-devel",
+      "range": [
+        {
+          "lt": "3.0.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-07-05T00:00:00Z",
+    "entry": "2022-07-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.openssl.org/news/secadv/20220705.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-2097"
+    }
+  ]
+}

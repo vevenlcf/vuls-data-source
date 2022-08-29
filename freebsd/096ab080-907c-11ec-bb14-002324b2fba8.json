@@ -1,0 +1,45 @@
+{
+  "vid": "096ab080-907c-11ec-bb14-002324b2fba8",
+  "topic": "go -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/50974\"\u003e\n\t  \u003cp\u003ecrypto/elliptic: fix IsOnCurve for big.Int values that are not\n\t    valid coordinates\u003c/p\u003e\n\t  \u003cp\u003eSome big.Int values that are not valid field elements (negative or\n\t    overflowing) might cause Curve.IsOnCurve to incorrectly return true.\n\t    Operating on those values may cause a panic or an invalid curve\n\t    operation. Note that Unmarshal will never return such values.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/50699\"\u003e\n\t  \u003cp\u003emath/big: prevent large memory consumption in Rat.SetString\u003c/p\u003e\n\t  \u003cp\u003eAn attacker can cause unbounded memory growth in a program using\n\t    (*Rat).SetString due to an unhandled overflow.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/35671\"\u003e\n\t  \u003cp\u003ecmd/go: prevent branches from materializing into versions\u003c/p\u003e\n\t  \u003cp\u003eA branch whose name resembles a version tag (such as \"v1.0.0\" or\n\t    \"subdir/v2.0.0-dev\") can be considered a valid version by the go\n\t    command. Materializing versions from branches might be unexpected\n\t    and bypass ACLs that limit the creation of tags but not branches.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.17.7,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-02-10T00:00:00Z",
+    "entry": "2022-02-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/50974"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/50699"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/35671"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23806"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23772"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23773"
+    }
+  ]
+}

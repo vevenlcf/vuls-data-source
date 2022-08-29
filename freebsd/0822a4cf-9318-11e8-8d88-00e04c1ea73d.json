@@ -1,0 +1,38 @@
+{
+  "vid": "0822a4cf-9318-11e8-8d88-00e04c1ea73d",
+  "topic": "mantis -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003emantis reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/mantisbt/mantisbt/commit/8b5fa243dbf04344a55fe880135ec149fc1f439f\"\u003e\n\t  \u003cp\u003eTeun Beijers reported a cross-site scripting (XSS) vulnerability in\n\t  the Edit Filter page which allows execution of arbitrary code\n\t  (if CSP settings permit it) when displaying a filter with a crafted\n\t  name. Prevent the attack by sanitizing the filter name before display.\u003c/p\u003e\n\t  \u003cp\u003eÖmer Cıtak, Security Researcher at Netsparker, reported this\n\t  vulnerability, allowing remote attackers to inject arbitrary code\n\t  (if CSP settings permit it) through a crafted PATH_INFO on\n\t  view_filters_page.php. Prevent the attack by sanitizing the output\n\t  of $_SERVER['PHP_SELF'] before display.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "mantis",
+      "range": [
+        {
+          "lt": "2.15.0,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-07-13T00:00:00Z",
+    "entry": "2018-07-29T00:00:00Z",
+    "modified": "2018-08-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/mantisbt/mantisbt/commit/8b5fa243dbf04344a55fe880135ec149fc1f439f"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/mantisbt/mantisbt/commit/4efac90ed89a5c009108b641e2e95683791a165a"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14504"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-13066"
+    }
+  ]
+}

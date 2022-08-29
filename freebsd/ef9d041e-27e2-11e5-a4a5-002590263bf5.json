@@ -1,0 +1,29 @@
+{
+  "vid": "ef9d041e-27e2-11e5-a4a5-002590263bf5",
+  "topic": "xen-kernel -- Information leak through version information hypercall",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-122.html\"\u003e\n\t  \u003cp\u003eThe code handling certain sub-operations of the\n\t    HYPERVISOR_xen_version hypercall fails to fully initialize all\n\t    fields of structures subsequently copied back to guest memory. Due\n\t    to this hypervisor stack contents are copied into the destination of\n\t    the operation, thus becoming visible to the guest.\u003c/p\u003e\n\t  \u003cp\u003eA malicious guest might be able to read sensitive data relating to\n\t    other guests.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.0_3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-03-05T00:00:00Z",
+    "entry": "2015-07-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-122.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-2045"
+    }
+  ]
+}

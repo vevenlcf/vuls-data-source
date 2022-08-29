@@ -1,0 +1,51 @@
+{
+  "vid": "c8174b63-0d3a-11e6-b06e-d43d7eed0ce2",
+  "topic": "subversion -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eSubversion project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://subversion.apache.org/security/CVE-2016-2167-advisory.txt\"\u003e\n\t  \u003cp\u003esvnserve, the svn:// protocol server, can optionally use the Cyrus\n\t    SASL library for authentication, integrity protection, and encryption.\n\t    Due to a programming oversight, authentication against Cyrus SASL\n\t    would permit the remote user to specify a realm string which is\n\t    a prefix of the expected realm string.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://subversion.apache.org/security/CVE-2016-2168-advisory.txt\"\u003e\n\t  \u003cp\u003eSubversion's httpd servers are vulnerable to a remotely triggerable crash\n\t    in the mod_authz_svn module.  The crash can occur during an authorization\n\t    check for a COPY or MOVE request with a specially crafted header value.\u003c/p\u003e\n\t  \u003cp\u003eThis allows remote attackers to cause a denial of service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "subversion",
+      "range": [
+        {
+          "lt": "1.9.4",
+          "ge": "1.9.0"
+        },
+        {
+          "lt": "1.8.15",
+          "ge": "1.0.0"
+        }
+      ]
+    },
+    {
+      "name": "subversion18",
+      "range": [
+        {
+          "lt": "1.8.15",
+          "ge": "1.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-04-21T00:00:00Z",
+    "entry": "2016-04-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://subversion.apache.org/security/CVE-2016-2167-advisory.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://subversion.apache.org/security/CVE-2016-2168-advisory.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-2167"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-2168"
+    }
+  ]
+}

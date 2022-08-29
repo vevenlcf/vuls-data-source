@@ -1,0 +1,38 @@
+{
+  "vid": "a6605f4b-4067-11de-b444-001372fd0af2",
+  "topic": "drupal -- cross-site scripting",
+  "description": "\n\t\u003cp\u003eThe Drupal Security Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://drupal.org/node/461886\"\u003e\n\t  \u003cp\u003eWhen outputting user-supplied data Drupal strips potentially\n\t    dangerous HTML attributes and tags or escapes characters which\n\t    have a special meaning in HTML. This output filtering secures the\n\t    site against cross site scripting attacks via user input.\u003c/p\u003e\n\t  \u003cp\u003eCertain byte sequences that are valid in the UTF-8 specification\n\t    are potentially dangerous when interpreted as UTF-7. Internet\n\t    Explorer 6 and 7 may decode these characters as UTF-7 if they\n\t    appear before the \u0026lt;meta http-equiv=\"Content-Type\" /\u0026gt; tag that\n\t    specifies the page content as UTF-8, despite the fact that Drupal\n\t    also sends a real HTTP header specifying the content as UTF-8.\n\t    This enables attackers to execute cross site scripting attacks\n\t    with UTF-7. SA-CORE-2009-005 - Drupal core - Cross site scripting\n\t    contained an incomplete fix for the issue. HTML exports of books\n\t    are still vulnerable, which means that anyone with edit\n\t    permissions for pages in outlines is able to insert arbitrary HTML\n\t    and script code in these exports.\u003c/p\u003e\n\t  \u003cp\u003eAdditionally, the taxonomy module allows users with the\n\t    'administer taxonomy' permission to inject arbitrary HTML and\n\t    script code in the help text of any vocabulary.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n     ",
+  "affects": [
+    {
+      "name": "drupal5",
+      "range": [
+        {
+          "lt": "5.18"
+        }
+      ]
+    },
+    {
+      "name": "drupal6",
+      "range": [
+        {
+          "lt": "6.12"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2009-05-13T00:00:00Z",
+    "entry": "2009-05-14T00:00:00Z",
+    "modified": "2009-05-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://drupal.org/node/461886"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/35045"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "vid": "197f444f-e8ef-11d9-b875-0001020eed82",
+  "topic": "bzip2 -- denial of service and permission race vulnerabilities",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eTwo problems have been discovered relating to the\n\t  extraction of bzip2-compressed files.  First, a carefully\n\t  constructed invalid bzip2 archive can cause bzip2 to enter\n\t  an infinite loop.  Second, when creating a new file, bzip2\n\t  closes the file before setting its permissions.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eThe first problem can cause bzip2 to extract a bzip2\n\t  archive to an infinitely large file.\tIf bzip2 is used in\n\t  automated processing of untrusted files this could be\n\t  exploited by an attacker to create an denial-of-service\n\t  situation by exhausting disk space or by consuming all\n\t  available cpu time.\u003c/p\u003e\n\t\u003cp\u003eThe second problem can allow a local attacker to change the\n\t  permissions of local files owned by the user executing bzip2\n\t  providing that they have write access to the directory in\n\t  which the file is being extracted.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eDo not uncompress bzip2 archives from untrusted sources and\n\t  do not uncompress files in directories where untrusted users\n\t  have write access.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_3",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_17",
+          "ge": "5.0"
+        },
+        {
+          "lt": "4.11_11",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_16"
+        }
+      ]
+    },
+    {
+      "name": "bzip2",
+      "range": [
+        {
+          "lt": "1.0.3_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-03-30T00:00:00Z",
+    "entry": "2005-06-29T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://scary.beasts.org/security/CESA-2005-002.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0953"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1260"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:14.bzip2"
+    }
+  ]
+}

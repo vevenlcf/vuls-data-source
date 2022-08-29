@@ -1,0 +1,43 @@
+{
+  "vid": "9b4facec-6761-11da-99f6-00123ffe8333",
+  "topic": "curl -- URL buffer overflow vulnerability",
+  "description": "\n\t\u003cp\u003eA Project cURL Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://curl.haxx.se/docs/adv_20051207.html\"\u003e\n\t  \u003cp\u003elibcurl's URL parser function can overflow a malloced\n\t    buffer in two ways, if given a too long URL.\u003c/p\u003e\n\t  \u003cp\u003e1 - pass in a URL with no protocol (like \"http://\")\n\t    prefix, using no slash and the string is 256 bytes or\n\t    longer. This leads to a single zero byte overflow of the\n\t    malloced buffer.\u003c/p\u003e\n\t  \u003cp\u003e2 - pass in a URL with only a question mark as separator\n\t    (no slash) between the host and the query part of the URL.\n\t    This leads to a single zero byte overflow of the malloced\n\t    buffer.\u003c/p\u003e\n\t  \u003cp\u003eBoth overflows can be made with the same input string,\n\t    leading to two single zero byte overwrites.\u003c/p\u003e\n\t  \u003cp\u003eThe affected flaw cannot be triggered by a redirect, but\n\t    the long URL must be passed in \"directly\" to libcurl. It\n\t    makes this a \"local\" problem. Of course, lots of programs\n\t    may still pass in user-provided URLs to libcurl without doing\n\t    much syntax checking of their own, allowing a user to exploit\n\t    this vulnerability.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.15.1",
+          "ge": "7.11.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-12-07T00:00:00Z",
+    "entry": "2005-12-09T00:00:00Z",
+    "modified": "2006-01-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://curl.haxx.se/docs/adv_20051207.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.hardened-php.net/advisory_242005.109.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/17907/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-4077"
+    },
+    {
+      "source": "BID",
+      "text": "15756"
+    }
+  ]
+}

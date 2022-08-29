@@ -1,0 +1,38 @@
+{
+  "vid": "b371db92-fe34-11ea-b90e-6805ca2fa271",
+  "topic": "powerdns -- Leaking uninitialised memory through crafted zone records",
+  "description": "\n\t\u003cp\u003ePowerDNS Team reports\u003c/p\u003e\n\t\u003cblockquote cite=\"https://doc.powerdns.com/authoritative/changelog/4.3.html#change-4.3.1\"\u003e\n\t  \u003cp\u003eCVE-2020-17482: An issue has been found in PowerDNS Authoritative\n\t     Server before 4.3.1 where an authorized user with the\n\t     ability to insert crafted records into a zone might\n\t     be able to leak the content of uninitialized memory.\n\t     Such a user could be a customer inserting data via a\n\t     control panel, or somebody with access to the REST\n\t     API. Crafted records cannot be inserted via AXFR.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "powerdns",
+      "range": [
+        {
+          "lt": "4.3.1",
+          "ge": "4.3.0"
+        },
+        {
+          "lt": "4.2.3",
+          "ge": "4.2.0"
+        },
+        {
+          "lt": "4.1.14",
+          "ge": "4.1.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-09-22T00:00:00Z",
+    "entry": "2020-09-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2020-05.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-17482"
+    }
+  ]
+}

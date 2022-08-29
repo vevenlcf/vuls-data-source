@@ -1,0 +1,74 @@
+{
+  "vid": "ee99899d-4347-11e5-93ad-002590263bf5",
+  "topic": "qemu, xen-tools -- use-after-free in QEMU/Xen block unplug protocol",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-139.html\"\u003e\n\t  \u003cp\u003eWhen unplugging an emulated block device the device was not fully\n\t    unplugged, meaning a second unplug attempt would attempt to unplug\n\t    the device a second time using a previously freed pointer.\u003c/p\u003e\n\t  \u003cp\u003eAn HVM guest which has access to an emulated IDE disk device may be\n\t    able to exploit this vulnerability in order to take over the qemu\n\t    process elevating its privilege to that of the qemu process.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "le": "0.11.1_20"
+        },
+        {
+          "ge": "0.12",
+          "le": "2.3.0_2"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "le": "0.11.1_20"
+        },
+        {
+          "ge": "0.12",
+          "le": "2.3.0_2"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    },
+    {
+      "name": "xen-tools",
+      "range": [
+        {
+          "lt": "4.5.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-03T00:00:00Z",
+    "entry": "2015-08-17T00:00:00Z",
+    "modified": "2015-08-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-139.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=260425ab405ea76c44dd59744d05176d4f579a52"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5166"
+    }
+  ]
+}

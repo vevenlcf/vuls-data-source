@@ -1,0 +1,35 @@
+{
+  "vid": "6d4e4759-7b67-11dd-80ba-000bcdf0a03b",
+  "topic": "FreeBSD -- amd64 swapgs local privilege escalation",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eIf a General Protection Fault happens on a FreeBSD/amd64\n\t  system while it is returning from an interrupt, trap or\n\t  system call, the swapgs CPU instruction may be called one\n\t  extra time when it should not resulting in userland and\n\t  kernel state being mixed.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA local attacker can by causing a General Protection Fault\n\t  while the kernel is returning from an interrupt, trap or\n\t  system call while manipulating stack frames and, run\n\t  arbitrary code with kernel privileges.\u003c/p\u003e\n\t\u003cp\u003eThe vulnerability can be used to gain kernel / supervisor\n\t  privilege.  This can for example be used by normal users to\n\t  gain root privileges, to break out of jails, or bypass\n\t  Mandatory Access Control (MAC) restrictions.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround:\u003c/h1\u003e\n\t\u003cp\u003eNo workaround is available, but only systems running the 64\n\t  bit FreeBSD/amd64 kernels are vulnerable.\u003c/p\u003e\n\t\u003cp\u003eSystems with 64 bit capable CPUs, but running the 32 bit\n\t  FreeBSD/i386 kernel are not vulnerable.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.3_4",
+          "ge": "6.3"
+        },
+        {
+          "lt": "7.0_4",
+          "ge": "7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-09-03T00:00:00Z",
+    "entry": "2008-09-05T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2008-3890"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-08:07.amd64"
+    }
+  ]
+}

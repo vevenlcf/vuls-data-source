@@ -1,0 +1,30 @@
+{
+  "vid": "f94befcd-1289-11e2-a25e-525400272390",
+  "topic": "gitolite -- path traversal vulnerability",
+  "description": "\n\t\u003cp\u003eSitaram Chamarty reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://groups.google.com/forum/#!topic/gitolite/K9SnQNhCQ-0/discussion\"\u003e\n\t  \u003cp\u003eI'm sorry to say there is a potential path traversal vulnerability in\n\t  v3. Thanks to Stephane Chazelas for finding it and alerting me.\u003c/p\u003e\n\t  \u003cp\u003eCan it affect you? This can only affect you if you are using wild\n\t  card repos, *and* at least one of your patterns allows the string\n\t  \"../\" to match multiple times.\u003c/p\u003e\n\t  \u003cp\u003eHow badly can it affect you? A malicious user who *also* has the\n\t  ability to create arbitrary files in, say, /tmp (e.g., he has his own\n\t  userid on the same box), can compromise the entire \"git\" user.\n\t  Otherwise the worst he can do is create arbitrary repos in /tmp.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "gitolite",
+      "range": [
+        {
+          "ge": "3.01",
+          "le": "3.04"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-10-09T00:00:00Z",
+    "entry": "2012-10-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4506"
+    },
+    {
+      "source": "MLIST: CAMK1S_jotna+d_X2C-+es-M28i1aUBcsNeiXxwJ63EshQ8ht6w@mail.gmail.com",
+      "text": "https://groups.google.com/forum/#!topic/gitolite/K9SnQNhCQ-0/discussion"
+    }
+  ]
+}

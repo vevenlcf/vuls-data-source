@@ -1,0 +1,42 @@
+{
+  "vid": "e7dcd69d-8ee6-11e6-a590-14dae9d210b8",
+  "topic": "FreeBSD -- Multiple portsnap vulnerabilities",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eFlaws in portsnap's verification of downloaded tar files\n\tallows additional files to be included without causing the\n\tverification to fail. Portsnap may then use or execute these\n\tfiles.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn attacker who can conduct man in the middle attack on\n\tthe network at the time when portsnap is run can cause\n\tportsnap to execute arbitrary commands under the credentials\n\tof the user who runs portsnap, typically root.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "11.0_1",
+          "ge": "11.0"
+        },
+        {
+          "lt": "10.3_10",
+          "ge": "10.3"
+        },
+        {
+          "lt": "10.2_23",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_40",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_48",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-10-10T00:00:00Z",
+    "entry": "2016-10-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:30.portsnap"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "vid": "7dbb7197-7b68-11dd-80ba-000bcdf0a03b",
+  "topic": "FreeBSD -- nmount(2) local arbitrary code execution",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eVarious user defined input such as mount points, devices, and\n\t  mount options are prepared and passed as arguments to\n\t  nmount(2) into the kernel.  Under certain error conditions,\n\t  user defined data will be copied into a stack allocated buffer\n\t  stored in the kernel without sufficient bounds checking.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eIf the system is configured to allow unprivileged users to\n\t  mount file systems, it is possible for a local adversary to\n\t  exploit this vulnerability and execute code in the context of\n\t  the kernel.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround:\u003c/h1\u003e\n\t\u003cp\u003eIt is possible to work around this issue by allowing only\n\t  privileged users to mount file systems by running the\n\t  following sysctl(8) command:\u003c/p\u003e\n\t\u003cpre\u003e# sysctl vfs.usermount=0\u003c/pre\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.3_4",
+          "ge": "6.3"
+        },
+        {
+          "lt": "7.0_4",
+          "ge": "7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-09-03T00:00:00Z",
+    "entry": "2008-09-05T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2008-3531"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-08:08.nmount"
+    }
+  ]
+}

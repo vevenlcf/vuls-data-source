@@ -1,0 +1,45 @@
+{
+  "vid": "db4b2f27-252a-11eb-865c-00155d646400",
+  "topic": "go -- math/big: panic during recursive division of very large numbers; cmd/go: arbitrary code execution at build time through cgo",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/42552\"\u003e\n\t  \u003cp\u003eA number of math/big.Int methods (Div, Exp, DivMod, Quo, Rem,\n\t    QuoRem, Mod, ModInverse, ModSqrt, Jacobi, and GCD) can panic\n\t    when provided crafted large inputs. For the panic to happen,\n\t    the divisor or modulo argument must be larger than 3168 bits\n\t    (on 32-bit architectures) or 6336 bits (on 64-bit architectures).\n\t    Multiple math/big.Rat methods are similarly affected.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/42556\"\u003e\n\t  \u003cp\u003eThe go command may execute arbitrary code at build time when\n\t    cgo is in use. This may occur when running go get on a malicious\n\t    package, or any other command that builds untrusted code.  This\n\t    can be caused by a malicious gcc flags specified via a #cgo\n\t    directive.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/42559\"\u003e\n\t  \u003cp\u003eThe go command may execute arbitrary code at build time when\n\t    cgo is in use. This may occur when running go get on a malicious\n\t    package, or any other command that builds untrusted code.  This\n\t    can be caused by malicious unquoted symbol names.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.15.5,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-11-09T00:00:00Z",
+    "entry": "2020-11-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/42552"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/42556"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/42559"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-28362"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-28367"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-28366"
+    }
+  ]
+}

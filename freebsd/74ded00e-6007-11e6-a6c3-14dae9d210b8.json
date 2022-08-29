@@ -1,0 +1,30 @@
+{
+  "vid": "74ded00e-6007-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Buffer overflow in stdio",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eA programming error in the standard I/O library's\n\t__sflush() function could erroneously adjust the buffered\n\tstream's internal state even when no write actually occurred\n\tin the case when write(2) system call returns an error.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eThe accounting mismatch would accumulate, if the caller\n\tdoes not check for stream status and will eventually lead\n\tto a heap buffer overflow.\u003c/p\u003e\n\t\u003cp\u003eSuch overflows may lead to data corruption or the execution\n\tof arbitrary code at the privilege level of the calling\n\tprogram.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "10.1_1",
+          "ge": "10.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-12-10T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2014-8611"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-14:27.stdio"
+    }
+  ]
+}

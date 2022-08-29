@@ -1,0 +1,74 @@
+{
+  "vid": "f4428842-a583-4a4c-89b7-297c3459a1c3",
+  "topic": "bogofilter -- RFC 2047 decoder denial-of-service vulnerability",
+  "description": "\n\t\u003cp\u003eThe bogofilter team has been provided with a test case of a\n\t   malformatted (non-conformant) RFC-2047 encoded word that can cause\n\t   bogofilter versions 0.92.7 and prior to try to write a NUL byte into\n\t   a memory location that is either one byte past the end of a flex\n\t   buffer or to a location that is the negative of the encoded word's\n\t   start of payload data, causing a segmentation fault.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "bogofilter",
+      "range": [
+        {
+          "lt": "0.92.8",
+          "ge": "0.17.4"
+        }
+      ]
+    },
+    {
+      "name": "bogofilter-qdbm",
+      "range": [
+        {
+          "lt": "0.92.8",
+          "ge": "0.17.4"
+        }
+      ]
+    },
+    {
+      "name": "bogofilter-tdb",
+      "range": [
+        {
+          "lt": "0.92.8",
+          "ge": "0.17.4"
+        }
+      ]
+    },
+    {
+      "name": "ru-bogofilter",
+      "range": [
+        {
+          "lt": "0.92.8",
+          "ge": "0.17.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-10-09T00:00:00Z",
+    "entry": "2004-10-26T00:00:00Z",
+    "modified": "2015-09-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://bugs.debian.org/275373"
+    },
+    {
+      "source": "URL",
+      "text": "http://bogofilter.sourceforge.net/security/bogofilter-SA-2004-01"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-1007"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/73144"
+    },
+    {
+      "source": "MLIST: 20041008143604.GA14934@scowler.net",
+      "text": "http://article.gmane.org/gmane.mail.bogofilter.devel/3308"
+    },
+    {
+      "source": "MLIST: m3r7o892vj.fsf@merlin.emma.line.org",
+      "text": "http://article.gmane.org/gmane.mail.bogofilter.devel/3317"
+    }
+  ]
+}

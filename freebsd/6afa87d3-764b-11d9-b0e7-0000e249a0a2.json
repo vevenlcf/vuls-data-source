@@ -1,0 +1,64 @@
+{
+  "vid": "6afa87d3-764b-11d9-b0e7-0000e249a0a2",
+  "topic": "python -- SimpleXMLRPCServer.py allows unrestricted traversal",
+  "description": "\n\t\u003cp\u003eAccording to Python Security Advisory PSF-2005-001,\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.python.org/security/PSF-2005-001/\"\u003e\n\t  \u003cp\u003eThe Python development team has discovered a flaw in\n\t    the \u003ccode\u003eSimpleXMLRPCServer\u003c/code\u003e library module which\n\t    can give remote attackers access to internals of the\n\t    registered object or its module or possibly other modules.\n\t    The flaw only affects Python XML-RPC servers that use the\n\t    \u003ccode\u003eregister_instance()\u003c/code\u003e method to register an object\n\t    without a \u003ccode\u003e_dispatch()\u003c/code\u003e method.\tServers using\n\t    only \u003ccode\u003eregister_function()\u003c/code\u003e are not affected.\u003c/p\u003e\n\t  \u003cp\u003eOn vulnerable XML-RPC servers, a remote attacker may\n\t    be able to view or modify globals of the module(s)\n\t    containing the registered instance's class(es), potentially\n\t    leading to data loss or arbitrary code execution.  If the\n\t    registered object is a module, the danger is particularly\n\t    serious.  For example, if the registered module imports\n\t    the \u003ccode\u003eos\u003c/code\u003e module, an attacker could invoke the\n\t    \u003ccode\u003eos.system()\u003c/code\u003e function.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003e\u003cstrong\u003eNote:\u003c/strong\u003e This vulnerability affects your\n\t  system only if you're running\n\t  \u003ccode\u003eSimpleXMLRPCServer\u003c/code\u003e-based server.  This isn't\n\t  harmful at all if you don't run any internet server written\n\t  in Python or your server doesn't serve in XML-RPC protocol.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "python",
+      "range": [
+        {
+          "lt": "2.2.3_7",
+          "ge": "2.2"
+        },
+        {
+          "lt": "2.3.4_4",
+          "ge": "2.3"
+        },
+        {
+          "lt": "2.4_1",
+          "ge": "2.4"
+        },
+        {
+          "lt": "2.5.a0.20050129_1",
+          "ge": "2.5.a0.20050129"
+        }
+      ]
+    },
+    {
+      "name": "python+ipv6",
+      "range": [
+        {
+          "lt": "2.2.3_7",
+          "ge": "2.2"
+        },
+        {
+          "lt": "2.3.4_4",
+          "ge": "2.3"
+        },
+        {
+          "lt": "2.4_1",
+          "ge": "2.4"
+        },
+        {
+          "lt": "2.5.a0.20050129_1",
+          "ge": "2.5.a0.20050129"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-02-03T00:00:00Z",
+    "entry": "2005-02-03T00:00:00Z",
+    "modified": "2006-10-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.python.org/security/PSF-2005-001/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0089"
+    }
+  ]
+}

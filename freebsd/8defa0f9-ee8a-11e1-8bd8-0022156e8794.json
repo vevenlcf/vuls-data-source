@@ -1,0 +1,34 @@
+{
+  "vid": "8defa0f9-ee8a-11e1-8bd8-0022156e8794",
+  "topic": "squidclamav -- Denial of Service",
+  "description": "\n\t\u003cp\u003eSquidClamav developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://squidclamav.darold.net/news.html\"\u003e\n\t  \u003cp\u003eAdd a workaround for a squidGuard bug that unescape\n\t  the URL and send it back unescaped.  This result in garbage\n\t  staying into pipe of the system command call and could crash\n\t  squidclamav on next read or return false information.\n\t  This is specially true with URL containing the %0D or %0A\n\t  character.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eThis vulnerability can be triggered only in configurations\n\twhere external chained URL checker is configured via\n\t\"squidguard\" directive.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "squidclamav",
+      "range": [
+        {
+          "lt": "5.7_1"
+        },
+        {
+          "lt": "6.7",
+          "ge": "6.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-07-24T00:00:00Z",
+    "entry": "2012-08-25T00:00:00Z",
+    "modified": "2012-09-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://squidclamav.darold.net/news.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-3501"
+    }
+  ]
+}

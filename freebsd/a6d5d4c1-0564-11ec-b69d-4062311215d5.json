@@ -1,0 +1,38 @@
+{
+  "vid": "a6d5d4c1-0564-11ec-b69d-4062311215d5",
+  "topic": "FreeBSD -- Missing error handling in bhyve(8) device models",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eCertain VirtIO-based device models failed to handle errors when fetching\n\tI/O descriptors.  Such errors could be triggered by a malicious guest.\n\tAs a result, the device model code could be tricked into operating on\n\tuninitialized I/O vectors, leading to memory corruption.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA malicious guest may be able to crash the bhyve process.  It may be\n\tpossible to exploit the memory corruption bugs to achieve arbitrary code\n\texecution in the bhyve process.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "13.0_4",
+          "ge": "13.0"
+        },
+        {
+          "lt": "12.2_10",
+          "ge": "12.2"
+        },
+        {
+          "lt": "11.4_13",
+          "ge": "11.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-08-24T00:00:00Z",
+    "entry": "2021-08-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2021-29631"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-21:13.bhyve"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "vid": "bc7aff8c-d806-11ea-a5aa-0800272260e5",
+  "topic": "go -- encoding/binary: ReadUvarint and ReadVarint can read an unlimited number of bytes from invalid inputs",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/40618\"\u003e\n\t  \u003cp\u003eCertain invalid inputs to ReadUvarint or ReadVarint could cause\n\t    those functions to read an unlimited number of bytes from the\n\t    ByteReader argument before returning an error. This could lead to\n\t    processing more input than expected when the caller is reading\n\t    directly from the network and depends on ReadUvarint and ReadVarint\n\t    only consuming a small, bounded number of bytes, even from invalid\n\t    inputs.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.14.7,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-08-06T00:00:00Z",
+    "entry": "2020-08-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/40618"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-16845"
+    }
+  ]
+}

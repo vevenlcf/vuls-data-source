@@ -1,0 +1,38 @@
+{
+  "vid": "84ab58cf-e4ac-11d8-9b0a-000347a4fa7d",
+  "topic": "gnutls -- certificate chain verification DoS",
+  "description": "\n\t\u003cp\u003ePatric Hornik reports on a problem in the certificate chain\n\t  verification procedures of GnuTLS that may result in a\n\t  denial-of-service vulnerability:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.hornik.sk/SA/SA-20040802.txt\"\u003e\n\t  \u003cp\u003eThe certificate chain should be verified from last root\n\t    certificate to the first certificate.  Otherwise a lot\n\t    of unauthorized CPU processing can be forced to check\n\t    certificate signatures signed with arbitrary RSA/DSA keys\n\t    chosen by attacker.\u003c/p\u003e\n\t  \u003cp\u003eIn GnuTLS the signatures are checked from first to last\n\t    certificate, there is no limit on size of keys and no\n\t    limit on length of certificate chain.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "gnutls",
+      "range": [
+        {
+          "lt": "1.0.17"
+        }
+      ]
+    },
+    {
+      "name": "gnutls-devel",
+      "range": [
+        {
+          "lt": "1.1.12",
+          "ge": "1.1.*"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-08-02T00:00:00Z",
+    "entry": "2004-10-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.hornik.sk/SA/SA-20040802.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/12156"
+    }
+  ]
+}

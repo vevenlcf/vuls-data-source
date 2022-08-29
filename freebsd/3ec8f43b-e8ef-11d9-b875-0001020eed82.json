@@ -1,0 +1,50 @@
+{
+  "vid": "3ec8f43b-e8ef-11d9-b875-0001020eed82",
+  "topic": "kernel -- TCP connection stall denial of service",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eTwo problems have been discovered in the FreeBSD TCP stack.\u003c/p\u003e\n\t\u003cp\u003eFirst, when a TCP packets containing a timestamp is\n\t  received, inadequate checking of sequence numbers is\n\t  performed, allowing an attacker to artificially increase the\n\t  internal \"recent\" timestamp for a connection.\u003c/p\u003e\n\t\u003cp\u003eSecond, a TCP packet with the SYN flag set is accepted for\n\t  established connections, allowing an attacker to overwrite\n\t  certain TCP options.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eUsing either of the two problems an attacker with knowledge\n\t  of the local and remote IP and port numbers associated with\n\t  a connection can cause a denial of service situation by\n\t  stalling the TCP connection. The stalled TCP connection my\n\t  be closed after some time by the other host.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eIn some cases it may be possible to defend against these\n\t  attacks by blocking the attack packets using a firewall.\n\t  Packets used to effect either of these attacks would have\n\t  spoofed source IP addresses.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_3",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_17",
+          "ge": "5.0"
+        },
+        {
+          "lt": "4.11_11",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_16"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-06-29T00:00:00Z",
+    "entry": "2005-06-29T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0356"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2068"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:15.tcp"
+    },
+    {
+      "source": "CertVU",
+      "text": "637934"
+    }
+  ]
+}

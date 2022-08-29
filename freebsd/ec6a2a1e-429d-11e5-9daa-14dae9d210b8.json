@@ -1,0 +1,38 @@
+{
+  "vid": "ec6a2a1e-429d-11e5-9daa-14dae9d210b8",
+  "topic": "gnutls -- double free in certificate DN decoding",
+  "description": "\n\t\u003cp\u003egnutls.org reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.gnutls.org/security.html#GNUTLS-SA-2015-3\"\u003e\n\t    \u003cp\u003eKurt Roeckx reported that decoding a specific certificate with very\n\t    long DistinguishedName (DN) entries leads to double free, which may\n\t    result to a denial of service. Since the DN decoding occurs in almost\n\t    all applications using certificates it is recommended to upgrade the\n\t    latest GnuTLS version fixing the issue. Recommendation: Upgrade to\n\t    GnuTLS 3.4.4, or 3.3.17.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "gnutls",
+      "range": [
+        {
+          "lt": "3.3.17"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-07-20T00:00:00Z",
+    "entry": "2015-08-14T00:00:00Z",
+    "modified": "2015-08-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.gnutls.org/security.html#GNUTLS-SA-2015-3"
+    },
+    {
+      "source": "URL",
+      "text": "https://gitlab.com/gnutls/gnutls/commit/272854367efc130fbd4f1a51840d80c630214e12"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-6251"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://seclists.org/oss-sec/2015/q3/308"
+    }
+  ]
+}

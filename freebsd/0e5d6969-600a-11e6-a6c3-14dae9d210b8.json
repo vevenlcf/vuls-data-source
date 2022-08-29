@@ -1,0 +1,38 @@
+{
+  "vid": "0e5d6969-600a-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- rpcbind(8) remote denial of service [REVISED]",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eIn rpcbind(8), netbuf structures are copied directly,\n\twhich would result in two netbuf structures that reference\n\tto one shared address buffer. When one of the two netbuf\n\tstructures is freed, access to the other netbuf structure\n\twould result in an undefined result that may crash the\n\trpcbind(8) daemon.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA remote attacker who can send specifically crafted\n\tpackets to the rpcbind(8) daemon can cause it to crash,\n\tresulting in a denial of service condition.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "10.2_5",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_22",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_28",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-09-29T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2015-7236"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-15:24.rpcbind"
+    }
+  ]
+}

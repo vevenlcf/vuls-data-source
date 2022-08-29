@@ -1,0 +1,31 @@
+{
+  "vid": "36235c38-e0a8-11e1-9f4d-002354ed89bc",
+  "topic": "automake -- Insecure 'distcheck' recipe granted world-writable distdir",
+  "description": "\n\t\u003cp\u003eGNU reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://lists.gnu.org/archive/html/automake/2012-07/msg00023.html\"\u003e\n\t  \u003cp\u003eThe recipe of the 'distcheck' target granted temporary\n\t    world-write permissions on the extracted distdir.  This introduced\n\t    a locally exploitable race condition for those who run \"make\n\t    distcheck\" with a non-restrictive umask (e.g., 022) in a directory\n\t    that was accessible by others.  A successful exploit would result\n\t    in arbitrary code execution with the privileges of the user\n\t    running \"make distcheck\".\u003c/p\u003e\n\t  \u003cp\u003eIt is important to stress that this vulnerability impacts not only\n\t    the Automake package itself, but all packages with\n\t    Automake-generated makefiles.  For an effective fix it is necessary\n\t    to regenerate the Makefile.in files with a fixed Automake\n\t    version.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "automake",
+      "range": [
+        {
+          "lt": "1.12.2",
+          "ge": "1.5.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-07-09T00:00:00Z",
+    "entry": "2012-08-06T00:00:00Z",
+    "modified": "2012-08-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://lists.gnu.org/archive/html/automake/2012-07/msg00023.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-3386"
+    }
+  ]
+}

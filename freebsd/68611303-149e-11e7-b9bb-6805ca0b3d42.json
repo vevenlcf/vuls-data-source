@@ -1,0 +1,25 @@
+{
+  "vid": "68611303-149e-11e7-b9bb-6805ca0b3d42",
+  "topic": "phpMyAdmin -- bypass 'no password' restriction",
+  "description": "\n\t\u003cp\u003eThe phpMyAdmin team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2017-8/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eBypass $cfg['Servers'][$i]['AllowNoPassword']\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eA vulnerability was discovered where the restrictions\n\t    caused by $cfg['Servers'][$i]['AllowNoPassword'] = false are\n\t    bypassed under certain PHP versions. This can allow the\n\t    login of users who have no password set even if the\n\t    administrator has set $cfg['Servers'][$i]['AllowNoPassword']\n\t    to false (which is also the default).\u003c/p\u003e\n\t  \u003cp\u003eThis behavior depends on the PHP version used (it seems\n\t    PHP 5 is affected, while PHP 7.0 is not).\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this vulnerability to be of moderate severity.\u003c/p\u003e\n\t  \u003ch3\u003eMitigation factor\u003c/h3\u003e\n\t  \u003cp\u003eSet a password for all users.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "phpMyAdmin",
+      "range": [
+        {
+          "lt": "4.7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-03-28T00:00:00Z",
+    "entry": "2017-03-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2017-8/"
+    }
+  ]
+}

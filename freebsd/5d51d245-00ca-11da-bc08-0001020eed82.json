@@ -1,0 +1,53 @@
+{
+  "vid": "5d51d245-00ca-11da-bc08-0001020eed82",
+  "topic": "ethereal -- multiple protocol dissectors vulnerabilities",
+  "description": "\n\t\u003cp\u003eAn Ethreal Security Advisories reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.ethereal.com/appnotes/enpa-sa-00020.html\"\u003e\n\t  \u003cp\u003eOur testing program has turned up several more security\n\t    issues:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eThe LDAP dissector could free static memory and crash.\u003c/li\u003e\n\t    \u003cli\u003eThe AgentX dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe 802.3 dissector could go into an infinite loop.\u003c/li\u003e\n\t    \u003cli\u003eThe PER dissector could abort.\u003c/li\u003e\n\t    \u003cli\u003eThe DHCP dissector could go into an infinite loop.\u003c/li\u003e\n\t    \u003cli\u003eThe BER dissector could abort or loop infinitely.\u003c/li\u003e\n\t    \u003cli\u003eThe MEGACO dissector could go into an infinite loop.\u003c/li\u003e\n\t    \u003cli\u003eThe GIOP dissector could dereference a null pointer.\u003c/li\u003e\n\t    \u003cli\u003eThe SMB dissector was susceptible to a buffer overflow.\u003c/li\u003e\n\t    \u003cli\u003eThe WBXML could dereference a null pointer.\u003c/li\u003e\n\t    \u003cli\u003eThe H1 dissector could go into an infinite loop.\u003c/li\u003e\n\t    \u003cli\u003eThe DOCSIS dissector could cause a crash.\u003c/li\u003e\n\t    \u003cli\u003eThe SMPP dissector could go into an infinite loop.\u003c/li\u003e\n\t    \u003cli\u003eSCTP graphs could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe HTTP dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe SMB dissector could go into a large loop.\u003c/li\u003e\n\t    \u003cli\u003eThe DCERPC dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eSeveral dissectors could crash while reassembling packets.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eSteve Grubb at Red Hat found the following issues:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eThe CAMEL dissector could dereference a null pointer.\u003c/li\u003e\n\t    \u003cli\u003eThe DHCP dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe CAMEL dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe PER dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe RADIUS dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe Telnet dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe IS-IS LSP dissector could crash.\u003c/li\u003e\n\t    \u003cli\u003eThe NCP dissector could crash.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eiDEFENSE found the following issues:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eSeveral dissectors were susceptible to a format string\n\t      overflow.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003ch1\u003eImpact:\u003c/h1\u003e\n\t  \u003cp\u003eIt may be possible to make Ethereal crash, use up\n\t    available memory, or run arbitrary code by injecting a\n\t    purposefully malformed packet onto the wire or by\n\t    convincing someone to read a malformed packet trace\n\t    file.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ethereal",
+      "range": [
+        {
+          "lt": "0.10.12",
+          "ge": "0.8.5"
+        }
+      ]
+    },
+    {
+      "name": "ethereal-lite",
+      "range": [
+        {
+          "lt": "0.10.12",
+          "ge": "0.8.5"
+        }
+      ]
+    },
+    {
+      "name": "tethereal",
+      "range": [
+        {
+          "lt": "0.10.12",
+          "ge": "0.8.5"
+        }
+      ]
+    },
+    {
+      "name": "tethereal-lite",
+      "range": [
+        {
+          "lt": "0.10.12",
+          "ge": "0.8.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-26T00:00:00Z",
+    "entry": "2005-07-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.ethereal.com/appnotes/enpa-sa-00020.html"
+    }
+  ]
+}

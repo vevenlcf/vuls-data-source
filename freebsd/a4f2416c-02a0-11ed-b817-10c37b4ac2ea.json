@@ -1,0 +1,69 @@
+{
+  "vid": "a4f2416c-02a0-11ed-b817-10c37b4ac2ea",
+  "topic": "go -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53188\"\u003e\n\t  \u003cp\u003enet/http: improper sanitization of Transfer-Encoding\n\t    header\u003c/p\u003e\n\t  \u003cp\u003eThe HTTP/1 client accepted some invalid\n\t    Transfer-Encoding headers as indicating a \"chunked\"\n\t    encoding. This could potentially allow for request\n\t    smuggling, but only if combined with an intermediate\n\t    server that also improperly failed to reject the header\n\t    as invalid.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53423\"\u003e\n\t  \u003cp\u003eWhen httputil.ReverseProxy.ServeHTTP was called with a\n\t    Request.Header map containing a nil value for the\n\t    X-Forwarded-For header, ReverseProxy would set the client\n\t    IP as the value of the X-Forwarded-For header, contrary to\n\t    its documentation. In the more usual case where a Director\n\t    function set the X-Forwarded-For header value to nil,\n\t    ReverseProxy would leave the header unmodified as\n\t    expected.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53168\"\u003e\n\t  \u003cp\u003ecompress/gzip: stack exhaustion in Reader.Read\u003c/p\u003e\n\t  \u003cp\u003eCalling Reader.Read on an archive containing a large\n\t    number of concatenated 0-length compressed files can\n\t    cause a panic due to stack exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53611\"\u003e\n\t  \u003cp\u003eencoding/xml: stack exhaustion in Unmarshal\u003c/p\u003e\n\t  \u003cp\u003eCalling Unmarshal on a XML document into a Go struct\n\t    which has a nested field that uses the any field tag can\n\t    cause a panic due to stack exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53614\"\u003e\n\t  \u003cp\u003eencoding/xml: stack exhaustion in Decoder.Skip\u003c/p\u003e\n\t  \u003cp\u003eCalling Decoder.Skip when parsing a deeply nested XML\n\t    document can cause a panic due to stack exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53615\"\u003e\n\t  \u003cp\u003eencoding/gob: stack exhaustion in Decoder.Decode\u003c/p\u003e\n\t  \u003cp\u003eCalling Decoder.Decode on a message which contains\n\t    deeply nested structures can cause a panic due to stack\n\t    exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53416\"\u003e\n\t  \u003cp\u003epath/filepath: stack exhaustion in Glob\u003c/p\u003e\n\t  \u003cp\u003eCalling Glob on a path which contains a large number of\n\t    path separators can cause a panic due to stack\n\t    exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53415\"\u003e\n\t  \u003cp\u003eio/fs: stack exhaustion in Glob\u003c/p\u003e\n\t  \u003cp\u003eCalling Glob on a path which contains a large number of\n\t    path separators can cause a panic due to stack\n\t    exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://go.dev/issue/53616\"\u003e\n\t  \u003cp\u003ego/parser: stack exhaustion in all Parse* functions\u003c/p\u003e\n\t  \u003cp\u003eCalling any of the Parse functions on Go source code\n\t    which contains deeply nested types or declarations can\n\t    cause a panic due to stack exhaustion.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go118",
+      "range": [
+        {
+          "lt": "1.18.4"
+        }
+      ]
+    },
+    {
+      "name": "go117",
+      "range": [
+        {
+          "lt": "1.17.12"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-07-12T00:00:00Z",
+    "entry": "2022-07-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://groups.google.com/g/golang-dev/c/frczlF8OFQ0"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-1705"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-32148"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-30631"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-30633"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-28131"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-30635"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-30632"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-30630"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-1962"
+    }
+  ]
+}

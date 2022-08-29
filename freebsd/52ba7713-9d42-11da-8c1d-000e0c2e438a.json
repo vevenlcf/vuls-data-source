@@ -1,0 +1,39 @@
+{
+  "vid": "52ba7713-9d42-11da-8c1d-000e0c2e438a",
+  "topic": "pf -- IP fragment handling panic",
+  "description": "\n\t\u003cp\u003eProblem description:\u003c/p\u003e\n\t\u003cp\u003eA logic bug in pf's IP fragment cache may result in a packet\n\t  fragment being inserted twice, violating a kernel\n\t  invariant.\u003c/p\u003e\n\t\u003cp\u003eImpact:\u003c/p\u003e\n\t\u003cp\u003eBy sending carefully crafted sequence of IP packet fragments,\n\t  a remote attacker can cause a system running pf with a ruleset\n\t  containing a 'scrub fragment crop' or 'scrub fragment\n\t  drop-ovl' rule to crash.\u003c/p\u003e\n\t\u003cp\u003eWorkaround:\u003c/p\u003e\n\t\u003cp\u003eDo not use 'scrub fragment crop' or 'scrub fragment drop-ovl'\n\t  rules on systems running pf.\tIn most cases, such rules can be\n\t  replaced by 'scrub fragment reassemble' rules; see the\n\t  pf.conf(5) manual page for more details.\u003c/p\u003e\n\n\t\u003cp\u003eSystems which do not use pf, or use pf but do not use the\n\t  aforementioned rules, are not affected by this issue.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_4",
+          "ge": "6.0"
+        },
+        {
+          "lt": "5.4_10",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_25",
+          "ge": "5.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-01-25T00:00:00Z",
+    "entry": "2006-02-14T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0381"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:07.pf"
+    }
+  ]
+}

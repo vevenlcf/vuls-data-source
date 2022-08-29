@@ -1,0 +1,61 @@
+{
+  "vid": "aea8d90e-b0c1-11e5-8d13-bc5ff45d0f28",
+  "topic": "qemu -- code execution on host machine",
+  "description": "\n\t\u003cp\u003ePetr Matousek of Red Hat Inc. reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://openwall.com/lists/oss-security/2015/06/17/5\"\u003e\n\t  \u003cp\u003eDue converting PIO to the new memory read/write api we no longer\n\t    provide separate I/O region lenghts for read and write operations.\n\t    As a result, reading from PIT Mode/Command register will end with\n\t    accessing pit-\u0026gt;channels with invalid index and potentially cause\n\t    memory corruption and/or minor information leak.\u003c/p\u003e\n\t  \u003cp\u003eA privileged guest user in a guest with QEMU PIT emulation enabled\n\t    could potentially (tough unlikely) use this flaw to execute\n\t    arbitrary code on the host with the privileges of the hosting QEMU\n\t    process.\u003c/p\u003e\n\t  \u003cp\u003ePlease note that by default QEMU/KVM guests use in-kernel (KVM) PIT\n\t    emulation and are thus not vulnerable to this issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "2.4.0"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "2.4.0"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-17T00:00:00Z",
+    "entry": "2016-01-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://openwall.com/lists/oss-security/2015/06/17/5"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=d4862a87e31a51de9eb260f25c9e99a75efe3235"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/seanbruno/qemu-bsd-user/commit/d4862a87e31a51de9eb260f25c9e99a75efe3235"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3214"
+    }
+  ]
+}

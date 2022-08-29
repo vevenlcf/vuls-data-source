@@ -1,0 +1,38 @@
+{
+  "vid": "5039ae61-2c9f-11db-8401-000ae42e9b93",
+  "topic": "globus -- Multiple tmpfile races",
+  "description": "\n\t\u003cp\u003eThe Globus Alliance reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.globus.org/mail_archive/security-announce/2006/08/msg00000.html\"\u003e\n\t  \u003cp\u003eThe proxy generation tool (grid-proxy-init) creates the\n\t    file, secures the file to provide access only to owner and\n\t    writes proxy to the file. A race condition exists between\n\t    the opening of the proxy credentials file, and making sure\n\t    it is safe file to write to. The checks to ensure this\n\t    file is accessible only to the owner take place using the\n\t    filename after the file is opened for writing, but before\n\t    any data is written.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.globus.org/mail_archive/security-announce/2006/08/msg00001.html\"\u003e\n\t  \u003cp\u003eVarious components of the toolkit use files in shared\n\t    directories to store information, some being sensitive\n\t    information. For example, the tool to create proxy\n\t    certificates, stores the generated proxy certificate by\n\t    default in /tmp. Specific vulnerabilities in handling such\n\t    files were reported in myproxy-admin-adduser, grid-ca-sign\n\t    and grid-security-config.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "globus",
+      "range": [
+        {
+          "lt": "4.0.2_20060706"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-08-08T00:00:00Z",
+    "entry": "2006-08-15T00:00:00Z",
+    "modified": "2010-05-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.globus.org/mail_archive/security-announce/2006/08/msg00000.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.globus.org/mail_archive/security-announce/2006/08/msg00001.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4232"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4233"
+    }
+  ]
+}

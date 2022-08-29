@@ -1,0 +1,33 @@
+{
+  "vid": "6ec9f210-0404-11e6-9aee-bc5ff4fb5ea1",
+  "topic": "dhcpcd -- remote code execution/denial of service",
+  "description": "\n\t\u003cp\u003eMITRE reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7913\"\u003e\n\t  \u003cp\u003eThe print_option function in dhcp-common.c in dhcpcd through 6.9.1,\n\t    as used in dhcp.c in dhcpcd 5.x in Android before 5.1 and other\n\t    products, misinterprets the return value of the snprintf function,\n\t    which allows remote DHCP servers to execute arbitrary code or cause\n\t    a denial of service (memory corruption) via a crafted message.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "dhcpcd",
+      "range": [
+        {
+          "lt": "6.10.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-01-22T00:00:00Z",
+    "entry": "2016-04-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://roy.marples.name/projects/dhcpcd/info/528541c4c619520e"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-7913"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/208702"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "vid": "ef410571-a541-11d9-a788-0001020eed82",
+  "topic": "wu-ftpd -- remote globbing DoS vulnerability",
+  "description": "\n\t\u003cp\u003eAn iDEFENSE Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=110935886414939\"\u003e\n\t  \u003cp\u003eRemote exploitation of an input validation vulnerability\n\t    in version 2.6.2 of WU-FPTD could allow for a denial of\n\t    service of the system by resource exhaustion.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability specifically exists in the\n\t    \u003ccode\u003ewu_fnmatch()\u003c/code\u003e function in wu_fnmatch.c. When a\n\t    pattern containing a '*' character is supplied as input,\n\t    the function calls itself recursively on a smaller\n\t    substring. By supplying a string which contains a large\n\t    number of '*' characters, the system will take a long time\n\t    to return the results, during which time it will be using\n\t    a large amount of CPU time.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "wu-ftpd",
+      "range": [
+        {
+          "lt": "2.6.2_6"
+        }
+      ]
+    },
+    {
+      "name": "wu-ftpd+ipv6",
+      "range": [
+        {
+          "lt": "2.6.2_7"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-02-05T00:00:00Z",
+    "entry": "2005-04-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0256"
+    },
+    {
+      "source": "MLIST: FB24803D1DF2A34FA59FC157B77C970503E249AF@idserv04.idef.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=110935886414939"
+    }
+  ]
+}

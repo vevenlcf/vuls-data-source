@@ -1,0 +1,38 @@
+{
+  "vid": "6809c6db-bdeb-11e5-b5fe-002590263bf5",
+  "topic": "go -- information disclosure vulnerability",
+  "description": "\n\t\u003cp\u003eJason Buberel reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2016/01/13/7\"\u003e\n\t  \u003cp\u003eA security-related issue has been reported in Go's math/big\n\t    package. The issue was introduced in Go 1.5. We recommend that all\n\t    users upgrade to Go 1.5.3, which fixes the issue. Go programs must\n\t    be recompiled with Go 1.5.3 in order to receive the fix.\u003c/p\u003e\n\t  \u003cp\u003eThe Go team would like to thank Nick Craig-Wood for identifying the\n\t    issue.\u003c/p\u003e\n\t  \u003cp\u003eThis issue can affect RSA computations in crypto/rsa, which is used\n\t    by crypto/tls. TLS servers on 32-bit systems could plausibly leak\n\t    their RSA private key due to this issue. Other protocol\n\t    implementations that create many RSA signatures could also be\n\t    impacted in the same way.\u003c/p\u003e\n\t  \u003cp\u003eSpecifically, incorrect results in one part of the RSA Chinese\n\t    Remainder computation can cause the result to be incorrect in such a\n\t    way that it leaks one of the primes. While RSA blinding should\n\t    prevent an attacker from crafting specific inputs that trigger the\n\t    bug, on 32-bit systems the bug can be expected to occur at random\n\t    around one in 2^26 times. Thus collecting around 64 million\n\t    signatures (of known data) from an affected server should be enough\n\t    to extract the private key used.\u003c/p\u003e\n\t  \u003cp\u003eOn 64-bit systems, the frequency of the bug is so low (less than\n\t    one in 2^50) that it would be very difficult to exploit.\n\t    Nonetheless, everyone is strongly encouraged to upgrade.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.5.3,1",
+          "ge": "1.5,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-01-13T00:00:00Z",
+    "entry": "2016-01-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2016/01/13/7"
+    },
+    {
+      "source": "URL",
+      "text": "https://go-review.googlesource.com/#/c/17672/"
+    },
+    {
+      "source": "URL",
+      "text": "https://go-review.googlesource.com/#/c/18491/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8618"
+    }
+  ]
+}

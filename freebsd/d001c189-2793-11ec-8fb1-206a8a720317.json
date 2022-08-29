@@ -1,0 +1,26 @@
+{
+  "vid": "d001c189-2793-11ec-8fb1-206a8a720317",
+  "topic": "Apache httpd -- Path Traversal and Remote Code Execution",
+  "description": "\n\t\u003cp\u003eThe Apache http server project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://httpd.apache.org/security/vulnerabilities_24.html\"\u003e\n\t  \u003cp\u003ecritical: Path Traversal and Remote Code Execution in Apache HTTP\n\t  Server 2.4.49 and 2.4.50 (incomplete fix of CVE-2021-41773)\n\t  (CVE-2021-42013).\u003c/p\u003e\n\t  \u003cp\u003eIt was found that the fix for CVE-2021-41773 in Apache HTTP\n\t  Server 2.4.50 was insufficient. An attacker could use a path\n\t  traversal attack to map URLs to files outside the directories\n\t  configured by Alias-like directives.\u003c/p\u003e\n\t  \u003cp\u003eIf files outside of these directories are not protected by the\n\t  usual default configuration \"require all denied\", these requests\n\t  can succeed. If CGI scripts are also enabled for these aliased\n\t  pathes, this could allow for remote code execution.\u003c/p\u003e\n\t  \u003cp\u003eThis issue only affects Apache 2.4.49 and Apache 2.4.50 and not\n\t  earlier versions.\u003c/p\u003e\n\t  \u003cp\u003eAcknowledgements: Reported by Juan Escobar from Dreamlab\n\t  Technologies, Fernando Munoz from NULL Life CTF Team, and\n\t  Shungo Kumasaka\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache24",
+      "range": [
+        {
+          "lt": "2.4.51",
+          "ge": "2.4.49"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-10-07T00:00:00Z",
+    "entry": "2021-10-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2021-42013"
+    }
+  ]
+}

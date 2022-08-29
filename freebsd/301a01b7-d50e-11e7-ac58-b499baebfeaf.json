@@ -1,0 +1,48 @@
+{
+  "vid": "301a01b7-d50e-11e7-ac58-b499baebfeaf",
+  "topic": "cURL -- Multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe cURL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.haxx.se/changes.html\"\u003e\n\t  \u003cul\u003e\u003cli\u003eNTLM buffer overflow via integer overflow\n\t      (CVE-2017-8816)\u003cbr/\u003elibcurl contains a buffer overrun flaw\n\t      in the NTLM authentication code.\n\t      The internal function Curl_ntlm_core_mk_ntlmv2_hash sums up\n\t      the lengths of the user name + password (= SUM) and multiplies\n\t      the sum by two (= SIZE) to figure out how large storage to\n\t      allocate from the heap.\u003c/li\u003e\n\t    \u003cli\u003eFTP wildcard out of bounds read (CVE-2017-8817)\u003cbr/\u003e\n\t      libcurl contains a read out of bounds flaw in the FTP wildcard\n\t      function.\n\t      libcurl's FTP wildcard matching feature, which is enabled with\n\t      the CURLOPT_WILDCARDMATCH option can use a built-in wildcard\n\t      function or a user provided one. The built-in wildcard function\n\t      has a flaw that makes it not detect the end of the pattern\n\t      string if it ends with an open bracket ([) but instead it will\n\t      continue reading the heap beyond the end of the URL buffer that\n\t      holds the wildcard.\u003c/li\u003e\n\t    \u003cli\u003eSSL out of buffer access (CVE-2017-8818)\u003cbr/\u003e\n\t      libcurl contains an out boundary access flaw in SSL related code.\n\t      When allocating memory for a connection (the internal struct\n\t      called connectdata), a certain amount of memory is allocated at\n\t      the end of the struct to be used for SSL related structs. Those\n\t      structs are used by the particular SSL library libcurl is built\n\t      to use. The application can also tell libcurl which specific SSL\n\t      library to use if it was built to support more than one.\n\t    \u003c/li\u003e\u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.57.0",
+          "ge": "7.21.0"
+        }
+      ]
+    },
+    {
+      "name": "linux-c7-curl",
+      "range": [
+        {
+          "lt": "7.29.0_4",
+          "ge": "7.21.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-11-29T00:00:00Z",
+    "entry": "2017-11-29T00:00:00Z",
+    "modified": "2017-12-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/changes.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-8816"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-8817"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-8818"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "vid": "6001cfc6-9f0f-4fae-9b4f-9b8fae001425",
+  "topic": "PowerDNS -- Insufficient validation in the HTTP remote backend",
+  "description": "\n\t\u003cp\u003ePowerDNS developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-03.html\"\u003e\n\t  \u003cp\u003eAn issue has been found in PowerDNS Authoritative Server when the HTTP remote backend is used in RESTful mode (without post=1 set), allowing a remote user to cause the HTTP backend to connect to an attacker-specified host instead of the configured one, via a crafted DNS query. This can be used to cause a denial of service by preventing the remote backend from getting a response, content spoofing if the attacker can time its own query so that subsequent queries will use an attacker-controlled HTTP server instead of the configured one, and possibly information disclosure if the Authoritative Server has access to internal servers.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "powerdns",
+      "range": [
+        {
+          "lt": "4.1.7"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-03-18T00:00:00Z",
+    "entry": "2019-03-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-03.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-3871"
+    }
+  ]
+}

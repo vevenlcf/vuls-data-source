@@ -1,0 +1,26 @@
+{
+  "vid": "1cd3ca42-33e6-11e2-a255-5404a67eef98",
+  "topic": "lighttpd -- remote DoS in header parsing",
+  "description": "\n\t\u003cp\u003eLighttpd security advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2012_01.txt\"\u003e\n\t  \u003cp\u003eCertain Connection header values will trigger an endless loop, for example:\n\t    \"Connection: TE,,Keep-Alive\"\u003c/p\u003e\n\t  \u003cp\u003eOn receiving such value, lighttpd will enter an endless loop,\n\t    detecting an empty token but not incrementing the current string\n\t    position, and keep reading the ',' again and again.\u003c/p\u003e\n\t  \u003cp\u003eThis bug was introduced in 1.4.31, when we fixed an \"invalid read\"\n\t    bug (it would try to read the byte before the string if it started\n\t    with ',', although the value wasn't actually used).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "lighttpd",
+      "range": [
+        {
+          "lt": "1.4.32",
+          "gt": "1.4.30"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-11-17T00:00:00Z",
+    "entry": "2012-11-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2012-5533"
+    }
+  ]
+}

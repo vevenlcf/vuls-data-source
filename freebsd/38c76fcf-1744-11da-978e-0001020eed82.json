@@ -1,0 +1,33 @@
+{
+  "vid": "38c76fcf-1744-11da-978e-0001020eed82",
+  "topic": "pam_ldap -- authentication bypass vulnerability",
+  "description": "\n\t\u003cp\u003eLuke Howard reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=166163\"\u003e\n\t  \u003cp\u003eIf a pam_ldap client authenticates against an LDAP server\n\t    that returns a passwordPolicyResponse control, but omits\n\t    the optional \"error\" field of the\n\t    PasswordPolicyResponseValue, then the LDAP authentication\n\t    result will be ignored and the authentication step will\n\t    always succeed.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "pam_ldap",
+      "range": [
+        {
+          "lt": "1.8.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-08-22T00:00:00Z",
+    "entry": "2005-08-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=166163"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2641"
+    },
+    {
+      "source": "CertVU",
+      "text": "778916"
+    }
+  ]
+}

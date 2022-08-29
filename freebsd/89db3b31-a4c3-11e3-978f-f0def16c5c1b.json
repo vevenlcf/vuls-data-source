@@ -1,0 +1,29 @@
+{
+  "vid": "89db3b31-a4c3-11e3-978f-f0def16c5c1b",
+  "topic": "nginx -- SPDY memory corruption",
+  "description": "\n\t\u003cp\u003eThe nginx project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://mailman.nginx.org/pipermail/nginx-announce/2014/000132.html\"\u003e\n\t  \u003cp\u003eA bug in the experimental SPDY implementation in nginx 1.5.10 was found,\n\t   which might allow an attacker to corrupt worker process memory by using\n\t   a specially crafted request, potentially resulting in arbitrary code\n\t   execution (CVE-2014-0088).\u003c/p\u003e\n\n\t   \u003cp\u003eThe problem only affects nginx 1.5.10 on 32-bit platforms, compiled with\n\t   the ngx_http_spdy_module module (which is not compiled by default), if\n\t   the \"spdy\" option of the \"listen\" directive is used in a configuration\n\t   file.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "nginx-devel",
+      "range": [
+        {
+          "eq": "1.5.10"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-03-04T00:00:00Z",
+    "entry": "2014-03-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://mailman.nginx.org/pipermail/nginx-announce/2014/000132.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0088"
+    }
+  ]
+}

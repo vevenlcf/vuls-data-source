@@ -1,0 +1,39 @@
+{
+  "vid": "5d62950f-3bb5-11e7-93f7-d43d7e971a1b",
+  "topic": "gitlab -- Various security issues",
+  "description": "\n\t\u003cp\u003eGitLab reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://about.gitlab.com/2017/03/20/gitlab-8-dot-17-dot-4-security-release/\"\u003e\n    \u003ch1\u003eInformation Disclosure in Issue and Merge Request Trackers\u003c/h1\u003e\n    \u003cp\u003eDuring an internal code review a critical vulnerability in the GitLab\n    Issue and Merge Request trackers was discovered. This vulnerability could\n    allow a user with access to assign ownership of an issue or merge request to\n    another user to disclose that user's private token, email token, email\n    address, and encrypted OTP secret. Reporter-level access to a GitLab project\n    is required to exploit this flaw.\u003c/p\u003e\n    \u003ch1\u003eSSRF when importing a project from a Repo by URL\u003c/h1\u003e\n    \u003cp\u003eGitLab instances that have enabled project imports using \"Repo by URL\"\n    were vulnerable to Server-Side Request Forgery attacks. By specifying a\n    project import URL of localhost an attacker could target services that are\n    bound to the local interface of the server. These services often do not\n    require authentication. Depending on the service an attacker might be able\n    craft an attack using the project import request URL.\u003c/p\u003e\n    \u003ch1\u003eLinks in Environments tab vulnerable to tabnabbing\u003c/h1\u003e\n    \u003cp\u003eedio via HackerOne reported that user-configured Environment links\n    include target=_blank but do not also include rel: noopener\n    noreferrer. Anyone clicking on these links may therefore be subjected to\n    tabnabbing attacks where a link back to the requesting page is maintained\n    and can be manipulated by the target server.\u003c/p\u003e\n    \u003ch1\u003eAccounts with email set to \"Do not show on profile\" have addresses\n    exposed in public atom feed\u003c/h1\u003e\n    \u003cp\u003eSeveral GitLab users reported that even with \"Do not show on profile\"\n    configured for their email addresses those addresses were still being leaked\n    in Atom feeds if they commented on a public project.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "gitlab",
+      "range": [
+        {
+          "ge": "8.7.0",
+          "le": "8.15.7"
+        },
+        {
+          "ge": "8.16.0",
+          "le": "8.16.7"
+        },
+        {
+          "ge": "8.17.0",
+          "le": "8.17.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-03-20T00:00:00Z",
+    "entry": "2017-05-18T00:00:00Z",
+    "modified": "2017-05-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://about.gitlab.com/2017/03/20/gitlab-8-dot-17-dot-4-security-release/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-0882"
+    }
+  ]
+}

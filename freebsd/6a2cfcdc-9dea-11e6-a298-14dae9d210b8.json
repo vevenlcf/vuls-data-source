@@ -1,0 +1,47 @@
+{
+  "vid": "6a2cfcdc-9dea-11e6-a298-14dae9d210b8",
+  "topic": "FreeBSD -- OpenSSH Remote Denial of Service vulnerability",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eWhen processing the SSH_MSG_KEXINIT message, the server\n\tcould allocate up to a few hundreds of megabytes of memory\n\tper each connection, before any authentication take place.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA remote attacker may be able to cause a SSH server to\n\tallocate an excessive amount of memory. Note that the default\n\tMaxStartups setting on FreeBSD will limit the effectiveness\n\tof this attack.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssh-portable",
+      "range": [
+        {
+          "lt": "7.3p1_1"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "11.0_3",
+          "ge": "11.0"
+        },
+        {
+          "lt": "10.3_12",
+          "ge": "10.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-10-19T00:00:00Z",
+    "entry": "2016-10-29T00:00:00Z",
+    "modified": "2016-11-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://seclists.org/oss-sec/2016/q4/191"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-8858"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:33.openssh"
+    }
+  ]
+}

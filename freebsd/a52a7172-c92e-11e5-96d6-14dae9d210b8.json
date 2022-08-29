@@ -1,0 +1,26 @@
+{
+  "vid": "a52a7172-c92e-11e5-96d6-14dae9d210b8",
+  "topic": "socat -- diffie hellman parameter was not prime",
+  "description": "\n\t\u003cp\u003esocat reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.dest-unreach.org/socat/contrib/socat-secadv7.html\"\u003e\n\t  \u003cp\u003eIn the OpenSSL address implementation the hard coded 1024\n\t    bit DH p parameter was not prime. The effective cryptographic strength\n\t    of a key exchange using these parameters was weaker than the one one\n\t    could get by using a prime p. Moreover, since there is no indication of\n\t    how these parameters were chosen, the existence of a trapdoor that makes\n\t    possible for an eavesdropper to recover the shared secret from a key\n\t    exchange that uses them cannot be ruled out.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "socat",
+      "range": [
+        {
+          "lt": "1.7.3.1",
+          "ge": "1.7.2.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-02-01T00:00:00Z",
+    "entry": "2016-02-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.dest-unreach.org/socat/contrib/socat-secadv7.html"
+    }
+  ]
+}

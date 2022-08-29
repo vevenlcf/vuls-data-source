@@ -1,0 +1,77 @@
+{
+  "vid": "76e59f55-4f7a-4887-bcb0-11604004163a",
+  "topic": "libxml2 -- Multiple Issues",
+  "description": "\n\t\u003cp\u003elibxml2 developers report:\u003c/p\u003e\n\t\u003cp\u003eThe htmlParseTryOrFinish function in HTMLparser.c in libxml2 2.9.4 allows attackers to cause a denial of service (buffer over-read) or information disclosure.\u003c/p\u003e\n\t\u003cp\u003eA buffer overflow was discovered in libxml2 20904-GITv2.9.4-16-g0741801. The function xmlSnprintfElementContent in valid.c is supposed to recursively dump the element content definition into a char buffer 'buf' of size 'size'. The variable len is assigned strlen(buf). If the content-\u0026gt;type is XML_ELEMENT_CONTENT_ELEMENT, then (i) the content-\u0026gt;prefix is appended to buf (if it actually fits) whereupon (ii) content-\u0026gt;name is written to the buffer. However, the check for whether the content-\u0026gt;name actually fits also uses 'len' rather than the updated buffer length strlen(buf). This allows us to write about \"size\" many bytes beyond the allocated memory. This vulnerability causes programs that use libxml2, such as PHP, to crash.\u003c/p\u003e\n\t\u003cp\u003elibxml2 20904-GITv2.9.4-16-g0741801 is vulnerable to a stack-based buffer overflow. The function xmlSnprintfElementContent in valid.c is supposed to recursively dump the element content definition into a char buffer 'buf' of size 'size'. At the end of the routine, the function may strcat two more characters without checking whether the current strlen(buf) + 2 \u0026lt; size. This vulnerability causes programs that use libxml2, such as PHP, to crash.\u003c/p\u003e\n\t\u003cp\u003elibxml2 20904-GITv2.9.4-16-g0741801 is vulnerable to a heap-based buffer over-read in the xmlDictComputeFastKey function in dict.c. This vulnerability causes programs that use libxml2, such as PHP, to crash. This vulnerability exists because of an incomplete fix for libxml2 Bug 759398.\u003c/p\u003e\n\t\u003cp\u003elibxml2 20904-GITv2.9.4-16-g0741801 is vulnerable to a heap-based buffer over-read in the xmlDictAddString function in dict.c. This vulnerability causes programs that use libxml2, such as PHP, to crash. This vulnerability exists because of an incomplete fix for CVE-2016-1839.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "libxml2",
+      "range": [
+        {
+          "le": "2.9.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-05-10T00:00:00Z",
+    "entry": "2017-12-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.gnome.org/show_bug.cgi?id=775200"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2017/05/15/1"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.securityfocus.com/bid/98599"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2017/05/15/1"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.securityfocus.com/bid/98556"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2017/05/15/1"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.securityfocus.com/bid/98601"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2017/05/15/1"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.securityfocus.com/bid/98568"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-8872"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9047"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9048"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9049"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9050"
+    }
+  ]
+}

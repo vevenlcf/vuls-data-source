@@ -1,0 +1,25 @@
+{
+  "vid": "55041d37-ff62-11d9-a9a5-000ae4641456",
+  "topic": "jabberd -- 3 buffer overflows",
+  "description": "\n\t\u003cp\u003eThere are 3 buffer overflows in jid.c that are triggered\n\t  during parsing of JID strings when components (user, host or\n\t  resource) are too long.\u003c/p\u003e\n\t\u003col\u003e\n\t  \u003cli\u003ejid.c, line 103: overflow in `str' buffer through\n\t    \u003ccode\u003estrcpy()\u003c/code\u003e when \"user\" part is too long.\u003c/li\u003e\n\t  \u003cli\u003ejid.c, line 115: overflow in `str' buffer through\n\t    \u003ccode\u003estrcpy()\u003c/code\u003e when \"host\" part is too long.\u003c/li\u003e\n\t  \u003cli\u003ejid.c, line 127: overflow in `str' buffer through\n\t    \u003ccode\u003estrcpy()\u003c/code\u003e when \"resource\" part is too\n\t    long.\u003c/li\u003e\n\t\u003c/ol\u003e\n\t\u003cp\u003eThese overflows can be used to perform a DoS attack on the\n\t  server (sm process segfaults) and can possible be used for\n\t  arbitrary code execution.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "jabberd",
+      "range": [
+        {
+          "lt": "2.0.9"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-25T00:00:00Z",
+    "entry": "2005-07-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://j2.openaether.org/bugzilla/show_bug.cgi?id=99"
+    }
+  ]
+}

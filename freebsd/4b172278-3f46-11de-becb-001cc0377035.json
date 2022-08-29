@@ -1,0 +1,58 @@
+{
+  "vid": "4b172278-3f46-11de-becb-001cc0377035",
+  "topic": "pango -- integer overflow",
+  "description": "\n\t\u003cp\u003eoCERT reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.ocert.org/advisories/ocert-2009-001.html\"\u003e\n\t  \u003cp\u003ePango suffers from a multiplicative integer overflow which\n\t    may lead to a potentially exploitable, heap overflow depending\n\t    on the calling conditions.\u003c/p\u003e\n\t  \u003cp\u003eFor example, this vulnerability is remotely reachable in Firefox\n\t    by creating an overly large document.location value but only results\n\t    in a process-terminating, allocation error (denial of service).\u003c/p\u003e\n\t  \u003cp\u003eThe affected function is pango_glyph_string_set_size. An overflow\n\t    check when doubling the size neglects the overflow possible on the\n\t    subsequent allocation.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "pango",
+      "range": [
+        {
+          "lt": "1.24"
+        }
+      ]
+    },
+    {
+      "name": "linux-pango",
+      "range": [
+        {
+          "lt": "1.24"
+        }
+      ]
+    },
+    {
+      "name": "linux-f8-pango",
+      "range": [
+        {
+          "lt": "1.24"
+        }
+      ]
+    },
+    {
+      "name": "linux-f10-pango",
+      "range": [
+        {
+          "lt": "1.24"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2009-02-22T00:00:00Z",
+    "entry": "2009-05-13T00:00:00Z",
+    "modified": "2009-10-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/35021/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2009-1194"
+    },
+    {
+      "source": "BID",
+      "text": "34870"
+    }
+  ]
+}

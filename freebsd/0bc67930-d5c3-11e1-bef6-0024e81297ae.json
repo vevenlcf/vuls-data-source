@@ -1,0 +1,53 @@
+{
+  "vid": "0bc67930-d5c3-11e1-bef6-0024e81297ae",
+  "topic": "dns/bind9* -- Heavy DNSSEC Validation Load Can Cause a 'Bad Cache' Assertion Failure",
+  "description": "\n\t\u003cp\u003eISC reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-00729\"\u003e\n\t  \u003cp\u003eHigh numbers of queries with DNSSEC validation enabled can\n\t     cause an assertion failure in named, caused by using a 'bad cache'\n\t     data structure before it has been initialized.\u003c/p\u003e\n\t  \u003cp\u003eBIND 9 stores a cache of query names that are known to be failing due\n\t     to misconfigured name servers or a broken chain of trust. Under high query\n\t     loads when DNSSEC validation is active, it is possible for a condition\n\t     to arise in which data from this cache of failing queries could be used\n\t     before it was fully initialized, triggering an assertion failure.\u003c/p\u003e\n\t  \u003cp\u003eThis bug cannot be encountered unless your server is doing DNSSEC\n\t     validation.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind99",
+      "range": [
+        {
+          "lt": "9.9.1.2"
+        }
+      ]
+    },
+    {
+      "name": "bind98",
+      "range": [
+        {
+          "lt": "9.8.3.2"
+        }
+      ]
+    },
+    {
+      "name": "bind97",
+      "range": [
+        {
+          "lt": "9.7.6.2"
+        }
+      ]
+    },
+    {
+      "name": "bind96",
+      "range": [
+        {
+          "lt": "9.6.3.1.ESV.R7.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-07-24T00:00:00Z",
+    "entry": "2012-07-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-00729"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-3817"
+    }
+  ]
+}

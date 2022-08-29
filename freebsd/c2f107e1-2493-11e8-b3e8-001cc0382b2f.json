@@ -1,0 +1,41 @@
+{
+  "vid": "c2f107e1-2493-11e8-b3e8-001cc0382b2f",
+  "topic": "mbed TLS (PolarSSL) -- remote code execution",
+  "description": "\n\t\u003cp\u003eSimon Butcher reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://tls.mbed.org/tech-updates/security-advisories/mbedtls-security-advisory-2018-01\"\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eWhen the truncated HMAC extension is enabled and CBC is used,\n\t      sending a malicious application packet can be used to selectively\n\t      corrupt 6 bytes on the peer's heap, potentially leading to a\n\t      crash or remote code execution. This can be triggered remotely\n\t      from either side in both TLS and DTLS.\u003c/li\u003e\n\t    \u003cli\u003eWhen RSASSA-PSS signature verification is enabled, sending a\n\t      maliciously constructed certificate chain can be used to cause a\n\t      buffer overflow on the peer's stack, potentially leading to crash\n\t      or remote code execution. This can be triggered remotely from\n\t      either side in both TLS and DTLS.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "mbedtls",
+      "range": [
+        {
+          "lt": "2.7.0"
+        }
+      ]
+    },
+    {
+      "name": "polarssl13",
+      "range": [
+        {
+          "lt": "1.3.22"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-02-05T00:00:00Z",
+    "entry": "2018-03-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://tls.mbed.org/tech-updates/security-advisories/mbedtls-security-advisory-2018-01"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-0487"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-0488"
+    }
+  ]
+}

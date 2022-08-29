@@ -1,0 +1,33 @@
+{
+  "vid": "06574c62-5854-11e6-b334-002590263bf5",
+  "topic": "xen-tools -- virtio: unbounded memory allocation issue",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-184.html\"\u003e\n\t  \u003cp\u003eA guest can submit virtio requests without bothering to wait for\n\t    completion and is therefore not bound by virtqueue size...\u003c/p\u003e\n\t  \u003cp\u003eA malicious guest administrator can cause unbounded memory\n\t    allocation in QEMU, which can cause an Out-of-Memory condition\n\t    in the domain running qemu. Thus, a malicious guest administrator\n\t    can cause a denial of service affecting the whole host.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-tools",
+      "range": [
+        {
+          "lt": "4.7.0_4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-07-27T00:00:00Z",
+    "entry": "2016-08-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-184.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-5403"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/211482"
+    }
+  ]
+}

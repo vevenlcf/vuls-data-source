@@ -1,0 +1,45 @@
+{
+  "vid": "25ed4ff8-8940-11df-a339-0026189baca3",
+  "topic": "bogofilter -- heap underrun on malformed base64 input",
+  "description": "\n\t\u003cp\u003eJulius Plenz reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.bogofilter.org/pipermail/bogofilter-dev/2010-June/003475.html\"\u003e\n\t  \u003cp\u003eI found a bug in the base64_decode function which may cause memory\n\t    corruption when the function is executed on a malformed base64\n\t    encoded string.\u003c/p\u003e\n\t  \u003cp\u003eIf a string starting with an equal-sign is passed to the\n\t    base64_decode function it triggers a memory corruption that\n\t    in some cases makes bogofilter crash.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bogofilter",
+      "range": [
+        {
+          "lt": "1.2.1_2"
+        }
+      ]
+    },
+    {
+      "name": "bogofilter-sqlite",
+      "range": [
+        {
+          "lt": "1.2.1_1"
+        }
+      ]
+    },
+    {
+      "name": "bogofilter-tc",
+      "range": [
+        {
+          "lt": "1.2.1_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-06-28T00:00:00Z",
+    "entry": "2010-07-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://bogofilter.sourceforge.net/security/bogofilter-SA-2010-01"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-2494"
+    }
+  ]
+}

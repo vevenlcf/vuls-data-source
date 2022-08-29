@@ -1,0 +1,33 @@
+{
+  "vid": "a955cdb7-d089-11ea-8c6f-080027eedc6a",
+  "topic": "FreeRDP -- Integer overflow in RDPEGFX channel",
+  "description": "\n\t\u003cp\u003eBernhard Miklautz reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4r38-6hq7-j3j9\"\u003e\n      \u003cul\u003e\n\t    \u003cli\u003e\n\t  Integer overflow due to missing input sanitation in rdpegfx channel\n\t\u003c/li\u003e\n\t\u003cli\u003eAll FreeRDP clients are affected\u003c/li\u003e\n\t\u003cli\u003e\n\t  The input rectangles from the server are not checked against local\n\t  surface coordinates and blindly accepted. A malicious server can send\n\t  data that will crash the client later on (invalid length arguments to\n\t  a memcpy)\n\t\u003c/li\u003e\n      \u003c/ul\u003e\n    \u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "freerdp",
+      "range": [
+        {
+          "lt": "2.2.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-06-25T00:00:00Z",
+    "entry": "2020-07-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.freerdp.com/2020/07/20/2_2_0-released"
+    },
+    {
+      "source": "URL",
+      "text": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15103"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-15103"
+    }
+  ]
+}

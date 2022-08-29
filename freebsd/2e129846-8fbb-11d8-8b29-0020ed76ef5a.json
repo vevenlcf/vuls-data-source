@@ -1,0 +1,47 @@
+{
+  "vid": "2e129846-8fbb-11d8-8b29-0020ed76ef5a",
+  "topic": "MySQL insecure temporary file creation (mysqlbug)",
+  "description": "\n\t \u003cp\u003eShaun Colley reports that the script `mysqlbug' included\n\t   with MySQL sometimes creates temporary files in an unsafe\n\t   manner.  As a result, an attacker may create a symlink in\n\t   /tmp so that if another user invokes `mysqlbug' and \u003cem\u003equits\n\t   without making \u003cstrong\u003eany\u003c/strong\u003e changes\u003c/em\u003e, an\n\t   arbitrary file may be overwritten with the bug report\n\t   template.\u003c/p\u003e\n       ",
+  "affects": [
+    {
+      "name": "mysql-client",
+      "range": [
+        {
+          "lt": "4.0.20",
+          "ge": "4.0"
+        },
+        {
+          "lt": "4.1.1_2",
+          "ge": "4.1"
+        },
+        {
+          "lt": "5.0.0_2",
+          "ge": "5.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-03-25T00:00:00Z",
+    "entry": "2004-04-16T00:00:00Z",
+    "modified": "2004-05-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://bugs.mysql.com/bug.php?id=3284"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0381"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=108023246916294\u0026w=2"
+    },
+    {
+      "source": "BID",
+      "text": "9976"
+    }
+  ]
+}

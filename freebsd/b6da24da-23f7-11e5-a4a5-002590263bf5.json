@@ -1,0 +1,52 @@
+{
+  "vid": "b6da24da-23f7-11e5-a4a5-002590263bf5",
+  "topic": "squid -- client-first SSL-bump does not correctly validate X509 server certificate",
+  "description": "\n\t\u003cp\u003eSquid security advisory 2015:1 reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squid-cache.org/Advisories/SQUID-2015_1.txt\"\u003e\n\t  \u003cp\u003eSquid configured with client-first SSL-bump does not correctly\n\t    validate X509 server certificate domain / hostname fields.\u003c/p\u003e\n\t  \u003cp\u003eThe bug is important because it allows remote servers to bypass\n\t    client certificate validation. Some attackers may also be able\n\t    to use valid certificates for one domain signed by a global\n\t    Certificate Authority to abuse an unrelated domain.\u003c/p\u003e\n\t  \u003cp\u003eHowever, the bug is exploitable only if you have configured\n\t    Squid to perform SSL Bumping with the \"client-first\" or \"bump\"\n\t    mode of operation.\u003c/p\u003e\n\t  \u003cp\u003eSites that do not use SSL-Bump are not vulnerable.\u003c/p\u003e\n\t  \u003cp\u003eAll Squid built without SSL support are not vulnerable to the\n\t    problem.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eThe FreeBSD port does not use SSL by default and is not vulnerable\n\t  in the default configuration.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "squid",
+      "range": [
+        {
+          "lt": "3.5.4",
+          "ge": "3.5"
+        },
+        {
+          "lt": "3.4.13",
+          "ge": "3.4"
+        }
+      ]
+    },
+    {
+      "name": "squid33",
+      "range": [
+        {
+          "lt": "3.3.14",
+          "ge": "3.3"
+        }
+      ]
+    },
+    {
+      "name": "squid32",
+      "range": [
+        {
+          "lt": "3.2.14",
+          "ge": "3.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-05-01T00:00:00Z",
+    "entry": "2015-07-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/Advisories/SQUID-2015_1.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3455"
+    }
+  ]
+}

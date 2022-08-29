@@ -1,0 +1,33 @@
+{
+  "vid": "93688f8f-4935-11e1-89b4-001ec9578670",
+  "topic": "postfixadmin -- Multiple Vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Postfix Admin Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://sourceforge.net/projects/postfixadmin/forums/forum/676076/topic/4977778\"\u003e\n\t  \u003cp\u003eMultiple XSS vulnerabilities exist:\u003cbr/\u003e\n\t     - XSS with $_GET[domain] in templates/menu.php and\n\t       edit-vacation\u003cbr/\u003e\n\t     - XSS in some create-domain input fields\u003cbr/\u003e\n\t     - XSS in create-alias and edit-alias error message\u003cbr/\u003e\n\t     - XSS (by values stored in the database) in fetchmail list\n\t       view, list-domain and list-virtual\u003c/p\u003e\n\t  \u003cp\u003eMultiple SQL injection issues exist:\u003cbr/\u003e\n\t     - SQL injection in pacrypt() (if $CONF[encrypt] ==\n\t       'mysql_encrypt')\u003cbr/\u003e\n\t     - SQL injection in backup.php - the dump was not mysql_escape()d,\n\t       therefore users could inject SQL (for example in the vacation message)\n\t       which will be executed when restoring the database dump.\n\t       WARNING: database dumps created with backup.php from 2.3.4 or older\n\t       might contain malicious SQL. Double-check before using them!\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "postfixadmin",
+      "range": [
+        {
+          "lt": "2.3.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-01-27T00:00:00Z",
+    "entry": "2012-01-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://sourceforge.net/projects/postfixadmin/forums/forum/676076/topic/4977778"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-0811"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-0812"
+    }
+  ]
+}

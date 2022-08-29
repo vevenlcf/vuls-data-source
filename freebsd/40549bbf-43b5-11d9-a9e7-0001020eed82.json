@@ -1,0 +1,34 @@
+{
+  "vid": "40549bbf-43b5-11d9-a9e7-0001020eed82",
+  "topic": "zip -- long path buffer overflow",
+  "description": "\n\t\u003cp\u003eA HexView security advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.hexview.com/docs/20041103-1.txt\"\u003e\n\t  \u003cp\u003eWhen zip performs recursive folder compression, it does\n\t    not check for the length of resulting path. If the path is\n\t    too long, a buffer overflow occurs leading to stack\n\t    corruption and segmentation fault.\tIt is possible to\n\t    exploit this vulnerability by embedding a shellcode in\n\t    directory or file name. While the issue is not of primary\n\t    concern for regular users, it can be critical for\n\t    environments where zip archives are re-compressed\n\t    automatically using Info-Zip application.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "zip",
+      "range": [
+        {
+          "lt": "2.3_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-10-03T00:00:00Z",
+    "entry": "2004-12-01T00:00:00Z",
+    "modified": "2004-12-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.hexview.com/docs/20041103-1.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-1010"
+    },
+    {
+      "source": "BID",
+      "text": "11603"
+    }
+  ]
+}

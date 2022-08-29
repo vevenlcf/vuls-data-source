@@ -1,0 +1,41 @@
+{
+  "vid": "96df5fd0-8900-11d9-aa18-0001020eed82",
+  "topic": "curl -- authentication buffer overflow vulnerability",
+  "description": "\n\t\u003cp\u003eTwo iDEFENSE Security Advisories reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=110902601221592\"\u003e\n\t  \u003cp\u003eAn exploitable stack-based buffer overflow condition\n\t    exists when using NT Lan Manager (NTLM)\n\t    authentication. The problem specifically exists within\n\t    \u003ccode\u003eCurl_input_ntlm()\u003c/code\u003e defined in\n\t    lib/http_ntlm.c.\u003c/p\u003e\n\t  \u003cp\u003eSuccessful exploitation allows remote attackers to\n\t    execute arbitrary code under the privileges of the target\n\t    user. Exploitation requires that an attacker either coerce\n\t    or force a target to connect to a malicious server using\n\t    NTLM authentication.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=110902850731457\"\u003e\n\t  \u003cp\u003eAn exploitable stack-based buffer overflow condition\n\t    exists when using Kerberos authentication. The problem\n\t    specifically exists within the functions\n\t    \u003ccode\u003eCurl_krb_kauth()\u003c/code\u003e and \u003ccode\u003ekrb4_auth()\u003c/code\u003e\n\t    defined in lib/krb4.c.\u003c/p\u003e\n\t  \u003cp\u003eSuccessful exploitation allows remote attackers to\n\t    execute arbitrary code under the privileges of the target\n\t    user. Exploitation requires that an attacker either coerce\n\t    or force a target to connect to a malicious server using\n\t    Kerberos authentication.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.13.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-12-21T00:00:00Z",
+    "entry": "2005-02-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0490"
+    },
+    {
+      "source": "MLIST: FB24803D1DF2A34FA59FC157B77C970503E2462D@idserv04.idef.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=110902850731457"
+    },
+    {
+      "source": "MLIST: FB24803D1DF2A34FA59FC157B77C970503E2462E@idserv04.idef.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=110902601221592"
+    },
+    {
+      "source": "BID",
+      "text": "12615"
+    },
+    {
+      "source": "BID",
+      "text": "12616"
+    }
+  ]
+}

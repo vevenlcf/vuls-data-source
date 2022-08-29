@@ -1,0 +1,30 @@
+{
+  "vid": "3ee6e521-0d32-11e8-99b0-d017c2987f9a",
+  "topic": "mpv -- arbitrary code execution via crafted website",
+  "description": "\n\t\u003cp\u003empv developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://nvd.nist.gov/vuln/detail/CVE-2018-6360\"\u003e\n\t  \u003cp\u003empv through 0.28.0 allows remote attackers to execute arbitrary code\n\t     via a crafted web site, because it reads HTML documents containing\n\t     VIDEO elements, and accepts arbitrary URLs in a src attribute without\n\t     a protocol whitelist in player/lua/ytdl_hook.lua. For example, an\n\t     av://lavfi:ladspa=file= URL signifies that the product should call\n\t     dlopen on a shared object file located at an arbitrary local pathname.\n\t     The issue exists because the product does not consider that youtube-dl\n\t     can provide a potentially unsafe URL.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "mpv",
+      "range": [
+        {
+          "lt": "0.27.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-01-28T00:00:00Z",
+    "entry": "2018-02-09T00:00:00Z",
+    "modified": "2018-02-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/mpv-player/mpv/issues/5456"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-6360"
+    }
+  ]
+}

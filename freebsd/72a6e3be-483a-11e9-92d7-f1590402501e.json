@@ -1,0 +1,85 @@
+{
+  "vid": "72a6e3be-483a-11e9-92d7-f1590402501e",
+  "topic": "Jupyter notebook -- cross-site inclusion (XSSI) vulnerability",
+  "description": "\n\t\u003cp\u003eJupyter notebook Changelog:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/jupyter/notebook/blob/master/docs/source/changelog.rst\"\u003e\n\t  \u003cp\u003e5.7.6 contains a security fix for a cross-site inclusion (XSSI)\n\t    vulnerability, where files at a known URL could be included in a page\n\t    from an unauthorized website if the user is logged into a Jupyter\n\t    server. The fix involves setting the X-Content-Type-Options: nosniff\n\t    header, and applying CSRF checks previously on all non-GET API requests\n\t    to GET requests to API endpoints and the /files/ endpoint.\u003c/p\u003e\n\t  \u003cp\u003eThe attacking page is able to access some contents of files when using\n\t    Internet Explorer through script errors, but this has not been\n\t    demonstrated with other browsers. A CVE has been requested for this\n\t    vulnerability.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-notebook",
+      "range": [
+        {
+          "lt": "5.7.6"
+        }
+      ]
+    },
+    {
+      "name": "py35-notebook",
+      "range": [
+        {
+          "lt": "5.7.6"
+        }
+      ]
+    },
+    {
+      "name": "py36-notebook",
+      "range": [
+        {
+          "lt": "5.7.6"
+        }
+      ]
+    },
+    {
+      "name": "py37-notebook",
+      "range": [
+        {
+          "lt": "5.7.6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-03-10T00:00:00Z",
+    "entry": "2019-03-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/jupyter/notebook/blob/master/docs/source/changelog.rst"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-auth-prompt-spoofing.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-fd-set-overflow.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-rng-reuse.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-rsa-kex-integer-overflow.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-terminal-dos-combining-chars.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-terminal-dos-combining-chars-double-width-gtk.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-terminal-dos-one-column-cjk.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/pscp-unsanitised-server-output.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/side-channels.html"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "vid": "309c35f4-7c9f-11ec-a739-206a8a720317",
+  "topic": "aide -- heap-based buffer overflow",
+  "description": "\n\t\u003cp\u003eDavid Bouman reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"INSERT URL HERE\"\u003e\n\t  \u003cp\u003eAIDE before 0.17.4 allows local users to obtain root privileges\n\t     via crafted file metadata (such as XFS extended attributes or\n\t     tmpfs ACLs), because of a heap-based buffer overflow.\u003c/p\u003e\n\t  \u003cp\u003eAide uses a fixed size (16k bytes) for the return buffer in\n\t     encode_base64/decode_base64 functions. This results in a segfault\n\t     if aide processes a file with too large extended attribute value\n\t     or ACL.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "aide",
+      "range": [
+        {
+          "lt": "0.17.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-01-15T00:00:00Z",
+    "entry": "2022-01-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45417"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-45417"
+    }
+  ]
+}

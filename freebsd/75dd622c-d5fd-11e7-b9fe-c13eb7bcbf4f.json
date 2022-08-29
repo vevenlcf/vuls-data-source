@@ -1,0 +1,30 @@
+{
+  "vid": "75dd622c-d5fd-11e7-b9fe-c13eb7bcbf4f",
+  "topic": "exim -- remote DoS attack in BDAT processing",
+  "description": "\n\t\u003cp\u003eExim developers team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://bugs.exim.org/show_bug.cgi?id=2199\"\u003e\n\t  \u003cp\u003eThe receive_msg function in receive.c in the SMTP daemon in Exim 4.88 and 4.89 allows remote attackers to cause a denial of service (infinite loop and stack exhaustion) via vectors involving BDAT commands and an improper check for a '.' character signifying the end of the content, related to the bdat_getc function.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "exim",
+      "range": [
+        {
+          "lt": "4.89.1",
+          "ge": "4.88"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-11-23T00:00:00Z",
+    "entry": "2017-11-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugs.exim.org/show_bug.cgi?id=2199"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-16944"
+    }
+  ]
+}

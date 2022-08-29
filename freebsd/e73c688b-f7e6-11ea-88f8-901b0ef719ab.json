@@ -1,0 +1,38 @@
+{
+  "vid": "e73c688b-f7e6-11ea-88f8-901b0ef719ab",
+  "topic": "FreeBSD -- bhyve SVM guest escape",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eA number of AMD virtualization instructions operate on host physical\n\taddresses, are not subject to nested page table translation, and guest use of\n\tthese instructions was not trapped.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eFrom kernel mode a malicious guest can write to arbitrary host memory (with\n\tsome constraints), affording the guest full control of the host.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.1_10",
+          "ge": "12.1"
+        },
+        {
+          "lt": "11.4_4",
+          "ge": "11.4"
+        },
+        {
+          "lt": "11.3_14",
+          "ge": "11.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-09-15T00:00:00Z",
+    "entry": "2020-09-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2020-7467"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-20:29.bhyve_svm"
+    }
+  ]
+}

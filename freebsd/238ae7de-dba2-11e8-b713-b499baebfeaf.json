@@ -1,0 +1,64 @@
+{
+  "vid": "238ae7de-dba2-11e8-b713-b499baebfeaf",
+  "topic": "OpenSSL -- Multiple vulnerabilities in 1.1 branch",
+  "description": "\n\t\u003cp\u003eThe OpenSSL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.openssl.org/news/secadv/20181029.txt\"\u003e\n\t  \u003cp\u003eTiming vulnerability in ECDSA signature generation\n\t    (CVE-2018-0735): The OpenSSL ECDSA signature algorithm has been\n\t    shown to be vulnerable to a timing side channel attack. An\n\t    attacker could use variations in the signing algorithm to\n\t    recover the private key (Low).\u003c/p\u003e\n\t  \u003cp\u003eTiming vulnerability in DSA signature generation (CVE-2018-0734):\n\t    Avoid a timing attack that leaks information via a side channel\n\t    that triggers when a BN is resized.  Increasing the size of the\n\t    BNs prior to doing anything with them suppresses the attack (Low).\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl-devel",
+      "range": [
+        {
+          "lt": "1.1.0i_1"
+        }
+      ]
+    },
+    {
+      "name": "openssl111",
+      "range": [
+        {
+          "lt": "1.1.1_2"
+        }
+      ]
+    },
+    {
+      "name": "libressl",
+      "range": [
+        {
+          "lt": "2.8.3",
+          "ge": "2.8.0"
+        }
+      ]
+    },
+    {
+      "name": "libressl-devel",
+      "range": [
+        {
+          "lt": "2.8.3",
+          "ge": "2.8.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-10-29T00:00:00Z",
+    "entry": "2018-10-29T00:00:00Z",
+    "modified": "2018-11-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.openssl.org/news/secadv/20181029.txt"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/openssl/openssl/commit/8abfe72e"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-0735"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-0734"
+    }
+  ]
+}

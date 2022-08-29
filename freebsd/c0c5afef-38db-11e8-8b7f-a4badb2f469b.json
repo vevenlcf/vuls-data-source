@@ -1,0 +1,38 @@
+{
+  "vid": "c0c5afef-38db-11e8-8b7f-a4badb2f469b",
+  "topic": "FreeBSD -- ipsec crash or denial of service",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe length field of the option header does not count the\n\tsize of the option header itself. This causes a problem\n\twhen the length is zero, the count is then incremented by\n\tzero, which causes an infinite loop.\u003c/p\u003e\n\t\u003cp\u003eIn addition there are pointer/offset mistakes in the\n\thandling of IPv4 options.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA remote attacker who is able to send an arbitrary packet,\n\tcould cause the remote target machine to crash.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.1_9",
+          "ge": "11.1"
+        },
+        {
+          "lt": "10.4_8",
+          "ge": "10.4"
+        },
+        {
+          "lt": "10.3_29",
+          "ge": "10.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-04-04T00:00:00Z",
+    "entry": "2018-04-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2018-6918"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-18:05.ipsec"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "vid": "a479a725-9adb-11e6-a298-14dae9d210b8",
+  "topic": "FreeBSD -- bhyve - privilege escalation vulnerability",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eAn unchecked array reference in the VGA device emulation\n\tcode could potentially allow guests access to the heap of\n\tthe bhyve process. Since the bhyve process is running as\n\troot, this may allow guests to obtain full control of the\n\thosts they are running on.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eFor bhyve virtual machines with the \"fbuf\" framebuffer\n\tdevice configured, if exploited, a malicious guest could\n\tobtain full access to not just the host system, but to other\n\tvirtual machines running on the system.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.0_2",
+          "ge": "11.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-10-25T00:00:00Z",
+    "entry": "2016-10-25T00:00:00Z",
+    "modified": "2016-10-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:32.bhyve"
+    }
+  ]
+}

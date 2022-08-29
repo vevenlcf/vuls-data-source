@@ -1,0 +1,37 @@
+{
+  "vid": "d9fe59ea-1940-11e8-9eb8-5404a68ad561",
+  "topic": "cvs -- Remote code execution via ssh command injection",
+  "description": "\n\t\u003cp\u003eHank Leininger reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.nongnu.org/archive/html/bug-cvs/2017-08/msg00000.html\"\u003e\n\t  \u003cp\u003eBugs in Git, Subversion, and Mercurial were just announced and patched\n\t     which allowed arbitrary local command execution if a malicious name was\n\t     used for the remote server, such as starting with - to pass options to\n\t     the ssh client:\n\t     git clone ssh://-oProxyCommand=some-command...\n\t     CVS has a similar problem with the -d option:\u003c/p\u003e\n\t  \u003cp\u003eTested vanilla CVS 1.12.13, and Gentoo CVS 1.12.12-r11.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "cvs",
+      "range": [
+        {
+          "lt": "1.20120905_5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-08-10T00:00:00Z",
+    "entry": "2018-02-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lists.nongnu.org/archive/html/bug-cvs/2017-08/msg00000.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=871810#10"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-12836"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/226088"
+    }
+  ]
+}

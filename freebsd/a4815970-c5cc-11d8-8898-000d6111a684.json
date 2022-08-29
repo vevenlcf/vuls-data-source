@@ -1,0 +1,37 @@
+{
+  "vid": "a4815970-c5cc-11d8-8898-000d6111a684",
+  "topic": "rssh -- file name disclosure bug",
+  "description": "\n\t\u003cp\u003erssh expands command line paramters before invoking chroot.\n\t  This could result in the disclosure to the client of file\n\t  names outside of the chroot directory.  A posting by the rssh\n\t  author explains:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=108787373022844\"\u003e\n\t  \u003cp\u003eThe cause of the problem identified by Mr. McCaw is that\n\t    rssh expanded command-line arguments prior to entering\n\t    the chroot jail.  This bug DOES NOT allow a user to\n\t    access any of the files outside the jail, but can allow\n\t    them to discover what files are in a directory which is\n\t    outside the jail, if their credentials on the server would\n\t    normally allow them read/execute access in the specified\n\t    directory.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "rssh",
+      "range": [
+        {
+          "lt": "2.2.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-06-19T00:00:00Z",
+    "entry": "2004-09-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/7239"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0609"
+    },
+    {
+      "source": "MLIST: 20040619074141.GG13649@sophic.org",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=108787373022844"
+    },
+    {
+      "source": "BID",
+      "text": "10574"
+    }
+  ]
+}

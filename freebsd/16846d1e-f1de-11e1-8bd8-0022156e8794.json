@@ -1,0 +1,61 @@
+{
+  "vid": "16846d1e-f1de-11e1-8bd8-0022156e8794",
+  "topic": "Java 1.7 -- security manager bypass",
+  "description": "\n\t\u003cp\u003eUS-CERT reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.kb.cert.org/vuls/id/636312\"\u003e\n\t  \u003cp\u003eOracle Java Runtime Environment (JRE) 1.7 contains a\n\t  vulnerability that may allow an applet to call\n\t  setSecurityManager in a way that allows setting of arbitrary\n\t  permissions.\u003c/p\u003e\n\t  \u003cp\u003eBy leveraging the public, privileged getField() function,\n\t  an untrusted Java applet can escalate its privileges by\n\t  calling the setSecurityManager() function to allow full\n\t  privileges, without requiring code signing.\u003c/p\u003e\n\t  \u003cp\u003eThis vulnerability is being actively exploited in the\n\t  wild, and exploit code is publicly available.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eThis exploit does not only affect Java applets, but every\n\tpiece of software that relies on the Java Security Manager for\n\tsandboxing executable code is affected: malicious code can\n\ttotally disable Security Manager.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "openjdk",
+      "range": [
+        {
+          "lt": "7.6.24_1",
+          "ge": "7.0"
+        }
+      ]
+    },
+    {
+      "name": "linux-sun-jdk",
+      "range": [
+        {
+          "lt": "7.7",
+          "ge": "7.0"
+        }
+      ]
+    },
+    {
+      "name": "linux-sun-jre",
+      "range": [
+        {
+          "lt": "7.7",
+          "ge": "7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-08-27T00:00:00Z",
+    "entry": "2012-08-30T00:00:00Z",
+    "modified": "2012-08-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.deependresearch.org/2012/08/java-7-vulnerability-analysis.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://mail.openjdk.java.net/pipermail/distro-pkg-dev/2012-August/020065.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.oracle.com/technetwork/topics/security/alert-cve-2012-4681-1835715.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4681"
+    },
+    {
+      "source": "CertVU",
+      "text": "636312"
+    }
+  ]
+}

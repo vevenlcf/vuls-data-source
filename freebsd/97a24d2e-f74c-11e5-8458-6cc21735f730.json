@@ -1,0 +1,39 @@
+{
+  "vid": "97a24d2e-f74c-11e5-8458-6cc21735f730",
+  "topic": "PostgreSQL -- minor security problems.",
+  "description": "\n\t\u003cp\u003ePostgreSQL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.postgresql.org/about/news/1656/\"\u003e\n\t  \u003cp\u003eSecurity Fixes for RLS, BRIN\u003c/p\u003e\n\t   \u003cp\u003e\n\t  This release closes security hole CVE-2016-2193\n\t  (https://access.redhat.com/security/cve/CVE-2016-2193), where a query\n\t  plan might get reused for more than one ROLE in the same session.\n\t  This could cause the wrong set of Row Level Security (RLS) policies to\n\t  be used for the query.\u003c/p\u003e\n\t   \u003cp\u003e\n\t  The update also fixes CVE-2016-3065\n\t  (https://access.redhat.com/security/cve/CVE-2016-3065), a server crash\n\t  bug triggered by using `pageinspect` with BRIN index pages.  Since an\n\t  attacker might be able to expose a few bytes of server memory, this\n\t  crash is being treated as a security issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "postgresql95-server",
+      "range": [
+        {
+          "lt": "9.5.2",
+          "ge": "9.5.0"
+        }
+      ]
+    },
+    {
+      "name": "postgresql95-contrib",
+      "range": [
+        {
+          "lt": "9.5.2",
+          "ge": "9.5.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-03-01T00:00:00Z",
+    "entry": "2016-03-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2016-2193"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3065"
+    }
+  ]
+}

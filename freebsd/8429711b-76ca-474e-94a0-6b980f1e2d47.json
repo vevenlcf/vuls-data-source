@@ -1,0 +1,33 @@
+{
+  "vid": "8429711b-76ca-474e-94a0-6b980f1e2d47",
+  "topic": "mozilla -- Speculative execution side-channel attack",
+  "description": "\n\t\u003cp\u003eMozilla Foundation reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.mozilla.org/en-US/security/advisories/mfsa2018-01/\"\u003e\n\t    \u003cp\u003e\u003cstrong\u003eJann Horn\u003c/strong\u003e of Google Project Zero\n\t      Security reported that speculative execution performed\n\t      by modern CPUs could leak information through a timing\n\t      side-channel attack. Microsoft Vulnerability Research\n\t      extended this attack to browser JavaScript engines and\n\t      demonstrated that code on a malicious web page could\n\t      read data from other web sites (violating the\n\t      same-origin policy) or private data from the browser\n\t      itself.\u003c/p\u003e\n\t    \u003cp\u003eSince this new class of attacks involves measuring\n\t      precise time intervals, as a parti al, short-term,\n\t      mitigation we are disabling or reducing the precision of\n\t      several time sources in Firefox. The precision of\n\t      \u003ccode\u003eperformance.now()\u003c/code\u003e has been reduced from 5μs\n\t      to 20μs, and the \u003ccode\u003eSharedArrayBuffer\u003c/code\u003e feature\n\t      has been disabled because it can be used to construct a\n\t      high-resolution timer.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "firefox",
+      "range": [
+        {
+          "lt": "57.0.4,1"
+        }
+      ]
+    },
+    {
+      "name": "waterfox",
+      "range": [
+        {
+          "lt": "56.0.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-01-04T00:00:00Z",
+    "entry": "2018-01-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.mozilla.org/security/advisories/mfsa2018-01/"
+    }
+  ]
+}

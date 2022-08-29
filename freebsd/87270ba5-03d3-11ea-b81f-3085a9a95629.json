@@ -1,0 +1,73 @@
+{
+  "vid": "87270ba5-03d3-11ea-b81f-3085a9a95629",
+  "topic": "urllib3 -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eNIST reports: (by search in the range 2018/01/01 - 2019/11/10):\u003c/p\u003e\n\t\u003cblockquote cite=\"https://nvd.nist.gov/vuln/search/results?form_type=Advanced\u0026amp;results_type=overview\u0026amp;query=urllib3\u0026amp;search_type=all\u0026amp;pub_start_date=01%2F01%2F2018\u0026amp;pub_end_date=11%2F10%2F2019\"\u003e\n\t  \u003cp\u003eurllib3 before version 1.23 does not remove the Authorization HTTP header when following a cross-origin redirect (i.e., a redirect that differs in host, port, or scheme). This can allow for credentials in the Authorization header to be exposed to unintended hosts or transmitted in cleartext.\u003c/p\u003e\n\t  \u003cp\u003eIn the urllib3 library through 1.24.1 for Python, CRLF injection is possible if the attacker controls the request parameter.\u003c/p\u003e\n\t  \u003cp\u003eThe urllib3 library before 1.24.2 for Python mishandles certain cases where the desired set of CA certificates is different from the OS store of CA certificates, which results in SSL connections succeeding in situations where a verification failure is the correct outcome. This is related to use of the ssl_context, ca_certs, or ca_certs_dir argument.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-urllib3",
+      "range": [
+        {
+          "lt": "1.24.3,1"
+        }
+      ]
+    },
+    {
+      "name": "py35-urllib3",
+      "range": [
+        {
+          "lt": "1.24.3,1"
+        }
+      ]
+    },
+    {
+      "name": "py36-urllib3",
+      "range": [
+        {
+          "lt": "1.24.3,1"
+        }
+      ]
+    },
+    {
+      "name": "py37-urllib3",
+      "range": [
+        {
+          "lt": "1.24.3,1"
+        }
+      ]
+    },
+    {
+      "name": "py38-urllib3",
+      "range": [
+        {
+          "lt": "1.24.3,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-12-11T00:00:00Z",
+    "entry": "2019-11-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://nvd.nist.gov/vuln/search/results?form_type=Advanced\u0026results_type=overview\u0026query=urllib3\u0026search_type=all\u0026pub_start_date=01%2F01%2F2018\u0026pub_end_date=11%2F10%2F2019"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-20060"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-11236"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-11324"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/229322"
+    }
+  ]
+}

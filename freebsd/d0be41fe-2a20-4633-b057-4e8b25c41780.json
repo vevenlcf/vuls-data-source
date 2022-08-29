@@ -1,0 +1,25 @@
+{
+  "vid": "d0be41fe-2a20-4633-b057-4e8b25c41780",
+  "topic": "bro -- array bounds and potential DOS issues",
+  "description": "\n\t\u003cp\u003eCorelight reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.bro.org/download/NEWS.bro.html\"\u003e\n\t  \u003cp\u003eBro 2.5.5 primarily addresses security issues:\u003c/p\u003e\n\t  \u003cul\u003e\n\t      \u003cli\u003eFix array bounds checking in BinPAC: for arrays\n\t\tthat are fields within a record, the bounds check\n\t\twas based on a pointer to the start of the record\n\t\trather than the start of the array field, potentially\n\t\tresulting in a buffer over-read.\u003c/li\u003e\n\t      \u003cli\u003eFix SMTP command string comparisons: the number\n\t       of bytes compared was based on the user-supplied\n\t       string length and can lead to incorrect matches.\n\t       e.g.  giving a command of \"X\" incorrectly matched\n\t       \"X-ANONYMOUSTLS\" (and an empty commands match\n\t       anything).\u003c/li\u003e\n\t    \u003c/ul\u003e\n\t  \u003cp\u003eAddress potential vectors for Denial of Service:\u003c/p\u003e\n\t    \u003cul\u003e\n\t      \u003cli\u003e\"Weird\" events are now generally suppressed/sampled\n\t\tby default according to some tunable parameters.\u003c/li\u003e\n\t      \u003cli\u003eImproved handling of empty lines in several text\n\t\tprotocol analyzers that can cause performance issues\n\t\twhen seen in long sequences.\u003c/li\u003e\n\t      \u003cli\u003eAdd `smtp_excessive_pending_cmds' weird which\n\t\tserves as a notification for when the \"pending\n\t\tcommand\" queue has reached an upper limit and been\n\t\tcleared to prevent one from attempting to slowly\n\t\texhaust memory.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bro",
+      "range": [
+        {
+          "lt": "2.5.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-08-28T00:00:00Z",
+    "entry": "2018-08-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.bro.org/download/NEWS.bro.html"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "vid": "0da404ad-1891-11e5-a1cf-002590263bf5",
+  "topic": "chicken -- Potential buffer overrun in string-translate*",
+  "description": "\n\t\u003cp\u003echicken developer Peter Bex reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.nongnu.org/archive/html/chicken-announce/2015-06/msg00010.html\"\u003e\n\t  \u003cp\u003eUsing gcc's Address Sanitizer, it was discovered that the string-translate*\n\t    procedure from the data-structures unit can scan beyond the input string's\n\t    length up to the length of the source strings in the map that's passed to\n\t    string-translate*.\tThis issue was fixed in master 8a46020, and it will\n\t    make its way into CHICKEN 4.10.\u003c/p\u003e\n\t  \u003cp\u003eThis bug is present in all released versions of CHICKEN.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "chicken",
+      "range": [
+        {
+          "lt": "4.10.0.r2,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-15T00:00:00Z",
+    "entry": "2015-06-22T00:00:00Z",
+    "modified": "2015-07-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4556"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/200980"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://lists.nongnu.org/archive/html/chicken-announce/2015-06/msg00010.html"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://lists.nongnu.org/archive/html/chicken-hackers/2015-06/msg00037.html"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://lists.nongnu.org/archive/html/chicken-announce/2015-07/msg00001.html"
+    }
+  ]
+}

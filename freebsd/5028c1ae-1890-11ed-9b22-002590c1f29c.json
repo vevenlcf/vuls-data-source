@@ -1,0 +1,38 @@
+{
+  "vid": "5028c1ae-1890-11ed-9b22-002590c1f29c",
+  "topic": "FreeBSD -- Out of bound read in elf_note_prpsinfo()",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eWhen dumping core and saving process information, proc_getargv()\n\tmight return an sbuf which have a sbuf_len() of 0 or -1, which is not\n\tproperly handled.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn out-of-bound read can happen when user constructs a specially\n\tcrafted ps_string, which in turn can cause the kernel to crash.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "13.1_1",
+          "ge": "13.1"
+        },
+        {
+          "lt": "13.0_12",
+          "ge": "13.0"
+        },
+        {
+          "lt": "12.3_6",
+          "ge": "12.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-08-09T00:00:00Z",
+    "entry": "2022-08-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23089"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-22:09.elf"
+    }
+  ]
+}

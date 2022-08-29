@@ -1,0 +1,74 @@
+{
+  "vid": "f06f20dc-4347-11e5-93ad-002590263bf5",
+  "topic": "qemu, xen-tools -- QEMU leak of uninitialized heap memory in rtl8139 device model",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-140.html\"\u003e\n\t  \u003cp\u003eThe QEMU model of the RTL8139 network card did not sufficiently\n\t    validate inputs in the C+ mode offload emulation. This results in\n\t    uninitialized memory from the QEMU process's heap being leaked to\n\t    the domain as well as to the network.\u003c/p\u003e\n\t  \u003cp\u003eA guest may be able to read sensitive host-level data relating to\n\t    itself which resides in the QEMU process.\u003c/p\u003e\n\t  \u003cp\u003eSuch information may include things such as information relating to\n\t    real devices backing emulated devices or passwords which the host\n\t    administrator does not intend to share with the guest admin.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "le": "0.11.1_20"
+        },
+        {
+          "ge": "0.12",
+          "le": "2.3.0_2"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "le": "0.11.1_20"
+        },
+        {
+          "ge": "0.12",
+          "le": "2.3.0_2"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.4.50.g20150814"
+        }
+      ]
+    },
+    {
+      "name": "xen-tools",
+      "range": [
+        {
+          "lt": "4.5.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-03T00:00:00Z",
+    "entry": "2015-08-17T00:00:00Z",
+    "modified": "2015-08-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-140.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=2a3612ccc1fa9cea77bd193afbfe21c77e7e91ef"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5165"
+    }
+  ]
+}

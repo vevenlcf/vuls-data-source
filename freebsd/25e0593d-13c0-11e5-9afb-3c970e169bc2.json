@@ -1,0 +1,66 @@
+{
+  "vid": "25e0593d-13c0-11e5-9afb-3c970e169bc2",
+  "topic": "tomcat -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eApache Software Foundation reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://tomcat.apache.org/security-6.html#Fixed_in_Apache_Tomcat_6.0.44\"\u003e\n\t  \u003cp\u003eLow: Denial of Service CVE-2014-0230\u003c/p\u003e\n\t  \u003cp\u003eWhen a response for a request with a request body is\n\t    returned to the user agent before the request body is\n\t    fully read, by default Tomcat swallows the remaining\n\t    request body so that the next request on the connection\n\t    may be processed. There was no limit to the size of\n\t    request body that Tomcat would swallow. This permitted\n\t    a limited Denial of Service as Tomcat would never close\n\t    the connection and a processing thread would remain\n\t    allocated to the connection.\u003c/p\u003e\n\t  \u003cp\u003eModerate: Security Manager bypass CVE-2014-7810\u003c/p\u003e\n\t  \u003cp\u003eMalicious web applications could use expression\n\t    language to bypass the protections of a Security\n\t    Manager as expressions were evaluated within a\n\t    privileged code section.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "tomcat",
+      "range": [
+        {
+          "lt": "6.0.44"
+        }
+      ]
+    },
+    {
+      "name": "tomcat7",
+      "range": [
+        {
+          "lt": "7.0.55"
+        }
+      ]
+    },
+    {
+      "name": "tomcat8",
+      "range": [
+        {
+          "lt": "8.0.9"
+        }
+      ]
+    },
+    {
+      "name": "hadoop2",
+      "range": [
+        {
+          "le": "2.6.0"
+        }
+      ]
+    },
+    {
+      "name": "oozie",
+      "range": [
+        {
+          "le": "4.1.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-05-12T00:00:00Z",
+    "entry": "2015-06-16T00:00:00Z",
+    "modified": "2017-03-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://tomcat.apache.org/security-6.html#Fixed_in_Apache_Tomcat_6.0.44"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0230"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-7810"
+    }
+  ]
+}

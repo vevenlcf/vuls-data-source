@@ -1,0 +1,25 @@
+{
+  "vid": "f56669f5-d799-4ff5-9174-64a6d571c451",
+  "topic": "bro -- Null pointer dereference and Signed integer overflow",
+  "description": "\n\t\u003cp\u003eJon Siwek of Corelight reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://raw.githubusercontent.com/zeek/zeek/1d874e5548a58b3b8fd2a342fe4aa0944e779809/NEWS\"\u003e\n\t  \u003cp\u003eThis is a security patch release to address potential\n\t  Denial of Service vulnerabilities:\u003c/p\u003e\n\t  \u003cul\u003e\n\t  \u003cli\u003e\n\t  Null pointer dereference in the RPC analysis code. RPC\n\t  analyzers (e.g. MOUNT or NFS) are not enabled in the\n\t  default configuration.\u003c/li\u003e\n\n\t  \u003cli\u003e\n\t  Signed integer overflow in BinPAC-generated parser code.\n\t  The result of this is Undefined Behavior with respect to\n\t  the array bounds checking conditions that BinPAC generates,\n\t  so it's unpredictable what an optimizing compiler may\n\t  actually do under the assumption that signed integer\n\t  overlows should never happen.  The specific symptom which\n\t  lead to finding this issue was with the PE analyzer causing\n\t  out-of-memory crashes due to large allocations that were\n\t  otherwise prevented when the array bounds checking logic\n\t  was changed to prevent any possible signed integer overlow.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bro",
+      "range": [
+        {
+          "lt": "2.6.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-06-22T00:00:00Z",
+    "entry": "2019-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://raw.githubusercontent.com/zeek/zeek/1d874e5548a58b3b8fd2a342fe4aa0944e779809/NEWS"
+    }
+  ]
+}

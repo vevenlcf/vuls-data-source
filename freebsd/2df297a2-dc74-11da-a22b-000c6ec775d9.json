@@ -1,0 +1,34 @@
+{
+  "vid": "2df297a2-dc74-11da-a22b-000c6ec775d9",
+  "topic": "awstats -- arbitrary command execution vulnerability",
+  "description": "\n\t\u003cp\u003eOS Reviews reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.osreviews.net/reviews/comm/awstats\"\u003e\n\t  \u003cp\u003eIf the update of the stats via web front-end is allowed,\n\t    a remote attacker can execute arbitrary code on the server\n\t    using a specially crafted request involving the migrate\n\t    parameter. Input starting with a pipe character (\"|\")\n\t    leads to an insecure call to Perl's open function and the\n\t    rest of the input being executed in a shell. The code is\n\t    run in the context of the process running the AWStats\n\t    CGI.\u003c/p\u003e\n\t  \u003cp\u003eArbitrary code can be executed by uploading a specially\n\t    crafted configuration file if an attacker can put a file\n\t    on the server with chosen file name and content (e.g. by\n\t    using an FTP account on a shared hosting server). In this\n\t    configuration file, the LogFile directive can be used to\n\t    execute shell code following a pipe character. As above,\n\t    an open call on unsanitized input is the source of this\n\t    vulnerability.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "awstats",
+      "range": [
+        {
+          "lt": "6.5_2,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-05-03T00:00:00Z",
+    "entry": "2006-05-05T00:00:00Z",
+    "modified": "2006-11-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://awstats.sourceforge.net/awstats_security_news.php"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/19969/"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osreviews.net/reviews/comm/awstats"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "vid": "7caebe30-d7f1-11e6-a9a5-b499baebfeaf",
+  "topic": "openssl -- timing attack vulnerability",
+  "description": "\n\t\u003cp\u003eCesar Pereida Garcia reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://seclists.org/oss-sec/2017/q1/52\"\u003e\n\t  \u003cp\u003eThe signing function in crypto/ecdsa/ecdsa_ossl.c in certain OpenSSL\n\t    versions and forks is vulnerable to timing attacks when signing with the\n\t    standardized elliptic curve P-256 despite featuring constant-time curve\n\t    operations and modular inversion. A software defect omits setting the\n\t    BN_FLG_CONSTTIME flag for nonces, failing to take a secure code path in\n\t    the BN_mod_inverse method and therefore resulting in a cache-timing attack\n\t    vulnerability.\u003cbr/\u003e\n\t    A malicious user with local access can recover ECDSA P-256 private keys.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.0.2"
+        }
+      ]
+    },
+    {
+      "name": "libressl",
+      "range": [
+        {
+          "lt": "2.4.4_1"
+        }
+      ]
+    },
+    {
+      "name": "libressl-devel",
+      "range": [
+        {
+          "lt": "2.5.0_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-01-10T00:00:00Z",
+    "entry": "2017-01-11T00:00:00Z",
+    "modified": "2017-01-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://seclists.org/oss-sec/2017/q1/52"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-7056"
+    }
+  ]
+}

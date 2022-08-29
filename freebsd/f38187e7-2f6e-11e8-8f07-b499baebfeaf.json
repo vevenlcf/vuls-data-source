@@ -1,0 +1,62 @@
+{
+  "vid": "f38187e7-2f6e-11e8-8f07-b499baebfeaf",
+  "topic": "apache -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Apache httpd reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.apache.org/dist/httpd/CHANGES_2.4.33\"\u003e\n\t  \u003cp\u003eOut of bound write in mod_authnz_ldap with AuthLDAPCharsetConfig\n\t    enabled (CVE-2017-15710)\u003c/p\u003e\n\t  \u003cp\u003emod_session: CGI-like applications that intend to read from\n\t    mod_session's 'SessionEnv ON' could be fooled into reading\n\t    user-supplied data instead. (CVE-2018-1283)\u003c/p\u003e\n\t  \u003cp\u003emod_cache_socache: Fix request headers parsing to avoid a possible\n\t    crash with specially crafted input data. (CVE-2018-1303)\u003c/p\u003e\n\t  \u003cp\u003ecore: Possible crash with excessively long HTTP request headers.\n\t    Impractical to exploit with a production build and production\n\t    LogLevel. (CVE-2018-1301)\u003c/p\u003e\n\t  \u003cp\u003ecore: Configure the regular expression engine to match '$' to the\n\t    end of the input string only, excluding matching the end of any\n\t    embedded newline characters. Behavior can be changed with new\n\t    directive 'RegexDefaultOptions'. (CVE-2017-15715)\u003c/p\u003e\n\t  \u003cp\u003emod_auth_digest: Fix generation of nonce values to prevent replay\n\t    attacks across servers using a common Digest domain. This change\n\t    may cause problems if used with round robin load balancers.\n\t    (CVE-2018-1312)\u003c/p\u003e\n\t  \u003cp\u003emod_http2: Potential crash w/ mod_http2. (CVE-2018-1302)\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache24",
+      "range": [
+        {
+          "lt": "2.4.30"
+        }
+      ]
+    },
+    {
+      "name": "apache22",
+      "range": [
+        {
+          "lt": "2.2.34_5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-03-23T00:00:00Z",
+    "entry": "2018-03-24T00:00:00Z",
+    "modified": "2018-03-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.apache.org/dist/httpd/CHANGES_2.4.33"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-15710"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-1283"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-1303"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-1301"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-15715"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-1312"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-1302"
+    }
+  ]
+}

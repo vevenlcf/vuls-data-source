@@ -1,0 +1,53 @@
+{
+  "vid": "61bce714-ca0c-11ec-9cfc-10c37b4ac2ea",
+  "topic": "go -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/51853\"\u003e\n\t  \u003cp\u003eencoding/pem: fix stack overflow in Decode.\u003c/p\u003e\n\t  \u003cp\u003eA large (more than 5 MB) PEM input can cause a stack\n\t    overflow in Decode, leading the program to crash.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/52075\"\u003e\n\t  \u003cp\u003ecrypto/elliptic: tolerate all oversized scalars in generic\n\t    P-256.\u003c/p\u003e\n\t  \u003cp\u003eA crafted scalar input longer than 32 bytes can\n\t    cause P256().ScalarMult or P256().ScalarBaseMult to panic.\n\t    Indirect uses through crypto/ecdsa and crypto/tls are\n\t    unaffected. amd64, arm64, ppc64le, and s390x are\n\t    unaffected.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/51759\"\u003e\n\t  \u003cp\u003ecrypto/x509: non-compliant certificates can cause a panic\n\t    in Verify on macOS in Go 1.18.\u003c/p\u003e\n\t  \u003cp\u003eVerifying certificate chains containing certificates\n\t    which are not compliant with RFC 5280 causes\n\t    Certificate.Verify to panic on macOS. These chains can be\n\t    delivered through TLS and can cause a crypto/tls or\n\t    net/http client to crash.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.18.1,1"
+        }
+      ]
+    },
+    {
+      "name": "go117",
+      "range": [
+        {
+          "lt": "1.17.9"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-04-12T00:00:00Z",
+    "entry": "2022-05-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/51853"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/52075"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/51759"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-24675"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-28327"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-27536"
+    }
+  ]
+}

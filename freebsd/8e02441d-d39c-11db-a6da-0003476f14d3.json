@@ -1,0 +1,29 @@
+{
+  "vid": "8e02441d-d39c-11db-a6da-0003476f14d3",
+  "topic": "sql-ledger -- security bypass vulnerability",
+  "description": "\n\t\u003cp\u003eChris Travers reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.securityfocus.com/archive/1/462375\"\u003e\n\t  \u003cp\u003eGeorge Theall of Tenable Security notified the LedgerSMB\n\t    core team today of an authentication bypass vulnerability\n\t    allowing full access to the administrator interface of\n\t    LedgerSMB 1.1 and SQL-Ledger 2.x.  The problem is caused\n\t    by the password checking routine failing to enforce a\n\t    password check under certain circumstances. The user\n\t    can then create accounts or effect denial of service\n\t    attacks.\u003c/p\u003e\n\t  \u003cp\u003eThis is not related to any previous CVE.\u003c/p\u003e\n\t  \u003cp\u003eWe have coordinated with the SQL-Ledger vendor and\n\t    today both of us released security patches correcting\n\t    the problem. SQL-Ledger users who can upgrade to 2.6.26\n\t    should do so, and LedgerSMB 1.1 or 1.0 users should\n\t    upgrade to 1.1.9. Users who cannot upgrade should\n\t    configure their web servers to use http authentication\n\t    for the admin.pl script in the main root directory.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "sql-ledger",
+      "range": [
+        {
+          "lt": "2.6.26"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-03-09T00:00:00Z",
+    "entry": "2007-03-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.securityfocus.com/archive/1/462375"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/110350"
+    }
+  ]
+}

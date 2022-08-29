@@ -1,0 +1,47 @@
+{
+  "vid": "838fa84a-0e25-11e5-90e4-d050996490d0",
+  "topic": "redis -- EVAL Lua Sandbox Escape",
+  "description": "\n\t\u003cp\u003eBen Murphy reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/\"\u003e\n\t  \u003cp\u003eIt is possible to break out of the Lua sandbox in\n\t    Redis and execute arbitrary code.\u003c/p\u003e\n\t  \u003cp\u003eThis shouldn’t pose a threat to users under the\n\t    trusted Redis security model where only trusted\n\t    users can connect to the database. However, in real\n\t    deployments there could be databases that can be\n\t    accessed by untrusted users. The main deployments\n\t    that are vulnerable are developers machines, places\n\t    where redis servers can be reached via SSRF attacks\n\t    and cloud hosting.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "redis",
+      "range": [
+        {
+          "lt": "2.8.21",
+          "ge": "2.6.0"
+        },
+        {
+          "lt": "3.0.2",
+          "ge": "3.0"
+        }
+      ]
+    },
+    {
+      "name": "redis-devel",
+      "range": [
+        {
+          "lt": "2.8.21",
+          "ge": "2.6.0"
+        },
+        {
+          "lt": "3.0.2",
+          "ge": "3.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-04T00:00:00Z",
+    "entry": "2015-06-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4335"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "vid": "655ee1ec-511b-11dd-80ba-000bcdf0a03b",
+  "topic": "FreeBSD -- DNS cache poisoning",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe BIND DNS implementation does not randomize the UDP source\n\t  port when doing remote queries, and the query id alone does\n\t  not provide adequate randomization.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eThe lack of source port randomization reduces the amount of\n\t  data the attacker needs to guess in order to successfully\n\t  execute a DNS cache poisoning attack.  This allows the\n\t  attacker to influence or control the results of DNS queries\n\t  being returned to users from target systems.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround:\u003c/h1\u003e\n\t\u003cp\u003eLimiting the group of machines that can do recursive queries\n\t  on the DNS server will make it more difficult, but not\n\t  impossible, for this vulnerability to be exploited.\u003c/p\u003e\n\t\u003cp\u003eTo limit the machines able to perform recursive queries, add an ACL in\n\t  named.conf and limit recursion like the following:\u003c/p\u003e\n\t\u003cpre\u003eacl example-acl {\u003c/pre\u003e\n\t\u003cpre\u003e   192.0.2.0/24;\u003c/pre\u003e\n\t\u003cpre\u003e};\u003c/pre\u003e\n\t\u003cpre\u003eoptions {\u003c/pre\u003e\n\t\u003cpre\u003e\trecursion yes;\u003c/pre\u003e\n\t\u003cpre\u003e\tallow-recursion { example-acl; };\u003c/pre\u003e\n\t\u003cpre\u003e};\u003c/pre\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.3_3",
+          "ge": "6.3"
+        },
+        {
+          "lt": "7.0_3",
+          "ge": "7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-07-08T00:00:00Z",
+    "entry": "2008-07-13T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2008-1447"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-08:06.bind"
+    },
+    {
+      "source": "CertVU",
+      "text": "800113"
+    }
+  ]
+}

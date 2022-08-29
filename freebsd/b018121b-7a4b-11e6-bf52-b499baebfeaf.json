@@ -1,0 +1,30 @@
+{
+  "vid": "b018121b-7a4b-11e6-bf52-b499baebfeaf",
+  "topic": "cURL -- Escape and unescape integer overflows",
+  "description": "\n\t\u003cp\u003eThe cURL project reports\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.haxx.se/docs/adv_20160914.html\"\u003e\n\t  \u003cp\u003eThe four libcurl functions curl_escape(), curl_easy_escape(),\n\t    curl_unescape and curl_easy_unescape perform string URL percent\n\t    escaping and unescaping. They accept custom string length inputs\n\t    in signed integer arguments.\u003c/p\u003e\n\t  \u003cp\u003eThe provided string length arguments were not properly checked\n\t    and due to arithmetic in the functions, passing in the length\n\t    0xffffffff (2^32-1 or UINT_MAX or even just -1) would end up\n\t    causing an allocation of zero bytes of heap memory that curl\n\t    would attempt to write gigabytes of data into.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.50.3",
+          "ge": "7.11.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-09-14T00:00:00Z",
+    "entry": "2016-09-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/adv_20160914.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-7167"
+    }
+  ]
+}

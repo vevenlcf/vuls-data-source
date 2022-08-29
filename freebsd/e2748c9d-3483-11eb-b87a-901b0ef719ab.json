@@ -1,0 +1,38 @@
+{
+  "vid": "e2748c9d-3483-11eb-b87a-901b0ef719ab",
+  "topic": "FreeBSD -- Multiple vulnerabilities in rtsold",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eTwo bugs exist in rtsold(8)'s RDNSS and DNSSL option handling.\n\tFirst, rtsold(8) failed to perform sufficient bounds checking on the\n\textent of the option. In particular, it does not verify that the\n\toption does not extend past the end of the received packet before\n\tprocessing its contents. The kernel currently ignores such\n\tmalformed packets but still passes them to userspace programs.\u003c/p\u003e\n\t\u003cp\u003eSecond, when processing a DNSSL option, rtsold(8) decodes domain\n\tname labels per an encoding specified in RFC 1035 in which the first\n\toctet of each label contains the label's length. rtsold(8) did not\n\tvalidate label lengths correctly and could overflow the destination\n\tbuffer.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eIt is believed that these bugs could be exploited to gain remote\n\tcode execution within the rtsold(8) daemon, which runs as root.\n\tNote that rtsold(8) only processes messages received from hosts\n\tattached to the same physical link as the interface(s) on which\n\trtsold(8) is listening.\u003c/p\u003e\n\t\u003cp\u003eIn FreeBSD 12.2 rtsold(8) runs in a Capsicum sandbox, limiting the\n\tscope of a compromised rtsold(8) process.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "12.2_1",
+          "ge": "12.2"
+        },
+        {
+          "lt": "12.1_11",
+          "ge": "12.1"
+        },
+        {
+          "lt": "11.4_5",
+          "ge": "11.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-12-01T00:00:00Z",
+    "entry": "2020-12-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2020-25577"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-20:32.rtsold"
+    }
+  ]
+}

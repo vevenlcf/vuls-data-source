@@ -1,0 +1,30 @@
+{
+  "vid": "e4848ca4-8820-11e5-ab94-002590263bf5",
+  "topic": "xen-kernel -- some pmu and profiling hypercalls log without rate limiting",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-152.html\"\u003e\n\t  \u003cp\u003eHYPERCALL_xenoprof_op and HYPERVISOR_xenpmu_op log some errors and\n\t    attempts at invalid operations. These log messages are not\n\t    rate-limited, even though they can be triggered by guests.\u003c/p\u003e\n\t  \u003cp\u003eA malicious guest could cause repeated logging to the hypervisor\n\t    console, leading to a Denial of Service attack.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.1_1",
+          "ge": "3.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-10-29T00:00:00Z",
+    "entry": "2015-11-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-152.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-7971"
+    }
+  ]
+}

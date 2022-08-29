@@ -1,0 +1,38 @@
+{
+  "vid": "692ab645-bf5d-11de-849b-00151797c2d4",
+  "topic": "squidGuard -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eSquidGuard website reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091015\"\u003e\n\t  \u003cp\u003ePatch 20091015 fixes one buffer overflow problem\n\t    in sgLog.c when overlong URLs are requested.\n\t    SquidGuard will then go into emergency mode were\n\t    no blocking occurs. This is not required in this\n\t    situation.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091019\"\u003e\n\t  \u003cp\u003ePatch 20091019 fixes two bypass problems with URLs\n\t    which length is close to the limit defined by MAX_BUF\n\t    (default: 4096) in squidGuard and MAX_URL (default:\n\t    4096 in squid 2.x and 8192 in squid 3.x) in squid.\n\t    For this kind of URLs the proxy request exceeds MAX_BUF\n\t    causing squidGuard to complain about not being able to\n\t    parse the squid request.  Increasing the buffer limit\n\t    to be higher than the one defined in MAX_URL solves the\n\t    issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "squidGuard",
+      "range": [
+        {
+          "lt": "1.4_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2009-10-15T00:00:00Z",
+    "entry": "2009-10-22T00:00:00Z",
+    "modified": "2010-05-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091015"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091019"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2009-3700"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2009-3826"
+    }
+  ]
+}

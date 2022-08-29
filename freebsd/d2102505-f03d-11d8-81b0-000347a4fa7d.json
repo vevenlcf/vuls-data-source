@@ -1,0 +1,119 @@
+{
+  "vid": "d2102505-f03d-11d8-81b0-000347a4fa7d",
+  "topic": "cvs -- numerous vulnerabilities",
+  "description": "\n\t\u003cp\u003eA number of vulnerabilities were discovered in CVS by\n\t  Stefan Esser, Sebastian Krahmer, and Derek Price.\u003c/p\u003e\n\t\u003cul\u003e\n\t  \u003cli\u003eInsufficient input validation while processing \"Entry\"\n\t    lines.  (CVE-2004-0414)\u003c/li\u003e\n\t  \u003cli\u003eA double-free resulting from erroneous state handling while\n\t    processing \"Argumentx\" commands. (CVE-2004-0416)\u003c/li\u003e\n\t  \u003cli\u003eInteger overflow while processing \"Max-dotdot\" commands.\n\t    (CVE-2004-0417)\u003c/li\u003e\n\t  \u003cli\u003eErroneous handling of empty entries handled while processing\n\t    \"Notify\" commands. (CVE-2004-0418)\u003c/li\u003e\n\t  \u003cli\u003eA format string bug while processing CVS wrappers.\u003c/li\u003e\n\t  \u003cli\u003eSingle-byte buffer underflows while processing configuration files\n\t    from CVSROOT.\u003c/li\u003e\n\t  \u003cli\u003eVarious other integer overflows.\u003c/li\u003e\n\t\u003c/ul\u003e\n\t\u003cp\u003eAdditionally, iDEFENSE reports an undocumented command-line\n\t  flag used in debugging does not perform input validation on\n\t  the given path names.\u003c/p\u003e\n\t\u003cp\u003eCVS servers (\"cvs server\" or :pserver: modes) are\n\t  affected by these vulnerabilities.  They vary in impact\n\t  but include information disclosure (the iDEFENSE-reported\n\t  bug), denial-of-service (CVE-2004-0414, CVE-2004-0416,\n\t  CVE-2004-0417 and other bugs), or possibly arbitrary code\n\t  execution (CVE-2004-0418).  In very special situations where\n\t  the attacker may somehow influence the contents of CVS\n\t  configuration files in CVSROOT, additional attacks may be\n\t  possible.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "cvs+ipv6",
+      "range": [
+        {
+          "lt": "1.11.17"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.2.1_10",
+          "ge": "5.2"
+        },
+        {
+          "lt": "4.10_3",
+          "ge": "4.10"
+        },
+        {
+          "lt": "4.9_12",
+          "ge": "4.9"
+        },
+        {
+          "lt": "4.8_25",
+          "ge": "4.8"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-05-20T00:00:00Z",
+    "entry": "2004-08-17T00:00:00Z",
+    "modified": "2004-09-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/11817"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/12309"
+    },
+    {
+      "source": "URL",
+      "text": "http://security.e-matters.de/advisories/092004.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.idefense.com/application/poi/display?id=130\u0026type=vulnerabilities\u0026flashstatus=false"
+    },
+    {
+      "source": "URL",
+      "text": "https://ccvs.cvshome.org/source/browse/ccvs/NEWS?rev=1.116.2.104"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6830"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6831"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6832"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6833"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6834"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6835"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/6836"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0414"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0416"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0417"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0418"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0778"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-04:14.cvs"
+    },
+    {
+      "source": "BID",
+      "text": "10499"
+    }
+  ]
+}

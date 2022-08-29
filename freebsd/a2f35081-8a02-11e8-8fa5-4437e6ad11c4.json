@@ -1,0 +1,73 @@
+{
+  "vid": "a2f35081-8a02-11e8-8fa5-4437e6ad11c4",
+  "topic": "mutt -- remote code injection and path traversal vulnerability",
+  "description": "\n\t\u003cp\u003eKevin J. McCarthy reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.mutt.org/pipermail/mutt-announce/Week-of-Mon-20180716/000004.html\"\u003e\n\t  \u003cp\u003eFixes a remote code injection vulnerability when \"subscribing\"\n\t     to an IMAP mailbox, either via $imap_check_subscribed, or via the\n\t     \u0026lt;subscribe\u0026gt; function in the browser menu.  Mutt was generating a\n\t     \"mailboxes\" command and sending that along to the muttrc parser.\n\t     However, it was not escaping \"`\", which executes code and inserts\n\t     the result.  This would allow a malicious IMAP server to execute\n\t     arbitrary code (for $imap_check_subscribed).\u003c/p\u003e\n\t    \u003cp\u003eFixes POP body caching path traversal vulnerability.\u003c/p\u003e\n\t    \u003cp\u003eFixes IMAP header caching path traversal vulnerability.\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14349 - NO Response Heap Overflow\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14350 - INTERNALDATE Stack Overflow\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14351 - STATUS Literal Length relative write\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14352 - imap_quote_string off-by-one stack overflow\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14353 - imap_quote_string int underflow\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14354 - imap_subscribe Remote Code Execution\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14355 - STATUS mailbox header cache directory traversal\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14356 - POP empty UID NULL deref\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14357 - LSUB Remote Code Execution\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14358 - RFC822.SIZE Stack Overflow\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14359 - base64 decode Stack Overflow\u003c/p\u003e\n\t    \u003cp\u003eCVE-2018-14362 - POP Message Cache Directory Traversal\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "mutt",
+      "range": [
+        {
+          "lt": "1.10.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-07-15T00:00:00Z",
+    "entry": "2018-07-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lists.mutt.org/pipermail/mutt-announce/Week-of-Mon-20180716/000004.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14349"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14350"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14351"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14352"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14353"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14354"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14355"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14356"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14357"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14358"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14359"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14362"
+    }
+  ]
+}

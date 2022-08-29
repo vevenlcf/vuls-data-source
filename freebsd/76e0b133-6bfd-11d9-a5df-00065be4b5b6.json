@@ -1,0 +1,29 @@
+{
+  "vid": "76e0b133-6bfd-11d9-a5df-00065be4b5b6",
+  "topic": "newsfetch -- server response buffer overflow vulnerability",
+  "description": "\n     \u003cp\u003eThe newsfetch program uses the sscanf function to read information\n       from server responses into static memory buffers. Unfortunately\n       this is done without any proper bounds checking. As a result long\n       server responses may cause an overflow when a newsgroup listing is\n       requested from an NNTP server.\u003c/p\u003e\n    ",
+  "affects": [
+    {
+      "name": "newsfetch",
+      "range": [
+        {
+          "le": "1.21_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-01-18T00:00:00Z",
+    "entry": "2005-02-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://people.freebsd.org/~niels/issues/newsfetch-20050119.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0132"
+    }
+  ]
+}

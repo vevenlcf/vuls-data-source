@@ -1,0 +1,37 @@
+{
+  "vid": "fdc49972-3ca7-11eb-929d-d4c9ef517024",
+  "topic": "p11-kit -- Multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe p11-glue project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://lists.freedesktop.org/archives/p11-glue/2020-December/000712.html\"\u003e\n\t  \u003cp\u003eCVE-2020-29363: Out-of-bounds write in\n\t    p11_rpc_buffer_get_byte_array_value function\u003cbr/\u003eA heap-based buffer\n\t    overflow has been discovered in the RPC protocol used by p11-kit\n\t    server/remote commands and the client library. When the remote\n\t    entity supplies a serialized byte array in a CK_ATTRIBUTE, the\n\t    receiving entity may not allocate sufficient length for the buffer\n\t    to store the deserialized value.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2020-29362: Out-of-bounds read in p11_rpc_buffer_get_byte_array\n\t    function\u003cbr/\u003eA heap-based buffer over-read has been discovered in\n\t    the RPC protocol used by thep11-kit server/remote commands and the\n\t    client library. When the remote entity supplies a byte array through\n\t    a serialized PKCS#11 function call, the receiving entity may allow\n\t    the reading of up to 4 bytes of memory past the heap\n\t    allocation.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2020-29361: Integer overflow when allocating memory for arrays\n\t    of attributes and object identifiers\u003cbr/\u003eMultiple integer overflows\n\t    have been discovered in the array allocations in the p11-kit library\n\t    and the p11-kit list command, where overflow checks are missing\n\t    before calling realloc or calloc.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "p11-kit",
+      "range": [
+        {
+          "lt": "0.23.22"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-12-12T00:00:00Z",
+    "entry": "2020-12-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://lists.freedesktop.org/archives/p11-glue/2020-December/000712.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-29361"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-29362"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-29363"
+    }
+  ]
+}

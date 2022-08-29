@@ -1,0 +1,37 @@
+{
+  "vid": "207f8ff3-f697-11d8-81b0-000347a4fa7d",
+  "topic": "nss -- exploitable buffer overflow in SSLv2 protocol handler",
+  "description": "\n\t\u003cp\u003eISS X-Force reports that a remotely exploitable buffer\n\t  overflow exists in the Netscape Security Services (NSS)\n\t  library's implementation of SSLv2.  From their advisory:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xforce.iss.net/xforce/alerts/id/180\"\u003e\n\t  \u003cp\u003eThe NSS library contains a flaw in SSLv2 record parsing\n\t    that may lead to remote compromise. When parsing the\n\t    first record in an SSLv2 negotiation, the client hello\n\t    message, the server fails to validate the length of a\n\t    record field. As a result, it is possible for an attacker\n\t    to trigger a heap-based overflow of arbitrary length.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eNote that the vulnerable NSS library is also present in\n\t  Mozilla-based browsers.  However, it is not believed that\n\t  browsers are affected, as the vulnerability is present only in\n\t  code used by SSLv2 *servers*.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "nss",
+      "range": [
+        {
+          "lt": "3.9.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-08-23T00:00:00Z",
+    "entry": "2004-08-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xforce.iss.net/xforce/alerts/id/180"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.osvdb.org/9116"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/12362"
+    },
+    {
+      "source": "BID",
+      "text": "11015"
+    }
+  ]
+}

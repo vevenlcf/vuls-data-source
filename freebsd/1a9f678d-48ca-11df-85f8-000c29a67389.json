@@ -1,0 +1,33 @@
+{
+  "vid": "1a9f678d-48ca-11df-85f8-000c29a67389",
+  "topic": "sudo -- Privilege escalation with sudoedit",
+  "description": "\n\t\u003cp\u003eTodd Miller reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"\"\u003e\n\t  \u003cp\u003eSudo's command matching routine expects actual commands to include\n\t    one or more slash ('/') characters.  The flaw is that sudo's path\n\t    resolution code did not add a \"./\" prefix to commands found in the\n\t    current working directory.  This creates an ambiguity between a\n\t    \"sudoedit\" command found in the cwd and the \"sudoedit\"\n\t    pseudo-command in the sudoers file.  As a result, a user may be\n\t    able to run an arbitrary command named \"sudoedit\" in the current\n\t    working directory.  For the attack to be successful, the PATH\n\t    environment variable must include \".\" and may not include any other\n\t    directory that contains a \"sudoedit\" command.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "sudo",
+      "range": [
+        {
+          "lt": "1.7.2.6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-04-09T00:00:00Z",
+    "entry": "2010-04-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.sudo.ws/pipermail/sudo-announce/2010-April/000093.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.sudo.ws/sudo/alerts/sudoedit_escalate2.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-1163"
+    }
+  ]
+}

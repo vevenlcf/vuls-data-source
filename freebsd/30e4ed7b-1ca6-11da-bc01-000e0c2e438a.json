@@ -1,0 +1,46 @@
+{
+  "vid": "30e4ed7b-1ca6-11da-bc01-000e0c2e438a",
+  "topic": "bind9 -- denial of service",
+  "description": "\n\t\u003cp\u003eProblem description\u003c/p\u003e\n\t\u003cp\u003eA DNSSEC-related validator function in BIND 9.3.0 contains an\n\t  inappropriate internal consistency test.  When this test is\n\t  triggered, named(8) will exit.\u003c/p\u003e\n\t\u003cp\u003eImpact\u003c/p\u003e\n\t\u003cp\u003eOn systems with DNSSEC enabled, a remote attacker may be able\n\t  to inject a specially crafted packet that will cause the\n\t  internal consistency test to trigger, and named(8) to\n\t  terminate.  As a result, the name server will no longer be\n\t  available to service requests.\u003c/p\u003e\n\t\u003cp\u003eWorkaround\u003c/p\u003e\n\t\u003cp\u003eDNSSEC is not enabled by default, and the \"dnssec-enable\"\n\t  directive is not normally present.  If DNSSEC has been\n\t  enabled, disable it by changing the \"dnssec-enable\" directive\n\t  to \"dnssec-enable no;\" in the named.conf(5) configuration\n\t  file.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind9",
+      "range": [
+        {
+          "eq": "9.3.0"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.3_16",
+          "ge": "5.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-01-25T00:00:00Z",
+    "entry": "2005-09-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.uniras.gov.uk/niscc/docs/al-20050125-00060.html?lang=en"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.isc.org/sw/bind/bind9.3.php#security"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0034"
+    },
+    {
+      "source": "CertVU",
+      "text": "938617"
+    }
+  ]
+}

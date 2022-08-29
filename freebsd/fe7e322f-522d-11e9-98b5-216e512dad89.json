@@ -1,0 +1,58 @@
+{
+  "vid": "fe7e322f-522d-11e9-98b5-216e512dad89",
+  "topic": "Jupyter notebook -- open redirect vulnerability",
+  "description": "\n\t\u003cp\u003eJupyter blog:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://blog.jupyter.org/open-redirect-vulnerability-in-jupyter-jupyterhub-adf43583f1e4\"\u003e\n\t  \u003cp\u003eLogin pages tend to take a parameter for redirecting back to a page\n\t    after successful login, e.g. /login?next=/notebooks/mynotebook.ipynb, so\n\t    that you aren't disrupted too much if you try to visit a page, but have\n\t    to authenticate first. An Open Redirect Vulnerability is when a\n\t    malicious person crafts a link pointing to the login page of a trusted\n\t    site, but setting the \"redirect after successful login\" parameter to\n\t    send the user to their own site, instead of a page on the authenticated\n\t    site (the notebook or JupyterHub server), e.g.\n\t    /login?next=http://badwebsite.biz. This doesn't necessarily compromise\n\t    anything immediately, but it enables phishing if users don't notice\n\t    that the domain has changed, e.g. by showing a fake \"re-enter your\n\t    password\" page. Servers generally have to validate the redirect URL to\n\t    avoid this. Both JupyterHub and Notebook already do this, but the\n\t    validation didn't take into account all possible ways to redirect to\n\t    other sites, so some malicious URLs could still be crafted to redirect\n\t    away from the server (the above example does not work in any recent\n\t    version of either package). Only certain browsers (Chrome and Firefox,\n\t    not Safari) could be redirected from the JupyterHub login page, but all\n\t    browsers could be redirected away from a standalone notebook server.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-notebook",
+      "range": [
+        {
+          "lt": "5.7.8"
+        }
+      ]
+    },
+    {
+      "name": "py35-notebook",
+      "range": [
+        {
+          "lt": "5.7.8"
+        }
+      ]
+    },
+    {
+      "name": "py36-notebook",
+      "range": [
+        {
+          "lt": "5.7.8"
+        }
+      ]
+    },
+    {
+      "name": "py37-notebook",
+      "range": [
+        {
+          "lt": "5.7.8"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-03-28T00:00:00Z",
+    "entry": "2019-03-29T00:00:00Z",
+    "modified": "2019-04-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://blog.jupyter.org/open-redirect-vulnerability-in-jupyter-jupyterhub-adf43583f1e4"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/jupyter/notebook/blob/master/docs/source/changelog.rst"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-10255"
+    }
+  ]
+}

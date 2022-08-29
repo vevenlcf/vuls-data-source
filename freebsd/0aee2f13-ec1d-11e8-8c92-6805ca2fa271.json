@@ -1,0 +1,33 @@
+{
+  "vid": "0aee2f13-ec1d-11e8-8c92-6805ca2fa271",
+  "topic": "powerdns -- Multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003ePowerDNS Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://doc.powerdns.com/authoritative/changelog/4.1.html\"\u003e\n\t  \u003cp\u003eCVE-2018-10851: An issue has been found in PowerDNS Authoritative Server allowing\n\t    an authorized user to cause a memory leak by inserting a specially crafted record\n\t    in a zone under their control, then sending a DNS query for that record. The issue\n\t    is due to the fact that some memory is allocated before the parsing and is not\n\t    always properly released if the record is malformed. When the PowerDNS\n\t    Authoritative Server is run inside the guardian (--guardian), or inside a\n\t    supervisor like supervisord or systemd, an out-of-memory crash will lead to an\n\t    automatic restart, limiting the impact to a somewhat degraded service.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2018-14626: An issue has been found in PowerDNS Authoritative Server allowing\n\t    a remote user to craft a DNS query that will cause an answer without DNSSEC\n\t    records to be inserted into the packet cache and be returned to clients asking for\n\t    DNSSEC records, thus hiding the presence of DNSSEC signatures for a specific qname\n\t    and qtype. For a DNSSEC-signed domain, this means that DNSSEC validating clients\n\t    will consider the answer to be bogus until it expires from the packet cache,\n\t    leading to a denial of service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "powerdns",
+      "range": [
+        {
+          "lt": "4.1.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-11-06T00:00:00Z",
+    "entry": "2018-11-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://doc.powerdns.com/authoritative/changelog/4.1.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-10851"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14626"
+    }
+  ]
+}

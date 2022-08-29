@@ -1,0 +1,29 @@
+{
+  "vid": "942433db-c661-11e6-ae1b-002590263bf5",
+  "topic": "xen-kernel -- x86: Mishandling of SYSCALL singlestep during emulation",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-204.html\"\u003e\n\t  \u003cp\u003eThe typical behaviour of singlestepping exceptions is determined at\n\t    the start of the instruction, with a #DB trap being raised at the\n\t    end of the instruction. SYSCALL (and SYSRET, although we don't\n\t    implement it) behave differently because the typical behaviour\n\t    allows userspace to escalate its privilege. (This difference in\n\t    behaviour seems to be undocumented.) Xen wrongly raised the\n\t    exception based on the flags at the start of the instruction.\u003c/p\u003e\n\t  \u003cp\u003eGuest userspace which can invoke the instruction emulator can use\n\t    this flaw to escalate its privilege to that of the guest kernel.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.7.1_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-12-19T00:00:00Z",
+    "entry": "2016-12-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-204.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-10013"
+    }
+  ]
+}

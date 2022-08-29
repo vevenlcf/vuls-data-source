@@ -1,0 +1,53 @@
+{
+  "vid": "d2c2c815-3793-11ea-8be3-54e1ad3d6335",
+  "topic": "drm graphics drivers -- potential information disclusure via local access",
+  "description": "\n\t\u003cp\u003eIntel reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00314.html\"\u003e\n\t  \u003cp\u003e.A potential security vulnerability in Intel(R) Processor Graphics\n\t    may allow information disclosure.  Intel is releasing software\n\t    updates to mitigate this potential vulnerability.\u003c/p\u003e\n\t  \u003cp\u003eDescription: Insufficient control flow in certain data\n\t    structures for some Intel(R) Processors with Intel(R) Processor\n\t    Graphics may allow an unauthenticated user to potentially enable\n\t    information disclosure via local access.\u003c/p\u003e\n\t  \u003cp\u003eThis patch provides mitigation for Gen9 hardware only.  Patches\n\t    for Gen7 and Gen7.5 will be provided later.  Note that Gen8 is not\n\t    impacted due to a previously implemented workaround.  The mitigation\n\t    involves using an existing hardware feature to forcibly clear down\n\t    all EU state at each context switch.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "drm-fbsd11.2-kmod",
+      "range": [
+        {
+          "lt": "4.11.g20200115"
+        }
+      ]
+    },
+    {
+      "name": "drm-fbsd12.0-kmod",
+      "range": [
+        {
+          "lt": "4.16.g20200115"
+        }
+      ]
+    },
+    {
+      "name": "drm-current-kmod",
+      "range": [
+        {
+          "lt": "4.16.g20200115"
+        }
+      ]
+    },
+    {
+      "name": "drm-devel-kmod",
+      "range": [
+        {
+          "lt": "5.0.g20200115"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-01-14T00:00:00Z",
+    "entry": "2020-01-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00314.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-14615"
+    }
+  ]
+}

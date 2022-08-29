@@ -1,0 +1,34 @@
+{
+  "vid": "d9307a41-c4d7-11da-b2fb-000e0c2e438a",
+  "topic": "zoo -- stack based buffer overflow",
+  "description": "\n\t\u003cp\u003eJean-Sébastien Guay-Leroux report a vulnerability\n\t  within the zoo archiver.  The vulnerability which is present\n\t  in the fullpath() function (from the misc.c file) is caused by\n\t  improper checking of user supplied data.  The data returned\n\t  to the buffer can be up to 512 bytes, while the buffer is\n\t  created to hold 256 bytes.  This could result in a buffer\n\t  overflow which could allow remote code execution.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "zoo",
+      "range": [
+        {
+          "lt": "2.10.1_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-02-22T00:00:00Z",
+    "entry": "2006-04-05T00:00:00Z",
+    "modified": "2006-04-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.guay-leroux.com/projects/zoo-advisory.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0855"
+    },
+    {
+      "source": "BID",
+      "text": "16790"
+    }
+  ]
+}

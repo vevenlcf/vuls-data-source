@@ -1,0 +1,38 @@
+{
+  "vid": "57c705d6-12ae-11dd-bab7-0016179b2dd5",
+  "topic": "png -- unknown chunk processing uninitialized memory access",
+  "description": "\n\t\u003cp\u003eSecunia reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://.com/advisories/29792\"\u003e\n\t  \u003cp\u003eTavis Ormandy has reported a vulnerability in libpng, which can be\n\t    exploited by malicious people to cause a Denial of Service, disclose\n\t    potentially sensitive information, or potentially compromise an\n\t    application using the library.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability is caused due to the improper handling of PNG\n\t    chunks unknown to the library. This can be exploited to trigger the\n\t    use of uninitialized memory in e.g. a free() call via unknown PNG\n\t    chunks having a length of zero.\u003c/p\u003e\n\t  \u003cp\u003eSuccessful exploitation may allow execution of arbitrary code, but\n\t    requires that the application calls the png_set_read_user_chunk_fn()\n\t    function or the png_set_keep_unknown_chunks() function under\n\t    specific conditions.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "png",
+      "range": [
+        {
+          "lt": "1.2.27"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-04-12T00:00:00Z",
+    "entry": "2008-04-25T00:00:00Z",
+    "modified": "2008-04-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/29792"
+    },
+    {
+      "source": "URL",
+      "text": "http://libpng.sourceforge.net/Advisory-1.2.26.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-1382"
+    },
+    {
+      "source": "BID",
+      "text": "28770"
+    }
+  ]
+}

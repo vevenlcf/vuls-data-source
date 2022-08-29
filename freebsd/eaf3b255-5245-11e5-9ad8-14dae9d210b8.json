@@ -1,0 +1,68 @@
+{
+  "vid": "eaf3b255-5245-11e5-9ad8-14dae9d210b8",
+  "topic": "bind -- denial of service vulnerability",
+  "description": "\n\t\u003cp\u003eISC reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.isc.org/blogs/cve-2015-5722-parsing-malformed-keys-may-cause-bind-to-exit-due-to-a-failed-assertion-in-buffer-c/\"\u003e\n\t  \u003cp\u003eParsing a malformed DNSSEC key can cause a validating\n\t    resolver to exit due to a failed assertion in buffer.c.  It is possible\n\t    for a remote attacker to deliberately trigger this condition, for\n\t    example by using a query which requires a response from a zone\n\t    containing a deliberately malformed key.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind99",
+      "range": [
+        {
+          "lt": "9.9.7P3"
+        }
+      ]
+    },
+    {
+      "name": "bind910",
+      "range": [
+        {
+          "lt": "9.10.2P4",
+          "ge": "9.10.2"
+        }
+      ]
+    },
+    {
+      "name": "bind910-base",
+      "range": [
+        {
+          "gt": "0"
+        }
+      ]
+    },
+    {
+      "name": "bind99-base",
+      "range": [
+        {
+          "gt": "0"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "9.3_25",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-19T00:00:00Z",
+    "entry": "2015-09-03T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.isc.org/blogs/cve-2015-5722-parsing-malformed-keys-may-cause-bind-to-exit-due-to-a-failed-assertion-in-buffer-c/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5722"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-15:23.bind"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "vid": "96a21236-707b-11eb-96d8-d4c9ef517024",
+  "topic": "OpenSSL -- Multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe OpenSSL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.openssl.org/news/secadv/20210216.txt\"\u003e\n\t  \u003cp\u003eNull pointer deref in X509_issuer_and_serial_hash()\n\t    CVE-2021-23841\u003cbr/\u003e(Moderate) The OpenSSL public API function\n\t    X509_issuer_and_serial_hash() attempts to create a unique hash\n\t    value based on the issuer and serial number data contained within\n\t    an X509 certificate. However it fails to correctly handle any errors\n\t    that may occur while parsing the issuer field (which might occur if\n\t    the issuer field is maliciously constructed). This may subsequently\n\t    result in a NULL pointer deref and a crash leading to a potential\n\t    denial of service attack.\u003c/p\u003e\n\t  \u003cp\u003eInteger overflow in CipherUpdate CVE-2021-23840\u003cbr/\u003e(Low)\n\t    Calls to EVP_CipherUpdate, EVP_EncryptUpdate and EVP_DecryptUpdate\n\t    may overflow the output length argument in some cases where the\n\t    input length is close to the maximum permissable length for an\n\t    integer on the platform. In such cases the return value from the\n\t    function call will be 1 (indicating success), but the output length\n\t    value will be negative. This could cause applications to behave\n\t    incorrectly or crash.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.1.1j,1"
+        }
+      ]
+    },
+    {
+      "name": "openssl-devel",
+      "range": [
+        {
+          "lt": "3.0.0.a12"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "12.2_10",
+          "ge": "12.2"
+        },
+        {
+          "lt": "11.4_13",
+          "ge": "11.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-02-16T00:00:00Z",
+    "entry": "2021-02-16T00:00:00Z",
+    "modified": "2021-08-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.openssl.org/news/secadv/20210216.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-23841"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-23840"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-23839"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-21:17.openssl"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "vid": "27d39055-b61b-11ec-9ebc-1c697aa5a594",
+  "topic": "FreeBSD -- Potential jail escape vulnerabilities in netmap",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe total size of the user-provided nmreq to nmreq_copyin() was\n\tfirst computed and then trusted during the copyin.  This\n\ttime-of-check to time-of-use bug could lead to kernel memory\n\tcorruption.  [CVE-2022-23084]\u003c/p\u003e\n\t\u003cp\u003eA user-provided integer option was passed to nmreq_copyin() without\n\tchecking if it would overflow.  This insufficient bounds checking\n\tcould lead to kernel memory corruption.  [CVE-2022-23085]\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eOn systems configured to include netmap in their devfs_ruleset, a\n\tprivileged process running in a jail can affect the host\n\tenvironment.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "13.0_11",
+          "ge": "13.0"
+        },
+        {
+          "lt": "12.3_5",
+          "ge": "12.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-04-06T00:00:00Z",
+    "entry": "2022-04-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23084"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23085"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-22:04.netmap"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "vid": "2b6e47b1-0598-11da-86bc-000e0c2e438a",
+  "topic": "ipsec -- Incorrect key usage in AES-XCBC-MAC",
+  "description": "\n\t\u003ch1\u003eProblem description\u003c/h1\u003e\n\t\u003cp\u003eA programming error in the implementation of the\n\t  AES-XCBC-MAC algorithm for authentication resulted in a\n\t  constant key being used instead of the key specified by the\n\t  system administrator.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eIf the AES-XCBC-MAC algorithm is used for authentication in\n\t  the absence of any encryption, then an attacker may be able to\n\t  forge packets which appear to originate from a different\n\t  system and thereby succeed in establishing an IPsec session.\n\t  If access to sensitive information or systems is controlled\n\t  based on the identity of the source system, this may result\n\t  in information disclosure or privilege escalation.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_6",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_20",
+          "ge": "5.*"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-27T00:00:00Z",
+    "entry": "2005-08-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2359"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:19.ipsec"
+    }
+  ]
+}

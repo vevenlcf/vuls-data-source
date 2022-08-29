@@ -1,0 +1,38 @@
+{
+  "vid": "bf1d9331-21b6-11e5-86ff-14dae9d210b8",
+  "topic": "cups-filters -- texttopdf integer overflow",
+  "description": "\n\t\u003cp\u003eStefan Cornelius from Red Hat reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/07/03/2\"\u003e\n\t  \u003cp\u003eAn integer overflow flaw leading to a heap-based buffer overflow was\n\t    discovered in the way the texttopdf utility of cups-filter processed\n\t    print jobs with a specially crafted line size. An attacker being able\n\t    to submit print jobs could exploit this flaw to crash texttopdf or,\n\t    possibly, execute arbitrary code with the privileges of the 'lp' user.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eTim Waugh reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://bzr.linuxfoundation.org/loggerhead/openprinting/cups-filters/revision/7365\"\u003e\n\t  \u003cp\u003eThe Page allocation is moved into textcommon.c, where it does all the\n\t    necessary checking: lower-bounds for CVE-2015-3258 and upper-bounds\n\t    for CVE-2015-3259 due to integer overflows for the calloc() call\n\t    initializing Page[0] and the memset() call in texttopdf.c's\n\t    WritePage() function zeroing the entire array.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "cups-filters",
+      "range": [
+        {
+          "lt": "1.0.71"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-07-03T00:00:00Z",
+    "entry": "2015-07-03T00:00:00Z",
+    "modified": "2015-07-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://access.redhat.com/security/cve/CVE-2015-3279"
+    },
+    {
+      "source": "URL",
+      "text": "http://bzr.linuxfoundation.org/loggerhead/openprinting/cups-filters/revision/7365"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3279"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://osdir.com/ml/opensource-software-security/2015-07/msg00021.html"
+    }
+  ]
+}

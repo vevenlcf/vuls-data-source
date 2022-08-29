@@ -1,0 +1,41 @@
+{
+  "vid": "297117ba-f92d-11e5-92ce-002590263bf5",
+  "topic": "squid -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eSquid security advisory 2016:3 reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squid-cache.org/Advisories/SQUID-2016_3.txt\"\u003e\n\t  \u003cp\u003eDue to a buffer overrun Squid pinger binary is vulnerable to\n\t    denial of service or information leak attack when processing\n\t    ICMPv6 packets.\u003c/p\u003e\n\t  \u003cp\u003eThis bug also permits the server response to manipulate other\n\t    ICMP and ICMPv6 queries processing to cause information leak.\u003c/p\u003e\n\t  \u003cp\u003eThis bug allows any remote server to perform a denial of service\n\t    attack on the Squid service by crashing the pinger. This may\n\t    affect Squid HTTP routing decisions. In some configurations,\n\t    sub-optimal routing decisions may result in serious service\n\t    degradation or even transaction failures.\u003c/p\u003e\n\t  \u003cp\u003eIf the system does not contain buffer-overrun protection leading\n\t    to that crash this bug will instead allow attackers to leak\n\t    arbitrary amounts of information from the heap into Squid log\n\t    files. This is of higher importance than usual because the pinger\n\t    process operates with root priviliges.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eSquid security advisory 2016:4 reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squid-cache.org/Advisories/SQUID-2016_4.txt\"\u003e\n\t  \u003cp\u003eDue to incorrect bounds checking Squid is vulnerable to a denial\n\t    of service attack when processing HTTP responses.\u003c/p\u003e\n\t  \u003cp\u003eThis problem allows a malicious client script and remote server\n\t    delivering certain unusual HTTP response syntax to trigger a\n\t    denial of service for all clients accessing the Squid service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "squid",
+      "range": [
+        {
+          "lt": "3.5.16"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-03-28T00:00:00Z",
+    "entry": "2016-04-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/Advisories/SQUID-2016_3.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/Advisories/SQUID-2016_4.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3947"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3948"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/208463"
+    }
+  ]
+}

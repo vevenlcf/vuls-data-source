@@ -1,0 +1,39 @@
+{
+  "vid": "2a4a112a-7c1b-11e5-bd77-0800275369e2",
+  "topic": "lldpd -- Buffer overflow/Denial of service",
+  "description": "\n\t\u003cp\u003eThe lldpd developer Vincent Bernat reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/vincentbernat/lldpd/raw/0.7.19/NEWS\"\u003e\n\t  \u003cp\u003eA buffer overflow may allow arbitrary code execution\n\t    only if hardening was disabled.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/vincentbernat/lldpd/commit/793526f8884455f43daecd0a2c46772388417a00\"\u003e\n\t  \u003cp\u003eMalformed packets should not make lldpd crash. Ensure we can\n\t    handle them by not using assert() in this part.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "lldpd",
+      "range": [
+        {
+          "lt": "0.7.19",
+          "ge": "0.5.6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-10-04T00:00:00Z",
+    "entry": "2015-10-26T00:00:00Z",
+    "modified": "2015-11-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/vincentbernat/lldpd/raw/0.7.19/NEWS"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/10/30/2"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8011"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8012"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "vid": "0537afa3-3ce0-11e7-bf9d-001999f8d30b",
+  "topic": "asterisk -- Buffer Overrun in PJSIP transaction layer",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.asterisk.org/downloads/security-advisories\"\u003e\n\t  \u003cp\u003eA remote crash can be triggered by sending a SIP packet\n\t  to Asterisk with a specially crafted CSeq header and a\n\t  Via header with no branch parameter. The issue is that\n\t  the PJSIP RFC 2543 transaction key generation algorithm\n\t  does not allocate a large enough buffer. By overrunning\n\t  the buffer, the memory allocation table becomes corrupted,\n\t  leading to an eventual crash.\u003c/p\u003e\n\t  \u003cp\u003eThe multi-part body parser in PJSIP contains a logical\n\t  error that can make certain multi-part body parts attempt\n\t  to read memory from outside the allowed boundaries. A\n\t  specially-crafted packet can trigger these invalid reads\n\t  and potentially induce a crash.\u003c/p\u003e\n\t  \u003cp\u003eThis issues is in PJSIP, and so the issue can be fixed\n\t  without performing an upgrade of Asterisk at all. However,\n\t  we are releasing a new version of Asterisk with the bundled\n\t  PJProject updated to include the fix.\u003c/p\u003e\n\t  \u003cp\u003eIf you are running Asterisk with chan_sip, this issue\n\t  does not affect you.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk13",
+      "range": [
+        {
+          "lt": "13.15.1"
+        }
+      ]
+    },
+    {
+      "name": "pjsip",
+      "range": [
+        {
+          "lt": "2.6_1"
+        }
+      ]
+    },
+    {
+      "name": "pjsip-extsrtp",
+      "range": [
+        {
+          "lt": "2.6_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-04-12T00:00:00Z",
+    "entry": "2017-05-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://downloads.asterisk.org/pub/security/AST-2017-002.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://downloads.asterisk.org/pub/security/AST-2017-003.html"
+    }
+  ]
+}

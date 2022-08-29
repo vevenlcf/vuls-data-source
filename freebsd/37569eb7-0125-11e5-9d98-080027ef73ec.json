@@ -1,0 +1,41 @@
+{
+  "vid": "37569eb7-0125-11e5-9d98-080027ef73ec",
+  "topic": "dnsmasq -- data exposure and denial of service",
+  "description": "\n\t\u003cp\u003eNick Sampanis reported a potential memory exposure and denial of service vulnerability against dnsmasq 2.72. The CVE entry summarizes this as:\n\t\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3294\"\u003e\u003cp\u003eThe tcp_request function in Dnsmasq before 2.73rc4\n\t  does not properly handle the return value of the setup_reply function,\n\t  which allows remote attackers to read process memory and cause a\n\t  denial of service (out-of-bounds read and crash) via a malformed DNS\n\t  request.\"\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "dnsmasq",
+      "range": [
+        {
+          "lt": "2.72_1"
+        }
+      ]
+    },
+    {
+      "name": "dnsmasq-devel",
+      "range": [
+        {
+          "lt": "2.73rc4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-04-07T00:00:00Z",
+    "entry": "2015-05-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2015q2/009382.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commitdiff;h=ad4a8ff7d9097008d7623df8543df435bfddeac8"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3294"
+    }
+  ]
+}

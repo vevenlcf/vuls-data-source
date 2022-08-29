@@ -1,0 +1,30 @@
+{
+  "vid": "c4f31e16-6e33-11dd-8eb7-0011098ad87f",
+  "topic": "cdf3 -- Buffer overflow vulnerability",
+  "description": "\n\t\u003cp\u003eNASA Goddard Space Flight Center reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://cdf.gsfc.nasa.gov/CDF32_buffer_overflow.html\"\u003e\n\t  \u003cp\u003eThe libraries for the scientific data file format, Common Data\n\t    Format (CDF) version 3.2 and earlier, have the potential for a\n\t    buffer overflow vulnerability when reading specially-crafted\n\t    (invalid) CDF files. If successful, this could trigger execution\n\t    of arbitrary code within the context of the CDF-reading program\n\t    that could be exploited to compromise a system, or otherwise\n\t    crash the program. While it's unlikely that you would open CDFs\n\t    from untrusted sources, we recommend everyone upgrade to the\n\t    latest CDF libraries on their systems, including the IDL and\n\t    Matlab plugins. Most worrisome is any service that enables the\n\t    general public to submit CDF files for processing.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability is in the CDF library routines not properly\n\t    checking the length tags on a CDF file before copying data to a\n\t    stack buffer. Exploitation requires the user to explicitly open\n\t    a specially-crafted file. CDF users should not open files from\n\t    untrusted third parties until the patch is applied (and continue\n\t    then to exercise normal caution for files from untrusted third\n\t    parties).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "cdf3",
+      "range": [
+        {
+          "lt": "3.2.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-05-15T00:00:00Z",
+    "entry": "2008-08-19T00:00:00Z",
+    "modified": "2010-05-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://cdf.gsfc.nasa.gov/CDF32_buffer_overflow.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-2080"
+    }
+  ]
+}

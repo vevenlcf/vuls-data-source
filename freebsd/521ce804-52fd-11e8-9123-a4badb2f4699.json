@@ -1,0 +1,34 @@
+{
+  "vid": "521ce804-52fd-11e8-9123-a4badb2f4699",
+  "topic": "FreeBSD -- Mishandling of x86 debug exceptions",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe MOV SS and POP SS instructions inhibit debug exceptions\n\tuntil the instruction boundary following the next instruction.\n\tIf that instruction is a system call or similar instruction\n\tthat transfers control to the operating system, the debug\n\texception will be handled in the kernel context instead of\n\tthe user context.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn authenticated local attacker may be able to read\n\tsensitive data in kernel memory, control low-level operating\n\tsystem functions, or may panic the system.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.1_10",
+          "ge": "11.1"
+        },
+        {
+          "lt": "10.4_9",
+          "ge": "10.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-05-08T00:00:00Z",
+    "entry": "2018-05-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2018-8897"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-18:06.debugreg"
+    }
+  ]
+}

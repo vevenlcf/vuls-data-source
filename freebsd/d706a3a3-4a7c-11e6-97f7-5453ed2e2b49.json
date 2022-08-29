@@ -1,0 +1,29 @@
+{
+  "vid": "d706a3a3-4a7c-11e6-97f7-5453ed2e2b49",
+  "topic": "p7zip -- out-of-bounds read vulnerability",
+  "description": "\n\t\u003cp\u003eCisco Talos reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.talosintelligence.com/reports/TALOS-2016-0094/\"\u003e\n\t  \u003cp\u003eAn out-of-bounds read vulnerability exists in the way 7-Zip\n\t  handles Universal Disk Format (UDF) files.\u003c/p\u003e\n\t  \u003cp\u003eCentral to 7-Zip’s processing of UDF files is the\n\t  CInArchive::ReadFileItem method. Because volumes can have more than\n\t  one partition map, their objects are kept in an object vector. To\n\t  start looking for an item, this method tries to reference the proper\n\t  object using the partition map’s object vector and the \"PartitionRef\"\n\t  field from the Long Allocation Descriptor. Lack of checking whether\n\t  the \"PartitionRef\" field is bigger than the available amount of\n\t  partition map objects causes a read out-of-bounds and can lead, in\n\t  some circumstances, to arbitrary code execution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "p7zip",
+      "range": [
+        {
+          "lt": "15.14_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-05-11T00:00:00Z",
+    "entry": "2016-07-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://blog.talosintel.com/2016/05/multiple-7-zip-vulnerabilities.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-2335"
+    }
+  ]
+}

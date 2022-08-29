@@ -1,0 +1,30 @@
+{
+  "vid": "f9fa7adc-ee51-11ea-a240-002590acae31",
+  "topic": "gnupg -- AEAD key import overflow",
+  "description": "\n\t\u003cp\u003eImporting an OpenPGP key having a preference list for AEAD algorithms\n\twill lead to an array overflow and thus often to a crash or other\n\tundefined behaviour.\u003c/p\u003e\n\n\t\u003cp\u003eImporting an arbitrary key can often easily be triggered by an attacker\n\tand thus triggering this bug.  Exploiting the bug aside from crashes is\n\tnot trivial but likely possible for a dedicated attacker.  The major\n\thurdle for an attacker is that only every second byte is under their\n\tcontrol with every first byte having a fixed value of 0x04.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "gnupg",
+      "range": [
+        {
+          "lt": "2.2.23",
+          "ge": "2.2.21"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-09-03T00:00:00Z",
+    "entry": "2020-09-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://dev.gnupg.org/T5050"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-25125"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "vid": "837b9fb2-0595-11da-86bc-000e0c2e438a",
+  "topic": "zlib -- buffer overflow vulnerability",
+  "description": "\n\t\u003ch1\u003eProblem description\u003c/h1\u003e\n\t\u003cp\u003eA fixed-size buffer is used in the decompression of data\n\t  streams.  Due to erronous analysis performed when zlib was\n\t  written, this buffer, which was belived to be sufficiently\n\t  large to handle any possible input stream, is in fact too\n\t  small.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eA carefully constructed compressed data stream can result in\n\t  zlib overwriting some data structures.  This may cause\n\t  applications to halt, resulting in a denial of service; or\n\t  it may result in an attacker gaining elevated privileges.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "linux_base-suse",
+      "range": [
+        {
+          "lt": "9.3_1"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_6",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_20",
+          "ge": "5.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-27T00:00:00Z",
+    "entry": "2005-08-05T00:00:00Z",
+    "modified": "2005-09-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1849"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:18.zlib"
+    }
+  ]
+}

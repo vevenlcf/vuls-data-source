@@ -1,0 +1,44 @@
+{
+  "vid": "cf86c644-cb6c-11db-8e9d-000c6ec775d9",
+  "topic": "mod_jk -- long URL stack overflow vulnerability",
+  "description": "\n\t\u003cp\u003eTippingPoint and The Zero Day Initiative reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.zerodayinitiative.com/advisories/ZDI-07-008.html\"\u003e\n\t  \u003cp\u003eThis vulnerability allows remote attackers to execute\n\t    arbitrary code on vulnerable installations of Apache\n\t    Tomcat JK Web Server Connector. Authentication is not\n\t    required to exploit this vulnerability.\u003c/p\u003e\n\t  \u003cp\u003eThe specific flaw exists in the URI handler for the\n\t    mod_jk.so library, map_uri_to_worker(), defined in\n\t    native/common/jk_uri_worker_map.c. When parsing a long URL\n\t    request, the URI worker map routine performs an unsafe\n\t    memory copy. This results in a stack overflow condition\n\t    which can be leveraged to execute arbitrary code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "mod_jk-ap2",
+      "range": [
+        {
+          "lt": "1.2.21",
+          "ge": "1.2.19"
+        }
+      ]
+    },
+    {
+      "name": "mod_jk",
+      "range": [
+        {
+          "lt": "1.2.21",
+          "ge": "1.2.19"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-03-02T00:00:00Z",
+    "entry": "2007-03-05T00:00:00Z",
+    "modified": "2007-03-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://tomcat.apache.org/security-jk.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.zerodayinitiative.com/advisories/ZDI-07-008.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-0774"
+    }
+  ]
+}

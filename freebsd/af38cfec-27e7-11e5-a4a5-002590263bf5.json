@@ -1,0 +1,30 @@
+{
+  "vid": "af38cfec-27e7-11e5-a4a5-002590263bf5",
+  "topic": "xen-tools -- Potential unintended writes to host MSI message data field via qemu",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-128.html\"\u003e\n\t  \u003cp\u003eLogic is in place to avoid writes to certain host config space\n\t    fields when the guest must nevertheless be able to access their\n\t    virtual counterparts. A bug in how this logic deals with accesses\n\t    spanning multiple fields allows the guest to write to the host MSI\n\t    message data field.\u003c/p\u003e\n\t  \u003cp\u003eWhile generally the writes write back the values previously read,\n\t    their value in config space may have got changed by the host between\n\t    the qemu read and write. In such a case host side interrupt handling\n\t    could become confused, possibly losing interrupts or allowing\n\t    spurious interrupt injection into other guests.\u003c/p\u003e\n\t  \u003cp\u003eCertain untrusted guest administrators may be able to confuse host\n\t    side interrupt handling, leading to a Denial of Service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-tools",
+      "range": [
+        {
+          "lt": "4.5.0_6",
+          "ge": "3.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-02T00:00:00Z",
+    "entry": "2015-07-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-128.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4103"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "vid": "0dfa5dde-600a-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Local privilege escalation in IRET handler",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eIf the kernel-mode IRET instruction generates an #SS or\n\t#NP exception, but the exception handler does not properly\n\tensure that the right GS register base for kernel is reloaded,\n\tthe userland GS segment may be used in the context of the\n\tkernel exception handler.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eBy causing an IRET with #SS or #NP exceptions, a local\n\tattacker can cause the kernel to use an arbitrary GS base,\n\twhich may allow escalated privileges or panic the system.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "10.1_19",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_24",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-25T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5675"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-15:21.amd64"
+    }
+  ]
+}

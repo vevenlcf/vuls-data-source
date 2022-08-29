@@ -1,0 +1,29 @@
+{
+  "vid": "3042c33a-f237-11df-9d02-0018fe623f2b",
+  "topic": "openssl -- TLS extension parsing race condition",
+  "description": "\n\t\u003cp\u003eOpenSSL Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://openssl.org/news/secadv_20101116.txt\"\u003e\n\t  \u003cp\u003eRob Hulswit has found a flaw in the OpenSSL TLS server extension\n\t    code parsing which on affected servers can be exploited in a buffer\n\t    overrun attack.\u003c/p\u003e\n\t  \u003cp\u003eAny OpenSSL based TLS server is vulnerable if it is multi-threaded\n\t    and uses OpenSSL's internal caching mechanism. Servers that are\n\t    multi-process and/or disable internal session caching are NOT\n\t    affected.\u003c/p\u003e\n\t  \u003cp\u003eIn particular the Apache HTTP server (which never uses OpenSSL\n\t    internal caching) and Stunnel (which includes its own workaround)\n\t    are NOT affected.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.0.0_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-10-08T00:00:00Z",
+    "entry": "2010-11-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://openssl.org/news/secadv_20101116.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-3864"
+    }
+  ]
+}

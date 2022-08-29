@@ -1,0 +1,45 @@
+{
+  "vid": "c561ce49-eabc-11eb-9c3f-0800270512f4",
+  "topic": "redis -- Integer overflow issues with BITFIELD command on 32-bit systems",
+  "description": "\n\t\u003cp\u003eHuang Zhw reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/redis/redis/security/advisories/GHSA-8wxq-j7rp-g8wj\"\u003e\n\t  \u003cp\u003e\n\t    On 32-bit versions, Redis BITFIELD command is vulnerable to integer\n\t    overflow that can potentially be exploited to corrupt the heap,\n\t    leak arbitrary heap contents or trigger remote code execution.\n\t    The vulnerability involves constructing specially crafted bit\n\t    commands which overflow the bit offset.\n\t  \u003c/p\u003e\n\t  \u003cp\u003e\n\t    This problem only affects 32-bit versions of Redis.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "redis",
+      "range": [
+        {
+          "lt": "6.0.15"
+        }
+      ]
+    },
+    {
+      "name": "redis-devel",
+      "range": [
+        {
+          "lt": "6.2.5"
+        }
+      ]
+    },
+    {
+      "name": "redis5",
+      "range": [
+        {
+          "lt": "5.0.13"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-07-04T00:00:00Z",
+    "entry": "2021-07-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/redis/redis/security/advisories/GHSA-8wxq-j7rp-g8wj"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-32761"
+    }
+  ]
+}

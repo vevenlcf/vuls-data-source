@@ -1,0 +1,58 @@
+{
+  "vid": "8375a73f-01bf-11da-bc08-0001020eed82",
+  "topic": "gnupg -- OpenPGP symmetric encryption vulnerability",
+  "description": "\n\t\u003cp\u003eSerge Mister and Robert Zuccherato reports that the OpenPGP\n\t  protocol is vulnerable to a cryptographic attack when using\n\t  symmetric encryption in an automated way.\u003c/p\u003e\n\t\u003cp\u003eDavid Shaw reports about the impact:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.gnupg.org/pipermail/gnupg-announce/2005q1/000191.html\"\u003e\n\t  \u003cp\u003eThis attack, while very significant from a cryptographic\n\t    point of view, is not generally effective in the real\n\t    world.  To be specific, unless you have your OpenPGP\n\t    program set up as part of an automated system to accept\n\t    encrypted messages, decrypt them, and then provide a\n\t    response to the submitter, then this does not affect you\n\t    at all.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eNote that the \u003cq\u003efix\u003c/q\u003e in GnuPG does note completely\n\t  eliminate the potential problem:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.gnupg.org/pipermail/gnupg-announce/2005q1/000191.html\"\u003e\n\t  \u003cp\u003eThese patches disable a portion of the OpenPGP protocol\n\t    that the attack is exploiting.  This change should not be\n\t    user visible.  With the patch in place, this attack will\n\t    not work using a public-key encrypted message.  It will\n\t    still work using a passphrase-encrypted message.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "gnupg",
+      "range": [
+        {
+          "lt": "1.4.1"
+        }
+      ]
+    },
+    {
+      "name": "p5-Crypt-OpenPGP",
+      "range": [
+        {
+          "le": "1.03"
+        }
+      ]
+    },
+    {
+      "name": "pgp",
+      "range": [
+        {
+          "ge": "3.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-02-08T00:00:00Z",
+    "entry": "2005-07-31T00:00:00Z",
+    "modified": "2007-04-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://eprint.iacr.org/2005/033"
+    },
+    {
+      "source": "URL",
+      "text": "http://lists.gnupg.org/pipermail/gnupg-announce/2005q1/000191.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.pgp.com/newsroom/ctocorner/openpgp.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0366"
+    },
+    {
+      "source": "CertVU",
+      "text": "303094"
+    }
+  ]
+}

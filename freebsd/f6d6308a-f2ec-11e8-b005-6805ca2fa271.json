@@ -1,0 +1,29 @@
+{
+  "vid": "f6d6308a-f2ec-11e8-b005-6805ca2fa271",
+  "topic": "powerdns-recursor -- Crafted query can cause a denial of service",
+  "description": "\n\t\u003cp\u003epowerdns Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://doc.powerdns.com/recursor/changelog/4.1.html\"\u003e\n\t  \u003cp\u003eCVE-2018-16855: An issue has been found in PowerDNS Recursor where a remote attacker sending a DNS query can trigger an out-of-bounds memory read while computing the hash of the query for a packet cache lookup, possibly leading to a crash. When the PowerDNS Recursor is run inside a supervisor like supervisord or systemd, a crash will lead to an automatic restart, limiting the impact to a somewhat degraded service.\u003c/p\u003e\n      \u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "powerdns-recursor",
+      "range": [
+        {
+          "lt": "4.1.8"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-11-26T00:00:00Z",
+    "entry": "2018-12-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://doc.powerdns.com/recursor/changelog/4.1.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16855"
+    }
+  ]
+}

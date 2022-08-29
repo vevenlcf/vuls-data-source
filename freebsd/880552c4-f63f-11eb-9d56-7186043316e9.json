@@ -1,0 +1,29 @@
+{
+  "vid": "880552c4-f63f-11eb-9d56-7186043316e9",
+  "topic": "go -- net/http: panic due to racy read of persistConn after handler panic",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/46866\"\u003e\n\t  \u003cp\u003eA net/http/httputil ReverseProxy can panic due to a race\n\t  condition if its Handler aborts with ErrAbortHandler, for\n\t  example due to an error in copying the response body. An\n\t  attacker might be able to force the conditions leading to\n\t  the race condition.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.16.7,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-06-21T00:00:00Z",
+    "entry": "2021-08-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/46866"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-36221"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "vid": "dd343a2b-7ee7-11e9-a290-8ddc52868fa9",
+  "topic": "curl -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003ecurl security problems:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.haxx.se/docs/security.html\"\u003e\n\t  \u003cp\u003eCVE-2019-5435: Integer overflows in curl_url_set()\u003c/p\u003e\n\t  \u003cp\u003elibcurl contains two integer overflows in the curl_url_set()\n\t    function that if triggered, can lead to a too small buffer\n\t    allocation and a subsequent heap buffer overflow.\u003c/p\u003e\n\t  \u003cp\u003eThe flaws only exist on 32 bit architectures and require\n\t    excessive string input lengths.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2019-5436: TFTP receive buffer overflow\u003c/p\u003e\n\t  \u003cp\u003elibcurl contains a heap buffer overflow in the function\n\t    (tftp_receive_packet()) that recevives data from a TFTP server. It\n\t    calls recvfrom() with the default size for the buffer rather than\n\t    with the size that was used to allocate it. Thus, the content that\n\t    might overwrite the heap memory is entirely controlled by the server.\u003c/p\u003e\n\t  \u003cp\u003eThe flaw exists if the user selects to use a \"blksize\" of 504 or\n\t    smaller (default is 512). The smaller size that is used, the larger\n\t    the possible overflow becomes.\u003c/p\u003e\n\t  \u003cp\u003eUsers chosing a smaller size than default should be rare as the\n\t    primary use case for changing the size is to make it larger.\u003c/p\u003e\n\t  \u003cp\u003eIt is rare for users to use TFTP across the Internet. It is most\n\t    commonly used within local networks.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.65.0",
+          "ge": "7.19.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-05-22T00:00:00Z",
+    "entry": "2019-05-25T00:00:00Z",
+    "modified": "2019-05-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/security.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/CVE-2019-5435.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/CVE-2019-5436.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-5435"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-5436"
+    }
+  ]
+}

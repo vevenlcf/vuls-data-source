@@ -1,0 +1,31 @@
+{
+  "vid": "4f99e2ef-f725-11e1-8bd8-0022156e8794",
+  "topic": "moinmoin -- wrong processing of group membership",
+  "description": "\n\t\u003cp\u003eMoinMoin developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://hg.moinmo.in/moin/1.9/rev/7b9f39289e16\"\u003e\n\t  \u003cp\u003eIf you have group NAMES containing \"All\" or \"Known\" or\n\t  \"Trusted\", they behaved wrong until now (they erroneously\n\t  included All/Known/Trusted users even if you did not list\n\t  them as members), but will start working correctly with this\n\t  changeset.\u003c/p\u003e\n\t  \u003cp\u003eE.g. AllFriendsGroup:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eJoeDoe\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eAllFriendsGroup will now (correctly) include only JoeDoe.\n\t  It (erroneously) contained all users (including JoeDoe)\n\t  before.\u003c/p\u003e\n\t  \u003cp\u003eE.g. MyTrustedFriendsGroup:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eJoeDoe\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eMyTrustedFriendsGroup will now (correctly) include only\n\t  JoeDoe.  It (erroneously) contained all trusted users and\n\t  JoeDoe before.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "moinmoin",
+      "range": [
+        {
+          "lt": "1.9.4_1",
+          "ge": "1.9"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-09-03T00:00:00Z",
+    "entry": "2012-09-05T00:00:00Z",
+    "modified": "2012-09-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://hg.moinmo.in/moin/1.9/rev/7b9f39289e16"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4404"
+    }
+  ]
+}

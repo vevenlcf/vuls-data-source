@@ -1,0 +1,78 @@
+{
+  "vid": "2747fc39-915b-11dc-9239-001c2514716c",
+  "topic": "xpdf -- multiple remote Stream.CC vulnerabilities",
+  "description": "\n\t\u003cp\u003eSecunia Research reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.securityfocus.com/archive/1/483372\"\u003e\n\t  \u003cp\u003eSecunia Research has discovered some vulnerabilities in Xpdf,\n\t    which can be exploited by malicious people to compromise a user's\n\t    system.\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eAn array indexing error within the\n\t      \"DCTStream::readProgressiveDataUnit()\" method in xpdf/Stream.cc\n\t      can be exploited to corrupt memory via a specially crafted PDF\n\t      file.\u003c/li\u003e\n\t    \u003cli\u003eAn integer overflow error within the \"DCTStream::reset()\"\n\t      method in xpdf/Stream.cc can be exploited to cause a heap-based\n\t      buffer overflow via a specially crafted PDF file.\u003c/li\u003e\n\t    \u003cli\u003eA boundary error within the \"CCITTFaxStream::lookChar()\" method\n\t      in xpdf/Stream.cc can be exploited to cause a heap-based buffer\n\t      overflow by tricking a user into opening a PDF file containing a\n\t      specially crafted \"CCITTFaxDecode\" filter.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eSuccessful exploitation may allow execution of arbitrary code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "cups-base",
+      "range": [
+        {
+          "lt": "1.3.3_2"
+        }
+      ]
+    },
+    {
+      "name": "gpdf",
+      "range": [
+        {
+          "gt": "0"
+        }
+      ]
+    },
+    {
+      "name": "kdegraphics",
+      "range": [
+        {
+          "lt": "3.5.8_1"
+        }
+      ]
+    },
+    {
+      "name": "koffice",
+      "range": [
+        {
+          "lt": "1.6.3_3,2"
+        }
+      ]
+    },
+    {
+      "name": "poppler",
+      "range": [
+        {
+          "lt": "0.6"
+        }
+      ]
+    },
+    {
+      "name": "xpdf",
+      "range": [
+        {
+          "lt": "3.02_5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-11-07T00:00:00Z",
+    "entry": "2007-11-12T00:00:00Z",
+    "modified": "2007-11-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2007-4352"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-5392"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-5393"
+    },
+    {
+      "source": "BID",
+      "text": "26367"
+    }
+  ]
+}

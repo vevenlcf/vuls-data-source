@@ -1,0 +1,33 @@
+{
+  "vid": "e839ca04-b40d-11e5-9728-002590263bf5",
+  "topic": "xen-kernel -- information leak in legacy x86 FPU/XMM initialization",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-165.html\"\u003e\n\t  \u003cp\u003eWhen XSAVE/XRSTOR are not in use by Xen to manage guest extended\n\t    register state, the initial values in the FPU stack and XMM\n\t    registers seen by the guest upon first use are those left there by\n\t    the previous user of those registers.\u003c/p\u003e\n\t  \u003cp\u003eA malicious domain may be able to leverage this to obtain sensitive\n\t    information such as cryptographic keys from another domain.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.2_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-12-17T00:00:00Z",
+    "entry": "2016-01-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-165.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8555"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/205841"
+    }
+  ]
+}

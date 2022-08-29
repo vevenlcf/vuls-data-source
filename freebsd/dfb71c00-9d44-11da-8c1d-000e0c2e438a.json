@@ -1,0 +1,35 @@
+{
+  "vid": "dfb71c00-9d44-11da-8c1d-000e0c2e438a",
+  "topic": "FreeBSD -- Infinite loop in SACK handling",
+  "description": "\n\t\u003cp\u003eProblem description:\u003c/p\u003e\n\t\u003cp\u003eWhen insufficient memory is available to handle an\n\t  incoming selective acknowledgement, the TCP/IP stack may\n\t  enter an infinite loop.\u003c/p\u003e\n\t\u003cp\u003eImpact:\u003c/p\u003e\n\t\u003cp\u003eBy opening a TCP connection and sending a carefully crafted\n\t  series of packets, an attacker may be able to cause a denial\n\t  of service.\u003c/p\u003e\n\t\u003cp\u003eWorkaround:\u003c/p\u003e\n\t\u003cp\u003eOn FreeBSD 5.4, the net.inet.tcp.sack.enable sysctl can be used to\n\t  disable the use of SACK:\u003c/p\u003e\n\t\u003cp\u003e# sysctl net.inet.tcp.sack.enable=0\u003c/p\u003e\n\t\u003cp\u003eNo workaround is available for FreeBSD 5.3.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_11",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_26",
+          "ge": "5.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-02-01T00:00:00Z",
+    "entry": "2006-02-14T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0433"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:08.sack"
+    }
+  ]
+}

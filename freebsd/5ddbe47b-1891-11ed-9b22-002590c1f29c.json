@@ -1,0 +1,35 @@
+{
+  "vid": "5ddbe47b-1891-11ed-9b22-002590c1f29c",
+  "topic": "FreeBSD -- AIO credential reference count leak",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe aio_aqueue function, used by the lio_listio system call, fails\n\tto release a reference to a credential in an error case.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn attacker may cause the reference count to overflow, leading to a\n\tuse after free (UAF).\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "13.0_12",
+          "ge": "13.0"
+        },
+        {
+          "lt": "12.3_6",
+          "ge": "12.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-08-09T00:00:00Z",
+    "entry": "2022-08-10T00:00:00Z",
+    "modified": "2022-08-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23090"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-22:10.aio"
+    }
+  ]
+}

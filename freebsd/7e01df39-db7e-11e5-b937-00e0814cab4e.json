@@ -1,0 +1,33 @@
+{
+  "vid": "7e01df39-db7e-11e5-b937-00e0814cab4e",
+  "topic": "jenkins -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eJenkins Security Advisory:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://wiki.jenkins-ci.org/display/SECURITY/Security+Advisory+2016-02-24\"\u003e\n\t  \u003ch1\u003eDescription\u003c/h1\u003e\n\t  \u003ch5\u003eSECURITY-232 / CVE-2016-0788(Remote code execution vulnerability in remoting module)\u003c/h5\u003e\n\t  \u003cp\u003eA vulnerability in the Jenkins remoting module allowed\n\t    unauthenticated remote attackers to open a JRMP listener on the\n\t    server hosting the Jenkins master process, which allowed arbitrary\n\t    code execution.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-238 / CVE-2016-0789(HTTP response splitting vulnerability)\u003c/h5\u003e\n\t  \u003cp\u003eAn HTTP response splitting vulnerability in the CLI command\n\t    documentation allowed attackers to craft Jenkins URLs that serve\n\t    malicious content.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-241 / CVE-2016-0790(Non-constant time comparison of API token)\u003c/h5\u003e\n\t  \u003cp\u003eThe verification of user-provided API tokens with the expected\n\t    value did not use a constant-time comparison algorithm, potentially\n\t    allowing attackers to use statistical methods to determine valid\n\t    API tokens using brute-force methods.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-245 / CVE-2016-0791(Non-constant time comparison of CSRF crumbs)\u003c/h5\u003e\n\t  \u003cp\u003eThe verification of user-provided CSRF crumbs with the expected\n\t    value did not use a constant-time comparison algorithm, potentially\n\t    allowing attackers to use statistical methods to determine valid\n\t    CSRF crumbs using brute-force methods.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-247 / CVE-2016-0792(Remote code execution through remote API)\u003c/h5\u003e\n\t  \u003cp\u003eJenkins has several API endpoints that allow low-privilege users\n\t    to POST XML files that then get deserialized by Jenkins.\n\t    Maliciously crafted XML files sent to these API endpoints could\n\t    result in arbitrary code execution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "jenkins",
+      "range": [
+        {
+          "le": "1.650"
+        }
+      ]
+    },
+    {
+      "name": "jenkins-lts",
+      "range": [
+        {
+          "le": "1.642.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-02-24T00:00:00Z",
+    "entry": "2016-02-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://wiki.jenkins-ci.org/display/SECURITY/Security+Advisory+2016-02-24"
+    }
+  ]
+}

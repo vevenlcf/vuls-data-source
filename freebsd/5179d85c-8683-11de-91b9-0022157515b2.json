@@ -1,0 +1,30 @@
+{
+  "vid": "5179d85c-8683-11de-91b9-0022157515b2",
+  "topic": "fetchmail -- improper SSL certificate subject verification",
+  "description": "\n\t\u003cp\u003eMatthias Andree reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.fetchmail.info/fetchmail-SA-2009-01.txt\"\u003e\n\t  \u003cp\u003eMoxie Marlinspike demonstrated in July 2009 that some CAs would\n\t    sign certificates that contain embedded NUL characters in the\n\t    Common Name or subjectAltName fields of ITU-T X.509\n\t    certificates.\u003c/p\u003e\n\t  \u003cp\u003eApplications that would treat such X.509 strings as\n\t    NUL-terminated C strings (rather than strings that contain an\n\t    explicit length field) would only check the part up to and\n\t    excluding the NUL character, so that certificate names such as\n\t    www.good.example\\0www.bad.example.com would be mistaken as a\n\t    certificate name for www.good.example. fetchmail also had this\n\t    design and implementation flaw.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "fetchmail",
+      "range": [
+        {
+          "lt": "6.3.11"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2009-08-06T00:00:00Z",
+    "entry": "2009-08-11T00:00:00Z",
+    "modified": "2009-08-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.fetchmail.info/fetchmail-SA-2009-01.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2009-2666"
+    }
+  ]
+}

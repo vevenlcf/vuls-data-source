@@ -1,0 +1,34 @@
+{
+  "vid": "2e25d38b-54d1-11d9-b612-000c6e8f12ef",
+  "topic": "jabberd -- denial-of-service vulnerability",
+  "description": "\n\t\u003cp\u003eJosé Antonio Calvo discovered a bug in the Jabber 1.x server.\n\t  According to Matthias Wimmer:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://devel.amessage.info/jabberd14/README.html\"\u003e\n\t  \u003cp\u003eWithout this patch, it is possible to remotly crash\n\t    jabberd14, if there is access to one of the following types\n\t    of network sockets:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eSocket accepting client connections\u003c/li\u003e\n\t    \u003cli\u003eSocket accepting connections from other servers\u003c/li\u003e\n\t    \u003cli\u003eSocket connecting to an other Jabber server\u003c/li\u003e\n\t    \u003cli\u003eSocket accepting connections from server components\u003c/li\u003e\n\t    \u003cli\u003eSocket connecting to server components\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eThis is any socket on which the jabberd server parses\n\t    XML!\u003c/p\u003e\n\t  \u003cp\u003eThe problem existed in the included expat XML parser code.\n\t    This patch removes the included expat code from jabberd14\n\t    and links jabberd against an installed version of expat.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "jabber",
+      "range": [
+        {
+          "lt": "1.4.3.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-09-19T00:00:00Z",
+    "entry": "2004-12-26T00:00:00Z",
+    "modified": "2005-01-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://devel.amessage.info/jabberd14/README.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://mail.jabber.org/pipermail/jabberd/2004-September/002004.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-1378"
+    }
+  ]
+}

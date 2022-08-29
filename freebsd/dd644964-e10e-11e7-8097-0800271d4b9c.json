@@ -1,0 +1,38 @@
+{
+  "vid": "dd644964-e10e-11e7-8097-0800271d4b9c",
+  "topic": "ruby -- Command injection vulnerability in Net::FTP",
+  "description": "\n\t\u003cp\u003eEtienne Stalmans from the Heroku product security team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.ruby-lang.org/en/news/2017/12/14/net-ftp-command-injection-cve-2017-17405/\"\u003e\n\t  \u003cp\u003eThere is a command injection vulnerability in Net::FTP bundled with Ruby.\u003c/p\u003e\n\t  \u003cp\u003e\u003ccode\u003eNet::FTP#get\u003c/code\u003e, \u003ccode\u003egetbinaryfile\u003c/code\u003e, \u003ccode\u003egettextfile\u003c/code\u003e, \u003ccode\u003eput\u003c/code\u003e, \u003ccode\u003eputbinaryfile\u003c/code\u003e, and \u003ccode\u003eputtextfile\u003c/code\u003e use \u003ccode\u003eKernel#open\u003c/code\u003e to open a local file.  If the \u003ccode\u003elocalfile\u003c/code\u003e argument starts with the pipe character \u003ccode\u003e\"|\"\u003c/code\u003e, the command following the pipe character is executed.  The default value of \u003ccode\u003elocalfile\u003c/code\u003e is \u003ccode\u003eFile.basename(remotefile)\u003c/code\u003e, so malicious FTP servers could cause arbitrary command execution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ruby",
+      "range": [
+        {
+          "lt": "2.2.9,1",
+          "ge": "2.2.0,1"
+        },
+        {
+          "lt": "2.3.6,1",
+          "ge": "2.3.0,1"
+        },
+        {
+          "lt": "2.4.3,1",
+          "ge": "2.4.0,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-12-14T00:00:00Z",
+    "entry": "2017-12-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.ruby-lang.org/en/news/2017/12/14/net-ftp-command-injection-cve-2017-17405/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-17405"
+    }
+  ]
+}

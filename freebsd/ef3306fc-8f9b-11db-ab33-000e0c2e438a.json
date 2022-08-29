@@ -1,0 +1,60 @@
+{
+  "vid": "ef3306fc-8f9b-11db-ab33-000e0c2e438a",
+  "topic": "bind9 -- Denial of Service in named(8)",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eFor a recursive DNS server, a remote attacker sending enough\n\t  recursive queries for the replies to arrive after all the\n\t  interested clients have left the recursion queue will trigger\n\t  an INSIST failure in the named(8) daemon.  Also for a\n\t  recursive DNS server, an assertion failure can occur when\n\t  processing a query whose reply will contain more than one\n\t  SIG(covered) RRset.\u003c/p\u003e\n\t\u003cp\u003eFor an authoritative DNS server serving a RFC 2535 DNSSEC\n\t  zone which is queried for the SIG records where there are\n\t  multiple SIG(covered) RRsets (e.g. a zone apex), named(8)\n\t  will trigger an assertion failure when it tries to construct\n\t  the response.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eAn attacker who can perform recursive lookups on a DNS server\n\t  and is able to send a sufficiently large number of recursive\n\t  queries, or is able to get the DNS server to return more than\n\t  one SIG(covered) RRsets can stop the functionality of the DNS\n\t  service.\u003c/p\u003e\n\t\u003cp\u003eAn attacker querying an authoritative DNS server serving a\n\t  RFC 2535 DNSSEC zone may be able to crash the DNS server.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eA possible workaround is to only allow trusted clients to\n\t  perform recursive queries.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.1_6",
+          "ge": "6.1"
+        },
+        {
+          "lt": "6.0_11",
+          "ge": "6.0"
+        },
+        {
+          "lt": "5.5_4",
+          "ge": "5.5"
+        },
+        {
+          "lt": "5.4_18",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_33",
+          "ge": "5.0"
+        }
+      ]
+    },
+    {
+      "name": "bind9",
+      "range": [
+        {
+          "lt": "9.3.2.1",
+          "ge": "9.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-09-06T00:00:00Z",
+    "entry": "2006-12-19T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4095"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4096"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:20.bind"
+    }
+  ]
+}

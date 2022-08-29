@@ -1,0 +1,45 @@
+{
+  "vid": "b092bd4f-1b16-11ec-9d9d-0022489ad614",
+  "topic": "Node.js -- August 2021 Security Releases",
+  "description": "\n\t\u003cp\u003eNode.js reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://nodejs.org/en/blog/vulnerability/aug-2021-security-releases/\"\u003e\n\t  \u003ch1\u003ecares upgrade - Improper handling of untypical characters in domain names (High) (CVE-2021-22931)\u003c/h1\u003e\n\t  \u003cp\u003eNode.js was vulnerable to Remote Code Execution, XSS, application crashes due to missing input validation of host names returned by Domain Name Servers in the Node.js DNS library which can lead to output of wrong hostnames (leading to Domain Hijacking) and injection vulnerabilities in applications using the library.\u003c/p\u003e\n\t  \u003ch1\u003eUse after free on close http2 on stream canceling (High) (CVE-2021-22940)\u003c/h1\u003e\n\t  \u003cp\u003eNode.js was vulnerable to a use after free attack where an attacker might be able to exploit memory corruption to change process behavior. The issue is a follow on to CVE-2021-22930 as the issue was not completely resolved in the fix for CVE-2021-22930.\u003c/p\u003e\n\t  \u003ch1\u003eIncomplete validation of rejectUnauthorized parameter (Low) (CVE-2021-22939)\u003c/h1\u003e\n\t  \u003cp\u003eIf the Node.js https API was used incorrectly and \"undefined\" was in passed for the \"rejectUnauthorized\" parameter, no error was returned and connections to servers with an expired certificate would have been accepted.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "node14",
+      "range": [
+        {
+          "lt": "14.17.4"
+        }
+      ]
+    },
+    {
+      "name": "node",
+      "range": [
+        {
+          "lt": "16.6.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-08-11T00:00:00Z",
+    "entry": "2021-09-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://nodejs.org/en/blog/vulnerability/aug-2021-security-releases/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-22931"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-22940"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-22939"
+    }
+  ]
+}

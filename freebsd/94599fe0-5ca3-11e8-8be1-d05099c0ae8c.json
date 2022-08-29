@@ -1,0 +1,37 @@
+{
+  "vid": "94599fe0-5ca3-11e8-8be1-d05099c0ae8c",
+  "topic": "BIND -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eISC reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01602\"\u003e\n\t  \u003cp\u003eAn error in zone database reference counting can\n\t    lead to an assertion failure if a server which is\n\t    running an affected version of BIND attempts\n\t    several transfers of a slave zone in quick\n\t    succession.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01606\"\u003e\n\t  \u003cp\u003eA problem with the implementation of the new\n\t    serve-stale feature in BIND 9.12 can lead to\n\t    an assertion failure in rbtdb.c, even when\n\t    stale-answer-enable is off.  Additionally,\n\t    problematic interaction between the serve-stale\n\t    feature and NSEC aggressive negative caching can\n\t    in some cases cause undesirable behavior from named,\n\t    such as a recursion loop or excessive logging.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind912",
+      "range": [
+        {
+          "lt": "9.12.1P2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-05-18T00:00:00Z",
+    "entry": "2018-05-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01602"
+    },
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01606"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-5736"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-5737"
+    }
+  ]
+}

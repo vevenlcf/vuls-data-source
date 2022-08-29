@@ -1,0 +1,29 @@
+{
+  "vid": "e43b210a-4212-11e6-942d-bc5ff45d0f28",
+  "topic": "xen-kernel -- x86 software guest page walk PS bit handling flaw",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-176.html\"\u003e\n\t  \u003cp\u003eThe Page Size (PS) page table entry bit exists at all page table\n\t    levels other than L1.  Its meaning is reserved in L4, and\n\t    conditionally reserved in L3 and L2 (depending on hardware\n\t    capabilities).  The software page table walker in the hypervisor,\n\t    however, so far ignored that bit in L4 and (on respective hardware)\n\t    L3 entries, resulting in pages to be treated as page tables which\n\t    the guest OS may not have designated as such.  If the page in\n\t    question is writable by an unprivileged user, then that user will\n\t    be able to map arbitrary guest memory.\u003c/p\u003e\n\t  \u003cp\u003eOn vulnerable OSes, guest user mode code may be able to establish\n\t    mappings of arbitrary memory inside the guest, allowing it to\n\t    elevate its privileges inside the guest.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.7.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-05-17T00:00:00Z",
+    "entry": "2016-07-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-176.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-4480"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "vid": "50383bde-b25b-11de-8c83-02e0185f8d72",
+  "topic": "FreeBSD -- Devfs / VFS NULL pointer race condition",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eDue to the interaction between devfs and VFS, a race condition\n\t  exists where the kernel might dereference a NULL pointer.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eSuccessful exploitation of the race condition can lead to local\n\t  kernel privilege escalation, kernel data corruption and/or\n\t  crash.\u003c/p\u003e\n\t\u003cp\u003eTo exploit this vulnerability, an attacker must be able to run\n\t  code with user privileges on the target system.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround:\u003c/h1\u003e\n\t\u003cp\u003eAn errata note, FreeBSD-EN-09:05.null has been released\n\t  simultaneously to this advisory, and contains a kernel patch\n\t  implementing a workaround for a more broad class of\n\t  vulnerabilities.  However, prior to those changes, no workaround\n\t  is available.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.3_13",
+          "ge": "6.3"
+        },
+        {
+          "lt": "6.4_7",
+          "ge": "6.4"
+        },
+        {
+          "lt": "7.1_8",
+          "ge": "7.1"
+        },
+        {
+          "lt": "7.2_4",
+          "ge": "7.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2009-10-02T00:00:00Z",
+    "entry": "2009-10-06T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "FreebsdSA",
+      "text": "SA-09:14.devfs"
+    }
+  ]
+}

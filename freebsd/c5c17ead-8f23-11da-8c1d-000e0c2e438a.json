@@ -1,0 +1,51 @@
+{
+  "vid": "c5c17ead-8f23-11da-8c1d-000e0c2e438a",
+  "topic": "cvsbug -- race condition",
+  "description": "\n\t\u003cp\u003eProblem description\u003c/p\u003e\n\t\u003cp\u003eA temporary file is created, used, deleted, and then\n\t  re-created with the same name.  This creates a window during\n\t  which an attacker could replace the file with a link to\n\t  another file.  While cvsbug(1) is based on the send-pr(1)\n\t  utility, this problem does not exist in the version of\n\t  send-pr(1) distributed with FreeBSD.\u003cbr/\u003e\n\t  In FreeBSD 4.10 and 5.3, some additional problems exist\n\t  concerning temporary file usage in both cvsbug(1) and\n\t  send-pr(1).\u003c/p\u003e\n\t\u003cp\u003eImpact\u003c/p\u003e\n\t\u003cp\u003eA local attacker could cause data to be written to any file\n\t  to which the user running cvsbug(1) (or send-pr(1) in FreeBSD\n\t  4.10 and 5.3) has write access.  This may cause damage in\n\t  itself (e.g., by destroying important system files or\n\t  documents) or may be used to obtain elevated privileges.\u003c/p\u003e\n\t\u003cp\u003eWorkaround\u003c/p\u003e\n\t\u003cp\u003eDo not use the cvsbug(1) utility on any system with untrusted\n\t  users.\u003cbr/\u003e\n\t  Do not use the send-pr(1) utility on a FreeBSD 4.10 or 5.3\n\t  system with untrusted users.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_7",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_22",
+          "ge": "5.3"
+        },
+        {
+          "lt": "4.11_12",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_18",
+          "ge": "4.10"
+        }
+      ]
+    },
+    {
+      "name": "cvs+ipv6",
+      "range": [
+        {
+          "lt": "1.11.17_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-09-07T00:00:00Z",
+    "entry": "2006-01-27T00:00:00Z",
+    "modified": "2006-11-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CAN-2005-2693"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:20.cvsbug"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "vid": "39f6cbff-b30a-11e9-a87f-a4badb2f4699",
+  "topic": "FreeBSD -- telnet(1) client multiple vulnerabilities",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eInsufficient validation of environment variables in the\n\ttelnet client supplied in FreeBSD can lead to stack-based\n\tbuffer overflows. A stack- based overflow is present in the\n\thandling of environment variables when connecting via the\n\ttelnet client to remote telnet servers.\u003c/p\u003e\n\t\u003cp\u003eThis issue only affects the telnet client. Inbound telnet\n\tsessions to telnetd(8) are not affected by this issue.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eThese buffer overflows may be triggered when connecting\n\tto a malicious server, or by an active attacker in the\n\tnetwork path between the client and server. Specially crafted\n\tTELNET command sequences may cause the execution of arbitrary\n\tcode with the privileges of the user invoking telnet(1).\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "12.0_8",
+          "ge": "12.0"
+        },
+        {
+          "lt": "11.2_12",
+          "ge": "11.2"
+        },
+        {
+          "lt": "11.3_1",
+          "ge": "11.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-07-24T00:00:00Z",
+    "entry": "2019-07-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-0053"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-19:12.telnet"
+    }
+  ]
+}

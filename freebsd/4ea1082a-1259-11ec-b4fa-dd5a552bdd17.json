@@ -1,0 +1,29 @@
+{
+  "vid": "4ea1082a-1259-11ec-b4fa-dd5a552bdd17",
+  "topic": "go -- archive/zip: overflow in preallocation check can cause OOM panic",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/47801\"\u003e\n\t  \u003cp\u003eAn oversight in the previous fix still allows for an OOM\n\t  panic when the indicated directory size in the archive\n\t  header is so large that subtracting it from the archive\n\t  size overflows a uint64, effectively bypassing the check\n\t  that the number of files in the archive is reasonable.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.17.1,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-08-18T00:00:00Z",
+    "entry": "2021-09-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/golang/go/issues/47801"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-39293"
+    }
+  ]
+}

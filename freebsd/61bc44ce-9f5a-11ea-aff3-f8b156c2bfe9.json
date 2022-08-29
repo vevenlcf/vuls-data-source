@@ -1,0 +1,25 @@
+{
+  "vid": "61bc44ce-9f5a-11ea-aff3-f8b156c2bfe9",
+  "topic": "sympa - Security flaws in setuid wrappers",
+  "description": "\n\t\u003cp\u003eA vulnerability has been discovered in Sympa web interface\n\tby which attacker can execute arbitrary code with root privileges.\n\tSympa uses two sorts of setuid wrappers:\u003c/p\u003e\n\t\u003cul\u003e\n\t  \u003cli\u003eFastCGI wrappers\u003c/li\u003e\n\t  \u003cli\u003enewaliases wrapper\u003c/li\u003e\n\t\u003c/ul\u003e\n\t\u003cp\u003eThe FastCGI wrappers wwsympa-wrapper.fcgi and\n\tsympa_soap_server-wrapper.fcgi were used to make the web\n\tinterface running under privileges of a dedicated user.\u003c/p\u003e\n\t\u003cp\u003eThe newaliases wrapper (sympa_newaliases-wrapper) allows\n\tSympa to update the alias database with root privileges.\u003c/p\u003e\n\t\u003cp\u003eSince these setuid wrappers did not clear environment variables,\n\tif environment variables like PERL5LIB were injected,\n\tforged code might be loaded and executed under privileges of setuid-ed\n\tusers.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "sympa",
+      "range": [
+        {
+          "lt": "6.2.56"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-05-24T00:00:00Z",
+    "entry": "2020-05-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://sympa-community.github.io/security/2020-002.html"
+    }
+  ]
+}

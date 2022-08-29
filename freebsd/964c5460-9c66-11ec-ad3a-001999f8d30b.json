@@ -1,0 +1,53 @@
+{
+  "vid": "964c5460-9c66-11ec-ad3a-001999f8d30b",
+  "topic": "asterisk -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.asterisk.org/downloads/security-advisories/\"\u003e\n\t  \u003cp\u003eAST-2022-004 - The header length on incoming STUN\n\t  messages that contain an ERROR-CODE attribute is not\n\t  properly checked. This can result in an integer underflow.\n\t  Note, this requires ICE or WebRTC support to be in use\n\t  with a malicious remote party.\u003c/p\u003e\n\t  \u003cp\u003eAST-2022-005 - When acting as a UAC, and when placing\n\t  an outgoing call to a target that then forks Asterisk may\n\t  experience undefined behavior (crashes, hangs, etc) after\n\t  a dialog set is prematurely freed.\u003c/p\u003e\n\t  \u003cp\u003eAST-2022-006 - If an incoming SIP message contains a\n\t  malformed multi-part body an out of bounds read access\n\t  may occur, which can result in undefined behavior. Note,\n\t  its currently uncertain if there is any externally\n\t  exploitable vector within Asterisk for this issue, but\n\t  providing this as a security issue out of caution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk16",
+      "range": [
+        {
+          "lt": "16.24.1"
+        }
+      ]
+    },
+    {
+      "name": "asterisk18",
+      "range": [
+        {
+          "lt": "18.10.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-03-03T00:00:00Z",
+    "entry": "2022-03-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://downloads.asterisk.org/pub/security/AST-2022-004.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://downloads.asterisk.org/pub/security/AST-2022-005.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://downloads.asterisk.org/pub/security/AST-2022-006.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-37706"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23608"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-21723"
+    }
+  ]
+}

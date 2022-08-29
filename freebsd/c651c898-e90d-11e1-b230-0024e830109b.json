@@ -1,0 +1,29 @@
+{
+  "vid": "c651c898-e90d-11e1-b230-0024e830109b",
+  "topic": "libotr -- buffer overflows",
+  "description": "\n\t\u003cp\u003eOTR developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.cypherpunks.ca/pipermail/otr-dev/2012-July/001347.html\"\u003e\n\t  \u003cp\u003eThe otrl_base64_otr_decode() function and similar functions within OTR\n\t  suffer from buffer overflows in the case of malformed input;\n\t  specifically if a message of the format of \"?OTR:===.\" is received\n\t  then a zero-byte allocation is performed without a similar correlation\n\t  between the subsequent base64 decoding write, as such it becomes\n\t  possible to write between zero and three bytes incorrectly to the\n\t  heap, albeit only with a value of '='.\u003c/p\u003e\n\t  \u003cp\u003eBecause this code path is highly utilized, specifically in the\n\t  reception of instant messages over pidgin or similar, this\n\t  vulnerability is considered severe even though in many platforms and\n\t  circumstances the bug would yield an unexploitable state and result\n\t  simply in denial of service.\u003c/p\u003e\n\t  \u003cp\u003eThe developers of OTR promptly fixed the errors and users of OTR are\n\t  advised to upgrade the software at the next release cycle.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libotr",
+      "range": [
+        {
+          "lt": "3.2.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-07-27T00:00:00Z",
+    "entry": "2012-08-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lists.cypherpunks.ca/pipermail/otr-dev/2012-July/001347.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-3461"
+    }
+  ]
+}

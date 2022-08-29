@@ -1,0 +1,37 @@
+{
+  "vid": "8a1d0e63-1e07-11e5-b43d-002590263bf5",
+  "topic": "pcre -- Heap Overflow Vulnerability in find_fixedlength()",
+  "description": "\n\t\u003cp\u003eVenustech ADLAB reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://bugs.exim.org/show_bug.cgi?id=1651\"\u003e\n\t  \u003cp\u003ePCRE library is prone to a vulnerability which leads to Heap\n\t    Overflow. During subpattern calculation of a malformed regular\n\t    expression, an offset that is used as an array index is fully\n\t    controlled and can be large enough so that unexpected heap\n\t    memory regions are accessed.\u003c/p\u003e\n\t  \u003cp\u003eOne could at least exploit this issue to read objects nearby of\n\t    the affected application's memory.\u003c/p\u003e\n\t  \u003cp\u003eSuch information disclosure may also be used to bypass memory\n\t    protection method such as ASLR.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "pcre",
+      "range": [
+        {
+          "le": "8.37_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-23T00:00:00Z",
+    "entry": "2015-06-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugs.exim.org/show_bug.cgi?id=1651"
+    },
+    {
+      "source": "URL",
+      "text": "http://vcs.pcre.org/pcre?view=revision\u0026revision=1571"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5073"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://www.openwall.com/lists/oss-security/2015/06/26/1"
+    }
+  ]
+}

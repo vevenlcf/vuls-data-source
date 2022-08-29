@@ -1,0 +1,38 @@
+{
+  "vid": "5d91370b-61fd-11eb-b87a-901b0ef719ab",
+  "topic": "FreeBSD -- Xen guests can triger backend Out Of Memory",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eSome OSes (including Linux, FreeBSD, and NetBSD) are processing watch\n\tevents using a single thread.  If the events are received faster than\n\tthe thread is able to handle, they will get queued.\u003c/p\u003e\n\t\u003cp\u003eAs the queue is unbound, a guest may be able to trigger a OOM in\n\tthe backend.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.2_3",
+          "ge": "12.2"
+        },
+        {
+          "lt": "12.1_13",
+          "ge": "12.1"
+        },
+        {
+          "lt": "11.4_7",
+          "ge": "11.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-01-29T00:00:00Z",
+    "entry": "2021-01-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2020-29568"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-21:02.xenoom"
+    }
+  ]
+}

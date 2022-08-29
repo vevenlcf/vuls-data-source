@@ -1,0 +1,42 @@
+{
+  "vid": "7bbc0e8c-600a-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Buffer overflow in keyboard driver",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eIncorrect signedness comparison in the ioctl(2) handler\n\tallows a malicious local user to overwrite a portion of the\n\tkernel memory.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA local user may crash the kernel, read a portion of\n\tkernel memory and execute arbitrary code in kernel context.\n\tThe result of executing an arbitrary kernel code is privilege\n\tescalation.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "10.3_3",
+          "ge": "10.3"
+        },
+        {
+          "lt": "10.2_17",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_34",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_42",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-05-17T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2016-1886"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:18.atkbd"
+    }
+  ]
+}

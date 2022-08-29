@@ -1,0 +1,26 @@
+{
+  "vid": "7fda7920-7603-11e6-b362-001999f8d30b",
+  "topic": "asterisk -- Crash on ACK from unknown endpoint",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.asterisk.org/downloads/security-advisories\"\u003e\n\t  \u003cp\u003eAsterisk can be crashed remotely by sending an ACK to\n\t  it from an endpoint username that Asterisk does not\n\t  recognize. Most SIP request types result in an \"artificial\"\n\t  endpoint being looked up, but ACKs bypass this lookup.\n\t  The resulting NULL pointer results in a crash when\n\t  attempting to determine if ACLs should be applied.\u003c/p\u003e\n\t  \u003cp\u003eThis issue was introduced in the Asterisk 13.10 release\n\t  and only affects that release.\u003c/p\u003e\n\t  \u003cp\u003eThis issue only affects users using the PJSIP stack\n\t  with Asterisk. Those users that use chan_sip are\n\t  unaffected.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk13",
+      "range": [
+        {
+          "lt": "13.11.1",
+          "ge": "13.10.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-08-03T00:00:00Z",
+    "entry": "2016-09-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://downloads.asterisk.org/pub/security/AST-2016-006.html"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "vid": "2da3cb25-6571-11e9-8e67-206a8a720317",
+  "topic": "FreeBSD -- EAP-pwd missing commit validation",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eEAP-pwd implementation in hostapd (EAP server) and wpa_supplicant\n\t(EAP peer) does not to validate the received scalar and element values\n\tin EAP-pwd-Commit messages properly. This could result in attacks that\n\twould be able to complete EAP-pwd authentication exchange without the\n\tattacker having to know the used password.\u003c/p\u003e\n\t\u003cp\u003eSee\n\thttps://w1.fi/security/2019-4/eap-pwd-missing-commit-validation.txt\n\tfor a detailed description of the bug.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAll wpa_supplicant and hostapd versions with EAP-pwd support.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "12.0_3",
+          "ge": "12.0"
+        },
+        {
+          "lt": "11.2_9",
+          "ge": "11.2"
+        }
+      ]
+    },
+    {
+      "name": "wpa_supplicant",
+      "range": [
+        {
+          "lt": "2.8"
+        }
+      ]
+    },
+    {
+      "name": "hostapd",
+      "range": [
+        {
+          "lt": "2.8"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-04-10T00:00:00Z",
+    "entry": "2019-04-23T00:00:00Z",
+    "modified": "2019-07-30T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-9497"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-9498"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-9499"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-19:03.wpa"
+    }
+  ]
+}

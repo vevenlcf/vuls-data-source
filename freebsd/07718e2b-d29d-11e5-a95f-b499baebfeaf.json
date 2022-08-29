@@ -1,0 +1,29 @@
+{
+  "vid": "07718e2b-d29d-11e5-a95f-b499baebfeaf",
+  "topic": "nghttp2 -- Out of memory in nghttpd, nghttp, and libnghttp2_asio",
+  "description": "\n\t\u003cp\u003eNghttp2 reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://nghttp2.org/blog/2016/02/11/nghttp2-v1-7-1/\"\u003e\n\t  \u003cp\u003eOut of memory in nghttpd, nghttp, and libnghttp2_asio applications\n\t   due to unlimited incoming HTTP header fields.\u003c/p\u003e\n\t  \u003cp\u003enghttpd, nghttp, and libnghttp2_asio applications do not limit the memory usage\n\t   for the incoming HTTP header field. If peer sends specially crafted HTTP/2\n\t   HEADERS frames and CONTINUATION frames, they will crash with out of memory\n\t   error.\u003c/p\u003e\n\t  \u003cp\u003eNote that libnghttp2 itself is not affected by this vulnerability.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "nghttp2",
+      "range": [
+        {
+          "lt": "1.7.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-02-03T00:00:00Z",
+    "entry": "2016-02-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://nghttp2.org/blog/2016/02/11/nghttp2-v1-7-1/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-1544"
+    }
+  ]
+}

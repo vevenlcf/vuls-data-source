@@ -1,0 +1,45 @@
+{
+  "vid": "18449f92-ab39-11e6-8011-005056925db4",
+  "topic": "libwww -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eMitre reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3183\"\u003e\n\t \u003cp\u003eThe HTBoundary_put_block function in HTBound.c for W3C libwww\n\t   (w3c-libwww) allows remote servers to cause a denial of service\n\t   (segmentation fault) via a crafted multipart/byteranges MIME message\n\t   that triggers an out-of-bounds read.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3560\"\u003e\n\t \u003cp\u003eThe big2_toUtf8 function in lib/xmltok.c in libexpat in Expat 2.0.1,\n\t   as used in the XML-Twig module for Perl, allows context-dependent\n\t   attackers to cause a denial of service (application crash) via an XML\n\t   document with malformed UTF-8 sequences that trigger a buffer\n\t   over-read, related to the doProlog function in lib/xmlparse.c, a\n\t   different vulnerability than CVE-2009-2625 and CVE-2009-3720.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3720\"\u003e\n\t \u003cp\u003eThe updatePosition function in lib/xmltok_impl.c in libexpat in\n\t   Expat 2.0.1, as used in Python, PyXML, w3c-libwww, and other\n\t   software, allows context-dependent attackers to cause a denial of\n\t   service (application crash) via an XML document with crafted UTF-8\n\t   sequences that trigger a buffer over-read, a different vulnerability\n\t   than CVE-2009-2625.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libwww",
+      "range": [
+        {
+          "lt": "5.4.0_6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-10-12T00:00:00Z",
+    "entry": "2016-11-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.redhat.com/show_bug.cgi?id=170518"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-3183"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2009-3560"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2009-3720"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/214546"
+    },
+    {
+      "source": "BID",
+      "text": "15035"
+    }
+  ]
+}

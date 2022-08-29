@@ -1,0 +1,51 @@
+{
+  "vid": "152e4c7e-2a2e-11e2-99c7-00a0d181e71d",
+  "topic": "tomcat -- authentication weaknesses",
+  "description": "\n\t\u003cp\u003eThe Apache Software Foundation reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://tomcat.apache.org/security.html\"\u003e\n\t  \u003cp\u003eThree weaknesses in Tomcat's implementation of DIGEST\n\t    authentication were identified and resolved:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e Tomcat tracked client rather than server nonces and nonce count.\u003c/li\u003e\n\t    \u003cli\u003e When a session ID was present, authentication was bypassed.\u003c/li\u003e\n\t    \u003cli\u003e The user name and password were not checked before when indicating\n\t       that a nonce was stale.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eThese issues reduced the security of DIGEST authentication making\n\t    replay attacks possible in some circumstances.\u003c/p\u003e\n\t  \u003cp\u003eThe first issue was identified by Tilmann Kuhn. The second and third\n\t    issues were identified by the Tomcat security team during the code\n\t    review resulting from the first issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "tomcat",
+      "range": [
+        {
+          "lt": "5.5.36",
+          "gt": "5.5.0"
+        },
+        {
+          "lt": "6.0.36",
+          "gt": "6.0.0"
+        },
+        {
+          "lt": "7.0.30",
+          "gt": "7.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-11-05T00:00:00Z",
+    "entry": "2012-11-08T00:00:00Z",
+    "modified": "2012-11-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://tomcat.apache.org/security.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://tomcat.apache.org/security-5.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://tomcat.apache.org/security-6.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://tomcat.apache.org/security-7.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-3439"
+    }
+  ]
+}

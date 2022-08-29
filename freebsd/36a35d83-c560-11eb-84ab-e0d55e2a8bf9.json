@@ -1,0 +1,37 @@
+{
+  "vid": "36a35d83-c560-11eb-84ab-e0d55e2a8bf9",
+  "topic": "polkit -- local privilege escalation using polkit_system_bus_name_get_creds_sync",
+  "description": "\n\t\u003cp\u003eCedric Buissart reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://seclists.org/oss-sec/2021/q2/180\"\u003e\n\t  \u003cp\u003eThe function \u003ccode\u003epolkit_system_bus_name_get_creds_sync\u003c/code\u003e is used to get the\n\t  uid and pid of the process requesting the action. It does this by\n\t  sending the unique bus name of the requesting process, which is\n\t  typically something like \":1.96\", to \u003ccode\u003edbus-daemon\u003c/code\u003e. These unique names\n\t  are assigned and managed by \u003ccode\u003edbus-daemon\u003c/code\u003e and cannot be forged, so this\n\t  is a good way to check the privileges of the requesting process.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability happens when the requesting process disconnects from\n\t  \u003ccode\u003edbus-daemon\u003c/code\u003e just before the call to\n\t  \u003ccode\u003epolkit_system_bus_name_get_creds_sync\u003c/code\u003e starts. In this scenario, the\n\t  unique bus name is no longer valid, so \u003ccode\u003edbus-daemon\u003c/code\u003e sends back an error\n\t  reply. This error case is handled in\n\t  \u003ccode\u003epolkit_system_bus_name_get_creds_sync\u003c/code\u003e by setting the value of the\n\t  \u003ccode\u003eerror\u003c/code\u003e parameter, but it still returns \u003ccode\u003eTRUE\u003c/code\u003e, rather than \u003ccode\u003eFALSE\u003c/code\u003e.\n\t  This behavior means that all callers of\n\t  \u003ccode\u003epolkit_system_bus_name_get_creds_sync\u003c/code\u003e need to carefully check whether\n\t  an error was set. If the calling function forgets to check for errors\n\t  then it will think that the uid of the requesting process is 0 (because\n\t  the \u003ccode\u003eAsyncGetBusNameCredsData\u003c/code\u003e struct is zero initialized). In other\n\t  words, it will think that the action was requested by a root process,\n\t  and will therefore allow it.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "polkit",
+      "range": [
+        {
+          "lt": "0.119"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-06-03T00:00:00Z",
+    "entry": "2021-06-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://seclists.org/oss-sec/2021/q2/180"
+    },
+    {
+      "source": "URL",
+      "text": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3560"
+    },
+    {
+      "source": "URL",
+      "text": "https://gitlab.freedesktop.org/polkit/polkit/-/commit/a04d13a"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-3560"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "vid": "e0ab1773-07c1-46c6-9170-4c5e81c00927",
+  "topic": "curl -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003ecurl security problems:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.haxx.se/docs/security.html\"\u003e\n\t  \u003cp\u003eCVE-2018-16839: SASL password overflow via integer overflow\u003c/p\u003e\n\t  \u003cp\u003elibcurl contains a buffer overrun in the SASL authentication code.\u003c/p\u003e\n\t  \u003cp\u003eThe internal function Curl_auth_create_plain_message fails to\n\t    correctly verify that the passed in lengths for name and password\n\t    aren't too long, then calculates a buffer size to allocate.\u003c/p\u003e\n\t  \u003cp\u003eOn systems with a 32 bit size_t, the math to calculate the buffer size\n\t    triggers an integer overflow when the user name length exceeds 2GB\n\t    (2^31 bytes). This integer overflow usually causes a very small buffer\n\t    to actually get allocated instead of the intended very huge one, making\n\t    the use of that buffer end up in a heap buffer overflow.\u003c/p\u003e\n\t  \u003cp\u003eThis bug is very similar to CVE-2017-14618.\u003c/p\u003e\n\t  \u003cp\u003eIt affects curl 7.33.0 to 7.61.1.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2018-16840: use-after-free in handle close\u003c/p\u003e\n\t  \u003cp\u003elibcurl contains a heap use-after-free flaw in code related to closing\n\t    an easy handle.\u003c/p\u003e\n\t  \u003cp\u003eWhen closing and cleaning up an \"easy\" handle in the Curl_close()\n\t    function, the library code first frees a struct (without nulling the\n\t    pointer) and might then subsequently erroneously write to a struct\n\t    field within that already freed struct.\u003c/p\u003e\n\t  \u003cp\u003eIt affects curl 7.59.0 to 7.61.1.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2018-16842: warning message out-of-buffer read\u003c/p\u003e\n\t  \u003cp\u003ecurl contains a heap out of buffer read vulnerability.\u003c/p\u003e\n\t  \u003cp\u003eThe command line tool has a generic function for displaying warning\n\t    and informational messages to stderr for various situations. For\n\t    example if an unknown command line argument is used, or passed to it in\n\t    a \"config\" file.\u003c/p\u003e\n\t  \u003cp\u003eThis display function formats the output to wrap at 80 columns. The\n\t    wrap logic is however flawed, so if a single word in the message is\n\t    itself longer than 80 bytes the buffer arithmetic calculates the\n\t    remainder wrong and will end up reading behind the end of the buffer.\n\t    This could lead to information disclosure or crash.\u003c/p\u003e\n\t  \u003cp\u003eThis vulnerability could lead to a security issue if used in this or\n\t    similar situations:\u003c/p\u003e\n\t  \u003cp\u003e1. a server somewhere uses the curl command line to run something\u003c/p\u003e\n\t  \u003cp\u003e2. if it fails, it shows stderr to the user\u003c/p\u003e\n\t  \u003cp\u003e3. the server takes user input for parts of its command line input\u003c/p\u003e\n\t  \u003cp\u003e4. user provides something overly long that triggers this crash\u003c/p\u003e\n\t  \u003cp\u003e5. the stderr output may now contain user memory contents that wasn't\n\t    meant to be available\u003c/p\u003e\n\t  \u003cp\u003eIt affects curl 7.14.1 to 7.61.1.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.60.0",
+          "ge": "7.14.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-10-31T00:00:00Z",
+    "entry": "2018-11-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/security.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/CVE-2018-16839.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/CVE-2018-16840.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/CVE-2018-16842.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16839"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16840"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16842"
+    }
+  ]
+}

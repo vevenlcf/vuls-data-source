@@ -1,0 +1,41 @@
+{
+  "vid": "ab9be2c8-ef91-11e0-ad5a-00215c6a37bb",
+  "topic": "quagga -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eCERT-FI reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.cert.fi/en/reports/2011/vulnerability539178.html\"\u003e\n\t  \u003cp\u003eFive vulnerabilities have been found in the BGP, OSPF, and\n\t    OSPFv3 components of Quagga.  The vulnerabilities allow an\n\t    attacker to cause a denial of service or potentially to\n\t    execute his own code by sending a specially modified packets\n\t    to an affected server.  Routing messages are typically accepted\n\t    from the routing peers.  Exploiting these vulnerabilities may\n\t    require an established routing session (BGP peering or\n\t    OSPF/OSPFv3 adjacency) to the router.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability \u003ca href=\"http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3327\"\u003eCVE-2011-3327\u003c/a\u003e\n\t    is related to the extended communities handling in BGP\n\t    messages.  Receiving a malformed BGP update can result\n\t    in a buffer overflow and disruption of IPv4 routing.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability \u003ca href=\"http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3326\"\u003eCVE-2011-3326\u003c/a\u003e\n\t    results from the handling of LSA (Link State Advertisement)\n\t    states in the OSPF service.  Receiving a modified Link State\n\t    Update message with malicious state information can result in\n\t    denial of service in IPv4 routing.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability \u003ca href=\"http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3325\"\u003eCVE-2011-3325\u003c/a\u003e\n\t    is a denial of service vulnerability related to Hello message\n\t    handling by the OSPF service.  As Hello messages are used to\n\t    initiate adjacencies, exploiting the vulnerability may be\n\t    feasible from the same broadcast domain without an established\n\t    adjacency.  A malformed packet may result in denial of service\n\t    in IPv4 routing.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerabilities \u003ca href=\"http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3324\"\u003eCVE-2011-3324\u003c/a\u003e\n\t    and \u003ca href=\"http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3323\"\u003eCVE-2011-3323\u003c/a\u003e\n\t    are related to the IPv6 routing protocol (OSPFv3) implemented\n\t    in ospf6d daemon.  Receiving modified Database Description and\n\t    Link State Update messages, respectively, can result in denial\n\t    of service in IPv6 routing.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "quagga",
+      "range": [
+        {
+          "lt": "0.99.19"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-09-26T00:00:00Z",
+    "entry": "2011-10-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3323"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3324"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3325"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3326"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3327"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "vid": "2ae114de-c064-11e1-b5e0-000c299b62e1",
+  "topic": "FreeBSD -- OpenSSL multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eProblem description:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://security.freebsd.org/advisories/FreeBSD-SA-12:01.openssl.asc\"\u003e\n\t  \u003cp\u003eOpenSSL fails to clear the bytes used as block cipher padding in SSL 3.0\n\t     records when operating as a client or a server that accept SSL 3.0\n\t     handshakes.  As a result, in each record, up to 15 bytes of uninitialized\n\t     memory may be sent, encrypted, to the SSL peer.  This could include\n\t     sensitive contents of previously freed memory. [CVE-2011-4576]\u003c/p\u003e\n\t  \u003cp\u003eOpenSSL support for handshake restarts for server gated cryptography (SGC)\n\t     can be used in a denial-of-service attack. [CVE-2011-4619]\u003c/p\u003e\n\t  \u003cp\u003eIf an application uses OpenSSL's certificate policy checking when\n\t     verifying X509 certificates, by enabling the X509_V_FLAG_POLICY_CHECK\n\t     flag, a policy check failure can lead to a double-free. [CVE-2011-4109]\u003c/p\u003e\n\t  \u003cp\u003eA weakness in the OpenSSL PKCS #7 code can be exploited using\n\t     Bleichenbacher's attack on PKCS #1 v1.5 RSA padding also known as the\n\t     million message attack (MMA). [CVE-2012-0884]\u003c/p\u003e\n\t  \u003cp\u003eThe asn1_d2i_read_bio() function, used by the d2i_*_bio and d2i_*_fp\n\t     functions, in OpenSSL contains multiple integer errors that can cause\n\t     memory corruption when parsing encoded ASN.1 data.  This error can occur\n\t     on systems that parse untrusted ASN.1 data, such as X.509 certificates\n\t     or RSA public keys. [CVE-2012-2110]\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "7.4_8",
+          "ge": "7.4"
+        },
+        {
+          "lt": "8.1_10",
+          "ge": "8.1"
+        },
+        {
+          "lt": "8.2_8",
+          "ge": "8.2"
+        },
+        {
+          "lt": "8.3_2",
+          "ge": "8.3"
+        },
+        {
+          "lt": "9.0_2",
+          "ge": "9.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-05-03T00:00:00Z",
+    "entry": "2012-06-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2011-4576"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-4619"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-4109"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-0884"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-2110"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-12:01.openssl"
+    }
+  ]
+}

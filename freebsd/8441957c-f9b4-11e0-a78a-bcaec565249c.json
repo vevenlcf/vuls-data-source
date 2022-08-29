@@ -1,0 +1,29 @@
+{
+  "vid": "8441957c-f9b4-11e0-a78a-bcaec565249c",
+  "topic": "Xorg server -- two vulnerabilities in X server lock handling code",
+  "description": "\n\t\u003cp\u003eMatthieu Herrb reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.freedesktop.org/archives/xorg-announce/2011-October/001744.html\"\u003e\n\t  \u003cp\u003eIt is possible to deduce if a file exists or not by exploiting\n\t    the way that Xorg creates its lock files.  This is caused by the\n\t    fact that the X server is behaving differently if the lock file\n\t    already exists as a symbolic link pointing to an existing or\n\t    non-existing file.\u003c/p\u003e\n\t  \u003cp\u003eIt is possible for a non-root user to set the permissions for\n\t    all users on any file or directory to 444, giving unwanted read\n\t    access or causing denies of service (by removing execute\n\t    permission).  This is caused by a race between creating the lock\n\t    file and setting its access modes.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xorg-server",
+      "range": [
+        {
+          "lt": "1.7.7_3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-10-18T00:00:00Z",
+    "entry": "2011-10-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2011-4028"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-4029"
+    }
+  ]
+}

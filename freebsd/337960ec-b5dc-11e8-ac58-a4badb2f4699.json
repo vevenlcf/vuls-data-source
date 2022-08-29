@@ -1,0 +1,37 @@
+{
+  "vid": "337960ec-b5dc-11e8-ac58-a4badb2f4699",
+  "topic": "Plex Media Server -- Information Disclosure Vulnerability",
+  "description": "\n\t\u003cp\u003eChris reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://seclists.org/fulldisclosure/2018/Aug/1\"\u003e\n\t  \u003cp\u003eThe XML parsing engine for Plex Media Server's SSDP/UPNP\n\t    functionality is vulnerable to an XML External Entity\n\t    Processing (XXE) attack. Unauthenticated attackers on the same LAN can\n\t    use this vulnerability to:\u003c/p\u003e\n\t  \u003cul\u003e\n\t  \u003cli\u003eAccess arbitrary files from the filesystem with the same permission as\n\t  the user account running Plex.\u003c/li\u003e\n\t  \u003cli\u003eInitiate SMB connections to capture NetNTLM challenge/response and\n\t  crack to clear-text password.\u003c/li\u003e\n\t  \u003cli\u003eInitiate SMB connections to relay NetNTLM challenge/response and\n\t  achieve Remote Command Execution in Windows domains.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "plexmediaserver",
+      "range": [
+        {
+          "lt": "1.13.5.5332"
+        }
+      ]
+    },
+    {
+      "name": "plexmediaserver-plexpass",
+      "range": [
+        {
+          "lt": "1.13.5.5332"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-08-01T00:00:00Z",
+    "entry": "2018-09-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://seclists.org/fulldisclosure/2018/Aug/1"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-13415"
+    }
+  ]
+}

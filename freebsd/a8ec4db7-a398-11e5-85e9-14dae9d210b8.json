@@ -1,0 +1,75 @@
+{
+  "vid": "a8ec4db7-a398-11e5-85e9-14dae9d210b8",
+  "topic": "bind -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eISC reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01328/0/BIND-9.10.3-P2-Release-Notes.html\"\u003e\n\t  \u003cp\u003eNamed is potentially vulnerable to the OpenSSL vulnerability described in CVE-2015-3193.\u003c/p\u003e\n\t  \u003cp\u003eIncorrect reference counting could result in an INSIST\n\t    failure if a socket error occurred while performing a lookup. This flaw\n\t    is disclosed in CVE-2015-8461. [RT#40945]\u003c/p\u003e\n\t  \u003cp\u003eInsufficient testing when parsing a message allowed records\n\t    with an incorrect class to be be accepted, triggering a REQUIRE failure\n\t    when those records were subsequently cached. This flaw is disclosed in\n\t    CVE-2015-8000. [RT #40987]\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind99",
+      "range": [
+        {
+          "lt": "9.9.8P2"
+        }
+      ]
+    },
+    {
+      "name": "bind910",
+      "range": [
+        {
+          "lt": "9.10.3P2"
+        }
+      ]
+    },
+    {
+      "name": "bind9-devel",
+      "range": [
+        {
+          "lt": "9.11.0.a20151215"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "9.3_32",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-11-24T00:00:00Z",
+    "entry": "2015-12-16T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01328/0/BIND-9.10.3-P2-Release-Notes.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01317/0/CVE-2015-8000%3A-Responses-with-a-malformed-class-attribute-can-trigger-an-assertion-failure-in-db.c.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01319/0/CVE-2015-8461%3A-A-race-condition-when-handling-socket-errors-can-lead-to-an-assertion-failure-in-resolver.c.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3193"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8000"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8461"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-15:27.bind"
+    }
+  ]
+}

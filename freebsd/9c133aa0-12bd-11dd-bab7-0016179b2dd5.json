@@ -1,0 +1,53 @@
+{
+  "vid": "9c133aa0-12bd-11dd-bab7-0016179b2dd5",
+  "topic": "serendipity -- multiple cross site scripting vulnerabilities",
+  "description": "\n\t\u003cp\u003eHanno Boeck reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://int21.de/cve/CVE-2008-1386-s9y.html\"\u003e\n\t  \u003cp\u003eThe installer of serendipity 1.3 has various Cross Site Scripting\n\t    issues.  This is considered low priority, as attack scenarios are\n\t    very unlikely.\u003c/p\u003e\n\t  \u003cp\u003eVarious path fields are not escaped properly, thus filling them\n\t    with javascript code will lead to XSS. MySQL error messages are not\n\t    escaped, thus the database host field can also be filled with\n\t    javascript.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://int21.de/cve/CVE-2008-1385-s9y.html\"\u003e\n\t  \u003cp\u003eIn the referrer plugin of the blog application serendipity,\n\t    the referrer string is not escaped, thus leading to a permanent\n\t    XSS.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "serendipity",
+      "range": [
+        {
+          "lt": "1.3.1"
+        }
+      ]
+    },
+    {
+      "name": "serendipity-devel",
+      "range": [
+        {
+          "lt": "200804242342"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-04-22T00:00:00Z",
+    "entry": "2008-04-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://int21.de/cve/CVE-2008-1385-s9y.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://int21.de/cve/CVE-2008-1386-s9y.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://blog.s9y.org/archives/193-Serendipity-1.3.1-released.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-1385"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-1386"
+    },
+    {
+      "source": "BID",
+      "text": "28885"
+    }
+  ]
+}

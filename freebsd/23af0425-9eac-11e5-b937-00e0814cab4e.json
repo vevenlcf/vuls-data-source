@@ -1,0 +1,33 @@
+{
+  "vid": "23af0425-9eac-11e5-b937-00e0814cab4e",
+  "topic": "jenkins -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eJenkins Security Advisory:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-12-09\"\u003e\n\t  \u003ch1\u003eDescription\u003c/h1\u003e\n\t  \u003ch5\u003eSECURITY-95 / CVE-2015-7536 (Stored XSS vulnerability through workspace files and archived artifacts)\u003c/h5\u003e\n\t  \u003cp\u003eIn certain configurations, low privilege users were able to\n\t    create e.g. HTML files in workspaces and archived artifacts that\n\t    could result in XSS when accessed by other users. Jenkins now sends\n\t    Content-Security-Policy headers that enables sandboxing and\n\t    prohibits script execution by default.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-225 / CVE-2015-7537 (CSRF vulnerability in some administrative actions)\u003c/h5\u003e\n\t  \u003cp\u003eSeveral administration/configuration related URLs could be\n\t    accessed using GET, which allowed attackers to circumvent CSRF\n\t    protection.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-233 / CVE-2015-7538 (CSRF protection ineffective)\u003c/h5\u003e\n\t  \u003cp\u003eMalicious users were able to circumvent CSRF protection on any\n\t    URL by sending specially crafted POST requests.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-234 / CVE-2015-7539 (Jenkins plugin manager vulnerable to MITM attacks)\u003c/h5\u003e\n\t  \u003cp\u003eWhile the Jenkins update site data is digitally signed, and the\n\t    signature verified by Jenkins, Jenkins did not verify the provided\n\t    SHA-1 checksums for the plugin files referenced in the update site\n\t    data. This enabled MITM attacks on the plugin manager, resulting\n\t    in installation of attacker-provided plugins.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "jenkins",
+      "range": [
+        {
+          "le": "1.641"
+        }
+      ]
+    },
+    {
+      "name": "jenkins-lts",
+      "range": [
+        {
+          "le": "1.625.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-12-09T00:00:00Z",
+    "entry": "2015-12-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-12-09"
+    }
+  ]
+}

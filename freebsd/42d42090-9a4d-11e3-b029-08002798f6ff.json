@@ -1,0 +1,69 @@
+{
+  "vid": "42d42090-9a4d-11e3-b029-08002798f6ff",
+  "topic": "PostgreSQL -- multiple privilege issues",
+  "description": "\n\t\u003cp\u003ePostgreSQL Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.postgresql.org/about/news/1506/\"\u003e\n\t  \u003cp\u003eThis update fixes CVE-2014-0060, in which PostgreSQL did not\n\t  properly enforce the WITH ADMIN OPTION permission for ROLE management.\n\t  Before this fix, any member of a ROLE was able to grant others access\n\t  to the same ROLE regardless if the member was given the WITH ADMIN\n\t  OPTION permission. It also fixes multiple privilege escalation issues,\n\t  including: CVE-2014-0061, CVE-2014-0062, CVE-2014-0063, CVE-2014-0064,\n\t  CVE-2014-0065, and CVE-2014-0066. More information on these issues can\n\t  be found on our security page and the security issue detail wiki page.\n\t \u003c/p\u003e\n\t \u003cp\u003e\n\t  With this release, we are also alerting users to a known security hole\n\t  that allows other users on the same machine to gain access to an\n\t  operating system account while it is doing \"make check\":\n\t  CVE-2014-0067. \"Make check\" is normally part of building PostgreSQL\n\t  from source code. As it is not possible to fix this issue without\n\t  causing significant issues to our testing infrastructure, a patch will\n\t  be released separately and publicly. Until then, users are strongly\n\t  advised not to run \"make check\" on machines where untrusted users have\n\t  accounts.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "postgresql-server",
+      "range": [
+        {
+          "lt": "8.4.20"
+        },
+        {
+          "lt": "9.0.16",
+          "ge": "9.0.0"
+        },
+        {
+          "lt": "9.1.12",
+          "ge": "9.1.0"
+        },
+        {
+          "lt": "9.2.7",
+          "ge": "9.2.0"
+        },
+        {
+          "lt": "9.3.3",
+          "ge": "9.3.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-02-20T00:00:00Z",
+    "entry": "2014-02-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0060"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0061"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0062"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0063"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0064"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0065"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0066"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0067"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "vid": "6111ecb8-b20d-11da-b2fb-000e0c2e438a",
+  "topic": "nfs -- remote denial of service",
+  "description": "\n\t\u003ch1\u003eProblem description:\u003c/h1\u003e\n\t\u003cp\u003eA part of the NFS server code charged with handling incoming\n\t  RPC messages via TCP had an error which, when the server\n\t  received a message with a zero-length payload, would cause a\n\t  NULL pointer dereference which results in a kernel panic.  The\n\t  kernel will only process the RPC messages if a userland nfsd\n\t  daemon is running.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eThe NULL pointer deference allows a remote attacker capable\n\t  of sending RPC messages to an affected FreeBSD system to crash\n\t  the FreeBSD system.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround:\u003c/h1\u003e\n\t\u003col\u003e\n\t  \u003cli\u003e\n\t    \u003cp\u003eDisable the NFS server: set the nfs_server_enable\n\t      variable to \"NO\" in /etc/rc.conf, and reboot.\u003c/p\u003e\n\t    \u003cp\u003eAlternatively, if there are no active NFS clients (as\n\t      listed by the showmount(8) utility), simply killing the\n\t      mountd and nfsd processes should suffice.\u003c/p\u003e\n\t  \u003c/li\u003e\n\t  \u003cli\u003e\n\t    \u003cp\u003eAdd firewall rules to block RPC traffic to the NFS server\n\t      from untrusted hosts.\u003c/p\u003e\n\t  \u003c/li\u003e\n\t\u003c/ol\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_5",
+          "ge": "6.0"
+        },
+        {
+          "lt": "5.4_12",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_27",
+          "ge": "5.3"
+        },
+        {
+          "lt": "4.11_15",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_21",
+          "ge": "4.10"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-03-01T00:00:00Z",
+    "entry": "2006-03-12T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0900"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:10.nfs"
+    }
+  ]
+}

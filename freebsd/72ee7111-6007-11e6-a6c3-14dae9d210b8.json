@@ -1,0 +1,42 @@
+{
+  "vid": "72ee7111-6007-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- rtsold(8) remote buffer overflow vulnerability",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eDue to a missing length check in the code that handles\n\tDNS parameters, a malformed router advertisement message\n\tcan result in a stack buffer overflow in rtsold(8).\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eReceipt of a router advertisement message with a malformed\n\tDNSSL option, for instance from a compromised host on the\n\tsame network, can cause rtsold(8) to crash.\u003c/p\u003e\n\t\u003cp\u003eWhile it is theoretically possible to inject code into\n\trtsold(8) through malformed router advertisement messages,\n\tit is normally compiled with stack protection enabled,\n\trendering such an attack extremely difficult.\u003c/p\u003e\n\t\u003cp\u003eWhen rtsold(8) crashes, the existing DNS configuration\n\twill remain in force, and the kernel will continue to receive\n\tand process periodic router advertisements.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "10.0_10",
+          "ge": "10.0"
+        },
+        {
+          "lt": "9.3_3",
+          "ge": "9.3"
+        },
+        {
+          "lt": "9.2_13",
+          "ge": "9.2"
+        },
+        {
+          "lt": "9.1_20",
+          "ge": "9.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-10-21T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3954"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-14:20.rtsold"
+    }
+  ]
+}

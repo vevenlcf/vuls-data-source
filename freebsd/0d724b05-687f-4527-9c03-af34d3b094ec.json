@@ -1,0 +1,76 @@
+{
+  "vid": "0d724b05-687f-4527-9c03-af34d3b094ec",
+  "topic": "ImageMagick -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eOpenwall reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2016/05/03/18\"\u003e\n\t  \u003cp\u003eInsufficient filtering for filename passed to delegate's command\n\t    allows remote code execution during conversion of several file\n\t    formats. Any service which uses ImageMagick to process user\n\t    supplied images and uses default delegates.xml / policy.xml,\n\t    may be vulnerable to this issue.\u003c/p\u003e\n\t  \u003cp\u003eIt is possible to make ImageMagick perform a HTTP GET or FTP\n\t    request\u003c/p\u003e\n\t  \u003cp\u003eIt is possible to delete files by using ImageMagick's 'ephemeral'\n\t    pseudo protocol which deletes files after reading.\u003c/p\u003e\n\t  \u003cp\u003eIt is possible to move image files to file with any extension\n\t    in any folder by using ImageMagick's 'msl' pseudo protocol.\n\t    msl.txt and image.gif should exist in known location - /tmp/\n\t    for PoC (in real life it may be web service written in PHP,\n\t    which allows to upload raw txt files and process images with\n\t    ImageMagick).\u003c/p\u003e\n\t  \u003cp\u003eIt is possible to get content of the files from the server\n\t    by using ImageMagick's 'label' pseudo protocol.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ImageMagick",
+      "range": [
+        {
+          "lt": "6.9.3.9_1,1"
+        }
+      ]
+    },
+    {
+      "name": "ImageMagick-nox11",
+      "range": [
+        {
+          "lt": "6.9.3.9_1,1"
+        }
+      ]
+    },
+    {
+      "name": "ImageMagick7",
+      "range": [
+        {
+          "lt": "7.0.1.0_1",
+          "ge": "7.0.0.0.b20150715"
+        }
+      ]
+    },
+    {
+      "name": "ImageMagick7-nox11",
+      "range": [
+        {
+          "lt": "7.0.1.0_1",
+          "ge": "7.0.0.0.b20150715"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-05-03T00:00:00Z",
+    "entry": "2016-05-06T00:00:00Z",
+    "modified": "2016-05-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2016/05/03/18"
+    },
+    {
+      "source": "URL",
+      "text": "https://imagetragick.com/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3714"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3715"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3716"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3717"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-3718"
+    }
+  ]
+}

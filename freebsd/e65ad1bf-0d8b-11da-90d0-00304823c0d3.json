@@ -1,0 +1,106 @@
+{
+  "vid": "e65ad1bf-0d8b-11da-90d0-00304823c0d3",
+  "topic": "pear-XML_RPC -- remote PHP code injection vulnerability",
+  "description": "\n\t\u003cp\u003eA Hardened-PHP Project Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.hardened-php.net/advisory_142005.66.html\"\u003e\n\t  \u003cp\u003eWhen the library parses XMLRPC requests/responses, it constructs\n\t    a string of PHP code, that is later evaluated.  This means any\n\t    failure to properly handle the construction of this string can\n\t    result in arbitrary execution of PHP code.\u003c/p\u003e\n\t  \u003cp\u003eThis new injection vulnerability is cause by not properly\n\t    handling the situation, when certain XML tags are nested\n\t    in the parsed document, that were never meant to be nested\n\t    at all. This can be easily exploited in a way, that\n\t    user-input is placed outside of string delimiters within\n\t    the evaluation string, which obviously results in\n\t    arbitrary code execution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eNote that several applications contains an embedded version\n\t  on XML_RPC, therefor making them the vulnerable to the same\n\t  code injection vulnerability.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "pear-XML_RPC",
+      "range": [
+        {
+          "lt": "1.4.0"
+        }
+      ]
+    },
+    {
+      "name": "phpmyfaq",
+      "range": [
+        {
+          "lt": "1.4.11"
+        }
+      ]
+    },
+    {
+      "name": "drupal",
+      "range": [
+        {
+          "lt": "4.6.3"
+        }
+      ]
+    },
+    {
+      "name": "eGroupWare",
+      "range": [
+        {
+          "lt": "1.0.0.009"
+        }
+      ]
+    },
+    {
+      "name": "phpAdsNew",
+      "range": [
+        {
+          "lt": "2.0.5"
+        }
+      ]
+    },
+    {
+      "name": "phpgroupware",
+      "range": [
+        {
+          "lt": "0.9.16.007"
+        }
+      ]
+    },
+    {
+      "name": "b2evolution",
+      "range": [
+        {
+          "lt": "0.9.0.12_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-08-15T00:00:00Z",
+    "entry": "2005-08-15T00:00:00Z",
+    "modified": "2005-09-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://b2evolution.net/news/2005/08/31/fix_for_xml_rpc_vulnerability_again_1"
+    },
+    {
+      "source": "URL",
+      "text": "http://downloads.phpgroupware.org/changelog"
+    },
+    {
+      "source": "URL",
+      "text": "http://drupal.org/files/sa-2005-004/advisory.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://phpadsnew.com/two/nucleus/index.php?itemid=45"
+    },
+    {
+      "source": "URL",
+      "text": "http://sourceforge.net/project/shownotes.php?release_id=349626"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.hardened-php.net/advisory_142005.66.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.hardened-php.net/advisory_152005.67.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.phpmyfaq.de/advisory_2005-08-15.php"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2498"
+    }
+  ]
+}

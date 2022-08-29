@@ -1,0 +1,39 @@
+{
+  "vid": "57ae52f7-b9cc-11db-bf0f-0013720b182d",
+  "topic": "samba -- format string bug in afsacl.so VFS plugin",
+  "description": "\n\t\u003cp\u003eThe Samba Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.samba.org/samba/security/CVE-2007-0454.html\"\u003e\n\t  \u003cp\u003eNOTE: This security advisory only impacts Samba servers\n\t    that share AFS file systems to CIFS clients and which have\n\t    been explicitly instructed in smb.conf to load the afsacl.so\n\t    VFS module.\u003c/p\u003e\n\t  \u003cp\u003eThe source defect results in the name of a file stored on\n\t    disk being used as the format string in a call to snprintf().\n\t    This bug becomes exploitable only when a user is able\n\t    to write to a share which utilizes Samba's afsacl.so library\n\t    for setting Windows NT access control lists on files residing\n\t    on an AFS file system.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "samba",
+      "range": [
+        {
+          "lt": "3.0.24,1",
+          "ge": "3.0.6,1"
+        }
+      ]
+    },
+    {
+      "name": "ja-samba",
+      "range": [
+        {
+          "lt": "3.0.24,1",
+          "ge": "3.0.6,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-02-05T00:00:00Z",
+    "entry": "2007-03-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.samba.org/samba/security/CVE-2007-0454.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-0454"
+    }
+  ]
+}

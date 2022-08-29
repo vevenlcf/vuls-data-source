@@ -1,0 +1,42 @@
+{
+  "vid": "09c87973-8b9d-11e1-b393-20cf30e32f6d",
+  "topic": "bugzilla -- multiple vulnerabilities",
+  "description": "\n\t\u003ch1\u003eA Bugzilla Security Advisory reports:\u003c/h1\u003e\n\t\u003cblockquote cite=\"http://www.bugzilla.org/security/3.6.8/\"\u003e\n\t  \u003cp\u003eThe following security issues have been discovered in\n\t    Bugzilla:\u003c/p\u003e\n\t  \u003ch1\u003eUnauthorized Access\u003c/h1\u003e\n\t  \u003cp\u003eDue to a lack of proper validation of the X-FORWARDED-FOR\n\t    header of an authentication request, an attacker could bypass\n\t    the current lockout policy used for protection against brute-\n\t    force password discovery.  This vulnerability can only be\n\t    exploited if the 'inbound_proxies' parameter is set.\u003c/p\u003e\n\t  \u003ch1\u003eCross Site Scripting\u003c/h1\u003e\n\t  \u003cp\u003eA JavaScript template used by buglist.cgi could be used\n\t    by a malicious script to permit an attacker to gain access\n\t    to some information about bugs he would not normally be\n\t    allowed to see, using the victim's credentials.  To be\n\t    exploitable, the victim must be logged in when visiting\n\t    the attacker's malicious page.\u003c/p\u003e\n\t  \u003cp\u003eAll affected installations are encouraged to upgrade as soon\n\t    as possible.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bugzilla",
+      "range": [
+        {
+          "lt": "3.6.9",
+          "ge": "3.6.0"
+        },
+        {
+          "lt": "4.0.6",
+          "ge": "4.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-04-18T00:00:00Z",
+    "entry": "2012-04-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=728639"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=745397"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-0465"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-0466"
+    }
+  ]
+}

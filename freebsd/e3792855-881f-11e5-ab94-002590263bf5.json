@@ -1,0 +1,30 @@
+{
+  "vid": "e3792855-881f-11e5-ab94-002590263bf5",
+  "topic": "xen-kernel -- leak of per-domain profiling-related vcpu pointer array",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-151.html\"\u003e\n\t  \u003cp\u003eA domain's xenoprofile state contains an array of per-vcpu\n\t    information... This array is leaked on domain teardown. This memory\n\t    leak could -- over time -- exhaust the host's memory.\u003c/p\u003e\n\t  \u003cp\u003eThe following parties can mount a denial of service attack\n\t    affecting the whole system:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eA malicious guest administrator via XENOPROF_get_buffer.\u003c/li\u003e\n\t    \u003cli\u003eA domain given suitable privilege over another domain via\n\t       XENOPROF_set_passive (this would usually be a domain being\n\t       used to profile another domain, eg with the xenoprof tool).\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eThe ability to also restart or create suitable domains is also\n\t    required to fully exploit the issue. Without this the leak is\n\t    limited to a small multiple of the maximum number of vcpus for the\n\t    domain.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.1_1",
+          "ge": "4.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-10-29T00:00:00Z",
+    "entry": "2015-11-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-151.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-7969"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "vid": "fcba5764-506a-11db-a5ae-00508d6a62df",
+  "topic": "dokuwiki -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eSecunia reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://secunia.com/advisories/21819/\"\u003e\n\t  \u003cp\u003ergod has discovered a vulnerability in DokuWiki, which can\n\t    be exploited by malicious people to compromise a vulnerable\n\t    system.\u003c/p\u003e\n\t  \u003cp\u003eInput passed to the \"TARGET_FN\" parameter in\n\t    bin/dwpage.php is not properly sanitised before being used\n\t    to copy files. This can be exploited via directory\n\t    traversal attacks in combination with DokuWiki's file\n\t    upload feature to execute arbitrary PHP code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eCVE Mitre reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4674\"\u003e\n\t  \u003cp\u003eDirect static code injection vulnerability in doku.php in\n\t    DokuWiki before 2006-03-09c allows remote attackers to\n\t    execute arbitrary PHP code via the X-FORWARDED-FOR HTTP\n\t    header, which is stored in config.php.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4675\"\u003e\n\t  \u003cp\u003eUnrestricted file upload vulnerability in\n\t    lib/exe/media.php in DokuWiki before 2006-03-09c allows\n\t    remote attackers to upload executable files into the\n\t    data/media folder via unspecified vectors.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4679\"\u003e\n\t  \u003cp\u003eDokuWiki before 2006-03-09c enables the debug feature by\n\t    default, which allows remote attackers to obtain sensitive\n\t    information by calling doku.php with the X-DOKUWIKI-DO HTTP\n\t    header set to \"debug\".\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "dokuwiki",
+      "range": [
+        {
+          "lt": "20060309c"
+        }
+      ]
+    },
+    {
+      "name": "dokuwiki-devel",
+      "range": [
+        {
+          "lt": "20060909"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-09-08T00:00:00Z",
+    "entry": "2006-09-30T00:00:00Z",
+    "modified": "2006-10-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/21819/"
+    },
+    {
+      "source": "URL",
+      "text": "http://bugs.splitbrain.org/index.php?do=details\u0026id=906"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4674"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4675"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-4679"
+    },
+    {
+      "source": "BID",
+      "text": "19911"
+    }
+  ]
+}

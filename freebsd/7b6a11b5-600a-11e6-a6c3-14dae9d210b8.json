@@ -1,0 +1,47 @@
+{
+  "vid": "7b6a11b5-600a-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Incorrect argument validation in sysarch(2)",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eA special combination of sysarch(2) arguments, specify\n\ta request to uninstall a set of descriptors from the LDT.\n\tThe start descriptor is cleared and the number of descriptors\n\tare provided. Due to lack of sufficient bounds checking\n\tduring argument validity verification, unbound zero'ing of\n\tthe process LDT and adjacent memory can be initiated from\n\tusermode.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eThis vulnerability could cause the kernel to panic. In\n\taddition it is possible to perform a local Denial of Service\n\tagainst the system by unprivileged processes.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.0_2",
+          "ge": "11.0"
+        },
+        {
+          "lt": "10.3_11",
+          "ge": "10.3"
+        },
+        {
+          "lt": "10.2_24",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_41",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_49",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-03-16T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z",
+    "modified": "2016-10-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2016-1885"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:15.sysarch"
+    }
+  ]
+}

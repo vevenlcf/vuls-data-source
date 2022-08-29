@@ -1,0 +1,83 @@
+{
+  "vid": "2b841f88-2e8d-11e2-ad21-20cf30e32f6d",
+  "topic": "bugzilla -- multiple vulnerabilities",
+  "description": "\n\t\u003ch1\u003eA Bugzilla Security Advisory reports:\u003c/h1\u003e\n\t\u003cblockquote cite=\"http://www.bugzilla.org/security/3.6.11/\"\u003e\n\t  \u003cp\u003eThe following security issues have been discovered in\n\t     Bugzilla:\u003c/p\u003e\n\t  \u003ch1\u003eInformation Leak\u003c/h1\u003e\n\t  \u003cp\u003eIf the visibility of a custom field is controlled by a product\n\t    or a component of a product you cannot see, their names are\n\t    disclosed in the JavaScript code generated for this custom field\n\t    despite they should remain confidential.\u003c/p\u003e\n\t  \u003cp\u003eCalling the User.get method with a 'groups' argument leaks the\n\t    existence of the groups depending on whether an error is thrown\n\t    or not. This method now also throws an error if the user calling\n\t    this method does not belong to these groups (independently of\n\t    whether the groups exist or not).\u003c/p\u003e\n\t  \u003cp\u003eTrying to mark an attachment in a bug you cannot see as obsolete\n\t    discloses its description in the error message. The description\n\t    of the attachment is now removed from the error message.\u003c/p\u003e\n\t  \u003ch1\u003eCross-Site Scripting\u003c/h1\u003e\n\t  \u003cp\u003eDue to incorrectly filtered field values in tabular reports,\n\t    it is possible to inject code leading to XSS.\u003c/p\u003e\n\t  \u003cp\u003eA vulnerability in swfstore.swf from YUI2 allows JavaScript\n\t    injection exploits to be created against domains that host this\n\t    affected YUI .swf file.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bugzilla",
+      "range": [
+        {
+          "lt": "3.6.12",
+          "ge": "3.6.0"
+        },
+        {
+          "lt": "4.0.9",
+          "ge": "4.0.0"
+        },
+        {
+          "lt": "4.2.4",
+          "ge": "4.2.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-11-13T00:00:00Z",
+    "entry": "2012-11-14T00:00:00Z",
+    "modified": "2012-11-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=731178"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=781850"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=802204"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=790296"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.mozilla.org/show_bug.cgi?id=808845"
+    },
+    {
+      "source": "URL",
+      "text": "http://yuilibrary.com/support/20121030-vulnerability/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4199"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4198"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4197"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-4189"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-5881"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-5882"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-5883"
+    }
+  ]
+}

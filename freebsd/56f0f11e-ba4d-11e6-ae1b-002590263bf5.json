@@ -1,0 +1,33 @@
+{
+  "vid": "56f0f11e-ba4d-11e6-ae1b-002590263bf5",
+  "topic": "xen-kernel -- x86 64-bit bit test instruction emulation broken",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://xenbits.xen.org/xsa/advisory-195.html\"\u003e\n\t  \u003cp\u003eThe x86 instructions BT, BTC, BTR, and BTS, when used with a\n\t    destination memory operand and a source register rather than an\n\t    immediate operand, access a memory location offset from that\n\t    specified by the memory operand as specified by the high bits of\n\t    the register source.\u003c/p\u003e\n\t  \u003cp\u003eA malicious guest can modify arbitrary memory, allowing for\n\t    arbitrary code execution (and therefore privilege escalation\n\t    affecting the whole host), a crash of the host (leading to a DoS),\n\t    or information leaks. The vulnerability is sometimes exploitable\n\t    by unprivileged guest user processes.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.7.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-11-22T00:00:00Z",
+    "entry": "2016-12-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://xenbits.xen.org/xsa/advisory-195.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-9383"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/214936"
+    }
+  ]
+}

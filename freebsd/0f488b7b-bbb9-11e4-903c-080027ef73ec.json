@@ -1,0 +1,37 @@
+{
+  "vid": "0f488b7b-bbb9-11e4-903c-080027ef73ec",
+  "topic": "e2fsprogs -- buffer overflow if s_first_meta_bg too big",
+  "description": "\n\t\u003cp\u003eTheodore Ts'o reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://git.kernel.org/cgit/fs/ext2/e2fsprogs.git/commit/?id=f66e6ce4\"\u003e\n\t  \u003cp\u003eIf s_first_meta_bg is greater than the of number block group descriptor blocks, then reading or writing the block group descriptors will end up overruning the memory buffer allocated for the descriptors.\u003c/p\u003e\n\t  \u003cp\u003eThe finding is credited to a vulnerability report from Jose Duart of Google Security Team \u0026lt;jduart AT google.com\u0026gt; and was reported through oCERT-2015-002.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "e2fsprogs",
+      "range": [
+        {
+          "lt": "1.42.12"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-08-09T00:00:00Z",
+    "entry": "2015-02-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://git.kernel.org/cgit/fs/ext2/e2fsprogs.git/commit/?id=f66e6ce4"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.ocert.org/advisories/ocert-2015-002.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugzilla.redhat.com/show_bug.cgi?id=1187032"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-0247"
+    }
+  ]
+}

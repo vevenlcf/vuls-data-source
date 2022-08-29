@@ -1,0 +1,42 @@
+{
+  "vid": "ce808022-8ee6-11e6-a590-14dae9d210b8",
+  "topic": "FreeBSD -- Heap overflow vulnerability in bspatch",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe implementation of bspatch is susceptible to integer\n\toverflows with carefully crafted input, potentially allowing\n\tan attacker who can control the patch file to write at\n\tarbitrary locations in the heap. This issue was partially\n\taddressed in FreeBSD-SA-16:25.bspatch, but some possible\n\tinteger overflows remained.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn attacker who can control the patch file can cause a\n\tcrash or run arbitrary code under the credentials of the\n\tuser who runs bspatch, in many cases, root.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "11.0_1",
+          "ge": "11.0"
+        },
+        {
+          "lt": "10.3_10",
+          "ge": "10.3"
+        },
+        {
+          "lt": "10.2_23",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_40",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_48",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-10-10T00:00:00Z",
+    "entry": "2016-10-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:29.bspatch"
+    }
+  ]
+}

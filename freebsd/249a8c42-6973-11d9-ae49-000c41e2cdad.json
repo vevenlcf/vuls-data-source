@@ -1,0 +1,54 @@
+{
+  "vid": "249a8c42-6973-11d9-ae49-000c41e2cdad",
+  "topic": "zgv -- exploitable heap overflows",
+  "description": "\n\t\u003cp\u003einfamous41md reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=109886210702781\"\u003e\n\t  \u003cp\u003ezgv uses malloc() frequently to allocate memory for storing\n\t    image data.  When calculating how much to allocate, user\n\t    supplied data from image headers is multiplied and/or added\n\t    without any checks for arithmetic overflows.  We can\n\t    overflow numerous calculations, and cause small buffers to\n\t    be allocated.  Then we can overflow the buffer, and\n\t    eventually execute code.  There are a total of\n\t    11 overflows that are exploitable to execute arbitrary\n\t    code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eThese bugs exist in both zgv and xzgv.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "zgv",
+      "range": [
+        {
+          "lt": "5.8_1"
+        }
+      ]
+    },
+    {
+      "name": "xzgv",
+      "range": [
+        {
+          "lt": "0.8_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-10-26T00:00:00Z",
+    "entry": "2005-01-18T00:00:00Z",
+    "modified": "2005-01-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://rus.members.beeb.net/xzgv.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.svgalib.org/rus/zgv/"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.idefense.com/application/poi/display?id=160\u0026type=vulnerabilities\u0026flashstatus=false"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0994"
+    },
+    {
+      "source": "MLIST: 20041025210717.2799d9c1.infamous41md@hotpop.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=109886210702781"
+    },
+    {
+      "source": "MLIST: 20041027233907.A3678@netdirect.ca",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=109898111915661"
+    }
+  ]
+}

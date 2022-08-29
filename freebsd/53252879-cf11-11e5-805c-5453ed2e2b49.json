@@ -1,0 +1,53 @@
+{
+  "vid": "53252879-cf11-11e5-805c-5453ed2e2b49",
+  "topic": "py-pillow -- Buffer overflow in TIFF decoding code",
+  "description": "\n\t\u003cp\u003eThe Pillow maintainers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://pillow.readthedocs.org/en/3.1.x/releasenotes/3.1.1.html\"\u003e\n\t  \u003cp\u003ePillow 3.1.0 and earlier when linked against libtiff \u0026gt;= 4.0.0 on\n\t    x64 may overflow a buffer when reading a specially crafted tiff\n\t    file.\u003c/p\u003e\n\t  \u003cp\u003eSpecifically, libtiff \u0026gt;= 4.0.0 changed the return type of\n\t    TIFFScanlineSize from int32 to machine dependent int32|64. If the\n\t    scanline is sized so that it overflows an int32, it may be\n\t    interpreted as a negative number, which will then pass the size check\n\t    in TiffDecode.c line 236. To do this, the logical scanline size has\n\t    to be \u0026gt; 2gb, and for the test file, the allocated buffer size is 64k\n\t    against a roughly 4gb scan line size. Any image data over 64k is\n\t    written over the heap, causing a segfault.\u003c/p\u003e\n\t  \u003cp\u003eThis issue was found by security researcher FourOne.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-pillow",
+      "range": [
+        {
+          "lt": "2.9.0_1"
+        }
+      ]
+    },
+    {
+      "name": "py33-pillow",
+      "range": [
+        {
+          "lt": "2.9.0_1"
+        }
+      ]
+    },
+    {
+      "name": "py34-pillow",
+      "range": [
+        {
+          "lt": "2.9.0_1"
+        }
+      ]
+    },
+    {
+      "name": "py35-pillow",
+      "range": [
+        {
+          "lt": "2.9.0_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-02-04T00:00:00Z",
+    "entry": "2016-02-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/python-pillow/Pillow/commit/6dcbf5bd96b717c58d7b642949da8d323099928e"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-0740"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "vid": "38fdf07b-e8ec-11ea-8bbe-e0d55e2a8bf9",
+  "topic": "ark -- extraction outside of extraction directory",
+  "description": "\n\t\u003cp\u003eAlbert Astals Cid reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://kde.org/info/security/advisory-20200827-1.txt\"\u003e\n\t  \u003ch3\u003eOverview\u003c/h3\u003e\n\t    \u003cp\u003eA maliciously crafted TAR archive containing symlink entries\n\t      would install files anywhere in the user's home directory upon extraction.\u003c/p\u003e\n\t  \u003ch3\u003eProof of concept\u003c/h3\u003e\n\t    \u003cp\u003eFor testing, an example of malicious archive can be found at\n\t      \u003ca href=\"https://github.com/jwilk/traversal-archives/releases/download/0/dirsymlink.tar\"\u003edirsymlink.tar\u003c/a\u003e\n\t    \u003c/p\u003e\n\t  \u003ch3\u003eImpact\u003c/h3\u003e\n\t    \u003cp\u003eUsers can unwillingly install files like a modified .bashrc, or a malicious\n\t      script placed in ~/.config/autostart.\u003c/p\u003e\n\t  \u003ch3\u003eWorkaround\u003c/h3\u003e\n\t    \u003cp\u003eBefore extracting a downloaded archive using the Ark GUI, users should inspect it\n\t      to make sure it doesn't contain symlink entries pointing outside the extraction folder.\u003c/p\u003e\n\t    \u003cp\u003eThe 'Extract' context menu from the Dolphin file manager shouldn't be used.\u003c/p\u003e\n\t  \u003ch3\u003eSolution\u003c/h3\u003e\n\t    \u003cp\u003eArk 20.08.1 skips maliciously crafted symlinks when extracting TAR archives.\u003c/p\u003e\n\t    \u003cp\u003eAlternatively, \u003ca href=\"https://invent.kde.org/utilities/ark/-/commit/8bf8c5ef07b0ac5e914d752681e470dea403a5bd\"\u003e8bf8c5ef07b0ac5e914d752681e470dea403a5bd\u003c/a\u003e can be applied to previous releases.\u003c/p\u003e\n\t  \u003ch3\u003eCredits\u003c/h3\u003e\n\t    \u003cp\u003eThanks to Fabian Vogt for reporting this issue and for fixing it.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ark",
+      "range": [
+        {
+          "lt": "20.08.0_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-08-27T00:00:00Z",
+    "entry": "2020-08-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://kde.org/info/security/advisory-20200827-1.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-24654"
+    }
+  ]
+}

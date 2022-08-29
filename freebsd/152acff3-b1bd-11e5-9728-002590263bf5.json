@@ -1,0 +1,62 @@
+{
+  "vid": "152acff3-b1bd-11e5-9728-002590263bf5",
+  "topic": "qemu -- denial of service vulnerability in Q35 chipset emulation",
+  "description": "\n\t\u003cp\u003ePrasad J Pandit, Red Hat Product Security Team, reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/12/24/1\"\u003e\n\t  \u003cp\u003eQemu emulator built with the Q35 chipset based pc system emulator\n\t    is vulnerable to a heap based buffer overflow. It occurs during VM\n\t    guest migration, as more(16 bytes) data is moved into allocated\n\t    (8 bytes) memory area.\u003c/p\u003e\n\t  \u003cp\u003eA privileged guest user could use this issue to corrupt the VM\n\t    guest image, potentially leading to a DoS. This issue affects q35\n\t    machine types.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "2.5.50"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "2.5.50"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.5.50.g20151224"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.5.50.g20151224"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-11-19T00:00:00Z",
+    "entry": "2016-01-03T00:00:00Z",
+    "modified": "2016-07-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/12/24/1"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=d9a3b33d2c9f996537b7f1d0246dee2d0120cefb"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/seanbruno/qemu-bsd-user/commit/d9a3b33d2c9f996537b7f1d0246dee2d0120cefb"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8666"
+    }
+  ]
+}

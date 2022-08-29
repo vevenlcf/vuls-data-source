@@ -1,0 +1,75 @@
+{
+  "vid": "f927e06c-1109-11e4-b090-20cf30e32f6d",
+  "topic": "apache22 -- several vulnerabilities",
+  "description": "\n\t\u003cp\u003eApache HTTP SERVER PROJECT reports:\u003c/p\u003e\n\t  \u003cblockquote cite=\"http://www.apache.org/dist/httpd/CHANGES_2.2.29\"\u003e\n\t  \u003cp\u003e mod_deflate: The DEFLATE input filter (inflates request bodies) now\n\t    limits the length and compression ratio of inflated request bodies to\n\t    avoid denial of service via highly compressed bodies.  See directives\n\t    DeflateInflateLimitRequestBody, DeflateInflateRatioLimit, and\n\t    DeflateInflateRatioBurst.\u003c/p\u003e\n\t  \u003cp\u003emod_cgid: Fix a denial of service against CGI scripts that do not consume\n\t    stdin that could lead to lingering HTTPD child processes filling up the\n\t    scoreboard and eventually hanging the server.  By default, the client I/O\n\t    timeout (Timeout directive) now applies to communication with scripts.  The\n\t    CGIDScriptTimeout directive can be used to set a different timeout for\n\t    communication with scripts.\u003c/p\u003e\n\t  \u003cp\u003eFix a race condition in scoreboard handling, which could lead to a heap\n\t    buffer overflow.\u003c/p\u003e\n\t  \u003cp\u003ecore: HTTP trailers could be used to replace HTTP headers late during\n\t    request processing, potentially undoing or otherwise confusing modules\n\t    that examined or modified request headers earlier.  Adds \"MergeTrailers\"\n\t    directive to restore legacy behavior.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache22",
+      "range": [
+        {
+          "lt": "2.2.29",
+          "gt": "2.2.0"
+        }
+      ]
+    },
+    {
+      "name": "apache22-event-mpm",
+      "range": [
+        {
+          "lt": "2.2.29",
+          "gt": "2.2.0"
+        }
+      ]
+    },
+    {
+      "name": "apache22-itk-mpm",
+      "range": [
+        {
+          "lt": "2.2.29",
+          "gt": "2.2.0"
+        }
+      ]
+    },
+    {
+      "name": "apache22-peruser-mpm",
+      "range": [
+        {
+          "lt": "2.2.29",
+          "gt": "2.2.0"
+        }
+      ]
+    },
+    {
+      "name": "apache22-worker-mpm",
+      "range": [
+        {
+          "lt": "2.2.29",
+          "gt": "2.2.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-07-19T00:00:00Z",
+    "entry": "2014-07-24T00:00:00Z",
+    "modified": "2014-09-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0118"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0231"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0226"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2013-5704"
+    }
+  ]
+}

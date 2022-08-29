@@ -1,0 +1,30 @@
+{
+  "vid": "b747b2a9-7be0-11da-8ec4-0002b3b60e4c",
+  "topic": "bogofilter -- heap corruption through excessively long words",
+  "description": "\n\t\u003cp\u003eMatthias Andree reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://bogofilter.sourceforge.net/security/bogofilter-SA-2005-02\"\u003e\n\t  \u003cp\u003eBogofilter's/bogolexer's input handling in version 0.96.2 was not\n\t    keeping track of its output buffers properly and could overrun a\n\t    heap buffer if the input contained words whose length exceeded\n\t    16,384 bytes, the size of flex's input buffer. A \"word\" here refers\n\t    to a contiguous run of input octets that was not '_' and did not\n\t    match at least one of ispunct(), iscntrl() or isspace().\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bogofilter",
+      "range": [
+        {
+          "lt": "0.96.3",
+          "ge": "0.96.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-10-23T00:00:00Z",
+    "entry": "2006-01-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://bogofilter.sourceforge.net/security/bogofilter-SA-2005-02"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-4592"
+    }
+  ]
+}

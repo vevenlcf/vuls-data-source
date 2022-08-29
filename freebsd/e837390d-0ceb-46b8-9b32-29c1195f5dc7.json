@@ -1,0 +1,39 @@
+{
+  "vid": "e837390d-0ceb-46b8-9b32-29c1195f5dc7",
+  "topic": "solr -- Code execution via entity expansion",
+  "description": "\n\t\u003cp\u003eSolr developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lucene.472066.n3.nabble.com/Re-Several-critical-vulnerabilities-discovered-in-Apache-Solr-XXE-amp-RCE-td4358308.html\"\u003e\n\t  \u003cp\u003eLucene XML parser does not explicitly prohibit doctype declaration and expansion of external entities which leads to arbitrary HTTP requests to the local SOLR instance and to bypass all firewall restrictions.\u003c/p\u003e\n\t  \u003cp\u003eSolr \"RunExecutableListener\" class can be used to execute arbitrary commands on specific events, for example after each update query. The problem is that such listener can be enabled with any parameters just by using Config API with add-listener command.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache-solr",
+      "range": [
+        {
+          "ge": "5.1",
+          "le": "6.6.1"
+        },
+        {
+          "lt": "7.1",
+          "ge": "7.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-10-13T00:00:00Z",
+    "entry": "2017-10-13T00:00:00Z",
+    "modified": "2017-10-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lucene.472066.n3.nabble.com/Re-Several-critical-vulnerabilities-discovered-in-Apache-Solr-XXE-amp-RCE-td4358308.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://marc.info/?l=apache-announce\u0026m=150786685013286"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-12629"
+    }
+  ]
+}

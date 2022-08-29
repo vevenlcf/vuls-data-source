@@ -1,0 +1,30 @@
+{
+  "vid": "2eeb6652-a7a6-11e4-96ba-001999f8d30b",
+  "topic": "asterisk -- File descriptor leak when incompatible codecs are offered",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.asterisk.org/downloads/security-advisories\"\u003e\n\t  \u003cp\u003eAsterisk may be configured to only allow specific audio\n\t  or video codecs to be used when communicating with a\n\t  particular endpoint. When an endpoint sends an SDP offer\n\t  that only lists codecs not allowed by Asterisk, the offer\n\t  is rejected. However, in this case, RTP ports that are\n\t  allocated in the process are not reclaimed.\u003c/p\u003e\n\t  \u003cp\u003eThis issue only affects the PJSIP channel driver in\n\t  Asterisk. Users of the chan_sip channel driver are not\n\t  affected.\u003c/p\u003e\n\t  \u003cp\u003eAs the resources are allocated after authentication,\n\t  this issue only affects communications with authenticated\n\t  endpoints.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk13",
+      "range": [
+        {
+          "lt": "13.1.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-01-06T00:00:00Z",
+    "entry": "2015-01-29T00:00:00Z",
+    "modified": "2015-02-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://downloads.asterisk.org/pub/security/AST-2015-001.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-1558"
+    }
+  ]
+}

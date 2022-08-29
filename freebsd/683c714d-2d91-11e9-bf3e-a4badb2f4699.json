@@ -1,0 +1,34 @@
+{
+  "vid": "683c714d-2d91-11e9-bf3e-a4badb2f4699",
+  "topic": "FreeBSD -- System call kernel data register leak",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe callee-save registers are used by kernel and for\n\tsome of them (%r8, %r10, and for non-PTI configurations,\n\t%r9) the content is not sanitized before return from syscalls,\n\tpotentially leaking sensitive information.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eTypically an address of some kernel data structure used\n\tin the syscall implementation, is exposed.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.0_3",
+          "ge": "12.0"
+        },
+        {
+          "lt": "11.2_9",
+          "ge": "11.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-02-05T00:00:00Z",
+    "entry": "2019-02-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-5595"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-19:01.syscall"
+    }
+  ]
+}

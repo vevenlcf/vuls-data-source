@@ -1,0 +1,25 @@
+{
+  "vid": "2fbfd455-f2d0-11e2-8a46-000d601460a4",
+  "topic": "suPHP -- Privilege escalation",
+  "description": "\n\t\u003cp\u003esuPHP developer Sebastian Marsching reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://lists.marsching.com/pipermail/suphp/2013-May/002552.html\"\u003e\n\t  \u003cp\u003eWhen the suPHP_PHPPath was set, mod_suphp would use the specified PHP\n\t    executable to pretty-print PHP source files (MIME type\n\t    x-httpd-php-source or application/x-httpd-php-source).\u003c/p\u003e\n\t  \u003cp\u003eHowever, it would not sanitize the environment. Thus a user that was\n\t    allowed to use the SetEnv directive in a .htaccess file (AllowOverride\n\t    FileInfo) could make PHP load a malicious configuration file (e.g.\n\t    loading malicious extensions).\u003c/p\u003e\n\t  \u003cp\u003eAs the PHP process for highlighting the source file was run with the\n\t    privileges of the user Apache HTTPd was running as, a local attacker\n\t    could probably execute arbitrary code with the privileges of this user.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "suphp",
+      "range": [
+        {
+          "lt": "0.7.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2013-05-20T00:00:00Z",
+    "entry": "2013-07-22T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://lists.marsching.com/pipermail/suphp/2013-May/002552.html"
+    }
+  ]
+}

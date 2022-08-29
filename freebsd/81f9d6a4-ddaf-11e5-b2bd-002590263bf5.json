@@ -1,0 +1,29 @@
+{
+  "vid": "81f9d6a4-ddaf-11e5-b2bd-002590263bf5",
+  "topic": "xen-kernel -- VMX: guest user mode may crash guest with non-canonical RIP",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-170.html\"\u003e\n\t  \u003cp\u003eVMX refuses attempts to enter a guest with an instruction pointer\n\t    which doesn't satisfy certain requirements. In particular, the\n\t    instruction pointer needs to be canonical when entering a guest\n\t    currently in 64-bit mode. This is the case even if the VM entry\n\t    information specifies an exception to be injected immediately (in\n\t    which case the bad instruction pointer would possibly never get used\n\t    for other than pushing onto the exception handler's stack).\n\t    Provided the guest OS allows user mode to map the virtual memory\n\t    space immediately below the canonical/non-canonical address\n\t    boundary, a non-canonical instruction pointer can result even from\n\t    normal user mode execution. VM entry failure, however, is fatal to\n\t    the guest.\u003c/p\u003e\n\t  \u003cp\u003eMalicious HVM guest user mode code may be able to crash the\n\t    guest.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.2_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-02-17T00:00:00Z",
+    "entry": "2016-02-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-170.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-2271"
+    }
+  ]
+}

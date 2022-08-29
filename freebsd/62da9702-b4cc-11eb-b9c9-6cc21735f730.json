@@ -1,0 +1,61 @@
+{
+  "vid": "62da9702-b4cc-11eb-b9c9-6cc21735f730",
+  "topic": "PostgreSQL server -- two security issues",
+  "description": "\n\t\u003cp\u003eThe PostgreSQL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.postgresql.org/support/security/CVE-2021-32028/\"\u003e\n\t  \u003cp\u003eMemory disclosure in INSERT ... ON CONFLICT ... DO UPDATE\u003c/p\u003e\n\t  \u003cp\u003e\n\t    Using an INSERT ... ON CONFLICT ... DO UPDATE command on a\n\t    purpose-crafted table, an attacker can read arbitrary bytes of\n\t    server memory. In the default configuration, any authenticated\n\t    database user can create prerequisite objects and complete this\n\t    attack at will. A user lacking the CREATE and TEMPORARY privileges\n\t    on all databases and the CREATE privilege on all schemas cannot use\n\t    this attack at will..\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://www.postgresql.org/support/security/CVE-2021-32027/\"\u003e\n\t  \u003cp\u003e\n\t    Buffer overrun from integer overflow in array subscripting\n\t    calculations\n\t  \u003c/p\u003e\n\t  \u003cp\u003e\n\t    While modifying certain SQL array values, missing bounds checks let\n\t    authenticated database users write arbitrary bytes to a wide area of\n\t    server memory.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "postgresql13-server",
+      "range": [
+        {
+          "lt": "13.3"
+        }
+      ]
+    },
+    {
+      "name": "postgresql12-server",
+      "range": [
+        {
+          "lt": "12.7"
+        }
+      ]
+    },
+    {
+      "name": "postgresql11-server",
+      "range": [
+        {
+          "lt": "11.12"
+        }
+      ]
+    },
+    {
+      "name": "postgresql10-server",
+      "range": [
+        {
+          "lt": "10.17"
+        }
+      ]
+    },
+    {
+      "name": "postgresql96-server",
+      "range": [
+        {
+          "lt": "9.6.22"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-05-13T00:00:00Z",
+    "entry": "2021-05-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.postgresql.org/support/security/CVE-2021-32027/"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.postgresql.org/support/security/CVE-2021-32028/"
+    }
+  ]
+}

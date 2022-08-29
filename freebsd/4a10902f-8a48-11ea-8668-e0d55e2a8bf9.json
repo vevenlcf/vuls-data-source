@@ -1,0 +1,25 @@
+{
+  "vid": "4a10902f-8a48-11ea-8668-e0d55e2a8bf9",
+  "topic": "vlc -- Multiple vulnerabilities fixed in VLC media player",
+  "description": "\n\t\u003cp\u003eVideoLAN reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.videolan.org/security/sb-vlc309.html\"\u003e\n\t  \u003ch3\u003eDetails\u003c/h3\u003e\n\t  \u003cp\u003e    A remote user could:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e  Create a specifically crafted image file that could trigger an out of bounds read \u003c/li\u003e\n\t    \u003cli\u003e Send a specifically crafter request to the microdns service discovery, potentially triggering various memory management issues\u003c/li\u003e\n\t    \u003c/ul\u003e\n\t\u003ch3\u003eImpact\u003c/h3\u003e\n      \u003cp\u003e\nIf successful, a malicious third party could trigger either a crash of VLC or an arbitratry code execution with the privileges of the target user.\n\t\u003c/p\u003e\u003cp\u003e\n\t  While these issues in themselves are most likely to just crash the player, we can't exclude that they could be combined to leak user informations or remotely execute code. ASLR and DEP help reduce the likelyness of code execution, but may be bypassed.\u003c/p\u003e\n\t\u003cp\u003e\n\t    We have not seen exploits performing code execution through these vulnerabilities\u003c/p\u003e\n\t  \u003cp\u003eCVE-2019-19721 affects VLC 3.0.8 and earlier, and only reads 1 byte out of bound\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "vlc",
+      "range": [
+        {
+          "lt": "3.0.10,4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-04-01T00:00:00Z",
+    "entry": "2020-04-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.videolan.org/security/sb-vlc309.html"
+    }
+  ]
+}

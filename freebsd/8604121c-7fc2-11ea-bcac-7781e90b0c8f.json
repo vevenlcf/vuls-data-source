@@ -1,0 +1,61 @@
+{
+  "vid": "8604121c-7fc2-11ea-bcac-7781e90b0c8f",
+  "topic": "openvpn -- illegal client float can break VPN session for other users",
+  "description": "\n\t\u003cp\u003eLev Stipakov and Gert Doering report:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/OpenVPN/openvpn/commit/f7b318f811bb43c0d3aa7f337ec6242ed2c33881\"\u003e\n\t  \u003cp\u003eThere is a time frame between allocating peer-id and initializing data\n\t    channel key (which is performed on receiving push request or on async\n\t    push-reply) in which the existing peer-id float checks do not work right.\u003c/p\u003e\n\t  \u003cp\u003eIf a \"rogue\" data channel packet arrives during that time frame from\n\t    another address and with same peer-id, this would cause client to float\n\t    to that new address.\u003c/p\u003e\n\t  \u003cp\u003eThe net effect of this behaviour is that the VPN session for the\n\t    \"victim client\" is broken. Since the \"attacker client\" does not have\n\t    suitable keys, it can not inject or steal VPN traffic from the other\n\t    session. The time window is small and it can not be used to attack\n\t    a specific client's session, unless some other way is found to make it\n\t    disconnect and reconnect first.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openvpn",
+      "range": [
+        {
+          "lt": "2.4.8_3"
+        }
+      ]
+    },
+    {
+      "name": "openvpn-mbedtls",
+      "range": [
+        {
+          "lt": "2.4.8_3"
+        }
+      ]
+    },
+    {
+      "name": "openvpn-devel",
+      "range": [
+        {
+          "lt": "202016"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-04-13T00:00:00Z",
+    "entry": "2020-04-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/OpenVPN/openvpn/commit/f7b318f811bb43c0d3aa7f337ec6242ed2c33881"
+    },
+    {
+      "source": "URL",
+      "text": "https://sourceforge.net/p/openvpn/openvpn/ci/f7b318f811bb43c0d3aa7f337ec6242ed2c33881/"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg19720.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://community.openvpn.net/openvpn/ticket/1272"
+    },
+    {
+      "source": "URL",
+      "text": "https://patchwork.openvpn.net/patch/1077/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-11810"
+    }
+  ]
+}

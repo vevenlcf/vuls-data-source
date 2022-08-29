@@ -1,0 +1,67 @@
+{
+  "vid": "9fae0f1f-df82-11d9-b875-0001020eed82",
+  "topic": "tcpdump -- infinite loops in protocol decoding",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eSeveral tcpdump protocol decoders contain programming\n\t  errors which can cause them to go into infinite loops.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eAn attacker can inject specially crafted packets into the\n\t   network which, when processed by tcpdump, could lead to a\n\t   denial-of-service. After the attack, tcpdump would no\n\t   longer capture traffic, and would potentially use all\n\t   available processor time.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_2",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_16",
+          "ge": "5.3"
+        }
+      ]
+    },
+    {
+      "name": "tcpdump",
+      "range": [
+        {
+          "lt": "3.8.3_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-06-09T00:00:00Z",
+    "entry": "2005-06-18T00:00:00Z",
+    "modified": "2005-06-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1267"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1278"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1279"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1280"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:10.tcpdump"
+    },
+    {
+      "source": "MLIST: 20050426100140.1945.qmail@www.securityfocus.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=111454406222040"
+    },
+    {
+      "source": "MLIST: 20050426100057.1748.qmail@www.securityfocus.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=111454461300644"
+    },
+    {
+      "source": "MLIST: 20050619091553.GB982@zaphod.nitro.dk",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=111928309502304"
+    }
+  ]
+}

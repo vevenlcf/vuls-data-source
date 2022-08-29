@@ -1,0 +1,29 @@
+{
+  "vid": "d923fb0c-8c2f-11ec-aa85-0800270512f4",
+  "topic": "zsh -- Arbitrary command execution vulnerability",
+  "description": "\n\t\u003cp\u003e Marc Cornellà reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://zsh.sourceforge.io/releases.html\"\u003e\n\t  \u003cp\u003e\n\t    Some prompt expansion sequences, such as %F, support 'arguments'\n\t    which are themselves expanded in case they contain colour values,\n\t    etc. This additional expansion would trigger PROMPT_SUBST evaluation,\n\t    if enabled. This could be abused to execute code the user didn't\n\t    expect. e.g., given a certain prompt configuration, an attacker\n\t    could trick a user into executing arbitrary code by having them\n\t    check out a Git branch with a specially crafted name.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "zsh",
+      "range": [
+        {
+          "lt": "5.8.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-02-12T00:00:00Z",
+    "entry": "2022-02-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://zsh.sourceforge.io/releases.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-45444"
+    }
+  ]
+}

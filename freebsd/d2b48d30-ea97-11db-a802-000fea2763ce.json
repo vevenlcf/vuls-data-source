@@ -1,0 +1,30 @@
+{
+  "vid": "d2b48d30-ea97-11db-a802-000fea2763ce",
+  "topic": "lighttpd -- Remote DOS in CRLF parsing",
+  "description": "\n\t\u003cp\u003eLighttpd SA:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.lighttpd.net/assets/2007/4/13/lighttpd_sa2007_01.txt\"\u003e\n\t  \u003cp\u003eIf the connection aborts during parsing \"\\r\\n\\r\\n\" the server\n\t    might get into a infinite loop and use 100% of the CPU time.\n\t    lighttpd still responses to other requests. This can be repeated\n\t    until either the server limit for concurrent connections or file\n\t    descriptors is reached.\u003c/p\u003e\n\t  \u003cp\u003eThe bug was reported and fixed by Robert Jakabosky.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "lighttpd",
+      "range": [
+        {
+          "lt": "1.4.13_2",
+          "gt": "1.4.11"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-12-15T00:00:00Z",
+    "entry": "2007-04-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.lighttpd.net/assets/2007/4/13/lighttpd_sa2007_01.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-1869"
+    }
+  ]
+}

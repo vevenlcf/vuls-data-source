@@ -1,0 +1,30 @@
+{
+  "vid": "6d0bf320-ca39-11e2-9673-001e8c75030d",
+  "topic": "devel/subversion -- contrib hook-scripts can allow arbitrary code execution",
+  "description": "\n\t\u003cp\u003eSubversion team reports:\u003c/p\u003e\n\t  \u003cblockquote cite=\"http://subversion.apache.org/security/CVE-2013-2088-advisory.txt\"\u003e\n\t    \u003cp\u003eThe script contrib/hook-scripts/check-mime-type.pl does not escape\n\t      argv arguments to 'svnlook' that start with a hyphen.  This could be\n\t      used to cause 'svnlook', and hence check-mime-type.pl, to error out.\u003c/p\u003e\n\t    \u003cp\u003eThe script contrib/hook-scripts/svn-keyword-check.pl parses filenames\n\t      from the output of 'svnlook changed' and passes them to a further\n\t      shell command (equivalent to the 'system()' call of the C standard\n\t      library) without escaping them.  This could be used to run arbitrary\n\t      shell commands in the context of the user whom the pre-commit script\n\t      runs as (the user who owns the repository).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "subversion",
+      "range": [
+        {
+          "lt": "1.7.10",
+          "ge": "1.7.0"
+        },
+        {
+          "lt": "1.6.23",
+          "ge": "1.2.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2013-05-31T00:00:00Z",
+    "entry": "2013-05-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2013-2088"
+    }
+  ]
+}

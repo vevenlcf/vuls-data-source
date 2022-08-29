@@ -1,0 +1,33 @@
+{
+  "vid": "9393213d-489b-11e5-b8c7-d050996490d0",
+  "topic": "drupal -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eDrupal development team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.drupal.org/SA-CORE-2015-003\"\u003e\n\t  \u003cp\u003eThis security advisory fixes multiple vulnerabilities.\n\t    See below for a list.\u003c/p\u003e\n\t  \u003ch3\u003eCross-site Scripting - Ajax system - Drupal 7\u003c/h3\u003e\n\t  \u003cp\u003eA vulnerability was found that allows a malicious\n\t    user to perform a cross-site scripting attack by\n\t    invoking Drupal.ajax() on a whitelisted HTML element.\u003c/p\u003e\n\t  \u003cp\u003eThis vulnerability is mitigated on sites that do not\n\t    allow untrusted users to enter HTML.\u003c/p\u003e\n\t  \u003ch3\u003eCross-site Scripting - Autocomplete system - Drupal 6 and 7\u003c/h3\u003e\n\t  \u003cp\u003eA cross-site scripting vulnerability was found in\n\t    the autocomplete functionality of forms. The\n\t    requested URL is not sufficiently sanitized.\u003c/p\u003e\n\t  \u003cp\u003eThis vulnerability is mitigated by the fact that\n\t    the malicious user must be allowed to upload files.\u003c/p\u003e\n\t  \u003ch3\u003eSQL Injection - Database API - Drupal 7\u003c/h3\u003e\n\t  \u003cp\u003eA vulnerability was found in the SQL comment\n\t    filtering system which could allow a user with\n\t    elevated permissions to inject malicious code in\n\t    SQL comments.\u003c/p\u003e\n\t  \u003cp\u003eThis vulnerability is mitigated by the fact that\n\t    only one contributed module that the security team\n\t    found uses the comment filtering system in a way\n\t    that would trigger the vulnerability. That module\n\t    requires you to have a very high level of access\n\t    in order to perform the attack.\u003c/p\u003e\n\t  \u003ch3\u003eCross-site Request Forgery - Form API - Drupal 6 and 7\u003c/h3\u003e\n\t  \u003cp\u003eA vulnerability was discovered in Drupal's form API\n\t    that could allow file upload value callbacks to run\n\t    with untrusted input, due to form token validation\n\t    not being performed early enough. This vulnerability\n\t    could allow a malicious user to upload files to the\n\t    site under another user's account.\u003c/p\u003e\n\t  \u003cp\u003eThis vulnerability is mitigated by the fact that\n\t    the uploaded files would be temporary, and Drupal\n\t    normally deletes temporary files automatically\n\t    after 6 hours.\u003c/p\u003e\n\t  \u003ch3\u003eInformation Disclosure in Menu Links - Access system - Drupal 6 and 7\u003c/h3\u003e\n\t  \u003cp\u003eUsers without the \"access content\" permission\n\t    can see the titles of nodes that they do not have\n\t    access to, if the nodes are added to a menu on the\n\t    site that the users have access to.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "drupal6",
+      "range": [
+        {
+          "lt": "6.37"
+        }
+      ]
+    },
+    {
+      "name": "drupal7",
+      "range": [
+        {
+          "lt": "7.39"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-19T00:00:00Z",
+    "entry": "2015-08-22T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.drupal.org/SA-CORE-2015-003"
+    }
+  ]
+}

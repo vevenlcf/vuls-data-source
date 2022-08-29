@@ -1,0 +1,34 @@
+{
+  "vid": "6b90acba-6a0a-11ea-92ab-00163e433440",
+  "topic": "FreeBSD -- Kernel memory disclosure with nested jails",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eA missing NUL-termination check for the jail_set(2) configration\n\toption \"osrelease\" may return more bytes when reading the jail\n\tconfiguration back with jail_get(2) than were originally set.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eFor jails with a non-default setting of children.max \u0026gt; 0 (\"nested\n\tjails\") a superuser inside a jail can create a jail and may be able to\n\tread and take advantage of exposed kernel memory.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.1_3",
+          "ge": "12.1"
+        },
+        {
+          "lt": "11.3_7",
+          "ge": "11.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-03-19T00:00:00Z",
+    "entry": "2020-03-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2020-7453"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-20:08.jail"
+    }
+  ]
+}

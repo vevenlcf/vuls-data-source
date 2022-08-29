@@ -1,0 +1,30 @@
+{
+  "vid": "912cb7f7-27df-11e5-a4a5-002590263bf5",
+  "topic": "xen-kernel -- arm: vgic: incorrect rate limiting of guest triggered logging",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-118.html\"\u003e\n\t  \u003cp\u003eOn ARM systems the code which deals with virtualizing the GIC\n\t    distributor would, under various circumstances, log messages on a\n\t    guest accessible code path without appropriate rate limiting.\u003c/p\u003e\n\t  \u003cp\u003eA malicious guest could cause repeated logging to the hypervisor\n\t    console, leading to a Denial of Service attack.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.0_3",
+          "ge": "4.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-01-29T00:00:00Z",
+    "entry": "2015-07-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-118.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-1563"
+    }
+  ]
+}

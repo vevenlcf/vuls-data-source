@@ -1,0 +1,42 @@
+{
+  "vid": "759059ac-dab3-11e7-b5af-a4badb2f4699",
+  "topic": "FreeBSD -- Information leak in kldstat(2)",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe kernel does not properly clear the memory of the\n\tkld_file_stat structure before filling the data. Since the\n\tstructure filled by the kernel is allocated on the kernel\n\tstack and copied to userspace, a leak of information from\n\tthe kernel stack is possible.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eSome bytes from the kernel stack can be observed in\n\tuserspace.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.1_4",
+          "ge": "11.1"
+        },
+        {
+          "lt": "11.0_15",
+          "ge": "11.0"
+        },
+        {
+          "lt": "10.4_3",
+          "ge": "10.4"
+        },
+        {
+          "lt": "10.3_24",
+          "ge": "10.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-11-15T00:00:00Z",
+    "entry": "2017-12-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2017-1088"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-17:10.kldstat"
+    }
+  ]
+}

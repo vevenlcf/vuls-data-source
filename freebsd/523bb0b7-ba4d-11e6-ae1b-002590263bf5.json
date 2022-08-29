@@ -1,0 +1,33 @@
+{
+  "vid": "523bb0b7-ba4d-11e6-ae1b-002590263bf5",
+  "topic": "xen-kernel -- x86 task switch to VM86 mode mis-handled",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://xenbits.xen.org/xsa/advisory-192.html\"\u003e\n\t  \u003cp\u003eLDTR, just like TR, is purely a protected mode facility. Hence even\n\t    when switching to a VM86 mode task, LDTR loading needs to follow\n\t    protected mode semantics. This was violated by the code.\u003c/p\u003e\n\t  \u003cp\u003eOn SVM (AMD hardware): a malicious unprivileged guest process can\n\t    escalate its privilege to that of the guest operating system.\u003c/p\u003e\n\t  \u003cp\u003eOn both SVM and VMX (Intel hardware): a malicious unprivileged\n\t    guest process can crash the guest.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.7.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-11-22T00:00:00Z",
+    "entry": "2016-12-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://xenbits.xen.org/xsa/advisory-192.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-9382"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/214936"
+    }
+  ]
+}

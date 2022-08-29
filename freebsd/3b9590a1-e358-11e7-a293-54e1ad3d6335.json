@@ -1,0 +1,45 @@
+{
+  "vid": "3b9590a1-e358-11e7-a293-54e1ad3d6335",
+  "topic": "libXfont -- multiple memory leaks",
+  "description": "\n\t\u003cp\u003eThe freedesktop.org project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://cgit.freedesktop.org/xorg/lib/libXfont/commit/?id=d1e670a4a8704b8708e493ab6155589bcd570608\"\u003e\n\t  \u003cp\u003eIf a pattern contains '?' character, any character in the string\n\t    is skipped, even if it is '\\0'. The rest of the matching then reads\n\t    invalid memory.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://cgit.freedesktop.org/xorg/lib/libXfont/commit/?id=672bb944311392e2415b39c0d63b1e1902906bcd\"\u003e\n\t  \u003cp\u003eWithout the checks a malformed PCF file can cause the library to\n\t    make atom from random heap memory that was behind the `strings`\n\t    buffer. This may crash the process or leak information.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libXfont",
+      "range": [
+        {
+          "lt": "1.5.3"
+        }
+      ]
+    },
+    {
+      "name": "libXfont2",
+      "range": [
+        {
+          "lt": "2.0.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-10-04T00:00:00Z",
+    "entry": "2017-12-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://cgit.freedesktop.org/xorg/lib/libXfont/commit/?id=d1e670a4a8704b8708e493ab6155589bcd570608"
+    },
+    {
+      "source": "URL",
+      "text": "https://cgit.freedesktop.org/xorg/lib/libXfont/commit/?id=672bb944311392e2415b39c0d63b1e1902905bcd"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-13720"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-13722"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "vid": "eab964f8-d632-11ea-9172-4c72b94353b5",
+  "topic": "typo3 -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eTypo3 Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://typo3.org/article/typo3-1046-and-9520-security-releases-published\"\u003e\n\t  \u003cp\u003eIn case an attacker manages to generate a valid cryptographic message authentication\n\t    code (HMAC-SHA1) - either by using a different existing vulnerability or in case the\n\t    internal encryptionKey was exposed - it is possible to retrieve arbitrary files of a\n\t    TYPO3 installation. This includes the possibility to fetch typo3conf/LocalConfiguration.php\n\t    which again contains the encryptionKey as well as credentials of the database management\n\t    system being used.\n\t    In case a database server is directly accessible either via internet or in a shared hosting\n\t    network, this allows to completely retrieve, manipulate or delete database contents.\n\t    This includes creating an administration user account - which can be used to trigger remote\n\t    code execution by injecting custom extensions.\u003c/p\u003e\n\t  \u003cp\u003eIt has been discovered that an internal verification mechanism can be used to generate\n\t    arbitrary checksums. This allows to inject arbitrary data having a valid cryptographic\n\t    message authentication code (HMAC-SHA1) and can lead to various attack chains as described\n\t    below.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "typo3-9-php72",
+      "range": [
+        {
+          "lt": "9.5.20"
+        }
+      ]
+    },
+    {
+      "name": "typo3-9-php73",
+      "range": [
+        {
+          "lt": "9.5.20"
+        }
+      ]
+    },
+    {
+      "name": "typo3-9-php74",
+      "range": [
+        {
+          "lt": "9.5.20"
+        }
+      ]
+    },
+    {
+      "name": "typo3-10-php72",
+      "range": [
+        {
+          "lt": "10.4.6"
+        }
+      ]
+    },
+    {
+      "name": "typo3-10-php73",
+      "range": [
+        {
+          "lt": "10.4.6"
+        }
+      ]
+    },
+    {
+      "name": "typo3-10-php74",
+      "range": [
+        {
+          "lt": "10.4.6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-07-28T00:00:00Z",
+    "entry": "2020-08-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://typo3.org/article/typo3-1046-and-9520-security-releases-published"
+    },
+    {
+      "source": "URL",
+      "text": "https://typo3.org/security/advisory/typo3-core-sa-2020-007"
+    },
+    {
+      "source": "URL",
+      "text": "https://typo3.org/security/advisory/typo3-core-sa-2020-008"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-15098"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-15099"
+    }
+  ]
+}

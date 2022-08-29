@@ -1,0 +1,34 @@
+{
+  "vid": "e75a96df-73ca-11e5-9b45-b499baebfeaf",
+  "topic": "LibreSSL -- Memory leak and buffer overflow",
+  "description": "\n\t\u003cp\u003eQualys reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/10/16/1\"\u003e\n\t  \u003cp\u003eDuring the code review of OpenSMTPD a memory leak and buffer overflow\n\t    (an off-by-one, usually stack-based) were discovered in LibreSSL's\n\t    OBJ_obj2txt() function. This function is called automatically during\n\t    a TLS handshake (both client-side, unless an anonymous mode is used,\n\t    and server-side, if client authentication is requested).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libressl",
+      "range": [
+        {
+          "lt": "2.2.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-10-15T00:00:00Z",
+    "entry": "2015-10-16T00:00:00Z",
+    "modified": "2015-10-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://marc.info/?l=openbsd-announce\u0026m=144495690528446"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5333"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5334"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "vid": "67710833-1626-11d9-bc4a-000c41e2cdad",
+  "topic": "Boundary checking errors in syscons",
+  "description": "\n\t\u003cp\u003eThe syscons CONS_SCRSHOT \u003ca href=\"http://www.freebsd.org/cgi/man.cgi?query=ioctl\"\u003eioctl(2)\u003c/a\u003e\n\t  does insufficient validation of its input arguments.\tIn\n\t  particular, negative coordinates or large coordinates may\n\t  cause unexpected behavior.\u003c/p\u003e\n\t\u003cp\u003eIt may be possible to cause the CONS_SCRSHOT ioctl to\n\t  return portions of kernel memory.  Such memory might\n\t  contain sensitive information, such as portions of the\n\t  file cache or terminal buffers.  This information might be\n\t  directly useful, or it might be leveraged to obtain elevated\n\t  privileges in some way.  For example, a terminal buffer\n\t  might include a user-entered password.\u003c/p\u003e\n\t\u003cp\u003eThis bug may be exploitable by users who have access to the\n\t  physical console or can otherwise open a /dev/ttyv* device\n\t  node.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.2.1_11",
+          "ge": "5.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-09-30T00:00:00Z",
+    "entry": "2004-10-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://svnweb.freebsd.org/changeset/base/135942"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2004-0919"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-04:15.syscons"
+    }
+  ]
+}

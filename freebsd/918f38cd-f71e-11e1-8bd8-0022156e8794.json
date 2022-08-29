@@ -1,0 +1,55 @@
+{
+  "vid": "918f38cd-f71e-11e1-8bd8-0022156e8794",
+  "topic": "php5 -- header splitting attack via carriage-return character",
+  "description": "\n\t\u003cp\u003eRui Hirokawa reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://bugs.php.net/bug.php?id=60227\"\u003e\n\t  \u003cp\u003eAs of PHP 5.1.2, header() can no longer be used to send\n\t  multiple response headers in a single call to prevent the\n\t  HTTP Response Splitting Attack.  header() only checks the\n\t  linefeed (LF, 0x0A) as line-end marker, it doesn't check the\n\t  carriage-return (CR, 0x0D).\u003c/p\u003e\n\t  \u003cp\u003eHowever, some browsers including Google Chrome, IE also\n\t  recognize CR as the line-end.\u003c/p\u003e\n\t  \u003cp\u003eThe current specification of header() still has the\n\t  vulnerability against the HTTP header splitting attack.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "php5",
+      "range": [
+        {
+          "lt": "5.2.17_11",
+          "ge": "5.2"
+        },
+        {
+          "lt": "5.3.11",
+          "ge": "5.3"
+        },
+        {
+          "lt": "5.4.1",
+          "ge": "5.4"
+        }
+      ]
+    },
+    {
+      "name": "php52",
+      "range": [
+        {
+          "lt": "5.2.17_11"
+        }
+      ]
+    },
+    {
+      "name": "php53",
+      "range": [
+        {
+          "lt": "5.3.11"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-11-06T00:00:00Z",
+    "entry": "2012-09-05T00:00:00Z",
+    "modified": "2012-09-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugs.php.net/bug.php?id=60227"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-1398"
+    }
+  ]
+}

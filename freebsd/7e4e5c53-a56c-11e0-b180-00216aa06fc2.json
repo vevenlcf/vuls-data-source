@@ -1,0 +1,54 @@
+{
+  "vid": "7e4e5c53-a56c-11e0-b180-00216aa06fc2",
+  "topic": "phpmyadmin -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe phpMyAdmin development team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.phpmyadmin.net/home_page/security/PMASA-2011-5.php\"\u003e\n\t  \u003cp\u003eIt was possible to manipulate the PHP session superglobal using\n\t    some of the Swekey authentication code.  This could open a path\n\t    for other attacks.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.phpmyadmin.net/home_page/security/PMASA-2011-6.php\"\u003e\n\t  \u003cp\u003eAn unsanitized key from the Servers array is written in a comment\n\t    of the generated config.  An attacker can modify this key by\n\t    modifying the SESSION superglobal array.  This allows the attacker\n\t    to close the comment and inject code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.phpmyadmin.net/home_page/security/PMASA-2011-7.php\"\u003e\n\t  \u003cp\u003eThrough a possible bug in PHP running on Windows systems a NULL\n\t    byte can truncate the pattern string allowing an attacker to\n\t    inject the /e modifier causing the preg_replace function to\n\t    execute its second argument as PHP code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.phpmyadmin.net/home_page/security/PMASA-2011-8.php\"\u003e\n\t  \u003cp\u003eFixed filtering of a file path in the MIME-type transformation\n\t    code, which allowed for directory traversal.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "phpMyAdmin",
+      "range": [
+        {
+          "lt": "3.4.3.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-07-02T00:00:00Z",
+    "entry": "2011-07-03T00:00:00Z",
+    "modified": "2011-07-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.phpmyadmin.net/home_page/security/PMASA-2011-5.php"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.phpmyadmin.net/home_page/security/PMASA-2011-6.php"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.phpmyadmin.net/home_page/security/PMASA-2011-7.php"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.phpmyadmin.net/home_page/security/PMASA-2011-8.php"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-2505"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-2506"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-2507"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-2508"
+    }
+  ]
+}

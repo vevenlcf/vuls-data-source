@@ -1,0 +1,30 @@
+{
+  "vid": "253486f5-947d-11ea-92ab-00163e433440",
+  "topic": "FreeBSD -- Improper checking in SCTP-AUTH shared key update",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe SCTP layer does improper checking when an application tries to update\n\ta shared key.  Therefore an unprivileged local user can trigger a use-after-\n\tfree situation, for example by specific sequences of updating shared keys and\n\tclosing the SCTP association.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eTriggering the use-after-free situation may result in unintended kernel\n\tbehaviour including a kernel panic.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.3_9",
+          "ge": "11.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-09-19T00:00:00Z",
+    "entry": "2020-05-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-15878"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-20:14.sctp"
+    }
+  ]
+}

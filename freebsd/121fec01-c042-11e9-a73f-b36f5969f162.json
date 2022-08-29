@@ -1,0 +1,45 @@
+{
+  "vid": "121fec01-c042-11e9-a73f-b36f5969f162",
+  "topic": "nghttp2 -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003enghttp2 GitHub releases:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/nghttp2/nghttp2/releases\"\u003e\n\t  \u003cp\u003eThis release fixes CVE-2019-9511 \"Data Dribble\" and CVE-2019-9513\n\t    \"Resource Loop\" vulnerability in nghttpx and nghttpd. Specially crafted\n\t    HTTP/2 frames cause Denial of Service by consuming CPU time. Check out\n\t    https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md\n\t    for details. For nghttpx, additionally limiting inbound traffic by\n\t    --read-rate and --read-burst options is quite effective against this\n\t    kind of attack.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2019-9511 \"Data Dribble\": The attacker requests a large amount of\n\t    data from a specified resource over multiple streams. They manipulate\n\t    window size and stream priority to force the server to queue the data in\n\t    1-byte chunks. Depending on how efficiently this data is queued, this\n\t    can consume excess CPU, memory, or both, potentially leading to a\n\t    denial of service.\u003c/p\u003e\n\t  \u003cp\u003eCVE-2019-9513 \"Ping Flood\": The attacker sends continual pings to an\n\t    HTTP/2 peer, causing the peer to build an internal queue of responses.\n\t    Depending on how efficiently this data is queued, this can consume\n\t    excess CPU, memory, or both, potentially leading to a denial of service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libnghttp2",
+      "range": [
+        {
+          "lt": "1.39.2"
+        }
+      ]
+    },
+    {
+      "name": "nghttp2",
+      "range": [
+        {
+          "lt": "1.39.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-08-13T00:00:00Z",
+    "entry": "2019-08-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/nghttp2/nghttp2/releases"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-9511"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2019-9513"
+    }
+  ]
+}

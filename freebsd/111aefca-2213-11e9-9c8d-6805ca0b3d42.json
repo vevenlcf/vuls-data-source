@@ -1,0 +1,61 @@
+{
+  "vid": "111aefca-2213-11e9-9c8d-6805ca0b3d42",
+  "topic": "phpMyAdmin -- File disclosure and SQL injection",
+  "description": "\n\t\u003cp\u003eThe phpMyAdmin development team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2019-1/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eArbitrary file read vulnerability\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eWhen \u003ccode\u003eAllowArbitraryServer\u003c/code\u003e configuration set\n\t    to \u003ccode\u003etrue\u003c/code\u003e, with the use of a rogue MySQL server,\n\t    an attacker can read any file on the server that the web\n\t    server's user can access.\u003c/p\u003e\n\t  \u003cp\u003ephpMyadmin attempts to block the use of \u003ccode\u003eLOAD DATA\n\t    INFILE\u003c/code\u003e, but due to a \u003ca href=\"https://bugs.php.net/bug.php?id=77496\"\u003ebug in PHP\u003c/a\u003e,\n\t    this check is not honored. Additionally, when using the\n\t    'mysql' extension, \u003ca href=\"http://php.net/manual/en/mysql.configuration.php#ini.mysql.allow-local-infile\"\u003emysql.allow_local_infile\u003c/a\u003e\n\t    is enabled by default. Both of these conditions allow the\n\t    attack to occur.\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this vulnerability to be critical.\u003c/p\u003e\n\t  \u003ch3\u003eMitigation factor\u003c/h3\u003e\n\t  \u003cp\u003eThis attack can be mitigated by setting the\n\t    `AllowArbitraryServer` configuration directive to false\n\t    (which is the default value).\u003c/p\u003e\n\t  \u003ch3\u003eAffected Versions\u003c/h3\u003e\n\t  \u003cp\u003ephpMyAdmin versions from at least 4.0 through 4.8.4 are\n\t    affected\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2019-2/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eSQL injection in Designer feature\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eA vulnerability was reported where a specially crafted\n\t    username can be used to trigger an SQL injection attack\n\t    through the designer feature.\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this vulnerability to be serious.\u003c/p\u003e\n\t  \u003ch3\u003eAffected Versions\u003c/h3\u003e\n\t  \u003cp\u003ephpMyAdmin versions from 4.5.0 through 4.8.4 are affected\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "phpMyAdmin",
+      "range": [
+        {
+          "lt": "4.8.5"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php56",
+      "range": [
+        {
+          "lt": "4.8.5"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php70",
+      "range": [
+        {
+          "lt": "4.8.5"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php71",
+      "range": [
+        {
+          "lt": "4.8.5"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php72",
+      "range": [
+        {
+          "lt": "4.8.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-01-21T00:00:00Z",
+    "entry": "2019-01-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2019-1/"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2019-2/"
+    }
+  ]
+}

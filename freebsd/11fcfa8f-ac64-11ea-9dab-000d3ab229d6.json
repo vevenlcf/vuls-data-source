@@ -1,0 +1,57 @@
+{
+  "vid": "11fcfa8f-ac64-11ea-9dab-000d3ab229d6",
+  "topic": "Node.js -- June 2020 Security Releases",
+  "description": "\n\t\u003cp\u003eNode.js reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://nodejs.org/en/blog/vulnerability/june-2020-security-releases/\"\u003e\n\t  \u003cp\u003eUpdates are now available for all supported Node.js release lines for the following issues.\u003c/p\u003e\n    \u003ch1\u003eTLS session reuse can lead to host certificate verification bypass (High) (CVE-2020-8172)\u003c/h1\u003e\n    \u003cp\u003eThe 'session' event could be emitted before the 'secureConnect' event. It should not be, because the\n      connection may fail to be authorized. If it was saved an authorized connection could be established\n      later with the session ticket. Note that the https agent caches sessions, so is vulnerable to this.\u003c/p\u003e\n    \u003cp\u003eThe 'session' event will now only be emitted after the 'secureConnect' event, and only for authorized\n      connections.\u003c/p\u003e\n    \u003ch1\u003eHTTP/2 Large Settings Frame DoS (Low) (CVE-2020-11080)\u003c/h1\u003e\n    \u003cp\u003eReceiving unreasonably large HTTP/2 SETTINGS frames can consume 100% CPU to process all the settings,\n      blocking all other activities until complete.\u003c/p\u003e\n    \u003cp\u003eThe HTTP/2 session frame is limited to 32 settings by default. This can be configured if necessary\n      using the maxSettings option.\u003c/p\u003e\n    \u003ch1\u003enapi_get_value_string_*() allows various kinds of memory corruption (High) (CVE-2020-8174)\u003c/h1\u003e\n    \u003cp\u003eCalling napi_get_value_string_latin1(), napi_get_value_string_utf8(), or napi_get_value_string_utf16()\n      with a non-NULL buf, and a bufsize of 0 will cause the entire string value to be written to buf,\n      probably overrunning the length of the buffer.\u003c/p\u003e\n    \u003cp\u003eA exploit has not been reported and it may be difficult but the following is suggested:\u003c/p\u003e\n    \u003cul\u003e\n      \u003cli\u003eAll users of LTS Node.js versions should update to the versions announced in this security post.\n\tThis will address the issue for any non pre-built add-on.\u003c/li\u003e\n      \u003cli\u003eMaintainers who support EOL Node.js versions and/or build against a version of Node.js that did not\n\tsupport N-API internally should update to use the new versions of node-addon-api 1.x and 2.x that\n\twill be released soon after this announcement.\u003c/li\u003e\n    \u003c/ul\u003e\n    \u003ch1\u003eICU-20958 Prevent SEGV_MAPERR in append (High) (CVE-2020-10531)\u003c/h1\u003e\n    \u003cp\u003eAn issue was discovered in International Components for Unicode (ICU) for C/C++ through 66.1. An\n      integer overflow, leading to a heap-based buffer overflow, exists in the UnicodeString::doAppend()\n      function in common/unistr.cpp.\u003c/p\u003e\n    \u003cp\u003eFix was applied to 10.x in an abundance of caution, even though there is no known way to trigger the\n      overflow in 10.x.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "node",
+      "range": [
+        {
+          "lt": "14.4.0"
+        }
+      ]
+    },
+    {
+      "name": "node12",
+      "range": [
+        {
+          "lt": "12.18.0"
+        }
+      ]
+    },
+    {
+      "name": "node10",
+      "range": [
+        {
+          "lt": "10.21.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-06-02T00:00:00Z",
+    "entry": "2020-06-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://nodejs.org/en/blog/vulnerability/june-2020-security-releases/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-8174"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-8172"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-10531"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-11080"
+    }
+  ]
+}

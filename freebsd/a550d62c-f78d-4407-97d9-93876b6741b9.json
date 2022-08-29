@@ -1,0 +1,25 @@
+{
+  "vid": "a550d62c-f78d-4407-97d9-93876b6741b9",
+  "topic": "zeek -- several potential DoS vulnerabilities",
+  "description": "\n\t\u003cp\u003eTim Wojtulewicz of Corelight reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/zeek/zeek/releases/tag/v4.0.2\"\u003e\n\t  \u003cp\u003e Fix potential Undefined Behavior in decode_netbios_name()\n\t  and decode_netbios_name_type() BIFs. The latter has a\n\t  possibility of a remote heap-buffer-overread, making this\n\t  a potential DoS vulnerability.\u003c/p\u003e\n\t  \u003cp\u003e Add some extra length checking when parsing mobile\n\t  ipv6 packets. Due to the possibility of reading invalid\n\t  headers from remote sources, this is a potential DoS\n\t  vulnerability. \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "zeek",
+      "range": [
+        {
+          "lt": "4.0.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-04-30T00:00:00Z",
+    "entry": "2021-06-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/zeek/zeek/releases/tag/v4.0.2"
+    }
+  ]
+}

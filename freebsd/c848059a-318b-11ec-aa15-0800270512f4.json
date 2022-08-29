@@ -1,0 +1,61 @@
+{
+  "vid": "c848059a-318b-11ec-aa15-0800270512f4",
+  "topic": "fail2ban -- possible RCE vulnerability in mailing action using mailutils",
+  "description": "\n\t\u003cp\u003eJakub Żoczek reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/fail2ban/fail2ban/security/advisories/GHSA-m985-3f3v-cwmm\"\u003e\n\t  \u003cp\u003e\n\t    Command \u003ccode\u003email\u003c/code\u003e from mailutils package used in mail actions\n\t    like \u003ccode\u003email-whois\u003c/code\u003e can execute command if unescaped sequences\n\t    (\u003ccode\u003e\\n~\u003c/code\u003e) are available in \"foreign\" input (for instance in\n\t    whois output).\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py36-fail2ban",
+      "range": [
+        {
+          "lt": "0.11.2_3"
+        }
+      ]
+    },
+    {
+      "name": "py37-fail2ban",
+      "range": [
+        {
+          "lt": "0.11.2_3"
+        }
+      ]
+    },
+    {
+      "name": "py38-fail2ban",
+      "range": [
+        {
+          "lt": "0.11.2_3"
+        }
+      ]
+    },
+    {
+      "name": "py39-fail2ban",
+      "range": [
+        {
+          "lt": "0.11.2_3"
+        }
+      ]
+    },
+    {
+      "name": "py310-fail2ban",
+      "range": [
+        {
+          "lt": "0.11.2_3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-07-16T00:00:00Z",
+    "entry": "2021-10-28T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/fail2ban/fail2ban/security/advisories/GHSA-m985-3f3v-cwmm"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-32749"
+    }
+  ]
+}

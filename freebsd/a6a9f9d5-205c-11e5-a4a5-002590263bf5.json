@@ -1,0 +1,37 @@
+{
+  "vid": "a6a9f9d5-205c-11e5-a4a5-002590263bf5",
+  "topic": "ansible -- local symlink exploits",
+  "description": "\n\t\u003cp\u003eMITRE reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4259\"\u003e\n\t  \u003cp\u003erunner/connection_plugins/ssh.py in Ansible before 1.2.3, when\n\t    using ControlPersist, allows local users to redirect a ssh session\n\t    via a symlink attack on a socket file with a predictable name in\n\t    /tmp/.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4260\"\u003e\n\t  \u003cp\u003elib/ansible/playbook/__init__.py in Ansible 1.2.x before 1.2.3,\n\t    when playbook does not run due to an error, allows local users to\n\t    overwrite arbitrary files via a symlink attack on a retry file with\n\t    a predictable name in /var/tmp/ansible/.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ansible",
+      "range": [
+        {
+          "lt": "1.2.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2013-08-21T00:00:00Z",
+    "entry": "2015-07-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.ansible.com/security"
+    },
+    {
+      "source": "URL",
+      "text": "https://groups.google.com/forum/#!topic/ansible-project/UVDYW0HGcNg"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2013-4259"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2013-4260"
+    }
+  ]
+}

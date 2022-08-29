@@ -1,0 +1,31 @@
+{
+  "vid": "1cd565da-455e-41b7-a5b9-86ad8e81e33e",
+  "topic": "seatd-launch -- remove files with escalated privileges with SUID",
+  "description": "\n\t\u003cp\u003eKenny Levinsen reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://lists.sr.ht/~kennylevinsen/seatd-announce/%3CETEO7R.QG8B1KGD531R1%40kl.wtf%3E\"\u003e\n\t  \u003cp\u003eseatd-launch could use a user-specified socket path instead of the\n\t    internally generated socket path, and would unlink the socket path\n\t    before use to guard against collision with leftover sockets. This\n\t    meant that a caller could freely control what file path would be\n\t    unlinked and replaced with a user-owned seatd socket for the duration\n\t    of the session.\u003c/p\u003e\n\t  \u003cp\u003eIf seatd-launch had the SUID bit set, this could be used by a\n\t    malicious user to remove files with the privileges of the owner of\n\t    seatd-launch, which is likely root, and replace it with a user-owned\n\t    domain socket.\u003c/p\u003e\n\t  \u003cp\u003eThis does not directly allow retrieving the contents of existing\n\t    files, and the user-owned socket file is at the current time not\n\t    believed to be directly useful for further exploitation.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "seatd",
+      "range": [
+        {
+          "lt": "0.6.4",
+          "ge": "0.6.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-02-21T00:00:00Z",
+    "entry": "2022-02-21T00:00:00Z",
+    "modified": "2022-02-22T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://lists.sr.ht/~kennylevinsen/seatd-announce/%3CETEO7R.QG8B1KGD531R1%40kl.wtf%3E"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-25643"
+    }
+  ]
+}

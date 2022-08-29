@@ -1,0 +1,47 @@
+{
+  "vid": "e93bc5b0-bb2e-11da-b2fb-000e0c2e438a",
+  "topic": "OPIE -- arbitrary password change",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eThe opiepasswd(1) program uses getlogin(2) to identify the\n\t  user calling opiepasswd(1).  In some circumstances\n\t  getlogin(2) will return \"root\" even when running as an\n\t  unprivileged user.  This causes opiepasswd(1) to allow an\n\t  unpriviled user to configure OPIE authentication for the root\n\t  user.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eIn certain cases an attacker able to run commands as a non\n\t  privileged users which have not explicitly logged in, for\n\t  example CGI scripts run by a web server, is able to configure\n\t  OPIE access for the root user.  If the attacker is able to\n\t  authenticate as root using OPIE authentication, for example if\n\t  \"PermitRootLogin\" is set to \"yes\" in sshd_config or the\n\t  attacker has access to a local user in the \"wheel\" group, the\n\t  attacker can gain root privileges.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eDisable OPIE authentication in PAM:\u003c/p\u003e\n\t\u003cpre\u003e# sed -i \"\" -e /opie/s/^/#/ /etc/pam.d/*\u003c/pre\u003e\n\t\u003cp\u003eor\u003c/p\u003e\n\t\u003cp\u003eRemove the setuid bit from opiepasswd:\u003c/p\u003e\n\t\u003cpre\u003e# chflags noschg /usr/bin/opiepasswd\u003c/pre\u003e\n\t\u003cpre\u003e# chmod 555 /usr/bin/opiepasswd\u003c/pre\u003e\n\t\u003cpre\u003e# chflags schg /usr/bin/opiepasswd\u003c/pre\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_6",
+          "ge": "6.0"
+        },
+        {
+          "lt": "5.4_13",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_28",
+          "ge": "5.3"
+        },
+        {
+          "lt": "4.11_16",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_22",
+          "ge": "4.10"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-03-22T00:00:00Z",
+    "entry": "2006-03-24T00:00:00Z",
+    "modified": "2006-06-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-1283"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:12.opie"
+    }
+  ]
+}

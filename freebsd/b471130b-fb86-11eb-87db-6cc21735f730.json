@@ -1,0 +1,45 @@
+{
+  "vid": "b471130b-fb86-11eb-87db-6cc21735f730",
+  "topic": "PostgreSQL server -- Memory disclosure in certain queries",
+  "description": "\n\t\u003cp\u003eThe PostgreSQL Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.postgresql.org/support/security/CVE-2021-3677/\"\u003e\n\t  \u003cp\u003e\n\t   A purpose-crafted query can read arbitrary bytes of\n\t   server memory. In the default configuration, any\n\t   authenticated database user can complete this attack at\n\t   will. The attack does not require the ability to create\n\t   objects. If server settings include\n\t   max_worker_processes=0, the known versions of this\n\t   attack are infeasible. However, undiscovered variants of\n\t   the attack may be independent of that setting.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "postgresql13-server",
+      "range": [
+        {
+          "lt": "13.4"
+        }
+      ]
+    },
+    {
+      "name": "postgresql12-server",
+      "range": [
+        {
+          "lt": "12.8"
+        }
+      ]
+    },
+    {
+      "name": "postgresql11-server",
+      "range": [
+        {
+          "lt": "11.13"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-08-12T00:00:00Z",
+    "entry": "2021-08-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.postgresql.org/support/security/CVE-2021-3677/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-3677"
+    }
+  ]
+}

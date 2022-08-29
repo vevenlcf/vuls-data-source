@@ -1,0 +1,41 @@
+{
+  "vid": "5914705c-ab03-11e9-a4f9-080027ac955c",
+  "topic": "PuTTY 0.72 -- buffer overflow in SSH-1 and integer overflow in SSH client",
+  "description": "\n\t\u003cp\u003eSimon Tatham reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://lists.tartarus.org/pipermail/putty-announce/2019/000028.html\"\u003e\n\t  \u003cp\u003eVulnerabilities fixed in this release include:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eA malicious SSH-1 server could trigger a buffer overrun by sending\n\t      extremely short RSA keys, or certain bad packet length fields.\n\t      Either of these could happen before host key verification, so even\n\t      if you trust the server you *intended* to connect to, you would\n\t      still be at risk.\n\t    \u003cbr/\u003e\n\t      (However, the SSH-1 protocol is obsolete, and recent versions of\n\t      PuTTY do not try it by default, so you are only at risk if you work\n\t      with old servers and have explicitly configured SSH-1.)\u003c/li\u003e\n\t    \u003cli\u003eIf a malicious process found a way to impersonate Pageant, then it\n\t      could cause an integer overflow in any of the SSH client tools\n\t      (PuTTY, Plink, PSCP, PSFTP) which accessed the malicious Pageant.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eOther security-related bug fixes include:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eThe 'trust sigil' system introduced in PuTTY 0.71 to protect\n\t      against server spoofing attacks had multiple bugs. Trust sigils\n\t      were not turned off after login in the SSH-1 and Rlogin protocols,\n\t      and not turned back on if you used the Restart Session command.\n\t      Both are now fixed.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "putty",
+      "range": [
+        {
+          "lt": "0.72"
+        }
+      ]
+    },
+    {
+      "name": "putty-gtk2",
+      "range": [
+        {
+          "lt": "0.72"
+        }
+      ]
+    },
+    {
+      "name": "putty-nogtk",
+      "range": [
+        {
+          "lt": "0.72"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-07-14T00:00:00Z",
+    "entry": "2019-07-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://lists.tartarus.org/pipermail/putty-announce/2019/000028.html"
+    }
+  ]
+}

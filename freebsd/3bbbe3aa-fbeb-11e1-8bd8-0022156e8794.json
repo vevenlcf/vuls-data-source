@@ -1,0 +1,35 @@
+{
+  "vid": "3bbbe3aa-fbeb-11e1-8bd8-0022156e8794",
+  "topic": "freeradius -- arbitrary code execution for TLS-based authentication",
+  "description": "\n\t\u003cp\u003efreeRADIUS security team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://freeradius.org/security.html\"\u003e\n\t  \u003cp\u003eOverflow in EAP-TLS for 2.1.10, 2.1.11 and 2.1.12.\u003c/p\u003e\n\t  \u003cp\u003eThe issue was found by Timo Warns, and communicated to\n\t  security@freeradius.org.  A sample exploit for the issue was\n\t  included in the notification.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability was created in commit a368a6f4f4aaf on\n\t  August 18, 2010.  Vulnerable versions include 2.1.10, 2.1.11,\n\t  and 2.1.12.  Also anyone running the git \"master\" branch\n\t  after August 18, 2010 is vulnerable.\u003c/p\u003e\n\t  \u003cp\u003eAll sites using TLS-based EAP methods and the above\n\t  versions are vulnerable.  The only configuration change which\n\t  can avoid the issue is to disable EAP-TLS, EAP-TTLS, and\n\t  PEAP.\u003c/p\u003e\n\t  \u003cp\u003eAn external attacker can use this vulnerability to\n\t  over-write the stack frame of the RADIUS server, and cause\n\t  it to crash.  In addition, more sophisticated attacks may\n\t  gain additional privileges on the system running the RADIUS\n\t  server.\u003c/p\u003e\n\t  \u003cp\u003eThis attack does not require local network access to the\n\t  RADIUS server.  It can be done by an attacker through a WiFi\n\t  Access Point, so long as the Access Point is configured to\n\t  use 802.1X authentication with the RADIUS server.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "freeradius",
+      "range": [
+        {
+          "lt": "2.1.12_2",
+          "ge": "2.1.10"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-09-10T00:00:00Z",
+    "entry": "2012-09-11T00:00:00Z",
+    "modified": "2012-09-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://freeradius.org/security.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.pre-cert.de/advisories/PRE-SA-2012-06.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-3547"
+    }
+  ]
+}

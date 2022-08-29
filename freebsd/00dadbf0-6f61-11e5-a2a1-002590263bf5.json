@@ -1,0 +1,41 @@
+{
+  "vid": "00dadbf0-6f61-11e5-a2a1-002590263bf5",
+  "topic": "p5-UI-Dialog -- shell command execution vulnerability",
+  "description": "\n\t\u003cp\u003eMatthijs Kooijman reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://rt.cpan.org/Public/Bug/Display.html?id=107364\"\u003e\n\t  \u003cp\u003eIt seems that the whiptail, cdialog and kdialog backends apply\n\t    some improper escaping in their shell commands, causing special\n\t    characters present in menu item titles to be interpreted by the\n\t    shell. This includes the backtick evaluation operator, so this\n\t    constitutes a security issue, allowing execution of arbitrary\n\t    commands if an attacker has control over the text displayed in\n\t    a menu.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "p5-UI-Dialog",
+      "range": [
+        {
+          "lt": "1.09_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-08-24T00:00:00Z",
+    "entry": "2015-10-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://rt.cpan.org/Public/Bug/Display.html?id=107364"
+    },
+    {
+      "source": "URL",
+      "text": "https://bugs.debian.org/496448"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/kckrinke/UI-Dialog/commit/6adc44cc636c615d76297d86835e1a997681eb61"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-7315"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/203667"
+    }
+  ]
+}

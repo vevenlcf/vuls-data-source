@@ -1,0 +1,33 @@
+{
+  "vid": "24bde04f-1a10-11e5-b43d-002590263bf5",
+  "topic": "logstash -- Directory traversal vulnerability in the file output plugin",
+  "description": "\n\t\u003cp\u003eElastic reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.elastic.co/blog/logstash-1-4-3-released\"\u003e\n\t  \u003cp\u003eAn attacker could use the File output plugin with dynamic field\n\t    references in the path option to traverse paths outside of Logstash\n\t    directory. This technique could also be used to overwrite any files\n\t    which can be accessed with permissions associated with Logstash\n\t    user. This release sandboxes the paths which can be traversed using\n\t    the configuration. We have also disallowed use of dynamic field\n\t    references if the path options is pointing to an absolute path.\u003c/p\u003e\n\t  \u003cp\u003eWe have added this vulnerability to our CVE page and are working\n\t    on filling out the CVE. We would like to thank Colin Coghill for\n\t    reporting the issue and working with us on the resolution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "logstash",
+      "range": [
+        {
+          "lt": "1.4.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-09T00:00:00Z",
+    "entry": "2015-06-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.elastic.co/blog/logstash-1-4-3-released"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.elastic.co/community/security"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4152"
+    }
+  ]
+}

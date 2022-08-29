@@ -1,0 +1,65 @@
+{
+  "vid": "d2c2952d-85a1-11dc-bfff-003048705d5a",
+  "topic": "py-django -- denial of service vulnerability",
+  "description": "\n\t\u003cp\u003eDjango project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.djangoproject.com/weblog/2007/oct/26/security-fix/\"\u003e\n\t  \u003cp\u003eA per-process cache used by Django's internationalization\n\t    (\"i18n\") system to store the results of translation lookups\n\t    for particular values of the HTTP Accept-Language header\n\t    used the full value of that header as a key. An attacker\n\t    could take advantage of this by sending repeated requests\n\t    with extremely large strings in the Accept-Language header,\n\t    potentially causing a denial of service by filling available\n\t    memory.\u003c/p\u003e\n\t  \u003cp\u003eDue to limitations imposed by Web server software on the\n\t    size of HTTP header fields, combined with reasonable limits\n\t    on the number of requests which may be handled by a single\n\t    server process over its lifetime, this vulnerability may be\n\t    difficult to exploit. Additionally, it is only present when\n\t    the \"USE_I18N\" setting in Django is \"True\" and the i18n\n\t    middleware component is enabled*. Nonetheless, all users of\n\t    affected versions of Django are encouraged to update.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py23-django",
+      "range": [
+        {
+          "lt": "0.96.1"
+        }
+      ]
+    },
+    {
+      "name": "py24-django",
+      "range": [
+        {
+          "lt": "0.96.1"
+        }
+      ]
+    },
+    {
+      "name": "py25-django",
+      "range": [
+        {
+          "lt": "0.96.1"
+        }
+      ]
+    },
+    {
+      "name": "py23-django-devel",
+      "range": [
+        {
+          "lt": "20071026"
+        }
+      ]
+    },
+    {
+      "name": "py24-django-devel",
+      "range": [
+        {
+          "lt": "20071026"
+        }
+      ]
+    },
+    {
+      "name": "py25-django-devel",
+      "range": [
+        {
+          "lt": "20071026"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-10-26T00:00:00Z",
+    "entry": "2007-10-27T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.djangoproject.com/weblog/2007/oct/26/security-fix/"
+    }
+  ]
+}

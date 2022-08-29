@@ -1,0 +1,29 @@
+{
+  "vid": "57027417-ab7f-11eb-9596-080027f515ea",
+  "topic": "RDoc -- command injection vulnerability",
+  "description": "\n\t\u003cp\u003eAlexandr Savca reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.ruby-lang.org/en/news/2021/05/02/os-command-injection-in-rdoc/\"\u003e\n\t  \u003cp\u003e\n\t    RDoc used to call Kernel#open to open a local file. If a Ruby project\n\t    has a file whose name starts with | and ends with tags, the command\n\t    following the pipe character is executed. A malicious Ruby project\n\t    could exploit it to run an arbitrary command execution against a user\n\t    who attempts to run rdoc command.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "rubygem-rdoc",
+      "range": [
+        {
+          "lt": "6.3.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-05-02T00:00:00Z",
+    "entry": "2021-05-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.ruby-lang.org/en/news/2021/05/02/os-command-injection-in-rdoc/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-31799"
+    }
+  ]
+}

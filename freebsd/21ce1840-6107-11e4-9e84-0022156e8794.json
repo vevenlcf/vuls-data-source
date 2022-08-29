@@ -1,0 +1,29 @@
+{
+  "vid": "21ce1840-6107-11e4-9e84-0022156e8794",
+  "topic": "twiki -- remote Perl code execution",
+  "description": "\n\t\u003cp\u003eTWiki developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://twiki.org/cgi-bin/view/Codev/SecurityAlert-CVE-2014-7236\"\u003e\n\t  \u003cp\u003eThe debugenableplugins request parameter allows arbitrary\n\t  Perl code execution.\u003c/p\u003e\n\t  \u003cp\u003eUsing an HTTP GET request towards a TWiki server,\n\t  add a specially crafted debugenableplugins request parameter\n\t  to TWiki's view script (typically port 80/TCP).\n\t  Prior authentication may or may not be necessary.\u003c/p\u003e\n\t  \u003cp\u003eA remote attacker can execute arbitrary Perl code\n\t  to view and modify any file the webserver user has access to.\u003c/p\u003e\n\t  \u003cp\u003eExample: http://www.example.com/do/view/Main/WebHome?debugenableplugins=BackupRestorePlugin%3bprint(\"Content-Type:text/html\\r\\n\\r\\nVulnerable!\")%3bexit\u003c/p\u003e\n\t  \u003cp\u003eThe TWiki site is vulnerable if you see a page with text\n\t  \"Vulnerable!\".\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "twiki",
+      "range": [
+        {
+          "lt": "5.1.4_1,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-10-09T00:00:00Z",
+    "entry": "2014-10-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://twiki.org/cgi-bin/view/Codev/SecurityAlert-CVE-2014-7236"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-7236"
+    }
+  ]
+}

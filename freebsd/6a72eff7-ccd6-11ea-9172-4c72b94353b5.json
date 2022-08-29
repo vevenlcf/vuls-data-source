@@ -1,0 +1,74 @@
+{
+  "vid": "6a72eff7-ccd6-11ea-9172-4c72b94353b5",
+  "topic": "Apache Tomcat -- Multiple Vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Apache Software Foundation reports:\u003c/p\u003e\n\t  \u003cp\u003eAn h2c direct connection did not release the HTTP/1.1 processor after\n\t    the upgrade to HTTP/2. If a sufficient number of such requests were\n\t    made, an OutOfMemoryException could occur leading to a denial of service.\u003c/p\u003e\n\t  \u003cp\u003eThe payload length in a WebSocket frame was not correctly validated.\n\t    Invalid payload lengths could trigger an infinite loop. Multiple\n\t    requests with invalid payload lengths could lead to a denial of service.\u003c/p\u003e\n\t  \u003cp\u003eA specially crafted sequence of HTTP/2 requests could trigger high CPU\n\t    usage for several seconds. If a sufficient number of such requests were\n\t    made on concurrent HTTP/2 connections, the server could become unresponsive.\u003c/p\u003e\n\t",
+  "affects": [
+    {
+      "name": "tomcat7",
+      "range": [
+        {
+          "lt": "7.0.105"
+        }
+      ]
+    },
+    {
+      "name": "tomcat85",
+      "range": [
+        {
+          "lt": "8.5.57"
+        }
+      ]
+    },
+    {
+      "name": "tomcat9",
+      "range": [
+        {
+          "lt": "9.0.37"
+        }
+      ]
+    },
+    {
+      "name": "tomcat-devel",
+      "range": [
+        {
+          "lt": "10.0.0.M7"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-07-05T00:00:00Z",
+    "entry": "2020-07-23T00:00:00Z",
+    "modified": "2020-07-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://tomcat.apache.org/security-7.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://tomcat.apache.org/security-8.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://tomcat.apache.org/security-9.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://tomcat.apache.org/security-10.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-11996"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-13934"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-13935"
+    }
+  ]
+}

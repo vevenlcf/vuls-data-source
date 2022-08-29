@@ -1,0 +1,65 @@
+{
+  "vid": "29083f8e-2ca8-11e5-86ff-14dae9d210b8",
+  "topic": "apache22 -- chunk header parsing defect",
+  "description": "\n\t\u003cp\u003eApache Foundation reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.apache.org/dist/httpd/Announcement2.2.html\"\u003e\n\t  \u003cp\u003eCVE-2015-3183 core: Fix chunk header parsing defect. Remove\n\t    apr_brigade_flatten(), buffering and duplicated code from the HTTP_IN\n\t    filter, parse chunks in a single pass with zero copy. Limit accepted\n\t    chunk-size to 2^63-1 and be strict about chunk-ext authorized\n\t    characters.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache22",
+      "range": [
+        {
+          "le": "2.2.29_5"
+        }
+      ]
+    },
+    {
+      "name": "apache22-event-mpm",
+      "range": [
+        {
+          "le": "2.2.29_5"
+        }
+      ]
+    },
+    {
+      "name": "apache22-itk-mpm",
+      "range": [
+        {
+          "le": "2.2.29_5"
+        }
+      ]
+    },
+    {
+      "name": "apache22-peruser-mpm",
+      "range": [
+        {
+          "le": "2.2.29_5"
+        }
+      ]
+    },
+    {
+      "name": "apache22-worker-mpm",
+      "range": [
+        {
+          "le": "2.2.29_5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-24T00:00:00Z",
+    "entry": "2015-07-17T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.apache.org/dist/httpd/Announcement2.2.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/apache/httpd/commit/29779fd08c18b18efc5e640d74cbe297c7ec007e"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3183"
+    }
+  ]
+}

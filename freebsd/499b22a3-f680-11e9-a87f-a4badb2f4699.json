@@ -1,0 +1,38 @@
+{
+  "vid": "499b22a3-f680-11e9-a87f-a4badb2f4699",
+  "topic": "FreeBSD -- Insufficient validation of guest-supplied data (e1000 device)",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe e1000 network adapters permit a variety of modifications\n\tto an Ethernet packet when it is being transmitted. These\n\tinclude the insertion of IP and TCP checksums, insertion\n\tof an Ethernet VLAN header, and TCP segmentation offload\n\t(\"TSO\"). The e1000 device model uses an on-stack buffer to\n\tgenerate the modified packet header when simulating these\n\tmodifications on transmitted packets.\u003c/p\u003e\n\t\u003cp\u003eWhen TCP segmentation offload is requested for a transmitted\n\tpacket, the e1000 device model used a guest-provided value\n\tto determine the size of the on-stack buffer without\n\tvalidation. The subsequent header generation could overflow\n\tan incorrectly sized buffer or indirect a pointer composed\n\tof stack garbage.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA misbehaving bhyve guest could overwrite memory in the\n\tbhyve process on the host.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.0_9",
+          "ge": "12.0"
+        },
+        {
+          "lt": "11.3_2",
+          "ge": "11.3"
+        },
+        {
+          "lt": "11.2_13",
+          "ge": "11.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-08-06T00:00:00Z",
+    "entry": "2019-10-24T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-5609"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-19:21.bhyve"
+    }
+  ]
+}

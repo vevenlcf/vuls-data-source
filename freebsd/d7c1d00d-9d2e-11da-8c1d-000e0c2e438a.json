@@ -1,0 +1,31 @@
+{
+  "vid": "d7c1d00d-9d2e-11da-8c1d-000e0c2e438a",
+  "topic": "ipfw -- IP fragment denial of service",
+  "description": "\n\t\u003cp\u003eProblem description:\u003c/p\u003e\n\t\u003cp\u003eThe firewall maintains a pointer to layer 4 header\n\t  information in the event that it needs to send a TCP reset\n\t  or ICMP error message to discard packets.  Due to incorrect\n\t  handling of IP fragments, this pointer fails to get\n\t  initialized.\u003c/p\u003e\n\t\u003cp\u003eImpact:\u003c/p\u003e\n\t\u003cp\u003eAn attacker can cause the firewall to crash by sending ICMP\n\t  IP fragments to or through firewalls which match any reset,\n\t  reject or unreach actions.\u003c/p\u003e\n\t\u003cp\u003eWorkaround:\u003c/p\u003e\n\t\u003cp\u003eChange any reset, reject or unreach actions to deny. It\n\t  should be noted that this will result in packets being\n\t  silently discarded.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_2",
+          "ge": "6.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-01-11T00:00:00Z",
+    "entry": "2006-02-14T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0054"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:04.ipfw"
+    }
+  ]
+}

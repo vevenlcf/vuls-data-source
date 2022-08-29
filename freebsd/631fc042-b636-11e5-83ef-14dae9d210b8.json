@@ -1,0 +1,41 @@
+{
+  "vid": "631fc042-b636-11e5-83ef-14dae9d210b8",
+  "topic": "polkit -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eColin Walters reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.freedesktop.org/archives/polkit-devel/2015-June/000425.html\"\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e\u003cp\u003eInteger overflow in the\n\t    authentication_agent_new_cookie function in PolicyKit (aka polkit)\n\t    before 0.113 allows local users to gain privileges by creating a large\n\t    number of connections, which triggers the issuance of a duplicate cookie\n\t    value.\u003c/p\u003e\u003c/li\u003e\n\t    \u003cli\u003e\u003cp\u003eThe authentication_agent_new function in\n\t    polkitbackend/polkitbackendinteractiveauthority.c in PolicyKit (aka\n\t    polkit) before 0.113 allows local users to cause a denial of service\n\t    (NULL pointer dereference and polkitd daemon crash) by calling\n\t    RegisterAuthenticationAgent with an invalid object path.\u003c/p\u003e\u003c/li\u003e\n\t    \u003cli\u003e\u003cp\u003eThe polkit_backend_action_pool_init function in\n\t    polkitbackend/polkitbackendactionpool.c in PolicyKit (aka polkit) before\n\t    0.113 might allow local users to gain privileges via duplicate action\n\t    IDs in action descriptions.\u003c/p\u003e\u003c/li\u003e\n\t    \u003cli\u003e\u003cp\u003ePolicyKit (aka polkit) before 0.113 allows local\n\t    users to cause a denial of service (memory corruption and polkitd daemon\n\t    crash) and possibly gain privileges via unspecified vectors, related to\n\t    \"javascript rule evaluation.\"\u003c/p\u003e\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "polkit",
+      "range": [
+        {
+          "lt": "0.113"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-03T00:00:00Z",
+    "entry": "2016-01-08T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lists.freedesktop.org/archives/polkit-devel/2015-June/000425.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4625"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3218"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3255"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3256"
+    }
+  ]
+}

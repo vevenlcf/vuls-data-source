@@ -1,0 +1,37 @@
+{
+  "vid": "72709326-81f7-11eb-950a-00155d646401",
+  "topic": "go -- encoding/xml: infinite loop when using xml.NewTokenDecoder with a custom TokenReader; archive/zip: panic when calling Reader.Open",
+  "description": "\n\t\u003cp\u003eThe Go project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/44913\"\u003e\n\t  \u003cp\u003eThe Decode, DecodeElement, and Skip methods of an xml.Decoder\n\t    provided by xml.NewTokenDecoder may enter an infinite loop when\n\t    operating on a custom xml.TokenReader which returns an EOF in the\n\t    middle of an open XML element.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://github.com/golang/go/issues/44916\"\u003e\n\t  \u003cp\u003eThe Reader.Open API, new in Go 1.16, will panic when used on a ZIP\n\t    archive containing files that start with \"../\".\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "go",
+      "range": [
+        {
+          "lt": "1.16.1,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-03-05T00:00:00Z",
+    "entry": "2021-03-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://golang.org/issue/44913"
+    },
+    {
+      "source": "URL",
+      "text": "http://golang.org/issue/44916"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-27918"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-27919"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "vid": "c611be81-fbc2-11da-9156-000e0c2e438a",
+  "topic": "sendmail -- Incorrect multipart message handling",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eA suitably malformed multipart MIME message can cause\n\t  sendmail to exceed predefined limits on its stack usage.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eAn attacker able to send mail to, or via, a server can cause\n\t  queued messages on the system to not be delivered, by causing\n\t  the sendmail process which handles queued messages to crash.\n\t  Note that this will not stop new messages from entering the\n\t  queue (either from local processes, or incoming via SMTP).\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eNo workaround is available, but systems which do not receive\n\t  email from untrusted sources are not vulnerable.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "4.11_19",
+          "ge": "4.11"
+        },
+        {
+          "lt": "5.3_31",
+          "ge": "5.3"
+        },
+        {
+          "lt": "5.4_16",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.5_2",
+          "ge": "5.5"
+        },
+        {
+          "lt": "6.0_9",
+          "ge": "6.0"
+        },
+        {
+          "lt": "6.1_2",
+          "ge": "6.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-06-14T00:00:00Z",
+    "entry": "2006-06-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-1173"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:17.sendmail"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "vid": "5631ae98-be9e-11e3-b5e3-c80aa9043978",
+  "topic": "OpenSSL -- Remote Information Disclosure",
+  "description": "\n\t\u003cp\u003eOpenSSL Reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.openssl.org/news/secadv_20140407.txt\"\u003e\n\t  \u003cp\u003eA missing bounds check in the handling of the TLS heartbeat extension can be\n\t    used to reveal up to 64k of memory to a connected client or server.\u003c/p\u003e\n\t  \u003cp\u003eAffected users should upgrade to OpenSSL 1.0.1g. Users unable to immediately\n\t    upgrade can alternatively recompile OpenSSL with -DOPENSSL_NO_HEARTBEATS.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.heartbleed.com\"\u003e\n\t  \u003cp\u003eThe bug allows anyone on the Internet to read the memory of the\n\t  systems protected by the vulnerable versions of the OpenSSL software.\n\t  This compromises the secret keys used to identify the service\n\t  providers and to encrypt the traffic, the names and passwords of the\n\t  users and the actual content. This allows attackers to eavesdrop\n\t  communications, steal data directly from the services and users and\n\t  to impersonate services and users.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"http://www.freebsd.org/security/advisories/FreeBSD-SA-14:06.openssl.asc\"\u003e\n\t  \u003cp\u003eThe code used to handle the Heartbeat Extension does not do\n\t    sufficient boundary checks on record length, which allows reading\n\t    beyond the actual payload.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.0.1_10",
+          "ge": "1.0.1"
+        }
+      ]
+    },
+    {
+      "name": "mingw32-openssl",
+      "range": [
+        {
+          "lt": "1.0.1g",
+          "ge": "1.0.1"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "10.0_1",
+          "ge": "10.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-04-07T00:00:00Z",
+    "entry": "2014-04-07T00:00:00Z",
+    "modified": "2014-04-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.openssl.org/news/secadv_20140407.txt"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.openssl.org/news/vulnerabilities.html#2014-0076"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.heartbleed.com"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0160"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-14:06.openssl"
+    }
+  ]
+}

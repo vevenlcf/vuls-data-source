@@ -1,0 +1,30 @@
+{
+  "vid": "ce658051-27ea-11e5-a4a5-002590263bf5",
+  "topic": "xen-kernel -- Information leak through XEN_DOMCTL_gettscinfo",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-132.html\"\u003e\n\t  \u003cp\u003eThe handler for XEN_DOMCTL_gettscinfo failed to initialize a\n\t    padding field subsequently copied to guest memory.\u003c/p\u003e\n\t  \u003cp\u003eA similar leak existed in XEN_SYSCTL_getdomaininfolist, which is\n\t    being addressed here regardless of that operation being declared\n\t    unsafe for disaggregation by XSA-77.\u003c/p\u003e\n\t  \u003cp\u003eMalicious or buggy stub domain kernels or tool stacks otherwise\n\t    living outside of Domain0 may be able to read sensitive data\n\t    relating to the hypervisor or other guests not under the control of\n\t    that domain.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.5.0_3",
+          "ge": "4.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-04-20T00:00:00Z",
+    "entry": "2015-07-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-132.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3340"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "vid": "04f29189-1a05-11e7-bc6e-b499baebfeaf",
+  "topic": "cURL -- potential memory disclosure",
+  "description": "\n\t\u003cp\u003eThe cURL project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.haxx.se/docs/adv_20170403.html\"\u003e\n\t  \u003cp\u003eThere were two bugs in curl's parser for the command line option\n\t    --write-out (or -w for short) that would skip the end of string\n\t    zero byte if the string ended in a % (percent) or \\ (backslash),\n\t    and it would read beyond that buffer in the heap memory and it\n\t    could then potentially output pieces of that memory to the\n\t    terminal or the target file etc..\u003c/p\u003e\n\t  \u003cp\u003eThis flaw only exists in the command line tool.\u003c/p\u003e\n\t  \u003cp\u003eWe are not aware of any exploit of this flaw.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.53.1_1",
+          "ge": "6.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-04-03T00:00:00Z",
+    "entry": "2017-04-05T00:00:00Z",
+    "modified": "2017-04-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/adv_20170403.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-7407"
+    }
+  ]
+}

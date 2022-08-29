@@ -1,0 +1,33 @@
+{
+  "vid": "457ce015-67fa-11e7-867f-b499baebfeaf",
+  "topic": "Apache httpd -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Apache httpd project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://httpd.apache.org/security/vulnerabilities_24.html\"\u003e\n\t  \u003cp\u003eimportant: Read after free in mod_http2 (CVE-2017-9789)\u003cbr/\u003e\n\t    When under stress, closing many connections, the HTTP/2 handling\n\t    code would sometimes access memory after it has been freed,\n\t    resulting in potentially erratic behaviour.\u003c/p\u003e\n\t  \u003cp\u003eimportant: Uninitialized memory reflection in mod_auth_digest\n\t    (CVE-2017-9788)\u003cbr/\u003eThe value placeholder in [Proxy-]Authorization\n\t    headers of type 'Digest' was not initialized or reset before or\n\t    between successive key=value assignments. by mod_auth_digest.\u003cbr/\u003e\n\t    Providing an initial key with no '=' assignment could reflect\n\t    the stale value of uninitialized pool memory used by the prior\n\t    request, leading to leakage of potentially confidential\n\t    information, and a segfault.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache24",
+      "range": [
+        {
+          "lt": "2.4.27"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-07-11T00:00:00Z",
+    "entry": "2017-07-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://httpd.apache.org/security/vulnerabilities_24.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9789"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9788"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "vid": "3e0072d4-d05b-11d9-9aed-000e0c2e438a",
+  "topic": "net-snmp -- fixproc insecure temporary file creation",
+  "description": "\n\t\u003cp\u003eA Gentoo advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.gentoo.org/security/en/glsa/glsa-200505-18.xml\"\u003e\n\t  \u003cp\u003eNet-SNMP creates temporary files in an insecure manner,\n\t    possibly allowing the execution of arbitrary code.\u003c/p\u003e\n\t  \u003cp\u003eA malicious local attacker could exploit a race condition\n\t    to change the content of the temporary files before they\n\t    are executed by fixproc, possibly leading to the execution\n\t    of arbitrary code.\tA local attacker could also create\n\t    symbolic links in the temporary files directory, pointing\n\t    to a valid file somewhere on the filesystem.  When fixproc\n\t    is executed, this would result in the file being\n\t    overwritten.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "net-snmp",
+      "range": [
+        {
+          "lt": "5.2.1.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-05-23T00:00:00Z",
+    "entry": "2005-07-09T00:00:00Z",
+    "modified": "2005-07-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://security.gentoo.org/glsa/glsa-200505-18.xml"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1740"
+    },
+    {
+      "source": "BID",
+      "text": "13715"
+    }
+  ]
+}

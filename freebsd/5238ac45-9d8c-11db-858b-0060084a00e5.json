@@ -1,0 +1,29 @@
+{
+  "vid": "5238ac45-9d8c-11db-858b-0060084a00e5",
+  "topic": "fetchmail -- TLS enforcement problem/MITM attack/password exposure",
+  "description": "\n\t\u003cp\u003eMatthias Andree reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.fetchmail.info/fetchmail-SA-2006-02.txt\"\u003e\n\t  \u003cp\u003eFetchmail has had several longstanding password disclosure\n\t    vulnerabilities.\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003esslcertck/sslfingerprint options should have implied\n\t      \"sslproto tls1\" in order to enforce TLS negotiation,\n\t      but did not.\u003c/li\u003e\n\t    \u003cli\u003eEven with \"sslproto tls1\" in the config, fetches\n\t      would go ahead in plain text if STLS/STARTTLS wasn't available\n\t      (not advertised, or advertised but rejected).\u003c/li\u003e\n\t    \u003cli\u003ePOP3 fetches could completely ignore all TLS options\n\t      whether available or not because it didn't reliably issue\n\t      CAPA before checking for STLS support - but CAPA is a\n\t      requisite for STLS. Whether or not CAPAbilities were probed,\n\t      depended on the \"auth\" option. (Fetchmail only\n\t      tried CAPA if the auth option was not set at all, was set\n\t      to gssapi, kerberos, kerberos_v4, otp, or cram-md5.)\u003c/li\u003e\n\t    \u003cli\u003ePOP3 could fall back to using plain text passwords, even\n\t      if strong authentication had been configured.\u003c/li\u003e\n\t    \u003cli\u003ePOP2 would not complain if strong authentication or TLS\n\t      had been requested.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "fetchmail",
+      "range": [
+        {
+          "lt": "6.3.6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-01-04T00:00:00Z",
+    "entry": "2007-01-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.fetchmail.info/fetchmail-SA-2006-02.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-5867"
+    }
+  ]
+}

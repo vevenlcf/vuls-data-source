@@ -1,0 +1,70 @@
+{
+  "vid": "c6861494-1ffb-11e7-934d-d05099c0ae8c",
+  "topic": "BIND -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eISC reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01465/0\"\u003e\n\t  \u003cp\u003eA query with a specific set of characteristics could\n\t    cause a server using DNS64 to encounter an assertion\n\t    failure and terminate.\u003c/p\u003e\n\t  \u003cp\u003eAn attacker could deliberately construct a query,\n\t    enabling denial-of-service against a server if it\n\t    was configured to use the DNS64 feature and other\n\t    preconditions were met.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01466/0\"\u003e\n\t  \u003cp\u003eMistaken assumptions about the ordering of records in\n\t    the answer section of a response containing CNAME or\n\t    DNAME resource records could lead to a situation in\n\t    which named would exit with an assertion failure when\n\t    processing a response in which records occurred in an\n\t    unusual order.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://kb.isc.org/article/AA-01471/0\"\u003e\n\t  \u003cp\u003enamed contains a feature which allows operators to\n\t    issue commands to a running server by communicating\n\t    with the server process over a control channel,\n\t    using a utility program such as rndc.\u003c/p\u003e\n\t  \u003cp\u003eA regression introduced in a recent feature change\n\t    has created a situation under which some versions of\n\t    named can be caused to exit with a REQUIRE assertion\n\t    failure if they are sent a null command string.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bind99",
+      "range": [
+        {
+          "lt": "9.9.9P8"
+        }
+      ]
+    },
+    {
+      "name": "bind910",
+      "range": [
+        {
+          "lt": "9.10.4P8"
+        }
+      ]
+    },
+    {
+      "name": "bind911",
+      "range": [
+        {
+          "lt": "9.11.0P5"
+        }
+      ]
+    },
+    {
+      "name": "bind9-devel",
+      "range": [
+        {
+          "le": "9.12.0.a.2017.03.25"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-04-12T00:00:00Z",
+    "entry": "2017-04-13T00:00:00Z",
+    "modified": "2017-04-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01465/0"
+    },
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01466/0"
+    },
+    {
+      "source": "URL",
+      "text": "https://kb.isc.org/article/AA-01471/0"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-3136"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-3137"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-3138"
+    }
+  ]
+}

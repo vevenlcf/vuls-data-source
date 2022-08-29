@@ -1,0 +1,42 @@
+{
+  "vid": "19b052c9-c533-11e7-8da5-001999f8d30b",
+  "topic": "asterisk -- Buffer overflow in pjproject header parsing can cause crash in Asterisk",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.asterisk.org/downloads/security-advisories\"\u003e\n\t  \u003cp\u003eBy carefully crafting invalid values in the Cseq and\n\t  the Via header port, pjprojects packet parsing code can\n\t  create strings larger than the buffer allocated to hold\n\t  them. This will usually cause Asterisk to crash immediately.\n\t  The packets do not have to be authenticated.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk13",
+      "range": [
+        {
+          "lt": "13.18.1"
+        }
+      ]
+    },
+    {
+      "name": "pjsip",
+      "range": [
+        {
+          "lt": "2.7.1"
+        }
+      ]
+    },
+    {
+      "name": "pjsip-extsrtp",
+      "range": [
+        {
+          "lt": "2.7.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-10-05T00:00:00Z",
+    "entry": "2017-11-09T00:00:00Z",
+    "modified": "2017-11-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://downloads.asterisk.org/pub/security/AST-2017-009.html"
+    }
+  ]
+}

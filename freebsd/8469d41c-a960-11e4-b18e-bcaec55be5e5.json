@@ -1,0 +1,33 @@
+{
+  "vid": "8469d41c-a960-11e4-b18e-bcaec55be5e5",
+  "topic": "rabbitmq -- Security issues in management plugin",
+  "description": "\n\t\u003cp\u003eThe RabbitMQ project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.rabbitmq.com/news.html#2015-01-08T10:14:05+0100\"\u003e\n\t  \u003cp\u003eSome user-controllable content was not properly HTML-escaped\n\t  before being presented to a user in the management web UI:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eWhen a user unqueued a message from the management UI,\n\t    message details (header names, arguments, etc.) were displayed\n\t    unescaped. An attacker could publish a specially crafted\n\t    message to add content or execute arbitrary Javascript code on\n\t    behalf of a user, if this user unqueued the message from the\n\t    management UI.\u003c/li\u003e\n\t    \u003cli\u003eWhen viewing policies, their name was displayed unescaped.\n\t    An attacker could create a policy with a specially crafted name\n\t    to add content or execute arbitrary Javascript code on behalf\n\t    of a user who is viewing policies.\u003c/li\u003e\n\t    \u003cli\u003eWhen listing connected AMQP network clients, client details\n\t    such as its version were displayed unescaped. An attacker could\n\t    use a client with a specially crafted version field to add\n\t    content or execute arbitrary Javascript code on behalf of a\n\t    user who is viewing connected clients.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eIn all cases, the attacker needs a valid user account on the\n\t  targeted RabbitMQ cluster.\u003c/p\u003e\n\t  \u003cp\u003eFurthermore, some admin-controllable content was not properly\n\t  escaped:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003euser names;\u003c/li\u003e\n\t    \u003cli\u003ethe cluster name.\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eLikewise, an attacker could add content or execute arbitrary\n\t  Javascript code on behalf of a user using the management web UI.\n\t  However, the attacker must be an administrator on the RabbitMQ\n\t  cluster, thus a trusted user.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "rabbitmq",
+      "range": [
+        {
+          "lt": "3.4.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-01-08T00:00:00Z",
+    "entry": "2015-01-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.rabbitmq.com/news.html#2015-01-08T10:14:05+0100"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.rabbitmq.com/release-notes/README-3.4.3.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-0862"
+    }
+  ]
+}

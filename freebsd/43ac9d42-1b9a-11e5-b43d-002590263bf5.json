@@ -1,0 +1,65 @@
+{
+  "vid": "43ac9d42-1b9a-11e5-b43d-002590263bf5",
+  "topic": "elasticsearch and logstash -- remote OS command execution via dynamic scripting",
+  "description": "\n\t\u003cp\u003eElastic reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.elastic.co/community/security\"\u003e\n\t  \u003cp\u003eVulnerability Summary: In Elasticsearch versions 1.1.x and prior,\n\t    dynamic scripting is enabled by default. This could allow an\n\t    attacker to execute OS commands.\u003c/p\u003e\n\t  \u003cp\u003eRemediation Summary: Disable dynamic scripting.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://www.elastic.co/blog/logstash-1-4-3-released\"\u003e\n\t  \u003cp\u003eLogstash 1.4.2 was bundled with Elasticsearch 1.1.1, which is\n\t    vulnerable to CVE-2014-3120. These binaries are used in\n\t    Elasticsearch output specifically when using the node protocol.\n\t    Since a node client joins the Elasticsearch cluster, the attackers\n\t    could use scripts to execute commands on the host OS using the node\n\t    client's URL endpoint. With 1.4.3 release, we are packaging Logstash\n\t    with Elasticsearch 1.5.2 binaries which by default disables the\n\t    ability to run scripts. This also affects users who are using the\n\t    configuration option embedded=\u0026gt;true in the Elasticsearch output\n\t    which starts a local embedded Elasticsearch cluster. This is\n\t    typically used in development environment and proof of concept\n\t    deployments. Regardless of this vulnerability, we strongly recommend\n\t    not using embedded in production.\u003c/p\u003e\n\t  \u003cp\u003eNote that users of transport and http protocol are not vulnerable\n\t    to this attack.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "elasticsearch",
+      "range": [
+        {
+          "lt": "1.2.0"
+        }
+      ]
+    },
+    {
+      "name": "logstash",
+      "range": [
+        {
+          "lt": "1.4.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-05-22T00:00:00Z",
+    "entry": "2015-06-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.elastic.co/community/security"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.elastic.co/blog/elasticsearch-1-2-0-released"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.elastic.co/blog/logstash-1-4-3-released"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.exploit-db.com/exploits/33370/"
+    },
+    {
+      "source": "URL",
+      "text": "http://bouk.co/blog/elasticsearch-rce/"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.rapid7.com/db/modules/exploit/multi/elasticsearch/script_mvel_rce"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.found.no/foundation/elasticsearch-security/#staying-safe-while-developing-with-elasticsearch"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-3120"
+    },
+    {
+      "source": "BID",
+      "text": "67731"
+    }
+  ]
+}

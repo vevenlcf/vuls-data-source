@@ -1,0 +1,31 @@
+{
+  "vid": "f8d3689e-6770-11dc-8be8-02e0185f8d72",
+  "topic": "bugzilla -- \"createmailregexp\" security bypass vulnerability",
+  "description": "\n\t\u003cp\u003eThe Bugzilla development team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.bugzilla.org/security/3.0.1/\"\u003e\n\t  \u003cp\u003eBugzilla::WebService::User::offer_account_by_email does\n\t    not check the \"createemailregexp\" parameter, and thus\n\t    allows users to create accounts who would normally be\n\t    denied account creation.  The \"emailregexp\" parameter is\n\t    still checked.  If you do not have the SOAP::Lite Perl\n\t    module installed on your Bugzilla system, your system is\n\t    not vulnerable (because the Bugzilla WebService will not\n\t    be enabled).\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bugzilla",
+      "range": [
+        {
+          "lt": "3.0.2",
+          "ge": "3.*"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-09-18T00:00:00Z",
+    "entry": "2007-09-20T00:00:00Z",
+    "modified": "2010-05-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.bugzilla.org/security/3.0.1/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-5038"
+    }
+  ]
+}

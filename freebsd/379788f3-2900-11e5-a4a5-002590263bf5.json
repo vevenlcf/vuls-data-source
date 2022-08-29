@@ -1,0 +1,49 @@
+{
+  "vid": "379788f3-2900-11e5-a4a5-002590263bf5",
+  "topic": "freeradius -- insufficient CRL application vulnerability",
+  "description": "\n\t\u003cp\u003eoCERT reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.ocert.org/advisories/ocert-2015-008.html\"\u003e\n\t  \u003cp\u003eThe FreeRADIUS server relies on OpenSSL to perform certificate\n\t    validation, including Certificate Revocation List (CRL) checks. The\n\t    FreeRADIUS usage of OpenSSL, in CRL application, limits the checks\n\t    to leaf certificates, therefore not detecting revocation of\n\t    intermediate CA certificates.\u003c/p\u003e\n\t  \u003cp\u003eAn unexpired client certificate, issued by an intermediate CA with\n\t    a revoked certificate, is therefore accepted by FreeRADIUS.\u003c/p\u003e\n\t  \u003cp\u003eSpecifically sets the X509_V_FLAG_CRL_CHECK flag for leaf\n\t    certificate CRL checks, but does not use X509_V_FLAG_CRL_CHECK_ALL\n\t    for CRL checks on the complete trust chain.\u003c/p\u003e\n\t  \u003cp\u003eThe FreeRADIUS project advises that the recommended configuration\n\t    is to use self-signed CAs for all EAP-TLS methods.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "freeradius2",
+      "range": [
+        {
+          "lt": "2.2.8"
+        }
+      ]
+    },
+    {
+      "name": "freeradius3",
+      "range": [
+        {
+          "lt": "3.0.9"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-22T00:00:00Z",
+    "entry": "2015-07-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.ocert.org/advisories/ocert-2015-008.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://freeradius.org/security.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4680"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/201058"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/201059"
+    }
+  ]
+}

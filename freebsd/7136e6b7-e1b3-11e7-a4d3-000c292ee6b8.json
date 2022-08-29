@@ -1,0 +1,33 @@
+{
+  "vid": "7136e6b7-e1b3-11e7-a4d3-000c292ee6b8",
+  "topic": "jenkins -- Two startup race conditions",
+  "description": "\n\t\u003cp\u003eThe Jenkins project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://jenkins.io/security/advisory/2017-12-14/\"\u003e\n\t  \u003cp\u003eA race condition during Jenkins startup could result in the wrong\n\t    order of execution of commands during initialization.\u003c/p\u003e\n\t  \u003cp\u003eOn Jenkins 2.81 and newer, including LTS 2.89.1, this could in\n\t    rare cases (we estimate less than 20% of new instances) result in\n\t    failure to initialize the setup wizard on the first startup.\u003c/p\u003e\n\t  \u003cp\u003eThere is a very short window of time after startup during which\n\t    Jenkins may no longer show the \"Please wait while Jenkins is\n\t    getting ready to work\" message, but Cross-Site Request Forgery\n\t    (CSRF) protection may not yet be effective.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "jenkins",
+      "range": [
+        {
+          "lt": "2.95"
+        }
+      ]
+    },
+    {
+      "name": "jenkins-lts",
+      "range": [
+        {
+          "lt": "2.89.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-12-14T00:00:00Z",
+    "entry": "2017-12-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://jenkins.io/security/advisory/2017-12-14/"
+    }
+  ]
+}

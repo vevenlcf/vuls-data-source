@@ -1,0 +1,29 @@
+{
+  "vid": "fce7a6e7-bc5d-11ea-b38d-f0def1d0c3ea",
+  "topic": "coturn -- information leakage",
+  "description": "\n\t\u003cp\u003eFelix Dörre reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/coturn/coturn/security/advisories/GHSA-c8r8-8vp5-6gcm\"\u003e\n\t  \u003cp\u003eThe issue is that STUN/TURN response buffer is not initialized properly. (CWE 665)\n\t     This is a leak of information between different client connections. One client (an attacker)\n\t     could use their connection to intelligently query coturn to get interesting bytes in the\n\t     padding bytes from the connection of another client.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "coturn",
+      "range": [
+        {
+          "lt": "4.5.1.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-06-30T00:00:00Z",
+    "entry": "2020-07-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/coturn/coturn/commit/fdf7065d0f8e676feaf6734e86370f6dadfb8eec"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-4067"
+    }
+  ]
+}

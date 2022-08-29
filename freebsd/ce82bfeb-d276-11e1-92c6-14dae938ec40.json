@@ -1,0 +1,34 @@
+{
+  "vid": "ce82bfeb-d276-11e1-92c6-14dae938ec40",
+  "topic": "dns/nsd -- DoS vulnerability from non-standard DNS packet",
+  "description": "\n\t\u003cp\u003eMarek Vavrusa and Lubos Slovak report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.nlnetlabs.nl/downloads/CVE-2012-2978.txt\"\u003e\n\t  \u003cp\u003eIt is possible to crash (SIGSEGV) a NSD child server process\n\t    by sending it a non-standard DNS packet from any host on the\n\t    internet.  A crashed child process will automatically be restarted\n\t    by the parent process, but an attacker may keep the NSD server\n\t    occupied restarting child processes by sending it a stream of\n\t    such packets effectively preventing the NSD server to serve.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "nsd",
+      "range": [
+        {
+          "lt": "3.2.11_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2012-07-19T00:00:00Z",
+    "entry": "2012-07-20T00:00:00Z",
+    "modified": "2012-07-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.nlnetlabs.nl/downloads/CVE-2012-2978.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2012-2978"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/170024"
+    }
+  ]
+}

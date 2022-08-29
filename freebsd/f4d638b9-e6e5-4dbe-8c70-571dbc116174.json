@@ -1,0 +1,43 @@
+{
+  "vid": "f4d638b9-e6e5-4dbe-8c70-571dbc116174",
+  "topic": "curl -- password overflow vulnerability",
+  "description": "\n\t\u003cp\u003ecurl security problems:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://curl.haxx.se/docs/security.html\"\u003e\n\t  \u003cp\u003eCVE-2018-14618: NTLM password overflow via integer overflow\u003c/p\u003e\n\t  \u003cp\u003eThe internal function Curl_ntlm_core_mk_nt_hash multiplies the length\n\t    of the password by two (SUM) to figure out how large temporary storage\n\t    area to allocate from the heap.\u003c/p\u003e\n\t  \u003cp\u003eThe length value is then subsequently used to iterate over the\n\t    password and generate output into the allocated storage buffer. On\n\t    systems with a 32 bit size_t, the math to calculate SUM triggers an\n\t    integer overflow when the password length exceeds 2GB (2^31 bytes).\n\t    This integer overflow usually causes a very small buffer to actually\n\t    get allocated instead of the intended very huge one, making the use of\n\t    that buffer end up in a heap buffer overflow.\u003c/p\u003e\n\t  \u003cp\u003eThis bug is almost identical to CVE-2017-8816.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "curl",
+      "range": [
+        {
+          "lt": "7.61.1",
+          "ge": "7.15.4"
+        }
+      ]
+    },
+    {
+      "name": "linux-c7-curl",
+      "range": [
+        {
+          "lt": "7.29.0_6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-09-05T00:00:00Z",
+    "entry": "2018-09-05T00:00:00Z",
+    "modified": "2019-08-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/security.html"
+    },
+    {
+      "source": "URL",
+      "text": "https://curl.haxx.se/docs/CVE-2018-14618.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-14618"
+    }
+  ]
+}

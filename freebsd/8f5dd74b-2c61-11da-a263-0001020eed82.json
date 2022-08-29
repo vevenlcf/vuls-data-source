@@ -1,0 +1,297 @@
+{
+  "vid": "8f5dd74b-2c61-11da-a263-0001020eed82",
+  "topic": "firefox \u0026 mozilla -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eA Mozilla Foundation Security Advisory reports of multiple\n\t  issues:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.mozilla.org/security/announce/mfsa2005-58.html\"\u003e\n\t  \u003ch1\u003eHeap overrun in XBM image processing\u003c/h1\u003e\n\t  \u003cp\u003ejackerror reports that an improperly terminated XBM image\n\t    ending with space characters instead of the expected end\n\t    tag can lead to a heap buffer overrun. This appears to be\n\t    exploitable to install or run malicious code on the user's\n\t    machine.\u003c/p\u003e\n\t  \u003cp\u003eThunderbird does not support the XBM format and is not\n\t    affected by this flaw.\u003c/p\u003e\n\t  \u003ch1\u003eCrash on \"zero-width non-joiner\" sequence\u003c/h1\u003e\n\t  \u003cp\u003eMats Palmgren discovered that a reported crash on Unicode\n\t    sequences with \"zero-width non-joiner\" characters was due\n\t    to stack corruption that may be exploitable.\u003c/p\u003e\n\t  \u003ch1\u003eXMLHttpRequest header spoofing\u003c/h1\u003e\n\t  \u003cp\u003eIt was possible to add illegal and malformed headers to\n\t    an XMLHttpRequest. This could have been used to exploit\n\t    server or proxy flaws from the user's machine, or to fool\n\t    a server or proxy into thinking a single request was a\n\t    stream of separate requests. The severity of this\n\t    vulnerability depends on the value of servers which might\n\t    be vulnerable to HTTP request smuggling and similar\n\t    attacks, or which share an IP address (virtual hosting)\n\t    with the attacker's page.\u003c/p\u003e\n\t  \u003cp\u003eFor users connecting to the web through a proxy this flaw\n\t    could be used to bypass the same-origin restriction on\n\t    XMLHttpRequests by fooling the proxy into handling a\n\t    single request as multiple pipe-lined requests directed at\n\t    arbitrary hosts. This could be used, for example, to read\n\t    files on intranet servers behind a firewall.\u003c/p\u003e\n\t  \u003ch1\u003eObject spoofing using XBL \u0026lt;implements\u0026gt;\u003c/h1\u003e\n\t  \u003cp\u003emoz_bug_r_a4 demonstrated a DOM object spoofing bug\n\t    similar to \u003ca href=\"http://www.mozilla.org/security/announce/mfsa2005-55.html\"\u003eMFSA\n\t    2005-55\u003c/a\u003e using an XBL control that \u0026lt;implements\u0026gt;\n\t    an internal interface. The severity depends on the version\n\t    of Firefox: investigation so far indicates Firefox 1.0.x\n\t    releases don't expose any vulnerable functionality to\n\t    interfaces spoofed in this way, but that early Deer Park\n\t    Alpha 1 versions did.\u003c/p\u003e\n\t  \u003cp\u003eXBL was changed to no longer allow unprivileged controls\n\t    from web content to implement XPCOM interfaces.\u003c/p\u003e\n\t  \u003ch1\u003eJavaScript integer overflow\u003c/h1\u003e\n\t  \u003cp\u003eGeorgi Guninski reported an integer overflow in the\n\t    JavaScript engine. We presume this could be exploited to\n\t    run arbitrary code under favorable conditions.\u003c/p\u003e\n\t  \u003ch1\u003ePrivilege escalation using about: scheme\u003c/h1\u003e\n\t  \u003cp\u003eheatsync and shutdown report two different ways to bypass\n\t    the restriction on loading high privileged \"chrome\" pages\n\t    from an unprivileged \"about:\" page. By itself this is\n\t    harmless--once the \"about\" page's privilege is raised the\n\t    original page no longer has access--but should this be\n\t    combined with a same-origin violation this could lead to\n\t    arbitrary code execution.\u003c/p\u003e\n\t  \u003ch1\u003eChrome window spoofing\u003c/h1\u003e\n\t  \u003cp\u003emoz_bug_r_a4 demonstrates a way to get a blank \"chrome\"\n\t    canvas by opening a window from a reference to a closed\n\t    window. The resulting window is not privileged, but the\n\t    normal browser UI is missing and can be used to construct\n\t    a spoof page without any of the safety features of the\n\t    browser chrome designed to alert users to phishing sites,\n\t    such as the address bar and the status bar.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "firefox",
+      "range": [
+        {
+          "lt": "1.0.7,1"
+        }
+      ]
+    },
+    {
+      "name": "linux-firefox",
+      "range": [
+        {
+          "lt": "1.0.7"
+        }
+      ]
+    },
+    {
+      "name": "mozilla",
+      "range": [
+        {
+          "lt": "1.7.12,2"
+        },
+        {
+          "ge": "1.8.*,2"
+        }
+      ]
+    },
+    {
+      "name": "linux-mozilla",
+      "range": [
+        {
+          "lt": "1.7.12"
+        }
+      ]
+    },
+    {
+      "name": "linux-mozilla-devel",
+      "range": [
+        {
+          "gt": "0"
+        }
+      ]
+    },
+    {
+      "name": "netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "de-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "el-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-linux-mozillafirebird-gtk1",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-mozillafirebird-gtk2",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ru-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "zhCN-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "zhTW-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "de-linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "de-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "fr-linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "fr-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "linux-phoenix",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla+ipv6",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-embedded",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-firebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-gtk1",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-gtk2",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-gtk",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-thunderbird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "phoenix",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "pt_BR-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-09-22T00:00:00Z",
+    "entry": "2005-09-23T00:00:00Z",
+    "modified": "2005-10-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.mozilla.org/security/announce/mfsa2005-58.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2701"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2702"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2703"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2704"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2705"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2706"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2707"
+    }
+  ]
+}

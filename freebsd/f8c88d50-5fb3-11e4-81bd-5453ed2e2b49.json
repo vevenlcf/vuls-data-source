@@ -1,0 +1,33 @@
+{
+  "vid": "f8c88d50-5fb3-11e4-81bd-5453ed2e2b49",
+  "topic": "libssh -- PRNG state reuse on forking servers",
+  "description": "\n\t\u003cp\u003eAris Adamantiadis reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2014/03/05/1\"\u003e\n\t  \u003cp\u003eWhen accepting a new connection, the server forks and the\n\t    child process handles the request. The RAND_bytes() function\n\t    of openssl doesn't reset its state after the fork, but\n\t    simply adds the current process id (getpid) to the PRNG\n\t    state, which is not guaranteed to be unique.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "libssh",
+      "range": [
+        {
+          "lt": "0.6.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2014-03-05T00:00:00Z",
+    "entry": "2014-10-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/57407"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2014-0017"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://www.openwall.com/lists/oss-security/2014/03/05/1"
+    }
+  ]
+}

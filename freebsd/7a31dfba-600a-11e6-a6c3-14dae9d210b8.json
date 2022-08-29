@@ -1,0 +1,38 @@
+{
+  "vid": "7a31dfba-600a-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Insecure default snmpd.config permissions",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe SNMP protocol supports an authentication model called\n\tUSM, which relies on a shared secret. The default permission\n\tof the snmpd configuration file, /etc/snmpd.config, is\n\tweak and does not provide adequate protection against local\n\tunprivileged users.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA local user may be able to read the shared secret, if\n\tconfigured and used by the system administrator.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "10.2_9",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_26",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_33",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-01-14T00:00:00Z",
+    "entry": "2016-08-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5677"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-16:06.bsnmpd"
+    }
+  ]
+}

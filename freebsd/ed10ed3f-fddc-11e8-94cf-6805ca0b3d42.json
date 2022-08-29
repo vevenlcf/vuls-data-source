@@ -1,0 +1,65 @@
+{
+  "vid": "ed10ed3f-fddc-11e8-94cf-6805ca0b3d42",
+  "topic": "phpMyAdmin -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe phpMyAdmin development team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2018-6/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eLocal file inclusion through transformation feature\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eA flaw has been found where an attacker can exploit\n\t    phpMyAdmin to leak the contents of a local file. The\n\t    attacker must have access to the phpMyAdmin Configuration\n\t    Storage tables, although these can easily be created in any\n\t    database to which the attacker has access. An attacker must\n\t    have valid credentials to log in to phpMyAdmin; this\n\t    vulnerability does not allow an attacker to circumvent the\n\t    login system.\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this vulnerability to be severe.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2018-7/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eXSRF/CSRF vulnerability in phpMyAdmin\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eBy deceiving a user to click on a crafted URL, it is\n\t    possible to perform harmful SQL operations such as renaming\n\t    databases, creating new tables/routines, deleting designer\n\t    pages, adding/deleting users, updating user passwords,\n\t    killing SQL processes, etc.\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this vulnerability to be of moderate severity.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cblockquote cite=\"https://www.phpmyadmin.net/security/PMASA-2018-8/\"\u003e\n\t  \u003ch3\u003eSummary\u003c/h3\u003e\n\t  \u003cp\u003eXSS vulnerability in navigation tree\u003c/p\u003e\n\t  \u003ch3\u003eDescription\u003c/h3\u003e\n\t  \u003cp\u003eA Cross-Site Scripting vulnerability was found in the\n\t    navigation tree, where an attacker can deliver a payload to\n\t    a user through a specially-crafted database/table name.\u003c/p\u003e\n\t  \u003ch3\u003eSeverity\u003c/h3\u003e\n\t  \u003cp\u003eWe consider this attack to be of moderate severity.\u003c/p\u003e\n\t  \u003ch3\u003eMitigation factor\u003c/h3\u003e\n\t  \u003cp\u003eThe stored XSS vulnerabilities can be triggered only by\n\t    someone who logged in to phpMyAdmin, as the usual token\n\t    protection prevents non-logged-in users from accessing the\n\t    required forms.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "phpMyAdmin",
+      "range": [
+        {
+          "lt": "4.8.4"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php56",
+      "range": [
+        {
+          "lt": "4.8.4"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php70",
+      "range": [
+        {
+          "lt": "4.8.4"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php71",
+      "range": [
+        {
+          "lt": "4.8.4"
+        }
+      ]
+    },
+    {
+      "name": "phpMyAdmin-php72",
+      "range": [
+        {
+          "lt": "4.8.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-12-11T00:00:00Z",
+    "entry": "2018-12-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2018-6/"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2018-7/"
+    },
+    {
+      "source": "URL",
+      "text": "https://www.phpmyadmin.net/security/PMASA-2018-8/"
+    }
+  ]
+}

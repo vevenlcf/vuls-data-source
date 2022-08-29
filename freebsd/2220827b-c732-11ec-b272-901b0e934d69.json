@@ -1,0 +1,33 @@
+{
+  "vid": "2220827b-c732-11ec-b272-901b0e934d69",
+  "topic": "hiredis -- integer/buffer overflow",
+  "description": "\n\t\u003cp\u003ehiredis maintainers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/redis/hiredis/security/advisories/GHSA-hfm9-39pp-55p2\"\u003e\n\t  \u003cp\u003e\n\t    Hiredis is vulnurable to integer overflow if provided maliciously crafted or corrupted RESP mult-bulk protocol data.\n\n\t    When parsing multi-bulk (array-like) replies, hiredis fails to check if count * sizeof(redisReply*) can be represented in SIZE_MAX. If it can not, and the calloc() call doesn't itself make this check, it would result in a short allocation and subsequent buffer overflow.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "hiredis",
+      "range": [
+        {
+          "lt": "1.0.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-10-04T00:00:00Z",
+    "entry": "2022-04-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-32765"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/redis/hiredis/security/advisories/GHSA-hfm9-39pp-55p2"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-32765"
+    }
+  ]
+}

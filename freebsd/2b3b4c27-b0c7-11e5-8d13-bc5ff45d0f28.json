@@ -1,0 +1,61 @@
+{
+  "vid": "2b3b4c27-b0c7-11e5-8d13-bc5ff45d0f28",
+  "topic": "qemu -- buffer overflow vulnerability in VNC",
+  "description": "\n\t\u003cp\u003ePrasad J Pandit, Red Hat Product Security Team, reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/08/21/6\"\u003e\n\t  \u003cp\u003eQemu emulator built with the VNC display driver support is\n\t    vulnerable to a buffer overflow flaw leading to a heap memory\n\t    corruption issue. It could occur while refreshing the server\n\t    display surface via routine vnc_refresh_server_surface().\u003c/p\u003e\n\t  \u003cp\u003eA privileged guest user could use this flaw to corrupt the heap\n\t    memory and crash the Qemu process instance OR potentially use it\n\t    to execute arbitrary code on the host.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "2.4.0.1"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "2.4.0.1"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.4.50.g20151011"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.4.50.g20151011"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-17T00:00:00Z",
+    "entry": "2016-01-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/08/21/6"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=efec4dcd2552e85ed57f276b58f09fc385727450"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/seanbruno/qemu-bsd-user/commit/eb8934b0418b3b1d125edddc4fc334a54334a49b"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-5225"
+    }
+  ]
+}

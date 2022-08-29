@@ -1,0 +1,37 @@
+{
+  "vid": "1db7ecf5-fd24-11d9-b4d6-0007e900f87b",
+  "topic": "clamav -- multiple remote buffer overflows",
+  "description": "\n\t\u003cp\u003eAn Secunia Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://secunia.com/advisories/16180/\"\u003e\n\t  \u003cp\u003eNeel Mehta and Alex Wheeler have reported some\n\t    vulnerabilities in Clam AntiVirus, which can be exploited\n\t    by malicious people to cause a DoS (Denial of Service)\n\t    or compromise a vulnerable system.\u003c/p\u003e\n\t  \u003col\u003e\n\t    \u003cli\u003eTwo integer overflow errors in \"libclamav/tnef.c\"\n\t      when processing TNEF files can be exploited to cause\n\t      a heap-based buffer overflow via a specially crafted\n\t      TNEF file with a length value of -1 in the header.\u003c/li\u003e\n\t    \u003cli\u003eAn integer overflow error in \"libclamav/chmunpack.c\"\n\t      can be exploited to cause a heap-based buffer overflow\n\t      via a specially crafted CHM file with a chunk entry that\n\t      has a filename length of -1.\u003c/li\u003e\n\t    \u003cli\u003eA boundary error in \"libclamav/fsg.c\" when\n\t      processing a FSG compressed file can cause a heap-based\n\t      buffer overflow.\u003c/li\u003e\n\t  \u003c/ol\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "clamav",
+      "range": [
+        {
+          "lt": "0.86.2"
+        }
+      ]
+    },
+    {
+      "name": "clamav-devel",
+      "range": [
+        {
+          "le": "20050704"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-24T00:00:00Z",
+    "entry": "2005-07-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.rem0te.com/public/images/clamav.pdf"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/16180/"
+    }
+  ]
+}

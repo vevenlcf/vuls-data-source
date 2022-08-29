@@ -1,0 +1,38 @@
+{
+  "vid": "c11ee146-c266-11ea-8659-901b0ef719ab",
+  "topic": "FreeBSD -- IPv6 socket option race condition and use after free",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eThe IPV6_2292PKTOPTIONS set handler was missing synchronization,\n\tso racing accesses could modify freed memory.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA malicious user application could trigger memory corruption, leading\n\tto privilege escalation.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.1_7",
+          "ge": "12.1"
+        },
+        {
+          "lt": "11.4_1",
+          "ge": "11.4"
+        },
+        {
+          "lt": "11.3_11",
+          "ge": "11.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-07-09T00:00:00Z",
+    "entry": "2020-07-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2020-7457"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-20:20.ipv6"
+    }
+  ]
+}

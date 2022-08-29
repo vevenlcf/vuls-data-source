@@ -1,0 +1,29 @@
+{
+  "vid": "d1c39c8e-05ab-4739-870f-765490fa2052",
+  "topic": "openvpn -- denial of service: undecryptable packet from authorized client can disconnect unrelated clients",
+  "description": "\n\t\u003cp\u003eJames Yonan reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://openvpn.net/changelog.html\"\u003e\n\t  \u003cp\u003eIf the client sends a packet which fails to decrypt on the\n\t    server, the OpenSSL error queue is not properly flushed,\n\t    which can result in another unrelated client instance on the\n\t    server seeing the error and responding to it, resulting in\n\t    disconnection of the unrelated client.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openvpn",
+      "range": [
+        {
+          "lt": "2.0.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-27T00:00:00Z",
+    "entry": "2005-08-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://openvpn.net/changelog.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2532"
+    }
+  ]
+}

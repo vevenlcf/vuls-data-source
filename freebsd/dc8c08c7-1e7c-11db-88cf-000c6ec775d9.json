@@ -1,0 +1,222 @@
+{
+  "vid": "dc8c08c7-1e7c-11db-88cf-000c6ec775d9",
+  "topic": "apache -- mod_rewrite buffer overflow vulnerability",
+  "description": "\n\t\u003cp\u003eThe Apache Software Foundation and The Apache HTTP Server\n\t  Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=apache-httpd-announce\u0026amp;m=115409818602955\"\u003e\n\t  \u003cp\u003eAn off-by-one flaw exists in the Rewrite module,\n\t    mod_rewrite, as shipped with Apache 1.3 since 1.3.28, 2.0\n\t    since 2.0.46, and 2.2 since 2.2.0.\u003c/p\u003e\n\t  \u003cp\u003eDepending on the manner in which Apache HTTP Server was\n\t    compiled, this software defect may result in a\n\t    vulnerability which, in combination with certain types of\n\t    Rewrite rules in the web server configuration files, could\n\t    be triggered remotely. For vulnerable builds, the nature\n\t    of the vulnerability can be denial of service (crashing of\n\t    web server processes) or potentially allow arbitrary code\n\t    execution. This issue has been rated as having important\n\t    security impact by the Apache HTTP Server Security Team.\u003c/p\u003e\n\t  \u003cp\u003eThis flaw does not affect a default installation of\n\t    Apache HTTP Server.  Users who do not use, or have not\n\t    enabled, the Rewrite module mod_rewrite are not affected\n\t    by this issue. This issue only affects installations using\n\t    a Rewrite rule with the following characteristics:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eThe RewriteRule allows the attacker to control the\n\t      initial part of the rewritten URL (for example if the\n\t      substitution URL starts with $1)\u003c/li\u003e\n\t    \u003cli\u003eThe RewriteRule flags do NOT include any of the\n\t      following flags: Forbidden (F), Gone (G), or NoEscape\n\t      (NE).\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003ePlease note that ability to exploit this issue is\n\t    dependent on the stack layout for a particular compiled\n\t    version of mod_rewrite. If the compiler used to compile\n\t    Apache HTTP Server has added padding to the stack\n\t    immediately after the buffer being overwritten, it will\n\t    not be possible to exploit this issue, and Apache HTTP\n\t    Server will continue operating normally.\u003c/p\u003e\n\t  \u003cp\u003eThe Apache HTTP Server project thanks Mark Dowd of McAfee\n\t    Avert Labs for the responsible reporting of this\n\t    vulnerability.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache",
+      "range": [
+        {
+          "lt": "1.3.36_1",
+          "ge": "1.3.28"
+        },
+        {
+          "lt": "2.0.58_2",
+          "ge": "2.0.46"
+        },
+        {
+          "lt": "2.2.2_1",
+          "ge": "2.2.0"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_perl",
+      "range": [
+        {
+          "lt": "1.3.36_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+ipv6",
+      "range": [
+        {
+          "lt": "1.3.37",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache_fp",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ru-apache",
+      "range": [
+        {
+          "lt": "1.3.37+30.23",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "ru-apache+mod_ssl",
+      "range": [
+        {
+          "lt": "1.3.34.1.57_2",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+ssl",
+      "range": [
+        {
+          "lt": "1.3.34.1.57_2",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_accel",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_accel+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_accel+mod_deflate",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_accel+mod_deflate+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_deflate",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_deflate+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_snmp",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_snmp+mod_accel",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_snmp+mod_accel+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_snmp+mod_deflate",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_snmp+mod_deflate+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    },
+    {
+      "name": "apache+mod_ssl+mod_snmp+mod_accel+mod_deflate+ipv6",
+      "range": [
+        {
+          "lt": "1.3.36+2.8.27_1",
+          "ge": "1.3.28"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-07-27T00:00:00Z",
+    "entry": "2006-07-28T00:00:00Z",
+    "modified": "2006-11-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-3747"
+    },
+    {
+      "source": "MLIST: 44CA22D9.6020200@apache.org",
+      "text": "http://marc.theaimsgroup.com/?l=apache-httpd-announce\u0026m=115409818602955"
+    },
+    {
+      "source": "CertVU",
+      "text": "395412"
+    }
+  ]
+}

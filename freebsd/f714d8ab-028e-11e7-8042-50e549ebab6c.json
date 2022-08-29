@@ -1,0 +1,33 @@
+{
+  "vid": "f714d8ab-028e-11e7-8042-50e549ebab6c",
+  "topic": "kio: Information Leak when accessing https when using a malicious PAC file",
+  "description": "\n       \u003cp\u003eAlbert Astals Cid reports:\u003c/p\u003e\n       \u003cblockquote cite=\"https://www.kde.org/info/security/advisory-20170228-1.txt\"\u003e\n\t \u003cp\u003eUsing a malicious PAC file, and then using exfiltration methods in the PAC\n\t    function FindProxyForURL() enables the attacker to expose full https URLs.\u003c/p\u003e\n\t \u003cp\u003eThis is a security issue since https URLs may contain sensitive\n\t     information in the URL authentication part (user:password@host), and in the\n\t     path and the query (e.g. access tokens).\u003c/p\u003e\n\t \u003cp\u003eThis attack can be carried out remotely (over the LAN) since proxy settings\n\t    allow \"Detect Proxy Configuration Automatically\".\n\t    This setting uses WPAD to retrieve the PAC file, and an attacker who has access\n\t    to the victim's LAN can interfere with the WPAD protocols (DHCP/DNS+HTTP)\n\t    and inject his/her own malicious PAC instead of the legitimate one.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "kdelibs",
+      "range": [
+        {
+          "lt": "4.14.29_10"
+        }
+      ]
+    },
+    {
+      "name": "kf5-kio",
+      "range": [
+        {
+          "lt": "5.31.0_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-02-28T00:00:00Z",
+    "entry": "2017-03-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://www.kde.org/info/security/advisory-20170228-1.txt"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "vid": "8efe93e2-ee62-11d9-8310-0001020eed82",
+  "topic": "zlib -- buffer overflow vulnerability",
+  "description": "\n\t\u003ch1\u003eProblem Description\u003c/h1\u003e\n\t\u003cp\u003eAn error in the handling of corrupt compressed data streams\n\t  can result in a buffer being overflowed.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eBy carefully crafting a corrupt compressed data stream, an\n\t  attacker can overwrite data structures in a zlib-using\n\t  application.\tThis may cause the application to halt,\n\t  causing a denial of service; or it may result in the\n\t  attacker gaining elevated privileges.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "zsync",
+      "range": [
+        {
+          "lt": "0.4.1"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_4",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_18",
+          "ge": "5.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-06T00:00:00Z",
+    "entry": "2005-07-06T00:00:00Z",
+    "modified": "2005-10-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2096"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:16.zlib"
+    }
+  ]
+}

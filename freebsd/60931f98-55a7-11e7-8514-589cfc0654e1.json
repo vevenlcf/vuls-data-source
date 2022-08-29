@@ -1,0 +1,33 @@
+{
+  "vid": "60931f98-55a7-11e7-8514-589cfc0654e1",
+  "topic": "Dropbear -- two vulnerabilities",
+  "description": "\n\t\u003cp\u003eMatt Johnston reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://matt.ucc.asn.au/dropbear/CHANGES\"\u003e\n\t  \u003cp\u003eFix double-free in server TCP listener cleanup A double-free in\n\t    the server could be triggered by an authenticated user if dropbear\n\t    is running with -a (Allow connections to forwarded ports from any\n\t    host) This could potentially allow arbitrary code execution as root\n\t    by an authenticated user.\u003c/p\u003e\n\t  \u003cp\u003eFix information disclosure with ~/.ssh/authorized_keys symlink.\n\t    Dropbear parsed authorized_keys as root, even if it were a symlink.\n\t    The fix is to switch to user permissions when opening authorized_keys.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "dropbear",
+      "range": [
+        {
+          "lt": "2017.75"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-05-18T00:00:00Z",
+    "entry": "2017-07-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://matt.ucc.asn.au/dropbear/CHANGES"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9078"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-9079"
+    }
+  ]
+}

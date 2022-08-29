@@ -1,0 +1,41 @@
+{
+  "vid": "6601c08d-a46c-11ec-8be6-d4c9ef517024",
+  "topic": "Apache httpd -- Multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eThe Apache httpd project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://httpd.apache.org/security/vulnerabilities_24.html\"\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003e\u003cp\u003emod_lua: Use of uninitialized value of in r:parsebody (moderate)\n\t      (CVE-2022-22719)\u003c/p\u003e\u003cp\u003eA carefully crafted request body can cause a\n\t      read to a random memory area which could cause the process to crash.\n\t    \u003c/p\u003e\u003c/li\u003e\n\t    \u003cli\u003e\u003cp\u003eHTTP request smuggling vulnerability (important) (CVE-2022-22720)\n\t      \u003c/p\u003e\u003cp\u003ehttpd fails to close inbound connection when errors are\n\t      encountered discarding the request body, exposing the server to HTTP\n\t      Request Smuggling\u003c/p\u003e\u003c/li\u003e\n\t    \u003cli\u003e\u003cp\u003ecore: Possible buffer overflow with very large or unlimited\n\t      LimitXMLRequestBody (low) (CVE-2022-22721)\u003c/p\u003e\u003cp\u003eIf LimitXMLRequestBody\n\t      is set to allow request bodies larger than 350MB (defaults to 1M) on 32\n\t      bit systems an integer overflow happens which later causes out of\n\t      bounds writes.\u003c/p\u003e\u003c/li\u003e\n\t    \u003cli\u003e\u003cp\u003emod_sed: Read/write beyond bounds (important) (CVE-2022-23924)\u003c/p\u003e\n\t      \u003cp\u003eOut-of-bounds Write vulnerability in mod_sed of Apache HTTP Server\n\t\tallows an attacker to overwrite heap memory with possibly attacker\n\t\tprovided data.\u003c/p\u003e\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "apache24",
+      "range": [
+        {
+          "lt": "2.4.53"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-03-14T00:00:00Z",
+    "entry": "2022-03-15T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://httpd.apache.org/security/vulnerabilities_24.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-22719"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-22720"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-22721"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-23943"
+    }
+  ]
+}

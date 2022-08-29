@@ -1,0 +1,45 @@
+{
+  "vid": "d9e1b569-c3d8-11e5-b5fe-002590263bf5",
+  "topic": "privoxy -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003ePrivoxy Developers reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.privoxy.org/3.0.23/user-manual/whatsnew.html\"\u003e\n\t  \u003cp\u003eFixed a DoS issue in case of client requests with incorrect\n\t    chunk-encoded body. When compiled with assertions enabled (the\n\t    default) they could previously cause Privoxy to abort(). Reported\n\t    by Matthew Daley. CVE-2015-1380.\u003c/p\u003e\n\t  \u003cp\u003eFixed multiple segmentation faults and memory leaks in the pcrs\n\t    code. This fix also increases the chances that an invalid pcrs\n\t    command is rejected as such. Previously some invalid commands would\n\t    be loaded without error. Note that Privoxy's pcrs sources (action\n\t    and filter files) are considered trustworthy input and should not be\n\t    writable by untrusted third-parties. CVE-2015-1381.\u003c/p\u003e\n\t  \u003cp\u003eFixed an 'invalid read' bug which could at least theoretically\n\t    cause Privoxy to crash. So far, no crashes have been observed.\n\t    CVE-2015-1382.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "privoxy",
+      "range": [
+        {
+          "lt": "3.0.23"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-01-26T00:00:00Z",
+    "entry": "2016-01-26T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.privoxy.org/3.0.23/user-manual/whatsnew.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/01/26/4"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-1380"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-1381"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-1382"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/197089"
+    }
+  ]
+}

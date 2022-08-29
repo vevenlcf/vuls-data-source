@@ -1,0 +1,34 @@
+{
+  "vid": "13d37672-9791-11eb-b87a-901b0ef719ab",
+  "topic": "FreeBSD -- Memory disclosure by stale virtual memory mapping",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eA particular case of memory sharing is mishandled in the virtual memory\n\tsystem.  It is possible and legal to establish a relationship where\n\tmultiple descendant processes share a mapping which shadows memory of an\n\tancestor process.  In this scenario, when one process modifies memory\n\tthrough such a mapping, the copy-on-write logic fails to invalidate\n\tother mappings of the source page.  These stale mappings may remain even\n\tafter the mapped pages have been reused for another purpose.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn unprivileged local user process can maintain a mapping of a page\n\tafter it is freed, allowing that process to read private data belonging\n\tto other processes or the kernel.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.2_6",
+          "ge": "12.2"
+        },
+        {
+          "lt": "11.4_9",
+          "ge": "11.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-04-06T00:00:00Z",
+    "entry": "2021-04-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2021-29626"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-21:08.vm"
+    }
+  ]
+}

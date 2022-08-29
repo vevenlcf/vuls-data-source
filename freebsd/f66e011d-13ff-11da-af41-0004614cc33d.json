@@ -1,0 +1,25 @@
+{
+  "vid": "f66e011d-13ff-11da-af41-0004614cc33d",
+  "topic": "elm -- remote buffer overflow in Expires header",
+  "description": "\n\t\u003cp\u003eUlf Harnhammar has discovered a remotely exploitable buffer\n\t  overflow in Elm e-mail client when parsing the Expires header\n\t  of an e-mail message:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://archives.neohapsis.com/archives/fulldisclosure/2005-08/0688.html\"\u003e\n\t  \u003cp\u003eThe attacker only needs to send the victim an e-mail\n\t    message. When the victim with that message in his or her\n\t    inbox starts Elm or simply views the inbox in an already\n\t    started copy of Elm, the buffer overflow will happen\n\t    immediately. The overflow is stack-based, and it gives full\n\t    control over EIP, EBP and EBX. It is caused by a bad\n\t    sscanf(3) call, using a format string containing \"%s\"\n\t    to copy from a long char array to a shorter array.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "elm",
+      "range": [
+        {
+          "lt": "2.5.8"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-08-20T00:00:00Z",
+    "entry": "2005-08-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://archives.neohapsis.com/archives/fulldisclosure/2005-08/0688.html"
+    }
+  ]
+}

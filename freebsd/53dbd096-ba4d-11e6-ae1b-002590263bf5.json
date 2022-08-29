@@ -1,0 +1,34 @@
+{
+  "vid": "53dbd096-ba4d-11e6-ae1b-002590263bf5",
+  "topic": "xen-kernel -- x86 segment base write emulation lacking canonical address checks",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://xenbits.xen.org/xsa/advisory-193.html\"\u003e\n\t  \u003cp\u003eBoth writes to the FS and GS register base MSRs as well as the\n\t    WRFSBASE and WRGSBASE instructions require their input values to be\n\t    canonical, or a #GP fault will be raised. When the use of those\n\t    instructions by the hypervisor was enabled, the previous guard\n\t    against #GP faults (having recovery code attached) was accidentally\n\t    removed.\u003c/p\u003e\n\t  \u003cp\u003eA malicious guest administrator can crash the host, leading to a\n\t    DoS.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.7.1",
+          "ge": "4.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-11-22T00:00:00Z",
+    "entry": "2016-12-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://xenbits.xen.org/xsa/advisory-193.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-9385"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/214936"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "vid": "61db9b88-d091-11e9-8d41-97657151f8c2",
+  "topic": "Exim -- RCE with root privileges in TLS SNI handler",
+  "description": "\n\t\u003cp\u003eExim developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://git.exim.org/exim.git/blob/2600301ba6dbac5c9d640c87007a07ee6dcea1f4:/doc/doc-txt/cve-2019-15846/cve.txt\"\u003e\n\t  \u003cp\u003eIf your Exim server accepts TLS connections, it is vulnerable. This does\n\t    not depend on the TLS libray, so both, GnuTLS and OpenSSL are affected.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability is exploitable by sending a SNI ending in a\nbackslash-null sequence during the initial TLS handshake. The exploit\nexists as a POC. For more details see the document qualys.mbx\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "exim",
+      "range": [
+        {
+          "lt": "4.92.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-09-02T00:00:00Z",
+    "entry": "2019-09-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://git.exim.org/exim.git/blob_plain/2600301ba6dbac5c9d640c87007a07ee6dcea1f4:/doc/doc-txt/cve-2019-15846/cve.txt"
+    }
+  ]
+}

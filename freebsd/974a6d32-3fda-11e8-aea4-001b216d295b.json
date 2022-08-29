@@ -1,0 +1,29 @@
+{
+  "vid": "974a6d32-3fda-11e8-aea4-001b216d295b",
+  "topic": "ipsec-tools -- remotely exploitable computational-complexity attack",
+  "description": "\n\t\u003cp\u003eRobert Foggia via NetBSD GNATS reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://gnats.netbsd.org/cgi-bin/query-pr-single.pl?number=51682\"\u003e\n\t  \u003cp\u003eThe ipsec-tools racoon daemon contains a remotely exploitable computational\n\t  complexity attack when parsing and storing isakmp fragments. The implementation\n\t  permits a remote attacker to exhaust computational resources on the remote endpoint\n\t  by repeatedly sending isakmp fragment packets in a particular order such that\n\t  the worst-case computational complexity is realized in the algorithm utilized\n\t  to determine if reassembly of the fragments can take place.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "ipsec-tools",
+      "range": [
+        {
+          "lt": "0.8.2_3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-12-02T00:00:00Z",
+    "entry": "2018-04-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://gnats.netbsd.org/cgi-bin/query-pr-single.pl?number=51682"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-10396"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "vid": "aae8fecf-888e-11ea-9714-08002718de91",
+  "topic": "py-yaml -- FullLoader (still) exploitable for arbitrary command execution",
+  "description": "\n\t\u003cp\u003eRiccardo Schirone (https://github.com/ret2libc) reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://bugzilla.redhat.com/show_bug.cgi?id=1807367\"\u003e\n\t  \u003cp\u003eIn FullLoader python/object/new constructor, implemented by\n\t    construct_python_object_apply, has support for setting the\n\t    state of a deserialized instance through the set_python_instance_state\n\t    method.  After setting the state, some operations are performed\n\t    on the instance to complete its initialization, however it is\n\t    possible for an attacker to set the instance' state in such a way\n\t    that arbitrary code is executed by the FullLoader.\u003c/p\u003e\n\t  \u003cp\u003eThis patch tries to block such attacks in FullLoader by\n\t    preventing set_python_instance_state from setting arbitrar\n\t    properties. It implements a blacklist that includes extend method\n\t    (called by construct_python_object_apply) and all special\n\t    methods (e.g. __set__, __setitem__, etc.).\u003c/p\u003e\n\t  \u003cp\u003eUsers who need special attributes being set in the state of a\n\t    deserialized object can still do it through the UnsafeLoader, which\n\t    however should not be used on untrusted input. Additionally, they can\n\t    subclass FullLoader and redefine state_blacklist_regexp to include the\n\t    additional attributes they need, passing the subclassed loader to\n\t    yaml.load.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "py27-yaml",
+      "range": [
+        {
+          "lt": "5.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py35-yaml",
+      "range": [
+        {
+          "lt": "5.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py36-yaml",
+      "range": [
+        {
+          "lt": "5.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py37-yaml",
+      "range": [
+        {
+          "lt": "5.3.1"
+        }
+      ]
+    },
+    {
+      "name": "py38-yaml",
+      "range": [
+        {
+          "lt": "5.3.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-03-02T00:00:00Z",
+    "entry": "2020-04-27T00:00:00Z",
+    "modified": "2020-04-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.redhat.com/show_bug.cgi?id=1807367"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/yaml/pyyaml/pull/386"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2020-1747"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/245937"
+    }
+  ]
+}

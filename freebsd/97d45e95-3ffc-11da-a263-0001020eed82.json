@@ -1,0 +1,34 @@
+{
+  "vid": "97d45e95-3ffc-11da-a263-0001020eed82",
+  "topic": "snort -- Back Orifice preprocessor buffer overflow vulnerability",
+  "description": "\n\t\u003cp\u003eJennifer Steffens reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.snort.org/pub-bin/snortnews.cgi#99\"\u003e\n\t  \u003cp\u003eThe Back Orifice preprocessor contains a stack-based\n\t    buffer overflow. This vulnerability could be leveraged by\n\t    an attacker to execute code remotely on a Snort sensor\n\t    where the Back Orifice preprocessor is enabled. However,\n\t    there are a number of factors that make remote code\n\t    execution difficult to achieve across different builds of\n\t    Snort on different platforms, even on the same platform\n\t    with different compiler versions, and it is more likely\n\t    that an attacker could use the vulnerability as a denial\n\t    of service attack.\u003c/p\u003e\n\t  \u003cp\u003eThe Back Orifice preprocessor can be disabled by\n\t    commenting out the line \"preprocessor bo\" in\n\t    snort.conf. This can be done in any text editor using the\n\t    following procedure:\u003c/p\u003e\n\t  \u003col\u003e\n\t    \u003cli\u003eLocate the line \"preprocessor bo\"\u003c/li\u003e\n\t    \u003cli\u003eComment out this line by preceding it with a hash\n\t      (#). The new line will look like \"#preprocessor bo\"\u003c/li\u003e\n\t    \u003cli\u003eSave the file\u003c/li\u003e\n\t    \u003cli\u003eRestart snort\u003c/li\u003e\n\t  \u003c/ol\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "snort",
+      "range": [
+        {
+          "lt": "2.4.3",
+          "ge": "2.4.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-10-18T00:00:00Z",
+    "entry": "2005-10-18T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.snort.org/pub-bin/snortnews.cgi#99"
+    },
+    {
+      "source": "URL",
+      "text": "http://xforce.iss.net/xforce/alerts/id/207"
+    },
+    {
+      "source": "CertVU",
+      "text": "175500"
+    }
+  ]
+}

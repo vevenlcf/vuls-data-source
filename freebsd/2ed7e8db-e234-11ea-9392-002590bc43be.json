@@ -1,0 +1,33 @@
+{
+  "vid": "2ed7e8db-e234-11ea-9392-002590bc43be",
+  "topic": "sysutils/openzfs-kmod -- critical permissions issues",
+  "description": "\n\t\u003cp\u003eAndrew Walker reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=248787\"\u003e\n\t  \u003ch5\u003eIssue 1:\u003c/h5\u003e\n\t  \u003cp\u003e\n\t    Users are always granted permissions to cd into a directory.  The\n\t    check for whether execute is present on directories is a de-facto\n\t    no-op.  This cannot be mitigated without upgrading.  Even setting\n\t    an explicit \"deny - execute\" NFSv4 ACE will be bypassed.\n\t  \u003c/p\u003e\n\t  \u003ch5\u003eIssue 2:\u003c/h5\u003e\n\t  \u003cp\u003e\n\t    All ACEs for the owner_group (group@) and regular groups\n\t    (group:\u0026lt;foo\u0026gt;) are granted the current user.  This means that\n\t    POSIX mode 770 is de-facto 777, and the below ACL is also de-facto\n\t    777 because the groupmember check for builtin_administrators\n\t    returns True.\n\t  \u003c/p\u003e\n\t  \u003cpre\u003e\nroot@TESTBOX[~]# getfacl testfile\n# file: testfile\n# owner: root\n# group: wheel\ngroup:builtin_administrators:rwxpDdaARWcCos:-------:allow\n\t  \u003c/pre\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openzfs-kmod",
+      "range": [
+        {
+          "lt": "2020081800"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-08-13T00:00:00Z",
+    "entry": "2020-08-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://github.com/openzfs/zfs/commit/716b53d0a14c72bda16c0872565dd1909757e73f"
+    },
+    {
+      "source": "URL",
+      "text": "https://reviews.freebsd.org/D26107"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/248787"
+    }
+  ]
+}

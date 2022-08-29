@@ -1,0 +1,38 @@
+{
+  "vid": "cacaffbc-5e64-11d8-80e3-0020ed76ef5a",
+  "topic": "GNU libtool insecure temporary file handling",
+  "description": "\n\t\u003cp\u003elibtool attempts to create a temporary directory in\n\t  which to write scratch files needed during processing.  A\n\t  malicious user may create a symlink and then manipulate\n\t  the directory so as to write to files to which she normally\n\t  has no permissions.\u003c/p\u003e\n\t\u003cp\u003eThis has been reported as a ``symlink vulnerability'',\n\t  although I do not think that is an accurate description.\u003c/p\u003e\n\t\u003cp\u003eThis vulnerability could possibly be used on a multi-user\n\t  system to gain elevated privileges, e.g. root builds some\n\t  packages, and another user successfully exploits this\n\t  vulnerability to write to a system file.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "libtool",
+      "range": [
+        {
+          "lt": "1.3.5_2",
+          "ge": "1.3"
+        },
+        {
+          "lt": "1.4.3_3",
+          "ge": "1.4"
+        },
+        {
+          "lt": "1.5.2",
+          "ge": "1.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2004-01-30T00:00:00Z",
+    "entry": "2004-02-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "MLIST",
+      "text": "http://www.geocrawler.com/mail/msg.php3?msg_id=3438808\u0026list=405"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://www.securityfocus.com/archive/1/352333"
+    }
+  ]
+}

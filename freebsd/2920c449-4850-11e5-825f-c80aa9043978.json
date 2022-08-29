@@ -1,0 +1,59 @@
+{
+  "vid": "2920c449-4850-11e5-825f-c80aa9043978",
+  "topic": "OpenSSH -- PAM vulnerabilities",
+  "description": "\n\t\u003cblockquote cite=\"http://www.openssh.com/txt/release-7.0\"\u003e\n\t  \u003cp\u003eOpenSSH 6.8 and 6.9 incorrectly set TTYs to be world-writable.\n\t    Local attackers may be able to write arbitrary messages to\n\t    logged-in users, including terminal escape sequences. Reported\n\t    by Nikolay Edigaryev.\u003c/p\u003e\n\t  \u003cp\u003eFixed a privilege separation\n\t    weakness related to PAM support. Attackers who could successfully\n\t    compromise the pre-authentication process for remote code\n\t    execution and who had valid credentials on the host could\n\t    impersonate other users.\u003c/p\u003e\n\t  \u003cp\u003eFixed a use-after-free bug\n\t    related to PAM support that was reachable by attackers who could\n\t    compromise the pre-authentication process for remote code\n\t    execution.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssh-portable",
+      "range": [
+        {
+          "lt": "7.0.p1,1"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "10.2_2",
+          "ge": "10.2"
+        },
+        {
+          "lt": "10.1_19",
+          "ge": "10.1"
+        },
+        {
+          "lt": "9.3_24",
+          "ge": "9.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-08-11T00:00:00Z",
+    "entry": "2015-08-21T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openssh.com/txt/release-7.0"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-6563"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-6564"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-6565"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-15:22.openssh"
+    }
+  ]
+}

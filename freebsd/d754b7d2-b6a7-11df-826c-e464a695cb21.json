@@ -1,0 +1,37 @@
+{
+  "vid": "d754b7d2-b6a7-11df-826c-e464a695cb21",
+  "topic": "wget -- multiple HTTP client download filename vulnerability",
+  "description": "\n\t\u003cp\u003eGNU Wget version 1.12 and earlier uses a server-provided filename\n\t  instead of the original URL to determine the destination filename of\n\t  a download, which allows remote servers to create or overwrite\n\t  arbitrary files via a 3xx redirect to a URL with a .wgetrc filename\n\t  followed by a 3xx redirect to a URL with a crafted filename, and\n\t  possibly execute arbitrary code as a consequence of writing to a\n\t  dotfile in a home directory.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "wget",
+      "range": [
+        {
+          "le": "1.12_1"
+        }
+      ]
+    },
+    {
+      "name": "wget-devel",
+      "range": [
+        {
+          "le": "1.12_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-06-09T00:00:00Z",
+    "entry": "2010-09-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://bugzilla.redhat.com/show_bug.cgi?id=602797"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-2252"
+    }
+  ]
+}

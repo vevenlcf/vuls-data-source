@@ -1,0 +1,33 @@
+{
+  "vid": "84fdd1bb-9d37-11e5-8f5c-002590263bf5",
+  "topic": "passenger -- client controlled header overwriting",
+  "description": "\n\t\u003cp\u003eDaniel Knoppel reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://blog.phusion.nl/2015/12/07/cve-2015-7519/\"\u003e\n\t  \u003cp\u003eIt was discovered by the SUSE security team that it was possible,\n\t    in some cases, for clients to overwrite headers set by the server,\n\t    resulting in a medium level security issue. CVE-2015-7519 has been\n\t    assigned to this issue.\u003c/p\u003e\n\t  \u003cp\u003eAffected use-cases:\u003c/p\u003e\n\t  \u003cp\u003eHeader overwriting may occur if all of the following conditions are met:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eApache integration mode, or standalone+builtin engine without\n\t      a filtering proxy\u003c/li\u003e\n\t    \u003cli\u003eRuby or Python applications only (Passenger 5); or any\n\t      application (Passenger 4)\u003c/li\u003e\n\t    \u003cli\u003eThe app depends on a request header containing a dash (-)\u003c/li\u003e\n\t    \u003cli\u003eThe header is supposed to be trusted (set by the server)\u003c/li\u003e\n\t    \u003cli\u003eThe client correctly guesses the header name\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eThis vulnerability has been fixed by filtering out client headers\n\t    that do not consist of alphanumeric/dash characters (Nginx already\n\t    did this, so Passenger+Nginx was not affected). If your application\n\t    depends on headers that don't conform to this, you can add a\n\t    workaround in Apache specifically for those to convert them to a\n\t    dash-based format.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "rubygem-passenger",
+      "range": [
+        {
+          "lt": "5.0.22",
+          "ge": "5.0.0"
+        },
+        {
+          "lt": "4.0.60"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-12-07T00:00:00Z",
+    "entry": "2015-12-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://blog.phusion.nl/2015/12/07/cve-2015-7519/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-7519"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "vid": "84ca56be-e1de-11e8-bcfd-00e04c1ea73d",
+  "topic": "NGINX -- Multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eNGINX Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://nginx.org/en/security_advisories.html\"\u003e\n\t  \u003cp\u003eTwo security issues were identified in nginx HTTP/2 implementation,\n\t    which might cause excessive memory consumption (CVE-2018-16843)\n\t    and CPU usage (CVE-2018-16844).\u003c/p\u003e\n\t  \u003cp\u003eThe issues affect nginx compiled with the ngx_http_v2_module (not\n\t    compiled by default) if the \"http2\" option of the \"listen\" directive is\n\t    used in a configuration file.\u003c/p\u003e\n\t  \u003cp\u003eA security issue was identified in the ngx_http_mp4_module, which might\n\t    allow an attacker to cause infinite loop in a worker process, cause a\n\t    worker process crash, or might result in worker process memory\n\t    isclosure by using a specially crafted mp4 file (CVE-2018-16845).\u003c/p\u003e\n\t  \u003cp\u003eThe issue only affects nginx if it is built with the ngx_http_mp4_module\n\t    (the module is not built by default) and the \"mp4\" directive is used in\n\t    the configuration file.  Further, the attack is only possible if an\n\t    attacker is able to trigger processing of a specially crafted mp4 file\n\t    with the ngx_http_mp4_module. \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "nginx",
+      "range": [
+        {
+          "lt": "1.14.1"
+        }
+      ]
+    },
+    {
+      "name": "nginx-devel",
+      "range": [
+        {
+          "lt": "1.15.6"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-11-06T00:00:00Z",
+    "entry": "2018-11-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://nginx.org/en/security_advisories.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16843"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16844"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2018-16845"
+    }
+  ]
+}

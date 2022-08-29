@@ -1,0 +1,50 @@
+{
+  "vid": "6f0529e2-2e82-11e6-b2ec-b499baebfeaf",
+  "topic": "OpenSSL -- vulnerability in DSA signing",
+  "description": "\n\t\u003cp\u003eThe OpenSSL team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://git.openssl.org/?p=openssl.git;a=commit;h=399944622df7bd81af62e67ea967c470534090e2\"\u003e\n\t  \u003cp\u003eOperations in the DSA signing algorithm should run in constant time\n\t    in order to avoid side channel attacks. A flaw in the OpenSSL DSA\n\t    implementation means that a non-constant time codepath is followed for\n\t    certain operations. This has been demonstrated through a cache-timing\n\t    attack to be sufficient for an attacker to recover the private DSA key.\n\t  \u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openssl",
+      "range": [
+        {
+          "lt": "1.0.2_13"
+        }
+      ]
+    },
+    {
+      "name": "libressl",
+      "range": [
+        {
+          "lt": "2.2.9"
+        },
+        {
+          "lt": "2.3.6",
+          "ge": "2.3.0"
+        }
+      ]
+    },
+    {
+      "name": "libressl-devel",
+      "range": [
+        {
+          "lt": "2.4.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-06-09T00:00:00Z",
+    "entry": "2016-06-09T00:00:00Z",
+    "modified": "2016-12-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://git.openssl.org/?p=openssl.git;a=commit;h=399944622df7bd81af62e67ea967c470534090e2"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-2178"
+    }
+  ]
+}

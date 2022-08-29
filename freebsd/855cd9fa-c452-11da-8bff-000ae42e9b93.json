@@ -1,0 +1,25 @@
+{
+  "vid": "855cd9fa-c452-11da-8bff-000ae42e9b93",
+  "topic": "pubcookie-login-server -- cross site scripting vulnerability",
+  "description": "\n\t\u003cp\u003eNathan Dors of the Pubcookie Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"\"\u003e\n\t  \u003cp\u003e Multiple non-persistent XSS vulnerabilities were found\n\t    in the Pubcookie login server's compiled binary \"index.cgi\"\n\t    CGI program. The CGI program mishandles untrusted data when\n\t    printing responses to the browser. This makes the program\n\t    vulnerable to carefully crafted requests containing script\n\t    or HTML. If an attacker can lure an unsuspecting user to\n\t    visit carefully staged content, the attacker can use it to\n\t    redirect the user to his or her local Pubcookie login page\n\t    and attempt to exploit the XSS vulnerabilities.\u003c/p\u003e\n\t  \u003cp\u003e These vulnerabilities are classified as *critical* due\n\t    to the nature and purpose of the Pubcookie login server for\n\t    user authentication and Web Single Sign-on (SSO). Specific\n\t    threats include:\u003c/p\u003e\n\t  \u003cul\u003e\n\t    \u003cli\u003eAn attacker who injects malicious script through the\n\t      vulnerabilities might steal senstive user data including\n\t      a user's authentication credentials (usernames and\n\t      passwords);\u003c/li\u003e\n\t    \u003cli\u003eAn attacker who injects malicious script through the\n\t      vulnerabilities might steal private Pubcookie data\n\t      including a user's authentication assertion (\"granting\")\n\t      cookies and SSO (\"login\") session cookies;\u003c/li\u003e\n\t    \u003cli\u003eAn attacker who injects HTML tags through the\n\t      vulnerabilities might deface a site's Pubcookie login page\n\t      for a single visit by a single user (i.e. a non-persistent\n\t      defacement).\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t  \u003cp\u003eAt the heart of these threats lies a violation of the\n\t    user's trust in the Pubcookie login server.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "pubcookie-login-server",
+      "range": [
+        {
+          "lt": "3.3.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-03-06T00:00:00Z",
+    "entry": "2006-04-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CertVU",
+      "text": "337585"
+    }
+  ]
+}

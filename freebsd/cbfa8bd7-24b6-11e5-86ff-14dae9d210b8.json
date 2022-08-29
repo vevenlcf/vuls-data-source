@@ -1,0 +1,38 @@
+{
+  "vid": "cbfa8bd7-24b6-11e5-86ff-14dae9d210b8",
+  "topic": "haproxy -- information leak vulnerability",
+  "description": "\n       \u003cp\u003eHAProxy reports:\u003c/p\u003e\n       \u003cblockquote cite=\"http://www.haproxy.org/news.html\"\u003e\n\t    \u003cp\u003eA vulnerability was found when HTTP pipelining is used. In\n\t    some cases, a client might be able to cause a buffer alignment issue and\n\t    retrieve uninitialized memory contents that exhibit data from a past\n\t    request or session. I want to address sincere congratulations to Charlie\n\t    Smurthwaite of aTech Media for the really detailed traces he provided\n\t    which made it possible to find the cause of this bug. Every user of\n\t    1.5-dev, 1.5.x or 1.6-dev must upgrade to 1.5.14 or latest 1.6-dev\n\t    snapshot to fix this issue, or use the backport of the fix provided by\n\t    their operating system vendors. CVE-2015-3281 was assigned to this bug.\u003c/p\u003e\n      \u003c/blockquote\u003e\n     ",
+  "affects": [
+    {
+      "name": "haproxy",
+      "range": [
+        {
+          "lt": "1.5.14",
+          "ge": "1.5.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-07-02T00:00:00Z",
+    "entry": "2015-07-07T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.haproxy.org/news.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.haproxy.org/?p=haproxy-1.5.git;a=commit;h=7ec765568883b2d4e5a2796adbeb492a22ec9bd4"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-3281"
+    },
+    {
+      "source": "MLIST",
+      "text": "http://seclists.org/oss-sec/2015/q3/61"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "vid": "373e412e-f748-11df-96cd-0015f2db7bde",
+  "topic": "OpenTTD -- Denial of service (server/client) via invalid read",
+  "description": "\n\t\u003cp\u003eThe OpenTTD Team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://security.openttd.org/en/CVE-2010-4168\"\u003e\n\t  \u003cp\u003eWhen a client disconnects, without sending the \"quit\" or\n\t    \"client error\" message, the server has a chance of reading and\n\t    writing a just freed piece of memory.  The writing can only\n\t    happen while the server is sending the map.  Depending on what\n\t    happens directly after freeing the memory there is a chance of\n\t    segmentation fault, and thus a denial of service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "openttd",
+      "range": [
+        {
+          "lt": "1.0.5",
+          "ge": "1.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2010-11-20T00:00:00Z",
+    "entry": "2010-11-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://security.openttd.org/en/CVE-2010-4168"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2010-4168"
+    }
+  ]
+}

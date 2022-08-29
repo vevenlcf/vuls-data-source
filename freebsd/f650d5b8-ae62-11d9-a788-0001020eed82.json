@@ -1,0 +1,274 @@
+{
+  "vid": "f650d5b8-ae62-11d9-a788-0001020eed82",
+  "topic": "mozilla -- privilege escalation via DOM property overrides",
+  "description": "\n\t\u003cp\u003eA Mozilla Foundation Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.mozilla.org/security/announce/mfsa2005-41.html\"\u003e\n\t  \u003cp\u003emoz_bug_r_a4 reported several exploits giving an attacker\n\t    the ability to install malicious code or steal data,\n\t    requiring only that the user do commonplace actions like\n\t    click on a link or open the context menu. The common cause\n\t    in each case was privileged UI code (\"chrome\") being\n\t    overly trusting of DOM nodes from the content\n\t    window. Scripts in the web page can override properties\n\t    and methods of DOM nodes and shadow the native values,\n\t    unless steps are taken to get the true underlying values.\u003c/p\u003e\n\t  \u003cp\u003eWe found that most extensions also interacted with\n\t    content DOM in a natural, but unsafe, manner. Changes were\n\t    made so that chrome code using this natural DOM coding\n\t    style will now automatically use the native DOM value if\n\t    it exists without having to use cumbersome wrapper\n\t    objects.\u003c/p\u003e\n\t  \u003cp\u003eMost of the specific exploits involved tricking the\n\t    privileged code into calling eval() on an\n\t    attacker-supplied script string, or the equivalent using\n\t    the Script() object. Checks were added in the security\n\t    manager to make sure eval and Script objects are run with\n\t    the privileges of the context that created them, not the\n\t    potentially elevated privileges of the context calling\n\t    them.\u003c/p\u003e\n\t  \u003cp\u003e\u003cstrong\u003eWorkaround\u003c/strong\u003e: Disable Javascript\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "firefox",
+      "range": [
+        {
+          "lt": "1.0.3,1"
+        }
+      ]
+    },
+    {
+      "name": "linux-firefox",
+      "range": [
+        {
+          "lt": "1.0.3"
+        }
+      ]
+    },
+    {
+      "name": "mozilla",
+      "range": [
+        {
+          "lt": "1.7.7,2"
+        },
+        {
+          "ge": "1.8.*,2"
+        }
+      ]
+    },
+    {
+      "name": "linux-mozilla",
+      "range": [
+        {
+          "lt": "1.7.7"
+        },
+        {
+          "ge": "1.8.*"
+        }
+      ]
+    },
+    {
+      "name": "linux-mozilla-devel",
+      "range": [
+        {
+          "lt": "1.7.7"
+        },
+        {
+          "ge": "1.8.*"
+        }
+      ]
+    },
+    {
+      "name": "netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "de-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "el-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-linux-mozillafirebird-gtk1",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-mozillafirebird-gtk2",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ru-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "zhCN-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "zhTW-linux-mozillafirebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "de-linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "de-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "fr-linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "fr-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "ja-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "linux-netscape",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "linux-phoenix",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla+ipv6",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-embedded",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-firebird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-gtk1",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-gtk2",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-gtk",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "mozilla-thunderbird",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "phoenix",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    },
+    {
+      "name": "pt_BR-netscape7",
+      "range": [
+        {
+          "ge": "0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-04-15T00:00:00Z",
+    "entry": "2005-04-16T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.mozilla.org/security/announce/mfsa2005-41.html"
+    }
+  ]
+}

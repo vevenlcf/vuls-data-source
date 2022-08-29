@@ -1,0 +1,46 @@
+{
+  "vid": "9442a811-dab3-11e7-b5af-a4badb2f4699",
+  "topic": "FreeBSD -- OpenSSL multiple vulnerabilities",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eIf an X.509 certificate has a malformed IPAddressFamily\n\textension, OpenSSL could do a one-byte buffer overread.\n\t[CVE-2017-3735]\u003c/p\u003e\n\t\u003cp\u003eThere is a carry propagating bug in the x86_64 Montgomery\n\tsquaring procedure. This only affects processors that support\n\tthe BMI1, BMI2 and ADX extensions like Intel Broadwell (5th\n\tgeneration) and later or AMD Ryzen. [CVE-2017-3736] This\n\tbug only affects FreeBSD 11.x.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eApplication using OpenSSL may display erroneous certificate\n\tin text format. [CVE-2017-3735]\u003c/p\u003e\n\t\u003cp\u003eMishandling of carry propagation will produce incorrect\n\toutput, and make it easier for a remote attacker to obtain\n\tsensitive private-key information. No EC algorithms are\n\taffected, analysis suggests that attacks against RSA and\n\tDSA as a result of this defect would be very difficult to\n\tperform and are not believed likely.\u003c/p\u003e\n\t\u003cp\u003eAttacks against DH are considered just feasible (although\n\tvery difficult) because most of the work necessary to deduce\n\tinformation about a private key may be performed offline.\n\tThe amount of resources required for such an attack would\n\tbe very significant and likely only accessible to a limited\n\tnumber of attackers. An attacker would additionally need\n\tonline access to an unpatched system using the target private\n\tkey in a scenario with persistent DH parameters and a private\n\tkey that is shared between multiple clients. [CVE-2017-3736]\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "11.1_5",
+          "ge": "11.1"
+        },
+        {
+          "lt": "11.0_16",
+          "ge": "11.0"
+        },
+        {
+          "lt": "10.4_4",
+          "ge": "10.4"
+        },
+        {
+          "lt": "10.3_25",
+          "ge": "10.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-11-29T00:00:00Z",
+    "entry": "2017-12-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2017-3735"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-3736"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-17:11.openssl"
+    }
+  ]
+}

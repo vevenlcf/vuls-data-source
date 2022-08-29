@@ -1,0 +1,31 @@
+{
+  "vid": "dade3316-9d31-11da-8c1d-000e0c2e438a",
+  "topic": "IEEE 802.11 -- buffer overflow",
+  "description": "\n\t\u003cp\u003eProblem description:\u003c/p\u003e\n\t\u003cp\u003eAn integer overflow in the handling of corrupt IEEE 802.11\n\t  beacon or probe response frames when scanning for existing\n\t  wireless networks can result in the frame overflowing a\n\t  buffer.\u003c/p\u003e\n\t\u003cp\u003eImpact:\u003c/p\u003e\n\t\u003cp\u003eAn attacker able broadcast a carefully crafted beacon or\n\t  probe response frame may be able to execute arbitrary code\n\t  within the context of the FreeBSD kernel on any system\n\t  scanning for wireless networks.\u003c/p\u003e\n\t\u003cp\u003eWorkaround:\u003c/p\u003e\n\t\u003cp\u003eNo workaround is available, but systems without IEEE 802.11\n\t  hardware or drivers loaded are not vulnerable.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.0_3",
+          "ge": "6.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-01-18T00:00:00Z",
+    "entry": "2006-02-14T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2006-0226"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-06:05.80211"
+    }
+  ]
+}

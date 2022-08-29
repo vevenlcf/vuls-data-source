@@ -1,0 +1,37 @@
+{
+  "vid": "d8e1aadd-ee68-11d9-8310-0001020eed82",
+  "topic": "clamav -- cabinet file handling DoS vulnerability",
+  "description": "\n\t\u003cp\u003eAn iDEFENSE Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=112006456809016\"\u003e\n\t  \u003cp\u003eRemote exploitation of an input validation error in Clam\n\t    AntiVirus ClamAV allows attackers to cause a denial of\n\t    service condition.\u003c/p\u003e\n\t  \u003cp\u003eThe vulnerability specifically exists due to insufficient\n\t    validation on cabinet file header data. The\n\t    \u003ccode\u003eENSURE_BITS()\u003c/code\u003e macro fails to check for zero\n\t    length reads, allowing a carefully constructed cabinet\n\t    file to cause an infinite loop.\u003c/p\u003e\n\t  \u003cp\u003eClamAV is used in a number of mail gateway\n\t    products. Successful exploitation requires an attacker to\n\t    send a specially constructed CAB file through a mail\n\t    gateway or personal anti-virus client utilizing the ClamAV\n\t    scanning engine. The infinate loop will cause the ClamAV\n\t    software to use all available processor resources,\n\t    resulting in a denial of service or severe degradation to\n\t    system performance. Remote exploitation can be achieved by\n\t    sending a malicious file in an e-mail message or during an\n\t    HTTP session.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "clamav",
+      "range": [
+        {
+          "lt": "0.86"
+        }
+      ]
+    },
+    {
+      "name": "clamav-devel",
+      "range": [
+        {
+          "lt": "20050620"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-06-29T00:00:00Z",
+    "entry": "2005-07-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-1923"
+    },
+    {
+      "source": "MLIST: FB24803D1DF2A34FA59FC157B77C97050462A3AB@IDSERV04.idef.com",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=112006456809016"
+    }
+  ]
+}

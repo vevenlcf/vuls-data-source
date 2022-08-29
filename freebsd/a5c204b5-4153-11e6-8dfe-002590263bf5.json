@@ -1,0 +1,29 @@
+{
+  "vid": "a5c204b5-4153-11e6-8dfe-002590263bf5",
+  "topic": "hive -- authorization logic vulnerability",
+  "description": "\n\t\u003cp\u003eSushanth Sowmyan reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://mail-archives.apache.org/mod_mbox/hive-user/201601.mbox/%3C20160128205008.2154F185EB%40minotaur.apache.org%3E\"\u003e\n\t  \u003cp\u003eSome partition-level operations exist that do not explicitly also\n\t    authorize privileges of the parent table. This can lead to issues when\n\t    the parent table would have denied the operation, but no denial occurs\n\t    because the partition-level privilege is not checked by the\n\t    authorization framework, which defines authorization entities only\n\t    from the table level upwards.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "hive",
+      "range": [
+        {
+          "lt": "2.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-01-28T00:00:00Z",
+    "entry": "2016-07-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://mail-archives.apache.org/mod_mbox/hive-user/201601.mbox/%3C20160128205008.2154F185EB%40minotaur.apache.org%3E"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-7521"
+    }
+  ]
+}

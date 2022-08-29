@@ -1,0 +1,46 @@
+{
+  "vid": "6d21a287-fce0-11e0-a828-00235a5f2c9a",
+  "topic": "kdelibs4, rekonq -- input validation failure",
+  "description": "\n\t\u003cp\u003eKDE Security Advisory reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.kde.org/info/security/advisory-20111003-1.txt\"\u003e\n\t  \u003cp\u003eThe default rendering type for a QLabel is QLabel::AutoText,\n\t    which uses heuristics to determine whether to render the given\n\t    content as plain text or rich text. KSSL and Rekonq did not\n\t    properly force its QLabels to use QLabel::PlainText.  As a result,\n\t    if given a certificate containing rich text in its fields, they\n\t    would render the rich text.  Specifically, a certificate\n\t    containing a common name (CN) that has a table element will cause\n\t    the second line of the table to be displayed.  This can allow\n\t    spoofing of the certificate's common name.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "kdelibs",
+      "range": [
+        {
+          "lt": "4.7.2",
+          "ge": "4.0.*"
+        }
+      ]
+    },
+    {
+      "name": "rekonq",
+      "range": [
+        {
+          "lt": "0.8.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2011-10-03T00:00:00Z",
+    "entry": "2011-10-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.kde.org/info/security/advisory-20111003-1.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.nth-dimension.org.uk/pub/NDSA20111003.txt.asc"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3365"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2011-3366"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "vid": "60cb2055-b1b8-11e5-9728-002590263bf5",
+  "topic": "qemu -- denial of service vulnerability in USB EHCI emulation support",
+  "description": "\n\t\u003cp\u003ePrasad J Pandit, Red Hat Product Security Team, reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/12/14/9\"\u003e\n\t  \u003cp\u003eQemu emulator built with the USB EHCI emulation support is\n\t    vulnerable to an infinite loop issue. It occurs during communication\n\t    between host controller interface(EHCI) and a respective device\n\t    driver. These two communicate via a isochronous transfer descriptor\n\t    list(iTD) and an infinite loop unfolds if there is a closed loop in\n\t    this list.\u003c/p\u003e\n\t  \u003cp\u003eA privileges user inside guest could use this flaw to consume\n\t    excessive CPU cycles \u0026amp; resources on the host.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "2.5.0"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "2.5.0"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.5.50.g20151224"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.5.50.g20151224"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-12-14T00:00:00Z",
+    "entry": "2016-01-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/12/14/9"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=156a2e4dbffa85997636a7a39ef12da6f1b40254"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/seanbruno/qemu-bsd-user/commit/156a2e4dbffa85997636a7a39ef12da6f1b40254"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8558"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/205814"
+    }
+  ]
+}

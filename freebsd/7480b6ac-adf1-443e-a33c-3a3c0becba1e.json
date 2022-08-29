@@ -1,0 +1,33 @@
+{
+  "vid": "7480b6ac-adf1-443e-a33c-3a3c0becba1e",
+  "topic": "jenkins -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eKohsuke Kawaguchi from Jenkins team reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-02-27\"\u003e\n\t  \u003ch1\u003eDescription\u003c/h1\u003e\n\t  \u003ch5\u003eSECURITY-125 (Combination filter Groovy script unsecured)\u003c/h5\u003e\n\t  \u003cp\u003eThis vulnerability allows users with the job configuration\n\t    privilege to escalate his privileges, resulting in arbitrary code\n\t    execution to the master.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-162 (directory traversal from artifacts via symlink)\u003c/h5\u003e\n\t  \u003cp\u003eThis vulnerability allows users with the job configuration\n\t    privilege or users with commit access to the build script to\n\t    access arbitrary files/directories on the master, resulting in\n\t    the exposure of sensitive information, such as encryption keys.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-163 (update center metadata retrieval DoS attack)\u003c/h5\u003e\n\t  \u003cp\u003eThis vulnerability allows authenticated users to disrupt the\n\t    operation of Jenkins by feeding malicious update center data into\n\t    Jenkins, affecting plugin installation and tool installation.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-165 (external entity injection via XPath)\u003c/h5\u003e\n\t  \u003cp\u003eThis vulnerability allows users with the read access to Jenkins\n\t    to retrieve arbitrary XML document on the server, resulting in\n\t    the exposure of sensitive information inside/outside Jenkins.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-166 (HudsonPrivateSecurityRealm allows creation of\n\t    reserved names)\u003c/h5\u003e\n\t  \u003cp\u003eFor users using \"Jenkins' own user database\" setting, Jenkins\n\t    doesn't refuse reserved names, thus allowing privilege escalation.\u003c/p\u003e\n\t  \u003ch5\u003eSECURITY-167 (External entity processing in XML can reveal\n\t    sensitive local files)\u003c/h5\u003e\n\t  \u003cp\u003eThis vulnerability allows attackers to create malicious XML\n\t    documents and feed that into Jenkins, which causes Jenkins to\n\t    retrieve arbitrary XML document on the server, resulting in the\n\t    exposure of sensitive information inside/outside Jenkins.\u003c/p\u003e\n\t  \u003ch1\u003eSeverity\u003c/h1\u003e\n\t  \u003cp\u003eSECURITY-125 is rated \u003cstrong\u003ecritical\u003c/strong\u003e. This attack can be\n\t    only mounted by users with some trust, but it results in arbitrary\n\t    code execution on the master.\u003c/p\u003e\n\t  \u003cp\u003eSECURITY-162 is rated \u003cstrong\u003ecritical\u003c/strong\u003e. This attack can be\n\t    only mounted by users with some trust, but it results in the\n\t    exposure of sensitive information.\u003c/p\u003e\n\t  \u003cp\u003eSECURITY-163 is rated \u003cstrong\u003emedium\u003c/strong\u003e, as it results in the\n\t    loss of functionality.\u003c/p\u003e\n\t  \u003cp\u003eSECURITY-165 is rated \u003cstrong\u003ecritical\u003c/strong\u003e. This attack is\n\t    easy to mount, and it results in the exposure of sensitive\n\t    information.\u003c/p\u003e\n\t  \u003cp\u003eSECURITY-166 is rated \u003cstrong\u003ecritical\u003c/strong\u003e. For users who use\n\t    the affected feature, this attack results in arbitrary code\n\t    execution on the master.\u003c/p\u003e\n\t  \u003cp\u003eSECURITY-167 is rated \u003cstrong\u003ecritical\u003c/strong\u003e. This attack is\n\t    easy to mount, and it results in the exposure of sensitive information.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "jenkins",
+      "range": [
+        {
+          "le": "1.600"
+        }
+      ]
+    },
+    {
+      "name": "jenkins-lts",
+      "range": [
+        {
+          "le": "1.580.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-03-01T00:00:00Z",
+    "entry": "2015-03-01T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-02-27"
+    }
+  ]
+}

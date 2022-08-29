@@ -1,0 +1,37 @@
+{
+  "vid": "a876df84-0fef-11db-ac96-000c6ec775d9",
+  "topic": "twiki -- multiple file extensions file upload vulnerability",
+  "description": "\n\t\u003cp\u003eA TWiki Security Alert reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://twiki.org/cgi-bin/view/Codev/SecurityAlertSecureFileUploads\"\u003e\n\t  \u003cp\u003eThe TWiki upload filter already prevents executable\n\t    scripts such as .php, .php1, .phps, .pl from potentially\n\t    getting executed by appending a .txt suffix to the\n\t    uploaded filename. However, PHP and some other types\n\t    allows additional file suffixes, such as .php.en, .php.1,\n\t    and .php.2. TWiki does not check for these suffixes,\n\t    e.g. it is possible to upload php scripts with such\n\t    suffixes without the .txt filename padding.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eThis issue can also be worked around with a restrictive web\n\t  server configuration.  See the\n\t  \u003ca href=\"http://twiki.org/cgi-bin/view/Codev/SecurityAlertSecureFileUploads\"\u003e\n\t  TWiki Security Alert\u003c/a\u003e for more information about how to do\n\t  this.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "twiki",
+      "range": [
+        {
+          "lt": "4.0.4,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2006-07-05T00:00:00Z",
+    "entry": "2006-07-10T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/20992/"
+    },
+    {
+      "source": "URL",
+      "text": "http://twiki.org/cgi-bin/view/Codev/SecurityAlertSecureFileUploads"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2006-3336"
+    },
+    {
+      "source": "BID",
+      "text": "18854"
+    }
+  ]
+}

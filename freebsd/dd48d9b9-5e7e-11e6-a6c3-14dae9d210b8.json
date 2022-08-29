@@ -1,0 +1,38 @@
+{
+  "vid": "dd48d9b9-5e7e-11e6-a6c3-14dae9d210b8",
+  "topic": "FreeBSD -- Kernel memory disclosure in sctp(4)",
+  "description": "\n\t\u003cp\u003eProblem Description:\u003c/p\u003e\n\t\u003cp\u003eWhen initializing the SCTP state cookie being sent in INIT-ACK chunks,\n\t  a buffer allocated from the kernel stack is not completely initialized.\u003c/p\u003e\n\t\u003cp\u003eImpact:\u003c/p\u003e\n\t\u003cp\u003eFragments of kernel memory may be included in SCTP packets and\n\t  transmitted over the network.  For each SCTP session, there are two\n\t  separate instances in which a 4-byte fragment may be transmitted.\u003c/p\u003e\n\t\u003cp\u003eThis memory might contain sensitive information, such as portions of the\n\t  file cache or terminal buffers.  This information might be directly\n\t  useful, or it might be leveraged to obtain elevated privileges in\n\t  some way.  For example, a terminal buffer might include a user-entered\n\t  password.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "9.1_6",
+          "ge": "9.1"
+        },
+        {
+          "lt": "8.4_3",
+          "ge": "8.4"
+        },
+        {
+          "lt": "8.3_10",
+          "ge": "8.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2013-08-22T00:00:00Z",
+    "entry": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2013-5209"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-13:10.sctp"
+    }
+  ]
+}

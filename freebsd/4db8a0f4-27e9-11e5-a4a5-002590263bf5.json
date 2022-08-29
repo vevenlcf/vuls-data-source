@@ -1,0 +1,30 @@
+{
+  "vid": "4db8a0f4-27e9-11e5-a4a5-002590263bf5",
+  "topic": "xen-tools -- PCI MSI mask bits inadvertently exposed to guests",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://xenbits.xen.org/xsa/advisory-129.html\"\u003e\n\t  \u003cp\u003eThe mask bits optionally available in the PCI MSI capability\n\t    structure are used by the hypervisor to occasionally suppress\n\t    interrupt delivery.  Unprivileged guests were, however, nevertheless\n\t    allowed direct control of these bits.\u003c/p\u003e\n\t  \u003cp\u003eInterrupts may be observed by Xen at unexpected times, which may\n\t    lead to a host crash and therefore a Denial of Service.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-tools",
+      "range": [
+        {
+          "lt": "4.5.0_6",
+          "ge": "3.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-06-02T00:00:00Z",
+    "entry": "2015-07-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://xenbits.xen.org/xsa/advisory-129.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-4104"
+    }
+  ]
+}

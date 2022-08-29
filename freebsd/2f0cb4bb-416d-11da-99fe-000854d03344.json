@@ -1,0 +1,42 @@
+{
+  "vid": "2f0cb4bb-416d-11da-99fe-000854d03344",
+  "topic": "xloadimage -- buffer overflows in NIFF image title handling",
+  "description": "\n\t\u003cp\u003eAriel Berkman reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://marc.theaimsgroup.com/?l=bugtraq\u0026amp;m=112862493918840\u0026amp;w=2\"\u003e\n\t  \u003cp\u003eUnlike most of the supported image formats in xloadimage,\n\t    the NIFF image format can store a title name of arbitrary\n\t    length as part of the image file.\u003c/p\u003e\n\t  \u003cp\u003eWhen xloadimage is processing a loaded image, it is\n\t    creating a new Image object and then writing the processed\n\t    image to it. At that point, it will also copy the title\n\t    from the old image to the newly created image.\u003c/p\u003e\n\t  \u003cp\u003eThe 'zoom', 'reduce', and 'rotate' functions are using\n\t    a fixed length buffer to construct the new title name\n\t    when an image processing is done.  Since the title name\n\t    in a NIFF format is of varying length, and there are\n\t    insufficient buffer size validations, the buffer can\n\t    be overflowed.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xloadimage",
+      "range": [
+        {
+          "lt": "4.1.15"
+        }
+      ]
+    },
+    {
+      "name": "xli",
+      "range": [
+        {
+          "lt": "1.17.0_4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-10-05T00:00:00Z",
+    "entry": "2005-10-20T00:00:00Z",
+    "modified": "2005-10-23T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-3178"
+    },
+    {
+      "source": "MLIST: BOEKKJLADFNHIEFBHCECMEONCFAA.aberkm1@uic.edu",
+      "text": "http://marc.theaimsgroup.com/?l=bugtraq\u0026m=112862493918840\u0026w=2"
+    },
+    {
+      "source": "BID",
+      "text": "15051"
+    }
+  ]
+}

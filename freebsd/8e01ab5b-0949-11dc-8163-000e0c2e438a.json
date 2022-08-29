@@ -1,0 +1,47 @@
+{
+  "vid": "8e01ab5b-0949-11dc-8163-000e0c2e438a",
+  "topic": "FreeBSD -- heap overflow in file(1)",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eWhen writing data into a buffer in the file_printf function,\n\t  the length of the unused portion of the buffer is not\n\t  correctly tracked, resulting in a buffer overflow when\n\t  processing certain files.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn attacker who can cause file(1) to be run on a maliciously\n\t  constructed input can cause file(1) to crash.  It may be\n\t  possible for such an attacker to execute arbitrary code with\n\t  the privileges of the user running file(1).\u003c/p\u003e\n\t\u003cp\u003eThe above also applies to any other applications using the\n\t  libmagic(3) library.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround:\u003c/h1\u003e\n\t\u003cp\u003eNo workaround is available, but systems where file(1) and\n\t  other libmagic(3)-using applications are never run on\n\t  untrusted input are not vulnerable.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "file",
+      "range": [
+        {
+          "lt": "4.21"
+        }
+      ]
+    },
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "6.2_5",
+          "ge": "6.2"
+        },
+        {
+          "lt": "6.1_17",
+          "ge": "6.1"
+        },
+        {
+          "lt": "5.5_13",
+          "ge": "5.5"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-05-23T00:00:00Z",
+    "entry": "2007-05-23T00:00:00Z",
+    "modified": "2016-08-09T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2007-1536"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-07:04.file"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "vid": "e05bfc92-0763-11e6-94fa-002590263bf5",
+  "topic": "squid -- multiple vulnerabilities",
+  "description": "\n\t\u003cp\u003eSquid security advisory 2016:5 reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squid-cache.org/Advisories/SQUID-2016_5.txt\"\u003e\n\t  \u003cp\u003eDue to incorrect buffer management Squid cachemgr.cgi tool is\n\t    vulnerable to a buffer overflow when processing remotely supplied\n\t    inputs relayed to it from Squid.\u003c/p\u003e\n\t  \u003cp\u003eThis problem allows any client to seed the Squid manager reports\n\t    with data that will cause a buffer overflow when processed by the\n\t    cachemgr.cgi tool. However, this does require manual administrator\n\t    actions to take place. Which greatly reduces the impact and\n\t    possible uses.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n\t\u003cp\u003eSquid security advisory 2016:6 reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.squid-cache.org/Advisories/SQUID-2016_6.txt\"\u003e\n\t  \u003cp\u003eDue to buffer overflow issues Squid is vulnerable to a denial of\n\t    service attack when processing ESI responses. Due to incorrect input\n\t    validation Squid is vulnerable to public information disclosure of\n\t    the server stack layout when processing ESI responses. Due to\n\t    incorrect input validation and buffer overflow Squid is vulnerable\n\t    to remote code execution when processing ESI responses.\u003c/p\u003e\n\t  \u003cp\u003eThese problems allow ESI components to be used to perform a denial\n\t    of service attack on the Squid service and all other services on the\n\t    same machine. Under certain build conditions these problems allow\n\t    remote clients to view large sections of the server memory. However,\n\t    the bugs are exploitable only if you have built and configured the\n\t    ESI features to be used by a reverse-proxy and if the ESI components\n\t    being processed by Squid can be controlled by an attacker.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "squid",
+      "range": [
+        {
+          "lt": "3.5.17"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-04-20T00:00:00Z",
+    "entry": "2016-04-21T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/Advisories/SQUID-2016_5.txt"
+    },
+    {
+      "source": "URL",
+      "text": "http://www.squid-cache.org/Advisories/SQUID-2016_6.txt"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-4051"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-4052"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-4053"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-4054"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/208939"
+    }
+  ]
+}

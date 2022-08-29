@@ -1,0 +1,29 @@
+{
+  "vid": "a66f9be2-d519-11e7-9866-c85b763a2f96",
+  "topic": "xrdp -- local user can cause a denial of service",
+  "description": "\n\t\u003cp\u003exrdp reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/neutrinolabs/xrdp/pull/958\"\u003e\n\t  \u003cp\u003eThe scp_v0s_accept function in the session manager uses an untrusted integer as a write length,\n\t   which allows local users to cause a denial of service (buffer overflow and application crash)\n\t   or possibly have unspecified other impact via a crafted input stream.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xrdp-devel",
+      "range": [
+        {
+          "le": "0.9.3,1"
+        },
+        {
+          "gt": "0.9.3_1,1",
+          "le": "0.9.4,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-11-23T00:00:00Z",
+    "entry": "2017-11-29T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2017-16927"
+    }
+  ]
+}

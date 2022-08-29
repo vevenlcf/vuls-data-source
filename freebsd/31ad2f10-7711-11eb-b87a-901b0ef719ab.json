@@ -1,0 +1,34 @@
+{
+  "vid": "31ad2f10-7711-11eb-b87a-901b0ef719ab",
+  "topic": "FreeBSD -- jail_remove(2) fails to kill all jailed processes",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eDue to a race condition in the jail_remove(2) implementation, it\n\tmay fail to kill some of the processes.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eA process running inside a jail can avoid being killed during jail\n\ttermination.  If a jail is subsequently started with the same root\n\tpath, a lingering jailed process may be able to exploit the window\n\tduring which a devfs filesystem is mounted but the jail's devfs\n\truleset has not been applied, to access device nodes which are\n\tordinarily inaccessible.  If the process is privileged, it may be able\n\tto escape the jail and gain full access to the system.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.2_4",
+          "ge": "12.2"
+        },
+        {
+          "lt": "11.4_8",
+          "ge": "11.4"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-02-24T00:00:00Z",
+    "entry": "2021-02-25T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2020-25581"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-21:04.jail_remove"
+    }
+  ]
+}

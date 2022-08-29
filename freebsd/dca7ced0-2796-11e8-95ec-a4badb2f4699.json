@@ -1,0 +1,38 @@
+{
+  "vid": "dca7ced0-2796-11e8-95ec-a4badb2f4699",
+  "topic": "FreeBSD -- ipsec validation and use-after-free",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eDue to a lack of strict checking, an attacker from a\n\ttrusted host can send a specially constructed IP packet\n\tthat may lead to a system crash.\u003c/p\u003e\n\t\u003cp\u003eAdditionally, a use-after-free vulnerability in the AH\n\thandling code could cause unpredictable results.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAccess to out of bounds or freed mbuf data can lead to\n\ta kernel panic or other unpredictable results.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "11.1_7",
+          "ge": "11.1"
+        },
+        {
+          "lt": "10.4_7",
+          "ge": "10.4"
+        },
+        {
+          "lt": "10.3_28",
+          "ge": "10.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2018-03-07T00:00:00Z",
+    "entry": "2018-03-14T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2018-6916"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-18:01.ipsec"
+    }
+  ]
+}

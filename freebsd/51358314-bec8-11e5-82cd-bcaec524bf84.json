@@ -1,0 +1,29 @@
+{
+  "vid": "51358314-bec8-11e5-82cd-bcaec524bf84",
+  "topic": "claws-mail -- no bounds checking on the output buffer in conv_jistoeuc, conv_euctojis, conv_sjistoeuc",
+  "description": "\n\t\u003cp\u003eDrWhax reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=3557\"\u003e\n\t  \u003cp\u003eSo in codeconv.c there is a function for Japanese character set\n\t    conversion called conv_jistoeuc().  There is no bounds checking on\n\t    the output buffer, which is created on the stack with alloca()\n\t    Bug can be triggered by sending an email to TAILS_luser@riseup.net\n\t    or whatever.\n\n\t    Since my C is completely rusty, you might be able to make a better\n\t    judgment on the severity of this issue. Marking critical for now.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "claws-mail",
+      "range": [
+        {
+          "lt": "3.13.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-11-04T00:00:00Z",
+    "entry": "2016-01-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://security-tracker.debian.org/tracker/CVE-2015-8614"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8614"
+    }
+  ]
+}

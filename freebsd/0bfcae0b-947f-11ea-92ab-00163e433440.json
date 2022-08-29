@@ -1,0 +1,30 @@
+{
+  "vid": "0bfcae0b-947f-11ea-92ab-00163e433440",
+  "topic": "FreeBSD -- Insufficient cryptodev MAC key length check",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003eRequests to create cryptography sessions using a MAC did not validate the\n\tuser-supplied MAC key length.  The cryptodev module allocates a buffer whose\n\tsize is this user-suppled length.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eAn unprivileged process can trigger a kernel panic.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD-kernel",
+      "range": [
+        {
+          "lt": "12.1_5",
+          "ge": "12.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2020-01-20T00:00:00Z",
+    "entry": "2020-05-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2019-15879"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-20:15.cryptodev"
+    }
+  ]
+}

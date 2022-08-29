@@ -1,0 +1,45 @@
+{
+  "vid": "9cfbca7f-efb7-11dc-be01-0211060005df",
+  "topic": "qemu -- unchecked block read/write vulnerability",
+  "description": "\n\t\u003cp\u003eIan Jackson reports on the debian-security mailinglist:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.debian.org/debian-security/2008/02/msg00064.html\"\u003e\n\t  \u003cp\u003eWhen a block device read or write request is made by the guest,\n\t    nothing checks that the request is within the range supported by\n\t    the backend, but the code in the backend typically assumes that\n\t    the request is sensible.\u003c/p\u003e\n\t  \u003cp\u003eDepending on the backend, this can allow the guest to read\n\t    and write arbitrary memory locations in qemu, and possibly gain\n\t    control over the qemu process, escaping from the\n\t    emulation/virtualisation.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "0.9.1_2"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "0.9.1_2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-02-19T00:00:00Z",
+    "entry": "2008-03-11T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/29172"
+    },
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/29081"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-0928"
+    },
+    {
+      "source": "MLIST: 18362.62578.44273.779731@mariner.uk.xensource.com",
+      "text": "http://lists.debian.org/debian-security/2008/02/msg00064.html"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "vid": "4d7cf654-ba4d-11e6-ae1b-002590263bf5",
+  "topic": "xen-kernel -- CR0.TS and CR0.EM not always honored for x86 HVM guests",
+  "description": "\n\t\u003cp\u003eThe Xen Project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://xenbits.xen.org/xsa/advisory-190.html\"\u003e\n\t  \u003cp\u003eInstructions touching FPU, MMX, or XMM registers are required to\n\t    raise a Device Not Available Exception (#NM) when either CR0.EM or\n\t    CR0.TS are set. (Their AVX or AVX-512 extensions would consider only\n\t    CR0.TS.) While during normal operation this is ensured by the\n\t    hardware, if a guest modifies instructions while the hypervisor is\n\t    preparing to emulate them, the #NM delivery could be missed.\u003c/p\u003e\n\t  \u003cp\u003eGuest code in one task may thus (unintentionally or maliciously)\n\t    read or modify register state belonging to another task in the same\n\t    VM.\u003c/p\u003e\n\t  \u003cp\u003eA malicious unprivileged guest user may be able to obtain or\n\t    corrupt sensitive information (including cryptographic material) in\n\t    other programs in the same guest.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "xen-kernel",
+      "range": [
+        {
+          "lt": "4.7.1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2016-10-04T00:00:00Z",
+    "entry": "2016-12-04T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://xenbits.xen.org/xsa/advisory-190.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2016-7777"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/214936"
+    }
+  ]
+}

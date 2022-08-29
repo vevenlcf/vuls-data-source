@@ -1,0 +1,45 @@
+{
+  "vid": "180e9a38-060f-4c16-a6b7-49f3505ff22a",
+  "topic": "kernel -- information disclosure when using HTT",
+  "description": "\n\t\u003ch1\u003eProblem description and impact\u003c/h1\u003e\n\t\u003cp\u003eWhen running on processors supporting Hyper-Threading Technology, it\n\t  is possible for a malicious thread to monitor the execution of another\n\t  thread.\u003c/p\u003e\n\t\u003cp\u003eInformation may be disclosed to local users, allowing in many\n\t  cases for privilege escalation.  For example, on a multi-user\n\t  system, it may be possible to steal cryptographic keys used in\n\t  applications such as OpenSSH or SSL-enabled web servers.\u003c/p\u003e\n\t\u003cp\u003e\u003cstrong\u003eNOTE:\u003c/strong\u003e Similar problems may exist in other\n\t  simultaneous multithreading implementations, or even some\n\t  systems in the absence of simultaneous multithreading.\n\t  However, current research has only demonstrated this flaw in\n\t  Hyper-Threading Technology, where shared memory caches are\n\t  used.\u003c/p\u003e\n\t\u003ch1\u003eWorkaround\u003c/h1\u003e\n\t\u003cp\u003eSystems not using processors with Hyper-Threading Technology\n\t  support are not affected by this issue.  On systems which are\n\t  affected, the security flaw can be eliminated by setting the\n\t  \"machdep.hlt_logical_cpus\" tunable:\u003c/p\u003e\n\t\u003cpre\u003e# echo \"machdep.hlt_logical_cpus=1\" \u0026gt;\u0026gt; /boot/loader.conf\u003c/pre\u003e\n\t\u003cp\u003eThe system must be rebooted in order for tunables to take effect.\u003c/p\u003e\n\t\u003cp\u003eUse of this workaround is not recommended on \"dual-core\" systems, as\n\t  this workaround will also disable one of the processor\n\t  cores.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_1",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_15",
+          "ge": "5.0"
+        },
+        {
+          "lt": "4.11_9",
+          "ge": "4.11"
+        },
+        {
+          "lt": "4.10_14"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-05-13T00:00:00Z",
+    "entry": "2005-05-13T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.daemonology.net/hyperthreading-considered-harmful/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2005-0109"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:09.htt"
+    }
+  ]
+}

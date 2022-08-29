@@ -1,0 +1,37 @@
+{
+  "vid": "c2ea3b31-9d75-11e7-bb13-001999f8d30b",
+  "topic": "asterisk -- RTP/RTCP information leak",
+  "description": "\n\t\u003cp\u003eThe Asterisk project reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.asterisk.org/downloads/security-advisories\"\u003e\n\t  \u003cp\u003eThis is a follow up advisory to AST-2017-005.\u003c/p\u003e\n\t  \u003cp\u003eInsufficient RTCP packet validation could allow reading\n\t  stale buffer contents and when combined with the \"nat\"\n\t  and \"symmetric_rtp\" options allow redirecting where\n\t  Asterisk sends the next RTCP report.\u003c/p\u003e\n\t  \u003cp\u003eThe RTP stream qualification to learn the source address\n\t  of media always accepted the first RTP packet as the new\n\t  source and allowed what AST-2017-005 was mitigating. The\n\t  intent was to qualify a series of packets before accepting\n\t  the new source address.\u003c/p\u003e\n\t  \u003cp\u003eThe RTP/RTCP stack will now validate RTCP packets before processing them.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "asterisk11",
+      "range": [
+        {
+          "lt": "11.25.3"
+        }
+      ]
+    },
+    {
+      "name": "asterisk13",
+      "range": [
+        {
+          "lt": "13.17.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2017-09-01T00:00:00Z",
+    "entry": "2017-09-19T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://downloads.asterisk.org/pub/security/AST-2017-008.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2017-14099"
+    }
+  ]
+}

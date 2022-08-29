@@ -1,0 +1,25 @@
+{
+  "vid": "177fa455-48fc-4ded-ba1b-9975caa7f62a",
+  "topic": "bro -- Unsafe integer conversions can cause unintentional code paths to be executed",
+  "description": "\n\t\u003cp\u003eJon Siwek of Corelight reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://raw.githubusercontent.com/zeek/zeek/bb979702cf9a2fa67b8d1a1c7f88d0b56c6af104/NEWS\"\u003e\n\t  \u003cp\u003eThe following Denial of Service vulnerabilities are addressed:\u003c/p\u003e\n\t  \u003cul\u003e\n\t  \u003cli\u003eInteger type mismatches in BinPAC-generated parser code\n\t  and Bro analyzer code may allow for crafted packet data\n\t  to cause unintentional code paths in the analysis logic\n\t  to be taken due to unsafe integer conversions causing the\n\t  parser and analysis logic to each expect different fields\n\t  to have been parsed.  One such example, reported by Maksim\n\t  Shudrak, causes the Kerberos analyzer to dereference a\n\t  null pointer.  CVE-2019-12175 was assigned for this issue.\u003c/li\u003e\n\n\t  \u003cli\u003eThe Kerberos parser allows for several fields to be left\n\t  uninitialized, but they were not marked with an \u0026amp;optional\n\t  attribute and several usages lacked existence checks.\n\t  Crafted packet data could potentially cause an attempt\n\t  to access such uninitialized fields, generate a runtime\n\t  error/exception, and leak memory.  Existence checks and\n\t  \u0026amp;optional attributes have been added to the relevent\n\t  Kerberos fields.\u003c/li\u003e\n\n\t  \u003cli\u003eBinPAC-generated protocol parsers commonly contain fields\n\t  whose length is derived from other packet input, and for\n\t  those that allow for incremental parsing, BinPAC did not\n\t  impose a limit on how large such a field could grow,\n\t  allowing for remotely-controlled packet data to cause\n\t  growth of BinPAC's flowbuffer bounded only by the numeric\n\t  limit of an unsigned 64-bit integer, leading to memory\n\t  exhaustion.  There is now a generalized limit for how\n\t  large flowbuffers are allowed to grow, tunable by setting\n\t  \"BinPAC::flowbuffer_capacity_max\".\u003c/li\u003e\n\t  \u003c/ul\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "bro",
+      "range": [
+        {
+          "lt": "2.6.2"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2019-05-29T00:00:00Z",
+    "entry": "2019-05-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2017-12175"
+    }
+  ]
+}

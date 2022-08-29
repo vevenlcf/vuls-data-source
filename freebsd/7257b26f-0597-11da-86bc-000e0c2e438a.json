@@ -1,0 +1,34 @@
+{
+  "vid": "7257b26f-0597-11da-86bc-000e0c2e438a",
+  "topic": "devfs -- ruleset bypass",
+  "description": "\n\t\u003ch1\u003eProblem description\u003c/h1\u003e\n\t\u003cp\u003eDue to insufficient parameter checking of the node type\n\t  during device creation, any user can expose hidden device\n\t  nodes on devfs mounted file systems within their jail.\n\t  Device nodes will be created in the jail with their normal\n\t  default access permissions.\u003c/p\u003e\n\t\u003ch1\u003eImpact\u003c/h1\u003e\n\t\u003cp\u003eJailed processes can get access to restricted resources on\n\t  the host system.  For jailed processes running with superuser\n\t  privileges this implies access to all devices on the system.\n\t  This level of access can lead to information leakage and\n\t  privilege escalation.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "5.4_5",
+          "ge": "5.4"
+        },
+        {
+          "lt": "5.3_19",
+          "ge": "5.*"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2005-07-20T00:00:00Z",
+    "entry": "2005-08-05T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2005-2218"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-05:17.devfs"
+    }
+  ]
+}

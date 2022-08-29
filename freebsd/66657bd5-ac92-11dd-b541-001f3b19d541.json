@@ -1,0 +1,31 @@
+{
+  "vid": "66657bd5-ac92-11dd-b541-001f3b19d541",
+  "topic": "emacs -- run-python vulnerability",
+  "description": "\n\t\u003cp\u003eEmacs developers report:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://lists.gnu.org/archive/html/emacs-devel/2008-09/msg00215.html\"\u003e\n\t  \u003cp\u003eThe Emacs command `run-python' launches an interactive\n\t    Python interpreter.  After the Python process starts up,\n\t    Emacs automatically sends it the line:\u003c/p\u003e\n\t \u003cp\u003eimport emacs\u003c/p\u003e\n\t \u003cp\u003ewhich normally imports a script named emacs.py which is\n\t   distributed with Emacs.  This script, which is typically\n\t   located in a write-protected installation directory with\n\t   other Emacs program files, defines various functions to help\n\t   the Python process communicate with Emacs.\u003c/p\u003e\n\t \u003cp\u003eThe vulnerability arises because Python, by default,\n\t   prepends '' to the module search path, so modules are looked\n\t   for in the current directory.  If the current directory is\n\t   world-writable, an attacker may insert malicious code by\n\t   adding a fake Python module named emacs.py into that\n\t   directory.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "emacs",
+      "range": [
+        {
+          "ge": "22",
+          "le": "22.2_1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2008-09-05T00:00:00Z",
+    "entry": "2008-11-07T00:00:00Z",
+    "modified": "2010-05-02T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://lists.gnu.org/archive/html/emacs-devel/2008-09/msg00215.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2008-3949"
+    }
+  ]
+}

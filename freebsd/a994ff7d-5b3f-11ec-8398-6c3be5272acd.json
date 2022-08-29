@@ -1,0 +1,60 @@
+{
+  "vid": "a994ff7d-5b3f-11ec-8398-6c3be5272acd",
+  "topic": "Grafana -- Directory Traversal",
+  "description": "\n\t\u003cp\u003eGitHub Security Labs reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://github.com/grafana/grafana/security/advisories/GHSA-c3q8-26ph-9g2q\"\u003e\n\t  \u003cp\u003eA vulnerability through which authenticated users could read out fully lowercase or fully uppercase \u003ccode\u003e.md\u003c/code\u003e files through directory traversal. Doing our own follow-up investigation we found a related vulnerability through which authenticated users could read out arbitrary \u003ccode\u003e.csv\u003c/code\u003e files through directory traversal. Thanks to our defense-in-depth approach, at no time has \u003ca href=\"https://grafana.com/cloud\"\u003eGrafana Cloud\u003c/a\u003e been vulnerable.\u003c/p\u003e\n\t  \u003cp\u003e\u003cstrong\u003eThe vulnerable URL path is:\u003c/strong\u003e \u003ccode\u003e/api/plugins/.*/markdown/.*\u003c/code\u003e for \u003ccode\u003e.md\u003c/code\u003e files\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "grafana",
+      "range": [
+        {
+          "lt": "7.5.12",
+          "ge": "5.0.0"
+        },
+        {
+          "lt": "8.3.2",
+          "ge": "8.0.0"
+        }
+      ]
+    },
+    {
+      "name": "grafana6",
+      "range": [
+        {
+          "ge": "6.0.0"
+        }
+      ]
+    },
+    {
+      "name": "grafana7",
+      "range": [
+        {
+          "lt": "7.5.12",
+          "ge": "7.0.0"
+        }
+      ]
+    },
+    {
+      "name": "grafana8",
+      "range": [
+        {
+          "lt": "8.3.2",
+          "ge": "8.0.0"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2021-12-09T00:00:00Z",
+    "entry": "2021-12-12T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://grafana.com/blog/2021/12/10/grafana-8.3.2-and-7.5.12-released-with-moderate-severity-security-fix/"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2021-43813"
+    }
+  ]
+}

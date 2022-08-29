@@ -1,0 +1,37 @@
+{
+  "vid": "3f321a5a-b33b-11ec-80c2-1bb2c6a00592",
+  "topic": "dnsmasq -- heap use-after-free in dhcp6_no_relay",
+  "description": "\n\t\u003cp\u003ePetr Menšík reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2022q1/016272.html\"\u003e\n\t  \u003cp\u003ePossible vulnerability [...] found in latest dnsmasq. It [was] found\n\t    with help of oss-fuzz Google project by me and short after that\n\t    independently also by Richard Johnson of Trellix Threat Labs.\u003c/p\u003e\n\t  \u003cp\u003eIt is affected only by DHCPv6 requests, which could be crafted to\n\t    modify already freed memory. [...] We think it might be triggered\n\t    remotely, but we do not think it could be used to execute remote\n\t    code.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "dnsmasq",
+      "range": [
+        {
+          "lt": "2.86_4,1"
+        }
+      ]
+    },
+    {
+      "name": "dnsmasq-devel",
+      "range": [
+        {
+          "lt": "2.86_4,1"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-03-31T00:00:00Z",
+    "entry": "2022-04-03T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2022q1/016272.html"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2022-0934"
+    }
+  ]
+}

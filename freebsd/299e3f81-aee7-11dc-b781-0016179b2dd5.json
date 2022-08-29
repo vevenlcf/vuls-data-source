@@ -1,0 +1,37 @@
+{
+  "vid": "299e3f81-aee7-11dc-b781-0016179b2dd5",
+  "topic": "e2fsprogs -- heap buffer overflow",
+  "description": "\n\t\u003cp\u003eTheodore Y. Ts'o reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://sourceforge.net/project/shownotes.php?group_id=2406\u0026amp;release_id=560230\"\u003e\n\t  \u003cp\u003eFix a potential security vulnerability where an untrusted\n\t    filesystem can be corrupted in such a way that a program using\n\t    libext2fs will allocate a buffer which is far too small.  This\n\t    can lead to either a crash or potentially a heap-based buffer\n\t    overflow crash.  No known exploits exist, but main concern is\n\t    where an untrusted user who possesses privileged access in a\n\t    guest Xen environment could corrupt a filesystem which is then\n\t    accessed by thus allowing the untrusted user to gain privileged\n\t    access in the host OS.  Thanks to the McAfee AVERT Research group\n\t    for reporting this issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "e2fsprogs",
+      "range": [
+        {
+          "lt": "1.40.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2007-12-07T00:00:00Z",
+    "entry": "2007-12-20T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://secunia.com/advisories/27889/"
+    },
+    {
+      "source": "URL",
+      "text": "http://sourceforge.net/project/shownotes.php?group_id=2406\u0026release_id=560230"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2007-5497"
+    },
+    {
+      "source": "BID",
+      "text": "26772"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "vid": "1384f2fd-b1be-11e5-9728-002590263bf5",
+  "topic": "qemu -- denial of service vulnerability in Rocker switch emulation",
+  "description": "\n\t\u003cp\u003ePrasad J Pandit, Red Hat Product Security Team, reports:\u003c/p\u003e\n\t\u003cblockquote cite=\"http://www.openwall.com/lists/oss-security/2015/12/28/6\"\u003e\n\t  \u003cp\u003eQemu emulator built with the Rocker switch emulation support is\n\t    vulnerable to an off-by-one error. It happens while processing\n\t    transmit(tx) descriptors in 'tx_consume' routine, if a descriptor\n\t    was to have more than allowed (ROCKER_TX_FRAGS_MAX=16) fragments.\n\t    \u003c/p\u003e\n\t  \u003cp\u003eA privileged user inside guest could use this flaw to cause memory\n\t    leakage on the host or crash the Qemu process instance resulting in\n\t    DoS issue.\u003c/p\u003e\n\t\u003c/blockquote\u003e\n      ",
+  "affects": [
+    {
+      "name": "qemu",
+      "range": [
+        {
+          "lt": "2.5.50"
+        }
+      ]
+    },
+    {
+      "name": "qemu-devel",
+      "range": [
+        {
+          "lt": "2.5.50"
+        }
+      ]
+    },
+    {
+      "name": "qemu-sbruno",
+      "range": [
+        {
+          "lt": "2.5.50.g20160213"
+        }
+      ]
+    },
+    {
+      "name": "qemu-user-static",
+      "range": [
+        {
+          "lt": "2.5.50.g20160213"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2015-12-28T00:00:00Z",
+    "entry": "2016-01-03T00:00:00Z",
+    "modified": "2016-07-06T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "URL",
+      "text": "http://www.openwall.com/lists/oss-security/2015/12/28/6"
+    },
+    {
+      "source": "URL",
+      "text": "https://lists.gnu.org/archive/html/qemu-devel/2015-12/msg04629.html"
+    },
+    {
+      "source": "URL",
+      "text": "http://git.qemu.org/?p=qemu.git;a=commit;h=007cd223de527b5f41278f2d886c1a4beb3e67aa"
+    },
+    {
+      "source": "URL",
+      "text": "https://github.com/seanbruno/qemu-bsd-user/commit/007cd223de527b5f41278f2d886c1a4beb3e67aa"
+    },
+    {
+      "source": "CVE",
+      "text": "CVE-2015-8701"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/205813"
+    },
+    {
+      "source": "FreebsdPR",
+      "text": "ports/205814"
+    }
+  ]
+}
