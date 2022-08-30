@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-001868",
+  "title": "Linux Kernel の net/rds/iw.c の rds_iw_laddr_check 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の net/rds/iw.c の rds_iw_laddr_check 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.14 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、RDS トランスポートが欠如しているシステム上の RDS ソケットに対する bind システムコールを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2678",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2678"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2678",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2678"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[PATCH v2] rds: prevent dereference of a NULL device in rds_iw_laddr_check",
+      "url": "https://lkml.org/lkml/2014/3/29/188"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-03T11:37:13+09:00",
+  "date_last_updated": "2014-04-03T11:37:13+09:00",
+  "date_public": "2014-03-29T00:00:00+09:00"
+}

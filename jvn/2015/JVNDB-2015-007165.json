@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2015-007165",
+  "title": "PHP の ext/mysqlnd/mysqlnd.c におけるサーバになりすまされる脆弱性",
+  "vulinfo_description": "PHP の ext/mysqlnd/mysqlnd.c は、SSL が任意であることを意味するクライアントの SSL オプションを使用するため、サーバになりすまされる脆弱性が存在します。  本脆弱性は、CVE-2015-3152 と関連する問題です。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.43 未満",
+        "5.5.27 未満の 5.5.x",
+        "5.6.11 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、平文ダウングレード攻撃を介して、サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #69669",
+      "url": "https://bugs.php.net/bug.php?id=69669"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Fix bug #69669 (mysqlnd is vulnerable to BACKRONYM)",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=97aa752fee61fccdec361279adbfb17a3c60f3f4"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8838",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8838"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8838",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8838"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-19T17:45:23+09:00",
+  "date_last_updated": "2016-05-19T17:45:23+09:00",
+  "date_public": "2015-07-09T00:00:00+09:00"
+}

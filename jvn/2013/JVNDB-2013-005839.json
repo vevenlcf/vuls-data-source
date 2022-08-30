@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2013-005839",
+  "title": "Memcached の memcached.c の process_bin_delete 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Memcached の memcached.c の process_bin_delete 関数には、verbose モードで実行している場合、サービス運用妨害 (セグメンテーション違反) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Memcached",
+      "product_name": "Memcached",
+      "version_number": [
+        "1.4.17 未満の 1.4.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:memcached:memcached"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.8",
+        "vector": "AV:A/AC:H/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、キー削除のリクエストを介して、キー内の NULL 終端文字の欠如を考慮せず、stderr へ出力する際にバッファオーバーリードを誘発されることで、サービス運用妨害 (セグメンテーション違反) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Memcached",
+      "vulinfo_id": "Issue 306: Crash when performing deletion",
+      "url": "https://code.google.com/p/memcached/issues/detail?id=306"
+    },
+    {
+      "type": "vendor",
+      "name": "Memcached",
+      "vulinfo_id": "Memcached 1.4.17 Release Notes",
+      "url": "https://code.google.com/p/memcached/wiki/ReleaseNotes1417"
+    },
+    {
+      "type": "vendor",
+      "name": "Memcached",
+      "vulinfo_id": "Issue 306 attachment: 0001-Fix-buffer-overrun-when-logging-key-to-delete-in-bin.patch",
+      "url": "https://code.google.com/p/memcached/issues/attachmentText?id=306\u0026aid=3060004000\u0026name=0001-Fix-buffer-overrun-when-logging-key-to-delete-in-bin.patch\u0026token=3GEzHThBL5cxmUrsYANkW03RrNY%3A1358179503096"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 895054",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=895054"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in Memcached",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_memcached"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2013-0179 Buffer Errors vulnerability in Memcached",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2013_0179_buffer_errors"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0179",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0179"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0179",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0179"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年01月16日]\\n  掲載\\n[2014年04月07日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in Memcached) を追加\\n[2014年08月11日]\\n  ベンダ情報：オラクル (CVE-2013-0179 Buffer Errors vulnerability in Memcached) を追加"
+    }
+  ],
+  "date_first_published": "2014-01-16T14:45:11+09:00",
+  "date_last_updated": "2014-08-11T17:46:33+09:00",
+  "date_public": "2013-12-20T00:00:00+09:00"
+}

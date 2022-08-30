@@ -1,0 +1,107 @@
+{
+  "vulinfo_id": "JVNDB-2019-012869",
+  "title": "オムロン製 PLC CS, CJ および NJ シリーズにおける総当たり攻撃に対する脆弱性",
+  "vulinfo_description": "オムロン株式会社が提供する PLC CS, CJ および NJ シリーズには、アクセス制限の不備に起因する、総当たり攻撃に対する脆弱性 (CWE-307) が存在します。",
+  "affected": [
+    {
+      "name": "オムロン株式会社",
+      "product_name": "Omron PLC CJ",
+      "version_number": [
+        "シリーズの全てのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:omron:plc_cj"
+      }
+    },
+    {
+      "name": "オムロン株式会社",
+      "product_name": "Omron PLC CS",
+      "version_number": [
+        "シリーズの全てのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:omron:plc_cs"
+      }
+    },
+    {
+      "name": "オムロン株式会社",
+      "product_name": "Omron PLC NJ",
+      "version_number": [
+        "シリーズの全てのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:omron:plc_nj"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "総当たり攻撃 (Brute force attack) により、FTP 機能を使用するための認証情報が遠隔の第三者に取得される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを適用する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 詳しくは、開発者が提供する情報をご確認ください。  * FTP ポート (21) へのアクセスを制限する * IP アドレスを制限する * 強固なパスワードを使用する ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "オムロン株式会社",
+      "vulinfo_id": "弊社 PLC(CS シリーズ CPU および CJ シリーズ CPU)に対する 外部機関からの脆弱性指摘について",
+      "url": "http://www.omron-cxone.com/security/2019-12-06_PLC_JP.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2019-18261",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18261"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-19-346-03",
+      "url": "https://www.us-cert.gov/ics/advisories/icsa-19-346-03"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94348866",
+      "url": "https://jvn.jp/vu/JVNVU94348866/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-307",
+      "url": "https://cwe.mitre.org/data/definitions/307.html",
+      "title": "過度な認証試行の不適切な制限"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2019-12-16T05:53:21Z",
+      "description": "[2019年12月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2019-12-16T14:53:21+09:00",
+  "date_last_updated": "2019-12-16T14:53:21+09:00",
+  "date_public": "2019-12-13T00:00:00+09:00"
+}

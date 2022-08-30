@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2015-001239",
+  "title": "Google Chrome で使用される PDFium の fpdfapi/fpdf_font/font_int.h におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Google Chrome で使用される PDFium の fpdfapi/fpdf_font/font_int.h には、一つずれエラー (Off-by-One error) により、サービス運用妨害 (バッファオーバーフロー) 状態にされるなど、不特定の影響を受ける可能性があります。  本件は、\"intra-object-overflow\" の問題に関する脆弱性です。  本脆弱性は、CVE-2015-1205 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "40.0.2214.91 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された PDF ドキュメントを介して、サービス運用妨害 (バッファオーバーフロー) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Chromium Code Reviews",
+      "vulinfo_id": "Issue 656463006",
+      "url": "https://codereview.chromium.org/656463006"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Stable Channel Update",
+      "url": "http://googlechromereleases.blogspot.jp/2015/01/stable-update.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "https://www.google.com/intl/ja/chrome/browser/features.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Issue 421196",
+      "url": "https://code.google.com/p/chromium/issues/detail?id=421196"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Issue 449894",
+      "url": "https://code.google.com/p/chromium/issues/detail?id=449894"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-1359",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1359"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-1359",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1359"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-01-28T15:57:35+09:00",
+  "date_last_updated": "2015-01-28T15:57:35+09:00",
+  "date_public": "2015-01-21T00:00:00+09:00"
+}

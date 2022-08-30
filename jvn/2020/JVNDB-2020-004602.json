@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2020-004602",
+  "title": "Apache Tomcat に安全でないデシリアライゼーションの問題",
+  "vulinfo_description": "The Apache Software Foundation から、Apache Tomcat の脆弱性に対するアップデートが公開されました。  * 信頼できないデータのデシリアライズ (CWE-502) - CVE-2020-9484 ",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Tomcat",
+      "version_number": [
+        "10.0.0-M1 から 10.0.0-M4 まで",
+        "7.0.0 から 7.0.103 まで まで",
+        "8.5.0 から 8.5.54 まで",
+        "9.0.0.M1 から 9.0.34 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:tomcat"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "デシリアライズ対象データの検証が適切に行われていないことに起因して、遠隔の第三者により任意のバイトコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、使用しているバージョンの最新版にアップデートしてください。 開発者は、本脆弱性を修正した以下のバージョンをリリースしています。  * Apache Tomcat 10.0.0-M5 * Apache Tomcat 9.0.35 * Apache Tomcat 8.5.55 * Apache Tomcat 7.0.104  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  * PersistenceManager において sessionAttributeValueClassNameFilter の値を適切に設定し、アプリケーションが提供する attribute だけがシリアライズおよびデシリアライズされるようにする",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Mail Archives",
+      "vulinfo_id": "[SECURITY] CVE-2020-9484 Apache Tomcat Remote Code Execution via session persistence",
+      "url": "https://lists.apache.org/thread.html/r77eae567ed829da9012cadb29af17f2df8fa23bf66faf88229857bb1%40%3Cannounce.tomcat.apache.org%3E"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 10.0.0-M5",
+      "url": "https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.0.0-M5"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 9.0.35",
+      "url": "https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.35"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 8.5.55",
+      "url": "https://tomcat.apache.org/security-8.html#Fixed_in_Apache_Tomcat_8.5.55"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 7.0.104",
+      "url": "https://tomcat.apache.org/security-7.html#Fixed_in_Apache_Tomcat_7.0.104"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "Apache Tomcatにリモートコード実行可能性の脆弱性",
+      "url": "https://jpn.nec.com/security-info/secinfo/nv20-008.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-9484",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9484"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98086086",
+      "url": "http://jvn.jp/cert/JVNVU98086086"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-05-22T02:39:36Z",
+      "description": "[2020年05月22日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-08-10T07:01:47Z",
+      "description": "[2021年08月10日]\\n  ベンダ情報：日本電気 (Apache Tomcatにリモートコード実行可能性の脆弱性) を追加"
+    }
+  ],
+  "date_first_published": "2020-05-22T11:39:36+09:00",
+  "date_last_updated": "2021-08-10T17:01:47+09:00",
+  "date_public": "2020-05-21T00:00:00+09:00"
+}

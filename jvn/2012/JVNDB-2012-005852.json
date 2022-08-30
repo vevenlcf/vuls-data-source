@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-005852",
+  "title": "Tor の or/relay.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Tor の or/relay.c 内の connection_edge_process_relay_cell 関数は、予期しない SENDME セルを受信した場合もサーキットを維持するため、サービス運用妨害 (メモリ消費または過剰なセル受信率) 状態となる、またはフロー制御の制限を回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The Tor Project",
+      "product_name": "Tor",
+      "version_number": [
+        "0.2.3.25 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:torproject:tor"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、RELAY_COMMAND_SENDME コマンドを介して、サービス運用妨害 (メモリ消費または過剰なセル受信率) 状態にされる、またはフロー制御の制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gentoo's Bugzilla",
+      "vulinfo_id": "Bug 444804",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=444804"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 880310",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=880310"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "Ticket #6252",
+      "url": "https://trac.torproject.org/projects/tor/ticket/6252"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "arma/tor.git / commitdiff",
+      "url": "https://gitweb.torproject.org/arma/tor.git/commitdiff/b9b54568c0bb64c32bd0b362954bdbc8c1234b16"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "tor.git / blob",
+      "url": "https://gitweb.torproject.org/tor.git/blob/release-0.2.3:/ReleaseNotes"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-5573",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5573"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-5573",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-5573"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年01月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-01-07T11:35:53+09:00",
+  "date_last_updated": "2013-01-07T11:35:53+09:00",
+  "date_public": "2012-06-28T00:00:00+09:00"
+}

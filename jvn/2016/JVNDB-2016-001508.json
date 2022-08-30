@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2016-001508",
+  "title": "Google Chrome の PDFium で使用される OpenJPEG の pi.c における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Google Chrome の PDFium で使用される OpenJPEG の pi.c は、特定の精度値を検証しないため、任意のコードを実行される、またはサービス運用妨害 (out-of-bounds read) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "48.0.2564.109 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された PDF ドキュメントの JPEG 2000 画像を介して、任意のコードを実行される、またはサービス運用妨害 (out-of-bounds read) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Chromium Code Reviews",
+      "vulinfo_id": "Issue 1590593002",
+      "url": "https://codereview.chromium.org/1590593002"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3486",
+      "url": "http://www.debian.org/security/2016/dsa-3486"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Stable Channel Update",
+      "url": "http://googlechromereleases.blogspot.jp/2016/02/stable-channel-update_9.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "https://www.google.com/intl/ja/chrome/browser/features.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1628",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1628"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1628",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1628"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月26日]\\n  掲載\\n[2016年10月27日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Debian (DSA-3486) を追加"
+    }
+  ],
+  "date_first_published": "2016-02-26T13:55:05+09:00",
+  "date_last_updated": "2016-10-27T18:07:03+09:00",
+  "date_public": "2016-02-09T00:00:00+09:00"
+}

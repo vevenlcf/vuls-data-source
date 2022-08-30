@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2014-007298",
+  "title": "file の ELF パーサにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "file の ELF パーサ (readelf.c) には、サービス運用妨害 (CPU 資源の消費またはクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "file project",
+      "product_name": "file",
+      "version_number": [
+        "5.21 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:file_project:file"
+      }
+    },
+    {
+      "name": "FreeBSD",
+      "product_name": "FreeBSD",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:freebsd:freebsd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、大量の (1) プログラム、(2) セクションヘッダまたは (3) 不正な機能を介して、サービス運用妨害 (CPU 資源の消費またはクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FreeBSD Security Advisory",
+      "vulinfo_id": "FreeBSD-SA-14:28.file",
+      "url": "https://www.freebsd.org/security/advisories/FreeBSD-SA-14:28.file.asc"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Stop reporting bad capabilities after the first few.",
+      "url": "https://github.com/file/file/commit/d7cdad007c507e6c79f51f058dd77fab70ceb9f6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "file/ChangeLog",
+      "url": "https://github.com/file/file/blob/00cef282a902a4a6709bbbbb933ee397768caa38/ChangeLog"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "limit the number of program and section header number of sections to be processed to avoid excessive processing time.",
+      "url": "https://github.com/file/file/commit/b4c01141e5367f247b84dcaf6aefbb4e741842b8"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8116",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8116"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8116",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8116"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2015-0040",
+      "url": "http://advisories.mageia.org/MGASA-2015-0040.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月19日]\\n  掲載\\n[2015年04月27日]\\n  参考情報：関連文書 (MGASA-2015-0040) を追加"
+    }
+  ],
+  "date_first_published": "2014-12-19T17:29:14+09:00",
+  "date_last_updated": "2015-04-27T16:17:22+09:00",
+  "date_public": "2014-11-22T00:00:00+09:00"
+}

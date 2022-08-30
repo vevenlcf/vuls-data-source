@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-001510",
+  "title": "Kubernetes の API サーバにおける追加のリソースにアクセスされる脆弱性",
+  "vulinfo_description": "Kubernetes の API サーバは、アドミッションコントロールを適切にチェックしないため、追加のリソースにアクセスされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Kubernetes",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:kubernetes"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工されたパッチ適用済みのオブジェクトを介して、追加のリソースにアクセスされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "api server: patch operation should use patched object to check admission control #19479",
+      "url": "https://github.com/kubernetes/kubernetes/issues/19479"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "make patch call update admission chain after applying the patch #19481",
+      "url": "https://github.com/kubernetes/kubernetes/pull/19481"
+    },
+    {
+      "type": "vendor",
+      "name": "Kubernetes",
+      "vulinfo_id": "Top Page",
+      "url": "http://kubernetes.io/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0070",
+      "url": "https://access.redhat.com/errata/RHSA-2016:0070"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1905",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1905"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1905",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1905"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-26T15:48:50+09:00",
+  "date_last_updated": "2016-02-26T15:48:50+09:00",
+  "date_public": "2016-01-12T00:00:00+09:00"
+}

@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2016-003297",
+  "title": "OpenStack Neutron の IPTables ファイアウォールにおける MAC 偽造保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "OpenStack Neutron の IPTables ファイアウォールには、MAC 偽造保護メカニズムを回避され、その結果、サービス運用妨害 (DoS) 状態にされる、またはネットワークトラフィックを傍受される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-254: Security Features (セキュリティ機能) と識別されています。 http://cwe.mitre.org/data/definitions/254.html",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Neutron",
+      "version_number": [
+        "7.0.4 未満",
+        "8.0.0 から 8.1.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:neutron"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.2",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、(1) 巧妙に細工された DHCP discovery メッセージ、または (2) 巧妙に細工された非 IP トラフィックを介して、MAC 偽造保護メカニズムを回避され、その結果、サービス運用妨害 (DoS) 状態にされる、またはネットワークトラフィックを傍受される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1558658",
+      "url": "https://bugs.launchpad.net/neutron/+bug/1558658"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change 299023: Linux Bridge: Add mac spoofing filtering to ebtables",
+      "url": "https://review.openstack.org/#/c/299023/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change 299025: Linux Bridge: Add mac spoofing filtering to ebtables",
+      "url": "https://review.openstack.org/#/c/299025/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change 299021: Linux Bridge: Add mac spoofing filtering to ebtables",
+      "url": "https://review.openstack.org/#/c/299021/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack Security Advisories",
+      "vulinfo_id": "OSSA-2016-009: Neutron IPTables firewall anti-spoof protection bypass",
+      "url": "https://security.openstack.org/ossa/OSSA-2016-009.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5363",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5363"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5363",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5363"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-21T17:32:56+09:00",
+  "date_last_updated": "2016-06-21T17:32:56+09:00",
+  "date_public": "2016-04-06T00:00:00+09:00"
+}

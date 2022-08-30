@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2021-000074",
+  "title": "RevoWorks Browser における複数の脆弱性",
+  "vulinfo_description": "ジェイズ・コミュニケーション株式会社が提供する RevoWorks Browser は、インターネット分離を実現するための仮想ブラウザです。当該製品はウェブブラウザ実行時のドライブ、フォルダ、ファイルおよびレジストリへのアクセスを、ローカル環境とは異なる分離環境で実行する機能があります。 当該製品には、ローカル環境と分離環境間の権限制御不備に起因した、次の複数の脆弱性が存在します。 ・プログラム実行の制御不備 (CWE-114) - CVE-2021-20790 ・アクセス制限不備 (CWE-284) - CVE-2021-20791  この脆弱性情報は、製品利用者への周知を目的に、開発者が IPA に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "ジェイズ・コミュニケーション株式会社",
+      "product_name": "RevoWorks Browser",
+      "version_number": [
+        "2.1.230 およびそれ以前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:jscom:revoworks_browser"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.6",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、当該製品にアクセス可能なユーザによって、次のような影響を受ける可能性があります。 ・分離環境で実行しているウェブブラウザ上で、任意のコマンドやコードを実行される - CVE-2021-20790 ・ローカル環境と分離環境間で、本来許可されていないファイル交換を実行されたり、ウェブブラウザの設定を改ざんされたりする - CVE-2021-20791"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者は、本脆弱性を修正した RevoWorks Browser 2.2.50 をリリースしています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ジェイズ・コミュニケーション株式会社",
+      "vulinfo_id": "【重要】RevoWorks Browser の複数の脆弱性 (CVE-2021-20790、CVE-2021-20791)に関する注意喚起",
+      "url": "https://jscom.jp/news-20210910_2/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20790",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20790"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20791",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20791"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#81658818",
+      "url": "https://jvn.jp/jp/JVN81658818/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-09-10T00:46:35Z",
+      "description": "[2021年09月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-09-10T14:04:54+09:00",
+  "date_last_updated": "2021-09-10T14:04:54+09:00",
+  "date_public": "2021-09-10T00:00:00+09:00"
+}

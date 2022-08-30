@@ -1,0 +1,80 @@
+{
+  "vulinfo_id": "JVNDB-2022-000013",
+  "title": "EC-CUBE 用プラグイン「メルマガ管理プラグイン」におけるクロスサイトリクエストフォージェリの脆弱性",
+  "vulinfo_description": "株式会社イーシーキューブが提供する EC-CUBE 用プラグイン「メルマガ管理プラグイン」には、クロスサイトリクエストフォージェリ (CWE-352) の脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 三井物産セキュアディレクション株式会社 山本 健太 氏",
+  "affected": [
+    {
+      "name": "株式会社イーシーキューブ",
+      "product_name": "メルマガ管理プラグイン",
+      "version_number": [
+        "ver1.0.0 から 1.0.4 まで (EC-CUBE 3系向け)",
+        "ver4.0.0 から 4.1.1 まで (EC-CUBE 4系向け)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lockon:mail_magazine_management_plugin"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N"
+      }
+    ],
+    "impact_item": "当該プラグインがインストールされた EC-CUBE にログインした状態の管理者権限を持つユーザが、細工されたページにアクセスした場合、意図せずメールマガジンテンプレートや送信履歴が削除される可能性があります。 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンをリリースしています。 ・ver4.1.2 (EC-CUBE 4系向け) ・ver1.0.5 (EC-CUBE 3系向け)",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "EC-CUBE",
+      "vulinfo_id": "EC-CUBE メルマガ管理プラグインにおける CSRFの脆弱性",
+      "url": "https://www.ec-cube.net/info/weakness/20220221/mail_magazine_plugin.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-21179",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-21179"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#67108459",
+      "url": "https://jvn.jp/jp/JVN67108459/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-02-15T04:47:53Z",
+      "description": "[2022年02月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-02-22T12:09:02+09:00",
+  "date_last_updated": "2022-02-22T12:09:02+09:00",
+  "date_public": "2022-02-22T00:00:00+09:00"
+}

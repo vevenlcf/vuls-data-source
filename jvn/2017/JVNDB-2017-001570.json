@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2017-001570",
+  "title": "Sage XRT Treasury にアクセス制限不備の脆弱性",
+  "vulinfo_description": "Sage XRT Treasury には、認証されたユーザが誰でも特権ユーザの権限でデータベースにアクセス可能な脆弱性が存在します。  ユーザ制御のキーによる認証回避 (CWE-639) Sage XRT Treasury は、ビジネス用の財務管理アプリケーションです。Sage XRT Treasury  のデータベースへのアクセス権限は、ユーザに紐づけられた USER_CODE フィールドによって決定されます。Sage XRT Treasury にアクセスする際、USER_CODE フィールドを特権ユーザの値に差し替えることで、権限の低いユーザが SQL データベースに特権ユーザの権限でアクセスすることが可能です。",
+  "affected": [
+    {
+      "name": "Sage",
+      "product_name": "Sage XRT Treasury",
+      "version_number": [
+        "version 3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sage:sage_xrt_treasury"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "AV:N/AC:L/Au:S/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "細工した SQL クエリを処理することで、低い権限しか与えられていないユーザが、当該製品のデータベースに特権ユーザの権限でアクセスする可能性があります。"
+  },
+  "solution": "[アップグレードする] 開発者が提供する情報をもとに、最新版にアップグレードし、データベースサーバへの通信を暗号化してください。 開発者によると、本脆弱性は Sage XRT Treasury version 4 で修正しているとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Sage",
+      "vulinfo_id": "Sage XRT Treasury",
+      "url": "http://www.sagetreasury.com/Products/Sage%20XRT%20Treasury"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3183",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3183"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95946252",
+      "url": "http://jvn.jp/vu/JVNVU95946252/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3183",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3183"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#742632",
+      "url": "http://www.kb.cert.org/vuls/id/742632"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-639",
+      "url": "https://cwe.mitre.org/data/definitions/639.html",
+      "title": "ユーザ制御の鍵による認証回避"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月02日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-24T07:15:02Z",
+      "description": "[2019年07月24日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3183) を追加"
+    }
+  ],
+  "date_first_published": "2017-03-02T15:15:03+09:00",
+  "date_last_updated": "2019-07-24T16:15:20+09:00",
+  "date_public": "2017-02-28T00:00:00+09:00"
+}

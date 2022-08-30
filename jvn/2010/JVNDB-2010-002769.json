@@ -1,0 +1,179 @@
+{
+  "vulinfo_id": "JVNDB-2010-002769",
+  "title": "Apache HTTP Server の authz.c におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "Apache HTTP Server の mod_dav_svn モジュール内にある authz.c は、SVNPathAuthz short_circuit が有効な際、ルールスコープのレポジトリ名を適切に処理しないため、アクセス制限を回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Subversion",
+      "version_number": [
+        "1.5.8 未満",
+        "1.6.13 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:subversion"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.6 から v10.6.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.6 から v10.6.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、svn コマンドを介して、アクセス制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT4581",
+      "url": "http://support.apple.com/kb/HT4581"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0258",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0258.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Subversion",
+      "vulinfo_id": "CVE-2010-3315-advisory",
+      "url": "http://subversion.apache.org/security/CVE-2010-3315-advisory.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-3315",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3315"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#636925",
+      "url": "http://jvn.jp/cert/JVNVU636925"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-3315",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3315"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA41652",
+      "url": "http://secunia.com/advisories/41652"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43346",
+      "url": "http://secunia.com/advisories/43346"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "43678",
+      "url": "http://www.securityfocus.com/bid/43678"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-2569",
+      "url": "http://www.vupen.com/english/advisories/2010/2569"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-16",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-16.html",
+      "title": "環境設定"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年03月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-03-23T14:24:16+09:00",
+  "date_last_updated": "2011-03-23T14:24:16+09:00",
+  "date_public": "2010-10-04T00:00:00+09:00"
+}

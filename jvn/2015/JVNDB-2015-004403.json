@@ -1,0 +1,111 @@
+{
+  "vulinfo_id": "JVNDB-2015-004403",
+  "title": "OpenBSD 以外のプラットフォーム上で稼働する OpenSSH の sshd のモニターコンポーネントにおけるなりすまし攻撃を実行される脆弱性",
+  "vulinfo_description": "OpenBSD 以外のプラットフォーム上で稼働する OpenSSH の sshd のモニターコンポーネントは、MONITOR_REQ_PAM_INIT_CTX リクエストに外部からのユーザ名データを受け入れるため、なりすまし攻撃を実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "7.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された MONITOR_REQ_PWNAM リクエストを送信する sshd uid の制御と連動した任意の SSH ログインアクセスを利用されることで、なりすまし攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-10-21-4 OS X El Capitan 10.11.1 and Security Update 2015-007",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Oct/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205375",
+      "url": "https://support.apple.com/en-us/HT205375"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205375",
+      "url": "https://support.apple.com/ja-jp/HT205375"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Don't resend username to PAM; it already has it.",
+      "url": "https://github.com/openssh/openssh-portable/commit/d4697fe9a28dab7255c60433e4dd23cf7fce8a8b"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "release-7.0",
+      "url": "http://www.openssh.com/txt/release-7.0"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-6563",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-6563"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92655282",
+      "url": "http://jvn.jp/vu/JVNVU92655282/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-6563",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6563"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年08月26日]\\n  掲載\\n[2015年10月27日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT205375) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-10-21-4 OS X El Capitan 10.11.1 and Security Update 2015-007) を追加\\n  参考情報：JVN (JVNVU#92655282) を追加"
+    }
+  ],
+  "date_first_published": "2015-08-26T11:33:11+09:00",
+  "date_last_updated": "2015-10-27T15:00:12+09:00",
+  "date_public": "2015-08-11T00:00:00+09:00"
+}

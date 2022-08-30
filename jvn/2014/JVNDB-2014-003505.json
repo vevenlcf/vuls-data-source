@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2014-003505",
+  "title": "LimeSurvey におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "LimeSurvey には、クロスサイトスクリプティングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LimeSurvey",
+      "product_name": "LimeSurvey",
+      "version_number": [
+        "2.05+ Build 140618"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:limesurvey:limesurvey"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、以下の項目を介して、任意の Web スクリプトまたは HTML を挿入される可能性があります。  (1) CPDB 内の application/controllers/admin/participantsaction.php の getAttribute_json 関数 の pid 属性 (2) application/views/admin/globalSettings_view.php の sa パラメータ (3) \"CSV インポート\" 機能の巧妙に細工された CSV ファイル "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed issue: XSS reflection in CPDB and global settings",
+      "url": "https://github.com/LimeSurvey/LimeSurvey/commit/d23fbbd6c8434169967cf8bd2c5a4a0b569c352a"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5016",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5016"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5016",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5016"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-23T11:59:42+09:00",
+  "date_last_updated": "2014-07-23T11:59:42+09:00",
+  "date_public": "2014-07-02T00:00:00+09:00"
+}

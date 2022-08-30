@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2015-006901",
+  "title": "Linux Kernel の fs/fuse/file.c の fuse_fill_write_pages 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/fuse/file.c の fuse_fill_write_pages 関数には、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、iov の第 1 セグメントに対するゼロ長を誘発する writev システムコールを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fuse: break infinite loop in fuse_fill_write_pages()",
+      "url": "https://github.com/torvalds/linux/commit/3ca8138f014a913f98e6ef40e939868e1e9ea876"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "fuse: break infinite loop in fuse_fill_write_pages()",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=3ca8138f014a913f98e6ef40e939868e1e9ea876"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1290642",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1290642"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8785",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8785"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8785",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8785"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-26T16:34:52+09:00",
+  "date_last_updated": "2016-02-26T16:34:52+09:00",
+  "date_public": "2015-10-12T00:00:00+09:00"
+}

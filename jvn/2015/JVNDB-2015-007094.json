@@ -1,0 +1,200 @@
+{
+  "vulinfo_id": "JVNDB-2015-007094",
+  "title": "GNU C Library における整数オーバーフローの脆弱性",
+  "vulinfo_description": "GNU C Library (別名 glibc または libc6) には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "GNU Project",
+      "product_name": "GNU C Library",
+      "version_number": [
+        "2.23 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:glibc"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Debuginfo",
+      "version_number": [
+        "11-SP2",
+        "11-SP3",
+        "11-SP4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:linux_enterprise_debuginfo"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Desktop",
+      "version_number": [
+        "11-SP3",
+        "11-SP4",
+        "12",
+        "12-SP1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_desktop"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Server",
+      "version_number": [
+        "11-SP2-LTSS",
+        "11-SP3",
+        "11-SP4",
+        "12",
+        "12-SP1",
+        "for VMWare 11-SP3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_server"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Software Development Kit",
+      "version_number": [
+        "11-SP3",
+        "11-SP4",
+        "12",
+        "12-SP1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_software_development_kit"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、__hcreate_r 関数の size 引数を介して、ヒープメモリ領域外へのアクセスを誘発されることで、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3481",
+      "url": "https://www.debian.org/security/2016/dsa-3481"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:0470",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00036.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:0471",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00037.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:0472",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00038.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:0473",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00039.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:0510",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00042.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sourceware Bugzilla",
+      "vulinfo_id": "Bug 18240",
+      "url": "https://sourceware.org/bugzilla/show_bug.cgi?id=18240"
+    },
+    {
+      "type": "vendor",
+      "name": "sourceware.org",
+      "vulinfo_id": "The GNU C Library version 2.23 is now available",
+      "url": "https://www.sourceware.org/ml/libc-alpha/2016-02/msg00502.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8778",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8778"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8778",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8778"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-26T16:50:06+09:00",
+  "date_last_updated": "2016-04-26T16:50:06+09:00",
+  "date_public": "2015-08-25T00:00:00+09:00"
+}

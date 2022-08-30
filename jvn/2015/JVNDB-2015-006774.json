@@ -1,0 +1,233 @@
+{
+  "vulinfo_id": "JVNDB-2015-006774",
+  "title": "QEMU の VNC WebSocket フレームデコーダにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "QEMU の VNC WebSocket フレームデコーダには、サービス運用妨害 (メモリおよび CPU 資源の消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "14.10",
+        "15.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "21",
+        "22"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "SUSE Linux Enterprise Desktop",
+      "version_number": [
+        "11 SP3",
+        "12"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:suse_linux_enterprise_desktop"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "SUSE Linux Enterprise Server",
+      "version_number": [
+        "11 SP3",
+        "12"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:suse_linux_enterprise_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "(v. 7)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "(v. 7)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "(v. 7)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "(v. 7)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きな (1) WebSocket ペイロード、または (2) HTTP ヘッダセクションを介して、サービス運用妨害 (メモリおよび CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3259",
+      "url": "https://www.debian.org/security/2015/dsa-3259"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-5541",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/155196.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-5482",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/154656.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2015:0896",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2015-05/msg00042.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2015:0870",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2015-05/msg00033.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH 1/2] CVE-2015-1779: incrementally decode websocket frames",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2015-03/msg04896.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH 2/2] CVE-2015-1779: limit size of HTTP headers from websockets clients",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2015-03/msg04895.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH 0/2] CVE-2015-1779: fix denial of service in VNC websockets",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2015-03/msg04894.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1943",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1943.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1931",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1931.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2608-1",
+      "url": "http://www.ubuntu.com/usn/USN-2608-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-1779",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1779"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-1779",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1779"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年01月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-01-18T13:53:03+09:00",
+  "date_last_updated": "2016-01-18T13:53:03+09:00",
+  "date_public": "2015-03-23T00:00:00+09:00"
+}

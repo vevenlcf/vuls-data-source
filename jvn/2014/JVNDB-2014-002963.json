@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-002963",
+  "title": "ppc64-diag における任意のファイルを上書きされる脆弱性",
+  "vulinfo_description": "ppc64-diag には、以下のファイルおよびディレクトリに関する処理に不備があるため、任意のファイルを上書きされる脆弱性が存在します。   (1) rtas_errd/diag_support.c および /tmp/get_dt_files (2) scripts/ppc64_diag_mkrsrc および /tmp/diagSEsnap/snapH.tar.gz (3) lpd/test/lpd_ela_test.sh および /var/tmp/ras",
+  "affected": [
+    {
+      "name": "ppc64-diag project",
+      "product_name": "ppc64-diag",
+      "version_number": [
+        "2.6.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ppc64-diag_project:ppc64-diag"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、シンボリックリンク攻撃を介して、任意のファイルを上書きされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug #882667",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=882667"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1109371",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1109371"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0383",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0383.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1320",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1320.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-4038",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-4038"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-4038",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4038"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-59",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-59.html",
+      "title": "リンク解釈の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月19日]\\n  掲載\\n[2015年06月08日]\\n  ベンダ情報：レッドハット (RHSA-2015:0383) を追加\\n[2015年11月09日]\\n  ベンダ情報：レッドハット (RHSA-2015:1320) を追加"
+    }
+  ],
+  "date_first_published": "2014-06-19T15:55:32+09:00",
+  "date_last_updated": "2015-11-09T16:16:30+09:00",
+  "date_public": "2014-06-13T00:00:00+09:00"
+}

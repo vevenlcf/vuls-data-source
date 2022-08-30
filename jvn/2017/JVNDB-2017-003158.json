@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2017-003158",
+  "title": "Linux Kernel の nfsd サブシステムの NFSv2/NFSv3 サーバにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の nfsd サブシステムの NFSv2/NFSv3 サーバには、net/sunrpc/svc.c、fs/nfsd/nfs3xdr.c、および fs/nfsd/nfsxdr.c に関する処理に不備があるため、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.10.11 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、過度に長い RPC 応答を介して、 サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "nfsd: check for oversized NFSv2/v3 arguments",
+      "url": "https://github.com/torvalds/linux/commit/e6838a29ecb484c97e4efef9429643b9851fba6e"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "nfsd: check for oversized NFSv2/v3 arguments",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e6838a29ecb484c97e4efef9429643b9851fba6e"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-7645",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7645"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-7645",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-7645"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-18T14:37:11+09:00",
+  "date_last_updated": "2017-05-18T14:37:11+09:00",
+  "date_public": "2017-04-25T00:00:00+09:00"
+}

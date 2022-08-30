@@ -1,0 +1,593 @@
+{
+  "vulinfo_id": "JVNDB-2016-003304",
+  "title": "OpenSSL におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSL は、ヒープバッファの境界チェックにポインタ演算を誤って使用するため、サービス運用妨害 (整数オーバーフローおよびアプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-190: Integer Overflow or Wraparound (整数オーバーフローまたはラップアラウンド) と識別されています。 http://cwe.mitre.org/data/definitions/190.html",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "1.0.2h まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Linux",
+      "version_number": [
+        "5",
+        "6",
+        "7"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:linux"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10",
+        "11.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "IceWall MCRP",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:icewall_mcrp"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "IceWall SSO",
+      "version_number": [
+        "certd",
+        "Dfw"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:icewall_sso"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "IceWall SSO Agent Option",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:icewall_sso_agent_option"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "CapsSuite",
+      "version_number": [
+        "V3.0 から V4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:capssuite"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "EnterpriseIdentityManager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:enterpriseidentitymanager"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "ESMPRO/ServerAgent",
+      "version_number": [
+        "4.4.22-1以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:esmpro_serveragent"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "ESMPRO/ServerAgentService",
+      "version_number": [
+        "全バージョン (Linux版)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:esmpro_serveragentservice"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "Express5800",
+      "version_number": [
+        "SG3600全シリーズ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:express5800"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IX1000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ix1000"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IX2000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ix2000"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IX3000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ix3000"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "SecureWare/PKIアプリケーション開発キット",
+      "version_number": [
+        "Ver3.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:secureware_pki_application_development_kit"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Application Server",
+      "version_number": [
+        "Enterprise V8.2 から V9.4",
+        "Express V8.2 から V9.4",
+        "Foundation V8.2 から V8.5",
+        "Standard V8.2 から V9.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_application_server"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Enterprise Service Bus",
+      "version_number": [
+        "V8.2 から V8.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_enterprise_service_bus"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Portal",
+      "version_number": [
+        "V8.2 から V9.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_portal"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Application Server Enterprise",
+      "version_number": [
+        "Version 6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_application_server_enterprise"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Application Server Standard",
+      "version_number": [
+        "Version 6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_application_server_standard"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Application Server Version 5",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_application_server_version_5"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Developer Light Version 6",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_developer_light_version_6"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Developer Professional Version 6",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_developer_professional_version_6"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Developer Standard Version 6",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_developer_standard_version_6"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Developer Version 5",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_developer_version_5"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus HTTP Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_http_server"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Cosminexus Primary Server",
+      "version_number": [
+        "Base Version 6",
+        "Version 6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:cosminexus_primary_server"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Hitachi Web Server",
+      "version_number": [
+        "- Security Enhancement"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:hitachi_web_server"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Application Server",
+      "version_number": [
+        "-R",
+        "Express",
+        "Standard-R"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_application_server"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Application Server Enterprise",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_application_server_enterprise"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Application Server Smart Edition",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_application_server_smart_edition"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Application Server Standard",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_application_server_standard"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Developer",
+      "version_number": [
+        "01",
+        "Professional",
+        "Professional for Plug-in"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_developer"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Developer Light",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_developer_light"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Developer Standard",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_developer_standard"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Primary Server",
+      "version_number": [
+        "Base"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_primary_server"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Service Architect",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_service_architect"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "uCosminexus Service Platform",
+      "version_number": [
+        "- Messaging"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:ucosminexus_service_platform"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、予期しない malloc の動作を利用されることで、サービス運用妨害 (整数オーバーフローおよびアプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20160927-openssl",
+      "url": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160927-openssl"
+    },
+    {
+      "type": "vendor",
+      "name": "Hitachi Software Vulnerability Information",
+      "vulinfo_id": "hitachi-sec-2017-103",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/global/security/info/vuls/hitachi-sec-2017-103/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HPE Security Bulletin",
+      "vulinfo_id": "HPSBGN03658",
+      "url": "https://h20565.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05302448"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1995039",
+      "url": "http://www-01.ibm.com/support/docview.wss?uid=swg21995039"
+    },
+    {
+      "type": "vendor",
+      "name": "McAfee Security Bulletin",
+      "vulinfo_id": "SB10165",
+      "url": "https://kc.mcafee.com/corporate/index?page=content\u0026id=SB10165"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV17-001",
+      "url": "http://jpn.nec.com/security-info/secinfo/nv17-001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "News",
+      "vulinfo_id": "OpenSSL 1.0.1 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.1-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "News",
+      "vulinfo_id": "OpenSSL 1.0.2 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.2-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Project",
+      "vulinfo_id": "Avoid some undefined pointer arithmetic",
+      "url": "https://git.openssl.org/?p=openssl.git;a=commit;h=a004e72b95835136d3f1ea90517f706c24c03da7"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - October 2016",
+      "url": "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - October 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinoct2016-3090545.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinapr2016-2952098.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle VM Server for x86 Bulletin - October 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/ovmbulletinoct2016-3090547.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1341705",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1341705"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "SA40312",
+      "url": "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA40312"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "SA132",
+      "url": "https://bto.bluecoat.com/security-advisory/sa132"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "JSA10759",
+      "url": "http://kb.juniper.net/InfoCenter/index?page=content\u0026id=JSA10759"
+    },
+    {
+      "type": "vendor",
+      "name": "Splunk",
+      "vulinfo_id": "Splunk Enterprise 6.4.5 addresses multiple vulnerabilities",
+      "url": "http://www.splunk.com/view/SP-CAAAPUE"
+    },
+    {
+      "type": "vendor",
+      "name": "Splunk",
+      "vulinfo_id": "Splunk Enterprise 6.5.1 addresses multiple OpenSSL vulnerabilities",
+      "url": "http://www.splunk.com/view/SP-CAAAPSV"
+    },
+    {
+      "type": "vendor",
+      "name": "Tenable Network Security",
+      "vulinfo_id": "TNS-2016-16",
+      "url": "https://www.tenable.com/security/tns-2016-16"
+    },
+    {
+      "type": "vendor",
+      "name": "ソフトウェア製品セキュリティ情報",
+      "vulinfo_id": "HS16-023",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/security/info/vuls/HS16-023/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ソフトウェア製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2017-103",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/security/info/vuls/hitachi-sec-2017-103/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2177",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2177"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-18-144-01",
+      "url": "https://www.us-cert.gov/ics/advisories/ICSA-18-144-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98667810",
+      "url": "http://jvn.jp/vu/JVNVU98667810/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2177",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2177"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "BizMobile Go! 脆弱性対応状況",
+      "url": "http://www.bizmobile.co.jp/news_02.php?id=4069\u0026nc=1"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-190",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "title": "整数オーバーフローまたはラップアラウンド"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月22日]\\n  掲載\\n[2016年08月25日]\\n  CVSS による深刻度：内容を更新\\n[2016年09月14日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日立 (HS16-023) を追加\\n[2016年10月07日]\\n  ベンダ情報：OpenSSL Project (OpenSSL 1.0.1 Series Release Notes) を追加\\n  ベンダ情報：OpenSSL Project (OpenSSL 1.0.2 Series Release Notes) を追加\\n  ベンダ情報：シスコシステムズ (cisco-sa-20160927-openssl) を追加\\n  参考情報：JVN (JVNVU#98667810) を追加\\n[2016年11月17日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - October 2016) を追加\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - October 2016) を追加\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - April 2016) を追加\\n  ベンダ情報：オラクル (Oracle VM Server for x86 Bulletin - October 2016) を追加\\n  ベンダ情報：ヒューレット・パッカード・エンタープライズ (HPSBGN03658) を追加\\n  参考情報：関連文書 (BizMobile Go! 脆弱性対応状況) を追加\\n[2017年02月21日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日本電気 (NV17-001) を追加\\n  ベンダ情報：日立 (hitachi-sec-2017-103) を追加\\n  ベンダ情報：パルスセキュア (SA40312) を追加\\n  ベンダ情報：ジュニパーネットワークス (JSA10759) を追加\\n  ベンダ情報：ブルーコートシステムズ (SA132) を追加\\n  ベンダ情報：マカフィー (SB10165) を追加\\n  ベンダ情報：IBM (1995039) を追加\\n  ベンダ情報：Tenable Network Security (TNS-2016-16) を追加\\n  ベンダ情報：Splunk (Splunk Enterprise 6.4.5 addresses multiple vulnerabilities) を追加\\n  ベンダ情報：Splunk (Splunk Enterprise 6.5.1 addresses multiple OpenSSL vulnerabilities) を追加\\n[2017年03月09日]\\n  影響を受けるシステム：ベンダ情報の更新に伴い内容を更新\\n[2017年07月25日]\\n  影響を受けるシステム：ベンダ情報 (NV17-001) の更新に伴い内容を更新\\n[2017年10月03日]\\n  CVSS による深刻度：内容を更新\\n  影響を受けるシステム：内容を更新\\n  CWE による脆弱性タイプ一覧：内容を更新"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-10T03:07:06Z",
+      "description": "[2019年07月10日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-18-144-01) を追加"
+    }
+  ],
+  "date_first_published": "2016-06-22T15:00:16+09:00",
+  "date_last_updated": "2019-07-10T12:09:58+09:00",
+  "date_public": "2016-06-01T00:00:00+09:00"
+}

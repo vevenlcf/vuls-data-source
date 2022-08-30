@@ -1,0 +1,160 @@
+{
+  "vulinfo_id": "JVNDB-2016-003476",
+  "title": "NTP の ntpd の ntp_proto.c 内の process_packet 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "NTP の ntpd の ntp_proto.c 内の process_packet 関数には、サービス運用妨害 (ピア変数の変更) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "NTP Project",
+      "product_name": "NTP",
+      "version_number": [
+        "4.2.8p8 未満の 4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntp:ntp"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "UNIVERGE",
+      "version_number": [
+        "IP8800シリーズ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:univerge"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:L"
+      }
+    ],
+    "impact_item": "第三者により、特定のシナリオで多数の送信元 IP アドレスから偽造されたパケットを送信されることで、サービス運用妨害 (ピア変数の変更) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Meinberg Security Advisory",
+      "vulinfo_id": "Meinberg Security Advisory: [MBGSA-1604] WebUI and NTP",
+      "url": "https://www.meinbergglobal.com/english/news/meinberg-security-advisory-mbgsa-1604-webui-and-ntp.htm"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV17-007",
+      "url": "http://jpn.nec.com/security-info/secinfo/nv17-007.html"
+    },
+    {
+      "type": "vendor",
+      "name": "NTP Bugzilla",
+      "vulinfo_id": "Bug 3044",
+      "url": "http://bugs.ntp.org/show_bug.cgi?id=3044"
+    },
+    {
+      "type": "vendor",
+      "name": "ntp.org",
+      "vulinfo_id": "NTP Bug 3044",
+      "url": "http://support.ntp.org/bin/view/Main/NtpBug3044"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinapr2016-2952098.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Notice",
+      "vulinfo_id": "June 2016 ntp-4.2.8p8 NTP Security Vulnerability Announcement (HIGH)(CVE-2016-4954)",
+      "url": "http://support.ntp.org/bin/view/Main/SecurityNotice"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "JVNVU#94410990(VU#321640)に関する情報",
+      "url": "http://www.fujitsu.com/jp/products/software/resources/condition/security/vulnerabilities/2016/index.html#JVNVU94410990"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4954",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4954"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96269392",
+      "url": "https://jvn.jp/vu/JVNVU96269392/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95781418",
+      "url": "https://jvn.jp/vu/JVNVU95781418/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94410990",
+      "url": "http://jvn.jp/vu/JVNVU94410990/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4954",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4954"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#321640",
+      "url": "http://www.kb.cert.org/vuls/id/321640"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年07月11日]\\n  掲載\\n[2016年08月03日]\\n  ベンダ情報：富士通 (JVNVU#94410990(VU#321640)に関する情報) を追加\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - April 2016) を追加\\n[2016年11月21日]\\n  ベンダ情報：NTP Project (NTP Bug 3044) を追加\\n  ベンダ情報：NTP Project (June 2016 ntp-4.2.8p8 NTP Security Vulnerability Announcement (HIGH)(CVE-2016-4954)) を追加\\n[2017年03月09日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日本電気 (NV17-007) を追加"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2021-04-16T05:43:06Z",
+      "description": "[2021年04月16日]\\n  参考情報：JVN (JVNVU#96269392) を追加"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-06-10T04:39:41Z",
+      "description": "[2021年06月10日]\\n  参考情報：JVN (JVNVU#95781418) を追加"
+    }
+  ],
+  "date_first_published": "2016-07-11T11:57:06+09:00",
+  "date_last_updated": "2021-06-10T18:03:15+09:00",
+  "date_public": "2016-06-02T00:00:00+09:00"
+}

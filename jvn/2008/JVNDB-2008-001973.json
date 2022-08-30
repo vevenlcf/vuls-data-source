@@ -1,0 +1,164 @@
+{
+  "vulinfo_id": "JVNDB-2008-001973",
+  "title": "Linux kernel におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux kernel の fs/ext2/dir.c、fs/ext3/dir.c、および fs/ext4/dir.c には、printk コンソールメッセージ数を制限しないため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.26.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "物理的にアクセス可能なユーザが dir→i_size と dir→i_blocks の値が壊れたファイルシステム、および読み込み/書き込みを実行するファイルシステムをマウントすることにより、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-53.22AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=425"
+    },
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-128.9AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=747"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.27",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.27"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "1649",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=1649"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:0326",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-0326.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0972",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0972.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2008:0972",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2008-0972J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:0326",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-0326J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-3528",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3528"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "45720",
+      "url": "http://xforce.iss.net/xforce/xfdb/45720"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-3528",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-3528"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32799",
+      "url": "http://secunia.com/advisories/32799"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年12月17日]\\n  掲載\\n[2009年02月25日]\\n  影響を受けるシステム：ミラクル・リナックス (1649) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (1649) を追加\\n[2009年04月23日]\\n  影響を受けるシステム：レッドハット (RHSA-2009:0326) の情報を追加\\n  ベンダ情報：レッドハット (RHSA-2009:0326) を追加\\n[2009年06月24日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-53.22AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-53.22AXS3) を追加\\n[2009年10月09日]\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-128.9AXS3) を追加"
+    }
+  ],
+  "date_first_published": "2008-12-17T17:31:01+09:00",
+  "date_last_updated": "2009-10-09T13:17:02+09:00",
+  "date_public": "2008-09-27T00:00:00+09:00"
+}

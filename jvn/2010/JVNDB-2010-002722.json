@@ -1,0 +1,151 @@
+{
+  "vulinfo_id": "JVNDB-2010-002722",
+  "title": "FastJar の jartool.c 内にある extract_jar 関数におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "FastJar の jartool.c 内にある extract_jar 関数には、.jar アーカイブ内において、ファイルパスの先頭以外の箇所に .. (dot dot) を含むファイル名の処理に不備があるため、ディレクトリトラバーサルの脆弱性が存在します。 本問題は、CVE-2005-1080 と関連する問題であり、CVE-2010-0179 の修正が不完全だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "FastJar",
+      "product_name": "FastJar",
+      "version_number": [
+        "0.98"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fastjar:fastjar"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、任意のファイルを作成される、または上書きされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "gcc-4.1.2-50.0.1",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1334"
+    },
+    {
+      "type": "vendor",
+      "name": "FastJar",
+      "vulinfo_id": "Top Page",
+      "url": "http://sourceforge.net/projects/fastjar"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0025",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0025.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-0831",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0831"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-0831",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0831"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "65467",
+      "url": "http://osvdb.org/65467"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "42892",
+      "url": "http://secunia.com/advisories/42892"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "41006",
+      "url": "http://www.securityfocus.com/bid/41006"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0121",
+      "url": "http://www.vupen.com/english/advisories/2011/0121"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年02月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-02-03T14:52:58+09:00",
+  "date_last_updated": "2011-02-03T14:52:58+09:00",
+  "date_public": "2010-06-18T00:00:00+09:00"
+}

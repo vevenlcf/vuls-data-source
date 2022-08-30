@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2016-007760",
+  "title": "RubyGems minitar および archive-tar-minitar におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "RubyGems minitar および archive-tar-minitar には、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "minitar",
+      "product_name": "archive-tar-minitar",
+      "version_number": [
+        "0.5.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:minitar:archive-tar-minitar"
+      }
+    },
+    {
+      "name": "minitar",
+      "product_name": "minitar",
+      "version_number": [
+        "0.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:minitar:minitar"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、.. (ドットドット) を含む TAR アーカイブエントリを介して、 任意のファイルに書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Resolve relative path vulnerability",
+      "url": "https://github.com/halostatue/minitar/commit/e25205ecbb6277ae8a3df1e6a306d7ed4458b6e4"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Minitar directory traversal vulnerability #16",
+      "url": "https://github.com/halostatue/minitar/issues/16"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-10173",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10173"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-10173",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10173"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月15日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-15T17:15:06+09:00",
+  "date_last_updated": "2017-03-15T17:15:06+09:00",
+  "date_public": "2016-11-14T00:00:00+09:00"
+}

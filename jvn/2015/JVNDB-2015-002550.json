@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-002550",
+  "title": "Dnsmasq の tcp_request 関数におけるプロセスのメモリを読み取られる脆弱性",
+  "vulinfo_description": "Dnsmasq の tcp_request 関数は、setup_reply 関数の戻り値を適切に処理しないため、プロセスのメモリを読み取られる、およびサービス運用妨害 (out-of-bounds read およびクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-19: Data Handling (データ処理) と識別されています。 http://cwe.mitre.org/data/definitions/19.html",
+  "affected": [
+    {
+      "name": "thekelleys",
+      "product_name": "Dnsmasq",
+      "version_number": [
+        "2.73rc4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:thekelleys:dnsmasq"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、不正な形式の DNS リクエストを介して、プロセスのメモリを読み取られる、およびサービス運用妨害 (out-of-bounds read およびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Dnsmasq-discuss",
+      "vulinfo_id": "dnsmsaq potential vulnerability",
+      "url": "http://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2015q2/009387.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2015-2511963.html"
+    },
+    {
+      "type": "vendor",
+      "name": "thekelleys",
+      "vulinfo_id": "Fix crash on receipt of certain malformed DNS requests v2.73rc4",
+      "url": "http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commitdiff;h=ad4a8ff7d9097008d7623df8543df435bfddeac8"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3294",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3294"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3294",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3294"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年05月12日]\\n  掲載\\n[2015年07月31日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2015) を追加"
+    }
+  ],
+  "date_first_published": "2015-05-12T15:28:13+09:00",
+  "date_last_updated": "2015-07-31T10:35:00+09:00",
+  "date_public": "2015-04-10T00:00:00+09:00"
+}

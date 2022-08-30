@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2014-001311",
+  "title": "Open Ticket Request System の Kernel/System/State.pm における SQL インジェクションの脆弱性",
+  "vulinfo_description": "Open Ticket Request System (OTRS) の Kernel/System/State.pm 内の StateGetStatesByType 関数には、チケット検索の URL に関する処理に不備があるため、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OTRS プロジェクト",
+      "product_name": "OTRS",
+      "version_number": [
+        "3.1.19 未満の 3.1.x",
+        "3.2.14 未満の 3.2.x",
+        "3.3.4 未満の 3.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:otrs:otrs"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、任意の SQL コマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed: Missing quoting in State::StateGetStatesByType() (bug#10158) - commit c4ec920",
+      "url": "https://github.com/OTRS/otrs/commit/c4ec9205bde9c49770ddad94c1a980c006164949"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed: Missing quoting in State::StateGetStatesByType() (bug#10158) - commit 2997b36",
+      "url": "https://github.com/OTRS/otrs/commit/2997b36a7c84e933c4b025930cabe93efc4d261d"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed: Missing quoting in State::StateGetStatesByType() (bug#10158) - commit 0680603",
+      "url": "https://github.com/OTRS/otrs/commit/0680603a07b8dc37c2ddca6ff14e0236babefc82"
+    },
+    {
+      "type": "vendor",
+      "name": "OTRS",
+      "vulinfo_id": "Release Notes: OTRS Help Desk 3.3.4",
+      "url": "https://www.otrs.com/release-notes-otrs-help-desk-3-3-4/"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "2014-02 - SQL injection issue",
+      "url": "https://www.otrs.com/security-advisory-2014-02-sql-injection-issue/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-1471",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1471"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-1471",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1471"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年02月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-02-06T14:04:48+09:00",
+  "date_last_updated": "2014-02-06T14:04:48+09:00",
+  "date_public": "2014-01-28T00:00:00+09:00"
+}

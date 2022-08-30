@@ -1,0 +1,136 @@
+{
+  "vulinfo_id": "JVNDB-2016-006251",
+  "title": "PostgreSQL におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "PostgreSQL には、サービス運用妨害 (NULL ポインタデリファレンス) 状態にされる、重要なメモリ情報を取得される、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "PostgreSQL.org",
+      "product_name": "PostgreSQL",
+      "version_number": [
+        "9.1.23 未満",
+        "9.2.18 未満の 9.2.x",
+        "9.3.14 未満の 9.3.x",
+        "9.4.9 未満の 9.4.x",
+        "9.5.4 未満の 9.5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:postgresql:postgresql"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、(1) 他の CASE 式の test 値の副次式に含まれる CASE 式、または、(2) 他の型の値に関連する CASE 式に対して使用される等価演算子を実装する SQL 関数の埋め込みを介して、サービス運用妨害 (NULL ポインタデリファレンス) 状態にされる、重要なメモリ情報を取得される、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3646",
+      "url": "https://www.debian.org/security/2016/dsa-3646"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL NEWS",
+      "vulinfo_id": "2016-08-11 Security Update Release",
+      "url": "https://www.postgresql.org/about/news/1688/"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.4.9",
+      "url": "https://www.postgresql.org/docs/current/static/release-9-4-9.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.2.18",
+      "url": "https://www.postgresql.org/docs/current/static/release-9-2-18.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.3.14",
+      "url": "https://www.postgresql.org/docs/current/static/release-9-3-14.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.5.4",
+      "url": "https://www.postgresql.org/docs/current/static/release-9-5-4.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.1.23",
+      "url": "https://www.postgresql.org/docs/current/static/release-9-1-23.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1364001",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1364001"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5423",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5423"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5423",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5423"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-476",
+      "url": "http://cwe.mitre.org/data/definitions/476.html",
+      "title": "NULL ポインタデリファレンス"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年12月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-12-16T16:04:35+09:00",
+  "date_last_updated": "2016-12-16T16:04:35+09:00",
+  "date_public": "2016-08-11T00:00:00+09:00"
+}

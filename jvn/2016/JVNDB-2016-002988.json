@@ -1,0 +1,121 @@
+{
+  "vulinfo_id": "JVNDB-2016-002988",
+  "title": "GNU C Library の getnetbyname 関数の nss_dns の実装におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "GNU C Library (別名 glibc) の getnetbyname 関数の nss_dns の実装には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "23"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "GNU Project",
+      "product_name": "GNU C Library",
+      "version_number": [
+        "2.24 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:glibc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、過度に長い名前を介して、サービス運用妨害 (スタックの消費およびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-68abc0be35",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/184626.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GNU Project",
+      "vulinfo_id": "CVE-2016-3075: Stack overflow in _nss_dns_getnetbyname_r [BZ #19879]",
+      "url": "https://sourceware.org/git/gitweb.cgi?p=glibc.git;h=317b199b4aff8cfa27f2302ab404d2bb5032b9a4"
+    },
+    {
+      "type": "vendor",
+      "name": "Sourceware Bugzilla",
+      "vulinfo_id": "Bug 19879",
+      "url": "https://sourceware.org/bugzilla/show_bug.cgi?id=19879"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2985-1",
+      "url": "http://www.ubuntu.com/usn/USN-2985-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3075",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3075"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3075",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3075"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-06T13:55:17+09:00",
+  "date_last_updated": "2016-06-06T13:55:17+09:00",
+  "date_public": "2016-03-29T00:00:00+09:00"
+}

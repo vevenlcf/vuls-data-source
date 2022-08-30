@@ -1,0 +1,137 @@
+{
+  "vulinfo_id": "JVNDB-2013-001752",
+  "title": "nss-pam-ldapd におけるサービス運用妨害 (アプリケーションクラッシュ) の脆弱性",
+  "vulinfo_description": "nss-pam-ldapd には、サービス運用妨害 (アプリケーションクラッシュ) 状態となる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "arthurdejong",
+      "product_name": "nss-pam-ldapd",
+      "version_number": [
+        "0.7.18 未満",
+        "0.8.11 未満の 0.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:arthurdejong:nss-pam-ldapd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、多数のオープンファイル記述子を伴うアプリケーションで名前の検索 (name lookup) を実行され、FD_SET マクロの不正な使用に関連したスタックベースのバッファオーバーフローを誘発されることにより、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "arthurdejong",
+      "vulinfo_id": "check if the file descriptor can be stored in the select() file descriptor set",
+      "url": "http://arthurdejong.org/git/nss-pam-ldapd/commit/?id=7867b93f9a7c76b96f1571cddc1de0811134bb81"
+    },
+    {
+      "type": "vendor",
+      "name": "arthurdejong",
+      "vulinfo_id": "check if the file descriptor can be stored in the select() file descriptor set (r1781 from 0.8)",
+      "url": "http://arthurdejong.org/git/nss-pam-ldapd/commit/?id=abf03bc54032beeff95b1b8634cc005137e11f32"
+    },
+    {
+      "type": "vendor",
+      "name": "arthurdejong",
+      "vulinfo_id": "use poll() instead of select() for checking file descriptor activity to also correctly work if more than FD_SETSIZE files are already open",
+      "url": "http://arthurdejong.org/git/nss-pam-ldapd/commit/?id=f266f05f20afe73e89c3946a7bd60bd7c5948e1b"
+    },
+    {
+      "type": "vendor",
+      "name": "arthurdejong",
+      "vulinfo_id": "CVE-2013-0288",
+      "url": "http://arthurdejong.org/nss-pam-ldapd/CVE-2013-0288"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#690319",
+      "url": "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=690319"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2628",
+      "url": "http://www.debian.org/security/2013/dsa-2628"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-2754",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/099438.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0524",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-03/msg00091.html  "
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0522",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-03/msg00087.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 909119",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=909119"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0590",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0590.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0288",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0288"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0288",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0288"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2013-0071",
+      "url": "https://wiki.mageia.org/en/Support/Advisories/MGASA-2013-0071"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月07日]\\n  掲載\\n[2013年05月17日]\\n  ベンダ情報：openSUSE (openSUSE-SU-2013:0524) を追加\\n  ベンダ情報：openSUSE (openSUSE-SU-2013:0522) を追加\\n[2014年03月28日]\\n  参考情報：関連文書 (MGASA-2013-0071) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-07T19:05:06+09:00",
+  "date_last_updated": "2014-03-28T16:33:21+09:00",
+  "date_public": "2013-02-18T00:00:00+09:00"
+}

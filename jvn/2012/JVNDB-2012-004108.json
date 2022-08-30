@@ -1,0 +1,136 @@
+{
+  "vulinfo_id": "JVNDB-2012-004108",
+  "title": "ownCloud におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "ownCloud には、クロスサイトスクリプティングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ownCloud",
+      "product_name": "ownCloud",
+      "version_number": [
+        "4.0.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:owncloud:owncloud"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、下記の項目を介して、任意の Web スクリプトまたは HTML を挿入される可能性があります。  (1) apps/user_ldap/settings.php の file names (2) apps/bookmarks/ajax/editBookmark.php の url パラメータ (3) apps/bookmarks/ajax/editBookmark.php の title パラメータ (4) apps/bookmarks/ajax/updateList.php の tag パラメータ (5) apps/bookmarks/ajax/updateList.php の page パラメータ (6) apps/user_openid/settings.php の identity (7) apps/gallery/lib/tiles.php の stack name (8) apps/gallery/templates/index.php の root パラメータ (9) apps/calendar/templates/part.import.php の calendar displayname (10) apps/calendar/templates/part.choosecalendar.rowfields.php の calendar uri (11) apps/calendar/lib/object.php の title パラメータ (12) apps/calendar/lib/object.php の location パラメータ (13) apps/calendar/lib/object.php の description パラメータ (14) core/js/multiselect.js の特定の値 (15) apps/media/lib_scanner.php の artist パラメータ (16) apps/media/lib_scanner.php の album パラメータ (17) apps/media/lib_scanner.php の title comments パラメータ"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fix XSS in Calendar",
+      "url": "https://github.com/owncloud/core/commit/f955f6a6857754826af8903475688ba54f72c1bb"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "xss vulnerability fixed",
+      "url": "https://github.com/owncloud/core/commit/44260a552cd4ee50ee11eee45164c725f56f7027"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Using POST instead of GET.",
+      "url": "https://github.com/owncloud/core/commit/f8337c9d723039760eecccf68bcb02752551e254"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "xss vulnerability fixed",
+      "url": "https://github.com/owncloud/core/commit/e817504569dce49fd7a677fa510e500394af0c48"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Sanitzing user input",
+      "url": "https://github.com/owncloud/core/commit/d294373f476c795aaee7dc2444e7edfdea01a606"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Sanitize user input",
+      "url": "https://github.com/owncloud/core/commit/cc653a8a408adfb4d0cd532145668aacd85ad96c"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fix potential xss in multiselect",
+      "url": "https://github.com/owncloud/core/commit/8f616ecf76aac4a8b554fbf5a90b1645d0f25438"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Sanitizing user input",
+      "url": "https://github.com/owncloud/core/commit/8f09299e2468dfc4f9ec72b05acf47de3ef9d1d7"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fix another XSS",
+      "url": "https://github.com/owncloud/core/commit/642e7ce110cb8c320072532c29abe003385d50f5"
+    },
+    {
+      "type": "vendor",
+      "name": "ownCloud",
+      "vulinfo_id": "Multiple reflected XSS (CVE-2012-4396)",
+      "url": "http://owncloud.org/security/advisories/CVE-2012-4396/"
+    },
+    {
+      "type": "vendor",
+      "name": "ownCloud",
+      "vulinfo_id": "Top Page",
+      "url": "http://owncloud.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "ownCloud",
+      "vulinfo_id": "Changelog",
+      "url": "http://owncloud.org/changelog/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4396",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4396"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4396",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4396"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月07日]\\n  掲載\\n[2012年12月19日]\\n  ベンダ情報：ownCloud (Multiple reflected XSS (CVE-2012-4396)) を追加 "
+    }
+  ],
+  "date_first_published": "2012-09-07T16:29:02+09:00",
+  "date_last_updated": "2012-12-19T14:13:26+09:00",
+  "date_public": "2012-06-11T00:00:00+09:00"
+}

@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2013-006546",
+  "title": "BOINC の client/cs_account.cpp の PROJECT::write_account_file 関数におけるフォーマットストリングの脆弱性",
+  "vulinfo_description": "BOINC の client/cs_account.cpp の PROJECT::write_account_file 関数には、フォーマットストリングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "University of California",
+      "product_name": "BOINC",
+      "version_number": [
+        "7.2.33"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:berkeley:boinc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、アカウントファイル内の gui_urls 項目のフォーマットストリング指定子を介して、サービス運用妨害 (クラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "BOINC",
+      "vulinfo_id": "client: fix compile warning",
+      "url": "http://boinc.berkeley.edu/gitweb/?p=boinc-v2.git;a=commitdiff;h=99258dcecba8ef36e1ce0fd6e0dacffe53613ac9"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 957795",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=957795"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7386",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7386"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7386",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7386"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-134",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-134.html",
+      "title": "書式文字列の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-06-04T14:46:20+09:00",
+  "date_last_updated": "2014-06-04T14:46:20+09:00",
+  "date_public": "2013-04-25T00:00:00+09:00"
+}

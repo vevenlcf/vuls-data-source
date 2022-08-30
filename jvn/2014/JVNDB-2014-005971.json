@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-005971",
+  "title": "X.Org Server における整数オーバーフローの脆弱性",
+  "vulinfo_description": "X.Org Server (別名 xserver および xorg-server) の DRI2 エクステンションの ProcDRI2GetBuffers 関数には、整数オーバーフローの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-190: Integer Overflow or Wraparound (整数オーバーフローまたはラップアラウンド) と識別されています。 http://cwe.mitre.org/data/definitions/190.html",
+  "affected": [
+    {
+      "name": "X.Org Foundation",
+      "product_name": "X.Org Server",
+      "version_number": [
+        "1.7.0 から 1.16.3 未満の 1.16.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:x.org:xorg-server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工されたリクエストを介して、out-of-bounds read および out-of-bounds write を誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "X.Org Security Advisory",
+      "vulinfo_id": "Advisory-2014-12-09",
+      "url": "http://www.x.org/wiki/Development/Security/Advisory-2014-12-09/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8094",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8094"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8094",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8094"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2014-0532",
+      "url": "http://advisories.mageia.org/MGASA-2014-0532.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月15日]\\n  掲載\\n[2015年06月04日]\\n  参考情報：関連文書 (MGASA-2014-0532) を追加"
+    }
+  ],
+  "date_first_published": "2014-12-15T18:53:11+09:00",
+  "date_last_updated": "2015-06-04T16:52:08+09:00",
+  "date_public": "2014-12-09T00:00:00+09:00"
+}

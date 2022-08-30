@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2013-004357",
+  "title": "Java 用 OWASP ESAPI の対称暗号化の実装における暗号保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "Java 用 OWASP Enterprise Security API (ESAPI) の対称暗号化の実装の Authenticated Encryption 機能は、シリアライズされた暗号文を伴った改ざんを適切に阻止しないため、暗号保護メカニズムを回避される脆弱性が存在します。  本脆弱性は、CVE-2013-5679 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "OWASP",
+      "product_name": "OWASP Enterprise Security API",
+      "version_number": [
+        "2.1.1 未満の 2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:owasp:enterprise_security_api"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.3",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、非デフォルト設定の暗号モードへの攻撃を介して、暗号保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Issue 306:  Crypto MAC by-pass makes default ESAPI symmetric encrytion using CBC mode vulnerable to padding oracle attacks",
+      "url": "http://code.google.com/p/owasp-esapi-java/issues/detail?id=306"
+    },
+    {
+      "type": "vendor",
+      "name": "OWASP",
+      "vulinfo_id": "MAC Bypass in ESAPI Symmetric Encryption",
+      "url": "http://owasp-esapi-java.googlecode.com/svn/trunk/documentation/ESAPI-security-bulletin1.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-5960",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-5960"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-5960",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5960"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-10-01T16:21:49+09:00",
+  "date_last_updated": "2013-10-01T16:21:49+09:00",
+  "date_public": "2013-09-02T00:00:00+09:00"
+}

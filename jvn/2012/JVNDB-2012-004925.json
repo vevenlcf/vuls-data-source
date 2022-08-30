@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-004925",
+  "title": "hostapd の EAP authentication server におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "hostapd の EAP authentication server の eap_server_tls_common.c 内の eap_server_tls_process_fragment 関数には、ヒープベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "w1.fi",
+      "product_name": "hostapd",
+      "version_number": [
+        "0.6 から 1.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:w1.fi:hostapd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、\"More Fragments\" フラグが設定されている EAP-TLS メッセージ内の過度に小さい \"TLS メッセージ長\" の値を介して、サービス運用妨害 (クラッシュまたは停止) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2557",
+      "url": "http://www.debian.org/security/2012/dsa-2557"
+    },
+    {
+      "type": "vendor",
+      "name": "w1.fi",
+      "vulinfo_id": "hostapd",
+      "url": "http://hostap.epitest.fi/hostapd/"
+    },
+    {
+      "type": "vendor",
+      "name": "w1.fi",
+      "vulinfo_id": "EAP-TLS server: Fix TLS Message Length validation",
+      "url": "http://w1.fi/gitweb/gitweb.cgi?p=hostap.git;a=commitdiff;h=586c446e0ff42ae00315b014924ec669023bd8de"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4445",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4445"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4445",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4445"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年10月15日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-10-15T14:57:48+09:00",
+  "date_last_updated": "2012-10-15T14:57:48+09:00",
+  "date_public": "2012-10-07T00:00:00+09:00"
+}

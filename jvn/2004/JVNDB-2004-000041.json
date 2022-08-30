@@ -1,0 +1,239 @@
+{
+  "vulinfo_id": "JVNDB-2004-000041",
+  "title": "XFree86 におけるフォントファイルの処理に関する複数の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  XFree86 は、X Window System の実装の一つであり、Red Hat Linux 等で標準のウィンドウシステムとして利用されています。  XFree86 4.3.0 以前に同梱される libXfont ライブラリに含まれている ReadFontAlias() 関数には、フォントの別名を管理する font.alias ファイルを解釈する際に、フォント名に対し適切なチェックを行わないため、バッファオーバーフローを生じる問題が存在します。(CAN-2004-0083)  さらに、CopyISOLatin1Lowered() 関数においても font.alias ファイルを解釈する際に、フォント名に対し適切なチェックを行わない同様の問題が報告されています。(CAN-2004-0084)  これら問題を利用するローカルの攻撃者は、意図的な font.alias ファイルを用意して対象の X サーバに解釈させる事により、バッファオーバーフローを引き起し、結果として X サーバの権限 (通常は root 権限) で任意のコードを実行することが可能です。   尚、この問題を解消する MIRACLE LINUX V2.x/Red Hat Linux/Turbolinux 用の RPM には、XFree86 4.3.0 以前に存在する、フォントファイルを読み込む際にバッファオーバーフローを生じる問題も解消されています。(CAN-2004-0106)  また、IBM AIX 4.3.3/5.1/5.2 のファイルセット X11.base.rte の一部として同梱されている X サーバも、font.alias ファイルを解釈する際に影響を受ける可能性があります。 現時点ではベンダより CAN-2004-0083 に対する影響については報告されていますが、CAN-2004-0084/CAN-2004-0106 の影響を受けるかどうかは不明です。",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "IBM AIX",
+      "version_number": [
+        "4.3 ",
+        "5.1 ",
+        "5.2 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:ibm:aix"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "7.0 (sparc) ",
+        "7.0 (x86) ",
+        "8 (sparc) ",
+        "8 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.04 ",
+        "11.11 ",
+        "11.22 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX01018",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=c00957781"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX01018",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX01018.html"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM APAR",
+      "vulinfo_id": "IY53508",
+      "url": "http://www-1.ibm.com/support/docview.wss?rs=0\u0026amp;context=SG11O\u0026amp;context=SG11N\u0026amp;context=SG11M\u0026amp;q1=IY53508\u0026amp;uid=isg1IY53508\u0026amp;loc=en_US\u0026amp;cs=utf-8\u0026amp;cc=US\u0026amp;lang=all"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM APAR",
+      "vulinfo_id": "IY53519",
+      "url": "http://www-1.ibm.com/support/docview.wss?rs=0\u0026amp;context=SG11O\u0026amp;context=SG11N\u0026amp;context=SG11M\u0026amp;q1=IY53519\u0026amp;uid=isg1IY53519\u0026amp;loc=en_US\u0026amp;cs=utf-8\u0026amp;cc=US\u0026amp;lang=all"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM APAR",
+      "vulinfo_id": "IY53673",
+      "url": "http://www-1.ibm.com/support/docview.wss?rs=0\u0026amp;context=SG11O\u0026amp;context=SG11N\u0026amp;context=SG11M\u0026amp;q1=IY53673\u0026amp;uid=isg1IY53673\u0026amp;loc=en_US\u0026amp;cs=utf-8\u0026amp;cc=US\u0026amp;lang=all"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM SECURITY ADVISORY",
+      "vulinfo_id": "MSS-OAR-E01-2004.0216.1",
+      "url": "http://www-1.ibm.com/services/continuity/recover1.nsf/mss/MSS-OAR-E01-2004.0216.1"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "XFree86",
+      "url": "http://www.miraclelinux.com/support/update/data/XFree86.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2004:059",
+      "url": "https://rhn.redhat.com/errata/RHSA-2004-059.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "57768",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57768-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "57768",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57768-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2004-5",
+      "url": "http://www.turbolinux.com/security/2004/TLSA-2004-5.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2004:059",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2004-059J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2004-5",
+      "url": "http://www.turbolinux.co.jp/security/2004/TLSA-2004-5j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2004-0106",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0106"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2004-0106",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2004-0106"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9655",
+      "url": "http://www.securityfocus.com/bid/9655"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9652",
+      "url": "http://www.securityfocus.com/bid/9652"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9636",
+      "url": "http://www.securityfocus.com/bid/9636"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1009031",
+      "url": "http://www.securitytracker.com/alerts/2004/Feb/1009031.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#820006",
+      "url": "http://www.kb.cert.org/vuls/id/820006"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#667502",
+      "url": "http://www.kb.cert.org/vuls/id/667502"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2004-02-10T00:00:00+09:00"
+}

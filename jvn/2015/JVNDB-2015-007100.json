@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2015-007100",
+  "title": "Apache Camel における任意のコマンドを実行される脆弱性",
+  "vulinfo_description": "Apache Camel には、Camel ルートでコンシューマとして (1) camel-jetty または (2) camel-servlet を使用する場合、任意のコマンドを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-19: Data Handling (データ処理) と識別されています。 http://cwe.mitre.org/data/definitions/19.html",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Camel",
+      "version_number": [
+        "2.15.5 未満の 2.15.x",
+        "2.16.1 未満の 2.16.x",
+        "2.6.x から 2.14.x,"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:camel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、HTTP リクエストの巧妙に細工されたシリアル化された Java オブジェクトを介して、任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Camel",
+      "vulinfo_id": "CVE-2015-5348: Apache Camel medium disclosure vulnerability",
+      "url": "http://camel.apache.org/security-advisories.data/CVE-2015-5348.txt.asc"
+    },
+    {
+      "type": "vendor",
+      "name": "ASF JIRA",
+      "vulinfo_id": "CAMEL-9309:camel-jetty - Make it easier to turn on|off java transport over http",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-9309"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5348",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5348"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5348",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5348"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-27T15:26:34+09:00",
+  "date_last_updated": "2016-04-27T15:26:34+09:00",
+  "date_public": "2015-11-12T00:00:00+09:00"
+}

@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2011-005191",
+  "title": "VideoLAN VLC media player の modules/demux/ty.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "VideoLAN VLC media player の modules/demux/ty.c の get_chunk_header 関数には、メモリを二重に解放する不備があるため、サービス運用妨害 (クラッシュ) 状態となる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "VideoLAN",
+      "product_name": "VLC media player",
+      "version_number": [
+        "0.9.0 から 1.1.12"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:videolan:vlc_media_player"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された TiVo (TY) ファイルを介して、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "1108",
+      "url": "http://www.videolan.org/security/sa1108.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VideoLAN",
+      "vulinfo_id": "vlc.git / commit",
+      "url": "http://git.videolan.org/?p=vlc.git;a=commit;h=7d282fac1cc455b5a5eca2bb56375efcbf879b06"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0023",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0023"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0023",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0023"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年11月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-11-01T11:53:31+09:00",
+  "date_last_updated": "2012-11-01T11:53:31+09:00",
+  "date_public": "2011-12-20T00:00:00+09:00"
+}

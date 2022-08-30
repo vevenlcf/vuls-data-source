@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2012-002631",
+  "title": "OpenStack Dashboard (Horizon) におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "OpenStack Dashboard (Horizon) の horizon/static/horizon/js/horizon.js 内のログビューアの再読み込み機構には、クロスサイトスクリプティングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Horizon",
+      "version_number": [
+        "2012.1",
+        "folsom-1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:horizon"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、ゲストコンソールを介して、任意の Web スクリプトまたは HTML を挿入される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-6108",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/079160.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "html escape the console log in refresh (fixes bug 977944)",
+      "url": "https://github.com/openstack/horizon/commit/7f8c788aa70db98ac904f37fa4197fcabb802942"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "[OSSA 2012-004] XSS vulnerability in Horizon log viewer",
+      "url": "https://lists.launchpad.net/openstack/msg10211.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "refreshing in log viewer interprets html and javascript (Bug #977944)",
+      "url": "https://bugs.launchpad.net/horizon/+bug/977944"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1439-1",
+      "url": "http://www.ubuntu.com/usn/usn-1439-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2094",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2094"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2094",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2094"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月07日]\\n  掲載\\n[2012年09月04日]\\n  ベンダ情報：Fedora Project (FEDORA-2012-6108) を追加"
+    }
+  ],
+  "date_first_published": "2012-06-07T16:19:40+09:00",
+  "date_last_updated": "2012-09-04T17:20:32+09:00",
+  "date_public": "2012-06-05T00:00:00+09:00"
+}

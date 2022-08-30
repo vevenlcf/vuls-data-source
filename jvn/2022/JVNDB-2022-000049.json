@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2022-000049",
+  "title": "HOME SPOT CUBE2 における OS コマンドインジェクションの脆弱性",
+  "vulinfo_description": "ＫＤＤＩ株式会社が提供する HOME SPOT CUBE2 には、DHCP サーバーから受け取ったデータの処理の不備に起因する、OS コマンドインジェクション (CWE-78) の脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: Alice Rose 氏",
+  "affected": [
+    {
+      "name": "KDDI",
+      "product_name": "HOME SPOT CUBE2",
+      "version_number": [
+        "V102 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:kddi:home_spot_cube_2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:A/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "悪意のある DHCP サーバーを当該製品の WAN 側に設置された場合、当該製品上で任意の OS コマンドを実行される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] \u003cul\u003e\u003cli\u003e本製品の WAN 側ポートには、信頼できる回線を接続する\u003c/li\u003e\u003c/ul\u003e開発者によると、信頼できる ISP の回線に当該製品の WAN 側ポートを接続している場合には本脆弱性を悪用する攻撃は現実的ではないため、上記回避策を推奨するとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ＫＤＤＩ株式会社",
+      "vulinfo_id": "HOME SPOT CUBE2",
+      "url": "https://www.au.com/support/service/mobile/guide/wlan/home_spot_cube_2/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-33948",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-33948"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#41017328",
+      "url": "https://jvn.jp/jp/JVN41017328/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-78",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-78.html",
+      "title": "OSコマンドインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-06-27T01:09:58Z",
+      "description": "[2022年06月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-06-29T12:02:52+09:00",
+  "date_last_updated": "2022-06-29T12:02:52+09:00",
+  "date_public": "2022-06-29T00:00:00+09:00"
+}

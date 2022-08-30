@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2013-001871",
+  "title": "bitcoind および Bitcoin-Qt におけるサービス運用妨害 (電気消費) の脆弱性",
+  "vulinfo_description": "bitcoind および Bitcoin-Qt には、サービス運用妨害 (電気消費) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Bitcoin Project",
+      "product_name": "Bitcoin-Qt",
+      "version_number": [
+        "0.8.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoin-qt"
+      }
+    },
+    {
+      "name": "Bitcoin Project",
+      "product_name": "bitcoind",
+      "version_number": [
+        "0.8.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoind"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、複数の OP_CHECKSIG スクリプトオペコードを含む非標準の Bitcoin トランザクションを生成するブロックをマイニングされることで、サービス運用妨害 (電気消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bitcoin Forum",
+      "vulinfo_id": "New Bitcoin vulnerability: A transaction that takes at least 3 minutes to verify",
+      "url": "https://bitcointalk.org/?topic=140078"
+    },
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Common Vulnerabilities and Exposures",
+      "url": "https://en.bitcoin.it/wiki/CVEs"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2292",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2292"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2292",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2292"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-03-19T19:17:03+09:00",
+  "date_last_updated": "2013-03-19T19:17:03+09:00",
+  "date_public": "2013-01-30T00:00:00+09:00"
+}

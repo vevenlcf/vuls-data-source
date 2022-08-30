@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2017-000126",
+  "title": "電子納品チェックシステム（農林水産省農業農村整備事業版）のインストーラにおける DLL 読み込みの脆弱性",
+  "vulinfo_description": "農林水産省が提供する電子納品チェックシステム（農林水産省農業農村整備事業版）のインストーラには、DLL を読み込む際の検索パスに関する処理に不備があり、意図しない DLL を読み込んでしまう脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 橘総合研究所 英利 雅美 氏、Pink Flying Whale 黒翼猫 氏",
+  "affected": [
+    {
+      "name": "農林水産省",
+      "product_name": "電子納品チェックシステム",
+      "version_number": [
+        "（農林水産省農業農村整備事業版）平成26年3月版（Ver.8.0.001.001）［平成28年5月31日更新］およびそれ以前",
+        "（農林水産省農業農村整備事業版）平成26年3月版（Ver.9.0.001.001）［平成29年6月9日更新］ およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:maff:denshinouhin_check_system"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "インストーラを実行している権限で、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[最新のインストーラを使用する] 平成29年6月12日以前に「電子納品チェックシステム（農林水産省農業農村整備事業版）」をダウンロードしているが、インストールはしていないユーザは、「電子納品チェックシステム（農林水産省農業農村整備事業版）」を削除し、最新版である「電子納品チェックシステム（農林水産省農業農村整備事業版）平成26年3月版（Ver.9.0.001.002）」をダウンロードしなおしてから、インストールしてください。  また、「電子納品チェックシステム（農林水産省農業農村整備事業版）」を新規インストールする際は、ZIP ファイルから解凍されたフォルダの中に \"setup.exe\" 以外のファイルがないことを確認して下さい。  本脆弱性の影響を受けるのはインストーラの起動時のみです。電子納品チェックシステム（農林水産省農業農村整備事業版）をインストール済みの既存ユーザは影響を受けません。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "農林水産省",
+      "vulinfo_id": "電子納品チェックシステム（農林水産省農業農村整備事業版）",
+      "url": "http://www.maff.go.jp/j/nousin/seko/nouhin_youryou/densi.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-2188",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-2188"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#65154137",
+      "url": "https://jvn.jp/jp/JVN65154137/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA#91240916",
+      "url": "https://jvn.jp/ta/JVNTA91240916/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-2188",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-2188"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年06月09日]\\n  掲載\\n[2017年06月15日]\\n  影響を受けるシステム：内容を更新\\n  対策方法：内容を更新\\n[2017年07月31日]\\n  概要：内容を更新\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新\\n[2018年02月14日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-2188) を追加 "
+    }
+  ],
+  "date_first_published": "2017-06-09T14:05:48+09:00",
+  "date_last_updated": "2018-02-14T13:59:45+09:00",
+  "date_public": "2017-06-09T00:00:00+09:00"
+}

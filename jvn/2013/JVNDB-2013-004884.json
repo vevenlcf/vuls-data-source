@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-004884",
+  "title": "Quagga の OSPFD API の new_msg_lsa_change_notify 関数におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Quagga の OSPFD API (ospf_api.c) の new_msg_lsa_change_notify 関数には、--enable-opaque-lsa および -a コマンドラインオプションが使用されている場合、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Quagga",
+      "product_name": "Quagga",
+      "version_number": [
+        "0.99.22.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:quagga:quagga"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きな LSA を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian セキュリティ勧告",
+      "vulinfo_id": "DSA-2803",
+      "url": "http://www.debian.org/security/2013/dsa-2803"
+    },
+    {
+      "type": "vendor",
+      "name": "Quagga",
+      "vulinfo_id": "quagga-0.99.22.3.changelog",
+      "url": "http://nongnu.mirrors.hostinginnederland.nl//quagga/quagga-0.99.22.3.changelog.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Quagga",
+      "vulinfo_id": "ospfd: CVE-2013-2236, stack overrun in apiserver",
+      "url": "http://git.savannah.gnu.org/gitweb/?p=quagga.git;a=commitdiff;h=3f872fe60463a931c5c766dbf8c36870c0023e88"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2013-2236 Buffer Errors vulnerability in Quagga",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2013_2236_buffer_errors"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2236",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2236"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2236",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2236"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月28日]\\n  掲載\\n[2014年01月09日]\\n  ベンダ情報：Debian (DSA-2803) を追加\\n[2014年04月07日]\\n  ベンダ情報：オラクル (CVE-2013-2236 Buffer Errors vulnerability in Quagga) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-28T13:45:53+09:00",
+  "date_last_updated": "2014-04-07T17:34:11+09:00",
+  "date_public": "2013-07-28T00:00:00+09:00"
+}

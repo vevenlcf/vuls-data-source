@@ -1,0 +1,127 @@
+{
+  "vulinfo_id": "JVNDB-2013-004488",
+  "title": "libvirt におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "libvirt には、アクセス制限を回避される脆弱性が存在します。  本脆弱性は、CVE-2013-4288 と関連する問題です。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "12.04 LTS",
+        "12.10",
+        "13.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "libvirt",
+      "version_number": [
+        "0.10.2.8 未満の 0.10.2.x",
+        "0.9.12.2 未満の 0.9.12.x",
+        "1.0.5.6 未満の 1.0.5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:libvirt"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) setuid プロセスまたは (2) pkexec プロセスを介して、pkcheck の PolkitUnixProcess PolkitSubject の競合状態を利用されることで、アクセス制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "libvirt",
+      "vulinfo_id": "libvirt: Wiki: Maintenance Releases",
+      "url": "http://wiki.libvirt.org/page/Maintenance_Releases"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1549",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00023.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1550",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00024.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1272",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1272.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1460",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1460.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1954-1",
+      "url": "http://www.ubuntu.com/usn/USN-1954-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4311",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4311"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4311",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4311"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月07日]\\n  掲載\\n[2013年10月28日]\\n  影響を受けるシステム：内容を更新\\n  ベンダ情報：Novell (openSUSE-SU-2013:1549) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1550) を追加\\n  ベンダ情報：Ubuntu (USN-1954-1) を追加\\n[2013年11月11日]\\n  ベンダ情報：レッドハット (RHSA-2013:1460) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-07T18:54:30+09:00",
+  "date_last_updated": "2013-11-11T18:10:14+09:00",
+  "date_public": "2013-09-19T00:00:00+09:00"
+}

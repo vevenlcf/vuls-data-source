@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2015-002950",
+  "title": "McAfee ePolicy Orchestrator が SSL/TLS 証明書を適切に検証しない脆弱性",
+  "vulinfo_description": "McAfee ePolicy Orchestrator には、SSL/TLS 証明書を適切に検証しない脆弱性が存在します。  証明書の不適切な検証 (CWE-295) - CVE-2015-2859 McAfee ePolicy Orchestrator (ePO) は、データの収集、集約など様々な目的のために外部サーバと連携する機能をサポートしており、外部サーバとの通信を SSL/TLS を使って暗号化するよう指定することが可能です。ePO は、認証局 (CA)、および証明書のコモンネーム (CN) やドメインネーム (DN) の検証処理に不備があります。結果として、これらの通信は中間者攻撃やスプーフィング攻撃に対して脆弱になります。  CWE-295: Improper Certificate Validation http://cwe.mitre.org/data/definitions/295.html",
+  "affected": [
+    {
+      "name": "マカフィー",
+      "product_name": "McAfee ePolicy Orchestrator",
+      "version_number": [
+        "4.6.8 およびそれ以前",
+        "5.1.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mcafee:epolicy_orchestrator"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "攻撃者によって、当該製品と外部サーバ間の HTTPS 通信の内容を閲覧されたり改ざんされたりする可能性があります。"
+  },
+  "solution": "[アップデートする] 本脆弱性はバージョン 4.6.9 および 5.1.2 で修正されています。 開発者が提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "McAfee",
+      "vulinfo_id": "McAfee ePolicy Orchestrator 4.6.9 Software (PDF)",
+      "url": "https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/25000/PD25856/en_US/EPO_4_6_9_release_notes.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "McAfee Security Bulletin",
+      "vulinfo_id": "KB84628",
+      "url": "https://kc.mcafee.com/corporate/index?page=content\u0026id=KB84628"
+    },
+    {
+      "type": "vendor",
+      "name": "McAfee Security Bulletin",
+      "vulinfo_id": "SB10120",
+      "url": "https://kc.mcafee.com/corporate/index?page=content\u0026id=SB10120"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2859",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2859"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98454141",
+      "url": "http://jvn.jp/cert/JVNVU98454141"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2859",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2859"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#264092",
+      "url": "https://www.kb.cert.org/vuls/id/264092"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月08日]\\n  掲載\\n[2015年06月25日]\\n  CVSS による深刻度：内容を更新\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加\\n  ベンダ情報：マカフィー (KB84628) を追加\\n  ベンダ情報：マカフィー (SB10120) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2015-2859) を追加"
+    }
+  ],
+  "date_first_published": "2015-06-08T13:53:38+09:00",
+  "date_last_updated": "2015-06-25T17:24:38+09:00",
+  "date_public": "2015-06-04T00:00:00+09:00"
+}

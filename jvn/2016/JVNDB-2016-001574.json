@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2016-001574",
+  "title": "Wireshark の iSeries ファイルパーサの wiretap/iseries.c の iseries_check_file_type 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の iSeries ファイルパーサの wiretap/iseries.c の iseries_check_file_type 関数は、\"OBJECT PROTOCOL\" サブストリングの欠けている列を考慮しないため、サービス運用妨害 (out-of-bounds read およびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "2.0.2 未満の 2.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたファイルを介して、サービス運用妨害 (out-of-bounds read およびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "[iseries] fix iseries_check_file_type()",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=96d585a5e9baef21e1eea8505d78305b034dc80e"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 11985",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11985"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-09",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-09.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2529",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2529"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2529",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2529"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-04T14:36:17+09:00",
+  "date_last_updated": "2016-03-04T14:36:17+09:00",
+  "date_public": "2016-02-26T00:00:00+09:00"
+}

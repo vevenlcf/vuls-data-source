@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2017-002938",
+  "title": "NixOS における権限を取得される脆弱性",
+  "vulinfo_description": "NixOS は、誰でも書き込み可能な (world-writable) Docker ソケットを持つため、権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "NixOS",
+      "product_name": "NixOS",
+      "version_number": [
+        "17.03.887 未満の 17.03"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:nixos_project:nixos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、docker コマンドを実行されることで、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "docker: fix socket permissions (fa4fe71)",
+      "url": "https://github.com/NixOS/nixpkgs/commit/fa4fe7110566d8370983fa81f2b04a833339236d"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "docker: fix socket permissions (6c59d85)",
+      "url": "https://github.com/NixOS/nixpkgs/commit/6c59d851e2967410cc8fb6ba3f374b1d3efa988e"
+    },
+    {
+      "type": "vendor",
+      "name": "NixOS",
+      "vulinfo_id": "[Nix-dev] NixOS Security Advisory: Docker Local Privilege Escalation",
+      "url": "https://mailman.science.uu.nl/pipermail/nix-dev/2017-April/023329.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-7412",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7412"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-7412",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-7412"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-09T16:15:40+09:00",
+  "date_last_updated": "2017-05-09T16:15:40+09:00",
+  "date_public": "2017-03-27T00:00:00+09:00"
+}

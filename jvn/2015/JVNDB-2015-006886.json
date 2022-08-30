@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2015-006886",
+  "title": "Roundcube の program/include/rcmail_output_html.php の set_skin 関数におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "Roundcube の program/include/rcmail_output_html.php の set_skin 関数には、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Roundcube.net",
+      "product_name": "Roundcube",
+      "version_number": [
+        "1.0.8 未満",
+        "1.1.4 未満の 1.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:roundcube:roundcube_webmail"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "特定のパーミッションを持つリモート認証されたユーザにより、.. (ドットドット) を含む index.php の _skin パラメータを介して、任意のファイルを読まれる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Roundcube",
+      "vulinfo_id": "1490620",
+      "url": "http://trac.roundcube.net/ticket/1490620"
+    },
+    {
+      "type": "vendor",
+      "name": "Roundcube",
+      "vulinfo_id": "Changeset 10e5192 in github",
+      "url": "http://trac.roundcube.net/changeset/10e5192a2b/github"
+    },
+    {
+      "type": "vendor",
+      "name": "Roundcube",
+      "vulinfo_id": "Updates 1.1.4 and 1.0.8 released",
+      "url": "https://roundcube.net/news/2015/12/26/updates-1.1.4-and-1.0.8-released/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8770",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8770"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8770",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8770"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-24T15:13:03+09:00",
+  "date_last_updated": "2016-02-24T15:13:03+09:00",
+  "date_public": "2015-12-26T00:00:00+09:00"
+}

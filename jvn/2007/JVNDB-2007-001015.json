@@ -1,0 +1,149 @@
+{
+  "vulinfo_id": "JVNDB-2007-001015",
+  "title": "Apple Mail に任意のコマンドが実行される脆弱性",
+  "vulinfo_description": "Mac OS X 10.5 (Leopard) に標準でインストールされている Apple Mail には、遠隔の第三者によって任意のコマンドが実行される脆弱性が存在します。  Mac OS X のファイルシステムにおいて、ファイルはリソースフォークとデータフォークと呼ばれる情報で構成されています。RFC 1740 では、このファイル構造をメールで扱うための MIME フォーマット(AppleSingle フォーマット、AppleDoubeフォーマット)が定義されています。  Apple Mail は AppleDouble フォーマットの添付ファイルを処理する際にリソースフォークを解析します。Apple Mail には、細工されたリソースフォークが含まれる添付ファイルを処理する際に、任意のコマンドを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.5 に搭載されている Apple Mail"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって Apple Mail を起動しているユーザの権限で、任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "2007/12/17 に、本件への対策を行なった セキュリティアップデート 2007-009 が公開されました。   アップデートする Apple が提供するセキュリティアップデート 2007-009 を適用してください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "Security Update 2007-009",
+      "url": "http://docs.info.apple.com/article.html?artnum=307179-en"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "Security Update 2007-009",
+      "url": "http://docs.info.apple.com/article.html?artnum=307179-ja"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "TA07-352A",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/ta07-352a.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-6165",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6165"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-3958",
+      "url": "http://www.frsirt.com/english/advisories/2007/3958"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "JPCERT-WR-2007-4701",
+      "url": "http://www.jpcert.or.jp/wr/2007/wr074701.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#433819",
+      "url": "http://jvn.jp/cert/JVNVU%23433819/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA07-352A",
+      "url": "http://jvn.jp/cert/JVNTA07-352A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRTA07-352A",
+      "url": "http://jvn.jp/tr/TRTA07-352A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-6165",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6165"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA27785",
+      "url": "http://secunia.com/advisories/27785"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "26510",
+      "url": "http://www.securityfocus.com/bid/26510"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA07-352A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA07-352A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA07-352A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA07-352A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#433819",
+      "url": "http://www.kb.cert.org/vuls/id/433819"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-12-20T14:35:47+09:00",
+  "date_last_updated": "2007-12-20T14:35:47+09:00",
+  "date_public": "2007-11-25T00:00:00+09:00"
+}

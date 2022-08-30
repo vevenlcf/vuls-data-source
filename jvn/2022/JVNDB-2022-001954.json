@@ -1,0 +1,121 @@
+{
+  "vulinfo_id": "JVNDB-2022-001954",
+  "title": "三菱電機製 MELSEC および MELIPC シリーズにおける不適切なリソースロックの脆弱性",
+  "vulinfo_description": "三菱電機株式会社が提供する MELSEC シリーズの CPU ユニットおよび MELIPC シリーズには、不適切なリソースロックの脆弱性（CWE-413、CVE-2022-24946）が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "三菱電機",
+      "product_name": "MELIPC シリーズ",
+      "version_number": [
+        "MI5122-VW ファームウェアバージョン \"05\" およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mitsubishielectric:melipc_series"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "MELSEC iQ-R シリーズ",
+      "version_number": [
+        "R12CCPU-V ファームウェアバージョン \"16\" およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mitsubishielectric:melsec_iq-r_series"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "MELSEC L シリーズ",
+      "version_number": [
+        "L02/06/26CPU(-P)、L26CPU-(P)BT シリアル No.の上 5 桁 \"24051\" およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mitsubishielectric:melsec_l_series"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "MELSEC Q シリーズ",
+      "version_number": [
+        "Q03/04/06/13/26UDVCPU シリアル No.の上 5 桁 \"24051\" およびそれ以前",
+        "Q03UDECPU、Q04/06/10/13/20/26/50/100UDEHCPU 全バージョン",
+        "Q04/06/13/26UDPVCPU シリアル No.の上 5 桁 \"24051\" およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mitsubishielectric:melsec_q_series"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって細工されたパケットを当該製品が受信することで、当該製品の Ethernet 通信機能がサービス運用妨害（DoS）状態となる可能性があります。 なお、サービス運用妨害（DoS）状態からの復旧には製品のリセットが必要です。 "
+  },
+  "solution": "[アップデートする] 開発者によると、次に示す製品については対策が提供されており、それ以外の製品については、近日中に対応予定とのことです。 \u003cul\u003e  \u003cli\u003eMELSEC  \u003cul\u003e   \u003cli\u003eiQ-Rシリーズ   \u003cul\u003e    \u003cli\u003eR12CCPU-V    \u003cul\u003e     \u003cli\u003eファームウェアバージョン\u0026rdquo;17\u0026rdquo;およびそれ以降\u003c/li\u003e    \u003c/ul\u003e    \u003c/li\u003e   \u003c/ul\u003e   \u003c/li\u003e   \u003cli\u003eQシリーズ   \u003cul\u003e    \u003cli\u003eQ03UDECPU、Q04/06/10/13/20/26/50/100UDEHCPU    \u003cul\u003e     \u003cli\u003eシリアルNo.の上5桁\u0026rdquo;24062\u0026rdquo;およびそれ以降\u003c/li\u003e    \u003c/ul\u003e    \u003c/li\u003e    \u003cli\u003eQ03/04/06/13/26UDVCPU    \u003cul\u003e     \u003cli\u003eシリアルNo.の上5桁\u0026rdquo;24052\u0026rdquo;およびそれ以降\u003c/li\u003e    \u003c/ul\u003e    \u003c/li\u003e    \u003cli\u003eQ04/06/13/26UDPVCPU    \u003cul\u003e     \u003cli\u003eシリアルNo.の上5桁\u0026rdquo;24052\u0026rdquo;およびそれ以降\u003c/li\u003e    \u003c/ul\u003e    \u003c/li\u003e   \u003c/ul\u003e   \u003c/li\u003e   \u003cli\u003eLシリーズ   \u003cul\u003e    \u003cli\u003eL02/06/26CPU(-P)、L26CPU-(P)BT    \u003cul\u003e     \u003cli\u003eシリアルNo.の上5桁\u0026rdquo;24052\u0026rdquo;およびそれ以降\u003c/li\u003e    \u003c/ul\u003e    \u003c/li\u003e   \u003c/ul\u003e   \u003c/li\u003e  \u003c/ul\u003e  \u003c/li\u003e  \u003cli\u003eMELIPCシリーズ  \u003cul\u003e   \u003cli\u003eMI5122-VW   \u003cul\u003e    \u003cli\u003eファームウェアバージョン\u0026rdquo;06\u0026rdquo;およびそれ以降\u003c/li\u003e   \u003c/ul\u003e   \u003c/li\u003e  \u003c/ul\u003e  \u003c/li\u003e \u003c/ul\u003e  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 　* 当該製品をインターネットに接続する場合は、ファイアウォールの設置や仮想プライベートネットワーク（VPN）を使用し、不正なアクセスを制限する 　* 当該製品をLAN内で使用し、当該製品への接続を最小限に抑え、信頼できるネットワークやホストからのみアクセスできるよう制限する  詳しくは、開発者が提供する情報をご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "三菱電機",
+      "vulinfo_id": "MELSEC および MELIPC シリーズの Ethernet ポートにおけるサービス拒否(DoS)の脆弱性",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2022-007.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-24946",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-24946"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-22-172-01",
+      "url": "https://www.cisa.gov/uscert/ics/advisories/icsa-22-172-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#90895626",
+      "url": "https://jvn.jp/vu/JVNVU90895626/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-413",
+      "url": "https://cwe.mitre.org/data/definitions/413.html",
+      "title": "不適切なリソースロック"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-06-15T08:56:00Z",
+      "description": "[2022年06月15日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2022-06-24T03:22:46Z",
+      "description": "[2022年06月24日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-22-172-01) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2022-08-18T01:36:56Z",
+      "description": "[2022年08月18日]\\n  タイトル：内容を更新\\n  概要：内容を更新\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新\\n  ベンダ情報：掲載内容を変更"
+    }
+  ],
+  "date_first_published": "2022-06-15T17:56:00+09:00",
+  "date_last_updated": "2022-08-18T10:40:57+09:00",
+  "date_public": "2022-06-14T00:00:00+09:00"
+}

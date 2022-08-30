@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2015-005817",
+  "title": "Libreswan および Openswan の pluto IKE デーモンにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Libreswan および Openswan の pluto IKE デーモンには、NSS でビルドされる場合、サービス運用妨害 (表明違反およびデーモンの再起動) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Libreswan Project",
+      "product_name": "Libreswan",
+      "version_number": [
+        "3.15 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libreswan:libreswan"
+      }
+    },
+    {
+      "name": "Openswan",
+      "product_name": "Openswan",
+      "version_number": [
+        "2.6.45 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openswan:openswan"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、IKE パケットの KE ペイロードのゼロの DH g^x 値を介して、サービス運用妨害 (表明違反およびデーモンの再起動) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Libreswan",
+      "vulinfo_id": "CVE-2015-3240 libreswan/openswan: denial of service via IKE daemon restart when receiving a bad DH gx by peer",
+      "url": "https://libreswan.org/security/CVE-2015-3240/CVE-2015-3240.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Openswan",
+      "vulinfo_id": "[Openswan Users] Openswan 2.6.45 released",
+      "url": "https://lists.openswan.org/pipermail/users/2015-August/023401.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1979",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1979.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3240",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3240"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3240",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3240"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-11T12:23:00+09:00",
+  "date_last_updated": "2015-11-11T12:23:00+09:00",
+  "date_public": "2015-08-27T00:00:00+09:00"
+}

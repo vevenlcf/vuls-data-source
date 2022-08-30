@@ -1,0 +1,235 @@
+{
+  "vulinfo_id": "JVNDB-2016-003338",
+  "title": "Linux Kernel の security/keys/key.c の key_reject_and_link 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の security/keys/key.c の key_reject_and_link 関数は、特定のデータ構造が初期化されることを確認しないため、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use After Free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.6.3 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Real Time Extension",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_real_time_extension"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:linux"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle VM サーバー",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:vm_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux for Real Time",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_for_real_time"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node EUS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server AUS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server_aus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server EUS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された keyctl request2 コマンドに関する問題によって、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "KEYS: potential uninitialized variable",
+      "url": "https://github.com/torvalds/linux/commit/38327424b40bcebe2de92d07312c89360ac9229a"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "KEYS: potential uninitialized variable",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=38327424b40bcebe2de92d07312c89360ac9229a"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1937",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-08/msg00000.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinjul2016-3090544.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - October 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinoct2016-3090545.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle VM Server for x86 Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/ovmbulletinjul2016-3090546.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1341716",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1341716"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1532",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1532.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1539",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1539.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1541",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1541.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4470",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4470"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4470",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4470"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月28日]\\n  掲載\\n[2016年09月06日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：レッドハット (RHSA-2016:1532) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:1539) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:1541) を追加\\n[2016年11月16日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - July 2016) を追加\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - October 2016) を追加\\n  ベンダ情報：オラクル (Oracle VM Server for x86 Bulletin - July 2016) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1937) を追加"
+    }
+  ],
+  "date_first_published": "2016-06-28T16:36:13+09:00",
+  "date_last_updated": "2016-11-16T18:14:39+09:00",
+  "date_public": "2016-06-16T00:00:00+09:00"
+}

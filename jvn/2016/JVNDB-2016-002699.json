@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2016-002699",
+  "title": "32-bit プラットフォーム上で稼動する Linux Kernel の net/netfilter/x_tables.c における整数オーバーフローの脆弱性",
+  "vulinfo_description": "32-bit プラットフォーム上で稼動する Linux Kernel の net/netfilter/x_tables.c の xt_alloc_table_info 関数には、整数オーバーフローの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-190: Integer Overflow or Wraparound (整数オーバーフローまたはラップアラウンド) と識別されています。 http://cwe.mitre.org/data/definitions/190.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.5.2 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、IPT_SO_SET_REPLACE setsockopt コールを介して、権限を取得される、またはサービス運用妨害 (ヒープメモリ破損) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "netfilter: x_tables: check for size overflow",
+      "url": "https://github.com/torvalds/linux/commit/d157bd761585605b7882935ffb86286919f62ea1"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "netfilter: x_tables: check for size overflow",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d157bd761585605b7882935ffb86286919f62ea1"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1317386",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1317386"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3135",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3135"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3135",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3135"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-17T14:51:09+09:00",
+  "date_last_updated": "2016-05-17T14:51:09+09:00",
+  "date_public": "2016-03-10T00:00:00+09:00"
+}

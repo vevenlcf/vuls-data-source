@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2013-005875",
+  "title": "libxml2 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libxml2 は、アプリケーション開発者が xmlSAX2ResolveEntity または xmlSetExternalEntityLoader 関数を使用していない場合、外部エンティティ拡張を適切に処理しないため、サービス運用妨害 (リソース消費) 状態にされる、イントラネットサーバに HTTP リクエストを送信される、または任意のファイルを読まれる脆弱性が存在します。  本件は、XML 外部エンティティ (XXE) の問題に関する脆弱性です。",
+  "affected": [
+    {
+      "name": "xmlsoft.org",
+      "product_name": "libxml2",
+      "version_number": [
+        "2.9.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xmlsoft:libxml2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された XML ドキュメントを介して、サービス運用妨害 (リソース消費) 状態にされる、イントラネットサーバに HTTP リクエストを送信される、または任意のファイルを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GNOME GIT REPOSITORY",
+      "vulinfo_id": "libxml2 - XML parser and markup toolkit",
+      "url": "https://git.gnome.org/browse/libxml2/commit/?id=4629ee02ac649c27f9c0cf98ba017c6b5526070f"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 915149",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=915149"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0339",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0339"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0339",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0339"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE Request: libxml2 external parsed entities issue",
+      "url": "http://seclists.org/oss-sec/2013/q4/184"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年01月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-01-23T16:33:56+09:00",
+  "date_last_updated": "2014-01-23T16:33:56+09:00",
+  "date_public": "2013-02-25T00:00:00+09:00"
+}

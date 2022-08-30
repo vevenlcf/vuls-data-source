@@ -1,0 +1,112 @@
+{
+  "vulinfo_id": "JVNDB-2013-004291",
+  "title": "suds の cache.py における SOAP クエリをリダイレクトされる脆弱性",
+  "vulinfo_description": "suds の cache.py には、tempdir が None に設定されている場合、SOAP クエリをリダイレクトされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Jeff Ortel",
+      "product_name": "suds",
+      "version_number": [
+        "0.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:jeff_ortel:suds"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "12.2",
+        "12.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5",
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.2",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、/tmp/suds/ 配下の予測可能な名前を持つキャッシュファイルへのシンボリックリンク攻撃を介して、SOAP クエリをリダイレクトされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Jeff Ortel",
+      "vulinfo_id": "suds",
+      "url": "https://fedorahosted.org/suds/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1208",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-07/msg00062.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 978696",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=978696"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2008-1",
+      "url": "http://www.ubuntu.com/usn/USN-2008-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2217",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2217"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2217",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2217"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-59",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-59.html",
+      "title": "リンク解釈の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月26日]\\n  掲載\\n[2013年11月12日]\\n  ベンダ情報：Ubuntu (USN-2008-1) を追加"
+    }
+  ],
+  "date_first_published": "2013-09-26T11:14:56+09:00",
+  "date_last_updated": "2013-11-12T17:26:22+09:00",
+  "date_public": "2013-06-29T00:00:00+09:00"
+}

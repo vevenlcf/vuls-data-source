@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2021-002899",
+  "title": "三菱電機製 MELSEC iQ-R シリーズ C 言語コントローラユニットにおけるリソース枯渇の脆弱性",
+  "vulinfo_description": "三菱電機株式会社が提供する MELSEC iQ-R シリーズ C 言語コントローラユニットには、リソース枯渇の脆弱性（CWE-400、CVE-2021-20600）が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "三菱電機",
+      "product_name": "R12CCPU-V ファームウェア",
+      "version_number": [
+        "バージョン \"16\" およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:r12ccpu-v_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "C 言語コントローラユニットの起動中に、遠隔の第三者から短時間に大量のパケットを送信されると、システム WDT エラーが発生してC言語コントローラユニットが起動しなくなる可能性があります。なお、復旧にはシステムのリセットが必要です。 開発者によると、これは C 言語コントローラユニットの起動中に短時間で大量のパケットを受信した場合にのみ発生する現象であり、正常起動後には発生しないとのことです。 詳しくは、\u003ca href=\"https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-015.pdf\" target=\"blank\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアをアップデートしてください。 開発者は本脆弱性に対応した次のファームウェアバージョンを提供しています。  　* R12CCPU-V ファームウェアバージョン\"17\"およびそれ以降  [ワークアラウンドを実施する] アップデートが提供されるまでの間、次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 開発者によると、本脆弱性に対するアップデートは、準備が整い次第リリースするとのことです。  　* C 言語コントローラユニットの起動中にシステム WDT エラーが発生した場合は、C 言語コントローラユニットの LAN ケーブルを抜き起動する。C 言語コントローラユニットの正常起動を確認した後に、再度 LAN ケーブルを接続する。  開発者によると、上記エラーの発生有無に関わらず、次の回避策を適用することを推奨するとのことです。  　* 当該製品をインターネットに接続する場合には、ファイアウォールや仮想プライベートネットワーク (VPN) 等を使用する 　* 当該製品を LAN 内で使用し、信頼できないネットワークやホストからのアクセスをファイアウォールでブロックする  詳しくは、\u003ca href=\"https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-015.pdf\" target=\"blank\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "三菱電機",
+      "vulinfo_id": "MELSEC iQ-R シリーズ C 言語コントローラユニットにおけるサービス拒否(DoS)の脆弱性",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-015.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20600",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20600"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-280-04",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-280-04"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94914666",
+      "url": "https://jvn.jp/vu/JVNVU94914666/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-20600",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20600"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-400",
+      "url": "https://cwe.mitre.org/data/definitions/400.html",
+      "title": "リソースの枯渇"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-10-08T02:30:26Z",
+      "description": "[2021年10月08日]   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-10-15T05:43:37Z",
+      "description": "[2021年10月15日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-21-280-04) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2021-10-29T01:21:20Z",
+      "description": "[2021年10月29日]\\n  想定される影響：内容を更新"
+    },
+    {
+      "history_no": "4",
+      "date_time": "2022-07-08T04:50:54Z",
+      "description": "[2022年07月08日]\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新\\n  参考情報：National Vulnerability Database (NVD) (CVE-2021-20600) を追加"
+    }
+  ],
+  "date_first_published": "2021-10-08T13:43:00+09:00",
+  "date_last_updated": "2022-07-08T13:52:07+09:00",
+  "date_public": "2021-10-07T00:00:00+09:00"
+}

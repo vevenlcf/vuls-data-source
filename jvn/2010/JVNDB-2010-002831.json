@@ -1,0 +1,164 @@
+{
+  "vulinfo_id": "JVNDB-2010-002831",
+  "title": "Apache Struts の XWork におけるオブジェクト保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "複数の製品に使用される Apache Struts の XWork における OGNL の式評価には、\"#\" ParameterInterceptors 保護メカニズムを回避される脆弱性が存在します。本脆弱性は、CVE-2008-6504 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Struts",
+      "version_number": [
+        "2.0.0 から 2.1.8.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:struts"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "Vmware Alive Enterprise",
+      "version_number": [
+        "7.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:alive_enterprise"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware vCenter Orchestrator",
+      "version_number": [
+        "4.0 (Windows)",
+        "4.1 (Windows)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:vcenter_orchestrator"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Business Edition 3000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:business_edition_3000"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Identity Services Engine",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:identity_services_engine"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Media Experience Engine",
+      "version_number": [
+        "3500"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:media_experience_engine"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Unified Contact Center Enterprise",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cisco:unified_contact_center_enterprise"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、 (1) #context、(2) #_memberAccess、(3) #root、(4) #this、(5) #_typeResolver、(6) #_classResolver、(7) #_traceEvaluations、(8) #_lastEvaluation、(9) #_keepLastEvaluation、およびその他の OGNL コンテキスト変数を介して、サーバ側のコンテキストオブジェクトを改ざんされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "CVE-2010-1870: Struts2 remote commands execution",
+      "url": "http://archiva.apache.org/security.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Struts 2 Documentation Security Bulletins",
+      "vulinfo_id": "S2-005",
+      "url": "http://struts.apache.org/2.2.1/docs/s2-005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20140709-struts2",
+      "url": "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140709-struts2"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0005",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2011-0005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "シスコ セキュリティアドバイザリ",
+      "vulinfo_id": "cisco-sa-20140709-struts2",
+      "url": "http://www.cisco.com/cisco/web/support/JP/112/1122/1122766_cisco-sa-20140709-struts2-j.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1870",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1870"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1870",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1870"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "66280",
+      "url": "http://osvdb.org/66280"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "41592",
+      "url": "http://www.securityfocus.com/bid/41592"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年06月09日]\\n  掲載\\n[2012年12月18日]\\n  影響を受けるシステム：VMware (VMSA-2011-0005) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0005) を追加\\n[2014/08/11]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：シスコシステムズ (cisco-sa-20140709-struts2) を追加\\n[2015年08月11日]\\n  ベンダ情報：Apache Software Foundation (CVE-2010-1870: Struts2 remote commands execution) を追加"
+    }
+  ],
+  "date_first_published": "2011-06-09T10:21:46+09:00",
+  "date_last_updated": "2015-08-11T15:15:45+09:00",
+  "date_public": "2010-08-17T00:00:00+09:00"
+}

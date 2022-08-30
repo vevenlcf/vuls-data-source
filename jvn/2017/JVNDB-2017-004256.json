@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2017-004256",
+  "title": "Acronis True Image に更新がセキュアに行われない脆弱性",
+  "vulinfo_description": "Acronis True Image は更新の確認や更新データの取得がセキュアに行われていません。結果として管理者権限で任意のコードが実行される可能性があります。  Acronis True Image は Windows および Mac システム用の ディスクバックアップユーティリティです。Acronis True Image 2017 (ビルド番号 8053) およびそれ以前のバージョンでは、更新の確認や更新データの取得を HTTP 経由で行っています。ダウンロードされたアップデートファイルは、サーバから提供される MD5 ハッシュ値による検証が行われますが、それ以上の検証は行われません。",
+  "affected": [
+    {
+      "name": "Acronis International GmbH",
+      "product_name": "True Image",
+      "version_number": [
+        "2017 (ビルド番号 8053) およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:acronis:true_image"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.3",
+        "vector": "AV:A/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "中間者 (man-in-the-middle) 攻撃により、管理者権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "2017年6月20日現在、対策方法は不明です。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　* 当該製品のアップデート機能を使わずに、手動で更新データを取得してアップデートを行う ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Acronis",
+      "vulinfo_id": "Knowledge Base 18353: Acronis ソフトウェアのインストールファイルをダウンロードするには",
+      "url": "https://kb.acronis.com/ja/content/18353"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3219",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3219"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93495727",
+      "url": "http://jvn.jp/vu/JVNVU93495727/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3219",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3219"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#489392",
+      "url": "https://www.kb.cert.org/vuls/id/489392"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年06月21日]\\n  掲載\\n[2018年01月24日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3219) を追加"
+    }
+  ],
+  "date_first_published": "2017-06-21T13:37:37+09:00",
+  "date_last_updated": "2018-01-24T12:16:10+09:00",
+  "date_public": "2017-06-19T00:00:00+09:00"
+}

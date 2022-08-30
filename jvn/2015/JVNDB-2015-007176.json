@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2015-007176",
+  "title": "PHP の ext/libxml/libxml.c における XML 外部エンティティおよび XML エンティティ拡張攻撃を実行される脆弱性",
+  "vulinfo_description": "PHP の ext/libxml/libxml.c は、PHP-FPM が使用されている場合、他のスレッドの libxml_disable_entity_loader の変更から各スレッドを隔離しないため、XML 外部エンティティ (XXE) および XML エンティティ拡張 (XEE) 攻撃を実行される脆弱性が存在します。  本脆弱性は、CVE-2015-5161 と関連する問題です。  補足情報 : CWE による脆弱性タイプは、CWE-611: Improper Restriction of XML External Entity Reference ('XXE') (XML 外部エンティティ参照の不適切な制限) と識別されています。 http://cwe.mitre.org/data/definitions/611.html",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.5.22 未満",
+        "5.6.6 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.6",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された XML ドキュメントを介して、XML 外部エンティティ (XXE) および XML エンティティ拡張 (XEE) 攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1509817",
+      "url": "https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1509817"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #64938",
+      "url": "https://bugs.php.net/bug.php?id=64938"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Fix bug #64938: libxml_disable_entity_loader setting is shared between threads",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=de31324c221c1791b26350ba106cc26bad23ace9"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8866",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8866"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8866",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8866"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-25T16:28:46+09:00",
+  "date_last_updated": "2016-05-25T16:28:46+09:00",
+  "date_public": "2015-02-19T00:00:00+09:00"
+}

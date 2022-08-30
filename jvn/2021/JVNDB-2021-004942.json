@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2021-004942",
+  "title": "Envoy における認証アルゴリズムの不適切な実装に関する脆弱性",
+  "vulinfo_description": "Envoy には、認証アルゴリズムの不適切な実装に関する脆弱性、および認証に関する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Envoy Proxy",
+      "product_name": "Envoy",
+      "version_number": [
+        "1.17.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:envoyproxy:envoy"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.2",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+      }
+    ],
+    "impact_item": "情報を取得される、および情報を改ざんされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "jwt_authn: fix a bug where JWT with wrong issuer is allowed in allow_missing case #15194",
+      "url": "https://github.com/envoyproxy/envoy/pull/15194"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "JWT authentication bypass with unknown issuer token",
+      "url": "https://github.com/envoyproxy/envoy/security/advisories/GHSA-4996-m8hf-hj27"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "jwt_authn: fix a bug where JWT with wrong issuer is allowed in allow_missing case (#15194)",
+      "url": "https://github.com/envoyproxy/envoy/commit/ea39e3cba652bcc4b11bb0d5c62b017e584d2e5a"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-21378",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-21378"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-21378",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-21378"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-303",
+      "url": "https://cwe.mitre.org/data/definitions/303.html",
+      "title": "認証アルゴリズムの不適切な実装"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-12-02T09:04:33Z",
+      "description": "[2021年12月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-12-02T18:04:33+09:00",
+  "date_last_updated": "2021-12-02T18:04:33+09:00",
+  "date_public": "2021-02-26T00:00:00+09:00"
+}

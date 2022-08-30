@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2015-007374",
+  "title": "libdwarf におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libdwarf には、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "libdwarf project",
+      "product_name": "libdwarf",
+      "version_number": [
+        "20151114 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libdwarf_project:libdwarf"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、ELF ファイルの NOBITS がマークされた debug_abbrev セクションを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "A DWARF related section marked SHT_NOBITS (elf section type) is an error in the elf object.",
+      "url": "https://github.com/tomhughes/libdwarf/commit/11750a2838e52953013e3114ef27b3c7b1780697"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1294264",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1294264"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8750",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8750"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8750",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8750"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-476",
+      "url": "http://cwe.mitre.org/data/definitions/476.html",
+      "title": "NULL ポインタデリファレンス"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-06T12:20:30+09:00",
+  "date_last_updated": "2017-03-06T12:20:30+09:00",
+  "date_public": "2015-12-31T00:00:00+09:00"
+}

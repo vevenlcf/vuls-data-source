@@ -1,0 +1,209 @@
+{
+  "vulinfo_id": "JVNDB-2005-000180",
+  "title": "MySQL のユーザ定義関数における任意のディレクトリにあるオブジェクトファイルを参照する関数を作成される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  MySQL 4.0.23 以前、4.1.10 以前には、以下の複数のセキュリティ上の問題が存在します。  ・ユーザ定義関数の取り扱いに不備が存在し、mysql データベースに対して INSERT および DELETE の実行権限を持つユーザは、CREATE FUNCTION ステートメントより libc 関数 (strcat、on_exit、exit など) を使用することで、メモリアドレスを任意の値で上書き可能な問題 (CAN-2005-0709)  ・mysql.func システムテーブルよりユーザ定義関数をロードする際に、参照するオブジェクトファイルのパスの検証が不適切であるため、mysql データベースに対して INSERT および DELETE の実行権限を持つユーザが任意のディレクトリにあるオブジェクトファイルを参照する関数を作成可能な問題 (CAN-2005-0710)  ・CREATE TEMPORARY TABLE ステートメントにおいて、セキュリティ上不適切な方法で一時ファイルを作成してしまう不備が存在するため、シンボリックリンク攻撃を受ける問題 (CAN-2005-0711)  これらの問題を利用するローカルの攻撃者は、結果として、シンボリックリンク攻撃を行う、あるいは mysqld プロセスの権限で任意のコードを実行できる可能性があります。",
+  "affected": [
+    {
+      "name": "MySQL AB",
+      "product_name": "MySQL",
+      "version_number": [
+        "4.0.23a およびそれ以前",
+        "4.1.10 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mysql:mysql"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "mysql",
+      "url": "http://www.miraclelinux.com/support/update/data/mysql.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MySQL",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.mysql.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:348",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-348.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:334",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-334.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "101864",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-101864-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "101864",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-101864-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2005-48",
+      "url": "http://www.turbolinux.com/security/2005/TLSA-2005-48.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:348",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-348J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:334",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-334J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2005-48",
+      "url": "http://www.turbolinux.co.jp/security/2005/TLSA-2005-48j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0710",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0710"
+    },
+    {
+      "type": "advisory",
+      "name": "K-OTik Security Advisory",
+      "vulinfo_id": "KOTIK/ADV-2005-0252",
+      "url": "http://www.k-otik.com/english/advisories/2005/0252"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0710",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0710"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA14547",
+      "url": "http://secunia.com/advisories/14547/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "12781",
+      "url": "http://www.securityfocus.com/bid/12781"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1013415",
+      "url": "http://securitytracker.com/alerts/2005/Mar/1013415.html"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1013414",
+      "url": "http://securitytracker.com/alerts/2005/Mar/1013414.html"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1013413",
+      "url": "http://securitytracker.com/alerts/2005/Mar/1013413.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-03-11T00:00:00+09:00"
+}

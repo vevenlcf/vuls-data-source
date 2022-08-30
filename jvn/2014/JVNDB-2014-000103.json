@@ -1,0 +1,81 @@
+{
+  "vulinfo_id": "JVNDB-2014-000103",
+  "title": "EmFTP における実行ファイル読み込みに関する脆弱性",
+  "vulinfo_description": "株式会社エムソフトが提供する EmFTP は、FTP/SFTP クライアントソフトウエアです。EmFTP には、ファイルの読み込み処理に問題があり、ローカル側の拡張子が付いていないファイルを開く場合に、実行ファイルなどの意図しないファイルを読み込んでしまう脆弱性が存在します。 たとえば、同一のディレクトリにテキストファイル example (拡張子なしのファイル名) と実行ファイル example.exe が置かれている場合、当該製品上で example を開こうとすると、example.exe が実行されます。",
+  "affected": [
+    {
+      "name": "株式会社エムソフト",
+      "product_name": "EmFTP Professional",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:emurasoft:emftp_professional"
+      }
+    },
+    {
+      "name": "株式会社エムソフト",
+      "product_name": "EmFTP Standard",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:emurasoft:emftp_standard"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "プログラムを実行している権限で、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] 開発者によると、EmFTP の開発は終了しており、次のワークアラウンドを推奨しています。   * ローカル側の拡張子の付いていないファイルを開く場合には、EmFTP から直接開かず、他の方法 (スタートメニューの [ファイル名を指定して実行]、Windows Explorer など) から開くようにしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "株式会社エムソフトからの情報",
+      "url": "http://jvn.jp/jp/JVN50367052/995292/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3910",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3910"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#50367052",
+      "url": "http://jvn.jp/jp/JVN50367052/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3910",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3910"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年09月04日]\\n  掲載\\n[2014年09月09日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2014-3910) を追加"
+    }
+  ],
+  "date_first_published": "2014-09-04T12:07:33+09:00",
+  "date_last_updated": "2014-09-09T16:21:39+09:00",
+  "date_public": "2014-09-04T00:00:00+09:00"
+}

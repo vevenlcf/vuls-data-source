@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2016-006559",
+  "title": "Linux Kernel の arch/x86/kvm/vmx.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の arch/x86/kvm/vmx.c は、#BP および #OF 例外を誤って処理するため、サービス運用妨害 (ゲスト OS クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.9 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ゲスト OS ユーザにより、L2 ゲストによってスローされた例外処理が拒否されることで、サービス運用妨害 (ゲスト OS クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "kvm: nVMX: Allow L1 to intercept software exceptions (#BP and #OF)",
+      "url": "https://github.com/torvalds/linux/commit/ef85b67385436ddc1998f45f1d6a210f935b3388"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "kvm: nVMX: Allow L1 to intercept software exceptions (#BP and #OF)",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ef85b67385436ddc1998f45f1d6a210f935b3388"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1404924",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1404924"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9588",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9588"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9588",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9588"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-388",
+      "url": "https://cwe.mitre.org/data/definitions/388.html",
+      "title": "エラー処理"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-11T15:44:28+09:00",
+  "date_last_updated": "2017-01-11T15:44:28+09:00",
+  "date_public": "2016-12-13T00:00:00+09:00"
+}

@@ -1,0 +1,159 @@
+{
+  "vulinfo_id": "JVNDB-2013-002479",
+  "title": "libxml2 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libxml2 には、サービス運用妨害 (CPU およびメモリ消費) となる脆弱性が存在します。  本件は、線形複雑度を伴う内部エンティティ拡張 (\"internal entity expansion\" with linear complexity) による脆弱性です。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "11.10",
+        "12.04 LTS",
+        "12.10",
+        "8.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "12.1",
+        "12.2",
+        "12.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "xmlsoft.org",
+      "product_name": "libxml2",
+      "version_number": [
+        "2.9.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xmlsoft:libxml2"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle HTTP Server",
+      "version_number": [
+        "11.1.1.7.0",
+        "12.1.2.0",
+        "12.1.3.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:http_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、長い置換テキストおよび多くのエンティティへの参照を伴うエンティティ宣言 (entity declaration) を含む XML ファイルを介して、サービス運用妨害 (CPU およびメモリ消費) にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GNOME",
+      "vulinfo_id": "Detect excessive entities expansion upon replacement",
+      "url": "https://git.gnome.org/browse/libxml2/commit/?id=23f05e0c33987d6605387b300c4be5da2120a7ab"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0555",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-03/msg00114.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0552",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-03/msg00112.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - January 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - January 2015 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujan2015verbose-1972976.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 912400",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=912400"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "January 2015 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/january_2015_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2013-0338 Denial of Service (DoS) vulnerability in libxml2",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2013_0338_denial_of"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1782-1",
+      "url": "http://www.ubuntu.com/usn/USN-1782-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0338",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0338"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0338",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0338"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月30日]\\n  掲載\\n[2013年05月27日]\\n  ベンダ情報：オラクル (CVE-2013-0338 Denial of Service (DoS) vulnerability in libxml2) を追加\\n[2015年01月22日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - January 2015) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - January 2015 Risk Matrices) を追加\\n  ベンダ情報：オラクル (January 2015 Critical Patch Update Released) を追加"
+    }
+  ],
+  "date_first_published": "2013-04-30T15:44:21+09:00",
+  "date_last_updated": "2015-01-22T15:46:22+09:00",
+  "date_public": "2013-02-19T00:00:00+09:00"
+}

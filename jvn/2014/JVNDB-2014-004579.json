@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-004579",
+  "title": "Google Chrome で使用される Blink におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Google Chrome で使用される Blink には、以下の関数に関する処理に不備があるため、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  　・core/frame/FrameView.cpp の FrameView::updateLayoutAndStyleForPainting 関数 　・core/rendering/RenderLayerScrollableArea.cpp の RenderLayerScrollableArea::setScrollOffset 関数  補足情報 : CWE による脆弱性タイプは、CWE-416: Use After Free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "38.0.2125.101 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、レンダーツリーとの不適切な対話処理を行うウィジェット配置 (widget-position) の更新を誘発する巧妙に細工された JavaScript コードを介して、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Chromium",
+      "vulinfo_id": "Revision 180681",
+      "url": "https://src.chromium.org/viewvc/blink?revision=180681\u0026view=revision"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "https://www.google.com/intl/ja/chrome/browser/features.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Stable Channel Update",
+      "url": "http://googlechromereleases.blogspot.jp/2014/10/stable-channel-update.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1626",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1626.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3191",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3191"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3191",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3191"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月09日]\\n  掲載\\n[2014年11月12日]\\n  ベンダ情報：レッドハット (RHSA-2014:1626) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-09T16:19:27+09:00",
+  "date_last_updated": "2014-11-12T17:50:52+09:00",
+  "date_public": "2014-10-07T00:00:00+09:00"
+}

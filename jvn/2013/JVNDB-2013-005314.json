@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-005314",
+  "title": "Linux Kernel の drivers/scsi/aacraid/commctrl.c の aac_send_raw_srb 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/scsi/aacraid/commctrl.c の aac_send_raw_srb 関数は、特定のサイズ値を適切に検証しないため、サービス運用妨害 (無効なポインタデリファレンス) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.12.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された SRB コマンドの実行を誘発する FSACTL_SEND_RAW_SRB ioctl コールを介して、サービス運用妨害 (無効なポインタデリファレンス) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "aacraid: prevent invalid pointer dereference",
+      "url": "https://github.com/torvalds/linux/commit/b4789b8e6be3151a955ade74872822f30e8cd914"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "aacraid: prevent invalid pointer dereference",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b4789b8e6be3151a955ade74872822f30e8cd914"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1033593",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1033593"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6380",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6380"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6380",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6380"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-11-28T18:25:46+09:00",
+  "date_last_updated": "2013-11-28T18:25:46+09:00",
+  "date_public": "2013-11-19T00:00:00+09:00"
+}

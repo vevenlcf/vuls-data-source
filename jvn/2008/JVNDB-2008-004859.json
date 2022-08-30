@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2008-004859",
+  "title": "OpenSSH 用の特定の Debian パッチにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "sid、lenny、etch、SUSE およびその他のディストリビューション上で稼動する OpenSSH 用の特定の Debian パッチは、ログインタイムアウトに対してシグナルハンドラ内の async-signal-safe ではない関数を使用するため、サービス運用妨害 (接続スロットの枯渇) 状態となる脆弱性が存在します。 本問題は、CVE-2006-5051 に対応した不完全な修正が原因で存在しています。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "4.3p2-9etch3 未満、および 4.6p1-1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、複数のログイン試行を介して、サービス運用妨害 (接続スロットの枯渇) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.openssh.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-4109",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4109"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-4109",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4109"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:17:18+09:00",
+  "date_last_updated": "2012-09-25T17:17:18+09:00",
+  "date_public": "2008-09-18T00:00:00+09:00"
+}

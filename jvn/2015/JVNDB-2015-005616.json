@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2015-005616",
+  "title": "ownCloud Server の files_external アプリケーションにおける任意のクラスをインスタンス化される脆弱性",
+  "vulinfo_description": "ownCloud Server の files_external アプリケーションには、\"objectstore\" に関する処理に不備があるため、任意のクラスをインスタンス化され、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ownCloud",
+      "product_name": "ownCloud",
+      "version_number": [
+        "7.0.9 未満",
+        "8.0.7 未満の 8.0.x",
+        "8.1.2 未満の 8.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:owncloud:owncloud"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "AV:N/AC:L/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工されたマウントポイントオプションを介して、任意のクラスをインスタンス化され、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Prevent objectstore being set from client side",
+      "url": "https://github.com/owncloud/core/pull/18558"
+    },
+    {
+      "type": "vendor",
+      "name": "ownCloud",
+      "vulinfo_id": "oC-SA-2015-018",
+      "url": "https://owncloud.org/security/advisory/?id=oc-sa-2015-018"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7699",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7699"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7699",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7699"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年10月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-10-29T13:48:50+09:00",
+  "date_last_updated": "2015-10-29T13:48:50+09:00",
+  "date_public": "2015-09-30T00:00:00+09:00"
+}

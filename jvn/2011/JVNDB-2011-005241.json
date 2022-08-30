@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2011-005241",
+  "title": "Linux Kernel の GFS2 ファイルシステムの fallocate の実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の GFS2 ファイルシステムの fallocate の実装は、ページキャッシュに依存するため、サービス運用妨害 (DoS) の脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、メモリ不足に関連する特定の状況下でブロックを事前に割り当てられることで、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "GFS2: rewrite fallocate code to write blocks directly",
+      "url": "https://github.com/torvalds/linux/commit/64dd153c83743af81f20924c6343652d731eeecb"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "patch-3.2.bz2",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/patch-3.2.bz2"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "GFS2: rewrite fallocate code to write blocks directly",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=64dd153c83743af81f20924c6343652d731eeecb"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle",
+      "vulinfo_id": "redpatch.git / commit",
+      "url": "https://oss.oracle.com/git/?p=redpatch.git;a=commit;h=fadca7bdc43b02f518585d9547019966415cadfd"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-4098",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4098"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-4098",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4098"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年06月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-06-11T16:17:40+09:00",
+  "date_last_updated": "2013-06-11T16:17:40+09:00",
+  "date_public": "2011-09-12T00:00:00+09:00"
+}

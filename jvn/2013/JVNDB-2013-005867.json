@@ -1,0 +1,136 @@
+{
+  "vulinfo_id": "JVNDB-2013-005867",
+  "title": "X.Org server および cairo で使用される Pixman の pixman.h 内の pixman_trapezoid_valid マクロにおける整数アンダーフローの脆弱性",
+  "vulinfo_description": "X.Org server および cairo で使用される Pixman の pixman.h 内の pixman_trapezoid_valid マクロには、整数アンダーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "cairographics.org",
+      "product_name": "cairo",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cairographics:cairo"
+      }
+    },
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "12.10",
+        "13.04",
+        "13.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Pixman",
+      "product_name": "Pixman",
+      "version_number": [
+        "0.32.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pixman:pixman"
+      }
+    },
+    {
+      "name": "X.Org Foundation",
+      "product_name": "X.Org X Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:x.org:x_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、負のボトム値を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "cairographics.org",
+      "vulinfo_id": "Top Page",
+      "url": "http://cairographics.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "pixman_trapezoid_valid(): Fix underflow when bottom is close to MIN_INT",
+      "url": "http://cgit.freedesktop.org/pixman/commit/?id=5e14da97f16e421d084a9e735be21b1025150f0c"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "LibreOffice spreadsheet causes full Xorg crash with Anti-Aliasing enabled",
+      "url": "https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/1197921"
+    },
+    {
+      "type": "vendor",
+      "name": "Pixman",
+      "vulinfo_id": "[ANNOUNCE] pixman release 0.32.0 now available",
+      "url": "http://lists.freedesktop.org/archives/pixman/2013-November/003109.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1869",
+      "url": "https://rhn.redhat.com/errata/RHSA-2013-1869.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2047-1",
+      "url": "http://www.ubuntu.com/usn/USN-2047-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "X.Org Foundation",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.x.org/wiki/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6425",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6425"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6425",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6425"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年01月23日]\\n  掲載\\n[2015年08月07日]\\n  ベンダ情報：レッドハット (RHSA-2013:1869) を追加"
+    }
+  ],
+  "date_first_published": "2014-01-23T15:12:36+09:00",
+  "date_last_updated": "2015-08-07T16:29:17+09:00",
+  "date_public": "2013-11-10T00:00:00+09:00"
+}

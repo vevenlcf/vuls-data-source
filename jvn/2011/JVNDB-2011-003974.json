@@ -1,0 +1,121 @@
+{
+  "vulinfo_id": "JVNDB-2011-003974",
+  "title": "OpenSSH の remote_glob 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSH、FreeBSD、NetBSD、OpenBSD およびその他の製品の (1) sftp-glob.c の remote_glob 関数および (2) sftp.c の process_put 関数には、サービス運用妨害 (CPU およびメモリの消費) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FreeBSD",
+      "product_name": "FreeBSD",
+      "version_number": [
+        "5.3 7.3 および 8.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:freebsd:freebsd"
+      }
+    },
+    {
+      "name": "NetBSD",
+      "product_name": "NetBSD",
+      "version_number": [
+        "1.5 5.0.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:netbsd:netbsd"
+      }
+    },
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenBSD",
+      "version_number": [
+        "3.4 4.7"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:openbsd:openbsd"
+      }
+    },
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "5.8 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証ユーザにより、パス名と照合しない巧妙に細工された glob 表現式を介して、サービス運用妨害 (CPU およびメモリの消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FreeBSD",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.freebsd.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "NetBSD",
+      "vulinfo_id": "NetBSD-SA2010-008",
+      "url": "http://ftp.netbsd.org/pub/NetBSD/security/advisories/NetBSD-SA2010-008.txt.asc"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.openbsd.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.openssh.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4755",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4755"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4755",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:46+09:00",
+  "date_last_updated": "2012-03-27T18:42:46+09:00",
+  "date_public": "2011-03-02T00:00:00+09:00"
+}

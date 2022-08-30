@@ -1,0 +1,112 @@
+{
+  "vulinfo_id": "JVNDB-2021-006146",
+  "title": "コニカミノルタ製複合機および印刷システムにおける複数の脆弱性",
+  "vulinfo_description": "コニカミノルタ株式会社が提供する複合機および印刷システムには、次の複数の脆弱性が存在します。  　* 不適切な認証処理 (CWE-863) - CVE-2021-20868 　* 認証処理の欠如 (CWE-200) - CVE-2021-20869 　* 例外状態の不適切な処理 (CWE-755) - CVE-2021-20870 　* 認証処理の欠如 (CWE-200) - CVE-2021-20871 　* 保護メカニズムの不適切な実装 (CWE-693) - CVE-2021-20872  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "コニカミノルタビジネスソリューションズ株式会社",
+      "product_name": "(複数の製品)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:konicaminolta:multiple_product"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "CVSS:3.0/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  　* 外部サーバー認証を有効にしている場合に、管理者権限を持ったユーザーからの特定のSOAPメッセージにより、設定されているユーザー認証情報を取得される - CVE-2021-20868 　* LDAPサーバーによる外部認証を設定している場合に、特定のSOAPメッセージにより、設定されているユーザー認証情報の一部を取得される - CVE-2021-20869 　* スキャン送信がネットワークエラーで中断しスキャンジョブがタイムアウトする前にHDDを取り出すことで、残されているスキャン画像データを取得される - CVE-2021-20870 　* FTP、SMB、WebDAVなど認証情報の登録が必要なスキャン宛先を複合機のアドレス帳に登録している場合に、特定のSOAPメッセージにより、登録されている認証情報を取得される - CVE-2021-20871 　* ファームウェア整合性検証処理が迂回され、不正なファームウェアをインストールされる - CVE-2021-20872 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者によると、ファームウェアの適用は、リモートメンテナンスまたはカスタマーエンジニアの訪問時に順次実施されるとのことです。  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性を軽減することが可能です。  　* HDD/SSDを暗号化する 　* 管理者パスワードを初期設定のままにせず、推測されにくいものに変更する 　* プライベートIPアドレスを設定しファイアーウォールを設置するなどして、外部からの不正なアクセスを防ぐ 　* 各製品ごとに提供されているセキュリティ機能を設定する 　　* 「\u003ca href=\"https://www.konicaminolta.jp/business/support/important/131105_03.html\" target=\"blank\"\u003eセキュリティー設定方法について\u003c/a\u003e」  詳しくは、\u003ca href=\"https://www.konicaminolta.jp/business/support/important/211224_01_01.html\" target=\"blank\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Konica Minolta",
+      "vulinfo_id": "コニカミノルタ製複合機・プリンターにおける複数のセキュリティー脆弱性について",
+      "url": "https://www.konicaminolta.jp/business/support/important/211224_01_01.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20871",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20871"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20872",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20872"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20868",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20868"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20869",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20869"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20870",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20870"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95192472",
+      "url": "http://jvn.jp/cert/JVNVU95192472/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-863",
+      "url": "https://cwe.mitre.org/data/definitions/863.html",
+      "title": "不正な認証"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-693",
+      "url": "https://cwe.mitre.org/data/definitions/693.html",
+      "title": "保護メカニズムの不具合"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-755",
+      "url": "https://cwe.mitre.org/data/definitions/755.html",
+      "title": "例外的な状態における不適切な処理"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-12-28T01:07:47Z",
+      "description": "[2021年12月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-12-28T10:07:47+09:00",
+  "date_last_updated": "2021-12-28T10:07:47+09:00",
+  "date_public": "2021-12-24T00:00:00+09:00"
+}

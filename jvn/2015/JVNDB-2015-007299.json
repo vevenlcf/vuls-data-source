@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2015-007299",
+  "title": "Linux Kernel の crypto/algif_skcipher.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の crypto/algif_skcipher.c は、accept システムコールが処理される前に、AF_ALG ソケット上で setkey 操作が実行されていることを検証しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 https://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.4.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、鍵を提供しない巧妙に細工されたアプリケーションを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.4.2",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.4.2"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "crypto: algif_skcipher - Require setkey before accept(2)",
+      "url": "https://github.com/torvalds/linux/commit/dd504589577d8e8e70f51f997ad487a4cb6c026f"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "GPF in lrw_crypt",
+      "url": "https://groups.google.com/forum/#%21msg/syzkaller/frb2XrB5aWk/xCXzkIBcDAAJ"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "crypto: algif_skcipher - Require setkey before accept(2)",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dd504589577d8e8e70f51f997ad487a4cb6c026"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1386286",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1386286"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8970",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8970"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8970",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8970"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-30T16:32:57+09:00",
+  "date_last_updated": "2016-11-30T16:32:57+09:00",
+  "date_public": "2015-12-25T00:00:00+09:00"
+}

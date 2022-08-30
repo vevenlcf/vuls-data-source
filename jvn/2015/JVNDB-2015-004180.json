@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2015-004180",
+  "title": "Mozilla Firefox の libstagefright の stagefright::ESDS::parseESDescriptor 関数におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Mozilla Firefox  の libstagefright の stagefright::ESDS::parseESDescriptor 関数には、ヒープベースのバッファオーバーフローの脆弱性が存在します。  本件は CVE-2015-1539 に関連した問題です。",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "40.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox ESR",
+      "version_number": [
+        "38.2 未満の 38.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox_esr"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、MPEG-4 動画データの ESDS チャンクの不正な size フィールドを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mozilla",
+      "vulinfo_id": "Bug 1186718 - Ensure ESDS have valid size. r=kentuckyfriedtakahe",
+      "url": "https://hg.mozilla.org/mozilla-central/rev/a674c7019cb5"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "MFSA2015-83",
+      "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2015-83/"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "MFSA2015-83",
+      "url": "http://www.mozilla-japan.org/security/announce/2015/mfsa2015-83.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4493",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4493"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4493",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4493"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年08月19日]\\n  掲載\\n[2015年10月06日]\\n  概要：内容を更新\\n  ベンダ情報：Mozilla Foundation (Bug 1186718 - Ensure ESDS have valid size. r=kentuckyfriedtakahe) を追加"
+    }
+  ],
+  "date_first_published": "2015-08-19T17:16:00+09:00",
+  "date_last_updated": "2015-10-06T18:04:23+09:00",
+  "date_public": "2015-08-11T00:00:00+09:00"
+}

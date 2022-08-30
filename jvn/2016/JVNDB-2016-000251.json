@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2016-000251",
+  "title": "WinSparkle におけるレジストリ値を検証しない問題",
+  "vulinfo_description": "WinSparkle は、Windows アプリケーション向けにソフトウェアアップデートの機能を提供するライブラリです。WinSparkle を使用しているアプリケーションは、起動時に WinSparkle が使用する一時ファイル用ディレクトリを確認し、ディレクトリ内のファイルを削除します。このディレクトリのパスは、特定のレジストリキーに記録されています。  攻撃者によって本ライブラリの使用するレジストリ値が改ざんされた状況で、当該ライブラリを実装したアプリケーションをユーザ自身が実行した場合、ユーザの意図しないディレクトリやファイルが削除される可能性があります。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 三井物産セキュアディレクション株式会社 吉川 孝志 氏",
+  "affected": [
+    {
+      "name": "WinSparkle",
+      "product_name": "WinSparkle",
+      "version_number": [
+        "0.5.3 より前のバージョンを使用しているアプリケーション"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:winsparkle:winsparkle"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.6",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:L"
+      }
+    ],
+    "impact_item": "WinSparkle を使用しているアプリケーションの実装によりますが、アプリケーションの権限で任意のディレクトリやファイルが削除される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Verify UpdateTempDir isn't maliciously modified",
+      "url": "https://github.com/vslavik/winsparkle/commit/bb454857348245a7397f9e4fbb3a902f4ac25913"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Release Version 0.5.3",
+      "url": "https://github.com/vslavik/winsparkle/releases/tag/v0.5.3"
+    },
+    {
+      "type": "vendor",
+      "name": "WinSparkle",
+      "vulinfo_id": "WinSparkle",
+      "url": "https://winsparkle.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Wireshark 2.2.3 and 2.0.9 Released ",
+      "url": "https://www.wireshark.org/news/20161214.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Wireshark ",
+      "url": "https://www.wireshark.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7838",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7838"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#96681653",
+      "url": "https://jvn.jp/jp/JVN96681653/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7838",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-7838"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年12月26日]\\n  掲載\\n[2018年01月17日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-7838) を追加"
+    }
+  ],
+  "date_first_published": "2016-12-26T12:06:54+09:00",
+  "date_last_updated": "2018-01-17T13:42:48+09:00",
+  "date_public": "2016-12-26T00:00:00+09:00"
+}

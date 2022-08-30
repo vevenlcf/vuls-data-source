@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2017-001940",
+  "title": "KDE kio および kdelibs の kpac/script.cpp における重要な情報を取得される脆弱性",
+  "vulinfo_description": "KDE kio および kdelibs の kpac/script.cpp は、完全な https URL (Basic 認証資格情報、クエリ文字列、または PATH_INFO を含む) を伴う PAC FindProxyForURL 関数を呼び出すため、重要な情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "KDE project",
+      "product_name": "kdelibs",
+      "version_number": [
+        "4.14.30 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kde:kdelibs"
+      }
+    },
+    {
+      "name": "KDE project",
+      "product_name": "KIO",
+      "version_number": [
+        "5.32 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kde:kio"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工された PAC ファイルを介して、重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "KDE Project Security Advisory",
+      "vulinfo_id": "kio: Information Leak when accessing https when using a malicious PAC file",
+      "url": "https://www.kde.org/info/security/advisory-20170228-1.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-6410",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6410"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-6410",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-6410"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-254",
+      "url": "https://cwe.mitre.org/data/definitions/254.html",
+      "title": "セキュリティ機能"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-23T17:48:13+09:00",
+  "date_last_updated": "2017-03-23T17:48:13+09:00",
+  "date_public": "2017-02-28T00:00:00+09:00"
+}

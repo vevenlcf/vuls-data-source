@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2011-004164",
+  "title": "VideoLAN VLC メディアプレイヤーの StripTags 関数 における任意のコードを実行される脆弱性",
+  "vulinfo_description": "VideoLAN VLC メディアプレイヤーの (1) USF デコーダ (modules/codec/subtitles/subsdec.c) および (2) Text デコーダ (modules/codec/subtitles/subsusf.c) の StripTags 関数 には、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "VideoLAN",
+      "product_name": "VLC media player",
+      "version_number": [
+        "1.1.6-rc 未満の 1.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:videolan:vlc_media_player"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、MKV ファイル内の \"\u003e\" がない \"\u003c\" 文字を含むサブタイトルを介して、ヒープメモリの破損を誘発され、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "VideoLAN",
+      "vulinfo_id": "78614",
+      "url": "http://mailman.videolan.org/pipermail/vlc-devel/2011-January/078614.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0522",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0522"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0522",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0522"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:57+09:00",
+  "date_last_updated": "2012-03-27T18:42:57+09:00",
+  "date_public": "2011-02-07T00:00:00+09:00"
+}

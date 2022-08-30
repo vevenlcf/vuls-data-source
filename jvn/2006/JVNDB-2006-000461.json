@@ -1,0 +1,524 @@
+{
+  "vulinfo_id": "JVNDB-2006-000461",
+  "title": "Apache HTTP Server の mod_rewrite におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Apache HTTP Server の Rewrite モジュール (mod_rewrite) には、1) リクエストされた URL の一部を使用して URL の内部書き換えの制御を行っている (例えば、書き換える URL が $1 で始まる場合など)、2) Forbidden (F)、Gone (G)、および NoEscape (NE) のいずれの RewriteRule フラグも使用していない、RewriteRule を設定している場合、バッファオーバーフローが発生する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache HTTP Server",
+      "version_number": [
+        "1.3.36 およびそれ以前",
+        "2.0.58 およびそれ以前",
+        "2.2.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:http_server"
+      }
+    },
+    {
+      "name": "IBM",
+      "product_name": "IBM HTTP Server",
+      "version_number": [
+        "1.3.28.1 およびそれ以前",
+        "2.0.42.2",
+        "2.0.47.1 およびそれ以前",
+        "6.0.2.13 およびそれ以前",
+        "6.1.0.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ibm:http_server"
+      }
+    },
+    {
+      "name": "IBM",
+      "product_name": "IBM WebSphere Application Server",
+      "version_number": [
+        "6.0.2.13 およびそれ以前",
+        "6.1.0.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ibm:websphere_application_server"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.4.11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.4.11",
+        "v10.5.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Application Server",
+      "version_number": [
+        "10.1.2.1.0 およびそれ以前",
+        "10.1.3.0.0",
+        "9.0.4.3 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:application_server"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) ",
+        "8 (sparc) ",
+        "8 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux",
+      "version_number": [
+        "10_f "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "2.0  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Desktop",
+      "version_number": [
+        "10 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_desktop"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux FUJI",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_fuji"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Multimedia",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_multimedia"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Personal",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_personal"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "10 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "ターボリナックス ホーム ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_home"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.04 ",
+        "11.11 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "Apache HTTP Server がサービス運用妨害 (DoS) 状態となる、あるいは、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache httpd 1.3 vulnerabilities",
+      "vulinfo_id": "1.3.37",
+      "url": "http://httpd.apache.org/security/vulnerabilities_13.html#1.3.37"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache httpd 2.0 vulnerabilities",
+      "vulinfo_id": "2.0.59",
+      "url": "http://httpd.apache.org/security/vulnerabilities_20.html#2.0.59"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache httpd 2.2 vulnerabilities",
+      "vulinfo_id": "2.2.3",
+      "url": "http://httpd.apache.org/security/vulnerabilities_22.html#2.2.3"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "CHANGES_1.3",
+      "url": "http://www.apache.org/dist/httpd/CHANGES_1.3"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "CHANGES_2.0",
+      "url": "http://www.apache.org/dist/httpd/CHANGES_2.0"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "CHANGES_2.2",
+      "url": "http://www.apache.org/dist/httpd/CHANGES_2.2"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "Security Update 2008-003",
+      "url": "http://support.apple.com/kb/HT1897"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "Security Update 2008-002",
+      "url": "http://support.apple.com/kb/HT1249"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "Security Update 2008-003",
+      "url": "http://support.apple.com/kb/HT1897?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "Security Update 2008-002",
+      "url": "http://support.apple.com/kb/HT1249?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02172",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c00797078"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02164",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c00794047"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02145",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c00760969"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX02172",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX02172.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX02164",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX02164.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX02145",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX02145.html"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "7007951",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg27007951#6103"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "4013129",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg24013129"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "PK29154",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg1PK29154"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "PK29156",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg1PK29156"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "PK29157",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg1PK29157"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "4013080",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg24013080"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "7006876",
+      "url": "http://www-1.ibm.com/support/docview.wss?uid=swg27006876#60215"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM 重要セキュリティー情報",
+      "vulinfo_id": "si-060807a.",
+      "url": "http://www-06.ibm.com/jp/services/security/secinfo/si-060807a.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "apache (V2.x)",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=427"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update - October 2006",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuoct2006-095368.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "200627",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-200627-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "201079",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-201079-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2006-20",
+      "url": "http://www.turbolinux.com/security/2006/TLSA-2006-20.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2006-20",
+      "url": "http://www.turbolinux.co.jp/security/2006/TLSA-2006-20j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-3747",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3747"
+    },
+    {
+      "type": "advisory",
+      "name": "CPNI Vulnerability Advisory",
+      "vulinfo_id": "00510",
+      "url": "http://www.cpni.gov.uk/Products/vulnerabilitydisclosures/default.aspx?id=va-20060728-00510.xml"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA08-150A",
+      "url": "http://jvn.jp/cert/JVNTA08-150A/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA06-291A",
+      "url": "http://jvn.jp/cert/JVNTA06-291A"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#395412",
+      "url": "http://jvn.jp/cert/JVNVU%23395412/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA08-079A",
+      "url": "http://jvn.jp/cert/JVNTA08-079A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRTA08-150A",
+      "url": "http://jvn.jp/tr/TRTA08-150A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRTA06-291A",
+      "url": "http://jvn.jp/tr/TRTA06-291A"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRTA08-079A",
+      "url": "http://jvn.jp/tr/TRTA08-079A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-3747",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-3747"
+    },
+    {
+      "type": "advisory",
+      "name": "NISCC Vulnerability Advisory",
+      "vulinfo_id": "821765/NISCC/Apache",
+      "url": "http://www.cpni.gov.uk/docs/re-20060728-00510.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "19204",
+      "url": "http://www.securityfocus.com/bid/19204"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA08-150A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA08-150A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA08-079A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA08-079A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA08-150A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA08-150A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA06-291A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA06-291A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA08-079A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA08-079A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#395412",
+      "url": "http://www.kb.cert.org/vuls/id/395412"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載\\n[2008年03月31日]\\n  影響を受けるシステム：アップル (Security Update 2008-002) の情報追加。\\n  ベンダ情報：アップル (Security Update 2008-002) 追加。\\n[2008年06月17日]\\n  ベンダ情報：アップル (Security Update 2008-003) を追加"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2008-06-17T13:47:21+09:00",
+  "date_public": "2006-07-27T00:00:00+09:00"
+}

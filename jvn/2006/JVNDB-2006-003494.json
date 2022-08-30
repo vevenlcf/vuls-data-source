@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2006-003494",
+  "title": "TWiki における任意のコンテンツを読み取られる脆弱性",
+  "vulinfo_description": "TWiki は、Apache 配下で稼動しており、セッションを伴う ApacheLogin、および有効な wiki トピックに \"ErrorDocument 401\" リダイレクトを使用している際、ログイン試行を適切に処理しないため、任意のコンテンツを読み取られる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "TWiki",
+      "product_name": "TWiki",
+      "version_number": [
+        "4.0.5 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:twiki:twiki"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "AV:N/AC:L/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、有効なユーザ名と無効なパスワードで認証失敗した場合に、認証要求を取り消しされることで、任意のコンテンツを読み取られる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "TWiki",
+      "vulinfo_id": "Security Alert: Login bypass allows view of access restricted content",
+      "url": "http://twiki.org/cgi-bin/view/Codev/SecurityAlert-CVE-2006-6071"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-6071",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6071"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-6071",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-6071"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T18:02:40+09:00",
+  "date_last_updated": "2012-12-20T18:02:40+09:00",
+  "date_public": "2006-11-17T00:00:00+09:00"
+}

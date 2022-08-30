@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-004495",
+  "title": "LibVNCServer の vncviewer.c の MallocFrameBuffer 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "LibVNCServer の vncviewer.c の MallocFrameBuffer 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LibVNC",
+      "product_name": "LibVNCServer",
+      "version_number": [
+        "0.9.9 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libvncserver_project:libvncserver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート VNC サービスにより、過度に大きなスクリーンサイズの広告を介して、ヒープベースのバッファオーバーフローを誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix integer overflow in MallocFrameBuffer()",
+      "url": "https://github.com/newsoft/libvncserver/commit/045a044e8ae79db9244593fbce154cdf6e843273"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0113",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0113.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-6051",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6051"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-6051",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6051"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月03日]\\n  掲載\\n[2015年05月25日]\\n  ベンダ情報：レッドハット (RHSA-2015:0113) を追加\\n[2015年11月06日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - October 2015) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-03T14:24:19+09:00",
+  "date_last_updated": "2015-11-06T15:43:09+09:00",
+  "date_public": "2014-08-15T00:00:00+09:00"
+}

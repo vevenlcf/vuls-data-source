@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2011-005440",
+  "title": "Windows および Mac OS X 上で稼働する Google Chrome で使用される Mozilla Network Security Services における権限を取得される脆弱性",
+  "vulinfo_description": "** 未確定 ** 本件は、脆弱性として確定していません。  Windows および Mac OS X 上で稼働する Google Chrome で使用される Mozilla Network Security Services (NSS) には、検索パスに関する処理に不備があるため、権限を取得される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-426: Untrusted Search Path (信頼性のない検索パス) と識別されています。 http://cwe.mitre.org/data/definitions/426.html  なお、ベンダは、以下のように回答しています。  「おかしな挙動ではあるが、セキュリティバグとは考えていない。」",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "17 未満 (Windows/Mac OS X)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Network Security Services (NSS)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:network_security_services"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、トップレベルディレクトリのトロイの木馬の pkcs11.txt ファイルを介して、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Issue 97426",
+      "url": "https://code.google.com/p/chromium/issues/detail?id=97426"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Bugzilla",
+      "vulinfo_id": "Bug 641052",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=641052"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3640",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3640"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3640",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3640"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2019-07-29T03:41:55Z",
+      "description": "[2019年07月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2019-07-29T12:41:55+09:00",
+  "date_last_updated": "2019-07-29T12:41:55+09:00",
+  "date_public": "2011-09-21T00:00:00+09:00"
+}

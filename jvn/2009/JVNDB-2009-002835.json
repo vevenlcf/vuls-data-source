@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2009-002835",
+  "title": "FCKeditor の editor/filemanager/browser/default/connectors/php/connector.php における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Falt4 CMS、Nuke ET などの製品で使用される FCKeditor の editor/filemanager/browser/default/connectors/php/connector.php には、任意のコードを実行される脆弱性が存在します。 本問題は、CVE-2005-4094 と関連する可能性があります。",
+  "affected": [
+    {
+      "name": "CKEditor Team",
+      "product_name": "FCKeditor",
+      "version_number": [
+        "2.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ckeditor:fckeditor"
+      }
+    },
+    {
+      "name": "phpList",
+      "product_name": "phpList",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phplist:phplist"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、ZIP ヘッダに続く PHP シーケンスを伴うファイルを作成され、application/zip コンテンツタイプを伴う FileUpload アクションを介してこのファイルをアップロードされ、さらに UserFiles/File/ 内のファイルへの直接リクエストを介して、このファイルにアクセスされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "CKeditor",
+      "vulinfo_id": "Top Page",
+      "url": "http://ckeditor.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "phpList",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.phplist.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-6178",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6178"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-6178",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-6178"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T16:10:06+09:00",
+  "date_last_updated": "2012-06-26T16:10:06+09:00",
+  "date_public": "2009-02-19T00:00:00+09:00"
+}

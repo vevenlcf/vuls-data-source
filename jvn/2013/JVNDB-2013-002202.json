@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2013-002202",
+  "title": "Ruby 用 nori gem におけるオブジェクトインジェクション攻撃を実行される脆弱性",
+  "vulinfo_description": "Ruby 用 nori gem は、文字列の値のキャストを適切に制限しないため、オブジェクトインジェクション攻撃を実行される、任意のコードを実行される、またはサービス運用妨害 (メモリおよび CPU 消費) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2013-0156 と類似する脆弱性です。",
+  "affected": [
+    {
+      "name": "Daniel Harrington",
+      "product_name": "nori",
+      "version_number": [
+        "1.0.3 未満の 1.0.x",
+        "1.1.4 未満の 1.1.x",
+        "2.0.2 未満の 2.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nori_gem_project:nori_gem"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、(1) YAML タイプ変換 (type conversion) または (2) Symbol タイプ変換 (type conversion) に対する Action Pack サポートを利用されることで、オブジェクトインジェクション攻撃を実行される、任意のコードを実行される、またはサービス運用妨害 (メモリおよび CPU 消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fixed YAML remote code execution vulnerability",
+      "url": "https://github.com/savonrb/nori/commit/818f5263b1d597b603d46cbe1702cd2717259e32"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0285",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0285"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0285",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0285"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "January 14, 2013: Security vulnerabilities: httparty, extlib, crack, nori: Update these gems immediately",
+      "url": "https://support.cloud.engineyard.com/entries/22915701-january-14-2013-security-vulnerabilities-httparty-extlib-crack-nori-update-these-gems-immediately"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Some rubygems related CVEs",
+      "url": "http://seclists.org/oss-sec/2013/q1/304"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-04-11T19:39:10+09:00",
+  "date_last_updated": "2013-04-11T19:39:10+09:00",
+  "date_public": "2013-01-14T00:00:00+09:00"
+}

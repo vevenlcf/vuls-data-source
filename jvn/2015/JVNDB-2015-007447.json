@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2015-007447",
+  "title": "exfat-utils の exfatfsck の verify_vbr_checksum 関数におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "exfat-utils の exfatfsck の verify_vbr_checksum 関数には、ヒープベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "exFAT project",
+      "product_name": "exFAT",
+      "version_number": [
+        "1.2.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:exfat_project:exfat"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工されたファイルシステムを介して、サービス運用妨害 (無限ループ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Check sector and cluster size before use.",
+      "url": "https://github.com/relan/exfat/commit/2e86ae5f81da11f11673d0546efb525af02b7786"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Heap buffer overflow in exfatfsck in verify_vbr_checksum() #5",
+      "url": "https://github.com/relan/exfat/issues/5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8026",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8026"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8026",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-8026"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-04-27T16:46:21+09:00",
+  "date_last_updated": "2017-04-27T16:46:21+09:00",
+  "date_public": "2015-09-09T00:00:00+09:00"
+}

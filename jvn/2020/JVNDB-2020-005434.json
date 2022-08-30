@@ -1,0 +1,193 @@
+{
+  "vulinfo_id": "JVNDB-2020-005434",
+  "title": "Rockwell Automation 製 FactoryTalk Linx Software に複数の脆弱性",
+  "vulinfo_description": "Rockwell Automation 社が提供する FactoryTalk Linx Software には次の複数の脆弱性が存在します。  * 不適切な入力確認 (CWE-20) - CVE-2020-11999 * 不適切な入力確認 (CWE-20) - CVE-2020-12001 * ディレクトリトラバーサル (CWE-22) - CVE-2020-12003 * 任意のファイルのアップロード (CWE-434) - CVE-2020-12005 ",
+  "affected": [
+    {
+      "name": "Rockwell Automation",
+      "product_name": "Connected Components Workbench",
+      "version_number": [
+        "Version 12 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:connected_components_workbench"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "ControlFLASH",
+      "version_number": [
+        "Version 14 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:controlflash"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "ControlFLASH Plus",
+      "version_number": [
+        "Version 1 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:controlflash_plus"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "FactoryTalk Asset Centre",
+      "version_number": [
+        "Version 9 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:factorytalk_asset_centre"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "FactoryTalk Linx",
+      "version_number": [
+        "Version 6.00, 6.10, 6.11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:factorytalk_linx"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "FactoryTalk Linx CommDTM",
+      "version_number": [
+        "Version 1 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:factorytalk_linx_commdtm"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "Studio 5000 Launcher",
+      "version_number": [
+        "Version 31 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:studio_5000_launcher"
+      }
+    },
+    {
+      "name": "Rockwell Automation",
+      "product_name": "Studio 5000 Logix Designer",
+      "version_number": [
+        "software Version 32 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rockwellautomation:studio_5000_logix_designer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.6",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  * API コール時に任意のファイルを適切にサニタイズ処理しないため、遠隔の第三者により任意のコードを実行されたり、ファイルやデータを改ざんされたりする - CVE-2020-11999 * 細工されたファイルを適切にサニタイズ処理しないため、遠隔の第三者により機微な情報を窃取されたり、任意のコードを実行されたりする - CVE-2020-12001 * API コール時に細工されたリクエストを適切にサニタイズ処理しないため、遠隔の第三者によりローカルハードドライブ上の機微な情報を窃取される - CVE-2020-12003 * 遠隔の第三者により不正な形式で圧縮された EDF ファイルがアップロードされることで、当該圧縮ファイルの展開処理に CPU リソースをすべて消費され、サービス運用妨害 (DoS) 状態が引き起こされる - CVE-2020-12005 "
+  },
+  "solution": "[パッチを適用する] 開発者が提供する次の情報を元に、パッチを適用してください。 * \u003ca href=\"https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1066644\"target=\"blank\"\u003ePatch Roll-up for CPR9 SRx\u003c/a\u003e (要ログイン) * FactoryTalk Linx/Services patch \u003ca href=\"https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1124820/\"target=\"blank\"\u003eRAID# 1124820\u003c/a\u003e (要ログイン) * FactoryTalk Linx patch \u003ca href=\"https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1126433\"target=\"blank\"\u003eRAID# 1126433\u003c/a\u003e (要ログイン)  [ワークアラウンドを実施する] * ファイアウォール等で 2222/tcp、7153/tcp および 44818/udp へのアクセスを制限する 　　* その他のポートに関する情報は開発者から提供されているナレッジベース \u003ca href=\"https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/898270\"target=\"blank\"\u003eID 898270\u003c/a\u003e (要ログイン) を参照してください * 当該システムのネットワークをファイアウォール等で業務ネットワークから分離して運用する * 外部からのアクセスが必要な場合、VPN 等の安全な方法でアクセスする。VPN ソフトウエアは最新の状態に保つ ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Rockwell Automation",
+      "vulinfo_id": "54102-Industrial Security Advisory Index (要ログイン)",
+      "url": "https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/54102"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-12001",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12001"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-12003",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12003"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-12005",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12005"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-11999",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11999"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-20-163-02",
+      "url": "https://www.us-cert.gov/ics/advisories/icsa-20-163-02"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91454414",
+      "url": "https://jvn.jp/vu/JVNVU91454414/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-11999",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-11999"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-12001",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-12001"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-12003",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-12003"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-12005",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-12005"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-06-15T06:37:53Z",
+      "description": "[2020年06月15日]\\n  掲載"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2020-07-13T02:57:11Z",
+      "description": "\\n[2020年07月13日]\\n  影響を受けるシステム：内容を更新\\n  参考情報：National Vulnerability Database (NVD) (CVE-2020-11999) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2020-12001) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2020-12003) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2020-12005) を追加"
+    }
+  ],
+  "date_first_published": "2020-06-15T15:37:53+09:00",
+  "date_last_updated": "2020-07-13T13:46:41+09:00",
+  "date_public": "2020-06-12T00:00:00+09:00"
+}

@@ -1,0 +1,144 @@
+{
+  "vulinfo_id": "JVNDB-2010-002476",
+  "title": "Linux kernel の kernel/trace/ftrace.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux kernel の kernel/trace/ftrace.c には、debugfs が有効の際、ミューテックスおよび llseek 操作を適切に処理しないため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.35.12 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、set_ftrace_filter に関連するファイル記述子上の lseek コールを介して、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.32.2",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.32.22"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.35.5",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.35.5"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.35.12",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/longterm/v2.6.35/ChangeLog-2.6.35.12"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0842",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0842.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-3079",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3079"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-3079",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3079"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "43684",
+      "url": "http://www.securityfocus.com/bid/43684"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年12月10日]\\n  掲載\\n[2011年04月07日]\\n  ベンダ情報：kernel.org (ChangeLog-2.6.35.12) を追加"
+    }
+  ],
+  "date_first_published": "2010-12-10T15:19:42+09:00",
+  "date_last_updated": "2011-04-07T13:49:34+09:00",
+  "date_public": "2010-09-20T00:00:00+09:00"
+}

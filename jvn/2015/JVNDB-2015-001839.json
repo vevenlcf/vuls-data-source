@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2015-001839",
+  "title": "WordPress 用 WordPress SEO by Yoast プラグインにおける SQL インジェクションの脆弱性",
+  "vulinfo_description": "WordPress 用 WordPress SEO by Yoast プラグインの admin/class-bulk-editor-list-table.php には、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Team Yoast",
+      "product_name": "Yoast SEO",
+      "version_number": [
+        "1.5.7 未満",
+        "1.6.4 未満の 1.6.x",
+        "1.7.4 未満の 1.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yoast:yoast_seo"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、wp-admin/admin.php の wpseo_bulk-editor ページ内の (1) order_by パラメータ、または (2) order パラメータを介して、任意の SQL コマンドを実行される可能性があります。  また、クロスサイトリクエストフォージェリ (CSRF) に悪用されることで、第三者により、任意の SQL コマンドを実行される可能性があります"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "WordPress Plugin Directory",
+      "vulinfo_id": "WordPress SEO by Yoast",
+      "url": "https://wordpress.org/plugins/wordpress-seo/changelog/"
+    },
+    {
+      "type": "vendor",
+      "name": "Yoast",
+      "vulinfo_id": "WordPress SEO Security release",
+      "url": "https://yoast.com/wordpress-seo-security-release/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2292",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2292"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2292",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2292"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "WordPress SEO by Yoast \u003c= 1.7.3.3 - Blind SQL Injection",
+      "url": "https://wpvulndb.com/vulnerabilities/7841"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年03月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-03-19T11:12:07+09:00",
+  "date_last_updated": "2015-03-19T11:12:07+09:00",
+  "date_public": "2015-03-11T00:00:00+09:00"
+}

@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2016-001509",
+  "title": "Django におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "Django には、ModelAdmin.save_as が True に設定される場合、アクセス制限を回避され、ModelAdmin オブジェクトを作成される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Django Software Foundation",
+      "product_name": "Django",
+      "version_number": [
+        "1.9.2 未満の 1.9.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:djangoproject:django"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、オブジェクトの編集時に \"change\" パーミッションを利用している場合、\"Save as New\" オプションを介して、アクセス制限を回避され、ModelAdmin オブジェクトを作成される可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Django weblog",
+      "vulinfo_id": "Django releases issued: 1.9.2 (security) and 1.8.9 (bugfix)",
+      "url": "https://www.djangoproject.com/weblog/2016/feb/01/releases-192-and-189/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2048",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2048"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2048",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2048"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-26T14:34:42+09:00",
+  "date_last_updated": "2016-02-26T14:34:42+09:00",
+  "date_public": "2016-02-01T00:00:00+09:00"
+}

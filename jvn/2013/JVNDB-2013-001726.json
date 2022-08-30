@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-001726",
+  "title": "MIT Kerberos の鍵配布センタの PKINIT の実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos の鍵配布センタ (KDC) の PKINIT の実装における、plugins/preauth/pkinit/pkinit_srv.c 内の pkinit_server_return_padata 関数は、不適切な状況においてアジリティ KDF 識別子 (agility KDF identifier) の検出を試みるため、サービス運用妨害 (Null ポインタデリファレンスおよびデーモンクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.10.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された Draft 9 リクエストを介して、サービス運用妨害 (Null ポインタデリファレンスおよびデーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "PKINIT (draft9) null ptr deref [CVE-2012-1016]",
+      "url": "https://github.com/krb5/krb5/commit/db64ca25d661a47b996b4e2645998b5d7f0eb52c"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT Kerberos",
+      "vulinfo_id": "Kerberos 5 Release 1.10.4",
+      "url": "http://web.mit.edu/kerberos/www/krb5-1.10/"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #7527 PKINIT (draft9) null ptr deref [CVE-2012-1016]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?id=7527"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in the PKINIT implementation in the Key Distribution Center (KDC)",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_the_pkinit"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1016",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1016"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1016",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1016"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月06日]\\n  掲載\\n[2013年10月31日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in the PKINIT implementation in the Key Distribution Center (KDC)) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-06T14:28:30+09:00",
+  "date_last_updated": "2013-10-31T17:10:46+09:00",
+  "date_public": "2013-03-01T00:00:00+09:00"
+}

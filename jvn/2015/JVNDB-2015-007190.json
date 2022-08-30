@@ -1,0 +1,139 @@
+{
+  "vulinfo_id": "JVNDB-2015-007190",
+  "title": "dosfstools の fat.c の set_fat 関数における FAT12 ファイルシステムを破損される脆弱性",
+  "vulinfo_description": "dosfstools の fat.c の set_fat 関数には、FAT12 ファイルシステムを破損される、またはサービス運用妨害 (不正なメモリ読み込みおよびクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10",
+        "16.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "dosfstools project",
+      "product_name": "dosfstools",
+      "version_number": [
+        "4.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dosfstools_project:dosfstools"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.2",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、FAT12 ファイルシステム上の最後から三番目のエントリへの奇数クラスタの書き込みを介して、二つずれエラー (off-by-two error) を誘発されることで、FAT12 ファイルシステムを破損される、またはサービス運用妨害 (不正なメモリ読み込みおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fsck.vfat invalid memory access in get_fat #12",
+      "url": "https://github.com/dosfstools/dosfstools/issues/12"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "set_fat(): Fix off-by-2 error leading to corruption in FAT12",
+      "url": "https://github.com/dosfstools/dosfstools/commit/07908124838afcc99c577d1d3e84cef2dbd39cb7"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "dosfstools 4.0",
+      "url": "https://github.com/dosfstools/dosfstools/releases/tag/v4.0"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:1461",
+      "url": "https://lists.opensuse.org/opensuse-updates/2016-06/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2986-1",
+      "url": "http://www.ubuntu.com/usn/USN-2986-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8872",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8872"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8872",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8872"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-06T16:04:27+09:00",
+  "date_last_updated": "2016-06-06T16:04:27+09:00",
+  "date_public": "2015-09-12T00:00:00+09:00"
+}

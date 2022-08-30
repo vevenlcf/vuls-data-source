@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2009-001424",
+  "title": "Bugzilla におけるランダムなトークンの生成に関する脆弱性",
+  "vulinfo_description": "mod_perl 下で動作している Bugzilla には、起動時に srand 関数が呼び出される場合、 Apache children が同一のシードを持つことで不十分な乱数を生成するため、ランダムなトークンの生成に関する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Bugzilla",
+      "version_number": [
+        "3.0.7",
+        "3.2.1",
+        "3.3.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:bugzilla"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、クロスサイトリクエストフォージェリを保護する仕組みを回避され、他のユーザとして権限の無い処理を実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "TOP PAGE",
+      "url": "http://www.mozilla.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "TOP PAGE",
+      "url": "http://mozilla.jp/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-0486",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0486"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-0486",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0486"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年06月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2009-06-30T11:33:41+09:00",
+  "date_last_updated": "2009-06-30T11:33:41+09:00",
+  "date_public": "2009-02-09T00:00:00+09:00"
+}

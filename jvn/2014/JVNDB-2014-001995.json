@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-001995",
+  "title": "elfutils で使用される libdw ライブラリの dwarf_begin_elf.c 内の check_section 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "elfutils で使用される libdw ライブラリの dwarf_begin_elf.c 内の check_section 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "elfutils Project",
+      "product_name": "elfutils",
+      "version_number": [
+        "0.153 から 0.158"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:elfutils_project:elfutils"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、ELF ファイル内の不正な形式に圧縮されたデバッグセクションを介して、ヒープベースのバッファオーバーフローを誘発されることで、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "elfutils Project",
+      "vulinfo_id": "[PATCH] CVE-2014-0172 Check for overflow before calling malloc to uncompress data.",
+      "url": "https://lists.fedorahosted.org/pipermail/elfutils-devel/2014-April/003921.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1085663",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1085663"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0172",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0172"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0172",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0172"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-16T10:52:26+09:00",
+  "date_last_updated": "2014-04-16T10:52:26+09:00",
+  "date_public": "2014-04-09T00:00:00+09:00"
+}

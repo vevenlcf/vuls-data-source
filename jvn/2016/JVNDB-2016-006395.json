@@ -1,0 +1,115 @@
+{
+  "vulinfo_id": "JVNDB-2016-006395",
+  "title": "ImageMagick の WPG パーサにおける脆弱性",
+  "vulinfo_description": "ImageMagick の WPG パーサには、メモリ制限が設定されている場合、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ImageMagick",
+      "product_name": "ImageMagick",
+      "version_number": [
+        "6.9.4-4 未満",
+        "7.0.1-5 未満の 7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:imagemagick:imagemagick"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "11.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、SetImageExtent の戻り値のチェックに関する処理を介して、以下を誘発されることで、不特定の影響を受ける可能性があります。  (1) SetPixelIndex 関数のヒープベースのバッファオーバーフロー (2) ScaleCharToQuantum 関数の無効な書き込み操作 (3) SetPixelIndex 関数の無効な書き込み操作"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "6.9.4-4",
+      "url": "https://github.com/ImageMagick/ImageMagick/commits/6.9.4-4"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Set pixel cache to undefined if any resource limit is exceeded",
+      "url": "https://github.com/ImageMagick/ImageMagick/commit/aecd0ada163a4d6c769cec178955d5f3e9316f2f"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Set pixel cache to undefined if any resource limit is exceeded",
+      "url": "https://github.com/ImageMagick/ImageMagick/commit/fc43974d34318c834fbf78570ca1a3764ed8c7d7"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "7.0.1-5 ",
+      "url": "https://github.com/ImageMagick/ImageMagick/commits/7.0.1-5"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2016-3090568.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5688",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5688"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5688",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5688"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年12月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-12-26T16:55:02+09:00",
+  "date_last_updated": "2016-12-26T16:55:02+09:00",
+  "date_public": "2016-05-18T00:00:00+09:00"
+}

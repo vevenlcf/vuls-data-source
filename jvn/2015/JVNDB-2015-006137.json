@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2015-006137",
+  "title": "PuTTY のターミナルエミュレータにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "PuTTY のターミナルエミュレータには、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Novell",
+      "product_name": "Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:leap"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1",
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "Simon Tatham",
+      "product_name": "PuTTY",
+      "version_number": [
+        "0.66 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:simon_tatham:putty"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きなパラメータ値を持つ ECH (消去文字) エスケープシーケンスを介して、バッファアンダーフローを誘発されることで、サービス運用妨害 (メモリ破損) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2015:2023",
+      "url": "http://lists.opensuse.org/opensuse-updates/2015-11/msg00099.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Simon Tatham",
+      "vulinfo_id": "PuTTY vulnerability vuln-ech-overflow",
+      "url": "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-ech-overflow.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5309",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5309"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5309",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5309"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年12月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-12-09T17:14:50+09:00",
+  "date_last_updated": "2015-12-09T17:14:50+09:00",
+  "date_public": "2015-11-08T00:00:00+09:00"
+}

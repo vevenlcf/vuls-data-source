@@ -1,0 +1,120 @@
+{
+  "vulinfo_id": "JVNDB-2020-011293",
+  "title": "jackson-dataformat-cbor におけるリソースの枯渇に関する脆弱性",
+  "vulinfo_description": "jackson-dataformat-cbor には、リソースの枯渇に関する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FasterXML, LLC",
+      "product_name": "jackson-dataformats-binary",
+      "version_number": [
+        "0 から 2.11.4 未満",
+        "2.12.0-rc1 から 2.12.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fasterxml:jackson-dataformats-binary"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Hitachi Ops Center Common Services",
+      "version_number": [
+        "(海外販売のみ)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi:hitachi_ops_center_common_services"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix eager allocation aspect of #186",
+      "url": "https://github.com/FasterXML/jackson-dataformats-binary/commit/de072d314af8f5f269c8abec6930652af67bc8e6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Eager allocation of byte buffer can cause java.lang.OutOfMemoryError exception (CVE-2020-28491) #186",
+      "url": "https://github.com/FasterXML/jackson-dataformats-binary/issues/186"
+    },
+    {
+      "type": "vendor",
+      "name": "Hitachi Software Vulnerability Information",
+      "vulinfo_id": "hitachi-sec-2021-134",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/global/security/info/vuls/hitachi-sec-2021-134/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ソフトウェア製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2021-134",
+      "url": "https://www.hitachi.co.jp/Prod/comp/soft1/security/info/vuls/hitachi-sec-2021-134/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-28491",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-28491"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-28491",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-28491"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "SNYK-JAVA-COMFASTERXMLJACKSONDATAFORMAT-1047329 (Affecting  com.fasterxml.jackson.dataformat:jackson-dataformat-cbor artifact, versions [0,2.11.4) || [2.12.0-rc1,2.12.1))",
+      "url": "https://snyk.io/vuln/SNYK-JAVA-COMFASTERXMLJACKSONDATAFORMAT-1047329"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-400",
+      "url": "https://cwe.mitre.org/data/definitions/400.html",
+      "title": "リソースの枯渇"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-03-26T06:10:04Z",
+      "description": "[2021年03月26日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-10-12T05:43:25Z",
+      "description": "[2021年10月12日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日立 (hitachi-sec-2021-134) を追加"
+    }
+  ],
+  "date_first_published": "2021-03-26T15:10:04+09:00",
+  "date_last_updated": "2021-03-26T15:10:04+09:00",
+  "date_public": "2020-12-05T00:00:00+09:00"
+}

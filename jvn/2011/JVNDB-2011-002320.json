@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2011-002320",
+  "title": "FFmpeg および libav の decode_residual_block 関数における整数符号エラーの脆弱性",
+  "vulinfo_description": "FFmpeg および libav の libavcodec の cavsdec.c 内にある decode_residual_block 関数には、整数符号エラーの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "0.7.3 未満",
+        "0.8.2 未満の 0.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    },
+    {
+      "name": "Libav",
+      "product_name": "Libav",
+      "version_number": [
+        "0.7.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libav:libav"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された Chinese AVS video ファイルを介して、サービス運用妨害 (メモリ破損およびアプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "download",
+      "url": "http://www.ffmpeg.org/download.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Libav",
+      "vulinfo_id": "libav-0.7.2.changelog",
+      "url": "http://libav.org/releases/libav-0.7.2.changelog"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3362",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3362"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3362",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3362"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年10月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-10-07T10:58:50+09:00",
+  "date_last_updated": "2011-10-07T10:58:50+09:00",
+  "date_public": "2011-10-02T00:00:00+09:00"
+}

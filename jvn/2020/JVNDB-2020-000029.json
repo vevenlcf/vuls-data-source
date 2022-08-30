@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2020-000029",
+  "title": "PALLET CONTROL において任意のコードが実行可能な脆弱性",
+  "vulinfo_description": "PALLET CONTROL は株式会社 JALインフォテックが提供する IT 資産管理ソフトウェアです。 PALLET CONTROL には、ファイルアクセス制限の不備 (CWE-284) に起因する、第三者による任意のコード実行が可能となる脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 尾花 悦正 氏",
+  "affected": [
+    {
+      "name": "株式会社 JALインフォテック",
+      "product_name": "PALLET CONTROL",
+      "version_number": [
+        "Ver. 6.3 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:jalinfotec_palletcontrol"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:L/AC:L/Au:S/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "当該製品がインストールされたコンピュータにログイン可能なユーザによって、SYSTEM 権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[パッチを適用する] 開発者が提供する情報をもとに、パッチを適用してください。  なお開発者によると、PALLET CONTROL Ver. 6.2 およびそれ以前のバージョンを使用しているユーザは、PALLET CONTROL Ver. 6.3 へアップデートした後にパッチを適用する必要があるとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "株式会社 JALインフォテック",
+      "vulinfo_id": "PALLET CONTROL Ver. 6.3 以前のバージョンにおける任意のコード実行の脆弱性",
+      "url": "https://www.jalinfotec.co.jp/product/pallet/support/Info/notices.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-5538",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5538"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#61849442",
+      "url": "https://jvn.jp/jp/JVN61849442/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-05-01T01:55:12Z",
+      "description": "[2020年05月11日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2020-05-13T06:55:58Z",
+      "description": "[2020年05月13日]\\n  CVSSv2：内容を更新"
+    }
+  ],
+  "date_first_published": "2020-05-11T12:06:33+09:00",
+  "date_last_updated": "2020-05-13T15:57:07+09:00",
+  "date_public": "2020-05-11T00:00:00+09:00"
+}

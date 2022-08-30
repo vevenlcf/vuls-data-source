@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-004314",
+  "title": "WordPress における SSRF 保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "WordPress は、イントラネットのアドレスを決定する際、8 進数と 16 進数の IP アドレス形式を考慮しないため、SSRF 保護メカニズムを回避される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-918: Server-Side Request Forgery (SSRF) (サーバサイドのリクエストフォージェリ) と識別されています。 http://cwe.mitre.org/data/definitions/918.html  補足情報 : CWE による脆弱性タイプは、CWE-285: Improper Authorization (不適切な認証) と識別されています。 http://cwe.mitre.org/data/definitions/285.html",
+  "affected": [
+    {
+      "name": "WordPress.org",
+      "product_name": "WordPress",
+      "version_number": [
+        "4.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wordpress:wordpress"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.6",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたアドレスを介して、SSRF 保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "WordPress Codex",
+      "vulinfo_id": "Version 4.5",
+      "url": "https://codex.wordpress.org/Version_4.5"
+    },
+    {
+      "type": "vendor",
+      "name": "WordPress Trac",
+      "vulinfo_id": "Custom Query",
+      "url": "https://core.trac.wordpress.org/query?status=closed\u0026milestone=4.5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4029",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4029"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4029",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4029"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-08-17T11:31:50+09:00",
+  "date_last_updated": "2016-08-17T11:31:50+09:00",
+  "date_public": "2016-04-12T00:00:00+09:00"
+}

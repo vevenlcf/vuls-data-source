@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-002954",
+  "title": "Linux Kernel の OZWPAN ドライバにおけるカーネルメモリから重要な情報を取得される脆弱性",
+  "vulinfo_description": "Linux Kernel の OZWPAN ドライバは、パケットを解析している間、信頼されていない length フィールドに依存するため、カーネルメモリから重要な情報を取得される、またはサービス運用妨害 (out-of-bounds read およびシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.0.5 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、カーネルメモリから重要な情報を取得される、またはサービス運用妨害 (out-of-bounds read およびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "LKML.ORG",
+      "vulinfo_id": "[PATCH 0/4] ozwpan: Four remote packet-of-death vulnerabilities",
+      "url": "https://lkml.org/lkml/2015/5/13/739"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4004",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4004"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4004",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4004"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-06-09T11:10:53+09:00",
+  "date_last_updated": "2015-06-09T11:10:53+09:00",
+  "date_public": "2015-05-13T00:00:00+09:00"
+}

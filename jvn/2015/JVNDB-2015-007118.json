@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2015-007118",
+  "title": "Linux Kernel の drivers/infiniband/hw/cxgb3/iwch_cm.c における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/infiniband/hw/cxgb3/iwch_cm.c は、エラー状態を適切に識別しないため、任意のコードを実行される、またはサービス運用妨害 (解放済みメモリの使用 (use-after-free)) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、任意のコードを実行される、またはサービス運用妨害 (解放済みメモリの使用 (use-after-free)) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "iw_cxgb3: Fix incorrectly returning error on success",
+      "url": "https://github.com/torvalds/linux/commit/67f1aee6f45059fd6b0f5b0ecb2c97ad0451f6b3"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "iw_cxgb3: Fix incorrectly returning error on success",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=67f1aee6f45059fd6b0f5b0ecb2c97ad0451f6b3"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1303532",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1303532"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8812",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8812"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8812",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8812"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:09:14+09:00",
+  "date_last_updated": "2016-05-10T10:09:14+09:00",
+  "date_public": "2015-12-11T00:00:00+09:00"
+}

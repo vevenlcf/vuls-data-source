@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2016-005680",
+  "title": "docker2aci におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "docker2aci には、循環依存性チェーン (cyclic dependency chain) を伴うローカルイメージを処理する際、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "docker2aci project",
+      "product_name": "docker2aci",
+      "version_number": [
+        "0.12.3 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:docker2aci_project:docker2aci"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
+    "impact_item": "サービス運用妨害 (無限ループ) 状態にされる可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Infinite loop vulnerability in retrieving images chain #203",
+      "url": "https://github.com/appc/docker2aci/issues/203"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Additional validation on malformed images #204",
+      "url": "https://github.com/appc/docker2aci/pull/204"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-8579",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-8579"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-8579",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8579"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-04T11:22:22+09:00",
+  "date_last_updated": "2016-11-04T11:22:22+09:00",
+  "date_public": "2016-10-11T00:00:00+09:00"
+}

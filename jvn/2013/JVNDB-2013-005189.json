@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2013-005189",
+  "title": "v6k および v7 ARM プラットフォーム上で稼働する Linux Kernel の API 関数における任意のカーネルメモリ領域のコンテンツを読まれる脆弱性",
+  "vulinfo_description": "v6k および v7 ARM プラットフォーム上で稼働する Linux Kernel の (1) get_user および (2) put_user API 関数は、特定のアドレスを検証しないため、任意のカーネルメモリ領域のコンテンツを読まれる、または変更される脆弱性が存在します。  Android デバイスに対する攻撃が 2013 年 10 月および 11 月に観測されています。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.5.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工されたアプリケーションを介して、任意のカーネルメモリ領域のコンテンツを読まれる、または変更される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.5.5",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.5.5"
+    },
+    {
+      "type": "vendor",
+      "name": "Code Aurora Forum",
+      "vulinfo_id": "Missing access checks in put_user/get_user kernel API (CVE-2013-6282)",
+      "url": "http://www.codeaurora.org/projects/security-advisories/missing-access-checks-putusergetuser-kernel-api-cve-2013-6282"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ARM: 7527/1: uaccess: explicitly check __user pointer when !CPU_USE_DOMAINS",
+      "url": "https://github.com/torvalds/linux/commit/8404663f81d212918ff85f493649a7991209fa04"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ARM: 7527/1: uaccess: explicitly check __user pointer when !CPU_USE_DOMAINS",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=8404663f81d212918ff85f493649a7991209fa04"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6282",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6282"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6282",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6282"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-11-21T15:56:47+09:00",
+  "date_last_updated": "2013-11-21T15:56:47+09:00",
+  "date_public": "2013-11-14T00:00:00+09:00"
+}

@@ -1,0 +1,229 @@
+{
+  "vulinfo_id": "JVNDB-2010-002676",
+  "title": "Linux kernel の hci_uart_tty_open 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux kernel の HCI UART ドライバ (drivers/bluetooth/hci_ldisc.c) 内にある hci_uart_tty_open 関数は、tty が書き込み操作の権限を所持しているかどうか検証しないため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.36.1 未満"
+      ]
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.8 (as) ",
+        "4.8 (es) ",
+        "5 ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) ",
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-194.10.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1360"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.32.26",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.32.26"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.36.1",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.36.1"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "2183",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=2183"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0330",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0330.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0004",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0162",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0162.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0007",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0007.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0012",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2011-0012.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4242",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4242"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "64617",
+      "url": "http://xforce.iss.net/xforce/xfdb/64617"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4242",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4242"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42963",
+      "url": "http://secunia.com/advisories/42963"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42789",
+      "url": "http://secunia.com/advisories/42789"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "45014",
+      "url": "http://www.securityfocus.com/bid/45014"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年01月24日]\\n  掲載\\n[2011年03月09日]\\n  影響を受けるシステム：ミラクル・リナックス (2183) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (2183) を追加\\n[2011年03月29日]\\n  影響を受けるシステム：レッドハット (RHSA-2011:0330) の情報を追加\\n  ベンダ情報：レッドハット (RHSA-2011:0330) を追加\\n[2011年04月08日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-194.10.AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.10.AXS3) を追加\\n[2012年12月25日]\\n  影響を受けるシステム：VMware (VMSA-2011-0012) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0012) を追加"
+    }
+  ],
+  "date_first_published": "2011-01-24T15:22:38+09:00",
+  "date_last_updated": "2012-12-25T18:03:08+09:00",
+  "date_public": "2010-11-22T00:00:00+09:00"
+}

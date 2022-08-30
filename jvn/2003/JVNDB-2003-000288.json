@@ -1,0 +1,569 @@
+{
+  "vulinfo_id": "JVNDB-2003-000288",
+  "title": "OpenSSL の不正な ASN.1 タグの値の処理によるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSL は X.509 証明書等で ASN.1 オブジェクトを利用して認証用情報のやり取りを行っています。  OpenSSL 0.9.6j/0.9.7b 以前には 特定の状況下において、タグフィールドの値の文字数を適切にチェックしないために、バッファの終端を越えて参照を実行してしまう問題があります。  なお、SSL/TLS プロトコルの実装する OpenSSL 以外の多くの製品にも、本脆弱性を含む ASN.1 処理に関連する脆弱性の存在が確認されています。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.6j およびそれ以前",
+        "0.9.7b およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Application Server",
+      "version_number": [
+        "1.0.2.1s",
+        "1.0.2.2",
+        "9.0.2",
+        "9.0.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:application_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Database",
+      "version_number": [
+        "8.1.7",
+        "9.0.1 ",
+        "9.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:database_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle HTTP Server",
+      "version_number": [
+        "8.1.7",
+        "9.0.1",
+        "9.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:http_server"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "1.1 ",
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt Qube3",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_qube_3"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ4",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_4"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ550",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_550"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQXTR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_xtr"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Java System Application Server",
+      "version_number": [
+        "7 Platform Edition Update 2 およびそれ以前",
+        "7 Standard Edition Update 2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sun:java_system_application_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Java System Directory Server",
+      "version_number": [
+        "5.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sun:java_system_directory_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Java System Web Server",
+      "version_number": [
+        "4.1 SP13 およびそれ以前",
+        "6.0 SP6 およびそれ以前",
+        "6.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sun:java_system_web_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Linux 5.0",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sun:linux"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IOS",
+      "version_number": [
+        "12.1 ",
+        "12.2 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:cisco:ios"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco PIX Firewall",
+      "version_number": [
+        "6.0  ",
+        "6.1  ",
+        "6.2  ",
+        "6.3  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:pix_firewall"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Advanced Server",
+      "version_number": [
+        "6  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_advanced_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Desktop",
+      "version_number": [
+        "10 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_desktop"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "6.1  ",
+        "6.5  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Workstation",
+      "version_number": [
+        "6.0  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_workstation"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.11 ",
+        "11.22 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX Apache-based Web Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:hp:apache-based_web_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  ",
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux Advanced Workstation",
+      "version_number": [
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux_advanced_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者が細工した ASN.1 オブジェクトを含むクライアント証明書を、OpenSSL を利用するアプリケーションに引き渡すことで、該当アプリケーションをサービス不能妨害 (DoS) 状態となる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20030930-ssl",
+      "url": "http://www.cisco.com/warp/public/707/cisco-sa-20030930-ssl.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX00288",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=c00891831"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX00290",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=c00901847"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0310-284",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0310-284"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0310-284",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0310-284.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "openssl",
+      "url": "http://www.miraclelinux.com/support/update/data/openssl.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "secadv_20030930",
+      "url": "http://www.openssl.org/news/secadv_20030930.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Security Alert",
+      "vulinfo_id": "#62",
+      "url": "http://www.oracle.com/technology/deploy/security/pdf/2003alert62.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:293",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-293.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:292",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-292.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:291",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-291.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "57100",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57100-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "57498",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57498-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "57599",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57599-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "57472",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57472-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "57100",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57100-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "57498",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57498-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "57599",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57599-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "57472",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-57472-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-55",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-55.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "オラクル・セキュリティ・アラート",
+      "vulinfo_id": "#62",
+      "url": "http://otn.oracle.co.jp/security/031210_62/top.html"
+    },
+    {
+      "type": "vendor",
+      "name": "シスコ セキュリティアドバイザリ",
+      "vulinfo_id": "cisco-sa-20030930-ssl",
+      "url": "http://www.cisco.com/japanese/warp/public/3/jp/service/tac/707/cisco-sa-20030930-ssl-j.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:291",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-291J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:293",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-293J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:292",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-292J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-55",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-55j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Advisory",
+      "vulinfo_id": "CA-2003-26",
+      "url": "http://www.cert.org/advisories/CA-2003-26.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "N-159",
+      "url": "http://www.ciac.org/ciac/bulletins/n-159.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "O-065",
+      "url": "http://www.ciac.org/ciac/bulletins/o-065.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0544",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0544"
+    },
+    {
+      "type": "advisory",
+      "name": "CPNI Vulnerability Advisory",
+      "vulinfo_id": "00633",
+      "url": "http://www.cpni.gov.uk/Products/advisories/default.aspx?id=br-20031104-00633.xml"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "13316",
+      "url": "http://xforce.iss.net/xforce/xfdb/13316"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNCA-2003-26",
+      "url": "http://jvn.jp/cert/JVNCA-2003-26"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRCA-2003-26",
+      "url": "http://jvn.jp/tr/TRCA-2003-26"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0544",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0544"
+    },
+    {
+      "type": "advisory",
+      "name": "NISCC Vulnerability Advisory",
+      "vulinfo_id": "006489/TLS",
+      "url": "http://www.cpni.gov.uk/docs/re-20031104-00748.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#686224",
+      "url": "http://www.kb.cert.org/vuls/id/686224"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#732952",
+      "url": "http://www.kb.cert.org/vuls/id/732952"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#380864",
+      "url": "http://www.kb.cert.org/vuls/id/380864"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#104280",
+      "url": "http://www.kb.cert.org/vuls/id/104280"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "OpenSSLの脆弱性について(9/30)",
+      "url": "http://www.cyberpolice.go.jp/important/20031001_103420.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-10-01T00:00:00+09:00"
+}

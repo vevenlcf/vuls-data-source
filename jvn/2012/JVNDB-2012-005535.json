@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2012-005535",
+  "title": "lighttpd の request.c におけるサービス運用妨害 (無限ループ) の脆弱性",
+  "vulinfo_description": "lighttpd の request.c 内の http_request_split_value 関数には、サービス運用妨害 (無限ループ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LIGHTTPD",
+      "product_name": "lighttpd",
+      "version_number": [
+        "1.4.31",
+        "1.4.32"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lighttpd:lighttpd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、空のトークンを含むヘッダを伴ったリクエストを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Lighttpd",
+      "vulinfo_id": "1.4.32",
+      "url": "http://www.lighttpd.net/2012/11/21/1-4-32/"
+    },
+    {
+      "type": "vendor",
+      "name": "Lighttpd",
+      "vulinfo_id": "Denial of Service - endless loop in parsing Connection header",
+      "url": "http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2012_01.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Lighttpd",
+      "vulinfo_id": "lighttpd-1.4.31_fix_connection_header_dos.patch",
+      "url": "http://download.lighttpd.net/lighttpd/security/lighttpd-1.4.31_fix_connection_header_dos.patch"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:1532",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-11/msg00044.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-5533",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5533"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-5533",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-5533"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年11月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-11-27T16:56:54+09:00",
+  "date_last_updated": "2012-11-27T16:56:54+09:00",
+  "date_public": "2012-11-21T00:00:00+09:00"
+}

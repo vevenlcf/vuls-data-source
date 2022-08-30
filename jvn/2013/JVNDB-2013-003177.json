@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2013-003177",
+  "title": "Atlassian Crowd における任意のファイルを読まれる脆弱性",
+  "vulinfo_description": "Atlassian Crowd には、任意のファイルを読まれる、およびイントラネットサーバへ HTTP リクエストを送信される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Atlassian",
+      "product_name": "Crowd",
+      "version_number": [
+        "2.3.8",
+        "2.4.9",
+        "2.5.4 未満の 2.5.x",
+        "2.6.3 未満の 2.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:atlassian:crowd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、エンティティ参照に関連する XML 外部エンティティ宣言を含む DTD (文書型定義) で定義された (1) /services/2、または  (2) services/latest へのリクエストを介して、任意のファイルを読まれる、およびイントラネットサーバへ HTTP リクエストを送信される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Atlassian",
+      "vulinfo_id": "Parsing of external XML entities can be exploited to retrieve files or make HTTP requests on the target network",
+      "url": "https://jira.atlassian.com/browse/CWD-3366"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-3925",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-3925"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-3925",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3925"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Threat Advisory: Atlassian Crowd (CVE-2013-3925)",
+      "url": "http://www.commandfive.com/papers/C5_TA_2013_3925_AtlassianCrowd.pdf"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年07月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-07-03T15:16:50+09:00",
+  "date_last_updated": "2013-07-03T15:16:50+09:00",
+  "date_public": "2013-06-19T00:00:00+09:00"
+}

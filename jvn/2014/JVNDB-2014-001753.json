@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-001753",
+  "title": "FreeType の cff/cf2ft.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FreeType の cff/cf2ft.c の (1) cf2_initLocalRegionBuffer 関数および (2) cf2_initGlobalRegionBuffer 関数は、サブルーチンが存在するかどうかを適切にチェックしないため、サービス運用妨害 (表明違反) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FreeType Project",
+      "product_name": "FreeType",
+      "version_number": [
+        "2.5.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:freetype:freetype"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、サービス運用妨害 (表明違反) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "freetype",
+      "vulinfo_id": "Fix Savannah bug #41697, part 2.",
+      "url": "http://git.savannah.gnu.org/cgit/freetype/freetype2.git/commit/?id=135c3faebb96f8f550bd4f318716f2e1e095a969"
+    },
+    {
+      "type": "vendor",
+      "name": "GNU Savannah",
+      "vulinfo_id": "bug #41697",
+      "url": "http://savannah.nongnu.org/bugs/?41697"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2241",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2241"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2241",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2241"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年03月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-03-24T17:23:04+09:00",
+  "date_last_updated": "2014-03-24T17:23:04+09:00",
+  "date_public": "2014-02-28T00:00:00+09:00"
+}

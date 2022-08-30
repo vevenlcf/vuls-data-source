@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2011-005239",
+  "title": "Linux Kernel の security/apparmor/lsm.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の security/apparmor/lsm.c 内の apparmor_setprocattr 関数は、無効なパラメータを適切に処理しないため、サービス運用妨害 (NULL ポインタデリファレンスおよび OOPS) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、/proc/#####/attr/current ファイルに書き込まれることで、サービス運用妨害 (NULL ポインタデリファレンスおよび OOPS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.0",
+      "url": "http://ftp.osuosl.org/pub/linux/kernel/v3.0/ChangeLog-3.0"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "AppArmor: fix oops in apparmor_setprocattr",
+      "url": "https://github.com/torvalds/linux/commit/a5b2c5b2ad5853591a6cac6134cd0f599a720865"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "AppArmor: fix oops in apparmor_setprocattr",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=a5b2c5b2ad5853591a6cac6134cd0f599a720865"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3619",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3619"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3619",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3619"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年06月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-06-11T16:16:25+09:00",
+  "date_last_updated": "2013-06-11T16:16:25+09:00",
+  "date_public": "2011-07-21T00:00:00+09:00"
+}

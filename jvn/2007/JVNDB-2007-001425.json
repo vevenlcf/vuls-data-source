@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2007-001425",
+  "title": "Django の bin/compile-messages.py における任意のコマンドを実行される脆弱性",
+  "vulinfo_description": "Django の bin/compile-messages.py は、os.system 関数を通して msgfmt プログラムを呼び出す前に引数文字列を引用しないため、任意のコマンドを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Django Software Foundation",
+      "product_name": "Django",
+      "version_number": [
+        "0.95"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:djangoproject:django"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、(1) .po ファイルまたは (2) .mo ファイル内のシェルメタキャラクタを介して、任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "djangoproject",
+      "vulinfo_id": "Fixed small security hole in bin/compile-messages.py by escaping the ?c",
+      "url": "https://github.com/django/django/commit/518d406e53"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-0404",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0404"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-0404",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-0404"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:46:02+09:00",
+  "date_last_updated": "2012-06-26T15:46:02+09:00",
+  "date_public": "2007-01-22T00:00:00+09:00"
+}

@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2015-006902",
+  "title": "Linux Kernel の net/netfilter/nf_nat_redirect.c の nf_nat_redirect_ipv4 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の net/netfilter/nf_nat_redirect.c の nf_nat_redirect_ipv4 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  本脆弱性は、CVE-2003-1604 と関連する問題です。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、不完全に設定されたインターフェースへ特定の IPv4 パケットを送信されることで、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "netfilter: nf_nat_redirect: add missing NULL pointer check",
+      "url": "https://github.com/torvalds/linux/commit/94f9cd81436c85d8c3a318ba92e236ede73752fc"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "netfilter: nf_nat_redirect: add missing NULL pointer check",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=94f9cd81436c85d8c3a318ba92e236ede73752fc"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1300731",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1300731"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8787",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8787"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8787",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8787"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-26T16:34:53+09:00",
+  "date_last_updated": "2016-02-26T16:34:53+09:00",
+  "date_public": "2015-10-27T00:00:00+09:00"
+}

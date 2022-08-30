@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2017-001484",
+  "title": "Linux Kernel の fs/posix_acl.c の simple_set_acl 関数におけるグループ権限を取得される脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/posix_acl.c の simple_set_acl 関数は、tmpfs ファイルシステムを含む setxattr コールの際、setgid bit を保存するため、グループ権限を取得される脆弱性が存在します。  本脆弱性は、CVE-2016-7097 に対する修正が不完全だったことに起因する問題です。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.9.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、パーミッション実行時に、制限を伴う setgid プログラムの存在を利用されることで、グループ権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.9.6",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.9.6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "tmpfs: clear S_ISGID when setting posix ACLs",
+      "url": "https://github.com/torvalds/linux/commit/497de07d89c1410d76a15bec2bb41f24a2a89f31"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "tmpfs: clear S_ISGID when setting posix ACLs",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=497de07d89c1410d76a15bec2bb41f24a2a89f31"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1416126",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1416126"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5551",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5551"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5551",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5551"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年02月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-02-23T14:15:28+09:00",
+  "date_last_updated": "2017-02-23T14:15:28+09:00",
+  "date_public": "2017-01-26T00:00:00+09:00"
+}

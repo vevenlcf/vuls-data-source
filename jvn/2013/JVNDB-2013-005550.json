@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2013-005550",
+  "title": "libmicrohttpd の MHD_digest_auth_check 関数におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "libmicrohttpd の MHD_digest_auth_check 関数には、MHD_OPTION_CONNECTION_MEMORY_LIMIT に過度に大きな値が設定されている場合、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GNU Project",
+      "product_name": "libmicrohttpd",
+      "version_number": [
+        "0.9.32 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:libmicrohttpd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、認証ヘッダの過度に長い URI を介して、サービス運用妨害 (クラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gentoo's Bugzilla",
+      "vulinfo_id": "Bug 493450",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=493450"
+    },
+    {
+      "type": "vendor",
+      "name": "GnuPG Project",
+      "vulinfo_id": "ChangeLog",
+      "url": "https://gnunet.org/svn/libmicrohttpd/ChangeLog"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1039390",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1039390"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7039",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7039"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7039",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7039"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-12-17T19:01:46+09:00",
+  "date_last_updated": "2013-12-17T19:01:46+09:00",
+  "date_public": "2013-12-03T00:00:00+09:00"
+}

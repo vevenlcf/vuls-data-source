@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2021-002515",
+  "title": "Schneider Electric 製 EcoStruxure および SCADAPack におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "Schneider Electric 製 EcoStruxure および SCADAPack には、ディレクトリトラバーサル (CWE-22、CVE-2021-22797) の脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "Schneider Electric",
+      "product_name": "EcoStruxure Control Expert",
+      "version_number": [
+        "以前の Unity Pro を含むすべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:schneider_electric:ecostruxure_control_expert"
+      }
+    },
+    {
+      "name": "Schneider Electric",
+      "product_name": "EcoStruxure Process Expert",
+      "version_number": [
+        "以前の HDCS を含むすべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:schneider_electric:ecostruxure_process_expert"
+      }
+    },
+    {
+      "name": "Schneider Electric",
+      "product_name": "SCADAPack RemoteConnect for x70",
+      "version_number": [
+        "すべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:schneider_electric:scadapack_remoteconnect_for_x70"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者によって悪意のあるプロジェクトファイルをエンジニアリングソフトウェアに読み込まされ、任意のコードを実行される可能性があります。 "
+  },
+  "solution": "[ワークアラウンドを実施する] 2021年9月21日現在、修正済みのバージョンは提供されていません。Schneider Electric 社によると、修正準備中とのことです。  Schneider Electric 社は、次のワークアラウンドの適用を推奨しています。  　* プロジェクトファイルを安全な場所に保存し、ファイルへのアクセスを信頼できるユーザーのみに制限する 　* ネットワーク経由でファイルを交換する場合は、安全な通信プロトコルを使用する 　* EcoStruxure Control Expert、EcoStruxure Process Expert または SCADAPack RemoteConnect を動作させているワークステーションの安全性を高める 　* すべてのプロジェクトファイルは、使用前にチェックサムの整合性を確認する 　* 重要なシステムフォルダ内のファイルがコピーされないように、ソフトウェアは管理者権限を付けず起動する  また、Unity Pro を利用している場合は、EcoStruxure ControlExpert への移行を検討してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Security Notification",
+      "vulinfo_id": "EcoStruxureTM Control Expert, EcoStruxureTM Process Expert, SCADAPack RemoteConnect? for x70",
+      "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2021-257-01"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-22797",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22797"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-259-02",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-259-02"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98742301",
+      "url": "http://jvn.jp/vu/JVNVU98742301/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-09-22T05:05:10Z",
+      "description": "[2021年09月22日]   掲載"
+    }
+  ],
+  "date_first_published": "2021-09-22T15:36:51+09:00",
+  "date_last_updated": "2021-09-22T15:36:51+09:00",
+  "date_public": "2021-09-21T00:00:00+09:00"
+}

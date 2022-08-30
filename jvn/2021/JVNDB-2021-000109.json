@@ -1,0 +1,124 @@
+{
+  "vulinfo_id": "JVNDB-2021-000109",
+  "title": "WordPress 用プラグイン Advanced Custom Fields における複数の認証欠如の脆弱性",
+  "vulinfo_description": "Delicious Brains が提供する WordPress 用プラグイン Advanced Custom Fields には、次に挙げる複数の認証欠如の脆弱性が存在します。 ・データベース閲覧に関わる認証の欠如 (CWE-862) - CVE-2021-20865 ・ユーザ一覧取得に関わる認証の欠如 (CWE-862) - CVE-2021-20866 ・フィールドグループ移動に関わる認証の欠如 (CWE-862) - CVE-2021-20867  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 株式会社イエラエセキュリティ 山崎 啓太郎 氏",
+  "affected": [
+    {
+      "name": "Delicious Brains",
+      "product_name": "Advanced Custom Fields",
+      "version_number": [
+        "5.11 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:advancedcustomfields:advanced_custom_fields"
+      }
+    },
+    {
+      "name": "Delicious Brains",
+      "product_name": "Advanced Custom Fields Pro",
+      "version_number": [
+        "5.11 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:advancedcustomfields:advanced_custom_fields_pro"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+      }
+    ],
+    "impact_item": "編集者 (Editor) より低い権限 (購読者、寄稿者、投稿者) のユーザによって、下記のような影響を受ける可能性があります。 ・データベース上のアクセス権限のないデータを閲覧される - CVE-2021-20865 ・アクセス権限のない情報の一覧を窃取される - CVE-2021-20866 ・利用権限のないフィールドグループの移動を行われる - CVE-2021-20867"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンをリリースしています。  ・Advanced Custom Fields 5.11 ・Advanced Custom Fields Pro 5.11",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Advanced Custom Fields",
+      "vulinfo_id": "Edit content with Advanced Custom Fields for WordPress Developers.",
+      "url": "https://www.advancedcustomfields.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Advanced Custom Fields",
+      "vulinfo_id": "Advanced Custom Fields",
+      "url": "https://ja.wordpress.org/plugins/advanced-custom-fields/"
+    },
+    {
+      "type": "vendor",
+      "name": "Advanced Custom Fields",
+      "vulinfo_id": "Updates to ACF Field Functions in 5.11",
+      "url": "https://www.advancedcustomfields.com/resources/acf-field-functions/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20866",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20866"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20867",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20867"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20865",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20865"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#09136401",
+      "url": "https://jvn.jp/jp/JVN09136401/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-11-29T06:16:11Z",
+      "description": "[2021年12月02日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2022-01-04T23:58:02Z",
+      "description": "[2022年01月05日]\\n  想定される影響：内容を更新"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2022-02-18T05:57:10Z",
+      "description": "[2022年02月18日]\\n  ベンダ情報：Delicious Brains (Updates to ACF Field Functions in 5.11) を追加"
+    }
+  ],
+  "date_first_published": "2021-12-02T12:05:53+09:00",
+  "date_last_updated": "2022-02-18T16:16:09+09:00",
+  "date_public": "2021-12-02T00:00:00+09:00"
+}

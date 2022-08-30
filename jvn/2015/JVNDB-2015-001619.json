@@ -1,0 +1,108 @@
+{
+  "vulinfo_id": "JVNDB-2015-001619",
+  "title": "e2fsprogs の libext2fs ライブラリの openfs.c におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "e2fsprogs の libext2fs ライブラリの openfs.c には、ヒープベースのバッファオーバーフローの脆弱性が存在します。  本脆弱性は、CVE-2015-0247 に対する修正が不十分だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "12.04 LTS",
+        "14.04 LTS",
+        "14.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "E2fsprog project",
+      "product_name": "E2fsprogs",
+      "version_number": [
+        "1.42.12 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:e2fsprogs_project:e2fsprogs"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工されたブロックグループ記述子がダーティ (dirty) としてマークされることで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3166",
+      "url": "https://www.debian.org/security/2015/dsa-3166"
+    },
+    {
+      "type": "vendor",
+      "name": "E2fsprogs Release Notes",
+      "vulinfo_id": "E2fsprogs 1.42.12 (August 29, 2014)",
+      "url": "http://e2fsprogs.sourceforge.net/e2fsprogs-release.html#1.42.12"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "libext2fs: fix potential buffer overflow in closefs()",
+      "url": "https://git.kernel.org/cgit/fs/ext2/e2fsprogs.git/commit/?id=49d0fe2a14f2a23da2fe299643379b8c1d37df73"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2507-1",
+      "url": "http://www.ubuntu.com/usn/USN-2507-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-1572",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1572"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-1572",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1572"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2015-0088",
+      "url": "http://advisories.mageia.org/MGASA-2015-0088.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月26日]\\n  掲載\\n[2015年03月04日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Debian (DSA-3166) を追加\\n  ベンダ情報：Ubuntu (USN-2507-1) を追加\\n[2015年04月08日]\\n  参考情報：関連文書 (MGASA-2015-0088) を追加"
+    }
+  ],
+  "date_first_published": "2015-02-26T17:20:40+09:00",
+  "date_last_updated": "2015-04-08T17:51:01+09:00",
+  "date_public": "2015-02-11T00:00:00+09:00"
+}

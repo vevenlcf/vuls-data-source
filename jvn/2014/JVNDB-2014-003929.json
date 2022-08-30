@@ -1,0 +1,67 @@
+{
+  "vulinfo_id": "JVNDB-2014-003929",
+  "title": "MSM デバイス用 Qualcomm Innovation Center Android コントリビューションなどで配布される Little Kernel ブートローダにおける制御可能なメモリ領域にデータを書き込まれる脆弱性",
+  "vulinfo_description": "MSM デバイス用 Qualcomm Innovation Center (QuIC) Android コントリビューション、およびその他の製品で配布される Little Kernel (LK) ブートローダの app/aboot/aboot.c 内の boot_linux_from_mmc 関数は、特定の address 値を適切に検証しないため、制御可能なメモリ領域にデータを書き込まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Little Kernel project",
+      "product_name": "Little Kernel ブートローダ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:little_kernel_project:little_kernel_bootloader"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、未遂 (attempted) の任意のブートイメージを開始する機能を利用されることで、制御可能なメモリ領域にデータを書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Aurora Forum",
+      "vulinfo_id": "CVE-2014-0974",
+      "url": "https://www.codeaurora.org/projects/security-advisories/lk-insufficient-verification-tagaddr-when-loading-device-tree-cve-2014-0974"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0974",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0974"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0974",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0974"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年08月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-08-26T15:39:30+09:00",
+  "date_last_updated": "2014-08-26T15:39:30+09:00",
+  "date_public": "2014-07-23T00:00:00+09:00"
+}

@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2009-004552",
+  "title": "OpenAFS などの製品で使用されるキャッシュマネージャにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux 上で稼動する OpenAFS および IBM AFS のクライアントのキャッシュマネージャは、ERR_PTR マクロに使用に関連する処理に不備があるため、サービス運用妨害 (システムクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "afs",
+      "version_number": [
+        "Patch 19 未満の 3.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ibm:afs"
+      }
+    },
+    {
+      "name": "OpenAFS",
+      "product_name": "OpenAFS",
+      "version_number": [
+        "1.0 から 1.4.8 および 1.5.0 から 1.5.58"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openafs:openafs"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、ポインタおよびデリファレンスとして解釈される過度に大きいエラーコード値を伴う RX レスポンスを介して、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "IBM",
+      "vulinfo_id": "1396389",
+      "url": "http://www-01.ibm.com/support/docview.wss?uid=swg21396389"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenAFS",
+      "vulinfo_id": "OpenAFS Security Advisory 2009-002",
+      "url": "http://www.openafs.org/security/OPENAFS-SA-2009-002.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-1250",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1250"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-1250",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1250"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:27:20+09:00",
+  "date_last_updated": "2012-09-25T17:27:20+09:00",
+  "date_public": "2009-04-06T00:00:00+09:00"
+}

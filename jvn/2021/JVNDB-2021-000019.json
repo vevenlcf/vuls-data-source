@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2021-000019",
+  "title": "GROWI における複数のクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "株式会社WESEEK が提供する GROWI には、次に挙げる複数のクロスサイトスクリプティングの脆弱性が存在します。 ・URL のクエリパラメータの検証不備による反射型クロスサイトスクリプティング (CWE-79) - CVE-2021-20672 ・管理者画面における格納型クロスサイトスクリプティング (CWE-79) - CVE-2021-20673  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 株式会社スリーシェイク 宮口直也 氏",
+  "affected": [
+    {
+      "name": "株式会社WESEEK",
+      "product_name": "GROWI",
+      "version_number": [
+        "v4.2.0 から v4.2.7 までのバージョン (v4.2系)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:weseek:growi"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "当該製品にログインした状態のユーザのウェブブラウザ上で、任意のスクリプトを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "株式会社WESEEK",
+      "vulinfo_id": "GROWI 脆弱性対応のお知らせ",
+      "url": "https://weseek.co.jp/security/2021/03/09/vulnerability/growi-prevent-xss5/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20672",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20672"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20673",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20673"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#86438134",
+      "url": "https://jvn.jp/jp/JVN86438134/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-03-08T05:23:41Z",
+      "description": "[2021年03月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-03-10T12:36:06+09:00",
+  "date_last_updated": "2021-03-10T12:36:06+09:00",
+  "date_public": "2021-03-10T00:00:00+09:00"
+}

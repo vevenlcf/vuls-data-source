@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2010-001830",
+  "title": "PHP の sysvshm 拡張における任意のメモリアドレスを書かれる脆弱性",
+  "vulinfo_description": "PHP の sysvshm 拡張には、shm_put_var 関数の internal コールに割り込み、解放されたリソースへのアクセスを誘発するオブジェクトの __sleep 関数の使用により、任意のメモリアドレスを書かれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.2.13 およびそれ以前",
+        "5.3.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、任意のメモリアドレスを書かれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Month of PHP Security",
+      "vulinfo_id": "MOPS-2010-009",
+      "url": "http://www.php-security.org/2010/05/05/mops-2010-009-php-shm_put_var-already-freed-resource-access-vulnerability/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1861",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1861"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1861",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1861"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-1904",
+      "url": "http://www.vupen.com/english/advisories/2010/1904"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-1098",
+      "url": "http://www.vupen.com/english/advisories/2010/1098"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年08月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2010-08-17T17:33:24+09:00",
+  "date_last_updated": "2010-08-17T17:33:24+09:00",
+  "date_public": "2010-05-05T00:00:00+09:00"
+}

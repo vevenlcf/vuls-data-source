@@ -1,0 +1,115 @@
+{
+  "vulinfo_id": "JVNDB-2006-000314",
+  "title": "Vixie Cron の do_command.c における権限昇格の脆弱性",
+  "vulinfo_description": "Vixie Cron の do_command.c では、ユーザが設定したジョブ (プログラム) を実行する前に setuid() 関数の戻り値を適切に確認しない脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "10 (x64) ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "root 権限で任意のコマンドを実行されてしまう可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2006:0539",
+      "url": "https://rhn.redhat.com/errata/RHSA-2006-0539.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2006-21",
+      "url": "http://www.turbolinux.com/security/2006/TLSA-2006-21.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2006:0539",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2006-0539J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2006-21",
+      "url": "http://www.turbolinux.co.jp/security/2006/TLSA-2006-21j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-2607",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2607"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2006-2075",
+      "url": "http://www.frsirt.com/english/advisories/2006/2075"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-2607",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-2607"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA20380",
+      "url": "http://secunia.com/advisories/20380/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "18108",
+      "url": "http://www.securityfocus.com/bid/18108"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-06-01T00:00:00+09:00"
+}

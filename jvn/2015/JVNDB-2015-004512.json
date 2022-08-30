@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2015-004512",
+  "title": "Linux Kernel および QEMU の i8254.c の pit_ioport_read におけるホスト OS 上で任意のコードを実行される脆弱性",
+  "vulinfo_description": "Linux Kernel および QEMU の i8254.c の pit_ioport_read は、読み込みの長さ、および書き込みの長さを識別しないため、ホスト OS 上で任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "version_number": [
+        "2.3.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    },
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.33 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ゲスト OS ユーザにより、不正なインデックスの使用を誘発されることで、ホスト OS 上で任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "KVM: PIT: control word is write-only",
+      "url": "https://github.com/torvalds/linux/commit/ee73f656a604d5aa9df86a97102e4e462dd79924"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "KVM: PIT: control word is write-only",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ee73f656a604d5aa9df86a97102e4e462dd79924"
+    },
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "Main Page",
+      "url": "http://wiki.qemu.org/Main_Page"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1229640",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1229640"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3214",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3214"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3214",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3214"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年09月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-09-01T18:00:31+09:00",
+  "date_last_updated": "2015-09-01T18:00:31+09:00",
+  "date_public": "2015-02-10T00:00:00+09:00"
+}

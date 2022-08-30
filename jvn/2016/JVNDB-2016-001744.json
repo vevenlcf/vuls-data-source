@@ -1,0 +1,129 @@
+{
+  "vulinfo_id": "JVNDB-2016-001744",
+  "title": "nginx のリゾルバにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "nginx のリゾルバには、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (ワーカープロセスクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "14.04 LTS",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Igor Sysoev",
+      "product_name": "nginx",
+      "version_number": [
+        "1.8.1 未満",
+        "1.9.10 未満の 1.9.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:igor_sysoev:nginx"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、CNAME レスポンス処理に関する巧妙に細工された DNS レスポンスを介して、サービス運用妨害 (ワーカープロセスクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3473",
+      "url": "http://www.debian.org/security/2016/dsa-3473"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:0371",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-02/msg00042.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1302588",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1302588"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2892-1",
+      "url": "http://www.ubuntu.com/usn/USN-2892-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "[nginx-announce] nginx security advisory",
+      "vulinfo_id": "CVE-2016-0742, CVE-2016-0746, CVE-2016-0747",
+      "url": "http://mailman.nginx.org/pipermail/nginx/2016-January/049700.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-0746",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-0746"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-0746",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0746"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-17T14:15:21+09:00",
+  "date_last_updated": "2016-03-17T14:15:21+09:00",
+  "date_public": "2016-01-26T00:00:00+09:00"
+}

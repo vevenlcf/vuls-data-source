@@ -1,0 +1,155 @@
+{
+  "vulinfo_id": "JVNDB-2007-000298",
+  "title": "Apache Tomcat のデフォルト設定における SSL 通信により安全でない暗号スイートが適用される問題",
+  "vulinfo_description": "Apache Tomcat には、デフォルト設定における SSL 通信において、anonymous 暗号スイートを含む安全でない暗号スイートの適用が意図せず許可されている問題が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Tomcat",
+      "version_number": [
+        "4.1.28 から 4.1.31 までのバージョン",
+        "5.0.30 およびそれ以前",
+        "5.5.16 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:tomcat"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Fusion Middleware",
+      "version_number": [
+        "の Oracle Forms and Reports 11.1.2.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:fusion_middleware"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle HTTP Server",
+      "version_number": [
+        "11.1.1.6.0",
+        "11.1.1.7.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:http_server"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者が弱い暗号スイートによる SSL 通信を Apache Tomcat にリクエストすることで、安全でない暗号スイートにより通信が行われてしまい、重要な情報が漏えいするなどの影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています (Apache Tomcat 4.1.32 および 5.5.17 で修正済み)。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 4.1.32",
+      "url": "http://tomcat.apache.org/security-4.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 5.5.17, 5.0.SVN",
+      "url": "http://tomcat.apache.org/security-5.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "tomcat4 (V2.x)",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=1168"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - January 2014",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - January 2014 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujan2014verbose-1972951.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "January 2014 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/january_2014_critical_patch_update"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-1858",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1858"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-1729",
+      "url": "http://www.frsirt.com/english/advisories/2007/1729"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "34212",
+      "url": "http://xforce.iss.net/xforce/xfdb/34212"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-1858",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-1858"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "28482",
+      "url": "http://www.securityfocus.com/bid/28482"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年05月17日]\\n  掲載\\n[2007年12月10日]\\n  影響を受けるシステム：ミラクル・リナックス (tomcat4 (V2.x)) の情報追加。\\n  ベンダ情報: ミラクル・リナックス (tomcat4 (V2.x)) 追加。\\n[2014年01月22日]\\n  影響を受けるシステム：オラクル (Oracle Critical Patch Update Advisory - January 2014) の情報を追加\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - January 2014) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - January 2014 Risk Matrices) を追加\\n  ベンダ情報：オラクル (January 2014 Critical Patch Update Released) を追加"
+    }
+  ],
+  "date_first_published": "2007-05-17T11:30:24+09:00",
+  "date_last_updated": "2014-01-22T13:56:50+09:00",
+  "date_public": "2007-05-09T00:00:00+09:00"
+}

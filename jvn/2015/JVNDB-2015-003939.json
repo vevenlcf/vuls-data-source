@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2015-003939",
+  "title": "Ruby on Rails などの製品で使用される Rack の lib/rack/utils.rb におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Ruby on Rails およびその他の製品で使用される Rack の lib/rack/utils.rb には、サービス運用妨害 (SystemStackError) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-19: Data Handling (データ処理) と識別されています。 http://cwe.mitre.org/data/definitions/19.html",
+  "affected": [
+    {
+      "name": "Rack",
+      "product_name": "Rack",
+      "version_number": [
+        "1.5.4 未満",
+        "1.6.2 未満の 1.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rack_project:rack"
+      }
+    },
+    {
+      "name": "Ruby on Rails project",
+      "product_name": "Rails",
+      "version_number": [
+        "3.x",
+        "4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubyonrails:ruby_on_rails"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きなパラメータの depth を伴うリクエストを介して、サービス運用妨害 (SystemStackError) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "rack/HISTORY.md",
+      "url": "https://github.com/rack/rack/blob/master/HISTORY.md"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "[CVE-2015-3225] Potential Denial of Service Vulnerability in Rack",
+      "url": "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/gcUbICUmKMc/qiCotVZwXrMJ"
+    },
+    {
+      "type": "vendor",
+      "name": "Ruby on Rails project",
+      "vulinfo_id": "Top Page",
+      "url": "http://rubyonrails.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3225",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3225"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3225",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3225"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年07月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-07-28T17:04:02+09:00",
+  "date_last_updated": "2015-07-28T17:04:02+09:00",
+  "date_public": "2015-06-16T00:00:00+09:00"
+}

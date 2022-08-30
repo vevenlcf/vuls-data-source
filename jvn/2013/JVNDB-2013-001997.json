@@ -1,0 +1,172 @@
+{
+  "vulinfo_id": "JVNDB-2013-001997",
+  "title": "Linux Kernel の kernel/signal.c における ASLR 保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "Linux Kernel の kernel/signal.c 内の flush_signal_handlers 関数は、exec 操作全般にわたって sa_restorer フィールドの値を保持するため、ASLR 保護メカニズムを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.8.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、sigaction システムコールを含む巧妙に細工されたアプリケーションを介して、ASLR 保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.8.4",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.8.4"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "signal: always clear sa_restorer on execve",
+      "url": "https://github.com/torvalds/linux/commit/2ca39528c01a933f6689cd6505ce65bd6d68a530"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux.git",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=2ca39528c01a933f6689cd6505ce65bd6d68a530"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 920499",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=920499"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0829",
+      "url": "https://rhn.redhat.com/errata/RHSA-2013-0829.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1034",
+      "url": "https://rhn.redhat.com/errata/RHSA-2013-1034.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1051",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1051.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1080",
+      "url": "https://rhn.redhat.com/errata/RHSA-2013-1080.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1787-1",
+      "url": "http://www.ubuntu.com/usn/USN-1787-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1792-1",
+      "url": "http://www.ubuntu.com/usn/USN-1792-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1793-1",
+      "url": "http://www.ubuntu.com/usn/USN-1793-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1794-1",
+      "url": "http://www.ubuntu.com/usn/USN-1794-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1795-1",
+      "url": "http://www.ubuntu.com/usn/USN-1795-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1796-1",
+      "url": "http://www.ubuntu.com/usn/USN-1796-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1797-1",
+      "url": "http://www.ubuntu.com/usn/USN-1797-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1798-1",
+      "url": "http://www.ubuntu.com/usn/USN-1798-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1788-1",
+      "url": "http://www.ubuntu.com/usn/USN-1788-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0914",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0914"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0914",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0914"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月26日]\\n  掲載\\n[2013年04月23日]\\n  ベンダ情報：Ubuntu (USN-1788-1) を追加\\n  ベンダ情報：Ubuntu (USN-1787-1) を追加\\n[2013年05月21日]\\n  ベンダ情報：Ubuntu (USN-1798-1) を追加\\n  ベンダ情報：Ubuntu (USN-1797-1) を追加\\n  ベンダ情報：Ubuntu (USN-1796-1) を追加\\n  ベンダ情報：Ubuntu (USN-1795-1) を追加\\n  ベンダ情報：Ubuntu (USN-1794-1) を追加\\n  ベンダ情報：Ubuntu (USN-1793-1) を追加\\n  ベンダ情報：Ubuntu (USN-1792-1) を追加\\n[2014年02月26日]\\n  ベンダ情報：レッドハット (RHSA-2013:0829) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1034) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1051) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1080) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-26T10:34:51+09:00",
+  "date_last_updated": "2014-02-26T16:50:34+09:00",
+  "date_public": "2013-03-20T00:00:00+09:00"
+}

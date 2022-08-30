@@ -1,0 +1,73 @@
+{
+  "vulinfo_id": "JVNDB-2015-006895",
+  "title": "LibTIFF の tif_luv.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "LibTIFF の tif_luv.c には、サービス運用妨害 (out-of-bounds write) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2015-8781 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された TIFF 画像を介して、サービス運用妨害 (out-of-bounds write) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 2522",
+      "url": "http://bugzilla.maptools.org/show_bug.cgi?id=2522"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "* libtiff/tif_luv.c: fix potential out-of-bound writes in decode",
+      "url": "https://github.com/vadz/libtiff/commit/aaab5c3c9d2a2c6984f23ccbc79702610439bc65"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8782",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8782"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8782",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8782"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-26T15:56:19+09:00",
+  "date_last_updated": "2016-02-26T15:56:19+09:00",
+  "date_public": "2015-12-27T00:00:00+09:00"
+}

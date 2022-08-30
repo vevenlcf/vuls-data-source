@@ -1,0 +1,163 @@
+{
+  "vulinfo_id": "JVNDB-2010-001803",
+  "title": "Avahi の AvahiDnsPacket 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Avahi の avahi-daemon の avahi-core/socket.c 内にある AvahiDnsPacket 関数には、有効なチェックサムを持った DNS パケットに続く、不正なチェックサムを持った DNS パケットの処理に関して不備があるため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。 本脆弱性は、CVE-2008-5081 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Avahi",
+      "product_name": "Avahi",
+      "version_number": [
+        "0.6.16",
+        "0.6.25"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:avahi:avahi"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "11 Express"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.9",
+        "vector": "AV:A/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "avahi-0.6.16-9.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1209"
+    },
+    {
+      "type": "vendor",
+      "name": "Avahi",
+      "vulinfo_id": "Milestone Avahi 0.6.26",
+      "url": "http://avahi.org/milestone/Avahi%200.6.26"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0528",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0528.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "cve_2010_2244",
+      "url": "http://blogs.sun.com/security/entry/cve_2010_2244"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2244",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2244"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2244",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2244"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA40470",
+      "url": "http://secunia.com/advisories/40470"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "41075",
+      "url": "http://www.securityfocus.com/bid/41075"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024200",
+      "url": "http://www.securitytracker.com/id?1024200"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年08月10日]\\n  掲載\\n[2011年04月05日]\\n  影響を受けるシステム：オラクル (cve_2010_2244) の情報を追加\\n  ベンダ情報：オラクル (cve_2010_2244) を追加"
+    }
+  ],
+  "date_first_published": "2010-08-10T18:49:53+09:00",
+  "date_last_updated": "2011-04-05T14:38:55+09:00",
+  "date_public": "2010-06-29T00:00:00+09:00"
+}

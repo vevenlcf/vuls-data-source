@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2013-001869",
+  "title": "bitcoind および Bitcoin-Qt におけるウォレットアドレスと IP アドレスの関係を検出される脆弱性",
+  "vulinfo_description": "bitcoind および Bitcoin-Qt の CTxMemPool::accept メソッド内のペニーフラッディング保護メカニズムには、ウォレットアドレスと IP アドレスの関係を検出される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Bitcoin Project",
+      "product_name": "Bitcoin-Qt",
+      "version_number": [
+        "0.4.9rc1 未満",
+        "0.5.8rc1 未満の 0.5.x",
+        "0.6.0.11rc1 未満の 0.6.0",
+        "0.6.5rc1 未満の 0.6.1 から 0.6.5",
+        "0.7.3rc1 未満の 0.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoin-qt"
+      }
+    },
+    {
+      "name": "Bitcoin Project",
+      "product_name": "bitcoind",
+      "version_number": [
+        "0.4.9rc1 未満",
+        "0.5.8rc1 未満の 0.5.x",
+        "0.6.0.11rc1 未満の 0.6.0",
+        "0.6.5rc1 未満の 0.6.1 から 0.6.5",
+        "0.7.3rc1 未満の 0.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoind"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、不十分なフィーを伴った、一連の過度に大きな Bitcoin トランザクションを介して、ウォレットアドレスと IP アドレスの関係を検出される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bitcoin Forum",
+      "vulinfo_id": "New vulnerability: know your peer public addresses in 14 minutes",
+      "url": "https://bitcointalk.org/?topic=135856"
+    },
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Common Vulnerabilities and Exposures",
+      "url": "https://en.bitcoin.it/wiki/CVEs"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2272",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2272"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2272",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2272"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-03-19T19:14:56+09:00",
+  "date_last_updated": "2013-03-19T19:14:56+09:00",
+  "date_public": "2013-01-11T00:00:00+09:00"
+}

@@ -1,0 +1,198 @@
+{
+  "vulinfo_id": "JVNDB-2016-004350",
+  "title": "PHP で使用される GD Graphics Library の gd_gd2.c の _gd2GetHeader 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "PHP で使用される GD Graphics Library (別名 libgd) の gd_gd2.c の _gd2GetHeader 関数には、整数オーバーフローの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-190: Integer Overflow or Wraparound (整数オーバーフローまたはラップアラウンド) と識別されています。 http://cwe.mitre.org/data/definitions/190.html",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "FreeBSD",
+      "product_name": "FreeBSD",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:freebsd:freebsd"
+      }
+    },
+    {
+      "name": "LibGD project",
+      "product_name": "LibGD",
+      "version_number": [
+        "2.2.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libgd:libgd"
+      }
+    },
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.5.37 未満",
+        "5.6.23 未満の 5.6.x",
+        "7.0.8 未満の 7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat OpenShift",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:openshift"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、画像の巧妙に細工されたチャンクディメンション (chunk dimension) を介して、サービス運用妨害 (ヒープベースのバッファオーバーフローおよびアプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3619",
+      "url": "http://www.debian.org/security/2016/dsa-3619"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": " Fixed #72339 Integer Overflow in _gd2GetHeader() resulting in heap overflow",
+      "url": "https://github.com/php/php-src/commit/7722455726bec8c53458a32851d2a87982cf0eac?w=1"
+    },
+    {
+      "type": "vendor",
+      "name": "HPE Security Bulletin",
+      "vulinfo_id": "HPSBNS03635",
+      "url": "https://h20566.www2.hpe.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c05240731"
+    },
+    {
+      "type": "vendor",
+      "name": "LibGD",
+      "vulinfo_id": "LibGD 2.2.3 release",
+      "url": "https://libgd.github.io/release-2.2.3.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #72339",
+      "url": "https://bugs.php.net/bug.php?id=72339"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1351068",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1351068"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Customer Portal",
+      "vulinfo_id": "CVE-2016-5766",
+      "url": "https://access.redhat.com/security/cve/cve-2016-5766"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Activity Bulletin",
+      "vulinfo_id": "46860 : PHP Security Update for June 23, 2016",
+      "url": "http://tools.cisco.com/security/center/viewAlert.x?alertId=46860"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 7 ChangeLog",
+      "url": "http://php.net/ChangeLog-7.php"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2016-24",
+      "url": "http://www.turbolinux.co.jp/security/2016/TLSA-2016-24j.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2016-25",
+      "url": "http://www.turbolinux.co.jp/security/2016/TLSA-2016-25j.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5766",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5766"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5766",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5766"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載\\n[2016年10月28日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：ターボリナックス (TLSA-2016-25) を追加\\n  ベンダ情報：ターボリナックス (TLSA-2016-24) を追加\\n  ベンダ情報：レッドハット (CVE-2016-5766) を追加\\n  ベンダ情報：レッドハット (Bug 1351068) を追加\\n  ベンダ情報：シスコシステムズ (46860 : PHP Security Update for June 23, 2016) を追加\\n  ベンダ情報：Debian (DSA-3619) を追加\\n  ベンダ情報：ヒューレット・パッカード・エンタープライズ (HPSBNS03635) を追加"
+    }
+  ],
+  "date_first_published": "2016-08-17T15:55:09+09:00",
+  "date_last_updated": "2016-10-28T09:58:44+09:00",
+  "date_public": "2016-06-23T00:00:00+09:00"
+}

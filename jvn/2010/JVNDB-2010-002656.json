@@ -1,0 +1,75 @@
+{
+  "vulinfo_id": "JVNDB-2010-002656",
+  "title": "Wonderware InBatch と I/A Series Batch の database lock manager service (lm_tcp) にバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Invensys Wonderware InBatch および Foxboro I/A Series Batch の lm_tcp サービスには、バッファオーバーフローが起きる可能性があります。  Wonderware InBatch および Foxboro I/A Batch の database lock manager (lm_tcp) サービスには、150 バイトのバッファに文字列をコピーする際に、バッファオーバーフローが起きる可能性があります。  なお、このサービスは、9001/tcp を使用しています。",
+  "affected": [
+    {
+      "name": "Invensys",
+      "product_name": "I/A Batch",
+      "version_number": [
+        "Server サポートされているすべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:invensys:foxboro_i%2Fa_series_batch"
+      }
+    },
+    {
+      "name": "Invensys",
+      "product_name": "Wonderware InBatch",
+      "version_number": [
+        "Server サポートされているすべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:invensys:wonderware_inbatch"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "lm_tcp サービスにアクセス可能な第三者によって、サービス運用妨害 (DoS) 攻撃を受けたり、任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに最新版へアップデートしてください。  [ワークアラウンドを実施する] アップデートを適用するまでの間、以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。      * 9001/tcp へのアクセスを制限する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Invensys Operations Management",
+      "vulinfo_id": "Cyber Security Updates",
+      "url": "http://iom.invensys.com/EN/Pages/IOM_CyberSecurityUpdates.aspx"
+    },
+    {
+      "type": "vendor",
+      "name": "Wonderware",
+      "vulinfo_id": "WonderwareInBatchSoftware",
+      "url": "http://global.wonderware.com/EN/Pages/WonderwareInBatchSoftware.aspx"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#647928",
+      "url": "http://jvn.jp/cert/JVNVU647928"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42528",
+      "url": "http://secunia.com/advisories/42528"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#647928",
+      "url": "http://www.kb.cert.org/vuls/id/647928"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年01月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-01-19T15:54:14+09:00",
+  "date_last_updated": "2011-01-19T15:54:14+09:00",
+  "date_public": "2010-12-16T00:00:00+09:00"
+}

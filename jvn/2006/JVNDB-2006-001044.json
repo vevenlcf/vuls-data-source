@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2006-001044",
+  "title": "BomberClone の do_gameinfo などの関数におけるサーバメモリの一部を読み取られる脆弱性",
+  "vulinfo_description": "BomberClone の do_gameinfo などの関数は、パケットデータサイズをリセットしないため、サーバメモリの一部を読み取られる脆弱性が存在します。 本問題は、返信する際、send_pkg 関数 (packets.c) がリセットされないパケットデータサイズをそのまま使用するため発生します。",
+  "affected": [
+    {
+      "name": "bomberclone",
+      "product_name": "bomberclone",
+      "version_number": [
+        "0.11.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bomberclone:bomberclone"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、サーバメモリの一部を読み取られる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "bomberclone",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.bomberclone.de/core.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-4006",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4006"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-4006",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-4006"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:37:29+09:00",
+  "date_last_updated": "2012-06-26T15:37:29+09:00",
+  "date_public": "2006-08-07T00:00:00+09:00"
+}

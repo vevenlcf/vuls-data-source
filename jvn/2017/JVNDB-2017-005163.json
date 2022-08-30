@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2017-005163",
+  "title": "FFmpeg における任意のファイルを読まれる脆弱性",
+  "vulinfo_description": "FFmpeg は、HTTP Live Streaming のファイル名拡張子およびデマルチプレクサ名を適切に制限しないため、任意のファイルを読まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.8.12 未満",
+        "3.1.9 未満の 3.0.x および 3.1.x",
+        "3.2.6 未満の 3.2.x",
+        "3.3.2 未満の 3.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工されたプレイリストデータを介して、任意のファイルを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "avformat/hls: Check local file extensions",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/189ff4219644532bdfa7bab28dfedaee4d6d4021"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "avformat/avidec: Limit formats in gab2 to srt and ass/ssa",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/a5d849b149ca67ced2d271dc84db0bc95a548abb"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-9993",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9993"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-9993",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-9993"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年07月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-07-19T17:00:06+09:00",
+  "date_last_updated": "2017-07-19T17:00:06+09:00",
+  "date_public": "2017-05-31T00:00:00+09:00"
+}

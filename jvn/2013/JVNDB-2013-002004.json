@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2013-002004",
+  "title": "Core FTP にバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Core FTP には、バッファオーバーフローの脆弱性が存在します。  Core FTP には、ディレクトリ名の処理に問題があり、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Core FTP",
+      "product_name": "Core FTP",
+      "version_number": [
+        "Version 2.2 (build 1769) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:coreftp:core_ftp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "悪意のある FTP サーバにアクセスし、長い名前を持つディレクトリを削除することで、ユーザのシステム上で任意のコードが実行される可能性があります。 また、長い名前を持つディレクトリに対して LIST コマンド、VIEW コマンドを使用することで、サービス運用妨害 (DoS) 攻撃を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Core FTP",
+      "vulinfo_id": "Core FTP 2.2 released",
+      "url": "http://www.coreftp.com/forums/viewtopic.php?t=222102"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0130",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0130"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94801198",
+      "url": "http://jvn.jp/cert/JVNVU94801198/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0130",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0130"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#370868",
+      "url": "http://www.kb.cert.org/vuls/id/370868"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月26日]\\n  掲載\\n[2013年04月02日]\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加\\n  CVSS による深刻度：内容を更新\\n[2013年06月25日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2013-0130) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-26T17:37:24+09:00",
+  "date_last_updated": "2013-06-25T17:50:04+09:00",
+  "date_public": "2013-03-22T00:00:00+09:00"
+}

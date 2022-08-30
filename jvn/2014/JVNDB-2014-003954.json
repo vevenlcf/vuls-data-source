@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2014-003954",
+  "title": "KDirStat の kcleanup.cpp における任意のコマンドを実行される脆弱性",
+  "vulinfo_description": "KDirStat の kcleanup.cpp は、ディレクトリを削除する際、適切に文字列を引用しないため、任意のコマンドを実行される脆弱性が存在します。  本脆弱性は、CVE-2014-2528 とは異なる脆弱性です。  補足情報 : CWE による脆弱性タイプは、CWE-77: Improper Neutralization of Special Elements used in a Command (コマンドインジェクション) と識別されています。 http://cwe.mitre.org/data/definitions/77.html",
+  "affected": [
+    {
+      "name": "KDirStat project",
+      "product_name": "KDirStat",
+      "version_number": [
+        "2.7.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kdirstat_project:kdirstat"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、ディレクトリ名の \" (二重引用符) 文字を介して、任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "741659",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741659"
+    },
+    {
+      "type": "vendor",
+      "name": "KDirStat",
+      "vulinfo_id": "Top Page",
+      "url": "http://kdirstat.sourceforge.net/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2014:0984",
+      "url": "http://lists.opensuse.org/opensuse-updates/2014-08/msg00015.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1077059",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1077059"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2527",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2527"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2527",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2527"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Jerome Robert committed 1ad2e96",
+      "url": "https://bitbucket.org/jeromerobert/k4dirstat/commits/1ad2e96d73fa06cd9be0f3749b337c03575016aa"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年08月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-08-28T14:38:04+09:00",
+  "date_last_updated": "2014-08-28T14:38:04+09:00",
+  "date_public": "2014-08-11T00:00:00+09:00"
+}

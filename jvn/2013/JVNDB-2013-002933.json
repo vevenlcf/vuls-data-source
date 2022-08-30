@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2013-002933",
+  "title": "Wireshark の PPP 解析機能におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Wireshark の PPP 解析機能の epan/dissectors/packet-ppp.c の dissect_iphc_crtp_fh 関数には、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.8.8 未満の 1.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2709",
+      "url": "http://www.debian.org/security/2013/dsa-2709"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Wireshark 1.8.8 Release Notes",
+      "url": "http://www.wireshark.org/docs/relnotes/wireshark-1.8.8.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Revision 46128",
+      "url": "http://anonsvn.wireshark.org/viewvc?view=revision\u0026revision=46128"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Diff of /trunk/epan/dissectors/packet-ppp.c",
+      "url": "http://anonsvn.wireshark.org/viewvc/trunk/epan/dissectors/packet-ppp.c?r1=46128\u0026r2=46127\u0026pathrev=46128"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "wnpa-sec-2013-34",
+      "url": "http://www.wireshark.org/security/wnpa-sec-2013-34.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 8727",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=8727"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 7880",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=7880"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4076",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4076"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4076",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4076"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年06月11日]\\n  掲載\\n[2013年10月29日]\\n  ベンダ情報：Debian (DSA-2709) を追加\\n  ベンダ情報：Wireshark (wnpa-sec-2013-34) を追加"
+    }
+  ],
+  "date_first_published": "2013-06-11T16:34:12+09:00",
+  "date_last_updated": "2013-10-29T18:04:20+09:00",
+  "date_public": "2013-05-29T00:00:00+09:00"
+}

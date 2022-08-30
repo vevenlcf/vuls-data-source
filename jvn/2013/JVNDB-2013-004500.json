@@ -1,0 +1,146 @@
+{
+  "vulinfo_id": "JVNDB-2013-004500",
+  "title": "PolicyKit における PolicyKit 制限を回避される脆弱性",
+  "vulinfo_description": "PolicyKit (別名 polkit) には、pkcheck 認証の (1) polkit_unix_process_new API 関数、(2) dbus API、または (3) --process (unix-process) オプションに関する処理に不備があるため、競合状態により、PolicyKit 制限を回避され、権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "12.04 LTS",
+        "12.10",
+        "13.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "12.2",
+        "12.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "polkit project",
+      "product_name": "polkit",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:polkit_project:polkit"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、認証チェックが実行される前に setuid または pkexec プロセスを開始されることで、PolicyKit 制限を回避され、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1620",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-11/msg00000.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1617",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00062.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1527",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1528",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1002375",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1002375"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1270",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1270.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1460",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1460.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1953-1",
+      "url": "http://www.ubuntu.com/usn/USN-1953-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4288",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4288"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4288",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4288"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月07日]\\n  掲載\\n[2013年10月28日]\\n  影響を受けるシステム：内容を更新\\n  ベンダ情報：Novell (openSUSE-SU-2013:1527) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1528) を追加\\n[2013年11月11日]\\n  ベンダ情報：レッドハット (RHSA-2013:1460) を追加\\n[2013年12月26日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:1620) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1617) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-07T19:35:56+09:00",
+  "date_last_updated": "2013-12-26T17:51:01+09:00",
+  "date_public": "2013-09-18T00:00:00+09:00"
+}

@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2012-004864",
+  "title": "OpenStack Keystone におけるテナントのリソースにアクセスされる脆弱性",
+  "vulinfo_description": "OpenStack Keystone は、無効なテナントに対する認証トークンを適切に処理しないため、テナントのリソースにアクセスされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "Openstack Keystone",
+      "version_number": [
+        "2012.1.2 未満の Essex",
+        "folsom-3 未満の Folsom"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:keystone"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、テナントに対するトークンをリクエストされることで、テナントのリソースにアクセスされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Raise unauthorized if tenant disabled (bug 988920) - 4ebfdfa",
+      "url": "https://github.com/openstack/keystone/commit/4ebfdfaf23c6da8e3c182bf3ec2cb2b7132ef685"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Raise unauthorized if tenant disabled (bug 988920) - 5373601",
+      "url": "https://github.com/openstack/keystone/commit/5373601bbdda10f879c08af1698852142b75f8d5"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "[OSSA 2012-016] Token authorization for a user in a disabled tenant is allowed (CVE-2012-4457)",
+      "url": "https://lists.launchpad.net/openstack/msg17035.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 861180",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=861180"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4457",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4457"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4457",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4457"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年10月12日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-10-12T11:35:02+09:00",
+  "date_last_updated": "2012-10-12T11:35:02+09:00",
+  "date_public": "2012-09-28T00:00:00+09:00"
+}

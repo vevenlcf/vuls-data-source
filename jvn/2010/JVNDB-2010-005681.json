@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2010-005681",
+  "title": "Linux Kernel の arch/x86/kvm/x86.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の arch/x86/kvm/x86.c には、競合状態により、サービス運用妨害 (L1 ゲスト OS クラッシュ) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2014-7842 と同様の問題です。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.38 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "L2 ゲスト OS ユーザにより、L2 エミュレーション失敗レポート (L2 emulation failure report) を誘発する巧妙に細工された命令を介して、サービス運用妨害 (L1 ゲスト OS クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-2.6.38",
+      "url": "http://mirror.linux.org.au/linux/kernel/v2.6/ChangeLog-2.6.38"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "KVM: X86: Don't report L2 emulation failures to user-space",
+      "url": "https://github.com/torvalds/linux/commit/fc3a9157d3148ab91039c75423da8ef97be3e105"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "KVM: X86: Don't report L2 emulation failures to user-space",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fc3a9157d3148ab91039c75423da8ef97be3e105"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1163762",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1163762"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-5313",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-5313"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-5313",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-5313"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2014-7842 Linux kernel: kvm: reporting emulation failures to userspace",
+      "url": "http://www.openwall.com/lists/oss-security/2014/11/13/7"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-12-02T16:13:53+09:00",
+  "date_last_updated": "2014-12-02T16:13:53+09:00",
+  "date_public": "2010-11-30T00:00:00+09:00"
+}

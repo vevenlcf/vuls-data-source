@@ -1,0 +1,168 @@
+{
+  "vulinfo_id": "JVNDB-2007-000233",
+  "title": "libwpd の複数の関数におけるヒープオーバーフローの脆弱性",
+  "vulinfo_description": "WordPerfect 文書の処理に利用されるライブラリ libwpd には、WP3TablesGroup::_readContents() 関数および WP5DefinitionGroup_DefineTablesSubGroup::WP5DefinitionGroup_DefineTablesSubGroup() 関数において整数オーバーフローが引き起こされる脆弱性が存在します。  2007年5月1日 登録時点の NVD の情報によると、整数オーバーフローの脆弱性については CVE-2007-1466 に分割されたことが示されています。",
+  "affected": [
+    {
+      "name": "libwpd project",
+      "product_name": "libwpd",
+      "version_number": [
+        "0.8.8 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libwpd:libwpd"
+      }
+    },
+    {
+      "name": "OpenOffice.org Project",
+      "product_name": "OpenOffice.org",
+      "version_number": [
+        "2.x (2.2 未満のバージョン)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openoffice:openoffice.org"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Optional Productivity Applications",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_optional_productivity_applications"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者が細工した WordPerfect 文書を開くことで、libwpd を使用する OpenOffice.org などのアプリケーションがクラッシュしサービス運用妨害 (DoS) 状態となる、あるいは潜在的に任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "News",
+      "vulinfo_id": "Friday, March 16th 2007",
+      "url": "http://libwpd.sourceforge.net/news.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2007:0055",
+      "url": "https://rhn.redhat.com/errata/RHSA-2007-0055.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "CVE-2007-002: WordPerfect Import Vulnerability",
+      "url": "http://www.openoffice.org/security/CVE-2007-2.html"
+    },
+    {
+      "type": "vendor",
+      "name": "WordPerfect Document importer/exporter",
+      "vulinfo_id": "Release Name: libwpd-0.8.9",
+      "url": "http://sourceforge.net/project/shownotes.php?release_id=494122"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2007:0055",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2007-0055J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-0002",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0002"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-0976",
+      "url": "http://www.frsirt.com/english/advisories/2007/0976"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-1032",
+      "url": "http://www.frsirt.com/english/advisories/2007/1032"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-0002",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-0002"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA24507",
+      "url": "http://secunia.com/advisories/24507"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "23006",
+      "url": "http://www.securityfocus.com/bid/23006"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1017789",
+      "url": "http://www.securitytracker.com/id?1017789"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年05月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-05-01T11:38:12+09:00",
+  "date_last_updated": "2007-05-01T11:38:12+09:00",
+  "date_public": "2007-03-16T00:00:00+09:00"
+}

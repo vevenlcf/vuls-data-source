@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2006-002718",
+  "title": "MERAK Mail Server および VisNetic MailServer における絶対パスディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "(1) IceWarp Web Mail 以前の Windows 用の MERAK Mail Server および (2) VisNetic MailServer は、validatefolder PHP 関数が適切にサニタイズしないため、絶対パスディレクトリトラバーサルの脆弱性が存在します。 本脆弱性は、CVE-2005-4558 での修正が不完全だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "deerfield",
+      "product_name": "visnetic mail server",
+      "version_number": [
+        "8.5.0.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:deerfield:visnetic_mail_server"
+      }
+    },
+    {
+      "name": "IceWarp, Inc.",
+      "product_name": "web mail",
+      "version_number": [
+        "5.6.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:icewarp:web_mail"
+      }
+    },
+    {
+      "name": "merak",
+      "product_name": "mail server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:merak:mail_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、mail/index.html への lang_settings パラメータ内の UNC またはフル Windows パス名および変更した language パラメータを介して、任意のファイルをインクルードされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "deerfield",
+      "vulinfo_id": "Download VisNetic MailServer",
+      "url": "http://downloads.info/windows/internet/email/visnetic-mailserver.html"
+    },
+    {
+      "type": "vendor",
+      "name": "IceWarp",
+      "vulinfo_id": "IceWarp Mail Server 10.4.3",
+      "url": "http://www.icewarp.com/products/icewarp_email_server_software/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-0818",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0818"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-0818",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-0818"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T18:02:15+09:00",
+  "date_last_updated": "2012-12-20T18:02:15+09:00",
+  "date_public": "2006-07-21T00:00:00+09:00"
+}

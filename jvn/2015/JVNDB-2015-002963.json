@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-002963",
+  "title": "ceph-deploy の admin コマンドにおける重要な情報を取得される脆弱性",
+  "vulinfo_description": "ceph-deploy の admin コマンドは、/etc/ceph/ceph.client.admin.keyring に対して誰でも読み取り可能な (world-readable) 権限を使用するため、重要な情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Ceph project",
+      "product_name": "ceph-deploy",
+      "version_number": [
+        "1.5.25 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ceph_project:ceph-deploy"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、ファイルを読まれることで、重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Ceph",
+      "vulinfo_id": "CEPH DEPLOYMENT",
+      "url": "http://ceph.com/docs/master/rados/deployment/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ceph",
+      "vulinfo_id": "Fix #11694",
+      "url": "http://tracker.ceph.com/issues/11694"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1092 ",
+      "url": "https://access.redhat.com/errata/RHSA-2015:1092"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4053",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4053"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4053",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4053"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月10日]\\n  掲載\\n[2015年06月23日]\\n  ベンダ情報：レッドハット (RHSA-2015:1092) を追加"
+    }
+  ],
+  "date_first_published": "2015-06-10T12:11:46+09:00",
+  "date_last_updated": "2015-06-23T14:00:11+09:00",
+  "date_public": "2015-05-21T00:00:00+09:00"
+}

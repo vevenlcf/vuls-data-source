@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-004838",
+  "title": "Linux Kernel の fs/namespace.c の pivot_root の実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/namespace.c の pivot_root の実装は、chroot ディレクトリの特定の場所を適切に対話処理しないため、サービス運用妨害 (mount-tree ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.17 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、pivot_root のシステムコールに対する両方の引数の. (ドット) 値を介して、サービス運用妨害 (mount-tree ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1151095",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1151095"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7970",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7970"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7970",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7970"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-10-20T18:12:35+09:00",
+  "date_last_updated": "2014-10-20T18:12:35+09:00",
+  "date_public": "2014-10-09T00:00:00+09:00"
+}

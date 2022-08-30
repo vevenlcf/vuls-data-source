@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2017-004266",
+  "title": "QEMU のキーボード入力イベントハンドラサポートにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "QEMU (別名 Quick Emulator) のキーボード入力イベントハンドラサポートには、メモリリークにより、サービス運用妨害 (ホストメモリ消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルのゲスト OS 特権ユーザにより、大量のキーボードイベントが急速に生成されることで、サービス運用妨害 (ホストメモリ消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH] input: limit kbd queue depth",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2017-04/msg05599.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-8379",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8379"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-8379",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-8379"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年06月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-06-21T15:23:51+09:00",
+  "date_last_updated": "2017-06-21T15:23:51+09:00",
+  "date_public": "2017-04-28T00:00:00+09:00"
+}

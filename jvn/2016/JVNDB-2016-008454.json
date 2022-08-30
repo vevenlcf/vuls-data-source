@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-008454",
+  "title": "Vtiger CRM の modules/Settings/Vtiger/actions/CompanyDetailsSave.php における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Vtiger CRM の modules/Settings/Vtiger/actions/CompanyDetailsSave.php の Settings_Vtiger_CompanyDetailsSave_Action クラスには、ファイルを無制限にアップロードされることにより、任意のコードを実行される脆弱性が存在します。  本脆弱性は、CVE-2015-6000 に対する修正が不完全だったことに起因する問題です。",
+  "affected": [
+    {
+      "name": "Vtiger",
+      "product_name": "Vtiger CRM",
+      "version_number": [
+        "6.4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vtiger:vtiger_crm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.5",
+        "vector": "AV:N/AC:M/Au:S/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.3",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、実行可能な拡張子を持つ巧妙に細工された画像ファイルをアップロードされ、直接のリクエストを介して、test/logo/ 内のファイルにアクセスされることで任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Vtiger CRM",
+      "vulinfo_id": "Top Page",
+      "url": "http://vtiger-crm.2324883.n4.nabble.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1713",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1713"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1713",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-1713"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Vtiger CRM 6.4 Authenticated Remote Code Execution (CVE-2016-1713)",
+      "url": "http://b.fl7.de/2016/01/vtiger-crm-6.4-auth-rce.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-434",
+      "url": "https://cwe.mitre.org/data/definitions/434.html",
+      "title": "危険なタイプのファイルの無制限アップロード"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-19T16:27:39+09:00",
+  "date_last_updated": "2017-05-19T16:27:39+09:00",
+  "date_public": "2016-01-12T00:00:00+09:00"
+}

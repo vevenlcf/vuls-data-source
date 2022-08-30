@@ -1,0 +1,128 @@
+{
+  "vulinfo_id": "JVNDB-2015-006858",
+  "title": "NTP におけるなりすまし攻撃を実行される脆弱性",
+  "vulinfo_description": "NTP は、パケット認証の際、対称鍵のピアアソシエーションを検証しないため、なりすまし攻撃を実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-254: Security Features (セキュリティ機能) と識別されています。 http://cwe.mitre.org/data/definitions/254.html",
+  "affected": [
+    {
+      "name": "NTP Project",
+      "product_name": "NTP",
+      "version_number": [
+        "4.2.8p6 未満の 4.x",
+        "4.3.90 未満の 4.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntp:ntp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:N/AC:H/Au:S/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.3",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、任意の trusted key (別名 \"skeleton key\") を介して、なりすまし攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "NTP Bugzilla",
+      "vulinfo_id": "Bug 2936",
+      "url": "http://bugs.ntp.org/show_bug.cgi?id=2936"
+    },
+    {
+      "type": "vendor",
+      "name": "ntp.org",
+      "vulinfo_id": "NTP Bug 2936",
+      "url": "http://support.ntp.org/bin/view/Main/NtpBug2936"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Notice",
+      "vulinfo_id": "April 2016 NTP-4.2.8p7 Security Vulnerability Announcement (Medium)",
+      "url": "http://support.ntp.org/bin/view/Main/SecurityNotice#April_2016_NTP_4_2_8p7_Security"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Notice",
+      "vulinfo_id": "January 2016 NTP-4.2.8p6 Security Vulnerability Announcement (Medium)",
+      "url": "http://support.ntp.org/bin/view/Main/SecurityNotice#January_2016_NTP_4_2_8p6_Securit"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7974",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7974"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91176422",
+      "url": "http://jvn.jp/vu/JVNVU91176422/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96269392",
+      "url": "https://jvn.jp/vu/JVNVU96269392/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7974",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7974"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#718152",
+      "url": "https://www.kb.cert.org/vuls/id/718152"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月09日]\\n  掲載\\n[2016年05月31日]\\n  CVSS による深刻度：内容を更新\\n  ベンダ情報：NTP Project (April 2016 NTP-4.2.8p7 Security Vulnerability Announcement (Medium)) を追加\\n  ベンダ情報：NTP Project (January 2016 NTP-4.2.8p6 Security Vulnerability Announcement (Medium)) を追加\\n  参考情報：JVN (JVNVU#91176422) を追加\\n  参考情報：US-CERT Vulnerability Note (VU#718152) を追加\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2021-04-16T06:07:54Z",
+      "description": "[2021年04月16日]\\n  参考情報：JVN (JVNVU#96269392) を追加"
+    }
+  ],
+  "date_first_published": "2016-02-09T10:37:26+09:00",
+  "date_last_updated": "2021-04-16T18:08:35+09:00",
+  "date_public": "2015-10-11T00:00:00+09:00"
+}

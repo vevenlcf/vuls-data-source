@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-007921",
+  "title": "MIT Kerberos 5 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 (別名 krb5) は、krb5_read_message のデータフィールドが '\\0' 文字で終わる文字列として表されることを誤って予測するため、サービス運用妨害 (NULL ポインタデリファレンスまたは out-of-bounds read) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "1.13.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10",
+        "11.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、(1) ゼロバイトのバージョン文字列を介して、サービス運用妨害 (NULL ポインタデリファレンス) 状態にされる、または (2) '\\0' 文字を省略されることで、サービス運用妨害 (out-of-bounds read) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix krb5_read_message handling [CVE-2014-5355]",
+      "url": "https://github.com/krb5/krb5/commit/102bb6ebf20f9174130c85c3b052ae104e5073ec"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Third Party Bulletin - January 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjan2015-2370101.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #8050 Fix krb5_read_message handling [CVE-2014-5355]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?id=8050"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5355",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5355"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5355",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5355"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月23日]\\n  掲載\\n[2015年03月02日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Third Party Bulletin - January 2015) を追加"
+    }
+  ],
+  "date_first_published": "2015-02-23T18:09:01+09:00",
+  "date_last_updated": "2015-03-02T17:40:35+09:00",
+  "date_public": "2014-12-10T00:00:00+09:00"
+}

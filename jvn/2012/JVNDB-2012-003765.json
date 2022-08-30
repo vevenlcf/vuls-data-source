@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-003765",
+  "title": "FFmpeg の libavcodec の vorbis.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FFmpeg の libavcodec の Vorbis コーデック (vorbis.c) には、過度に大きな乗数に対する処理に不備があるため、サービス運用妨害 (アプリケーションクラッシュ) 状態となる、および任意のコードを実行される脆弱性が存在します。  本脆弱性は、CVE-2011-3893 に対する修正が不十分だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "0.9.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された Vorbis ファイルを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "Top Page",
+      "url": "http://ffmpeg.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "ffmpeg.git / commitdiff",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=6fcf2bb8af0e7d6bb179e71e67e5fab8ef0d2ec2"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1479-1",
+      "url": "http://www.ubuntu.com/usn/USN-1479-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0859",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0859"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0859",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0859"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-08-22T14:29:47+09:00",
+  "date_last_updated": "2012-08-22T14:29:47+09:00",
+  "date_public": "2012-08-20T00:00:00+09:00"
+}

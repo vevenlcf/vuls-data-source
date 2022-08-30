@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2017-001597",
+  "title": "ZoneMinder の web/views/file.php におけるファイル公開/インクルージョンの脆弱性",
+  "vulinfo_description": "ZoneMinder の web/views/file.php は、フィルタされていないユーザの入力が readfile() に渡されるため、ファイル公開/インクルージョンの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ZoneMinder",
+      "product_name": "ZoneMinder",
+      "version_number": [
+        "v1.30.0 までの 1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zoneminder:zoneminder"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、.. (ドットドット) を含む zm/index.php?view=file\u0026path= リクエスト内の path パラメータを介して、Web サーバユーザ (www-data) のコンテキスト内で、ローカルシステムファイル (例 /etc/passwd) を読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "sanitize the image path before processing",
+      "url": "https://github.com/ZoneMinder/ZoneMinder/commit/8b19fca9927cdec07cc9dd09bdcf2496a5ae69b3"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5595",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5595"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5595",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5595"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-07T17:58:28+09:00",
+  "date_last_updated": "2017-03-07T17:58:28+09:00",
+  "date_public": "2017-01-25T00:00:00+09:00"
+}

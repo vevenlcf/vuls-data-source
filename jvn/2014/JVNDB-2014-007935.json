@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-007935",
+  "title": "Google Play services SDK の GoogleAuthUtil.getToken メソッドにおける同意ダイアログを回避される脆弱性",
+  "vulinfo_description": "Google Play services SDK の GoogleAuthUtil.getToken メソッドは、Bundle エクストラ変数に対応する _opt_ パラメータを発見した際、OAuth トークンリクエストにパラメータを設定するため、同意 (consent) ダイアログを回避される、および、SID および LSID スコープを含む任意の OAuth スコープのトークンを検出され、その結果、Google アカウントのアクセス権を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Play services SDK",
+      "version_number": [
+        "2015 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:play_services_sdk"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工されたアプリケーションを介して、同意 (consent) ダイアログを回避される、および、SID および LSID スコープを含む任意の OAuth スコープのトークンを検出され、その結果、Google アカウントのアクセス権を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Android Developers",
+      "vulinfo_id": "Setting Up Google Play Services",
+      "url": "http://developer.android.com/google/play-services/setup.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "PoC for Android GoogleAuthUtil.getToken() bug",
+      "url": "https://gist.github.com/isciurus/df4d7edd9c3efb4a0753"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7922",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7922"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7922",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7922"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Android app with full control over your Google account",
+      "url": "http://isciurus.blogspot.jp/2015/01/android-app-with-full-control-over-your.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-02-25T10:51:12+09:00",
+  "date_last_updated": "2015-02-25T10:51:12+09:00",
+  "date_public": "2014-12-02T00:00:00+09:00"
+}

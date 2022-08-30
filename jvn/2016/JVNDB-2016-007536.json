@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-007536",
+  "title": "BusyBox の DHCP クライアントにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "BusyBox の DHCP クライアント (udhcpc) には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "BusyBox",
+      "product_name": "BusyBox",
+      "version_number": [
+        "1.25.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:busybox:busybox"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、不正な形式の RFC1035-encoded ドメイン名を介して、境界外のヒープ書き込みを誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "BusyBox",
+      "vulinfo_id": "udhcp: fix a SEGV on malformed RFC1035-encoded domain name",
+      "url": "https://git.busybox.net/busybox/commit/?id=d474ffc68290e0a83651c4432eeabfa62cd51e87"
+    },
+    {
+      "type": "vendor",
+      "name": "BusyBox",
+      "vulinfo_id": "news",
+      "url": "https://busybox.net/news.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2147",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2147"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2147",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2147"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-190",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "title": "整数オーバーフローまたはラップアラウンド"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-03T17:20:09+09:00",
+  "date_last_updated": "2017-03-03T17:20:09+09:00",
+  "date_public": "2016-03-10T00:00:00+09:00"
+}

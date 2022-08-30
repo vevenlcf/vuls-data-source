@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2016-001568",
+  "title": "FFmpeg の libswscale/swscale_unscaled.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FFmpeg の libswscale/swscale_unscaled.c は、特定の高さの値を適切に検証しないため、サービス運用妨害 (out-of-bounds array read access) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.8.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された .cine ファイルを介して、サービス運用妨害 (out-of-bounds array read access) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "swscale/swscale_unscaled: Fix odd height inputs for bayer_to_yv12_wrapper()",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=757248ea3cd917a7755cb15f817a9b1f15578718"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "swscale/swscale_unscaled: Fix odd height inputs for bayer_to_rgb24_wrapper()",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=ad3b6fa7d83db7de951ed891649af93a47e74be5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2328",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2328"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2328",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2328"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-04T12:25:44+09:00",
+  "date_last_updated": "2016-03-04T12:25:44+09:00",
+  "date_public": "2016-01-17T00:00:00+09:00"
+}

@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2013-002436",
+  "title": "Linux Kernel の net/iucv/af_iucv.c における重要な情報を取得される脆弱性",
+  "vulinfo_description": "Linux Kernel の net/iucv/af_iucv.c 内の iucv_sock_recvmsg 関数は、特定の長さの変数を初期化しないため、カーネルスタックメモリから重要な情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.9-rc7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された recvmsg、または recvfrom システムコールを介して、カーネルスタックメモリから重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "iucv: Fix missing msg_namelen update in iucv_sock_recvmsg()",
+      "url": "https://github.com/torvalds/linux/commit/a5598bd9c087dc0efc250a5221e5d0e6f584ee88"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux.git",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=a5598bd9c087dc0efc250a5221e5d0e6f584ee88"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1837-1",
+      "url": "http://www.ubuntu.com/usn/USN-1837-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-3229",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-3229"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-3229",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3229"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[linux-kernel] 20130414 Linux 3.9-rc7",
+      "url": "https://lkml.org/lkml/2013/4/14/107"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月23日]\\n  掲載\\n[2013年06月13日]\\n  ベンダ情報：Ubuntu (USN-1837-1) を追加"
+    }
+  ],
+  "date_first_published": "2013-04-23T16:22:30+09:00",
+  "date_last_updated": "2013-06-13T17:36:47+09:00",
+  "date_public": "2013-04-07T00:00:00+09:00"
+}

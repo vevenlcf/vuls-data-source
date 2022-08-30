@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2020-000074",
+  "title": "Hibernate ORM における SQL インジェクションの脆弱性",
+  "vulinfo_description": "Hibernate ORM は Java 向けの ORM フレームワークです。Hibernate ORM では、デバッグに役立つよう、内部で生成する SQL 文にコメントをつけることができます。(hibernate.use_sql_comments を true に設定する。初期設定では false。) hibernate.use_sql_comments を true に設定した場合の入力処理には不備があり、SQL インジェクションの脆弱性 (CWE-89) が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: （株）NTTデータ 技術革新統括本部 システム技術本部 デジタル技術部 インテグレーション技術担当 TERASOLUNA Framework 開発チーム",
+  "affected": [
+    {
+      "name": "Hibernate",
+      "product_name": "Hibernate ORM",
+      "version_number": [
+        "5.3.20 より前のバージョン",
+        "5.4.24 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hibernate:hibernate_orm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.4",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+      }
+    ],
+    "impact_item": "hibernate.use_sql_comments を true に設定している場合、細工した入力を処理することで SQL インジェクション攻撃を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報を参考に、Hibernate ORM を更新してください。  [ワークアラウンドを実施する] hibernamte.use_sql_comments を false に設定してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Hibernate",
+      "vulinfo_id": "HHH-14225: CVE-2020-25638 Potential for SQL injection on use_sql_comments logging enabled",
+      "url": "https://hibernate.atlassian.net/browse/HHH-14225"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Red Hat Bugzilla - Bug 1881353 ",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1881353"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat CVE Database",
+      "vulinfo_id": "Red Hat CVE Database: CVE-2020-25638 ",
+      "url": "https://access.redhat.com/security/cve/CVE-2020-25638"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-25638",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-25638"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#90729322",
+      "url": "https://jvn.jp/jp/JVN90729322/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-11-17T06:23:34Z",
+      "description": "[2020年11月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2020-11-19T12:08:04+09:00",
+  "date_last_updated": "2020-11-19T12:08:04+09:00",
+  "date_public": "2020-11-19T00:00:00+09:00"
+}

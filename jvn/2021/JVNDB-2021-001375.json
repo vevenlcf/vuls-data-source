@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2021-001375",
+  "title": "Pulse Connect Secure に任意コード実行の脆弱性",
+  "vulinfo_description": "Pulse Connect Secure には任意コード実行の脆弱性が存在します。  Pulse Connect Secure の持つ Windows File Share Browser および Pulse Secure Collaboration 機能に、認証を回避し任意のコード実行を可能とする脆弱性 (CVE-2021-22893) が発見されました。 FireEye が公開した\u003ca href=\"https://www.fireeye.com/blog/threat-research/2021/04/suspected-apt-actors-leverage-bypass-techniques-pulse-secure-zero-day.html\" target=\"_blank\"\u003eレポート\u003c/a\u003eによると、2021年4月21日現在、本脆弱性や既知の脆弱性を悪用した攻撃がすでに確認されています。",
+  "affected": [
+    {
+      "name": "パルスセキュア",
+      "product_name": "Pulse Connect Secure",
+      "version_number": [
+        "(PCS) version 9.0R3 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pulsesecure:pulse_connect_secure"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって細工されたリクエストを Pulse Connect Secure が受信することにより、認証を回避され、当該機器上で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンをリリースしています。  　* Pulse Connect Secure 9.1R11.4  [ワークアラウンドを適用する] 開発者は回避策として次のxmlファイルの適用を推奨しています。  　* \u003ca href=\"https://my.pulsesecure.net/\" target=\"_blank\"\u003eWorkaround-2104.xml\u003c/a\u003e  このファイルを適用することにより、Windows File Share Browser と Pulse Secure Collaboration が無効化されます。ただし、このXMLは version 9.0R1 から 9.0R4.1 および 9.1R1 から 9.1R2 では動作しません。これらのバージョンを使用している場合は、PCS をアップデートしてから適用する必要があります。  また、開発者は Pulse Secure Connect で不審なファイルの設置や改ざんが行われていないか確認するためのツール \u003ca href=\"https://kb.pulsesecure.net/articles/Pulse_Secure_Article/KB44755\" target=\"_blank\"\u003ePulse Connect Secure Integrity Tool\u003c/a\u003e を公開しています。詳細は開発者が提供する情報を参照してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "KB44755 - Pulse Connect Secure (PCS) Integrity Assurance",
+      "url": "https://kb.pulsesecure.net/articles/Pulse_Secure_Article/KB44755/"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "SA44784 - 2021-04: Out-of-Cycle Advisory: Multiple Vulnerabilities Resolved in Pulse Connect Secure 9.1R11.4",
+      "url": "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA44784/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-22893",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22893"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "Pulse Connect Secureの脆弱性 (CVE-2021-22893) に関する注意喚起",
+      "url": "https://www.jpcert.or.jp/at/2021/at210019.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94842247",
+      "url": "http://jvn.jp/cert/JVNVU94842247"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Current Activity",
+      "vulinfo_id": "CISA Releases Alert on Exploitation of Pulse Connect Secure Vulnerabilities",
+      "url": "https://us-cert.cisa.gov/ncas/current-activity/2021/04/20/cisa-releases-alert-exploitation-pulse-connect-secure"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Current Activity",
+      "vulinfo_id": "CISA Issues Emergency Directive on Pulse Connect Secure",
+      "url": "https://us-cert.cisa.gov/ncas/current-activity/2021/04/20/cisa-issues-emergency-directive-pulse-connect-secure"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#213092",
+      "url": "https://kb.cert.org/vuls/id/213092"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Check Your Pulse: Suspected APT Actors Leverage Authentication Bypass Techniques and Pulse Secure Zero-Day",
+      "url": "https://www.fireeye.com/blog/threat-research/2021/04/suspected-apt-actors-leverage-bypass-techniques-pulse-secure-zero-day.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-04-22T05:50:25Z",
+      "description": "[2021年04月22日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-05-07T01:49:18Z",
+      "description": "[2021年05月07日]\\n  対策：内容を更新\\n  ベンダ情報：内容を更新\\n"
+    }
+  ],
+  "date_first_published": "2021-04-22T14:50:25+09:00",
+  "date_last_updated": "2021-05-07T16:57:59+09:00",
+  "date_public": "2021-04-21T00:00:00+09:00"
+}

@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-002464",
+  "title": "Linux Kernel の fs/namespace.c におけるファイルシステムの read-only プロパティを回避される脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/namespace.c 内の clone_mnt 関数は、MNT_READONLY フラグへの変更を適切に制限しないため、ファイルシステムの read-only プロパティを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.8.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、個別のマウント名前空間 (separate mount namespace) を利用されることで、ファイルシステムの read-only プロパティを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.8.6",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.8.6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "vfs: Carefully propogate mounts across user namespaces",
+      "url": "https://github.com/torvalds/linux/commit/132c94e31b8bca8ea921f9f96a57d684fa4ae0a9"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=132c94e31b8bca8ea921f9f96a57d684fa4ae0a9"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1957",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1957"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1957",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1957"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-04-26T16:12:24+09:00",
+  "date_last_updated": "2013-04-26T16:12:24+09:00",
+  "date_public": "2013-04-05T00:00:00+09:00"
+}

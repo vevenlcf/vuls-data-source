@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2014-003507",
+  "title": "LimeSurvey の common_helper.php の autoEscape 関数におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "LimeSurvey の common_helper.php の autoEscape 関数には、不完全なブラックリストにより、調査の再開 (survey resume) に関する処理に不備があるため、クロスサイトスクリプティング攻撃を実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-184: Incomplete Blacklist (不完全なブラックリスト) と識別されています。 https://cwe.mitre.org/data/definitions/184.html",
+  "affected": [
+    {
+      "name": "LimeSurvey",
+      "product_name": "LimeSurvey",
+      "version_number": [
+        "2.05+ Build 140618"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:limesurvey:limesurvey"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、index.php の loadname パラメータの GBK 文字セットを介して、クロスサイトスクリプティング攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed issue: Vulnerable parameter on survey resume",
+      "url": "https://github.com/LimeSurvey/LimeSurvey/commit/3a6dd6b44cef2fa3f96f403e1cb971d8d0d694b5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5018",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5018"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5018",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5018"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-23T12:00:17+09:00",
+  "date_last_updated": "2014-07-23T12:00:17+09:00",
+  "date_public": "2014-07-02T00:00:00+09:00"
+}

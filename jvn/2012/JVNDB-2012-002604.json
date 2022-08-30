@@ -1,0 +1,151 @@
+{
+  "vulinfo_id": "JVNDB-2012-002604",
+  "title": "RPM の headerVerifyInfo 関数におけるサービス運用妨害 (クラッシュ) の脆弱性",
+  "vulinfo_description": "RPM の lib/header.c 内の headerVerifyInfo 関数は、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "RPM",
+      "product_name": "RPM Package Manager",
+      "version_number": [
+        "4.9.1.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rpm:rpm"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESXi",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esxi"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、数値範囲比較において適切に処理されない package ヘッダの region オフセットの負の値を介して、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-5298",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/077960.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-5420",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/078819.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-5421",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/078907.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:0588",
+      "url": "https://hermes.opensuse.org/messages/14440932"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:0589",
+      "url": "https://hermes.opensuse.org/messages/14441362"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 744104",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=744104"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:0451",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-0451.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RPM",
+      "vulinfo_id": "Sanity check region length on header load",
+      "url": "http://rpm.org/gitweb?p=rpm.git;a=commitdiff;h=472e569562d4c90d7a298080e0052856aa7fa86b"
+    },
+    {
+      "type": "vendor",
+      "name": "RPM",
+      "vulinfo_id": "RPM 4.9.1.3 Release Notes",
+      "url": "http://rpm.org/wiki/Releases/4.9.1.3"
+    },
+    {
+      "type": "vendor",
+      "name": "RPM",
+      "vulinfo_id": "Fix dribble length calculation on headerLoad()",
+      "url": "http://rpm.org/gitweb?p=rpm.git;a=commitdiff;h=858a328cd0f7d4bcd8500c78faaf00e4f8033df6"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0013",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2012-0013.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0815",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0815"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0815",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0815"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月06日]\\n  掲載\\n[2012年06月08日]\\n  CVSS による深刻度：基本値と脆弱性評価基準を変更\\n[2012年09月05日]\\n  ベンダ情報：Fedora Project (FEDORA-2012-5298) を追加\\n  ベンダ情報：Fedora Project (FEDORA-2012-5420) を追加\\n  ベンダ情報：Fedora Project (FEDORA-2012-5421) を追加\\n[2012年12月17日]\\n  影響を受けるシステム：VMware (VMSA-2012-0013) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0013) を追加"
+    }
+  ],
+  "date_first_published": "2012-06-06T15:12:58+09:00",
+  "date_last_updated": "2012-12-17T16:33:14+09:00",
+  "date_public": "2012-06-04T00:00:00+09:00"
+}

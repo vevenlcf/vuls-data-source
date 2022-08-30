@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2016-002401",
+  "title": "Wireshark の IAX2 ディセクタの epan/dissectors/packet-iax2.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の IAX2 ディセクタ (解析機能) の epan/dissectors/packet-iax2.c は、不正な整数データ型を使用するため、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.12.11 未満の 1.12.x",
+        "2.0.3 未満の 2.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "IAX2: fix an infinite loop",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=42f299be6abb302f32cec78b1c0812364c9f9285"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2016-3090568.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 12260",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=12260"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-24",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-24.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4081",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4081"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4081",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4081"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月06日]\\n  掲載\\n[2016年11月17日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-05-06T11:28:04+09:00",
+  "date_last_updated": "2016-11-17T16:45:33+09:00",
+  "date_public": "2016-04-22T00:00:00+09:00"
+}

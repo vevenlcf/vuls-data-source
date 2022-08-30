@@ -1,0 +1,111 @@
+{
+  "vulinfo_id": "JVNDB-2002-000305",
+  "title": "OpenLDAP2 における任意のコードを実行される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  OpenLDAP は LDAP プロトコルのオープンソース版の実装であり、スタンドアロン型サーバである slapd や、LDAP サーバ間の複製の制御サーバ slurpd、LDAP クライアント、LDAP ライブラリ等を同梱しています。    OpenLDAP には、複数のバッファオーバーフローの問題が存在します。 Slrurpd には、コマンドラインから実行する際に与える引数や、ロックファイル名として異常に長い文字列を渡すことにより、バッファオーバーフローが発生する可能性があります。  Slapd には、アクセスコントロールリストを解釈する際に、バッファオーバーフローが発生する可能性があります。  Slapd には特定のログファイル名に長い文字列を使用することにより、バッファオーバーフローが発生する可能性があります。  LDAP ライブラリには、ローカルから攻撃可能なバッファオーバーフローの問題が存在します。  これらの問題を利用することで、ローカルの攻撃者は OpenLDAP サーバ、あるいは LDAP ライブラリを使用するアプリケーションの実行権限で任意のコードを実行可能です。",
+  "affected": [
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "6.5  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "6.2  ",
+        "7.0  ",
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:040",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-040.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-5",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-5.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:040",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-040J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-5",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-5j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2002-1379",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1379"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2002-1379",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-1379"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6620",
+      "url": "http://www.securityfocus.com/bid/6620"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6328",
+      "url": "http://www.securityfocus.com/bid/6328"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2002-12-06T00:00:00+09:00"
+}

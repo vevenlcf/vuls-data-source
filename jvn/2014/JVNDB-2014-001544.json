@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2014-001544",
+  "title": "Blue Coat ProxySG に脆弱性",
+  "vulinfo_description": "Blue Coat が提供する ProxySG には、認証情報の変更から反映までに時差がある脆弱性が存在します。  Blue Coat が提供する ProxySG には、古い認証情報がキャッシュに保存されていることにより、認証情報の変更から反映までに最大15分程度の時差がある脆弱性 (CWE-361) が存在します。 なお、新たなアカウントでのログインや間違ったパスワードによる認証拒否など、他のパスワード関連の処理が行われた場合、この時差は縮まるとのことです。  CWE-361: Time and State https://cwe.mitre.org/data/definitions/361.html",
+  "affected": [
+    {
+      "name": "ブルーコートシステムズ",
+      "product_name": "ProxySG (SGOS)",
+      "version_number": [
+        "6.5.4 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:bluecoat:proxysgos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.9",
+        "vector": "AV:A/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "認証情報を変更しても、最大15分間は古いアカウントでログインされる可能性があります。"
+  },
+  "solution": "[パッチを適用する] 開発者が提供する情報をもとに、対応するパッチを適用してください。  [ワークアラウンドを実施する] パッチを適用するまでの間、次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。   　* パスワードを変更後、ただちに新しいパスワードでログインするか、間違ったパスワードで認証失敗する  　* アカウントを無効にした後、ただちに無効にしたアカウントで間違ったパスワードを入力し、認証失敗する  　* LDAP, Certificate, SAML など、ProxySG アプライアンスのローカルでない認証を使用する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Blue Coat Systems, Inc.",
+      "vulinfo_id": "Bluecoat Knowledge Base - Changes to ProxySG local users are delayed",
+      "url": "https://kb.bluecoat.com/index?page=content\u0026id=SA77"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2033",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2033"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93097036",
+      "url": "http://jvn.jp/vu/JVNVU93097036/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2033",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2033"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#221620",
+      "url": "http://www.kb.cert.org/vuls/id/221620"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年03月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-03-04T16:58:32+09:00",
+  "date_last_updated": "2014-03-04T16:58:32+09:00",
+  "date_public": "2014-02-28T00:00:00+09:00"
+}

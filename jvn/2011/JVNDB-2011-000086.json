@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2011-000086",
+  "title": "DBD::mysqlPP における SQL インジェクションの脆弱性",
+  "vulinfo_description": "DBD::mysqlPP には、SQL インジェクションの脆弱性が存在します。  DBD::mysqlPP は、MySQL のクライアントインターフェースを提供する Perl モジュールです。DBD::mysqlPP には、SQLインジェクションの脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 株式会社ユービーセキュア 杉山 俊春 氏",
+  "affected": [
+    {
+      "name": "小山浩之",
+      "product_name": "DBD::mysqlPP",
+      "version_number": [
+        "version 0.04 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hiroyuki_oyama:dbd%3A%3Amysqlpp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、データベースで管理している情報を閲覧されたり、改ざんされたりする可能性があります。"
+  },
+  "solution": "[DBD::mysqlPP を使用しない] 開発者によると、「DBD::mysqlPP は、ジョークプログラムとして作成されたものであり、プライベートな利用や MySQL 通信プロトコルの読解を助ける用途にのみ利用し、それ以外の用途においては同一の API を持つライブラリである DBD::mysql 最新版の使用を推奨する」とのことです。  DBD::mysql については、以下のページをご参照ください。  DBD::mysql http://search.cpan.org/dist/DBD-mysql/",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "CPAN",
+      "vulinfo_id": "DBD::mysqlPP",
+      "url": "http://search.cpan.org/dist/DBD-mysqlPP/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3989",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3989"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#51216285",
+      "url": "http://jvn.jp/jp/JVN51216285/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3989",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3989"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年10月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-10-14T12:02:17+09:00",
+  "date_last_updated": "2011-10-14T12:02:17+09:00",
+  "date_public": "2011-10-14T00:00:00+09:00"
+}

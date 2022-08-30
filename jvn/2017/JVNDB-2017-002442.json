@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2017-002442",
+  "title": "U818A WIFI に anonymous FTP でフルアクセス可能な脆弱性",
+  "vulinfo_description": "U818A WIFI は、自身をアクセスポイントとして Wi-Fi 接続機能が実装されています。また、FTP サーバが動作しており、anonymous ユーザが当該ドローン内のファイルシステムにフルアクセス可能です。  U818A WIFI は、空中からの画像や動画の撮影に対応したクアッドコプター ドローンです。マニュアルに記載はありませんが U818A WIFI では FTP サーバが動作しており、ドローンに搭載されている Wi-Fi アクセスポイントを通じて FTP アクセスが可能です。  不適切なデフォルトパーミッション (CWE-276) - CVE-2017-3209 報告者によると、U818A WIFI では FTP サーバが稼働しており、初期設定ではパスワードを必要としない anonymous ユーザによるアクセスが可能となっています。また、当該ドローン内のファイルシステム全域に対して読み書き可能であるとのことです。  また、U818A WIFI は BusyBox 1.20.2 を使用しています。BusyBox 1.20.2 は 2012年にリリースされたバージョンで、既知の脆弱性が複数存在します。",
+  "affected": [
+    {
+      "name": "DBPOWER",
+      "product_name": "U818A WIFI",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dbpower:u818a_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:A/AC:L/Au:N/C:C/I:C/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+      }
+    ],
+    "impact_item": "当該ドローンの無線到達範囲内の第三者によって、ドローンが撮影した画像や動画を取得されたり、システムファイルを改ざんされたりする可能性があります。"
+  },
+  "solution": "2017年4月12日現在、対策方法は不明です。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "DBPOWER",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.dbpower.co.uk/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3209",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3209"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91711014",
+      "url": "http://jvn.jp/vu/JVNVU91711014/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3209",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3209"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#334207",
+      "url": "http://www.kb.cert.org/vuls/id/334207"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-276",
+      "url": "https://cwe.mitre.org/data/definitions/276.html",
+      "title": "不適切なデフォルトパーミッション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月13日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-24T07:08:05Z",
+      "description": "[2019年07月24日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3209) を追加"
+    }
+  ],
+  "date_first_published": "2017-04-13T18:35:40+09:00",
+  "date_last_updated": "2019-07-24T16:08:31+09:00",
+  "date_public": "2017-04-12T00:00:00+09:00"
+}

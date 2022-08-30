@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2013-003919",
+  "title": "Xen における他のドメインの浮動小数点命令の状態の割り当てを見つけられる脆弱性",
+  "vulinfo_description": "Xen は、AMD64 プロセッサ上で実行する場合、例外が保留された際の FXSAVE/FXRSTOR の FOP、FIP、FDP x87 レジスタをただ保存／復元のみする (only save/restore) ため、他のドメインの浮動小数点命令の状態の割り当てを見つけられ、暗号鍵などの重要な情報の取得に利用される脆弱性が存在します。  本脆弱性は、CVE-2006-1056 と類似した脆弱性です。",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "4.0.x",
+        "4.1.x",
+        "4.2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:A/AC:H/Au:S/C:C/I:N/A:N"
+      }
+    ],
+    "impact_item": "一つのドメインにより、他のドメインの浮動小数点命令の状態の割り当てを見つけられ、暗号鍵などの重要な情報の取得に利用される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201309-24",
+      "url": "http://security.gentoo.org/glsa/glsa-201309-24.xml"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Announcements",
+      "vulinfo_id": "XSA 52 Information leak on XSAVE/XRSTOR capable AMD CPUs",
+      "url": "http://wiki.xenproject.org/wiki/Security_Announcements_%28Historical%29#XSA_52_Information_leak_on_XSAVE.2FXRSTOR_capable_AMD_CPUs"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen-announce",
+      "vulinfo_id": "Xen Security Advisory 52 (CVE-2013-2076) - Information leak on XSAVE/XRSTOR capable AMD CPUs",
+      "url": "http://lists.xen.org/archives/html/xen-announce/2013-06/msg00002.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2076",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2076"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2076",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2076"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月30日]\\n  掲載\\n[2013年11月08日]\\n  ベンダ情報：Gentoo Linux (GLSA 201309-24) を追加"
+    }
+  ],
+  "date_first_published": "2013-08-30T16:20:51+09:00",
+  "date_last_updated": "2013-11-08T15:55:42+09:00",
+  "date_public": "2013-06-03T00:00:00+09:00"
+}

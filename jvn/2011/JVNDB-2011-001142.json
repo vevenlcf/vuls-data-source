@@ -1,0 +1,186 @@
+{
+  "vulinfo_id": "JVNDB-2011-001142",
+  "title": "ISC DHCPv6 にサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ISC DHCPv6 サーバには、DHCPDECLINE メッセージの処理に起因するサービス運用妨害 (DoS) の脆弱性が存在します。  ISC から、以下の脆弱性情報が公開されています。  “When the DHCPv6 server code processes a message for an address that was previously declined and internally tagged as abandoned it can trigger an assert failure resulting in the server crashing. This could be used to crash DHCPv6 servers remotely. This issue only affects DHCPv6 servers. DHCPv4 servers are unaffected.”  なおベンダによると、DHCPv6 サーバは影響を受けますが、DHCPv4 サーバは影響を受けません。",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "ISC DHCP",
+      "version_number": [
+        "4.0.x から 4.2.x まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:dhcp"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、サービス運用妨害 (DoS) 攻撃を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] ISC が提供する情報をもとに最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ISC, Inc.",
+      "vulinfo_id": "ISC DHCP Security Vulnerability Disclosure",
+      "url": "https://lists.isc.org/pipermail/isc-os-security/2011-January/000000.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC, Inc.",
+      "vulinfo_id": "dhcp-4.2.1b1-RELNOTES",
+      "url": "http://ftp.isc.org/isc/dhcp/dhcp-4.2.1b1-RELNOTES"
+    },
+    {
+      "type": "vendor",
+      "name": "Knowledge Base",
+      "vulinfo_id": "CVE-2011-0413: DHCP May Crash After Processing a DHCPv6 Decline Message",
+      "url": "https://www.isc.org/software/dhcp/advisories/cve-2011-0413"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0256",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0256.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0413",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0413"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "64959",
+      "url": "http://xforce.iss.net/xforce/xfdb/64959"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#686084",
+      "url": "http://jvn.jp/cert/JVNVU686084"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0413",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0413"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "70680",
+      "url": "http://osvdb.org/70680"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43104",
+      "url": "http://secunia.com/advisories/43104"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43006",
+      "url": "http://secunia.com/advisories/43006"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "46035",
+      "url": "http://www.securityfocus.com/bid/46035"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024999",
+      "url": "http://securitytracker.com/id?1024999"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#686084",
+      "url": "http://www.kb.cert.org/vuls/id/686084"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0235",
+      "url": "http://www.vupen.com/english/advisories/2011/0235"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年03月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-03-01T15:10:09+09:00",
+  "date_last_updated": "2011-03-01T15:10:09+09:00",
+  "date_public": "2011-01-28T00:00:00+09:00"
+}

@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2013-003311",
+  "title": "strongSwan の atodn 関数におけるバッファオーバーフローの脆弱",
+  "vulinfo_description": "strongSwan の atodn 関数には、日和見暗号化 (Opportunistic Encryption) が有効になっている、および RSA キーが使用される場合、バッファオーバーフローの脆弱性が存在します。  本脆弱性は、CVE-2013-2052 および CVE-2013-2053 と同じ問題である可能性があります。",
+  "affected": [
+    {
+      "name": "strongSwan",
+      "product_name": "strongSwan",
+      "version_number": [
+        "2.0.0 から 4.3.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:strongswan:strongswan"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された DNS TXT レコードを介して、サービス運用妨害 (pluto IKE デーモンクラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "strongSwan",
+      "vulinfo_id": "CVE-2013-2054 strongSwan remote buffer overflow in atodn()",
+      "url": "http://download.strongswan.org/security/CVE-2013-2054/CVE-2013-2054.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2054",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2054"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2054",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2054"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年07月12日]\\n  掲載\\n[2013年07月23日]\\n  CVSS による深刻度：内容を更新"
+    }
+  ],
+  "date_first_published": "2013-07-12T10:31:39+09:00",
+  "date_last_updated": "2013-07-23T19:07:22+09:00",
+  "date_public": "2013-05-13T00:00:00+09:00"
+}

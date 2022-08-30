@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2014-007924",
+  "title": "MIT Kerberos 5 の lib/rpc/auth_gssapi_misc.c の auth_gssapi_unwrap_data 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 (別名 krb5) の lib/rpc/auth_gssapi_misc.c の auth_gssapi_unwrap_data 関数は、部分的な XDR のデシリアライズを適切に処理しないため、サービス運用妨害 (解放済みメモリの使用、二重解放、およびデーモンクラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "1.11.5 までの 1.11.x",
+        "1.12.2 までの 1.12.x",
+        "1.13.1 までの 1.13.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "AV:N/AC:L/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、不正な形式の XDR データを介して、サービス運用妨害 (解放済みメモリの使用、二重解放、およびデーモンクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix kadm5/gssrpc XDR double free [CVE-2014-9421]",
+      "url": "https://github.com/krb5/krb5/commit/a197e92349a4aa2141b5dff12e9dd44c2a2166e3"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT Kerberos",
+      "vulinfo_id": "2015-001-patch-r113",
+      "url": "http://web.mit.edu/kerberos/advisories/2015-001-patch-r113.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT krb5 Security Advisory",
+      "vulinfo_id": "MITKRB5-SA-2015-001",
+      "url": "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2015-001.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0439",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0439.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9421",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9421"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9421",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9421"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月23日]\\n  掲載\\n[2015年06月08日]\\n  ベンダ情報：レッドハット (RHSA-2015:0439) を追加"
+    }
+  ],
+  "date_first_published": "2015-02-23T18:09:04+09:00",
+  "date_last_updated": "2015-06-08T17:26:20+09:00",
+  "date_public": "2014-12-28T00:00:00+09:00"
+}

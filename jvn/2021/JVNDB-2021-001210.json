@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2021-001210",
+  "title": "Hitachi ABB Power Grids 製 AFS シリーズにサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Hitachi ABB Power Grids 製 AFS シリーズの複数製品に、サービス運用妨害 (DoS) の脆弱性が存在します。  Hitachi ABB Power Grids が提供する AFS スイッチには、不正な HSR (High-Availability Seamless Redundancy) フレームを受信するとシステム内で無限ループが発生し、HSR リングネットワークで用いられるポートでの通信が不可能となる、サービス運用妨害 (DoS) の脆弱性 (CWE-835) が存在します。",
+  "affected": [
+    {
+      "name": "日立エナジー (旧 日立ABBパワーグリッド)",
+      "product_name": "AFS660",
+      "version_number": [
+        "Version 7.0.07"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi_abb_power_grids:afs660"
+      }
+    },
+    {
+      "name": "日立エナジー (旧 日立ABBパワーグリッド)",
+      "product_name": "AFS665",
+      "version_number": [
+        "Version 7.0.07"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi_abb_power_grids:afs665"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.1",
+        "vector": "AV:A/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "隣接するネットワーク上の攻撃者により不正な HSR フレームを送信され、HSR リングネットワークの通信が阻害される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版のファームウェアにアップデートしてください。 開発者は本脆弱性を修正した以下のバージョンをリリースしています。  　* Version 7.1.03",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Hitachi ABB Power Grids",
+      "vulinfo_id": "AFS Series - HSR Denial-of-Service Vulnerability",
+      "url": "https://search.abb.com/library/Download.aspx?DocumentID=9AKK107991A9269\u0026LanguageCode=en\u0026DocumentPartId=\u0026Action=Launch"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-9307",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9307"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-075-03",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-075-03"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99449207",
+      "url": "http://jvn.jp/cert/JVNVU99449207"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-9307",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-9307"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-835",
+      "url": "https://cwe.mitre.org/data/definitions/835.html",
+      "title": "無限ループ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-03-18T06:50:30Z",
+      "description": "[2021年03月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-03-18T15:50:30+09:00",
+  "date_last_updated": "2021-03-18T15:50:30+09:00",
+  "date_public": "2021-03-17T00:00:00+09:00"
+}

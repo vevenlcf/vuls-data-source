@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-002470",
+  "title": "ConnMan の dhcpv6_get_option 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "ConnMan の gdhcp/client.c 内の dhcpv6_get_option 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ConnMan project",
+      "product_name": "ConnMan",
+      "version_number": [
+        "0.85 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:connman_project:connman"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、DHCP パケットに仕込まれた無効な長さの値を介して、サービス運用妨害 (無限ループおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ConnMan",
+      "vulinfo_id": "Top Page",
+      "url": "http://connman.net/"
+    },
+    {
+      "type": "vendor",
+      "name": "ConnMan",
+      "vulinfo_id": "ConnMan 0.85",
+      "url": "http://connman.net/blogs/patrik/2012/connman-085"
+    },
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201205-02",
+      "url": "http://security.gentoo.org/glsa/glsa-201205-02.xml"
+    },
+    {
+      "type": "vendor",
+      "name": "kernel.org",
+      "vulinfo_id": "gdhcp: Fix packet length checking",
+      "url": "http://git.kernel.org/?p=network/connman/connman.git;a=commitdiff;h=1d1a22fe586a455935483708fbe8eaeada79df7f"
+    },
+    {
+      "type": "vendor",
+      "name": "Novell",
+      "vulinfo_id": "Bug 715172",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=715172"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2322",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2322"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2322",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2322"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年05月22日]\\n  掲載\\n[2012年09月04日]\\n  ベンダ情報：Gentoo Linux (GLSA 201205-02) を追加"
+    }
+  ],
+  "date_first_published": "2012-05-22T16:42:31+09:00",
+  "date_last_updated": "2012-09-04T17:42:07+09:00",
+  "date_public": "2012-05-18T00:00:00+09:00"
+}

@@ -1,0 +1,130 @@
+{
+  "vulinfo_id": "JVNDB-2013-003814",
+  "title": "OpenStack Swift におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenStack Folsom、Grizzly、および Havana の OpenStack Swift には、サービス運用妨害 (余剰 tombstone の消費および Swift クラスタの減速) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Compute Folsom",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:folsom"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Grizzly",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:grizzly"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Havana",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:havana"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Swift",
+      "version_number": [
+        "1.9.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:swift"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "認証されたユーザにより、予測よりも古いタイムスタンプを持つ DELETE リクエストを介して、サービス運用妨害 (余剰 tombstone の消費および Swift クラスタの減速) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "Change I63195702: Topic：folsom/1196932",
+      "url": "https://review.openstack.org/#/c/40646/"
+    },
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "Change I63195702: Topic：grizzly/1196932",
+      "url": "https://review.openstack.org/#/c/40645/"
+    },
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "Change I63195702: Topic：bug-1196932",
+      "url": "https://review.openstack.org/#/c/40643/"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2737",
+      "url": "http://www.debian.org/security/2013/dsa-2737"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "[OSSA 2013-022] Possibly DoS attack using object tombstones (CVE-2013-4155)",
+      "url": "https://bugs.launchpad.net/swift/+bug/1196932"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1197",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1197.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2001-1",
+      "url": "http://www.ubuntu.com/usn/USN-2001-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4155",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4155"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4155",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4155"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月22日]\\n  掲載\\n[2013年11月14日]\\n  ベンダ情報：Ubuntu (USN-2001-1) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1197) を追加"
+    }
+  ],
+  "date_first_published": "2013-08-22T17:51:45+09:00",
+  "date_last_updated": "2013-11-14T16:13:39+09:00",
+  "date_public": "2013-07-02T00:00:00+09:00"
+}

@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2017-002299",
+  "title": "Microsoft Windows Server 2003 の Internet Information Services の WebDAV サービスにおけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Microsoft Windows Server 2003 の Internet Information Services (IIS) の WebDAV サービスの ScStoragePathFromUrl 関数には、バッファオーバーフローの脆弱性が存在します。  本脆弱性への攻撃が 2016 年 7 月または 8 月に観測されています。",
+  "affected": [
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft IIS",
+      "version_number": [
+        "6.0 (Microsoft Windows Server 2003 R2)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:microsoft:iis"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、PROPFIND リクエストの過度に長い \"If: \u003chttp://\" で始まるヘッダを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Microsoft",
+      "vulinfo_id": "Microsoft IIS",
+      "url": "https://www.iis.net/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-7269",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7269"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSMA-17-215-01",
+      "url": "https://ics-cert.us-cert.gov/advisories/ICSMA-17-215-01"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-7269",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-7269"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Add IIS 6.0 ScStoragePathFromUrl exploit (CVE-2017-7269) #8162",
+      "url": "https://github.com/rapid7/metasploit-framework/pull/8162"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "IIS_exploit (CVE-2017-7269)",
+      "url": "https://github.com/edwardz246003/IIS_exploit"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月11日]\\n  掲載\\n[2017年09月11日]\\n  参考情報：ICS-CERT ADVISORY (ICSMA-17-215-01) を追加"
+    }
+  ],
+  "date_first_published": "2017-04-11T10:41:55+09:00",
+  "date_last_updated": "2017-09-11T09:48:41+09:00",
+  "date_public": "2017-03-27T00:00:00+09:00"
+}

@@ -1,0 +1,201 @@
+{
+  "vulinfo_id": "JVNDB-2008-000069",
+  "title": "Apache Tomcat において権限のないクライアントからのリクエストが実行されてしまう脆弱性",
+  "vulinfo_description": "The Apache Software Foundation が提供する Apache Tomcat には、権限のないクライアントからのリクエストが実行されてしまう脆弱性が存在します。  The Apache Software Foundation が提供する Apache Tomcat は、Java Servlet と JavaServer Pages のサーバ実装です。Apache Tomcat には、IP アドレスに基づくアクセス制限をした際に、本来エラーを返答するべき IP アドレスからのリクエストを実行してしまう脆弱性が存在します。  本脆弱性は、ASF Bugzilla - Bug 25835 で既にバグとして修正対応されているものですが、本脆弱性に関する記述はされていなかったため、今回脆弱性としての情報公開を行なうこととなりました。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC がベンダとの調整を行いました。 報告者：富士通株式会社 ソフトウェア事業本部 アプリケーションマネジメント・ ミドルウェア事業部 第二開発部 塚本 建一 氏",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Tomcat",
+      "version_number": [
+        "4.1.0 から 4.1.31 まで",
+        "5.5.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:tomcat"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Application Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_application_server"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Application Framework Suite",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_application_framework_suite"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Application Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_application_server"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Apworks",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_apworks"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Business Application Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_business_application_server"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Job Workload Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_job_workload_server"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Studio",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_studio"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "Interstage Web Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:interstage_web_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "権限のないクライアントからのリクエストが実行されるため、具体的な影響はシステムの処理内容により異なりますが、情報漏えいなどが考えられます。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに最新版へアップデートしてください。 対策済みバージョンは以下の通りです。      * Apache Tomcat 4.1.32 およびそれ以降     * Apache Tomcat 5.5.1 およびそれ以降  詳しくは開発者が提供する情報をご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Apache Tomcat 5.x vulnerabilities",
+      "url": "http://tomcat.apache.org/security-5.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Security Updates",
+      "url": "http://tomcat.apache.org/security"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Apache Tomcat 4.x vulnerabilities",
+      "url": "http://tomcat.apache.org/security-4.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ASF Bugzilla",
+      "vulinfo_id": "Bug 25835",
+      "url": "https://issues.apache.org/bugzilla/show_bug.cgi?id=25835"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV09-006",
+      "url": "http://www.nec.co.jp/security-info/secinfo/nv09-006.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "JVN#30732239",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/jvn-30732239.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "interstage_as_200806",
+      "url": "http://software.fujitsu.com/jp/security/products-fujitsu/solution/interstage_as_200806.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-3271",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3271"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2008-2793",
+      "url": "http://www.frsirt.com/english/advisories/2008/2793"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#30732239",
+      "url": "http://jvn.jp/jp/JVN30732239/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-3271",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-3271"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32234",
+      "url": "http://secunia.com/advisories/32234"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32213",
+      "url": "http://www.securityfocus.com/bid/31698"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "31698",
+      "url": "http://www.securityfocus.com/bid/31698"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年10月10日]\\n  掲載\\n[2009年07月08日]\\n  ベンダ情報：日本電気 (NV09-006) を追加\\n  影響を受けるシステム： 日本電気 (NV09-006) の情報を更新"
+    }
+  ],
+  "date_first_published": "2008-10-10T15:04:41+09:00",
+  "date_last_updated": "2009-07-08T12:11:43+09:00",
+  "date_public": "2008-10-10T00:00:00+09:00"
+}

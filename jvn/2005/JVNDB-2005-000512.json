@@ -1,0 +1,201 @@
+{
+  "vulinfo_id": "JVNDB-2005-000512",
+  "title": "OpenSSH の動的ポート転送処理において不正アクセスを受ける脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  OpenSSH 4.1p1 以前には以下の複数のセキュリティ上の問題が存在します。  1) SSH クライアントにおいて -D オプションにより動的ポート転送を実行する際に、ListenAddress が明示的に指定されていない場合、ポート中継の許可を指定する GatewayPorts が不適切に有効になってしまう問題が存在します。(CAN-2005-2797)  この問題を利用するリモートの攻撃者は、結果として SSH クライアントを実行する標的ホストの転送ポートに不正にアクセスする可能性があります。  尚、この問題は OpenSSH 4.0/4.1 のみが影響を受けることが報告されています。  2) SSH クライアントにおいて \"GSSAPIDelegateCredentials\" を有効に設定している場合、証明書転送処理の不備のため、GSSAPI 認証以外の方法でログインした場合にも SSH サーバに対して GSSAPI 証明書を転送してしまう問題が存在します。(CAN-2005-2798)  SSH クライアントが信頼のないホストに接続を行った場合、この問題を利用するリモートの攻撃者に GSSAPI 証明書が漏洩してしまう可能性があります。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "4.1p1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "10 (x64) ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.04 ",
+        "11.11 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02090",
+      "url": "http://www2.itrc.hp.com/service/cki/docDisplay.do?docId=c00589050"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX02090",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX02090.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "AXSA-2005-95:1",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=216"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "Top page",
+      "url": "http://www.openbsd.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "167444",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=167444"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:527",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-527.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2005-100",
+      "url": "http://www.turbolinux.com/security/2005/TLSA-2005-100.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:527",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-527J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2005-100",
+      "url": "http://www.turbolinux.co.jp/security/2005/TLSA-2005-100j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-2797",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2797"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2005-1624",
+      "url": "http://www.frsirt.com/english/advisories/2005/1624"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-2797",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-2797"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA16686",
+      "url": "http://secunia.com/advisories/16686/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "14729",
+      "url": "http://www.securityfocus.com/bid/14729"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "14727",
+      "url": "http://www.securityfocus.com/bid/14727"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1014845",
+      "url": "http://securitytracker.com/alerts/2005/Sep/1014845.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-09-01T00:00:00+09:00"
+}

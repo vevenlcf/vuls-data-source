@@ -1,0 +1,101 @@
+{
+  "vulinfo_id": "JVNDB-2012-005620",
+  "title": "Xen 用 MMIO オペレーションエミュレータにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Xen 用 MMIO オペレーションエミュレータの arch/x86/hvm/io.c 内の handle_mmio 関数は、HVM ゲストで実行される場合、エミュレーションサイクル間で特定の状態情報を適切にリセットしないため、サービス運用妨害 (ゲスト OS クラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "シトリックス・システムズ",
+      "product_name": "Xen",
+      "version_number": [
+        "3.3",
+        "4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:citrix:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルゲスト OS ユーザにより、MMIO 領域上の不特定の操作を介して、サービス運用妨害 (ゲスト OS クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Citrix XenServer Multiple Security Updates",
+      "vulinfo_id": "CTX134708",
+      "url": "http://support.citrix.com/article/CTX134708"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2531",
+      "url": "http://www.debian.org/security/2012/dsa-2531"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:1172",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00017.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:1174",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00018.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Announcements",
+      "vulinfo_id": "XSA-10 HVM guest user mode MMIO emulation DoS vulnerability",
+      "url": "http://wiki.xen.org/wiki/Security_Announcements#XSA-10_HVM_guest_user_mode_MMIO_emulation_DoS_vulnerability"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen-announce",
+      "vulinfo_id": "Xen Security Advisory 10 (CVE-2012-3432) - HVM user mode MMIO emul DoS",
+      "url": "http://lists.xen.org/archives/html/xen-devel/2012-07/msg01649.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-3432",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3432"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-3432",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3432"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-05T13:05:20+09:00",
+  "date_last_updated": "2012-12-05T13:05:20+09:00",
+  "date_public": "2012-07-26T00:00:00+09:00"
+}

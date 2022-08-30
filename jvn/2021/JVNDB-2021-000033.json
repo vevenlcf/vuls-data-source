@@ -1,0 +1,80 @@
+{
+  "vulinfo_id": "JVNDB-2021-000033",
+  "title": "スマートフォンアプリ「ホットペッパーグルメ」におけるアクセス制限不備の脆弱性",
+  "vulinfo_description": "株式会社リクルートが提供するスマートフォンアプリ「ホットペッパーグルメ」には、Custom URL Scheme を使用してリクエストされた URL にアクセスする機能が実装されています。この機能には、任意のアプリからリクエストを受け取りアクセスを実行してしまう、アクセス制限不備の脆弱性 (CWE-284) が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CCが開発者との調整を行いました。 報告者: 佐藤 竜 氏 ",
+  "affected": [
+    {
+      "name": "株式会社リクルート",
+      "product_name": "ホットペッパーグルメ",
+      "version_number": [
+        "Androidアプリ ver.4.111.0 およびそれ以前",
+        "iOSアプリ ver.4.111.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:recruit:hotpepper_gourmet"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、当該製品を経由し任意のウェブサイトにアクセスさせられる可能性があります。結果として、フィッシング等の被害にあう可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は、本脆弱性を修正したバージョンをリリースしています。 ・Androidアプリ「ホットペッパーグルメ」 ver.4.111.5 ・iOSアプリ「ホットペッパーグルメ」 ver.4.111.5",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "株式会社リクルートからの情報",
+      "url": "https://jvn.jp/jp/JVN97434260/995838/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20715",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20715"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#97434260",
+      "url": "https://jvn.jp/jp/JVN97434260/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-04-22T06:27:09Z",
+      "description": "[2021年04月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-04-27T12:04:31+09:00",
+  "date_last_updated": "2021-04-27T12:04:31+09:00",
+  "date_public": "2021-04-27T00:00:00+09:00"
+}

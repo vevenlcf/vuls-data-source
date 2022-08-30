@@ -1,0 +1,120 @@
+{
+  "vulinfo_id": "JVNDB-2017-005601",
+  "title": "D-Link DIR-130 および DIR-330 に複数の脆弱性",
+  "vulinfo_description": "D-Link が提供する DIR-130 および DIR-330 には、リモートログインページにおける認証回避の脆弱性および管理者アカウントの認証情報管理不備の脆弱性が存在します。  キャプチャリプレイによる認証回避 (CWE-294) - CVE-2017-3191 リモート管理機能のログインページにアクセス可能な第三者が細工した POST リクエストを送信することで、tools_admin.asp などの本来管理者アカウントでしかアクセスできないページに認証なしでアクセスすることが可能です。  不十分な認証情報の保護 (CWE-522) - CVE-2017-3192 tools_admin.asp ページには、管理者アカウントのパスワードが Base64 エンコードされた形で含まれています。CVE-2017-3191 などの認証回避の脆弱性を用いることで、遠隔の第三者が当該機器における管理者アカウントの認証情報を取得することが可能です。",
+  "affected": [
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-130",
+      "version_number": [
+        "firmware version 1.23"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-130"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-330",
+      "version_number": [
+        "firmware version 1.12"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-330"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、当該機器における管理者アカウントの認証情報を取得され、管理機能の操作が行われる可能性があります。"
+  },
+  "solution": "2017年3月16日現在、対策方法は不明です。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  * 機器へのアクセスを制限する * リモート管理機能を無効にする",
+  "related": [
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3191",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3191"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3192",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3192"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96964526",
+      "url": "http://jvn.jp/vu/JVNVU96964526/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3191",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3191"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3192",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3192"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#553503",
+      "url": "http://www.kb.cert.org/vuls/id/553503"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-294",
+      "url": "https://cwe.mitre.org/data/definitions/294.html",
+      "title": "Capture-replay による認証回避"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-522",
+      "url": "https://cwe.mitre.org/data/definitions/522.html",
+      "title": "認証情報の不十分な保護"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年08月02日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2018-03-14T02:00:20Z",
+      "description": "[2018年03月14日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3191) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3192) を追加"
+    }
+  ],
+  "date_first_published": "2017-08-02T12:05:16+09:00",
+  "date_last_updated": "2018-03-14T12:19:51+09:00",
+  "date_public": "2017-03-15T00:00:00+09:00"
+}

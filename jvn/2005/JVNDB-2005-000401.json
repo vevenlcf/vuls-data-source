@@ -1,0 +1,130 @@
+{
+  "vulinfo_id": "JVNDB-2005-000401",
+  "title": "RealNetworks RealPlayer の .rm ファイルの処理におけるヒープオーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Helix Player および RealPlayer は、ネットワークを通じて動画や音声、文字、静止画などを組み合わせたマルチメディアコンテンツを配信するシステムである RealSystem の受信・再生をサポートしています。RealText は RealSystem のフォーマットで、テキストをスクロールさせるなど、さまざまな効果を与えることができます。  Helix Player 1.0.4 以前、RealNetworks RealPlayer (Linux 版) 10.0.4 以前には、RealText を含む RealMedia ファイルの構文解析時の境界チェックが適切に行われないため、ヒープオーバーフローが発生する問題が存在します。  この問題を利用するリモートの攻撃者は、意図的に作成した RealMedia ファイルを Helix Player や RealPlayer で開かせるように標的ユーザを誘導することにより、結果として標的ユーザの権限で任意のコードを実行できる可能性があります。  尚、Windows 版 RealPlayer 10.5 (6.0.12.1069) 以前には、上記の問題に加えて以下の複数の問題があることが報告されています。  ・MP3 ファイルの処理において不備が存在するため、不正にファイルが上書きされる、あるいは ActiveX コントロールが実行される問題 ・AVI ファイルの処理においてバッファオーバーフローが発生するため、任意のコードが実行される問題 ・ローカルの HTML ファイルを参照する RealMedia ファイルを再生可能な問題",
+  "affected": [
+    {
+      "name": "リアルネットワークス",
+      "product_name": "RealNetworks RealPlayer",
+      "version_number": [
+        "10",
+        "10.0.4 およびそれ以前",
+        "10.5",
+        "8"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:realnetworks:realplayer"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "RealNetworks Security Updates and Incident Reports",
+      "vulinfo_id": "June 23, 2005",
+      "url": "http://service.real.com/help/faq/security/050623_player/JA/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "159864",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=159864"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "159868",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=159868"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "159871",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=159871"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:523",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-523.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:517",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-517.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:523",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-523J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:517",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-517J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-1766",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1766"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2005-0866",
+      "url": "http://www.frsirt.com/english/advisories/2005/0866"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-1766",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-1766"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-06-23T00:00:00+09:00"
+}

@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2022-001736",
+  "title": "uClibc および uClibc-ng に DNS キャッシュポイズニングの問題",
+  "vulinfo_description": "uClibc および uClibc-ng は組み込み製品で多く用いられている軽量な C 言語ライブラリです。uClibc は2012年5月を最後に開発が停止しており、2014年7月からは後継の uClibc-ng の開発が今日まで継続されています。  uClibc および uClibc-ng には、DNS ヘッダのトランザクション ID がランダム化されていない脆弱性（CVE-2022-30295、CWE-330）が存在します。これにより、攻撃者が悪意のある DNS パケットを送信し不正な DNS キャッシュを登録させることにより、ユーザを任意のサイトへリダイレクトさせる\u003ca href=\"https://datatracker.ietf.org/doc/html/rfc5452\" target=\"_blank\"\u003e DNS キャッシュポイズニング攻撃\u003c/a\u003eの被害を受ける可能性があります。",
+  "affected": [
+    {
+      "name": "Erik Andersen",
+      "product_name": "uClibc",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:uclibc:uclibc"
+      }
+    },
+    {
+      "name": "uClibc-ng project",
+      "product_name": "uClibc-ng",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:uclibc-ng_project:uclibc-ng"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "キャッシュポイズニング攻撃によって偽の DNS 情報をキャッシュさせられ、ユーザが偽のサイトに誘導される可能性があります。 "
+  },
+  "solution": "2022年5月10日現在、本脆弱性の修正パッチは提供されていません。 ベンダからの情報を注視し、製品のファームウェアを常に最新に保つよう心がけてください。  uClibc および uClibc-ng を用いて製品を開発している場合、DNS ヘッダのトランザクション ID をランダム化する修正を行ってください。 \u003ca href=\"https://www.nozominetworks.com/blog/nozomi-networks-discovers-unpatched-dns-bug-in-popular-c-standard-library-putting-iot-at-risk/\" target=\"_blank\"\u003e発見者によると、\u003c/a\u003e本脆弱性の原因は /libc/inet/resolv.c 内の __dns_lookup 関数において、単純にインクリメント処理された変数 local_id をトランザクション ID として使用していることにあります。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "uClibc",
+      "vulinfo_id": "Top Page",
+      "url": "https://uclibc.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "uClibc-ng",
+      "vulinfo_id": "Top Page",
+      "url": "https://uclibc-ng.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-30295",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-30295"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96479085",
+      "url": "https://jvn.jp/vu/JVNVU96479085/"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#473698",
+      "url": "https://kb.cert.org/vuls/id/473698"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Nozomi Networks Discovers Unpatched DNS Bug in Popular C Standard Library Putting IoT at Risk",
+      "url": "https://www.nozominetworks.com/blog/nozomi-networks-discovers-unpatched-dns-bug-in-popular-c-standard-library-putting-iot-at-risk/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-330",
+      "url": "https://cwe.mitre.org/data/definitions/330.html",
+      "title": "不十分なランダム値の使用"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-05-11T07:49:41Z",
+      "description": "[2022年05月11日]   掲載"
+    }
+  ],
+  "date_first_published": "2022-05-11T17:36:49+09:00",
+  "date_last_updated": "2022-05-11T17:36:49+09:00",
+  "date_public": "2022-05-10T00:00:00+09:00"
+}

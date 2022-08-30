@@ -1,0 +1,137 @@
+{
+  "vulinfo_id": "JVNDB-2015-001252",
+  "title": "PHP の ext/standard/var_unserializer.re の process_nested_data 関数における任意のコードを実行される脆弱性",
+  "vulinfo_description": "PHP の ext/standard/var_unserializer.re の process_nested_data 関数には、解放済みメモリの使用 (Use-after-free) により、任意のコードを実行される脆弱性が存在します。  本脆弱性は、CVE-2014-8142 に対する修正が不十分だったことによる脆弱性です。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.37 未満",
+        "5.5.21 未満の 5.5.x",
+        "5.6.5 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.6.8 以上 10.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、オブジェクトのシリアル化されたプロパティ内の重複した数字キーの不適切な処理を利用する、巧妙に細工されたアンシリアライズされた呼び出しを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-30-3 OS X El Capitan 10.11",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00008.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205267",
+      "url": "https://support.apple.com/en-us/HT205267"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205267",
+      "url": "http://support.apple.com/ja-jp/HT205267"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix for bug #68710 (Use After Free Vulnerability in PHP's unserialize())",
+      "url": "https://github.com/php/php-src/commit/b585a3aed7880a5fa5c18e2b838fc96f40e075bd"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2015-2511963.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #68710",
+      "url": "https://bugs.php.net/bug.php?id=68710"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1185397",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1185397"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0231",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0231"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97220341",
+      "url": "http://jvn.jp/vu/JVNVU97220341/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0231",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0231"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2015-0040",
+      "url": "http://advisories.mageia.org/MGASA-2015-0040.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月29日]\\n  掲載\\n[2015年04月27日]\\n  参考情報：関連文書 (MGASA-2015-0040) を追加\\n[2015年07月30日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2015) を追加\\n[2015年10月06日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT205267) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-09-30-3 OS X El Capitan 10.11) を追加\\n  参考情報：JVN (JVNVU#97220341) を追加"
+    }
+  ],
+  "date_first_published": "2015-01-29T15:32:02+09:00",
+  "date_last_updated": "2015-10-06T10:36:00+09:00",
+  "date_public": "2015-01-22T00:00:00+09:00"
+}

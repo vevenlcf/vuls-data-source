@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2014-005772",
+  "title": "複数の ZOHO 製品における SQL インジェクションの脆弱性",
+  "vulinfo_description": "ZOHO ManageEngine OpManager、IT360、および Social IT Plus には、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Zoho Corporation",
+      "product_name": "ManageEngine IT360",
+      "version_number": [
+        "10.3",
+        "10.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zohocorp:manageengine_it360"
+      }
+    },
+    {
+      "name": "Zoho Corporation",
+      "product_name": "ManageEngine OpManager",
+      "version_number": [
+        "11.3",
+        "11.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zohocorp:manageengine_opmanager"
+      }
+    },
+    {
+      "name": "Zoho Corporation",
+      "product_name": "ManageEngine Social IT Plus",
+      "version_number": [
+        "11.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zohocorp:manageengine_it_plus"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者、またはリモート認証されたユーザにより、(1) APMBVHandler サーブレットの Delete 操作の OPM_BVNAME パラメータ、または (2) DataComparisonServlet サーブレットの compare 操作の query パラメータを介して、任意の SQL コマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ManageEngine",
+      "vulinfo_id": "SQL Injection Vulnerability FIx",
+      "url": "https://support.zoho.com/portal/manageengine/helpcenter/articles/sql-injection-vulnerability-fix"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7868",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7868"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7868",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7868"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Multiple vulnerabilities in ManageEngine OpManager, Social IT Plus and IT360",
+      "url": "https://raw.githubusercontent.com/pedrib/PoC/master/ManageEngine/me_opmanager_socialit_it360.txt"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-12-05T16:42:14+09:00",
+  "date_last_updated": "2014-12-05T16:42:14+09:00",
+  "date_public": "2014-11-09T00:00:00+09:00"
+}

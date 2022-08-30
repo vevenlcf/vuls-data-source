@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-001540",
+  "title": "FFmpeg の libavcodec/msrle.c の msrle_decode_frame 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FFmpeg の libavcodec/msrle.c の msrle_decode_frame 関数は、行サイズを適切に計算しないため、サービス運用妨害 (配列の領域外へのアクセス) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.1.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された Microsoft RLE ビデオデータを介して、サービス運用妨害 (配列の領域外へのアクセス) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "FFmpeg Security",
+      "url": "http://ffmpeg.org/security.html"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "avcodec/msrle: use av_image_get_linesize() to calculate the linesize",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=c919e1ca2ecfc47d796382973ba0e48b8f6f92a2"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2099",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2099"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2099",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2099"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年03月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-03-04T15:55:23+09:00",
+  "date_last_updated": "2014-03-04T15:55:23+09:00",
+  "date_public": "2014-02-17T00:00:00+09:00"
+}

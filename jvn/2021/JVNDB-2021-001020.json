@@ -1,0 +1,166 @@
+{
+  "vulinfo_id": "JVNDB-2021-001020",
+  "title": "sudo にヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "sudo にはコマンドの引数に設定された特殊文字のエスケープ処理の実装に起因した、ヒープベースのバッファオーバーフロー (CWE-122) の脆弱性が存在します。 2021年2月5日時点において、macOS、AIX、Solaris においても影響を受ける可能性があるとの報告がされていますが、発見者による確認は実施されていません。  なお、2021年2月9日に Apple から本件に対応する\u003ca href=\"https://support.apple.com/en-us/HT212177\" target=\"_blank\"\u003eセキュリティアップデート\u003c/a\u003eが公開されました。",
+  "affected": [
+    {
+      "name": "sudo project",
+      "product_name": "Sudo",
+      "version_number": [
+        "バージョン 1.8.2 から 1.8.31p2",
+        "バージョン 1.9.0 から 1.9.5p1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sudo_project:sudo"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルの第三者によって、権限昇格され管理者権限でコマンドを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へとアップデートしてください。  なお、本脆弱性の影響が確認されていない OS やディストリビューションにおいても影響を受ける可能性があるため、本件に関する続報を注視してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "About the security content of macOS Big Sur 11.2.1, macOS Catalina 10.15.7 Supplemental Update, and macOS Mojave 10.14.6 Security Update 2021-002",
+      "url": "https://support.apple.com/en-us/HT212177"
+    },
+    {
+      "type": "vendor",
+      "name": "Sudo",
+      "vulinfo_id": "Buffer overflow in command line unescaping",
+      "url": "https://www.sudo.ws/alerts/unescape_overflow.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-3156",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3156"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "sudoの脆弱性（CVE-2021-3156）に関する注意喚起",
+      "url": "https://www.jpcert.or.jp/at/2021/at210005.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92304019",
+      "url": "https://jvn.jp/vu/JVNVU92304019/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98963695",
+      "url": "https://jvn.jp/vu/JVNVU98963695/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96493147",
+      "url": "http://jvn.jp/cert/JVNVU96493147"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91343607",
+      "url": "https://jvn.jp/vu/JVNVU91343607/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99480250",
+      "url": "https://jvn.jp/vu/JVNVU99480250/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-3156",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3156"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#794544",
+      "url": "https://kb.cert.org/vuls/id/794544"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Qualys Security Blog (CVE-2021-3156: Heap-Based Buffer Overflow in Sudo (Baron Samedit))",
+      "url": "https://blog.qualys.com/vulnerabilities-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-122",
+      "url": "https://cwe.mitre.org/data/definitions/122.html",
+      "title": "ヒープベースのバッファオーバーフロー"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-02-08T08:32:48Z",
+      "description": "[2021年02月08日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-04-02T02:27:57Z",
+      "description": "[2021年04月02日]\\n  概要：内容を更新\\n  ベンダ情報：Apple Security Updates (About the security content of macOS Big Sur 11.2.1, macOS Catalina 10.15.7 Supplemental Update, and macOS Mojave 10.14.6 Security Update 2021-002) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2021-05-07T01:32:26Z",
+      "description": "[2021年05月07日]\\n  参考情報：JVN (JVNVU#92304019) を追加"
+    },
+    {
+      "history_no": "5",
+      "date_time": "2021-05-19T07:16:42Z",
+      "description": "[2021年05月19日]\\n  参考情報：JVN (JVNVU#98963695) を追加"
+    },
+    {
+      "history_no": "7",
+      "date_time": "2021-06-10T08:51:26Z",
+      "description": "[2021年06月10日]\\n  参考情報：JVN (JVNVU#91343607) を追加"
+    },
+    {
+      "history_no": "8",
+      "date_time": "2021-12-02T05:20:40Z",
+      "description": "[2021年12月02日]\\n  参考情報：JVN (JVNVU#99480250) を追加\\n"
+    }
+  ],
+  "date_first_published": "2021-02-08T17:32:48+09:00",
+  "date_last_updated": "2021-06-10T17:52:59+09:00",
+  "date_public": "2021-02-05T00:00:00+09:00"
+}

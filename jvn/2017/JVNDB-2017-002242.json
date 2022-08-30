@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2017-002242",
+  "title": "virglrenderer の gallium/auxiliary/tgsi/tgsi_text.c の parse_instruction 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "virglrenderer の gallium/auxiliary/tgsi/tgsi_text.c の parse_instruction 関数には、サービス運用妨害 (配列の境界外アクセスおよびプロセスクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "virglrenderer project",
+      "product_name": "virglrenderer",
+      "version_number": [
+        "0.6.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:virglrenderer_project:virglrenderer_virglrenderer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ゲスト OS ユーザにより、巧妙に細工された テクスチャ命令 (texture instruction) を介して、サービス運用妨害 (配列の境界外アクセスおよびプロセスクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "gallium/tgsi: fix oob access in parse instruction",
+      "url": "https://cgit.freedesktop.org/virglrenderer/commit/src/gallium/auxiliary/tgsi/tgsi_text.c?id=28894a30a17a84529be102b21118e55d6c9f23fa"
+    },
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "[virglrenderer-devel] [ANNOUNCE] virglrenderer 0.6.0",
+      "url": "https://lists.freedesktop.org/archives/virglrenderer-devel/2017-February/000145.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5580",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5580"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5580",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5580"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-04-06T11:51:51+09:00",
+  "date_last_updated": "2017-04-06T11:51:51+09:00",
+  "date_public": "2017-02-07T00:00:00+09:00"
+}

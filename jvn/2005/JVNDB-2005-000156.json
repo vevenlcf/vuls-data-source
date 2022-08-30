@@ -1,0 +1,130 @@
+{
+  "vulinfo_id": "JVNDB-2005-000156",
+  "title": "RealNetworks 製品の CSmil1Parser::testAttributeFailed 関数における任意のコードを実行される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Helix Community の UNIX 用のメディアプレーヤー Helix Player は、WAV、SMIL (Synchronized Multimedia Integration Language)、MP3、Flash、そして RealNetworks によって開発された RealAudio や RealVideo メディアフォーマットなどをサポートしています。  Helix Player 1.0.2 以前、RealNetworks RealPlayer 10.0.2 以前 (Linux 版) には、WAV ファイルおよび SMIL ファイルの解析処理において境界チェックが適切に行われないために、バッファオーバーフローが発生する問題が存在します。  この問題を利用するリモートの攻撃者は、Web ページや電子メールを介して、意図的に作成した WAV ファイルや SMIL ファイルを Helix Player や RealPlayer で開かせるように標的ユーザを誘導することにより、結果として標的ユーザの権限で任意のコードを実行することが可能です。  また、Windows 版 RealPlayer 10.5 (6.0.12.1040-1056) についてもこの問題の影響を受けることが RealNetworks より報告されています。",
+  "affected": [
+    {
+      "name": "リアルネットワークス",
+      "product_name": "RealNetworks RealPlayer",
+      "version_number": [
+        "for Linux 10.0.2 およびそれ以前",
+        "for Windows 10",
+        "for Windows 10.5",
+        "for Windows 8"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:realnetworks:realplayer"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "RealNetworks Security Updates and Incident Reports",
+      "vulinfo_id": "March 1, 2005",
+      "url": "http://service.real.com/help/faq/security/050224_player/JA/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:299",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-299.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:271",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-271.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:265",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-265.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:265",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-265J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:299",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-299J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:271",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-271J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0455",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0455"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0455",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0455"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "12698",
+      "url": "http://www.securityfocus.com/bid/12698"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "12697",
+      "url": "http://www.securityfocus.com/bid/12697"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-03-01T00:00:00+09:00"
+}

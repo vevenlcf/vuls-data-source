@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2016-002378",
+  "title": "Linux Kernel の sound/core/timer.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の sound/core/timer.c は、不正なタイプのミューテックスを使用するため、サービス運用妨害 (競合状態、解放済みメモリの使用 (Use-after-free)、およびシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.4.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された ioctl コールを介して、サービス運用妨害 (競合状態、解放済みメモリの使用 (Use-after-free)、およびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.4.1",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.4.1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ALSA: timer: Fix race among timer ioctls",
+      "url": "https://github.com/torvalds/linux/commit/af368027a49a751d6ff4ee9e3f9961f35bb4fede"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ALSA: timer: Fix race among timer ioctls",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=af368027a49a751d6ff4ee9e3f9961f35bb4fede"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1311564",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1311564"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2546",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2546"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2546",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2546"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-02T17:59:52+09:00",
+  "date_last_updated": "2016-05-02T17:59:52+09:00",
+  "date_public": "2016-01-31T00:00:00+09:00"
+}

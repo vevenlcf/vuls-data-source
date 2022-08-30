@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2016-007055",
+  "title": "pecl_http の HTTP URL 構文解析機能におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "pecl_http の HTTP URL 構文解析機能には、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Michael Wallner",
+      "product_name": "pecl_http",
+      "version_number": [
+        "3.0.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:pecl_http"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、URL の非印字文字 (non-printable character) を介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fix bug #71719 (Buffer overflow in HTTP url parsing functions)",
+      "url": "https://github.com/m6w6/ext-http/commit/3724cd76a28be1d6049b5537232e97ac"
+    },
+    {
+      "type": "vendor",
+      "name": "PECL",
+      "vulinfo_id": "pecl_http 3.0.1",
+      "url": "https://pecl.php.net/package/pecl_http/3.0.1"
+    },
+    {
+      "type": "vendor",
+      "name": "PECL",
+      "vulinfo_id": "pecl_http",
+      "url": "https://pecl.php.net/package/pecl_http"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #71719",
+      "url": "https://bugs.php.net/bug.php?id=71719"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5873",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5873"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5873",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5873"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年02月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-02-08T18:18:17+09:00",
+  "date_last_updated": "2017-02-08T18:18:17+09:00",
+  "date_public": "2016-03-09T00:00:00+09:00"
+}

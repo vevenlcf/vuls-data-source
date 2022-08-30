@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2016-003034",
+  "title": "Xen の libxl デバイスハンドリングにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Xen の libxl デバイスハンドリングには、サービス運用妨害 (管理ツールの混乱) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "4.6.x まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ドライバドメインへのアクセス権を持つローカルのゲスト OS ユーザにより、xenstore のバックエンドのディレクトリの情報を操作されることで、サービス運用妨害 (管理ツールの混乱) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Xen Security Advisory",
+      "vulinfo_id": "XSA-178",
+      "url": "http://xenbits.xen.org/xsa/advisory-178.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4963",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4963"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4963",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4963"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-08T15:56:20+09:00",
+  "date_last_updated": "2016-06-08T15:56:20+09:00",
+  "date_public": "2016-06-02T00:00:00+09:00"
+}

@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2015-007117",
+  "title": "Linux Kernel の  ext4 ファイルシステムの実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の  ext4 ファイルシステムの実装には、競合状態により、サービス運用妨害 (ディスク破損) 状態にされる可能性があります。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、非同期の穴開け (hole punching) とページフォルト処理の後、異なるユーザのファイルに関連したページに書き込まれることで、サービス運用妨害 (ディスク破損) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ext4: fix races between page faults and hole punching",
+      "url": "https://github.com/torvalds/linux/commit/ea3d7209ca01da209cda6f0dea8be9cc4b7a933b"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ext4: fix races between page faults and hole punching",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ea3d7209ca01da209cda6f0dea8be9cc4b7a933b"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1323577",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1323577"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8839",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8839"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8839",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8839"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:07:34+09:00",
+  "date_last_updated": "2016-05-10T10:07:34+09:00",
+  "date_public": "2015-12-07T00:00:00+09:00"
+}

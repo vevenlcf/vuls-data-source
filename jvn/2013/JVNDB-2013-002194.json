@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2013-002194",
+  "title": "Red Hat Storage の GlusterFS 機能における任意のファイルを上書きされる脆弱性",
+  "vulinfo_description": "Red Hat Storage Management Console、Native Client、および Server の GlusterFS 機能には、任意のファイルを上書きされる脆弱性が存在します。  本脆弱性は、CVE-2012-4417 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Gluster, Inc.",
+      "product_name": "GlusterFS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gluster:glusterfs"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Storage Management Console",
+      "version_number": [
+        "2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:storage_management_console"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Storage Native Client",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:storage_native_client"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Storage Server",
+      "version_number": [
+        "2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:storage_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) tests/volume.rc、(2) extras/hook-scripts/S30samba-stop.sh、およびその他によって作成された複数の一時ファイルへのシンボリックリンク攻撃 (symlink attack) を介して、任意のファイルを上書きされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gluster",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.gluster.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 886364",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=886364"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0691",
+      "url": "https://rhn.redhat.com/errata/RHSA-2013-0691.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-5635",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5635"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-5635",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-5635"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-04-11T17:35:14+09:00",
+  "date_last_updated": "2013-04-11T17:35:14+09:00",
+  "date_public": "2013-03-28T00:00:00+09:00"
+}

@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2011-005314",
+  "title": "Ubuntu 上で稼動する libpam-modules の pam_motd における権限を取得される脆弱性",
+  "vulinfo_description": "Ubuntu 上で稼動する libpam-modules の pam_motd (別名 MOTD モジュール) には、\"session optional pam_motd.so\" のような特定の設定を使用する場合、検索パスに関する処理に不備があるため、権限を取得される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-426: Untrusted Search Path (信頼性のない検索パス) と識別されています。 http://cwe.mitre.org/data/definitions/426.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "libpam-modules",
+      "version_number": [
+        "0.99.7.1-5ubuntu6.5 未満 (8.04 LTS)",
+        "1.1.1-2ubuntu5.4 未満 (Ubuntu 10.04 LTS)",
+        "1.1.1-4ubuntu2.4 未満 (Ubuntu 10.10)",
+        "1.1.2-2ubuntu8.4 未満 (Ubuntu 11.04)",
+        "1.1.3-2ubuntu2.1 未満 (Ubuntu 11.10)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:canonical:libpam-modules"
+      }
+    },
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "10.10",
+        "11.04",
+        "11.10",
+        "8.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、悪意のあるコマンドを参照するように PATH 環境変数を変更されることで、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #610125",
+      "url": "https://bugs.launchpad.net/ubuntu/%2Bsource/pam/%2Bbug/610125"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1237-1",
+      "url": "http://www.ubuntu.com/usn/USN-1237-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3628",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3628"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3628",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3628"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-21T11:37:22+09:00",
+  "date_last_updated": "2014-04-21T11:37:22+09:00",
+  "date_public": "2011-10-24T00:00:00+09:00"
+}

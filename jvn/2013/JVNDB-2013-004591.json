@@ -1,0 +1,139 @@
+{
+  "vulinfo_id": "JVNDB-2013-004591",
+  "title": "Linux Kernel の crypto/ansi_cprng.c の get_prng_bytes 関数における暗号保護メカニズムを破られる脆弱性",
+  "vulinfo_description": "Linux Kernel の crypto/ansi_cprng.c の get_prng_bytes 関数には、一つずれエラー (Off-by-One error) により、暗号保護メカニズムを破られる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "18",
+        "19"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.11.4 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5",
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "version_number": [
+        "2.0",
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、少量のデータへの複数のリクエストを介して、消費データの状態の不適切な管理を引き起こされることで、暗号保護メカニズムを破られる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1007690",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1007690"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1449",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1449.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1490",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1490.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1645",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1645.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4345",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4345"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4345",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4345"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[PATCH] ansi_cprng: Fix off by one error in non-block size request",
+      "url": "http://marc.info/?l=linux-crypto-vger\u0026m=137942122902845\u0026w=2"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月11日]\\n  掲載\\n[2013年11月13日]\\n  ベンダ情報：レッドハット (RHSA-2013:1449) を追加\\n[2014年02月18日]\\n  対策：内容を更新\\n  ベンダ情報：レッドハット (RHSA-2013:1490) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1645) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-11T19:09:36+09:00",
+  "date_last_updated": "2014-02-18T17:48:29+09:00",
+  "date_public": "2013-09-17T00:00:00+09:00"
+}

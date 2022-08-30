@@ -1,0 +1,141 @@
+{
+  "vulinfo_id": "JVNDB-2013-002010",
+  "title": "複数の OpenStack 製品におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenStack Nova Grizzly、Folsom、および Essex は、固定 IP 用のクオータを適切に実装しないため、サービス運用妨害 (リソースの枯渇および新しいインスタンス作成の失敗) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "11.10",
+        "12.04 LTS",
+        "12.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Compute Folsom",
+      "version_number": [
+        "2012.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:folsom"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Essex",
+      "version_number": [
+        "2012.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:essex"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Grizzly",
+      "version_number": [
+        "2012.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:grizzly"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、多数の addFixedIp コールを介して、サービス運用妨害 (リソースの枯渇および新しいインスタンス作成の失敗) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1125468",
+      "url": "https://bugs.launchpad.net/nova/+bug/1125468"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change I2a5afaa4: Add quotas for fixed ips.",
+      "url": "https://review.openstack.org/#/c/24453/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change I970d540c: Add quotas for fixed ips.",
+      "url": "https://review.openstack.org/#/c/24452/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change Iffa19583: Add quotas for fixed ips.",
+      "url": "https://review.openstack.org/#/c/24451/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 919648",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=919648"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0709",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0709.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1771-1",
+      "url": "http://www.ubuntu.com/usn/usn-1771-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1838",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1838"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1838",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1838"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月27日]\\n  掲載\\n[2013年04月11日]\\n  影響を受けるシステム：Ubuntu の情報を追加\\n[2013年06月20日]\\n  ベンダ情報：レッドハット (RHSA-2013:0709) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-27T14:42:29+09:00",
+  "date_last_updated": "2013-04-11T14:57:26+09:00",
+  "date_public": "2013-03-15T00:00:00+09:00"
+}

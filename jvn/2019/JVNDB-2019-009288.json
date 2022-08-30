@@ -1,0 +1,139 @@
+{
+  "vulinfo_id": "JVNDB-2019-009288",
+  "title": "OpenSSL の EC グループにおけるサイドチャンネルに耐性のないコードパスにフォールバックされる脆弱性",
+  "vulinfo_description": "OpenSSL の EC グループは、明示的なパラメータを使用してグループを作成する場合、co-factor が存在しないため、サイドチャンネルに耐性のないコードパスにフォールバックされ、ECDSA 署名操作中に完全なキー回復が行われる脆弱性が存在します。  　影：攻撃者により、libcrypto を使用するアプリケーションで co-factor が存在しない明示的なパラメータが使用されていることで、サイドチャンネルに耐性のないコードパスにフォールバックされ、ECDSA 署名操作中に完全なキー回復が行われる可能性があります。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "1.0.2 から 1.0.2s",
+        "1.1.0 から 1.1.0k",
+        "1.1.1 から 1.1.1c"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、libcrypto を使用するアプリケーションで co-factor が存在しない明示的なパラメータが使用されていることで、サイドチャンネルに耐性のないコードパスにフォールバックされ、ECDSA 署名操作中に完全なキー回復が行われる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Git",
+      "vulinfo_id": "[crypto/ec] for ECC parameters with NULL or zero cofactor, compute it",
+      "url": "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=21c856b75d81eff61aa63b4f036bb64a85bf6d46"
+    },
+    {
+      "type": "vendor",
+      "name": "Git",
+      "vulinfo_id": "[crypto/ec] for ECC parameters with NULL or zero cofactor, compute it",
+      "url": "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=30c22fa8b1d840036b8e203585738df62a03cec8"
+    },
+    {
+      "type": "vendor",
+      "name": "Git",
+      "vulinfo_id": "[crypto/ec] for ECC parameters with NULL or zero cofactor, compute it",
+      "url": "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=7c1709c2da5414f5b6133d00a03fc8c5bf996c7a"
+    },
+    {
+      "type": "vendor",
+      "name": "Hitachi Software Vulnerability Information",
+      "vulinfo_id": "hitachi-sec-2019-127",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/global/security/info/vuls/hitachi-sec-2019-127/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "ECDSA remote timing attack (CVE-2019-1547)",
+      "url": "https://www.openssl.org/news/secadv/20190910.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "ソフトウェア製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2019-127",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/security/info/vuls/hitachi-sec-2019-127/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2019-1547",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1547"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-336-06",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-336-06"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#90348129",
+      "url": "https://jvn.jp/vu/JVNVU90348129/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94367039",
+      "url": "https://jvn.jp/vu/JVNVU94367039/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2019-1547",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-1547"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-311",
+      "url": "https://cwe.mitre.org/data/definitions/311.html",
+      "title": "重要なデータの暗号化の欠如"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2019-09-18T02:05:55Z",
+      "description": "[2019年09月18日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2019-11-11T02:49:34Z",
+      "description": "[2019年11月11日]\\n  ベンダ情報：ソフトウェア製品セキュリティ情報 (hitachi-sec-2019-127) を追加\\n  ベンダ情報：Hitachi Software Vulnerability Information (hitachi-sec-2019-127) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2021-12-08T01:12:25Z",
+      "description": "[2021年12月08日]\\n  参考情報：JVN (JVNVU#90348129) を追加\\n  参考情報：ICS-CERT ADVISORY (ICSA-21-336-06) を追加"
+    }
+  ],
+  "date_first_published": "2019-09-18T11:05:55+09:00",
+  "date_last_updated": "2021-12-08T11:21:31+09:00",
+  "date_public": "2019-09-07T00:00:00+09:00"
+}

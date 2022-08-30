@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2016-002891",
+  "title": "Linux Kernel の net/tipc/socket.c の tipc_nl_publ_dump 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の net/tipc/socket.c の tipc_nl_publ_dump 関数は、ソケットの存在を検証しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.6 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、dumpit の操作を介して、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "tipc: check nl sock before parsing nested attributes",
+      "url": "https://github.com/torvalds/linux/commit/45e093ae2830cd1264677d47ff9a95a71f5d9f9c"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "tipc: check nl sock before parsing nested attributes",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=45e093ae2830cd1264677d47ff9a95a71f5d9f9c"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4951",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4951"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4951",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4951"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-26T15:23:02+09:00",
+  "date_last_updated": "2016-05-26T15:23:02+09:00",
+  "date_public": "2016-05-16T00:00:00+09:00"
+}

@@ -1,0 +1,279 @@
+{
+  "vulinfo_id": "JVNDB-2002-000172",
+  "title": "OpenSSL の SSL2/SSL3 ハンドシェイクにおけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "OpenSSL には、 OpenSSL サーバにおいて SSL version 2.0 (以下、SSLv2) ハンドシェイク処理によりバッファオーバーフローの脆弱性が、また OpenSSL クライアントにおいて SSLv3 ハンドシェイク処理によりバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.6d およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Application Server",
+      "version_number": [
+        "1.0.2.2 およびそれ以前",
+        "9.0.2.0.0",
+        "9iAS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:application_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Database",
+      "version_number": [
+        "8.1.7.1 およびそれ以前",
+        "9.0.2 およびそれ以前",
+        "9.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:database_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ3",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_3"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ4",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_4"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQXTR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_xtr"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.11 ",
+        "11.20 ",
+        "11.22 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX (VVOS)",
+      "version_number": [
+        "11.04  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:vvos"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "6.2  ",
+        "7.0  ",
+        "7.1  ",
+        "7.2  ",
+        "7.3  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により不正な接続が行われた SSL サーバ上、あるいは標的ユーザの悪意あるサーバへの接続により OpenSSL クライアントシステム上で任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています (OpenSSL 0.9.6e で修正済み)。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0209-217",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?admit=-682735245+1041818851527+28353475\u0026amp;docId=HPSBUX0209-217"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0209-217",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0209-217.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "secadv_20020730",
+      "url": "http://www.openssl.org/news/secadv_20020730.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Security Alert",
+      "vulinfo_id": "#37",
+      "url": "http://www.oracle.com/technology/deploy/security/htdocs/opensslAlert.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2002:155",
+      "url": "https://rhn.redhat.com/errata/RHSA-2002-155.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "46424",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-46424-1"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2002:155",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2002-155J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Advisory",
+      "vulinfo_id": "CA-2002-27",
+      "url": "http://www.cert.org/advisories/CA-2002-27.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Advisory",
+      "vulinfo_id": "CA-2002-23",
+      "url": "http://www.cert.org/advisories/CA-2002-23.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "M-103",
+      "url": "http://www.ciac.org/ciac/bulletins/m-103.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2002-0656",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0656"
+    },
+    {
+      "type": "advisory",
+      "name": "IPA セキュリティセンター",
+      "vulinfo_id": "OpenSSL に複数の脆弱性",
+      "url": "http://www.ipa.go.jp/security/ciadr/20020731openssl.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2002-3601",
+      "url": "http://www.jpcert.or.jp/wr/2002/wr023601.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2002-3001",
+      "url": "http://www.jpcert.or.jp/wr/2002/wr023001.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2002-3101",
+      "url": "http://www.jpcert.or.jp/wr/2002/wr023101.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2002-3201",
+      "url": "http://www.jpcert.or.jp/wr/2002/wr023201.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNCA-2002-27",
+      "url": "http://jvn.jp/cert/JVNCA-2002-27"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNCA-2002-23",
+      "url": "http://jvn.jp/cert/JVNCA-2002-23"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2002-0656",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-0656"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "5362",
+      "url": "http://www.securityfocus.com/bid/5362"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#102795",
+      "url": "http://www.kb.cert.org/vuls/id/102795"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#258555",
+      "url": "http://www.kb.cert.org/vuls/id/258555"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "OpenSSLの脆弱性を攻撃するプログラムの検証結果について",
+      "url": "http://www.cyberpolice.go.jp/important/20030424_144742.html"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "SSLの脆弱性を悪用した国内ウェブページ改ざん事案の多発について",
+      "url": "http://www.cyberpolice.go.jp/important/20030416_114510.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2002-07-30T00:00:00+09:00"
+}

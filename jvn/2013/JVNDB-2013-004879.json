@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2013-004879",
+  "title": "Apache Sling の Auth Core バンドルの AbstractAuthenticationFormServlet におけるオープンリダイレクトの脆弱性",
+  "vulinfo_description": "Apache Sling の Auth Core (org.apache.sling.auth.core) バンドルの AbstractAuthenticationFormServlet には、\"カスタムログインフォームおよびクロスサイトスクリプティング (XSS)\" に関する処理に不備があるため、オープンリダイレクトの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Sling",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:sling"
+      }
+    },
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Sling Auth Core",
+      "version_number": [
+        "1.1.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:sling_auth_core_component"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、resource パラメータ内の URL を介して、ユーザを任意の Web サイトにリダイレクトされ、フィッシング攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Sling",
+      "vulinfo_id": "SLING-3141",
+      "url": "https://issues.apache.org/jira/browse/SLING-3141"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Sling",
+      "vulinfo_id": "CVE-2013-4390: Apache Sling open redirect on login",
+      "url": "http://mail-archives.apache.org/mod_mbox/sling-dev/201310.mbox/%3CCAKkCf4qdFxEW9NXBJoMsrBama8LFNyir%2B61A0Vfzp4njEpeU%3Dw%40mail.gmail.com%3E"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4390",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4390"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4390",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4390"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-10-28T11:57:02+09:00",
+  "date_last_updated": "2013-10-28T11:57:02+09:00",
+  "date_public": "2013-10-03T00:00:00+09:00"
+}

@@ -1,0 +1,111 @@
+{
+  "vulinfo_id": "JVNDB-2015-003160",
+  "title": "hostapd および wpa_supplicant の WMM Action フレームパーサにおける整数アンダーフローの脆弱性",
+  "vulinfo_description": "hostapd および wpa_supplicant の WMM Action フレームパーサには、AP モードでの MLME/SME 機能に使用される場合、整数アンダーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1",
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "w1.fi",
+      "product_name": "hostapd",
+      "version_number": [
+        "0.5.5 から 2.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:w1.fi:hostapd"
+      }
+    },
+    {
+      "name": "w1.fi",
+      "product_name": "wpa_supplicant",
+      "version_number": [
+        "0.7.0 から 2.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:w1.fi:wpa_supplicant"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたフレームを介して、out-of-bounds read を誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2015:1030",
+      "url": "http://lists.opensuse.org/opensuse-updates/2015-06/msg00019.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1090",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1090.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1439",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1439.html"
+    },
+    {
+      "type": "vendor",
+      "name": "w1.fi",
+      "vulinfo_id": "Integer underflow in AP mode WMM Action frame processing",
+      "url": "http://w1.fi/security/2015-3/integer-underflow-in-ap-mode-wmm-action-frame.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4142",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4142"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4142",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4142"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月18日]\\n  掲載\\n[2015年09月03日]\\n  ベンダ情報：レッドハット (RHSA-2015:1439) を追加"
+    }
+  ],
+  "date_first_published": "2015-06-18T15:56:50+09:00",
+  "date_last_updated": "2015-09-03T17:36:27+09:00",
+  "date_public": "2015-05-04T00:00:00+09:00"
+}

@@ -1,0 +1,81 @@
+{
+  "vulinfo_id": "JVNDB-2009-006267",
+  "title": "Secure Internet Live Conferencing (SILC) Toolkit などの lib/silcclient/client_entry.c におけるフォーマットストリングの脆弱性",
+  "vulinfo_description": "Secure Internet Live Conferencing (SILC) Toolkit および SILC Client の lib/silcclient/client_entry.c は、以下の関数に関する不備があるため、フォーマットストリングの脆弱性が存在します。 (1) silc_client_add_client 関数 (2) silc_client_update_client 関数 (3) silc_client_nickname_format 関数",
+  "affected": [
+    {
+      "name": "silcnet",
+      "product_name": "silc client",
+      "version_number": [
+        "1.1.8 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:silcnet:silc_client"
+      }
+    },
+    {
+      "name": "silcnet",
+      "product_name": "silc toolkit",
+      "version_number": [
+        "1.1.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:silcnet:silc_toolkit"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、nickname フィールド内のフォーマットストリング指定子を介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "silcnet",
+      "vulinfo_id": "Latest Toolkit News",
+      "url": "http://silcnet.org/general/news/news_toolkit.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-3051",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3051"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-3051",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3051"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-134",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-134.html",
+      "title": "書式文字列の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T19:28:38+09:00",
+  "date_last_updated": "2012-12-20T19:28:38+09:00",
+  "date_public": "2009-09-10T00:00:00+09:00"
+}

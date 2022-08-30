@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2021-000011",
+  "title": "パナソニック Video Insight VMS において任意のコードが実行可能な脆弱性",
+  "vulinfo_description": "パナソニック株式会社が提供する Video Insight VMS は、映像セキュリティシステム向けの管理ソフトウェアです。 Video Insight VMS には、well known でないポートを利用した通信に非暗号化通信が存在することに起因した、任意のコード実行が可能な脆弱性 (CWE-94) が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "パナソニック株式会社",
+      "product_name": "Video Insight VMS",
+      "version_number": [
+        "7.8 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:panasonic:video_insight_vms"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "細工されたリクエストを当該製品が受けることで、遠隔の第三者によって SYSTEM ユーザーの権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Panasonic",
+      "vulinfo_id": "Release Notes - Video Insight IP Server 7.8 Minor Release",
+      "url": "http://downloadvi.com/downloads/IPServer/v7.8/780182/v780182RN.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20623",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20623"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#42252698",
+      "url": "https://jvn.jp/jp/JVN42252698/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-02-02T07:57:18Z",
+      "description": "[2021年02月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-02-04T12:03:09+09:00",
+  "date_last_updated": "2021-02-04T12:03:09+09:00",
+  "date_public": "2021-02-04T00:00:00+09:00"
+}

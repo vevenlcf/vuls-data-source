@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2020-014001",
+  "title": "Nanopb における入力確認に関する脆弱性",
+  "vulinfo_description": "Nanopb には、入力確認に関する脆弱性、およびバッファエラーの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Nanopb project",
+      "product_name": "Nanopb",
+      "version_number": [
+        "0.3.9.7 未満",
+        "0.4.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nanopb_project:nanopb"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "CHANGELOG.txt",
+      "url": "https://github.com/nanopb/nanopb/blob/2b48a361786dfb1f63d229840217a93aae064667/CHANGELOG.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix memory leak with oneofs and PB_ENABLE_MALLOC (#615)",
+      "url": "https://github.com/nanopb/nanopb/commit/4fe23595732b6f1254cfc11a9b8d6da900b55b0c"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Memory leak when parsing a protobuf message with duplicate fields #615",
+      "url": "https://github.com/nanopb/nanopb/issues/615"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Oneof fields with PB_ENABLE_MALLOC can leak memory",
+      "url": "https://github.com/nanopb/nanopb/security/advisories/GHSA-85rr-4rh9-hhwh"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-26243",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-26243"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-26243",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-26243"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-07-19T07:56:33Z",
+      "description": "[2021年07月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-07-19T16:56:33+09:00",
+  "date_last_updated": "2021-07-19T16:56:33+09:00",
+  "date_public": "2020-11-25T00:00:00+09:00"
+}

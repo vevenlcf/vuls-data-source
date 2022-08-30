@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2001-000183",
+  "title": "xSANE におけるシンボリックリンク攻撃を受ける脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  SANE (Scanner Access Now Easy) は、イメージスキャナやデジタルカメラ等のキャプチャ機器にアクセスする際に使用する API です。ほとんどの Unix Linux に対応し、Red Hat Linux にも標準搭載されています。SANE は、Frontend と呼ばれる GUI と Backend と呼ばれるドライバから構成されています。   この SANE および X に基づいたインタフェースを提供する Xsane には、推測されやすい名前を持つ一時ファイルを /tmp ディレクトリに作成してしまう問題が存在します。そのため、ローカルの攻撃者は SANE が実行されているユーザ権限で書込可能な任意のファイルにシンボリックリンクを作成する事により、ファイルを上書きできる可能性が存在します。   ローカルの攻撃者によるファイルの上書きは、重要なファイルの削除、サービス不能攻撃、権限の昇格等の攻撃に繋がる恐れがあります。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "7.0  ",
+        "7.1  ",
+        "7.2  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.2",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2001:171",
+      "url": "http://rhn.redhat.com/errata/RHSA-2001-171.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2001:171",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2001-171J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2001-0887",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0887"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2001-0887",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2001-0887"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "3987",
+      "url": "http://www.securityfocus.com/bid/3987"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "3700",
+      "url": "http://www.securityfocus.com/bid/3700"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2001-12-11T00:00:00+09:00"
+}

@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2007-002826",
+  "title": "Alfredo Milani Comparetti SpeedFan の Speedfan.sys における任意の 符号なしのドライバをロードされる脆弱性",
+  "vulinfo_description": "Alfredo Milani Comparetti SpeedFan の Speedfan.sys は、Windows Vista x64 上で稼働する際、IOCTL 0x9c402420 呼び出しの間バッファを適切にチェックしないため、任意の MSR を読み書きされるおよび権限を取得されるおよび符号なしのドライバをロードされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "almico",
+      "product_name": "speedfan",
+      "version_number": [
+        "4.33"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:almico:speedfan"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows Vista",
+      "version_number": [
+        "x64"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_vista"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、\\Device\\speedfan への (1) IOCTL_RDMSR 0x9C402438 または (2) IOCTL_WRMSR 0x9C40243C IOCTLs を介して、任意の MSR を読み書きされる、権限を取得される、および符号なしのドライバをロードされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "almico",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.almicro.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.microsoft.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-5633",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5633"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-5633",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5633"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:54:40+09:00",
+  "date_last_updated": "2012-06-26T15:54:40+09:00",
+  "date_public": "2007-10-23T00:00:00+09:00"
+}

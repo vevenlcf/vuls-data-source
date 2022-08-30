@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2006-000764",
+  "title": "IBM Lotus Domio の NRPC プロトコルに関する情報漏洩の脆弱性",
+  "vulinfo_description": "IBM Lotus Domino には、クライアントが NRPC（Notes Remote Procedure Call）サービスに接続する際、Domino サーバに存在するユーザ名と存在しないユーザ名とでエラーのレスポンス内容が異なるため、ユーザ名を推測可能な問題が存在します。さらに、正規のユーザ名を使用して、そのユーザの User.ID ファイルをダウンロードすることが可能な脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "IBM Domino (旧 IBM Lotus Domino)",
+      "version_number": [
+        "6.0.5 およびそれ以前",
+        "6.5.5 FP1 およびそれ以前",
+        "7.0.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ibm:lotus_domino"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "User.ID ファイルを使用したブルートフォース (総当り) 攻撃によって、有効なユーザ名およびパスワードを取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1248026",
+      "url": "http://www.ibm.com/support/docview.wss?rs=463\u0026uid=swg21248026"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-5835",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5835"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2006-4411",
+      "url": "http://www.frsirt.com/english/advisories/2006/4411"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-5835",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-5835"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA22741",
+      "url": "http://secunia.com/advisories/22741/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "20960",
+      "url": "http://www.securityfocus.com/bid/20960"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-11-07T00:00:00+09:00"
+}

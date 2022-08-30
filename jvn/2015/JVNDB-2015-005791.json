@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-005791",
+  "title": "MIT Kerberos 5 の lib/gssapi/krb5/iakerb.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 (別名 krb5) の lib/gssapi/krb5/iakerb.c は、不適切なコンテキストのハンドルに依存するため、サービス運用妨害 (不正なポインタの読み込みおよびプロセスクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-18: Source Code (ソースコード) と識別されています。 http://cwe.mitre.org/data/definitions/18.html",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.14 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、gss_inquire_context コール中に誤って処理される巧妙に細工された IAKERB パケットを介して、サービス運用妨害 (不正なポインタの読み込みおよびプロセスクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix IAKERB context aliasing bugs [CVE-2015-2696]",
+      "url": "https://github.com/krb5/krb5/commit/e04f0283516e80d2f93366e0d479d13c9b5c8c2a"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #8244 SPNEGO and IAKERB context aliasing bugs [CVE-2015-2695][CVE-2015-2696]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?id=8244"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2696",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2696"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2696",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2696"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-10T16:46:15+09:00",
+  "date_last_updated": "2015-11-10T16:46:15+09:00",
+  "date_public": "2015-10-26T00:00:00+09:00"
+}

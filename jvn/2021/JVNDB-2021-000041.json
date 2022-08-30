@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2021-000041",
+  "title": "ScanSnap Manager のインストーラにおける DLL 読み込みに関する脆弱性",
+  "vulinfo_description": "富士通株式会社が提供する ScanSnap Manager のインストーラには、DLL を読み込む際の検索パスに問題があり、同一ディレクトリに存在する特定の DLL を読み込んでしまう脆弱性 (CWE-427) が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。  報告者: 三井物産セキュアディレクション株式会社 東内 裕二 氏",
+  "affected": [
+    {
+      "name": "富士通",
+      "product_name": "ScanSnap Manager",
+      "version_number": [
+        "V7.0L20 よりも前のバージョンのインストーラ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:scansnap_manager"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "ソフトウェアダウンロードインストーラー",
+      "version_number": [
+        "WinSSInst2JP.exe および WinSSInst2iX1500JP.exe よりも前のインストーラ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fujitsu:software_download_installer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "インストーラを実行している権限で、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[最新のインストーラを使用する] 開発者が提供する情報をもとに、最新のインストーラを使用してください。 また、インストーラを実行する際には、インストーラと同じディレクトリに不審なファイルがないことを確認してください。  なお、本脆弱性の影響を受けるのはインストーラの起動時のみです。すでに製品をインストール済みの場合は影響を受けません。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "富士通株式会社からの情報",
+      "url": "https://jvn.jp/jp/JVN65733194/2390/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "株式会社PFUからの情報",
+      "url": "https://jvn.jp/jp/JVN65733194/129556/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20722",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20722"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#65733194",
+      "url": "https://jvn.jp/jp/JVN65733194/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA#91240916",
+      "url": "https://jvn.jp/ta/JVNTA91240916/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-05-21T05:21:00Z",
+      "description": "[2021年05月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-05-21T12:08:49+09:00",
+  "date_last_updated": "2021-05-21T12:08:49+09:00",
+  "date_public": "2021-05-21T00:00:00+09:00"
+}

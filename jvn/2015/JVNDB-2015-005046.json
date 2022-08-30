@@ -1,0 +1,101 @@
+{
+  "vulinfo_id": "JVNDB-2015-005046",
+  "title": "lxc の lxc-start における AppArmor の閉じ込めを回避される脆弱性",
+  "vulinfo_description": "lxc の lxc-start には、AppArmor の閉じ込めを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "14.04 LTS",
+        "15.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Linux Containers",
+      "product_name": "LXC",
+      "version_number": [
+        "1.0.8 未満",
+        "1.1.4 未満の 1.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:linuxcontainers:lxc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルのコンテナ管理者により、(1) マウントの対象、または (2) バインドマウント元へのシンボリックリンク攻撃を介して、AppArmor の閉じ込めを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "CVE-2015-1335: Protect container mounts against symlinks",
+      "url": "https://github.com/lxc/lxc/commit/592fd47a6245508b79fe6ac819fe6d3b2c1289be"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1476662",
+      "url": "https://bugs.launchpad.net/ubuntu/+source/lxc/+bug/1476662"
+    },
+    {
+      "type": "vendor",
+      "name": "LXC development mailing-list",
+      "vulinfo_id": "[lxc-devel] LXC security issue - affects all supported releases",
+      "url": "https://lists.linuxcontainers.org/pipermail/lxc-devel/2015-September/012434.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2753-1",
+      "url": "http://www.ubuntu.com/usn/USN-2753-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-1335",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1335"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-1335",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1335"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-59",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-59.html",
+      "title": "リンク解釈の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年10月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-10-05T11:22:51+09:00",
+  "date_last_updated": "2015-10-05T11:22:51+09:00",
+  "date_public": "2015-09-29T00:00:00+09:00"
+}

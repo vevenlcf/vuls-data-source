@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-005678",
+  "title": "Kallithea における CRLF インジェクションの脆弱性",
+  "vulinfo_description": "Kallithea には、CRLF インジェクションの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers (HTTP レスポンスの分割) と識別されています。 http://cwe.mitre.org/data/definitions/113.html",
+  "affected": [
+    {
+      "name": "Kallithea",
+      "product_name": "Kallithea",
+      "version_number": [
+        "0.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kallithea:kallithea"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、_admin/login の came_from パラメータを介して、任意の HTTP ヘッダを挿入され、HTTP レスポンス分割攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Kallithea Security Notice",
+      "vulinfo_id": "CVE-2015-5285",
+      "url": "https://kallithea-scm.org/security/cve-2015-5285.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5285",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5285"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5285",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5285"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Kallithea 0.2.9 (came_from) HTTP Response Splitting Vulnerability",
+      "url": "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2015-5267.php"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-02T16:32:41+09:00",
+  "date_last_updated": "2015-11-02T16:32:41+09:00",
+  "date_public": "2015-10-07T00:00:00+09:00"
+}

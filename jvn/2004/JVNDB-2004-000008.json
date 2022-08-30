@@ -1,0 +1,343 @@
+{
+  "vulinfo_id": "JVNDB-2004-000008",
+  "title": "Microsoft ISA Server の H.323 フィルタにおける脆弱性 (H.323 の実装に脆弱性)",
+  "vulinfo_description": "Microsoft Internet Security and Acceleration (ISA) Server 2000 SP1 以前における H.323 フィルタに不備が存在するため、特定の H.323 トラフィックの処理によりバッファオーバーフローが発生する脆弱性が存在します。  Microsoft ISA Server がキャッシュモードで動作している場合、Microsoft Firewall Service がデフォルトで無効化されているため、この問題の影響を受けません。  なお、H.323 プロトコルを実装するその他システムにも本脆弱性に関連する脆弱性が確認されています。その他システムに関する情報については、NISCC-006489 (JVN)、NISCC Advisory 006489/h323(CPNI Advisory 00387) を併せてご確認ください。  注意： 本脆弱性の CVSS 基本値は「Microsoft ISA Server」 に対して算出されているものです。その他システムについては考慮されておりません。",
+  "affected": [
+    {
+      "name": "Polycom",
+      "product_name": "iPower",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:ipower"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "MGC",
+      "version_number": [
+        "25/50/100"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:mgc"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "PathNavigator",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:polycom:pathnavigator"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "SoundPoint IP",
+      "version_number": [
+        "400",
+        "500"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:soundpoint_ip"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "SoundStation IP",
+      "version_number": [
+        "3000"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:soundstation_ip"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "ViaVideo",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:viavideo"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "ViaVideo II",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:viavideo_ii"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "ViewStation",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:viewstation"
+      }
+    },
+    {
+      "name": "Polycom",
+      "product_name": "VSX",
+      "version_number": [
+        "7000"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:polycom:vsx"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "SunForum",
+      "version_number": [
+        "3.2 (Solaris 2.6, 7, 8, 9 用)",
+        "3D 1.0 (Solaris 8, 9 用)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sun:sunforum"
+      }
+    },
+    {
+      "name": "チェック・ポイント・ソフトウェア・テクノロジーズ",
+      "product_name": "VPN-1/FireWall-1",
+      "version_number": [
+        "NG FP2",
+        "NG FP3",
+        "NG with Application Intelligence",
+        "NG with Application Intelligence (R55)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:checkpoint:vpn-1_firewall-1"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Internet Security and Acceleration Server",
+      "version_number": [
+        "2000"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:microsoft:isa_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "マイクロソフトが提供する情報によると、Microsoft ISA Server が特定の H.323 トラフィックを処理した場合、任意のコードを実行される可能性があります。また、H.323 プロトコルを実装するその他システムについてもサービス運用妨害 (DoS) 攻撃を受けたり、遠隔から第三者が任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Check Point Software Technologies Alert",
+      "vulinfo_id": "H.323 Vulnerability",
+      "url": "http://www.checkpoint.com/services/techsupport/alerts/h323.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft Security Bulletin",
+      "vulinfo_id": "MS04-001",
+      "url": "http://www.microsoft.com/technet/security/bulletin/MS04-001.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "CERT/NISCC Advisory - PathNavigator",
+      "url": "http://www.polycom.com/common/pw_item_show_doc/0,,2749,00.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "CERT/NISCC Advisory - SoundPoint IP/SoundStation IP",
+      "url": "http://www.polycom.com/common/pw_item_show_doc/0,,2750,00.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "CERT/NISCC Advisory - Video Division",
+      "url": "http://www.polycom.com/common/pw_item_show_doc/0,,2751,00.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "CERT/NISCC Advisory - MGC",
+      "url": "http://www.polycom.com/common/pw_item_show_doc/0,,2752,00.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "57476",
+      "url": "http://jp.sunsolve.sun.com/search/document.do?assetkey=1-26-57476-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "57476",
+      "url": "http://jp.sunsolve.sun.com/search/document.do?assetkey=1-26-57476-3"
+    },
+    {
+      "type": "vendor",
+      "name": "セキュリティ・アラート",
+      "vulinfo_id": "H.323 に関する脆弱性",
+      "url": "http://www.checkpoint.co.jp/techsupport/alerts/h323.html"
+    },
+    {
+      "type": "vendor",
+      "name": "マイクロソフト セキュリティ情報",
+      "vulinfo_id": "MS04-001",
+      "url": "http://www.microsoft.com/japan/technet/security/bulletin/MS04-001.mspx"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Advisory",
+      "vulinfo_id": "CA-2004-01",
+      "url": "http://www.cert.org/advisories/CA-2004-01.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "O-051",
+      "url": "http://www.ciac.org/ciac/bulletins/o-051.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0819",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0819"
+    },
+    {
+      "type": "advisory",
+      "name": "CPNI Vulnerability Advisory",
+      "vulinfo_id": "00387",
+      "url": "http://www.cpni.gov.uk/Products/vulnerabilitydisclosures/default.aspx?id=va-20040113-00387.xml"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2004-0301",
+      "url": "http://www.jpcert.or.jp/wr/2004/wr040301.txtq"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2004-0501",
+      "url": "http://www.jpcert.or.jp/wr/2004/wr040501.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2004-0901",
+      "url": "http://www.jpcert.or.jp/wr/2004/wr040901.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "NISCC-006489",
+      "url": "http://jvn.jp/niscc/NISCC-006489/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNCA-2004-01",
+      "url": "http://jvn.jp/cert/JVNCA-2004-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "NISCC-060525",
+      "url": "http://jvn.jp/niscc/NISCC-060525/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRCA-2004-01",
+      "url": "http://jvn.jp/tr/TRCA-2004-01/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0819",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0819"
+    },
+    {
+      "type": "advisory",
+      "name": "NISCC Vulnerability Advisory",
+      "vulinfo_id": "006489/h323",
+      "url": "http://www.cpni.gov.uk/docs/re-20040113-00387.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA10869",
+      "url": "http://secunia.com/advisories/10869/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9406",
+      "url": "http://www.securityfocus.com/bid/9406"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9408",
+      "url": "http://www.securityfocus.com/bid/9408"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1008846",
+      "url": "http://www.securitytracker.com/alerts/2004/Jan/1008846.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#749342",
+      "url": "http://www.kb.cert.org/vuls/id/749342"
+    },
+    {
+      "type": "advisory",
+      "name": "X-Force Security Alerts and Advisories",
+      "vulinfo_id": "Microsoft ISA Server 2000 H.323 filter buffer overflow",
+      "url": "http://xforce.iss.net/xforce/xfdb/14167"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "H.323メッセージ処理に関する脆弱性について(1/14)",
+      "url": "http://www.cyberpolice.go.jp/important/20040114_112014.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2004-01-13T00:00:00+09:00"
+}

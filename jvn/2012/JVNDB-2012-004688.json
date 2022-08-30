@@ -1,0 +1,72 @@
+{
+  "vulinfo_id": "JVNDB-2012-004688",
+  "title": "Atheme の libathemecore/account.c における異なるユーザにアクセスされる脆弱性",
+  "vulinfo_description": "Atheme の libathemecore/account.c 内の myuser_delete 関数は、ユーザが削除される際、CertFP エントリを適切にクリーンアップしないため、異なるユーザにアクセスされる、またはサービス運用妨害 (デーモンクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Atheme.org",
+      "product_name": "Atheme",
+      "version_number": [
+        "5.2.7 未満の 5.x",
+        "6.0.10 未満の 6.x",
+        "7.0.0-beta2 未満の 7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:atheme:atheme"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、削除されたユーザでログインされることで、異なるユーザにアクセスされる、またはサービス運用妨害 (デーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Atheme",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.atheme.net/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1576",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1576"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1576",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1576"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年10月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-10-03T13:09:19+09:00",
+  "date_last_updated": "2012-10-03T13:09:19+09:00",
+  "date_public": "2012-10-01T00:00:00+09:00"
+}

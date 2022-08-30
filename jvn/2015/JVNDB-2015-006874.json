@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2015-006874",
+  "title": "Ipswitch MOVEit DMZ および MOVEit Mobile の機能における認証を回避される脆弱性",
+  "vulinfo_description": "Ipswitch MOVEit DMZ および MOVEit Mobile の \"添付ファイルとして送信する (Send as attachment)\" 機能には、認証を回避され、アップロードされたファイルを読まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Ipswitch, Inc.",
+      "product_name": "MOVEit DMZ",
+      "version_number": [
+        "8.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ipswitch:moveit_dmz"
+      }
+    },
+    {
+      "name": "Ipswitch, Inc.",
+      "product_name": "MOVEit Mobile",
+      "version_number": [
+        "1.2.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ipswitch:moveit_mobile"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、(1) mobile/sendMsg の serverFileIds パラメータ、または (2) human.aspx の arg01 パラメータ内の有効な FileID を介して、認証を回避され、アップロードされたファイルを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Ipswitch",
+      "vulinfo_id": "MOVEit DMZ Release Notes 8.2",
+      "url": "http://docs.ipswitch.com/MOVEit/DMZ82/ReleaseNotes/MOVEitReleaseNotes82.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7675",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7675"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7675",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7675"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "A security issue in MOVEit web and mobile application allows for unauthorized access to arbitrary files and documents",
+      "url": "https://www.profundis-labs.com/advisories/CVE-2015-7675.txt"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年02月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-02-19T15:41:36+09:00",
+  "date_last_updated": "2016-02-19T15:41:36+09:00",
+  "date_public": "2015-10-20T00:00:00+09:00"
+}

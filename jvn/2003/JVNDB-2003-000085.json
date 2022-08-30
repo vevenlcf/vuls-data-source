@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2003-000085",
+  "title": "Apache Tomcat において Null 文字を含む URL による情報漏洩の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  JDK 1.3.1 以前と組み合わされて動作する Tomcat 3.3.1 以前には、NULL を含む URL を指定されることにより、Web 用のドキュメントルートディレクトリ内のファイル一覧、または、JSP ファイルのソースを漏洩してしまう問題が存在します。  また、このソフトウェアは web.xml ファイルを信頼されている実行権限で取り扱っているため、このファイルを利用することで、他の XML ファイルの内容をリモートの攻撃者が読み出す可能性があります。  尚、HP-UX 11.00/11.11/11.20/11.22 上で動作する HP Tomcat も影響を受けることが HP より報告されています。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Tomcat",
+      "version_number": [
+        "3.2.2",
+        "3.2.3",
+        "3.2.4",
+        "3.3.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:tomcat"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.11 ",
+        "11.20 ",
+        "11.22 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.apache.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0303",
+      "url": "http://www2.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0303-249"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0303",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0303.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0042",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0042"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0042",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0042"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6721",
+      "url": "http://www.securityfocus.com/bid/6721"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6722",
+      "url": "http://www.securityfocus.com/bid/6722"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-03-18T00:00:00+09:00"
+}

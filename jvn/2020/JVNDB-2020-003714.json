@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2020-003714",
+  "title": "Inductive Automation 製 Ignition 8 Gateway に不適切なアクセス制御の脆弱性",
+  "vulinfo_description": "Inductive Automation が提供する Ignition 8 Gateway には、不適切なアクセス制御の脆弱性が存在します。  Ignition 8 Gateway は、Inductive Automation が提供する産業用ソフトウエアです。Ignition 8 Gateway には、データベースへのログの書き込みに、認証やデータ使用領域の制限がない不適切なアクセス制御の脆弱性 (CWE-284) が存在します。 ",
+  "affected": [
+    {
+      "name": "Inductive Automation",
+      "product_name": "Ignition 8 Gateway",
+      "version_number": [
+        "8.0.10 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:inductiveautomation:ignition_8_gateway"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.1",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、データベースに際限なくログを書き込まれることでハードディスクの空き領域が不足し、サービス運用妨害 (DoS) の状態を引き起こされる可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  　　* Perspective Module を実行している場合は、\"perspective.routes\" の優先度レベルを WARN 以上に設定する 　　* Web Application Firewall (WAF) や リバースプロキシを介して当該製品にアクセスしている場合は、\"/data/perspective/print-to-log\" を含む URL への HTTP リクエストを拒否するルールを設定する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Inductive Automation",
+      "vulinfo_id": "Download Ignition",
+      "url": "https://inductiveautomation.com/downloads/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-10641",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10641"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-20-112-01",
+      "url": "https://www.us-cert.gov/ics/advisories/icsa-20-112-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92492058",
+      "url": "https://jvn.jp/vu/JVNVU92492058/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-284",
+      "url": "https://cwe.mitre.org/data/definitions/284.html",
+      "title": "不適切なアクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-04-23T03:00:12Z",
+      "description": "[2020年04月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2020-04-23T12:00:12+09:00",
+  "date_last_updated": "2020-04-23T12:00:12+09:00",
+  "date_public": "2020-04-22T00:00:00+09:00"
+}

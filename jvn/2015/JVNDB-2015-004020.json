@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2015-004020",
+  "title": "Linux Kernel の fs/udf/inode.c 内の udf_read_inode 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/udf/inode.c 内の udf_read_inode 関数は、特定の length 値を検証しないため、サービス運用妨害 (不正なデータ表現または整数オーバーフロー、および OOPS) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.19.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された UDF ファイルシステムを介して、サービス運用妨害 (不正なデータ表現または整数オーバーフロー、および OOPS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.19.1",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.19.1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "udf: Check length of extended attributes and allocation descriptors",
+      "url": "https://github.com/torvalds/linux/commit/23b133bdc452aa441fcb9b82cbf6dd05cfd342d0"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "udf: Check length of extended attributes and allocation descriptors",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=23b133bdc452aa441fcb9b82cbf6dd05cfd342d0"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1228204",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1228204"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4167",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4167"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4167",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4167"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年08月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-08-07T12:06:03+09:00",
+  "date_last_updated": "2015-08-07T12:06:03+09:00",
+  "date_public": "2015-03-06T00:00:00+09:00"
+}

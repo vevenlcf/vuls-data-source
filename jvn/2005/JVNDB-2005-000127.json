@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2005-000127",
+  "title": "Linux Kernel の Radeon ドライバにおける任意のコードを実行される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Linux Kernel 2.6.10 以前には、以下の複数のバッファオーバーフローの問題およびカーネルメモリ内を閲覧可能な問題が存在します。  ・/proc において、特定の引数を指定して locks_read_proc() 関数を呼び出す際に、バッファオーバーフローが発生する問題 (CAN-2005-0529)  ・drivers/char/n_tty.c において、カーネル空間からユーザ空間にデータをコピーする不備により、カーネルメモリ内の情報を奪取される問題 (CAN-2005-0530)  これらの問題を利用するローカルの攻撃者は、結果として不正に昇格された権限で任意のコードを実行する、あるいは重要な情報を奪取する可能性があります。 これらの問題は i386 アーキテクチャ上のバージョン 2.6.10 および 2.6.11rc1 で報告されていますが、他のバージョンも影響を受ける可能性があることが発見者により報告されています。 その他、現時点で詳細は不明ですが net/atm/addr.c の atm_get_addr() 関数や fs/reiserfs/file.c の reiserfs_copy_from_user_to_file_region() 関数にもセキュリティ上の問題 (CAN-2005-0531, CAN-2005-0532) が存在することが報告されています。  尚、開発版 Linux Kernel 2.6.11-rc4 においてこれらの問題は解消されていますが、上記問題以外にも以下のセキュリティ問題が修正されています。  ・Radeon ハードウェアに DRI (Direct Rendering Infrastructure) 権限が付与されている場合に、Radeon ドライバで不正に権限の昇格が可能となる問題 (CAN-2005-0767)  ・特定の i2c デバイスファイルの権限設定およびハードウェアの組み合わせにおいて、i2c-viapro ドライバの境界チェックが適切に行われないために、SMBus ブロック読み込みでバッファオーバーフローが発生する問題",
+  "affected": [
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:366",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-366.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ターボリナックス株式会社",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.turbolinux.co.jp/"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:366",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-366J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0767",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0767"
+    },
+    {
+      "type": "advisory",
+      "name": "K-OTik Security Advisory",
+      "vulinfo_id": "KOTIK/ADV-2005-0163",
+      "url": "http://www.k-otik.com/english/advisories/2005/0163"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0767",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0767"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA14270",
+      "url": "http://secunia.com/advisories/14270/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "12555",
+      "url": "http://www.securityfocus.com/bid/12555"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-02-15T00:00:00+09:00"
+}

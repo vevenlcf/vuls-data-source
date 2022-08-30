@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-002492",
+  "title": "FFmpeg の libavcodec/h264.c 内の ff_h264_free_tables 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FFmpeg の libavcodec/h264.c 内の ff_h264_free_tables 関数には、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.3.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、MP4 ファイルの巧妙に細工された H.264 データを介して、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "avcodec/h264: Clear delayed_pic on deallocation",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/e8714f6f93d1a32f4e4655209960afcf4c185214"
+    },
+    {
+      "type": "vendor",
+      "name": "Libav",
+      "vulinfo_id": "Changelog",
+      "url": "https://git.libav.org/?p=libav.git;a=blob;f=Changelog;hb=refs/tags/v11.4"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3417",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3417"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3417",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3417"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "several issues in SQLite (+ catching up on several other bugs)",
+      "url": "http://seclists.org/fulldisclosure/2015/Apr/31"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年04月28日]\\n  掲載\\n[2015年06月22日]\\n  ベンダ情報：Libav (Changelog) を追加"
+    }
+  ],
+  "date_first_published": "2015-04-28T15:51:01+09:00",
+  "date_last_updated": "2015-06-22T17:38:51+09:00",
+  "date_public": "2015-04-14T00:00:00+09:00"
+}

@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2015-003916",
+  "title": "Google Chrome で使用される PDFium の fpdfsdk/src/javascript/Document.cpp における サービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Google Chrome で使用される PDFium の fpdfsdk/src/javascript/Document.cpp には、(1) Document::delay、および (2) Document::DoFieldDelay 関数に関する処理に不備があるため、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "44.0.2403.89 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された PDF ドキュメントを介して、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Stable Channel Update",
+      "url": "http://googlechromereleases.blogspot.jp/2015/07/stable-channel-update_21.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "https://www.google.com/intl/ja/chrome/browser/features.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PDFium",
+      "vulinfo_id": "Fix heap use after free in Document::DoFieldDelay and Document::delay",
+      "url": "https://pdfium.googlesource.com/pdfium/+/4ff7a4246c81a71b4f878e959b3ca304cd76ec8a"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:1499",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-1499.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-1282",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1282"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-1282",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1282"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年07月27日]\\n  掲載\\n[2015年09月03日]\\n  ベンダ情報：レッドハット (RHSA-2015:1499) を追加"
+    }
+  ],
+  "date_first_published": "2015-07-27T13:53:48+09:00",
+  "date_last_updated": "2015-09-03T17:13:34+09:00",
+  "date_public": "2015-07-21T00:00:00+09:00"
+}

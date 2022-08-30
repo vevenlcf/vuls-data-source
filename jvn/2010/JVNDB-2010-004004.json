@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2010-004004",
+  "title": "Drupal の Chaos Tool Suite モジュールの import 機能における任意の PHP コードを実行される脆弱性",
+  "vulinfo_description": "Drupal の Chaos Tool Suite モジュールの import 機能は、Eval インジェクションが発生するため、任意の PHP コードを実行される脆弱性が存在します。 本脆弱性は、(1) page_manager/plugins/tasks/page.admin.inc の page_manager_page_import_subtask_validate 関数および (2) page_manager/page_manager.admin.inc の page_manager_handler_import_validate 関数と関連しています。",
+  "affected": [
+    {
+      "name": "Angry Donuts",
+      "product_name": "Chaos Tool Suite",
+      "version_number": [
+        "6.x-1.4 未満の 6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:angrydonuts:chaos_tool_suite"
+      }
+    },
+    {
+      "name": "Drupal",
+      "product_name": "Drupal",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:drupal:drupal"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "\"ページマネージャー管理\" 権限を持つリモート認証されたユーザにより、テキスト領域への入力を介して、任意の PHP コードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Angry Donuts",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.angrydonuts.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Drupal",
+      "vulinfo_id": "SA-CONTRIB-2010-058",
+      "url": "http://drupal.org/node/803944"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1546",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1546"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1546",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1546"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T16:19:22+09:00",
+  "date_last_updated": "2012-06-26T16:19:22+09:00",
+  "date_public": "2010-05-19T00:00:00+09:00"
+}

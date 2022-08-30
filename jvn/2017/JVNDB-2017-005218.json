@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2017-005218",
+  "title": "LineageOS およびその他の MSM デバイス用のカーネルにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "LineageOS およびその他の MSM デバイス用のカーネルの android_kernel_huawei_msm8916 の drivers/platform/msm/msm_bus/msm_bus_dbg.c の msm_bus_dbg_update_request_write 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびデバイスクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The LineageOS Project",
+      "product_name": "LineageOS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:lineageos:lineageos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.2",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された /sys/kernel/debug/msm-bus-dbg/client-data/update-request 書き込みリクエストを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびデバイスクラッシュ) 状態にされる脆弱性が存在します。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "LineageOS Android Distribution",
+      "vulinfo_id": "Top Page",
+      "url": "https://lineageos.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-6899",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6899"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-6899",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6899"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "LineageOS 'msm_bus_dbg.c' Null Pointer Dereference Denial of Service Vulnerability",
+      "url": "http://www.securityfocus.com/bid/99107"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2017-6899",
+      "url": "http://blog.secret-team.cn/index.php/archives/5/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-476",
+      "url": "http://cwe.mitre.org/data/definitions/476.html",
+      "title": "NULL ポインタデリファレンス"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年07月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-07-21T16:22:37+09:00",
+  "date_last_updated": "2017-07-21T16:22:37+09:00",
+  "date_public": "2017-06-13T00:00:00+09:00"
+}

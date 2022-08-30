@@ -1,0 +1,200 @@
+{
+  "vulinfo_id": "JVNDB-2016-006166",
+  "title": "複数の NETGEAR 製ルータに脆弱性",
+  "vulinfo_description": "複数の NETGEAR 製ルータには、複数の脆弱性が存在します。  コマンドインジェクション (CWE-77) - CVE-2016-6277 重要な機能に対する認証欠如の問題 (CWE-306) クロスサイトリクエストフォージェリ (CWE-352)  NETGEAR 製の複数のルータにはコマンドインジェクションの脆弱性が存在します。 LAN 内の攻撃者は http://\u003crouter_IP\u003e/cgi-bin/;COMMAND にアクセスすることで、認証を要求されることなく、当該製品の管理者権限で任意のコマンドを実行することが可能です。 また、当該製品にアクセス可能なユーザが、細工されたページにアクセスすることで、上のような URL へアクセスさせられ、結果として当該製品の管理者権限で任意のコマンドを実行させられる可能性があります。  CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection') https://cwe.mitre.org/data/definitions/77.html  CWE-306: Missing Authentication for Critical Function https://cwe.mitre.org/data/definitions/306.html  CWE-352: Cross-Site Request Forgery (CSRF) https://cwe.mitre.org/data/definitions/352.html",
+  "affected": [
+    {
+      "name": "ネットギア",
+      "product_name": "D6220",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:d6220"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "D6400",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:d6400"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R6250",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r6250"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R6400",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r6400"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R6700",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r6700"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R6900",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r6900"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R7000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r7000"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R7100LG",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r7100lg"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R7300DST",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r7300dst"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R7900",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r7900"
+      }
+    },
+    {
+      "name": "ネットギア",
+      "product_name": "R8000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:netgear:r8000"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって細工された URL にアクセスすることで、当該製品の管理者権限で任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアをアップデートしてください。  　開発者が提供する情報 　https://kb.netgear.com/000036386/  [ワークアラウンドを実施する] ファームウェアの対策が行われていない製品のユーザは、本脆弱性の影響を回避するため、次のワークアラウンドを実施してください。  　* ウェブサーバを無効化する 　　本脆弱性を使用し、次のような URL にアクセスすることで、当該製品で動作し 　　ているウェブサーバを停止することが可能です。  　　http://\u003crouter_IP\u003e/cgi-bin/;killall$IFS'httpd'  　　これにより、ルータの管理画面は使用できなくなります (機器を再起動すること 　　で、元の脆弱な状態に戻ります)。 　　詳しくは Bas' Blog の投稿をご確認ください。  　　Bas' Blog 　　http://www.sj-vs.net/a-temporary-fix-for-cert-vu582384-cwe-77-on-netgear-r7000-and-r6400-routers/  　* リモート管理機能を無効にする 　　リモート管理機能を有効にすると、WAN 側から攻撃を受ける可能性があります。 　　リモート管理機能は無効にしてください。  　* 当該製品を使用しない 　　この脆弱性を使用した攻撃は容易に実行可能です。対策済みファームウェアへの更 　　新を行うまで、当該製品の使用停止を検討してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "NETGEAR Support",
+      "vulinfo_id": "Security Advisory for CVE-2016-6277, PSV-2016-0245",
+      "url": "http://kb.netgear.com/000036386/CVE-2016-582384"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6277",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6277"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94858949",
+      "url": "http://jvn.jp/cert/JVNVU94858949"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6277",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6277"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#582384",
+      "url": "http://www.kb.cert.org/vuls/id/582384"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Netgear R7000 - Command Injection",
+      "url": "https://www.exploit-db.com/exploits/40889/"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "A temporary fix for CERT VU#582384 vulnerability for various Netgear routers (including R6400, R7000, R8000 and similar)",
+      "url": "http://www.sj-vs.net/a-temporary-fix-for-cert-vu582384-cwe-77-on-netgear-r7000-and-r6400-routers/"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "NetGear Vulnerability Expanded",
+      "url": "https://kalypto.org/research/netgear-vulnerability-expanded/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-77",
+      "url": "https://cwe.mitre.org/data/definitions/77.html",
+      "title": "コマンドインジェクション"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-306",
+      "url": "https://cwe.mitre.org/data/definitions/306.html",
+      "title": "重要な機能に対する認証の欠如"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年12月13日]\\n  掲載\\n[2016年12月27日］\\n  タイトル：内容を更新\\n  概要：内容を更新\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新\\n  共通脆弱性識別子(CVE)：CVE-ID を追加\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-6277) を追加"
+    }
+  ],
+  "date_first_published": "2016-12-13T18:06:37+09:00",
+  "date_last_updated": "2016-12-27T14:16:48+09:00",
+  "date_public": "2016-12-09T00:00:00+09:00"
+}

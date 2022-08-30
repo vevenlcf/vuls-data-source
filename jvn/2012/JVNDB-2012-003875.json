@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-003875",
+  "title": "Icinga のデータベース作成スクリプトにおける他のデータベースにアクセスされる脆弱性",
+  "vulinfo_description": "Icinga のデータベース作成スクリプト (module/idoutils/db/scripts/create_mysqldb.sh) は、icinga ユーザにすべてのデータベースへのアクセス権を付与するため、他のデータベースにアクセスされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Icinga GmbH",
+      "product_name": "Icinga",
+      "version_number": [
+        "1.7.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:icinga:icinga"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "icinga ユーザにより、他のデータベースにアクセスされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 767319",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=767319"
+    },
+    {
+      "type": "vendor",
+      "name": "Icinga",
+      "vulinfo_id": "don't grant everything on all databases in the idoutils readme for rhel packages (thx Tim Hardeck)",
+      "url": "https://git.icinga.org/?p=icinga-core.git;a=commitdiff;h=712813d3118a5b9e5a496179cab81dbe91f69d63"
+    },
+    {
+      "type": "vendor",
+      "name": "Icinga",
+      "vulinfo_id": "docs issue #2690: limit grant to icinga db",
+      "url": "https://git.icinga.org/?p=icinga-doc.git;a=commitdiff;h=619a08ca1178144b8a3a5caafff32a2d3918edab"
+    },
+    {
+      "type": "vendor",
+      "name": "Icinga",
+      "vulinfo_id": "possible vulnerability: icinga mysql db creation script grants access to all dbs #2917",
+      "url": "https://git.icinga.org/?p=icinga-core.git;a=commitdiff;h=dcd45fb6931c4abf710829bee21af09f842bc281"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2012:0968",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-08/msg00012.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-3441",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3441"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-3441",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3441"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月28日]\\n  掲載\\n[2012年10月23日]\\n  ベンダ情報：openSUSE (openSUSE-SU-2012:0968) を追加"
+    }
+  ],
+  "date_first_published": "2012-08-28T14:10:21+09:00",
+  "date_last_updated": "2012-10-23T14:19:17+09:00",
+  "date_public": "2012-08-25T00:00:00+09:00"
+}

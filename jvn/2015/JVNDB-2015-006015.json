@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-006015",
+  "title": "SDDM の daemon/Greeter.cpp における権限を取得される脆弱性",
+  "vulinfo_description": "SDDM の daemon/Greeter.cpp は、KDE クラッシュハンドラを適切に無効化しないため、権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Simple Desktop Display Manager",
+      "product_name": "SDDM",
+      "version_number": [
+        "0.13.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sddm_project:_sddm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、特定のテーマの使用時に greeter をクラッシュさせられることで、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "0.13.0 Release Announcement",
+      "url": "https://github.com/sddm/sddm/wiki/0.13.0-Release-Announcement"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Disable greeters from loading KDE's debug hander",
+      "url": "https://github.com/sddm/sddm/commit/4cfed6b0a625593fb43876f04badc4dd99799d86"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1271992",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1271992"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0856",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0856"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0856",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0856"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-26T11:56:31+09:00",
+  "date_last_updated": "2015-11-26T11:56:31+09:00",
+  "date_public": "2015-11-05T00:00:00+09:00"
+}

@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2020-004682",
+  "title": "bson における整数オーバーフローの脆弱性",
+  "vulinfo_description": "bson には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MongoDB Inc.",
+      "product_name": "MongoDB C Driver",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mongodb:c_driver"
+      }
+    },
+    {
+      "name": "whoopsie project",
+      "product_name": "whoopsie",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:whoopsie_project:whoopsie"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "don't mix up int and size_t (first pass to fix that)",
+      "url": "https://github.com/10gen-archive/mongo-c-driver-legacy/commit/1a1f5e26a4309480d88598913f9eebf9e9cba8ca#diff-f7d29a680148f52d6601f59ed787f577"
+    },
+    {
+      "type": "vendor",
+      "name": "launchpad",
+      "vulinfo_id": "bson-fix-overflow.patchdon't mix up int and size_t (first pass to fix that)",
+      "url": "https://launchpadlibrarian.net/474887364/bson-fix-overflow.patch"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-12135",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12135"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-12135",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-12135"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-190",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "title": "整数オーバーフローまたはラップアラウンド"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-05-26T03:00:46Z",
+      "description": "[2020年05月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2020-05-26T12:00:46+09:00",
+  "date_last_updated": "2020-05-26T12:00:46+09:00",
+  "date_public": "2020-04-16T00:00:00+09:00"
+}

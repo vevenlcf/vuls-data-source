@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2018-000050",
+  "title": "IExpress で作成された自己解凍書庫における DLL 読み込みに関する脆弱性",
+  "vulinfo_description": "Microsoft が提供する IExpress で作成された自己解凍書庫には、DLL を読み込む際の検索パスに問題があり、意図しない DLL を読み込んでしまう脆弱性 (CWE-427) が存在します。 開発者によると、本件は「アプリケーション ディレクトリにおける DLL の植え付け」の問題であり、実際の攻撃実現性は限定的であるため、セキュリティ更新プログラムによる対応は行わないとのことです。  開発者による「アプリケーション ディレクトリにおける DLL の植え付け」への対応については、開発者が提供する情報をご確認ください。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者:英利 雅美 氏",
+  "affected": [
+    {
+      "name": "マイクロソフト",
+      "product_name": "IExpress",
+      "version_number": [
+        " (Microsoft Windows 付属) を使用して作成された自己解凍書庫ファイル"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:microsoft:iexpress"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "自己解凍書庫ファイルを実行している権限で、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。 ・自己解凍書庫ファイルは新たに作成したディレクトリに保存し、他の無関係なファイルが存在しない状態で実行する ・自己解凍書庫ファイルを保存したディレクトリに信用できないファイルが存在しないことを確認する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Microsoft TechNet",
+      "vulinfo_id": "DLL の植え付けの脆弱性のトリアージ",
+      "url": "https://blogs.technet.microsoft.com/jpsecurity/2018/04/10/triaging-a-dll-planting-vulnerability/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-0598",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-0598"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#72748502",
+      "url": "https://jvn.jp/jp/JVN72748502/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA#91240916",
+      "url": "https://jvn.jp/ta/JVNTA91240916/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-0598",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-0598"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-05-14T06:02:38Z",
+      "description": "[2018年05月17日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2018-08-21T07:31:43Z",
+      "description": "[2018年08月21日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-0598) を追加"
+    }
+  ],
+  "date_first_published": "2018-05-17T12:06:22+09:00",
+  "date_last_updated": "2018-05-17T12:06:22+09:00",
+  "date_public": "2018-05-17T00:00:00+09:00"
+}

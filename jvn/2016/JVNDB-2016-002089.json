@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2016-002089",
+  "title": "QEMU の hw/ide/ahci.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "QEMU の hw/ide/ahci.c には、IDE AHCI エミュレーションサポートでビルドされている場合、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (インスタンスクラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.5",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ゲスト OS ユーザにより、無効な AHCI Native Command Queuing (NCQ) AIO コマンドを介して、サービス運用妨害 (インスタンスクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "ide: ahci: reset ncq object to unused on error",
+      "url": "http://git.qemu.org/?p=qemu.git;a=commit;h=4ab0359a8ae182a7ac5c99609667273167703fab"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1288532",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1288532"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0088",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0088.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1568",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1568"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1568",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1568"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月19日]\\n  掲載\\n[2016年06月30日]\\n  ベンダ情報：レッドハット (RHSA-2016:0088) を追加"
+    }
+  ],
+  "date_first_published": "2016-04-19T16:05:06+09:00",
+  "date_last_updated": "2016-06-30T15:10:32+09:00",
+  "date_public": "2016-01-11T00:00:00+09:00"
+}

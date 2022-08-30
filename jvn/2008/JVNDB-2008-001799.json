@@ -1,0 +1,152 @@
+{
+  "vulinfo_id": "JVNDB-2008-001799",
+  "title": "Red Hat Enterprise Linux の pam_krb5 における権限昇格の脆弱性",
+  "vulinfo_description": "Red Hat Enterprise Linux の pam_krb5 には、existing_ticket オプションを使用している場合に Kerberos 証明書のキャッシュを読み込むことに不正な権限が使われる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "悪意のあるローカルユーザが KRB5CCNAME 環境変数を任意のキャッシュファイル名にセットし、su または sudo プログラムを実行することにより、権限昇格し、証明書キャッシュを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "pam_krb5-2.2.14-1.1AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=379"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0907",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0907.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0003",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2011-0003.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2008:0907",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2008-0907J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-3825",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3825"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "45635",
+      "url": "http://xforce.iss.net/xforce/xfdb/45635"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-3825",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-3825"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32119",
+      "url": "http://secunia.com/advisories/32119"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32135",
+      "url": "http://secunia.com/advisories/32135"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "31534",
+      "url": "http://www.securityfocus.com/bid/31534"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1020978",
+      "url": "http://www.securitytracker.com/id?1020978"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年11月04日]\\n  掲載\\n[2009年01月22日]\\n  影響を受けるシステム：ミラクル・リナックス (pam_krb5-2.2.14-1.1AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (pam_krb5-2.2.14-1.1AXS3) を追加\\n[2011年02月28日]\\n  影響を受けるシステム：VMware (VMSA-2011-0003) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0003) を追加"
+    }
+  ],
+  "date_first_published": "2008-11-04T12:26:18+09:00",
+  "date_last_updated": "2011-02-28T14:48:26+09:00",
+  "date_public": "2008-10-02T00:00:00+09:00"
+}

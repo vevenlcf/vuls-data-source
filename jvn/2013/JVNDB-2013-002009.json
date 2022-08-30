@@ -1,0 +1,135 @@
+{
+  "vulinfo_id": "JVNDB-2013-002009",
+  "title": "複数の OpenStack 製品における VM へのアクセス権を取得される脆弱性",
+  "vulinfo_description": "OpenStack Compute (Nova) Grizzly、Folsom、および Essex には、VM へのアクセス権を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "11.10",
+        "12.04 LTS",
+        "12.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Compute Folsom",
+      "version_number": [
+        "2012.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:folsom"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Essex",
+      "version_number": [
+        "2012.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:essex"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Grizzly",
+      "version_number": [
+        "2012.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:grizzly"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、同じ VNC ポートにバインドされていた削除済みの VM 用 VNC トークンを使用されることで、VM へのアクセス権を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1125378",
+      "url": "https://bugs.launchpad.net/nova/+bug/1125378"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change I0d83ec6c: VNC Token Validation",
+      "url": "https://review.openstack.org/#/c/22758"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change I0d83ec6c: Flush tokens on instance delete (/#/c/22872/)",
+      "url": "https://review.openstack.org/#/c/22872/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Change I0d83ec6c: Flush tokens on instance delete (/#/c/22086/)",
+      "url": "https://review.openstack.org/#/c/22086/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0709",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0709.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1771-1",
+      "url": "http://www.ubuntu.com/usn/USN-1771-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0335",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0335"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0335",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0335"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月27日]\\n  掲載\\n[2013年04月11日]\\n  影響を受けるシステム：Ubuntu の情報を追加\\n[2013年06月12日]\\n  ベンダ情報：レッドハット (RHSA-2013:0709) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-27T14:41:40+09:00",
+  "date_last_updated": "2013-06-12T16:39:01+09:00",
+  "date_public": "2013-02-16T00:00:00+09:00"
+}

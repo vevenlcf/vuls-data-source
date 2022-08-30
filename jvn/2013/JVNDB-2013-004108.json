@@ -1,0 +1,150 @@
+{
+  "vulinfo_id": "JVNDB-2013-004108",
+  "title": "PHP の SOAP パーサにおける任意のファイルを読まれる脆弱性",
+  "vulinfo_description": "PHP の SOAP パーサには、soap_xmlParseFile および soap_xmlParseMemory 関数に XML External Entity (XXE) の問題に関する不備があるため、任意のファイルを読まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.3.22 未満",
+        "5.4.12 未満の 5.4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.6.8",
+        "v10.7.5",
+        "v10.8 から v10.8.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "10.6.8",
+        "v10.7.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5",
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、エンティティ参照を伴う外部エンティティ宣言を含む SOAP WSDL ファイルを介して、任意のファイルを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2013-09-12-1",
+      "url": "http://lists.apple.com/archives/security-announce/2013/Sep/msg00002.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT5880",
+      "url": "http://support.apple.com/kb/HT5880"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT5880",
+      "url": "http://support.apple.com/kb/HT5880?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Git Repositories",
+      "vulinfo_id": "Disabled external entities loading",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=afe98b7829d50806559acac9b530acb8283c3bf4"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Git Repositories",
+      "vulinfo_id": "Proper bit reset code",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=188c196d4da60bdde9190d2fc532650d17f7af2d"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 918187",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=918187"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu",
+      "vulinfo_id": "CVE-2013-1824 in Ubuntu",
+      "url": "http://people.canonical.com/~ubuntu-security/cve/2013/CVE-2013-1824.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1824",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1824"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97033473",
+      "url": "http://jvn.jp/cert/JVNVU97033473/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1824",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1824"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月17日]\\n  掲載\\n[2013年09月30日]\\n  CVSS による深刻度：内容を更新\\n  影響を受けるシステム：内容を更新"
+    }
+  ],
+  "date_first_published": "2013-09-17T20:19:40+09:00",
+  "date_last_updated": "2013-09-30T15:16:21+09:00",
+  "date_public": "2013-02-07T00:00:00+09:00"
+}

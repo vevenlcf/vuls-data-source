@@ -1,0 +1,129 @@
+{
+  "vulinfo_id": "JVNDB-2016-002119",
+  "title": "Spacewalk および Red Hat Satellite の Web UI におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "Spacewalk および Red Hat Satellite の Web UI には、クロスサイトスクリプティングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Satellite",
+      "version_number": [
+        "(v. 5.7 for RHEL 6)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:satellite"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "spacewalk-java",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:spacewalk-java"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.1",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "第三者により、System Set Manager (SSM) の以下を介して、任意の Web スクリプトまたは HTML を挿入される可能性があります。  (1) systems/SystemEntitlements.do の PATH_INFO (2) admin/multiorg/EntitlementDetails.do の label パラメータ (3) Snapshot Tag の名前 (4) System Group の名前"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "1320452 - Cleaning up some remaining Tag/Group XSS issues",
+      "url": "https://github.com/spacewalkproject/spacewalk/commit/b6491eba"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "1320452 - \u003cc:out\u003e is your friend",
+      "url": "https://github.com/spacewalkproject/spacewalk/commit/7920542f"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "1320444 - typo slipped past. Ugh.",
+      "url": "https://github.com/spacewalkproject/spacewalk/commit/982b11c9"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "1320444 - Bad bean-message ids and navbar-vars can lead to XSS issues",
+      "url": "https://github.com/spacewalkproject/spacewalk/commit/7b9ff9ad"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1320940",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1320940"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1320452",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1320452"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1320444",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1320444"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0590",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0590.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3079",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3079"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3079",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3079"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-20T16:05:05+09:00",
+  "date_last_updated": "2016-04-20T16:05:05+09:00",
+  "date_public": "2016-04-04T00:00:00+09:00"
+}

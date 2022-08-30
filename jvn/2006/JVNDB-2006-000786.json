@@ -1,0 +1,117 @@
+{
+  "vulinfo_id": "JVNDB-2006-000786",
+  "title": "mod_auth_kerb の der_get_oid() 関数におけるヒープオーバーフローの脆弱性",
+  "vulinfo_description": "Apache HTTP Server 上で Kerberos 認証を提供するモジュール mod_auth_kerb の der_get_oid() 関数には、一つずれ (off-by-one) によるヒープオーバーフローの脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "Kerberos Module For Apache",
+      "product_name": "mod_auth_kerb",
+      "version_number": [
+        "5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mod_auth_kerb:mod_auth_kerb"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "Apache HTTP Server の子プロセスがクラッシュし、サービス運用妨害 (DoS) 状態となる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています (mod_auth_kerb 5.3 で修正済み)。 ベンダ情報を参考に適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mod_auth_kerb",
+      "vulinfo_id": "Top Page",
+      "url": "http://sourceforge.net/projects/modauthkerb"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2006:0746",
+      "url": "https://rhn.redhat.com/errata/RHSA-2006-0746.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2006:0746",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2006-0746J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-5989",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5989"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2006-4633",
+      "url": "http://www.frsirt.com/english/advisories/2006/4633"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-5989",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-5989"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA23023",
+      "url": "http://secunia.com/advisories/23023/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "21214",
+      "url": "http://www.securityfocus.com/bid/21214"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-11-21T00:00:00+09:00"
+}

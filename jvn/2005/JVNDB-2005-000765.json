@@ -1,0 +1,80 @@
+{
+  "vulinfo_id": "JVNDB-2005-000765",
+  "title": "バッファロー製ルータにおける設定画面のリモートアクセスとパスワード漏洩の脆弱性",
+  "vulinfo_description": "バッファロー製ルータの一部には、 WAN 側からのリモートアクセスが可能な脆弱性が存在するため、遠隔から第三者により管理者権限を取得され、ルータを操作されてしまう可能性があります。  また、管理画面のアクセスにより、設定保存機能から ISP のユーザアカウントやパスワードを取得されてしまう可能性があります。 ",
+  "affected": [
+    {
+      "name": "バッファロー",
+      "product_name": "BUFFALO BBR-4HG",
+      "version_number": [
+        "ファームウェアバージョン1.04 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:buffalo_inc:bbr-4hg"
+      }
+    },
+    {
+      "name": "バッファロー",
+      "product_name": "BUFFALO BBR-4MG",
+      "version_number": [
+        "ファームウェアバージョン1.04 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:buffalo_inc:bbr-4mg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "外部からのリモートアクセスにより、重要な設定が変更されてしまう可能性があります。  また、設定保存機能において ISP のユーザアカウント及びパスワードをプレーンテキストで保存しているため、それらを盗用された場合、なりすましなどの不正アクセスが行なわれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ドライバダウンロードサービス",
+      "vulinfo_id": "BBR-4HGファームウェア",
+      "url": "http://buffalo.jp/download/driver/lan/bbr4hg.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ドライバダウンロードサービス",
+      "vulinfo_id": "BBR-4MGファームウェア",
+      "url": "http://buffalo.jp/download/driver/lan/bbr4mg.html"
+    },
+    {
+      "type": "advisory",
+      "name": "IPA セキュリティセンター",
+      "vulinfo_id": "JVN_55023557",
+      "url": "http://www.ipa.go.jp/security/vuln/documents/2005/JVN_55023557_buffalo.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#55023557",
+      "url": "http://jvn.jp/jp/JVN%2355023557/index.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-04-15T00:00:00+09:00"
+}

@@ -1,0 +1,101 @@
+{
+  "vulinfo_id": "JVNDB-2013-004567",
+  "title": "Network Audio System におけるスタックベースおよびヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Network Audio System (NAS) には、スタックベースおよびヒープベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "12.10",
+        "13.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Jon Trulson",
+      "product_name": "Network Audio System",
+      "version_number": [
+        "1.9.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:radscan:network_audio_system"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、以下の項目を介して、サービス運用妨害 (クラッシュ) 状態にされる、または任意のコードを実行される可能性があります。  (1) server/os/utils.c の ProcessCommandLine 関数の display コマンド引数 (2) server/os/access.c の ResetHosts 関数 (3) server/os/connection.c の open_unix_socket 関数 (4) server/os/connection.c の open_isc_local 関数 (5) server/os/connection.c の open_xsight_local 関数 (6) server/os/connection.c の open_att_local 関数 (7) server/os/connection.c の open_att_svr4_local 関数 (8) server/os/connection.c の CreateWellKnownSockets 関数の AUDIOHOST 環境変数 (9) server/os/connection.c の AmoebaTCPConnectorThread 関数 (10) server/os/aulog.c の osLogMsg 関数のロギング処理に関する不特定の要素"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2771",
+      "url": "http://www.debian.org/security/2013/dsa-2771"
+    },
+    {
+      "type": "vendor",
+      "name": "radscan.com",
+      "vulinfo_id": "[nas] nas: Multiple Vulnerabilities in nas 1.9.3",
+      "url": "http://radscan.com/pipermail/nas/2013-August/001270.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "nasd: Use snprintf, strncpy, and strncat to guard against buffer overflows.",
+      "url": "http://sourceforge.net/p/nas/code/288"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1986-1",
+      "url": "http://www.ubuntu.com/usn/USN-1986-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4256",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4256"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4256",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4256"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月11日]\\n  掲載\\n[2013年11月12日]\\n  ベンダ情報：Debian (DSA-2771) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-11T10:29:29+09:00",
+  "date_last_updated": "2013-11-12T11:31:30+09:00",
+  "date_public": "2013-08-11T00:00:00+09:00"
+}

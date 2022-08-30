@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2015-007105",
+  "title": "Libav の libavcodec/ituh263dec.c の ff_h263_decode_mba 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Libav の libavcodec/ituh263dec.c の ff_h263_decode_mba 関数には、サービス運用妨害 (ゼロ除算エラーおよびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Libav",
+      "product_name": "Libav",
+      "version_number": [
+        "11.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libav:libav"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された寸法のファイルを介して、サービス運用妨害 (ゼロ除算エラーおよびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Git",
+      "vulinfo_id": "h263: Always check both dimensions",
+      "url": "https://git.libav.org/?p=libav.git;a=commitdiff;h=0a49a62f998747cfa564d98d36a459fe70d3299b"
+    },
+    {
+      "type": "vendor",
+      "name": "Libav",
+      "vulinfo_id": "libav-11.5.changelog",
+      "url": "https://libav.org/releases/libav-11.5.changelog"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2944-1",
+      "url": "http://www.ubuntu.com/usn/USN-2944-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5479",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5479"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5479",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5479"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月28日]\\n  掲載\\n[2016年05月31日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Ubuntu (USN-2944-1) を追加\\n  CVSS による深刻度：内容を更新\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加"
+    }
+  ],
+  "date_first_published": "2016-04-28T14:57:28+09:00",
+  "date_last_updated": "2016-05-31T15:57:12+09:00",
+  "date_public": "2015-06-30T00:00:00+09:00"
+}

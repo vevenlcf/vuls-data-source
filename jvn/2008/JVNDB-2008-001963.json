@@ -1,0 +1,513 @@
+{
+  "vulinfo_id": "JVNDB-2008-001963",
+  "title": "SSH 通信において一部データが漏えいする可能性",
+  "vulinfo_description": "SSH（Secure Shell）は、ネットワークを介してインターネット上に置かれているサーバにログインしたり、 コマンドを実行したりするためのプログラムおよび通信プロトコルで、データは暗号化された状態で通信が行なわれます。 SSH で使用される通信方式の一部に対する攻撃方法が報告されています。  報告された攻撃方法では、SSH がデフォルトで使用する通信方式において、ひとつの暗号化ブロックから 32 ビットの平文を取り出すことができるとされています。 この攻撃が行なわれると、SSH セッションが切れることがあります。RFC 4251 では、通信エラーが発生した際再接続すべきとされているため、自動的に再接続する実装の場合、攻撃による影響が大きくなる可能性があります。",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "IBM AIX",
+      "version_number": [
+        "5.2 ",
+        "5.3 ",
+        "6.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:ibm:aix"
+      }
+    },
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "4.7p1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    },
+    {
+      "name": "SSH コミュニケーションズ・セキュリティ",
+      "product_name": "SSH Tectia Client",
+      "version_number": [
+        "4.3.10-K (Korean) 以前",
+        "4.3.3-J (Japanese) 以前",
+        "4.4.11 以前",
+        "5.2.4 以前",
+        "5.3.8 以前",
+        "6.0.4 以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ssh:tectia_client"
+      }
+    },
+    {
+      "name": "SSH コミュニケーションズ・セキュリティ",
+      "product_name": "SSH Tectia Connector",
+      "version_number": [
+        "4.4.11 以前",
+        "5.2.4 以前",
+        "5.3.8 以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ssh:tectia_connector"
+      }
+    },
+    {
+      "name": "SSH コミュニケーションズ・セキュリティ",
+      "product_name": "SSH Tectia ConnectSecure",
+      "version_number": [
+        "6.0.4 以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ssh:tectia_connectsecure"
+      }
+    },
+    {
+      "name": "SSH コミュニケーションズ・セキュリティ",
+      "product_name": "SSH Tectia Server",
+      "version_number": [
+        "4.4.11 以前",
+        "5.2.4 以前",
+        "5.3.8 以前",
+        "6.0.4 以前",
+        "for IBM z/OS 5.5.1 以前",
+        "for IBM z/OS 6.0.1 以前",
+        "for Linux on IBM System z 6.0.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ssh:tectia_server"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.5.8"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.5.8"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "OpenSolaris",
+      "version_number": [
+        "(sparc) ",
+        "(x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:opensolaris"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ディアイティ",
+      "product_name": "SSH Tectia Client",
+      "version_number": [
+        "4.3.10-K (韓国語版) 以前",
+        "4.3.3-J (日本語版) 以前",
+        "4.4.11 以前",
+        "5.2.4 以前",
+        "5.3.8 以前",
+        "6.0.4 以前",
+        "for z/OS 5.5.1 以前",
+        "for z/OS 6.0.1 以前"
+      ]
+    },
+    {
+      "name": "ディアイティ",
+      "product_name": "SSH Tectia ConnectSecure",
+      "version_number": [
+        "6.0.4 以前"
+      ]
+    },
+    {
+      "name": "ディアイティ",
+      "product_name": "SSH Tectia Server",
+      "version_number": [
+        "4.4.11 以前",
+        "5.2.4 以前",
+        "5.3.8 以前",
+        "6.0.4 以前",
+        "for z/OS 5.5.1 以前",
+        "for z/OS 6.0.1 以前"
+      ]
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RT107e",
+      "version_number": [
+        "Rev.8.03.42以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rt107e"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RT58i",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rt58i_firmware"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX1100",
+      "version_number": [
+        "Rev.8.03.37以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx1100"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX1200",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx1200"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX1500",
+      "version_number": [
+        "Rev.8.03.37以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx1500"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX3000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx3000"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "SRT100",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:srt100"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IP38X シリーズ",
+      "version_number": [
+        "107e",
+        "1100",
+        "1200 ",
+        "1500",
+        "3000",
+        "58i",
+        "SR100"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ip38x"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WanBooster",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:wanbooster"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃が成立する可能性は低いとされていますが、攻撃が成立した場合、ひとつの暗号化ブロックから 32ビットの平文を取り出すことが可能です。 "
+  },
+  "solution": "[CTR モードを使用する] CBC（Cipher Block Chaining）モードではなく CTR（CounTR）モードを使用する。 RFC 4344 において、SSH で使用する CTR モードに関する記述がされています。また、OpenSSH 3.7 以降では CTR モードの使用がサポートされています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT3937",
+      "url": "http://support.apple.com/kb/HT3937"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT3937",
+      "url": "http://support.apple.com/kb/HT3937?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "openssh-4.3p2-29.2AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=749"
+    },
+    {
+      "type": "vendor",
+      "name": "dit",
+      "vulinfo_id": "SSH Tectiaの脆弱性のお知らせ",
+      "url": "http://www.dit.co.jp/support/ssh_tectia/index.html#12"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "5116",
+      "url": "http://www14.software.ibm.com/webapp/set2/subscriptions/pqvcmjd?mode=18\u0026ID=5116"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV09-007",
+      "url": "http://www.nec.co.jp/security-info/secinfo/nv09-007.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "release-3.7",
+      "url": "http://www.openssh.com/txt/release-3.7"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "cbc.adv",
+      "url": "http://www.openssh.com/txt/cbc.adv"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "Top page",
+      "url": "http://www.openssh.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1287",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1287.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RTシリーズのセキュリティに関するFAQ",
+      "vulinfo_id": "SSH通信において一部データが漏えいする可能性について",
+      "url": "http://www.rtpro.yamaha.co.jp/RT/FAQ/Security/CPNI957037.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2008-5161 Information Exposure vulnerability in OpenSSH",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2008_5161_information_exposure"
+    },
+    {
+      "type": "vendor",
+      "name": "SSH Communications Security",
+      "vulinfo_id": "953",
+      "url": "http://www.ssh.com/company/news/2008/english/security/article/953/"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "247186",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-66-247186-1"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1287",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1287J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-5161",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5161"
+    },
+    {
+      "type": "advisory",
+      "name": "CPNI Vulnerability Advisory",
+      "vulinfo_id": "CPNI-957037",
+      "url": "http://www.cpni.gov.uk/Docs/Vulnerability_Advisory_SSH.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "IETF",
+      "vulinfo_id": "RFC 4251",
+      "url": "http://tools.ietf.org/html/rfc4251"
+    },
+    {
+      "type": "advisory",
+      "name": "IETF",
+      "vulinfo_id": "RFC 4253",
+      "url": "http://tools.ietf.org/html/rfc4253"
+    },
+    {
+      "type": "advisory",
+      "name": "IETF",
+      "vulinfo_id": "RFC 4344",
+      "url": "http://tools.ietf.org/html/rfc4344"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "46620",
+      "url": "http://xforce.iss.net/xforce/xfdb/46620"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "CPNI-957037",
+      "url": "http://jvn.jp/niscc/CPNI-957037/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-5161",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5161"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "49872",
+      "url": "http://osvdb.org/49872"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32760",
+      "url": "http://secunia.com/advisories/32760"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA32740",
+      "url": "http://secunia.com/advisories/32740"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1021235",
+      "url": "http://www.securitytracker.com/id?1021235"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1021236",
+      "url": "http://www.securitytracker.com/id?1021236"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#958563",
+      "url": "http://www.kb.cert.org/vuls/id/958563"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2008-3173",
+      "url": "http://www.vupen.com/english/advisories/2008/3173"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2008-3172",
+      "url": "http://www.vupen.com/english/advisories/2008/3172"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年12月16日]\\n  掲載\\n[2009年05月27日]\\n  影響を受けるシステム： ヤマハ (SSH通信において一部データが漏えいする可能性について) の情報を追加\\n  ベンダ情報：ヤマハ (SSH通信において一部データが漏えいする可能性について) を追加\\n[2009年08月06日]\\n  影響を受けるシステム：日本電気 (NV09-007) の情報を追加\\n  ベンダ情報：日本電気 (NV09-007) を追加\\n[2009年09月29日]\\n  影響を受けるシステム：ミラクル・リナックス (openssh-4.3p2-29.2AXS3) の情報を追加\\n  影響を受けるシステム：レッドハット (RHSA-2009:1287) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (openssh-4.3p2-29.2AXS3) を追加\\n  ベンダ情報：レッドハット (RHSA-2009:1287) を追加\\n[2009年12月17日]\\n  影響を受けるシステム：アップル (HT3937) の情報を追加\\n  ベンダ情報：アップル (HT3937) を追加\\n[2010年07月07日]\\n  影響を受けるシステム：IBM (5116) の情報を追加\\n  ベンダ情報：IBM (5116) を追加\\n[2012年05月14日]\\n  ベンダ情報：オラクル (CVE-2008-5161 Information Exposure vulnerability in OpenSSH) を追加"
+    }
+  ],
+  "date_first_published": "2008-12-16T17:11:14+09:00",
+  "date_last_updated": "2012-05-14T15:27:04+09:00",
+  "date_public": "2008-11-17T00:00:00+09:00"
+}

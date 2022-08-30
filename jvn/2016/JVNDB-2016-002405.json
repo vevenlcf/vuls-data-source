@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2016-002405",
+  "title": "Wireshark の NCP ディセクタの epan/dissectors/packet-ncp2222.inc におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Wireshark の NCP ディセクタ (解析機能) の epan/dissectors/packet-ncp2222.inc には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.12.11 未満の 1.12.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、パケット内の過度に長い文字列を介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "Dynamically allocate info string to prevent stack overflow.",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=99efcb0f5aeeb4b2179e88c7a4233022aaeecf0b"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinapr2016-2952098.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 12293",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=12293"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-28",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-28.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4085",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4085"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4085",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4085"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月06日]\\n  掲載\\n[2016年11月17日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - April 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-05-06T11:28:07+09:00",
+  "date_last_updated": "2016-11-17T16:45:39+09:00",
+  "date_public": "2016-04-22T00:00:00+09:00"
+}

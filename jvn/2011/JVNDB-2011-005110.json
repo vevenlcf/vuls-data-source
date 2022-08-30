@@ -1,0 +1,101 @@
+{
+  "vulinfo_id": "JVNDB-2011-005110",
+  "title": "wxBitcoin および bitcoind における暗号化されていない秘密鍵を取得される脆弱性",
+  "vulinfo_description": "wxBitcoin および bitcoind の \"encrypt wallet\" 機能は、BSDDB の削除機能と適切にやり取りを行わないため、ビットコインウォレットファイルから暗号化されていない秘密鍵を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Bitcoin Project",
+      "product_name": "bitcoind",
+      "version_number": [
+        "0.4.1 未満の 0.4.x",
+        "0.5.0rc"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoind"
+      }
+    },
+    {
+      "name": "Bitcoin Project",
+      "product_name": "wxBitcoin",
+      "version_number": [
+        "0.4.1 未満の 0.4.x",
+        "0.5.0rc"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:wxbitcoin"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、BSDDB インタフェースを回避され、削除用にマークしたエントリを読まれることで、ビットコインウォレットファイルから暗号化されていない秘密鍵を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Bitcoin version 0.5.0 released",
+      "url": "http://bitcoin.org/releases/2011/11/21/v0.5.0.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Common Vulnerabilities and Exposures",
+      "url": "https://en.bitcoin.it/wiki/CVEs"
+    },
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Wallet encryption bug found (IMPORTANT!)",
+      "url": "https://bitcointalk.org/index.php?topic=51604.0"
+    },
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Wallet encryption issue",
+      "url": "https://bitcointalk.org/index.php?topic=51474.0"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-4447",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4447"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-4447",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4447"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-08-09T11:24:16+09:00",
+  "date_last_updated": "2012-08-09T11:24:16+09:00",
+  "date_public": "2011-11-11T00:00:00+09:00"
+}

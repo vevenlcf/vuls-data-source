@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2015-007114",
+  "title": "Linux Kernel の fs/namespace.c における任意のファイルを読まれる脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/namespace.c は、マウントの接続を適切にサポートしないため、任意のファイルを読まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.0.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、ファイルまたはディレクトリの削除にユーザの名前空間の root アクセスを利用されることで、任意のファイルを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.0.2",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.0.2"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "mnt: Update detach_mounts to leave mounts connected",
+      "url": "https://github.com/torvalds/linux/commit/e0c9c0afd2fc958ffa34b697972721d81df8a56f"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "mnt: Update detach_mounts to leave mounts connected",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e0c9c0afd2fc958ffa34b697972721d81df8a56f"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1249442",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1249442"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4176",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4176"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4176",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4176"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:07:31+09:00",
+  "date_last_updated": "2016-05-10T10:07:31+09:00",
+  "date_public": "2015-05-06T00:00:00+09:00"
+}

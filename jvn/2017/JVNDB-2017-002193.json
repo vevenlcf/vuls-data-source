@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2017-002193",
+  "title": "Node.js 用 serialize-to-js パッケージにおける任意のコードを実行される脆弱性",
+  "vulinfo_description": "Node.js 用 serialize-to-js パッケージには、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "serialize-to-js project",
+      "product_name": "serialize-to-js",
+      "version_number": [
+        "0.5.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:serialize-to-js_project:serialize-to-js"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "deserialize() 関数に渡された信頼できないデータを介して、Immediately Invoked Function Expression (IIFE) を伴う JavaScript Object を渡されることで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "deserialize() can be abused to achieve arbitrary code injection with an IIFE #1",
+      "url": "https://github.com/commenthol/serialize-to-js/issues/1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5954",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5954"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5954",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5954"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Exploiting Node.js deserialization bug for Remote Code Execution",
+      "url": "https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-502",
+      "url": "https://cwe.mitre.org/data/definitions/502.html",
+      "title": "信頼できないデータのデシリアライゼーション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月31日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-31T16:58:17+09:00",
+  "date_last_updated": "2017-03-31T16:58:17+09:00",
+  "date_public": "2017-02-09T00:00:00+09:00"
+}

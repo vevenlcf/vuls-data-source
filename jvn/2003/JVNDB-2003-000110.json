@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2003-000110",
+  "title": "Mutt および Balsa の不正なフォルダによるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  テキストベースの電子メールクライアントである Mutt、GNOME 用の電子メールクライアントである Balsa にはバッファーオーバーフローを発生する問題が存在します。   Mutt 1.4 には、IMAP サーバから返されたメールボックス名を解析する際にバッファオーバーフローが発生する問題が存在します。この問題を利用するリモートの攻撃者は IMAP サーバを介して Mutt の実行権限で任意のコードを実行することが可能です。  尚、Red Hat Linux 8.0/9 には、問題を抱えるバージョンの Mutt が同梱されています。   Balsa 1.2 - 1.4.2 には、Mutt の問題を抱えるコードが組み込まれているため、同様の影響を受けます。  尚、Red Hat Linux 7.2/7.3/8.0/9 に問題を抱えるバージョンの Balsa が同梱されています。   また、Balsa が利用している SMTP ライブラリ、libesmtp 0.8.10 以前には、read_smtp_response に不備が存在し、バッファオーバーフローが発生する問題が存在します。リモートの攻撃者は SMTP サーバを介して悪意あるレスポンスを送りつけることにより、任意のコードを実行出来る可能性があります。また、過度に長いレスポンスを送りつけることにより、サービス不能状態に陥らせることが可能です。  尚、Red Hat Linux 7.2/7.3 に問題を抱えるバージョンの libesmtp が同梱されています。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "7.2  ",
+        "7.3  ",
+        "8.0  ",
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:109",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-109.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:109",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-109J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0140",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0140"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0140",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0140"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "7269",
+      "url": "http://www.securityfocus.com/bid/7269"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "7120",
+      "url": "http://www.securityfocus.com/bid/7120"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-04-03T00:00:00+09:00"
+}

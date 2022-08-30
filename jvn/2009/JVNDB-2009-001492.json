@@ -1,0 +1,206 @@
+{
+  "vulinfo_id": "JVNDB-2009-001492",
+  "title": "Evolution Data Server (別名 evolution-data-server) の ntlm_challenge 関数におけるプロセスメモリ情報の漏洩またはサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Evolution Data Server (別名 evolution-data-server) の Camel に含まれる NTLM SASL 認証機能の ntlm_challenge 関数 (camel/camel-sasl-ntlm.c) には、チャレンジパケットのデータ量と長さを指定している値とが一致しているか検証しないため、プロセスメモリ情報の漏洩、またはサービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GNOME Project",
+      "product_name": "Evolution Data Server",
+      "version_number": [
+        "2.24.5 およびそれ以前",
+        "2.25.92 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnome:evolution_data_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "OpenSolaris",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:opensolaris"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.7 (as) ",
+        "4.7 (es) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "3.0 ",
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモートのメールサーバにより、パケットのデータ量を上回る長さの値が指定された NTLM 認証 Type 2 のパケット を介して、クライアントのプロセスメモリの情報を読み取られる、またはサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "mail.gnome.org Archives",
+      "vulinfo_id": "Another Evolution-Data-Server freeze break",
+      "url": "http://mail.gnome.org/archives/release-team/2009-March/msg00096.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:0354",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-0354.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:0355",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-0355.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:0358",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-0358.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun",
+      "vulinfo_id": "cve_2009_0582",
+      "url": "http://blogs.sun.com/security/entry/cve_2009_0582"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "119118",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-21-119118-51-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "119117",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-21-119117-51-1"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:0358",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-0358J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:0354",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-0354J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:0355",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-0355J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-0582",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0582"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-0582",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0582"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA34286",
+      "url": "http://secunia.com/advisories/34286"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "34109",
+      "url": "http://www.securityfocus.com/bid/34109"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2009-0716",
+      "url": "http://www.vupen.com/english/advisories/2009/0716"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年06月30日]\\n  掲載\\n[2010年05月14日]\\n  影響を受けるシステム：サン・マイクロシステムズ (cve_2009_0582) の情報を追加\\n  影響を受けるシステム：サン・マイクロシステムズ (119118) の情報を追加\\n  影響を受けるシステム：サン・マイクロシステムズ (119117) の情報を追加\\n  ベンダ情報：サン・マイクロシステムズ (cve_2009_0582) を追加\\n  ベンダ情報：サン・マイクロシステムズ (119118) を追加\\n  ベンダ情報：サン・マイクロシステムズ (119117) を追加"
+    }
+  ],
+  "date_first_published": "2009-06-30T11:45:57+09:00",
+  "date_last_updated": "2010-05-14T18:37:26+09:00",
+  "date_public": "2009-03-14T00:00:00+09:00"
+}

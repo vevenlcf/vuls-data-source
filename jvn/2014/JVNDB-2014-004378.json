@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-004378",
+  "title": "Wireshark の HIP ディセクタの epan/dissectors/packet-hip.c の dissect_hip_tlv 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の HIP ディセクタ (解析機能) の epan/dissectors/packet-hip.c の dissect_hip_tlv 関数は、NULL ツリーを適切に処理しないため、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.12.1 未満の 1.12.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Oracle",
+      "vulinfo_id": "ELSA-2014-1676",
+      "url": "http://linux.oracle.com/errata/ELSA-2014-1676"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1676",
+      "url": "http://rhn.redhat.com/errata/RHSA-2014-1676.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in Wireshark",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_wireshark11"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "hip: fix infinite loop in dissect_hip_tlv",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=d9e5021fe79973d00ddd8fcef0bbefbaae63dd0f"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2014-16",
+      "url": "http://www.wireshark.org/security/wnpa-sec-2014-16.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-6426",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6426"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-6426",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6426"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年09月25日]\\n  掲載\\n[2014年11月26日]\\n  ベンダ情報：オラクル (ELSA-2014-1676) を追加\\n  ベンダ情報：レッドハット (RHSA-2014:1676) を追加\\n[2014年12月02日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in Wireshark) を追加"
+    }
+  ],
+  "date_first_published": "2014-09-25T16:25:15+09:00",
+  "date_last_updated": "2014-12-02T18:11:51+09:00",
+  "date_public": "2014-09-16T00:00:00+09:00"
+}

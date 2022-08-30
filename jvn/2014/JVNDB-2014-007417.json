@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-007417",
+  "title": "Linux Kernel の arch/x86/kernel/process_64.c の __switch_to 関数における ASLR 保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "Linux Kernel の arch/x86/kernel/process_64.c 内の __switch_to 関数は、スレッドローカルストレージ (TLS) ディスクリプタが他のステップに進む前にロードされることを確認しないため、ASLR 保護メカニズムを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.18.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、TLS のベースアドレスを読む巧妙に細工されたアプリケーションを介して、ASLR 保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "x86_64, switch_to(): Load TLS descriptors before switching DS and ES",
+      "url": "https://github.com/torvalds/linux/commit/f647d7c155f069c1a068030255c300663516420e"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "x86_64, switch_to(): Load TLS descriptors before switching DS and ES",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=f647d7c155f069c1a068030255c300663516420e"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1177260",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1177260"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9419",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9419"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9419",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9419"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-01-05T18:51:04+09:00",
+  "date_last_updated": "2015-01-05T18:51:04+09:00",
+  "date_public": "2014-12-11T00:00:00+09:00"
+}

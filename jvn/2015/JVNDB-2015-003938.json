@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2015-003938",
+  "title": "Ruby on Rails で使用される Web Console の request.rb における whitelisted_ips 保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "Ruby on Rails で使用される Web Console の request.rb は、クライアントの IP アドレスを決定する際に X-Forwarded-For ヘッダの使用を適切に制限しないため、whitelisted_ips 保護メカニズムを回避される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Ruby on Rails project",
+      "product_name": "Rails",
+      "version_number": [
+        "3.x",
+        "4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubyonrails:ruby_on_rails"
+      }
+    },
+    {
+      "name": "Ruby on Rails project",
+      "product_name": "Web Console",
+      "version_number": [
+        "2.1.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubyonrails:web_console"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたリクエストを介して、whitelisted_ips 保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "web-console/CHANGELOG.markdown",
+      "url": "https://github.com/rails/web-console/blob/master/CHANGELOG.markdown"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "[CVE-2015-3224] IP whitelist bypass in Web Console",
+      "url": "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/lzmz9_ijUFw/HBMPi4zp5NAJ"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3224",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3224"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3224",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3224"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年07月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-07-28T17:04:01+09:00",
+  "date_last_updated": "2015-07-28T17:04:01+09:00",
+  "date_public": "2015-06-16T00:00:00+09:00"
+}

@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2010-004287",
+  "title": "Chef の API におけるユーザアカウントを管理される脆弱性",
+  "vulinfo_description": "Chef の API の chef-server-api/app/controllers/users.rb は、メソッドの作成、破棄、および更新に管理者権限を必要としないため、ユーザアカウントを管理される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Chef Software, Inc.",
+      "product_name": "Chef",
+      "version_number": [
+        "0.9.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:chef:chef"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、/users URI へのリクエストを介して、ユーザアカウントを管理される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "CHEF-1289 API does not check for admin rights for user management",
+      "url": "https://github.com/opscode/chef/commit/c3bb41f727fbe00e5de719d687757b24c8dcdfc8"
+    },
+    {
+      "type": "vendor",
+      "name": "Opscode",
+      "vulinfo_id": "Chef",
+      "url": "http://www.opscode.com/chef/"
+    },
+    {
+      "type": "vendor",
+      "name": "Opscode",
+      "vulinfo_id": "API does not check for admin rights for user management",
+      "url": "http://tickets.opscode.com/browse/CHEF-1289"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-5142",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-5142"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-5142",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-5142"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-08-10T10:10:30+09:00",
+  "date_last_updated": "2012-08-10T10:10:30+09:00",
+  "date_public": "2010-06-07T00:00:00+09:00"
+}

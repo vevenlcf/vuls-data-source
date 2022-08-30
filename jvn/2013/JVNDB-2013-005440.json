@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-005440",
+  "title": "Linux Kernel の ipc/shm.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の ipc/shm.c には、競合状態により、サービス運用妨害 (use-after-free およびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.12.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、他の shm システムコールに関連した shmctl IPC_RMID 操作を使用する巧妙に細工されたアプリケーションを介して、サービス運用妨害 (use-after-free およびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.12.2",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.12.2"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ipc,shm: fix shm_file deletion races",
+      "url": "https://github.com/torvalds/linux/commit/a399b29dfbaaaf91162b2dc5a5875dd51bbfa2a1"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ipc,shm: fix shm_file deletion races",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=a399b29dfbaaaf91162b2dc5a5875dd51bbfa2a1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7026",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7026"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7026",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7026"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-12-11T17:34:07+09:00",
+  "date_last_updated": "2013-12-11T17:34:07+09:00",
+  "date_public": "2013-11-29T00:00:00+09:00"
+}

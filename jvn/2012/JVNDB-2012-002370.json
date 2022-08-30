@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-002370",
+  "title": "FFmpeg の asfrtp_parse_packet 関数における整数アンダーフローの脆弱性",
+  "vulinfo_description": "FFmpeg の libavformat/rtpdec_asf.c 内の asfrtp_parse_packet 関数には、整数アンダーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "0.8.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された ASF パケットを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.ffmpeg.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "rtp: Fix integer underflow that could allow remote code execution.",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=c2a2ad133eb9d42361804a568dee336992349a5e"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ffmpeg.git",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=shortlog;h=n0.8.3"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft Security Advisory",
+      "vulinfo_id": "MSVR11-012",
+      "url": "http://technet.microsoft.com/en-us/security/msvr/msvr11-012"
+    },
+    {
+      "type": "vendor",
+      "name": "マイクロソフト セキュリティ アドバイザリ",
+      "vulinfo_id": "MSVR11-012",
+      "url": "http://technet.microsoft.com/ja-jp/security/msvr/msvr11-012"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-4031",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4031"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-4031",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4031"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-05-10T18:19:09+09:00",
+  "date_last_updated": "2012-05-10T18:19:09+09:00",
+  "date_public": "2012-05-09T00:00:00+09:00"
+}

@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2013-006731",
+  "title": "GNU C Library の resolv/res_send.c 内の send_dg 関数における DNS クエリを送信される脆弱性",
+  "vulinfo_description": "GNU C Library (別名 glibc または libc6) の resolv/res_send.c 内の send_dg 関数は、ファイル記述子を適切に再利用しないため、DNS クエリを意図しない場所に送信される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-17: Code (コード) と識別されています。 http://cwe.mitre.org/data/definitions/17.html",
+  "affected": [
+    {
+      "name": "GNU Project",
+      "product_name": "GNU C Library",
+      "version_number": [
+        "2.20 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:glibc"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1",
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、大量のリクエストを介して、getaddrinfo 関数の呼び出しを誘発されることで、DNS クエリを意図しない場所に送信される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "net: ResolveIPAddr triggers glibc bug writing to wrong fd #6336",
+      "url": "https://github.com/golang/go/issues/6336"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2015:0351",
+      "url": "http://lists.opensuse.org/opensuse-updates/2015-02/msg00089.html"
+    },
+    {
+      "type": "vendor",
+      "name": "sourceware.org",
+      "vulinfo_id": "Bug 15946",
+      "url": "https://sourceware.org/bugzilla/show_bug.cgi?id=15946"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7423",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7423"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7423",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7423"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-02-25T17:55:49+09:00",
+  "date_last_updated": "2015-02-25T17:55:49+09:00",
+  "date_public": "2013-09-05T00:00:00+09:00"
+}

@@ -1,0 +1,128 @@
+{
+  "vulinfo_id": "JVNDB-2007-000393",
+  "title": "IPsec-tools の racoon における DELETE/NOTIFY メッセージ処理によるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "IPsec-tools の racoon デーモンには、src/racoon/isakmp_inf.c の isakmp_info_recv() 関数において不正な DELETE メッセージ、及び NOTIFY メッセージを処理した際にトンネルが切断されてサービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "IPsec-Tools",
+      "product_name": "IPsec-Tools",
+      "version_number": [
+        "0.6.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ipsec-tools:ipsec-tools"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者によって巧妙に細工された DELETE メッセージや NOTIFY メッセージを処理することでトンネルが切断され、結果として IPSec 通信が妨害される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています (IPsec-tools 0.6.7 で修正済み)。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "IPsec-Tools",
+      "vulinfo_id": "Top Page",
+      "url": "http://ipsec-tools.sourceforge.net/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2007:0342",
+      "url": "https://rhn.redhat.com/errata/RHSA-2007-0342.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2007:0342",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2007-0342J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-1841",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1841"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-1310",
+      "url": "http://www.frsirt.com/english/advisories/2007/1310"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "33541",
+      "url": "http://xforce.iss.net/xforce/xfdb/33541"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-1841",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-1841"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA24815",
+      "url": "http://secunia.com/advisories/24815/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "23394",
+      "url": "http://www.securityfocus.com/bid/23394"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年06月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-06-04T18:00:21+09:00",
+  "date_last_updated": "2007-06-04T18:00:21+09:00",
+  "date_public": "2007-04-10T00:00:00+09:00"
+}

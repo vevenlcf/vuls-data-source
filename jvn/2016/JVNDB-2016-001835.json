@@ -1,0 +1,126 @@
+{
+  "vulinfo_id": "JVNDB-2016-001835",
+  "title": "OpenSSH の sshd の session.c における CRLF インジェクションの脆弱性",
+  "vulinfo_description": "OpenSSH の sshd の session.c には、(1) do_authenticated1 および (2) session_x11_req 関数に関する処理に不備があるため、CRLF インジェクションの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-93: Improper Neutralization of CRLF Sequences (CRLF インジェクション) と識別されています。 http://cwe.mitre.org/data/definitions/93.html",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "7.2p2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle VM サーバー",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:vm_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工された X11 forwarding データを介して、シェルコマンド制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "CVS log for src/usr.bin/ssh/session.c",
+      "url": "http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/session.c"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "Diff for /src/usr.bin/ssh/session.c between version 1.281 and 1.282",
+      "url": "http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/session.c.diff?r1=1.281\u0026r2=1.282\u0026f=h"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "Security - March 9, 2016",
+      "url": "http://www.openssh.com/security.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "OpenSSH Security Advisory: x11fwd.adv",
+      "url": "http://www.openssh.com/txt/x11fwd.adv"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.openssh.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinapr2016-2952096.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinapr2016-2952098.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle VM Server for x86 Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/ovmbulletinjul2016-3090546.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2016-10",
+      "url": "http://www.turbolinux.co.jp/security/2016/TLSA-2016-10j.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3115",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3115"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3115",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3115"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月23日]\\n  掲載\\n[2016年03月24日]\\n  ベンダ情報：ターボリナックス (TLSA-2016-10) を追加\\n[2016年11月17日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle VM Server for x86 Bulletin - July 2016) を追加\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - April 2016) を追加\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - April 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-03-23T17:45:13+09:00",
+  "date_last_updated": "2016-11-17T16:29:45+09:00",
+  "date_public": "2016-03-09T00:00:00+09:00"
+}

@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2015-002408",
+  "title": "Net Nanny が共有の秘密鍵とルート CA 証明書を使用している問題",
+  "vulinfo_description": "Net Nanny は共有の秘密鍵とルート CA 証明書を使用するため、システムに対する HTTPS スプーフィングが可能になる問題が存在します。  Net Nanny は、ルート CA 証明書とプロキシをインストールします。この証明書の生成に用いられる秘密鍵は、直接平文で取得できる形でプログラムに含まれています。攻撃者は、この秘密鍵を用いることで Net Nanny によって信頼される証明書を生成することが可能です。",
+  "affected": [
+    {
+      "name": "ContentWatch, Inc.",
+      "product_name": "Net Nanny",
+      "version_number": [
+        "version 7.2.4.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:contentwatch_net_nanny"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:L/Au:S/C:C/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃者が立ち上げた HTTPS サイトにアクセスしたり、HTTPS 通信を傍受されたりしても、ブラウザの警告が表示されません。"
+  },
+  "solution": "2015年4月21日現在、対策方法は不明です。以下のワークアラウンドの適用を検討してください。  [SSL フィルタリングを無効にし、証明書を削除する] プログラムのユーザインターフェースから SSL フィルタリングを無効にし、OS の証明書ストアから Net Nanny がインストールした証明書を手動で削除してください。このワークアラウンドによって、Net Nanny の大部分の機能を損なうことなく本脆弱性の影響を防ぐことが可能です。  [Net Nanny をアンインストールする] Net Nanny をアンインストールすることで、OS の証明書ストアから Net Nanny がインストールした証明書が削除されます。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ContentWatch, Inc.",
+      "vulinfo_id": "Net Nanny",
+      "url": "http://www.netnanny.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#90912447",
+      "url": "http://jvn.jp/vu/JVNVU90912447/"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#260780",
+      "url": "http://www.kb.cert.org/vuls/id/260780"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年04月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-04-22T10:30:58+09:00",
+  "date_last_updated": "2015-04-22T10:30:58+09:00",
+  "date_public": "2015-04-20T00:00:00+09:00"
+}

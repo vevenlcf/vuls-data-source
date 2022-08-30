@@ -1,0 +1,151 @@
+{
+  "vulinfo_id": "JVNDB-2015-005045",
+  "title": "rpcbind の rpcb_svc_com.c の xprt_set_caller におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "rpcbind の rpcb_svc_com.c の xprt_set_caller には、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (デーモンクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "rpcbind project",
+      "product_name": "rpcbind",
+      "version_number": [
+        "0.2.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rpcbind_project:rpcbind"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10",
+        "11.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、PMAP_CALLIT コードを含む巧妙に細工されたパケットを介して、サービス運用妨害 (デーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3366",
+      "url": "https://www.debian.org/security/2015/dsa-3366"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - April 2016",
+      "url": "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update CVSS V2 Risk Matrices - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuapr2016-2881694.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - April 2016 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuapr2016verbose-2881709.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "April 2016 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/april_2016_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "rpcbind",
+      "url": "http://sourceforge.net/projects/rpcbind/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2756-1",
+      "url": "http://www.ubuntu.com/usn/USN-2756-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7236",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7236"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7236",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7236"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年10月05日]\\n  掲載\\n[2016年05月31日]\\n  CVSS による深刻度：内容を更新\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update CVSS V2 Risk Matrices - April 2016) を追加\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - April 2016) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - April 2016 Risk Matrices) を追加\\n  ベンダ情報：オラクル (April 2016 Critical Patch Update Released) を追加"
+    }
+  ],
+  "date_first_published": "2015-10-05T11:22:36+09:00",
+  "date_last_updated": "2016-05-31T11:52:31+09:00",
+  "date_public": "2015-09-23T00:00:00+09:00"
+}

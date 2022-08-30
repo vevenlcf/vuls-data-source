@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-003917",
+  "title": "Xen におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Xen は、XSA-45 パッチが適用されている場合、先延ばしされたクリーンアップ (deferred cleanup) 用に保持されたページの参照を適切に保持しないため、サービス運用妨害 (早すぎるページの解放 (premature page free) およびハイパーバイザクラッシュ) 状態にされる、または権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "4.1.x",
+        "4.2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    },
+    {
+      "name": "シトリックス・システムズ",
+      "product_name": "Citrix XenServer",
+      "version_number": [
+        "6.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:citrix:xenserver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.4",
+        "vector": "AV:A/AC:M/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルの PV ゲストカーネルにより、サービス運用妨害 (早すぎるページの解放 (premature page free) およびハイパーバイザクラッシュ) 状態にされる、または権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Citrix Knowledge Center",
+      "vulinfo_id": "CTX138134",
+      "url": "http://support.citrix.com/article/CTX138134"
+    },
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201309-24",
+      "url": "http://security.gentoo.org/glsa/glsa-201309-24.xml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1432",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1432"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1432",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1432"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月30日]\\n  掲載\\n[2013年11月07日]\\n  ベンダ情報：Gentoo Linux (GLSA 201309-24) を追加"
+    }
+  ],
+  "date_first_published": "2013-08-30T16:09:35+09:00",
+  "date_last_updated": "2013-11-07T18:03:10+09:00",
+  "date_public": "2013-07-04T00:00:00+09:00"
+}

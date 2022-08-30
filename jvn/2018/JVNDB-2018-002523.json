@@ -1,0 +1,148 @@
+{
+  "vulinfo_id": "JVNDB-2018-002523",
+  "title": "CENTUM と Exaopc にアクセス制限不備の脆弱性",
+  "vulinfo_description": "横河電機株式会社が提供する CENTUM と Exaopc には、アクセス制限不備 (\u003ca href=\"https://cwe.mitre.org/data/definitions/264.html\"target=\"blank\"\u003eCWE-264\u003c/a\u003e) の脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "横河電機株式会社",
+      "product_name": "B/M9000 CS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:b%2fm9000cs"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "B/M9000 VP",
+      "version_number": [
+        "R8.01.01 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:b%2fm9000_vp"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM CS 1000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_cs_1000"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM CS 3000 ファームウェア",
+      "version_number": [
+        "R3.09.50 およびそれ以前",
+        "Small R3.09.50 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_cs_3000_firmware"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM VP",
+      "version_number": [
+        "Basic R6.03.10 およびそれ以前",
+        "R6.03.10 およびそれ以前",
+        "Small R6.03.10 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_vp"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "Exaopc",
+      "version_number": [
+        "R3.75.00 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:exaopc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.7",
+        "vector": "AV:L/AC:H/Au:S/C:P/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:H"
+      }
+    ],
+    "impact_item": "当該製品にログイン可能な攻撃者によって、アラームの偽造およびアラーム表示妨害を受ける可能性があります。"
+  },
+  "solution": "[マイグレーションを行う] CENTUM CS 1000, CENTUM CS 3000, CENTUM CS 3000 Small は保守期間終了製品のため、対策パッチは提供されず、CENTUM VP へのマイグレーションを行う必要があります。  [アップデートする] CENTUM CS 1000, CENTUM CS 3000, CENTUM CS 3000 Small 以外の本脆弱性対象製品のユーザの方は、開発者が提供する情報をもとに最新版へアップデートしてください。  なお開発者によると、B/M9000 CS および B/M9000 VP の製品自体は本脆弱性の影響を受けませんが、一緒にインストールされる CENTUM CS 3000, CENTUM CS 1000, CENTUM VP に脆弱性が存在するため、確認が必要とのことです。  詳しくは、開発者が提供する\u003ca href=\"https://web-material3.yokogawa.com/YSAR-18-0001-J.jp.pdf\"target=\"blank\"\u003e情報\u003c/a\u003eをご覧ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "横河電機株式会社",
+      "vulinfo_id": "YSAR-18-0001: CENTUM と Exaopc にアラームの偽造と妨害の脆弱性",
+      "url": "https://web-material3.yokogawa.com/YSAR-18-0001-J.jp.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-8838",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8838"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-18-102-01",
+      "url": "https://ics-cert.us-cert.gov/advisories/ICSA-18-102-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98102375",
+      "url": "http://jvn.jp/cert/JVNVU98102375"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-8838",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-8838"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-04-17T01:39:39Z",
+      "description": "[2018年04月17日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2018-08-22T08:31:19Z",
+      "description": "[2018年08月22日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-8838) を追加"
+    }
+  ],
+  "date_first_published": "2018-04-17T10:39:39+09:00",
+  "date_last_updated": "2018-08-22T17:31:43+09:00",
+  "date_public": "2018-04-16T00:00:00+09:00"
+}

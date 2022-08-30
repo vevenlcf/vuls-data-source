@@ -1,0 +1,226 @@
+{
+  "vulinfo_id": "JVNDB-2003-000081",
+  "title": "Samba の競合状態を利用した任意のファイルを上書きされる脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Samba は、SMB/CIFS プロトコルを用いて、クライアント間のファイル共有を提供するためのユーティリティです。  Samba 2.2.7a 以前には、サーバデーモンである smbd が一旦断片化された SMB/CIFS パケットを再構成する際に、バッファオーバーフローを発生する問題が存在します。  この問題を利用するリモートの攻撃者は smbd の実行権限 (通常 root 権限) で任意のコードを実行することが可能です。  また、Samba 2.2.7a 以前には、レジストリファイルへ書き込む際に競合状態を発生する不備が存在し、ローカルの攻撃者により、重要なシステムファイルを改変される可能性があります。",
+  "affected": [
+    {
+      "name": "Samba Project",
+      "product_name": "Samba",
+      "version_number": [
+        "2.2.7a およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:samba:samba"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ4",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_4"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ550",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_550"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQXTR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_xtr"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "6.5  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.11 ",
+        "11.22 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "6.2  ",
+        "7.0  ",
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  ",
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.2",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX00251",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=c00956321"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0303-251",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0303-251.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:095",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-095.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Samba",
+      "vulinfo_id": "Top Page",
+      "url": "http://us4.samba.org/samba/"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "53581",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-53581-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "53924",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-53924-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "53581",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-53581-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "53924",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-53924-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-18",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-18.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:095",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-095J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-18",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-18j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0086",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0086"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0086",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0086"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "7106",
+      "url": "http://www.securityfocus.com/bid/7106"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "7107",
+      "url": "http://www.securityfocus.com/bid/7107"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1006290",
+      "url": "http://www.securitytracker.com/alerts/2003/Mar/1006290.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#298233",
+      "url": "http://www.kb.cert.org/vuls/id/298233"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-03-17T00:00:00+09:00"
+}

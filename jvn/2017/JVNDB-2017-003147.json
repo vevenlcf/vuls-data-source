@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2017-003147",
+  "title": "Apache 用 Ping Identity OpenID Connect 認証モジュールの Mod_auth_openidc.c におけるページのコンテンツを偽装される脆弱性",
+  "vulinfo_description": "Apache 用 Ping Identity OpenID Connect 認証モジュールの Mod_auth_openidc.c (別名 mod_auth_openidc) には、ページのコンテンツを偽装される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Ping Identity",
+      "product_name": "mod_auth_openidc",
+      "version_number": [
+        "2.14 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pingidentity:mod_auth_openidc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、悪意のある URL を介して、不正なリクエストを誘発されることで、ページのコンテンツを偽装される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "don't echo query params on invalid requests to redirect URI; closes #212",
+      "url": "https://github.com/pingidentity/mod_auth_openidc/commit/612e309bfffd6f9b8ad7cdccda3019fc0865f3b4"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Don't show user-supplied content in error pages #212",
+      "url": "https://github.com/pingidentity/mod_auth_openidc/issues/212"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "release 2.1.4",
+      "url": "https://github.com/pingidentity/mod_auth_openidc/releases/tag/v2.1.4"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-6059",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6059"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-6059",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6059"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-18T10:06:17+09:00",
+  "date_last_updated": "2017-05-18T10:06:17+09:00",
+  "date_public": "2017-01-26T00:00:00+09:00"
+}

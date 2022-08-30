@@ -1,0 +1,174 @@
+{
+  "vulinfo_id": "JVNDB-2014-004249",
+  "title": "CENTUM および Exaopc において任意のファイルにアクセス可能な脆弱性",
+  "vulinfo_description": "横河電機株式会社が提供する CENTUM および Exaopc には、BKBCopyD.exe の処理に問題があり、任意のファイルにアクセス可能な脆弱性が存在します。  なお、National Vulnerability Database (NVD) では、CWE-284 として公開されています。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM CS 3000 Entry Class",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_cs_3000_entry_class"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM CS 3000 Entry Class ソフトウェア",
+      "version_number": [
+        "R3.09.50 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yokogawa:centum_cs_3000_entry_class_software"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM CS 3000 ソフトウェア",
+      "version_number": [
+        "R3.09.50 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yokogawa:centum_cs_3000_software"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM CS 3000 ファームウェア",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_cs_3000_firmware"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM VP",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_vp"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM VP Entry Class",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:centum_vp_entry_class"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM VP Entry Class ソフトウェア",
+      "version_number": [
+        "R4.03.00 まで",
+        "R5.04.00 までの R5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yokogawa:centum_vp_entry_class_software"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "CENTUM VP ソフトウェア",
+      "version_number": [
+        "R4.03.00 まで",
+        "R5.04.00 までの R5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yokogawa:centum_vp_software"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "Exaopc",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yokogawa:exaopc"
+      }
+    },
+    {
+      "name": "横河電機株式会社",
+      "product_name": "Exaopc ファームウェア",
+      "version_number": [
+        "R3.72.10 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yokogawa:exaopc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "細工された通信フレームを 20111/tcp に送信されることで、ユーザの権限で任意のファイルを取得されたり作成されたりする可能性があります。"
+  },
+  "solution": "[パッチを適用する] 開発者が提供する情報をもとに、対応するパッチを適用してください。  開発者によると、2014年9月末から、対応するパッチが順次リリースされるとのことです。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　・20111/tcp へのアクセスを制限する  詳しくは、開発者が提供する情報 (YSAR-14-000) をご確認ください。  YSAR-14-000 http://www.yokogawa.co.jp/dcs/security/ysar/YSAR-14-0003.pdf ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Yokogawa Security Advisory Report",
+      "vulinfo_id": "YSAR-14-0003E",
+      "url": "http://www.yokogawa.com/dcs/security/ysar/YSAR-14-0003E.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "横河セキュリティ対策情報",
+      "vulinfo_id": "横河電機株式会社 の告知ページ",
+      "url": "http://www.yokogawa.co.jp/dcs/security/ysar/dcs-ysar-index-ja.htm"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5208",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5208"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-14-260-01",
+      "url": "https://ics-cert.us-cert.gov/advisories/ICSA-14-260-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95634161",
+      "url": "http://jvn.jp/vu/JVNVU95634161/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5208",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5208"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年09月18日]\\n  掲載\\n[2014年12月24日]\\n  概要：内容を更新\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：横河電機株式会社 (YSAR-14-0003E) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2014-5208) を追加\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加"
+    }
+  ],
+  "date_first_published": "2014-09-18T15:06:59+09:00",
+  "date_last_updated": "2014-12-24T17:59:39+09:00",
+  "date_public": "2014-09-17T00:00:00+09:00"
+}

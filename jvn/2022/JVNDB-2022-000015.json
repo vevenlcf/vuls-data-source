@@ -1,0 +1,80 @@
+{
+  "vulinfo_id": "JVNDB-2022-000015",
+  "title": "EC-CUBE における HTTP Host ヘッダの処理に脆弱性",
+  "vulinfo_description": "株式会社イーシーキューブが提供する EC-CUBE には、HTTP Host ヘッダの処理に脆弱性 (CWE-913) が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "株式会社イーシーキューブ",
+      "product_name": "EC-CUBE",
+      "version_number": [
+        "3.0.0 から 3.0.18-p3 まで (EC-CUBE 3系)",
+        "4.0.0 から 4.1.1 まで (EC-CUBE 4系)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lockon:ec-cube"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、EC-CUBE ユーザに URL の一部が改ざんされたパスワード再発行用のメールが送信される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を回避することが可能です。 \u003cul\u003e\u003cli\u003eTRUSTED_HOSTS を設定する\u003c/li\u003e\u003c/ul\u003e 詳細については、開発者が提供する情報を参照してください。  [アップデートし、設定を追加する] EC-CUBE 4系向けに TRUSTED_HOSTS の設定機能が追加された、EC-CUBE 4.1.2 が提供されています。 [管理画面 \u003e 設定 \u003e システム設定 \u003e セキュリティ管理] より TRUSTED_HOSTS を設定してください。 なお開発者によると、EC-CUBE 4.1.2 を新規にインストールした場合、TRUSTED_HOSTS は自動設定されるとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "EC-CUBE",
+      "vulinfo_id": "EC-CUBEにおける HTTP Hostヘッダの処理に脆弱性",
+      "url": "https://www.ec-cube.net/info/weakness/20220221/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-25355",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-25355"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#53871926",
+      "url": "https://jvn.jp/jp/JVN53871926/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-02-22T03:11:16Z",
+      "description": "[2022年02月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-02-22T12:14:34+09:00",
+  "date_last_updated": "2022-02-22T12:14:34+09:00",
+  "date_public": "2022-02-22T00:00:00+09:00"
+}

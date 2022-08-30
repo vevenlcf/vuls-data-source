@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2016-005753",
+  "title": "QEMU の hw/net/rocker/rocker.c の rocker_io_writel 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "QEMU (別名 Quick Emulator) の hw/net/rocker/rocker.c の rocker_io_writel 関数には、サービス運用妨害 (境界外読み取りおよび QEMU プロセスクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-125: Out-of-bounds Read (境界外読み取り) と識別されています。 https://cwe.mitre.org/data/definitions/125.html",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルのゲスト OS 管理者により、DMA バッファサイズ制限の失敗を利用されることで、サービス運用妨害 (境界外読み取りおよび QEMU プロセスクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH] net: rocker: set limit to DMA buffer size",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg02501.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-8668",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-8668"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-8668",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8668"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-08T18:16:44+09:00",
+  "date_last_updated": "2016-11-08T18:16:44+09:00",
+  "date_public": "2016-10-12T00:00:00+09:00"
+}

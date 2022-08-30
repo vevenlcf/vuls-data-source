@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2011-005291",
+  "title": "nfs-utils の mount.nsf ツールにおけるファイルを破損される脆弱性",
+  "vulinfo_description": "nfs-utils の mount.nsf ツールの support/nfs/nfs_mntent.c 内の nfs_addmntent 関数は、最初にリソース制限に干渉するかどうかのチェックをせずに /etc/mtab ファイルの追加を試行するため、当該ファイルを破損される脆弱性が存在します。  本脆弱性は、CVE-2011-1089 と関連する問題です。",
+  "affected": [
+    {
+      "name": "Linux NFS",
+      "product_name": "nfs-utils",
+      "version_number": [
+        "1.2.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:linux-nfs:nfs-utils"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、過度に小さな RLIMIT_FSIZE 値を持つプロセスを介して、当該ファイルを破損される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 697975",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=697975"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:0310",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-0310.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1534",
+      "url": "http://rhn.redhat.com/errata/RHSA-2011-1534.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "Changelog-nfs-utils-1.2.4",
+      "url": "http://sourceforge.net/projects/nfs/files/nfs-utils/1.2.4/Changelog-nfs-utils-1.2.4/download"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1749",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1749"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1749",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1749"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年03月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-03-03T09:57:00+09:00",
+  "date_last_updated": "2014-03-03T09:57:00+09:00",
+  "date_public": "2011-12-06T00:00:00+09:00"
+}

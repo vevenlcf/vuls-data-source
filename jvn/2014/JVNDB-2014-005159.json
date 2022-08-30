@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2014-005159",
+  "title": "Terascale Open-Source Resource and Queue Manager の lib/Libifl/tm.c における任意のプロセスを強制終了される脆弱性",
+  "vulinfo_description": "Terascale Open-Source Resource and Queue Manager (別名 TORQUE Resource Manager) の lib/Libifl/tm.c の tm_adopt 関数は、プロセスの所有者も採用されたセッション ID を所有していることを検証しないため、任意のプロセスを強制終了 (kill) される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Adaptive Computing",
+      "product_name": "TORQUE Resource Manager",
+      "version_number": [
+        "4.2.x およびそれ以前",
+        "4.5.x",
+        "5.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adaptivecomputing:torque_resource_manager"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工された実行ファイルを介して、任意のプロセスを強制終了 (kill) される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Torque Repository",
+      "url": "https://github.com/adaptivecomputing/torque"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3684",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3684"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3684",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3684"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: tm_adopt() vulnerability in TORQUE Resource Manager",
+      "url": "http://openwall.com/lists/oss-security/2014/10/02/45"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年11月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-11-04T14:46:44+09:00",
+  "date_last_updated": "2014-11-04T14:46:44+09:00",
+  "date_public": "2014-10-02T00:00:00+09:00"
+}

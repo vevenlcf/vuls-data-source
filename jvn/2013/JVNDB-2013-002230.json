@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2013-002230",
+  "title": "Xen における任意のイベントを挿入される脆弱性",
+  "vulinfo_description": "Xen は、ハイパーバイザがメモリ不足の状況で実行され、かつ Xen Security Module (XSM) が有効な場合、ドメインごとのイベントチャネルトラッキングテーブルを拡張する際に誤った操作手順を用いるため、解放済みメモリの使用 (Use-after-free) を引き起こし、任意のイベントを挿入される、および権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "4.1.x",
+        "4.2.x および xen-unstable"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルのゲストカーネルにより、任意のイベントを挿入される、および権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201309-24",
+      "url": "http://security.gentoo.org/glsa/glsa-201309-24.xml"
+    },
+    {
+      "type": "vendor",
+      "name": "Novell",
+      "vulinfo_id": "openSUSE-SU-2013:0912",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-06/msg00049.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen-announce",
+      "vulinfo_id": "Xen Security Advisory 47 (CVE-2013-1920) - Potential use of freed memory in event channel operations",
+      "url": "http://lists.xen.org/archives/html/xen-announce/2013-04/msg00000.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1920",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1920"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1920",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1920"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月16日]\\n  掲載\\n[2013年07月02日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:0912) を追加\\n[2013年11月08日]\\n  ベンダ情報：Gentoo Linux (GLSA 201309-24) を追加"
+    }
+  ],
+  "date_first_published": "2013-04-16T13:46:09+09:00",
+  "date_last_updated": "2013-11-08T14:50:52+09:00",
+  "date_public": "2013-04-04T00:00:00+09:00"
+}

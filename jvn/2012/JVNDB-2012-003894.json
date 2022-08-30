@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-003894",
+  "title": "Tor の routerparse.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Tor の routerparse.c 内の networkstatus_parse_vote_from_string 関数は、無効な flavor 名を適切に処理しないため、サービス運用妨害 (out-of-bounds read およびデーモンクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The Tor Project",
+      "product_name": "Tor",
+      "version_number": [
+        "0.2.2.38 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:torproject:tor"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された (1) vote ドキュメント、または (2) consensus ドキュメントを介して、サービス運用妨害 (out-of-bounds read およびデーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:1068",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-08/msg00048.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "tor.git / commit - Avoid possible segfault when handling networkstatus vote with bad flavor",
+      "url": "https://gitweb.torproject.org/tor.git/commit/57e35ad3d91724882c345ac709666a551a977f0f"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "tor.git / commit - Clarify security impact of bug 6530",
+      "url": "https://gitweb.torproject.org/tor.git/commit/55f635745afacefffdaafc72cc176ca7ab817546"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "Ticket #6530",
+      "url": "https://trac.torproject.org/projects/tor/ticket/6530"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "Tor 0.2.2.38 is released",
+      "url": "https://lists.torproject.org/pipermail/tor-announce/2012-August/000086.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-3518",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3518"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-3518",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3518"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月28日]\\n  掲載\\n[2012年10月22日]\\n  ベンダ情報：openSUSE (openSUSE-SU-2012:1068) を追加"
+    }
+  ],
+  "date_first_published": "2012-08-28T16:42:07+09:00",
+  "date_last_updated": "2012-10-22T13:55:38+09:00",
+  "date_public": "2012-08-12T00:00:00+09:00"
+}

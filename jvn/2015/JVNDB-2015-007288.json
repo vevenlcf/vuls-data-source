@@ -1,0 +1,133 @@
+{
+  "vulinfo_id": "JVNDB-2015-007288",
+  "title": "Linux Kernel の ext2 および ext4 ファイルシステムの実装の mbcache 機能におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の ext2 および ext4 ファイルシステムの実装の mbcache 機能は、xattr ブロックキャッシングを誤って処理するため、サービス運用妨害 (ソフトロックアップ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-19: Data Handling (データ処理) と識別されています。 http://cwe.mitre.org/data/definitions/19.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、大量の属性を使用する環境でのファイルシステム操作を介して、サービス運用妨害 (ソフトロックアップ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ext4: convert to mbcache2",
+      "url": "https://github.com/torvalds/linux/commit/82939d7999dfc1f1998c4b1c12e2f19edbdff272"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ext2: convert to mbcache2",
+      "url": "https://github.com/torvalds/linux/commit/be0726d33cb8f411945884664924bed3cb8c70ee"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "mbcache2: reimplement mbcache",
+      "url": "https://github.com/torvalds/linux/commit/f9a61eb4e2471c56a63cd804c7474128138c38ac"
+    },
+    {
+      "type": "vendor",
+      "name": "Kernel Bug Tracker",
+      "vulinfo_id": "Bug 107301",
+      "url": "https://bugzilla.kernel.org/show_bug.cgi?id=107301"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ext4: convert to mbcache2",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=82939d7999dfc1f1998c4b1c12e2f19edbdff272"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ext2: convert to mbcache2",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=be0726d33cb8f411945884664924bed3cb8c70ee"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "mbcache2: reimplement mbcache",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f9a61eb4e2471c56a63cd804c7474128138c38ac"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1360968",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1360968"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8952",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8952"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8952",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8952"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[PATCH 0/7 v2] ext[24]: MBCache rewrite",
+      "url": "https://lwn.net/Articles/668718/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年10月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-10-20T18:00:38+09:00",
+  "date_last_updated": "2016-10-20T18:00:38+09:00",
+  "date_public": "2015-11-05T00:00:00+09:00"
+}

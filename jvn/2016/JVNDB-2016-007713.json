@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2016-007713",
+  "title": "NTP におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "NTP には、サービス運用妨害 (後続認証の妨害) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2016-2516 のリグレッションに起因した脆弱性です。",
+  "affected": [
+    {
+      "name": "NTP Project",
+      "product_name": "NTP",
+      "version_number": [
+        "4.2.8p7",
+        "4.3.92 未満の 4.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntp:ntp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:N/AC:H/Au:S/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.3",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、controlkey および requestkey の情報を利用され、巧妙に細工されたパケットを ntpd に送信され、trustedkey、controlkey、または requestkey の値を変更されることで、サービス運用妨害 (後続認証の妨害) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinapr2016-2952098.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Notice",
+      "vulinfo_id": "NTP Bug 3010",
+      "url": "http://support.ntp.org/bin/view/Main/NtpBug3010"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2517",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2517"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91176422",
+      "url": "http://jvn.jp/vu/JVNVU91176422/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2517",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2517"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#718152",
+      "url": "https://www.kb.cert.org/vuls/id/718152"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月13日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-13T18:20:19+09:00",
+  "date_last_updated": "2017-03-13T18:20:19+09:00",
+  "date_public": "2016-04-27T00:00:00+09:00"
+}

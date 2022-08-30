@@ -1,0 +1,111 @@
+{
+  "vulinfo_id": "JVNDB-2010-005668",
+  "title": "複数の Red Hat 製品の監視プローブ表示における任意のコードを実行される脆弱性",
+  "vulinfo_description": "spacewalk-java、Red Hat Network (RHN) Satellite および Proxy の監視プローブ表示には、バッククオートに関する処理に不備があるため、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Network Proxy",
+      "version_number": [
+        "5.3.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:network_proxy"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Network Satellite",
+      "version_number": [
+        "4.0.0 から 4.2.0",
+        "5.1.0 から 5.3.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:network_satellite"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "spacewalk-java",
+      "version_number": [
+        "2.1.148-1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:spacewalk-java"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "監視プローブを管理する権限を持つリモート認証されたユーザにより、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "fedorahosted.org",
+      "vulinfo_id": "1063915, CVE-2010-2236, Cleanse backticks from monitoring-probes where appropriate",
+      "url": "https://git.fedorahosted.org/cgit/spacewalk.git/commit/?id=c41c87a9dc9dac771eb761dd63ada05b2f9104f9"
+    },
+    {
+      "type": "vendor",
+      "name": "fedorahosted.org",
+      "vulinfo_id": "Automatic commit of package [spacewalk-java] release [2.1.148-1].",
+      "url": "https://git.fedorahosted.org/cgit/spacewalk.git/commit/?id=18c70164285cae0660fa3ac55c6656bb19b3b13f"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 607712",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=607712"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Attachment #819987: Sanitize backticks in probes for bug #607712",
+      "url": "https://bugzilla.redhat.com/attachment.cgi?id=819987\u0026action=diff"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2236",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2236"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2236",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2236"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-21T11:10:19+09:00",
+  "date_last_updated": "2014-04-21T11:10:19+09:00",
+  "date_public": "2010-06-24T00:00:00+09:00"
+}

@@ -1,0 +1,58 @@
+{
+  "vulinfo_id": "JVNDB-2022-001684",
+  "title": "Tychon における権限昇格の脆弱性",
+  "vulinfo_description": "Tychon は OpenSSL を配置するためのフォルダを環境変数 OPENSSLDIR により指定しますが、指定されたディレクトリは管理者権限をもたない Windows ユーザが制御可能です。Tychon は OpenSSL を利用する特権サービスを起動するため、管理者権限をもたない Windows ユーザによって当該フォルダに細工した openssl.cnf ファイルを配置され、SYSTEM 権限で任意のコードを実行してしまう脆弱性があります。 ",
+  "affected": [
+    {
+      "name": "Tychon, LLC",
+      "product_name": "Tychon",
+      "version_number": [
+        "1.7.857.82 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:tychon_tychon"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "当該製品がインストールされている Windows システムにおいて、SYSTEM 権限で任意のコードを実行される可能性があります。 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者は本脆弱性を修正した、Tychon 1.7.857.82 をリリースしています。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Tychon, LLC",
+      "vulinfo_id": "Top Page",
+      "url": "https://tychon.io/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-26872",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-26872"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94851904",
+      "url": "https://jvn.jp/vu/JVNVU94851904/"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#730007",
+      "url": "https://www.kb.cert.org/vuls/id/730007"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-05-09T07:06:17Z",
+      "description": "[2022年05月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-05-09T16:06:17+09:00",
+  "date_last_updated": "2022-05-09T16:06:17+09:00",
+  "date_public": "2022-05-06T00:00:00+09:00"
+}

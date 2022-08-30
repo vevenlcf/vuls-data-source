@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2007-005303",
+  "title": "Studiewijzer における PHP リモートファイルインクルージョンの脆弱性",
+  "vulinfo_description": "Study planner (Studiewijzer) には、register_globals が有効になっている際、PHP リモートファイルインクルージョンの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "studiewijzer",
+      "product_name": "studiewijzer",
+      "version_number": [
+        "0.15 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:studiewijzer:studiewijzer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、以下のパラメータ内の URL を介して、任意の PHP コードを実行される可能性があります。 (1) inc/ 配下の service.alert.inc.php への SPL_CFG[dirroot] パラメータ (2) inc/ 配下の settings.ses.php への SPL_CFG[dirroot] パラメータ (3) db/mysql/db.inc.php への SPL_CFG[dirroot] パラメータ (4) integration/shortstat/configuration.php への SPL_CFG[dirroot] パラメータ (5) methodology/traditional/class/ 配下の ali.class.php への SPL_CFG[dirroot] パラメータ (6) methodology/traditional/class/ 配下の cat.class.php への SPL_CFG[dirroot] パラメータ (7) methodology/traditional/ui/inc/ 配下の cat_browse.inc.php への SPL_CFG[dirroot] パラメータ (8) methodology/traditional/ui/inc/ 配下の chr_browse.inc.php への SPL_CFG[dirroot] パラメータ (9) methodology/traditional/ui/inc/ 配下の chr_display.inc.php への SPL_CFG[dirroot] パラメータ (10) methodology/traditional/ui/inc/ 配下の dash_browse.inc.php への SPL_CFG[dirroot] パラメータ (11) ws/ 配下の spl.webservice.php への SPL_CFG[dirroot] パラメータ (12) ws/ 配下の konfabulator/gateway_admin.php への SPL_CFG[dirroot] パラメータ"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "studiewijzer",
+      "vulinfo_id": "Study planner",
+      "url": "http://sourceforge.net/projects/splanner/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-1628",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1628"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-1628",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-1628"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T18:19:13+09:00",
+  "date_last_updated": "2012-12-20T18:19:13+09:00",
+  "date_public": "2007-03-23T00:00:00+09:00"
+}

@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2012-002468",
+  "title": "ConnMan におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "ConnMan は、netlink メッセージがカーネルから発信されていることを確認しないため、アクセス制限を回避される、またはサービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ConnMan project",
+      "product_name": "ConnMan",
+      "version_number": [
+        "0.85 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:connman_project:connman"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された netlink メッセージを介して、アクセス制限を回避される、またはサービス運用妨害 (DoS) 状態となる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ConnMan",
+      "vulinfo_id": "Top Page",
+      "url": "http://connman.net/"
+    },
+    {
+      "type": "vendor",
+      "name": "ConnMan",
+      "vulinfo_id": "ConnMan 0.85",
+      "url": "http://connman.net/blogs/patrik/2012/connman-085"
+    },
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201205-02",
+      "url": "http://security.gentoo.org/glsa/glsa-201205-02.xml"
+    },
+    {
+      "type": "vendor",
+      "name": "kernel.org",
+      "vulinfo_id": "inet: Make sure that we only accept netlink messages from kernel",
+      "url": "http://git.kernel.org/?p=network/connman/connman.git;a=commit;h=c1b968984212b46bea1330f5ae029507b9bfded9"
+    },
+    {
+      "type": "vendor",
+      "name": "kernel.org",
+      "vulinfo_id": "rtnl: Make sure that we only accept netlink messages from kernel",
+      "url": "http://git.kernel.org/?p=network/connman/connman.git;a=commit;h=b0ec6eb4466acc57a9ea8be52c17b674b6ea0618"
+    },
+    {
+      "type": "vendor",
+      "name": "Novell",
+      "vulinfo_id": "Bug 715172",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=715172"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2320",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2320"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2320",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2320"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年05月22日]\\n  掲載\\n[2012年09月04日]\\n  ベンダ情報：Gentoo Linux (GLSA 201205-02) を追加"
+    }
+  ],
+  "date_first_published": "2012-05-22T16:39:25+09:00",
+  "date_last_updated": "2012-09-04T17:38:23+09:00",
+  "date_public": "2012-05-18T00:00:00+09:00"
+}

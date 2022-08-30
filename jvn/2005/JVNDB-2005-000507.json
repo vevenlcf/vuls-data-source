@@ -1,0 +1,107 @@
+{
+  "vulinfo_id": "JVNDB-2005-000507",
+  "title": "NTP のグループ名における不適切な権限付与の脆弱性",
+  "vulinfo_description": "NTP において、グループ名を gid (数値) でなく文字列で指定して ntpd デーモンを起動させる場合、指定したグループが使用されずユーザが所属するグループが付与される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "NTP Project",
+      "product_name": "NTP",
+      "version_number": [
+        "4.1.1",
+        "4.1.2",
+        "4.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntp:ntp"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ntpd デーモンに対して設定されているべきグループ権限以外の権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "NTP Bugzilla",
+      "vulinfo_id": "392",
+      "url": "https://ntp.isc.org/bugs/show_bug.cgi?id=392"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "149652",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=149652"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2006:0393",
+      "url": "https://rhn.redhat.com/errata/RHSA-2006-0393.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2006:0393",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2006-0393J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-2496",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2496"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-2496",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-2496"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA16602",
+      "url": "http://secunia.com/advisories/16602/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "14673",
+      "url": "http://www.securityfocus.com/bid/14673"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-08-26T00:00:00+09:00"
+}

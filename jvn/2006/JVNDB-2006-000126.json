@@ -1,0 +1,124 @@
+{
+  "vulinfo_id": "JVNDB-2006-000126",
+  "title": "RealNetworks RealPlayer の .mbc ファイルの処理におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  RealNetworks RealPlayer には、以下の複数のセキュリティ上の問題が存在します。  1) Windows 環境において CreateProcess() 関数の呼び出しによる不適切なパスの解釈により、C:\\program.exe が存在する場合にプログラムを実行してしまう問題が存在します。(CVE-2005-2936)  その他の問題を利用して悪意あるプログラムを置かれた場合、結果として RealPlayer を実行するユーザの権限でプログラムを実行してしまう可能性があります。  2) .swf 形式のファイルを処理する際にバッファオーバーフローが発生する問題が存在します。(CVE-2006-0323)  リモートの攻撃者に悪用された場合、結果として、RealPlayer を実行するユーザの権限で任意のコードが実行される可能性があります。  3) 特定のコードを含む Web ページを処理する際に、Embedded Player においてヒープオーバーフローが発生する問題が存在します。(CVE-2005-2922)  リモートの攻撃者に悪用された場合、結果として、RealPlayer を実行するユーザの権限で任意のコードが実行される可能性があります。  4) .mbc 形式のファイルを処理する際にバッファオーバーフローが発生する問題が存在します。(CVE-2006-1370)  リモートの攻撃者に悪用された場合、結果として、RealPlayer を実行するユーザの権限で任意のコードが実行される可能性があります。",
+  "affected": [
+    {
+      "name": "リアルネットワークス",
+      "product_name": "RealNetworks RealPlayer",
+      "version_number": [
+        "10",
+        "10.0.6 およびそれ以前",
+        "10.5",
+        "8"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:realnetworks:realplayer"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "RealNetworks Security Updates and Incident Reports",
+      "vulinfo_id": "03162006_player",
+      "url": "http://service.real.com/realplayer/security/03162006_player/ja/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2006:0257",
+      "url": "https://rhn.redhat.com/errata/RHSA-2006-0257.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2006:0257",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2006-0257J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-1370",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1370"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-1370",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-1370"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "17202",
+      "url": "http://www.securityfocus.com/bid/17202"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#172489",
+      "url": "http://www.kb.cert.org/vuls/id/172489"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#451556",
+      "url": "http://www.kb.cert.org/vuls/id/451556"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#231028",
+      "url": "http://www.kb.cert.org/vuls/id/231028"
+    },
+    {
+      "type": "advisory",
+      "name": "X-Force Security Alerts and Advisories",
+      "vulinfo_id": "218",
+      "url": "http://xforce.iss.net/xforce/alerts/id/218"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-03-03T00:00:00+09:00"
+}

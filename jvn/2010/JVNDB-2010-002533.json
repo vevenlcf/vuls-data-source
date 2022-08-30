@@ -1,0 +1,163 @@
+{
+  "vulinfo_id": "JVNDB-2010-002533",
+  "title": "Microsoft Windows の RtlQueryRegistryValues() 関数におけるレジストリデータ検証不備の脆弱性",
+  "vulinfo_description": "Microsoft Windows の RtlQueryRegistryValues() 関数には、読み込んだレジストリデータを正しく検証しない脆弱性が存在します。  なお、本脆弱性を使用した攻撃コードが公開されています。  Microsoft Windows は、ユーザ定義の Unicode 文字 (外字) を使用するための end-user defined characters (EUDC) をサポートしています。Windows カーネル (win32k.sys) の graphics device interface (GDI) は、 EUDC レジストリキーに含まれるフォント情報を読み込みます。具体的には、GreEnableEudc() が RtlQueryRegistryValues() を使用して、レジストリキー HKCU\\EUDC\\(codepage)\\SystemDefaultEUDCFont の値を読み込みます。RtlQueryRegistryValues() は、REG_SZ (ストリング) の値を想定しており、レジストリキー SystemDefaultEUDCFont が指定するバッファに書き込みます。  デフォルト設定において、権限のないユーザが EUDC レジストリキーを変更することが可能です。また、RtlQueryRegistryValues() は SystemDefaultEUDCFont から読み込まれたデータの検証を行いません。  SystemDefaultEUDCFont のデータを変更することで、攻撃者はカーネルメモリを上書きすることが可能です。",
+  "affected": [
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows 7",
+      "version_number": [
+        "(x32) ",
+        "(x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_7"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows Server 2003",
+      "version_number": [
+        "(itanium) ",
+        "(x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_server_2003"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows Server 2008",
+      "version_number": [
+        "(itanium) ",
+        "(x64) ",
+        "(x86) ",
+        "r2(itanium) ",
+        "r2(x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_server_2008"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows Vista",
+      "version_number": [
+        "(x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_vista"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows XP",
+      "version_number": [
+        "(x64) ",
+        "sp3 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_xp"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "権限のないユーザによって SYSTEM の権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 2011年2月9日にセキュリティ更新プログラムが公開されました。マイクロソフトが提供する情報 (MS11-011) をもとにアップデートしてください。  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。      * EUDC レジストリキーへのアクセスを制限する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Microsoft Corporation",
+      "vulinfo_id": "EUDC",
+      "url": "http://msdn.microsoft.com/ja-jp/library/dd317836%28v=VS.85%29.aspx"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft Security Bulletin",
+      "vulinfo_id": "MS11-011",
+      "url": "http://www.microsoft.com/technet/security/bulletin/ms11-011.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "マイクロソフト セキュリティ情報",
+      "vulinfo_id": "MS11-011",
+      "url": "http://www.microsoft.com/japan/technet/security/bulletin/ms11-011.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "絵でみるセキュリティ情報",
+      "vulinfo_id": "MS11-011e",
+      "url": "http://www.microsoft.com/japan/security/bulletins/ms11-011e.mspx"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4398",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4398"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#529673",
+      "url": "http://jvn.jp/cert/JVNVU529673"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4398",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4398"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42356",
+      "url": "http://secunia.com/advisories/42356"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "45045",
+      "url": "http://www.securityfocus.com/bid/45045"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1025046",
+      "url": "http://www.securitytracker.com/id?1025046"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#529673",
+      "url": "http://www.kb.cert.org/vuls/id/529673"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-3058",
+      "url": "http://www.vupen.com/english/advisories/2010/3058"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0324",
+      "url": "http://www.vupen.com/english/advisories/2011/0324"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年12月21日]\\n  掲載\\n[2011年03月17日]\\n  影響を受けるシステム：マイクロソフト (MS11-011) の情報を追加\\n  ベンダ情報：マイクロソフト (MS11-011) を追加"
+    }
+  ],
+  "date_first_published": "2010-12-21T15:28:08+09:00",
+  "date_last_updated": "2011-03-17T17:48:31+09:00",
+  "date_public": "2010-11-29T00:00:00+09:00"
+}

@@ -1,0 +1,73 @@
+{
+  "vulinfo_id": "JVNDB-2022-001789",
+  "title": "Apache Tomcat の EncryptInterceptor のドキュメントにおける記載誤りの問題",
+  "vulinfo_description": "Apache Tomcat の EncryptInterceptor のドキュメントには、Tomcat クラスタリングが信頼できないネットワーク上で実行される際に、十分な保護を提供できると認識されるような誤った記載がされていました（CVE-2022-29885）。 EncryptInterceptor は、機密性と整合性の保護を提供しますが、信頼できないネットワーク上での実行に関連するすべてのリスクへの保護を提供するわけではなく、特にサービス運用妨害（DoS）リスクは保護していません。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Tomcat",
+      "version_number": [
+        "10.0.0-M1 から 10.0.20 までのバージョン",
+        "10.1.0-M1 から 10.1.0-M14 までのバージョン",
+        "8.5.38 から 8.5.78 までのバージョン",
+        "9.0.13 から 9.0.62 までのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:tomcat"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "信頼できないネットワーク上で EncryptInterceptor を用いたクラスタリングを実行している場合、想定する保護ができない可能性があります。 "
+  },
+  "solution": "以下のバージョンの EncryptInterceptor のドキュメントにて、信頼できないネットワーク上で Tomcat クラスタリングを実行するための十分な保護は提供されないと記載内容が修正されています。  　* Apache Tomcat 10.1.0-M15 　* Apache Tomcat 10.0.21 　* Apache Tomcat 9.0.63 　* Apache Tomcat 8.5.79  [代替ソリューションを利用する] 信頼できないネットワーク上で EncryptInterceptor を用いたクラスタリングを実行している場合、VPN を介したクラスタリング通信の実行などの代替ソリューションに切り替える必要があります。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 8.5.79",
+      "url": "https://tomcat.apache.org/security-8.html#Fixed_in_Apache_Tomcat_8.5.79"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 10.1.0-M15",
+      "url": "https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.0-M15"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 10.0.21",
+      "url": "https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.0.21"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Tomcat",
+      "vulinfo_id": "Fixed in Apache Tomcat 9.0.63",
+      "url": "https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.63"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-29885",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-29885"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98578492",
+      "url": "https://jvn.jp/vu/JVNVU98578492/"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-05-12T07:45:44Z",
+      "description": "[2022年05月12日]   掲載"
+    }
+  ],
+  "date_first_published": "2022-05-12T17:44:45+09:00",
+  "date_last_updated": "2022-05-12T17:44:45+09:00",
+  "date_public": "2022-05-11T00:00:00+09:00"
+}

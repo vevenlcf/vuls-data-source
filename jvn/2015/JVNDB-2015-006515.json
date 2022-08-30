@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2015-006515",
+  "title": "ISC Kea DHCP サーバにサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ISC Kea DHCP サーバには、サービス運用妨害 (DoS) の脆弱性が存在します。  kea-dhcp4 サーバおよび kea-dhcp6 サーバには問題が存在し、細工されたパケットを受信することでサーバがクラッシュする可能性があります。  　・ kea-dhcp4 サーバはバージョン 0.9.2 および 1.0.0-beta で、デバッグレベ 　　ル 40 以上でログ出力している場合にのみ本脆弱性の影響を受けます。 　　0.9.1 およびそれ以前のバージョンや、デバッグレベル 39 以下でログ出力し 　　ている場合には本脆弱性の影響は受けません。 　・ kea-dhcp6 サーバはバージョン 0.9.2 および 1.0.0-beta で、デバッグレベ 　　ル 45 以上でログ出力している場合にのみ本脆弱性の影響を受けます。 　　0.9.1 およびそれ以前のバージョンや、デバッグレベル 44 以下でログ出力し 　　ている場合には本脆弱性の影響は受けません。",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "ISC Kea",
+      "version_number": [
+        "0.9.2",
+        "1.0.0-beta"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:kea"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "攻撃者が、細工した不正なパケットを送信することで、IPv4 および IPv6 の DHCP サービスを提供している ISC Kea DHCP サーバを停止させることが可能です。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は、本脆弱性の対策版として Kea 0.9.2-P1 および Kea 1.0.0-beta2 をリリースしています。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を回避することが可能です。  　・ デバッグログ出力を無効にする 　・ デバッグログ出力を、DHCPv4 ではレベル 39 以下、DHCPv6 ではレベル  　　44 以下に設定する ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ISC, Inc.",
+      "vulinfo_id": "Downloads",
+      "url": "http://www.isc.org/downloads/"
+    },
+    {
+      "type": "vendor",
+      "name": "Knowledge Base",
+      "vulinfo_id": "CVE-2015-8373 - ISC Kea: unexpected termination while handling a malformed packet",
+      "url": "https://kb.isc.org/article/AA-01318"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8373",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8373"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98704210",
+      "url": "http://jvn.jp/vu/JVNVU98704210/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8373",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8373"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年12月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-12-24T16:29:51+09:00",
+  "date_last_updated": "2015-12-24T16:29:51+09:00",
+  "date_public": "2015-12-22T00:00:00+09:00"
+}

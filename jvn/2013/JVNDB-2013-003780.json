@@ -1,0 +1,173 @@
+{
+  "vulinfo_id": "JVNDB-2013-003780",
+  "title": "Python の SSL モジュールの ssl.match_hostname 関数における任意の SSL サーバになりすまされる脆弱性",
+  "vulinfo_description": "Python の SSL モジュールの ssl.match_hostname 関数は、X.509 証明書の Subject Alternative Name フィールド内のドメイン名に含まれる '\\0' 文字を適切に処理しないため、任意の SSL サーバになりすまされる脆弱性が存在します。  本脆弱性は、CVE-2009-2408 と関連する問題です。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "11.4",
+        "12.2",
+        "12.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "Python Software Foundation",
+      "product_name": "Python",
+      "version_number": [
+        "2.6 から 3.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:python:python"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESXi",
+      "version_number": [
+        "5.0",
+        "5.1 ESXi510-201412101-SG 未満の 5.1",
+        "5.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:vmware:esxi"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、正当な認証局より発行された巧妙に細工された証明書を介して、任意の SSL サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1439",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-09/msg00028.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1440",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-09/msg00029.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1462",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-09/msg00042.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1463",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-09/msg00043.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1437",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-09/msg00026.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1438",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-09/msg00027.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Python",
+      "vulinfo_id": "issue18709",
+      "url": "http://bugs.python.org/issue18709"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 996381",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=996381"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1582",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1582.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2013-4238 Input Validation vulnerability in Python",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2013_4238_input_validation"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1982-1",
+      "url": "http://www.ubuntu.com/usn/USN-1982-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2014-0012",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2014-0012.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4238",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4238"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4238",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4238"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月20日]\\n  掲載\\n[2013年10月28日]\\n  CVSS による深刻度：内容を更新\\n  影響を受けるシステム：内容を更新\\n  ベンダ情報：Ubuntu (Ubuntu Security Notice USN-1982-1) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1437) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1438) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1439) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1440) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1462) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1463) を追加\\n  ベンダ情報：オラクル (CVE-2013-4238 Input Validation vulnerability in Python) を追加\\n[2013年12月26日]\\n  ベンダ情報：レッドハット (RHSA-2013:1582) を追加\\n[2014年12月18日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：VMware (VMSA-2014-0012) を追加"
+    }
+  ],
+  "date_first_published": "2013-08-20T15:43:00+09:00",
+  "date_last_updated": "2014-12-18T11:48:09+09:00",
+  "date_public": "2013-08-12T00:00:00+09:00"
+}

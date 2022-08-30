@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2012-004244",
+  "title": "PHP の main/SAPI.c における HTTP レスポンス分割の保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "PHP の main/SAPI.c の sapi_header_op 関数は、%0D シーケンス (キャリッジリターン文字) のチェックする間、ポインタを適切に処理しないため、HTTP レスポンス分割の保護メカニズムを回避される脆弱性が存在します。  本脆弱性は CVE-2011-1398 の修正が不完全だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.0RC2 から 5.4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された URL を介して、HTTP レスポンス分割の保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "CVE-2012-4388",
+      "url": "http://security-tracker.debian.org/tracker/CVE-2012-4388"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #60227",
+      "url": "https://bugs.php.net/bug.php?id=60227"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "854184",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2012-4388"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "[svn] Diff of /php/php-src/branches/PHP_5_4/main/SAPI.c",
+      "url": "http://svn.php.net/viewvc/php/php-src/branches/PHP_5_4/main/SAPI.c?r1=323986\u0026r2=323985\u0026pathrev=323986"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu",
+      "vulinfo_id": "CVE-2012-4388",
+      "url": "http://people.canonical.com/~ubuntu-security/cve/2012/CVE-2012-4388.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1569-1",
+      "url": "http://www.ubuntu.com/usn/USN-1569-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4388",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4388"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4388",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4388"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月12日]\\n  掲載\\n[2012年10月22日]\\n  ベンダ情報：Ubuntu (USN-1569-1) を追加"
+    }
+  ],
+  "date_first_published": "2012-09-12T09:36:30+09:00",
+  "date_last_updated": "2012-10-22T14:05:52+09:00",
+  "date_public": "2012-09-07T00:00:00+09:00"
+}

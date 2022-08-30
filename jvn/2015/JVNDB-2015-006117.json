@@ -1,0 +1,161 @@
+{
+  "vulinfo_id": "JVNDB-2015-006117",
+  "title": "OpenSSL の ssl/s3_clnt.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSL の ssl/s3_clnt.c は、マルチスレッドクライアントに使用された場合、誤ったデータ構造に PSK identity hint を書き込むため、サービス運用妨害 (競合状態および二重解放) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "1.0.0t 未満の 1.0.0",
+        "1.0.1p 未満の 1.0.1",
+        "1.0.2d 未満の 1.0.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle VM VirtualBox",
+      "version_number": [
+        "4.3.36 未満",
+        "5.0.14 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:vm_virtualbox"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Sun Ray Software",
+      "version_number": [
+        "11.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:sun_ray_software"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモートサーバにより、巧妙に細工された ServerKeyExchange メッセージを介して、サービス運用妨害 (競合状態および二重解放) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenSSL",
+      "vulinfo_id": "OpenSSL 1.0.2 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.2-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL",
+      "vulinfo_id": "OpenSSL 1.0.1 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.1-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL",
+      "vulinfo_id": "OpenSSL 1.0.0 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.0-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL",
+      "vulinfo_id": "Release Strategy",
+      "url": "https://www.openssl.org/policies/releasestrat.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Project",
+      "vulinfo_id": "Fix PSK handling.",
+      "url": "https://git.openssl.org/?p=openssl.git;a=commit;h=3c66a669dfc7b3792f7af0758ea26fe8502ce70c"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "Race condition handling PSK identify hint (CVE-2015-3196)",
+      "url": "http://openssl.org/news/secadv/20151203.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - April 2016 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuapr2016verbose-2881709.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - April 2016",
+      "url": "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update CVSS V2 Risk Matrices - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuapr2016-2881694.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - January 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjan2016-2867206.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "April 2016 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/april_2016_critical_patch_update"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3196",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3196"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95113540",
+      "url": "http://jvn.jp/vu/JVNVU95113540/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3196",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3196"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年12月08日]\\n  掲載\\n[2016年01月28日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - January 2016) を追加\\n[2016年05月31日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - April 2016) を追加\\n  ベンダ情報：オラクル (Oracle Critical Patch Update CVSS V2 Risk Matrices - April 2016) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - April 2016 Risk Matrices) を追加\\n  ベンダ情報：オラクル (April 2016 Critical Patch Update Released) を追加"
+    }
+  ],
+  "date_first_published": "2015-12-08T17:50:24+09:00",
+  "date_last_updated": "2016-05-31T11:02:58+09:00",
+  "date_public": "2015-12-03T00:00:00+09:00"
+}

@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-004364",
+  "title": "libvirt の interface/interface_backend_netcf.c 内の virConnectListAllInterfaces メソッドにおけるメモリ二重解放の脆弱性",
+  "vulinfo_description": "libvirt の interface/interface_backend_netcf.c 内の virConnectListAllInterfaces メソッドには、メモリを二重に解放する不備があるため、サービス運用妨害 (libvirtd クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "libvirt",
+      "version_number": [
+        "1.0.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:libvirt"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、インターフェイスをスキップするフィルタリングフラグを介して、サービス運用妨害 (libvirtd クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "Crash of libvirtd by unprivileged user in virConnectListAllInterfaces",
+      "url": "http://libvirt.org/git/?p=libvirt.git;a=commit;h=244e0b8cf15ca2ef48d82058e728656e6c4bad11"
+    },
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "Releases",
+      "url": "http://libvirt.org/news.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 980112",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=980112"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2218",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2218"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2218",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2218"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2013-2218 -- libvirt: crash when listing network interfaces with filters",
+      "url": "http://www.openwall.com/lists/oss-security/2013/07/01/6"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-10-02T13:59:52+09:00",
+  "date_last_updated": "2013-10-02T13:59:52+09:00",
+  "date_public": "2013-07-01T00:00:00+09:00"
+}

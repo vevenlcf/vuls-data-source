@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2004-000190",
+  "title": "Ethereal の SPNEGO プロトコルの取り扱いにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Ethereal 0.9.8 - 0.10.3 では、プロトコルの解釈部に以下ような複数のセキュリティ上の問題が存在します。  ・特定の条件下で SIP (Session Initiation Protocol) パケットを解釈すると Ethereal がクラッシュする問題 (0.10.3)  ・AIM (AOL Instant Messenger) プロトコルの解釈部において、アサーションによる中断が発生する可能性があり、Ethereal が異常終了する問題 (0.10.3)  ・SPNEGO (Secure Protocol Negotiation) の解釈部において、NULL ポインタがデリファレンスされ、Ethereal がクラッシュする問題 (0.9.8 - 0.10.3)  ・MMSE (MMS Message Encapsulation) プロトコルの解釈部において、バッファオーバーフローが発生する問題 (0.10.1 - 0.10.3)  これらの問題を利用するリモートの攻撃者は、以下のような手法によって、Ethereal をクラッシュさせる、さらには Ethereal の実行権限 (通常 root 権限) で任意のコードを実行できる可能性が存在します。  ・意図的に作成したパケットを標的システムが監視しているネットワークに送り付ける ・意図的に作成したパケットトレースファイルを読み取らせる ・意図的に作成したカラーフィルタファイルを利用させる (0.9.15 以降)",
+  "affected": [
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "ethereal",
+      "url": "http://www.miraclelinux.com/support/update/data/ethereal.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2004:234",
+      "url": "https://rhn.redhat.com/errata/RHSA-2004-234.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2004:234",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2004-234J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2004-0506",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0506"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2004-0506",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2004-0506"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA11608",
+      "url": "http://secunia.com/advisories/11608/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "10347",
+      "url": "http://www.securityfocus.com/bid/10347"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2004-05-13T00:00:00+09:00"
+}

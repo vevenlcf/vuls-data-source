@@ -1,0 +1,172 @@
+{
+  "vulinfo_id": "JVNDB-2005-000120",
+  "title": "Linux Kernel の setuid() 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Linux Kernel 2.6.10 以前には、以下の複数のセキュリティ上の問題が存在します。  ・共有メモリを制御する shmctl() 関数で権限のチェックが適切に行われないために、任意のプロセスが RLIMIT_MEMLOCK の範囲内の System V 共用メモリに存在する他のプロセスにロックされたメモリをアンロックして SWAP 領域に退避させることにより、重要な情報が奪取される可能性がある問題 (CAN-2005-0176, Linux Kernel 2.6.9 以前)  ・nls_ascii.c のテーブルサイズが本来の 256 ではなく 128 に設定されているためにバッファオーバーフローが発生し、カーネルのクラッシュを引き起こす問題 (CAN-2005-0177, Linux Kernel 2.6.10 以前)  ・ターミナルにおいて、新しいプロセスのセッションを開始する際の setuid() 関数の処理に競合状態が発生する問題 (CAN-2005-0178, Linux Kernel 2.6.10 以前)  ・パケットフィルタリング機能を提供する netfilter/iptables モジュールに設計上の不備が存在し、意図的なパケットを受信した際にカーネルのクラッシュまたはファイアウォールによる制限を回避する問題 (CAN-2005-0449, Linux Kernel 2.6.10 以前)  現時点では攻撃手法の詳細は不明ですが、これらの問題を利用するリモート/ローカルの攻撃者は、結果として、カーネルをクラッシュさせる、あるいは重要な情報を奪取できる可能性があります。  尚、CAN-2005-0449 の問題に関しては、Linux Kernel 2.4.29 以前も問題の影響を受けます。ただし、その他の問題に関しては、現時点において Linux Kernel 2.4.x への影響は不明です。",
+  "affected": [
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 ",
+        "3.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.2",
+        "vector": "AV:L/AC:H/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "kernel",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=290"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:293",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-293.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:472",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-472.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:366",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-366.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:092",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-092.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:284",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-284.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:283",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-283.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:283",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-283J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:293",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-293J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:472",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-472J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:366",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-366J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:284",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-284J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0178",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0178"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0178",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0178"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA14295",
+      "url": "http://secunia.com/advisories/14295/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "12598",
+      "url": "http://www.securityfocus.com/bid/12598"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-02-15T00:00:00+09:00"
+}

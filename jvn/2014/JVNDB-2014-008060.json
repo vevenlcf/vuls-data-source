@@ -1,0 +1,256 @@
+{
+  "vulinfo_id": "JVNDB-2014-008060",
+  "title": "International Components for Unicode の ICU4C の Unicode 双方向アルゴリズムの実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "International Components for Unicode (ICU) の ICU4C の Unicode 双方向アルゴリズムの実装の common/ubidi.c 内の resolveImplicitLevels 関数は、一方向に分離された (directionally isolated) テキストの部分を適切に追跡しないため、サービス運用妨害 (ヒープベースのバッファオーバーフロー) 状態にされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ICU project",
+      "product_name": "ICU",
+      "version_number": [
+        "55.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:icu_project:international_components_for_unicode"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.6.8 以上 10.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "iOS",
+      "version_number": [
+        "9 未満 (iPad 2 以降)",
+        "9 未満 (iPhone 4s 以降)",
+        "9 未満 (iPod touch 第 5 世代以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:iphone_os"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "iTunes",
+      "version_number": [
+        "12.3 未満 (Windows 7 以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apple:itunes"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "watchOS",
+      "version_number": [
+        "2 未満 (Apple Watch Edition)",
+        "2 未満 (Apple Watch Sport)",
+        "2 未満 (Apple Watch)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:watchos"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Communications Applications",
+      "version_number": [
+        "の Oracle Communications Messaging Server 7.0.5",
+        "の Oracle Communications Messaging Server 8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:communications_applications"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたテキストを介して、サービス運用妨害 (ヒープベースのバッファオーバーフロー) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-30-3 OS X El Capitan 10.11",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00008.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-16-1 iOS 9",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-21-1 watchOS 2",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-16-3 iTunes 12.3",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00003.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205221",
+      "url": "https://support.apple.com/en-us/HT205221"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205212",
+      "url": "https://support.apple.com/en-us/HT205212"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205213",
+      "url": "https://support.apple.com/en-us/HT205213"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205267",
+      "url": "https://support.apple.com/en-us/HT205267"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205221",
+      "url": "http://support.apple.com/ja-jp/HT205221"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205212",
+      "url": "https://support.apple.com/ja-jp/HT205212"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205213",
+      "url": "https://support.apple.com/ja-jp/HT205213"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205267",
+      "url": "https://support.apple.com/ja-jp/HT205267"
+    },
+    {
+      "type": "vendor",
+      "name": "ICU trac",
+      "vulinfo_id": "37162",
+      "url": "http://bugs.icu-project.org/trac/changeset/37162"
+    },
+    {
+      "type": "vendor",
+      "name": "International Components for Unicode",
+      "vulinfo_id": "Top Page",
+      "url": "http://site.icu-project.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - October 2015 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuoct2015verbose-2367954.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "October 2015 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/october_2015_critical_patch_update"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8146",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8146"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97322697",
+      "url": "https://jvn.jp/vu/JVNVU97322697/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97220341",
+      "url": "http://jvn.jp/vu/JVNVU97220341/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99970459",
+      "url": "http://jvn.jp/vu/JVNVU99970459/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8146",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8146"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#602540",
+      "url": "http://www.kb.cert.org/vuls/id/602540"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年05月27日]\\n  掲載\\n[2015年10月06日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT205212) を追加\\n  ベンダ情報：アップル (HT205213) を追加\\n  ベンダ情報：アップル (HT205267) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-09-16-1 iOS 9) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-09-21-1 watchOS 2) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-09-30-3 OS X El Capitan 10.11) を追加\\n  参考情報：JVN (JVNVU#99970459) を追加\\n  参考情報：JVN (JVNVU#97220341) を追加\\n[2015年10月09日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (APPLE-SA-2015-09-16-3 iTunes 12.3) を追加\\n  ベンダ情報：アップル (HT205221) を追加\\n[2015年10月30日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - October 2015) を追加\\n[2015年11月06日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - October 2015) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - October 2015 Risk Matrices) を追加\\n  ベンダ情報：オラクル (October 2015 Critical Patch Update Released) を追加"
+    }
+  ],
+  "date_first_published": "2015-05-27T17:31:27+09:00",
+  "date_last_updated": "2015-11-06T15:31:25+09:00",
+  "date_public": "2014-10-10T00:00:00+09:00"
+}

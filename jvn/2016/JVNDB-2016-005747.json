@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2016-005747",
+  "title": "Pillow における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Pillow には、Storage.c component の ImagingNew の \"Insecure Sign Extension\" の問題に関する処理に不備があるため、任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Python Software Foundation",
+      "product_name": "Python Pillow",
+      "version_number": [
+        "3.3.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:python:pillow"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、\"巧妙に細工されたイメージファイル\" のアプローチを使用されることで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Multiple memory corruption vulnerabilities #2105",
+      "url": "https://github.com/python-pillow/Pillow/issues/2105"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixes for #2105 #2146",
+      "url": "https://github.com/python-pillow/Pillow/pull/2146/commits/5d8a0be45aad78c5a22c8d099118ee26ef8144af"
+    },
+    {
+      "type": "vendor",
+      "name": "Pillow",
+      "vulinfo_id": "Release Notes 3.3.2",
+      "url": "http://pillow.readthedocs.io/en/3.4.x/releasenotes/3.3.2.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9190",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9190"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9190",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9190"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-08T17:38:05+09:00",
+  "date_last_updated": "2016-11-08T17:38:05+09:00",
+  "date_public": "2016-10-03T00:00:00+09:00"
+}

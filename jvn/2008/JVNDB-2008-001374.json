@@ -1,0 +1,175 @@
+{
+  "vulinfo_id": "JVNDB-2008-001374",
+  "title": "GnuTLS の _gnutls_server_name_recv_params 関数におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "GnuTLS gnutls-serv の _gnutls_server_name_recv_params 関数には、拡張処理中における TLS 1.0 の Client Hello メッセージ内の Server Names の処理に問題があり、バッファオーバーフローが発生する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GNU Project",
+      "product_name": "GnuTLS",
+      "version_number": [
+        "2.2.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:gnutls"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者による Server Names の長さが 0 の TLS メッセージにより、サービス運用妨害 (DoS) 状態となる、あるいは任意のコードが実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "gnutls-1.4.1-3.1AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=132"
+    },
+    {
+      "type": "vendor",
+      "name": "GnuTLS",
+      "vulinfo_id": "GnuTLS 2.2.4 - Security release",
+      "url": "http://lists.gnu.org/archive/html/gnutls-devel/2008-05/msg00051.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "gnutls (V4.0)",
+      "url": "http://www.miraclelinux.com/update/linux/list.php?errata_id=1284"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0489",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0489.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0492",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0492.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2008:0489",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2008-0489J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2008:0492",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2008-0492J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-1948",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1948"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "42532",
+      "url": "http://xforce.iss.net/xforce/xfdb/42532"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-1948",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1948"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA30287",
+      "url": "http://secunia.com/advisories/30287/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "29292",
+      "url": "http://www.securityfocus.com/bid/29292"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年06月10日]\\n  掲載\\n[2008年08月08日]\\n  影響を受けるシステム：ミラクル・リナックス（gnutls-1.4.1-3.1AXS3）を追加\\n  ベンダ情報：ミラクル・リナックス（gnutls-1.4.1-3.1AXS3）を追加"
+    }
+  ],
+  "date_first_published": "2008-06-10T14:28:07+09:00",
+  "date_last_updated": "2008-08-08T11:40:32+09:00",
+  "date_public": "2008-05-19T00:00:00+09:00"
+}

@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2016-007191",
+  "title": "LibTiff の t2p_readwrite_pdf_image_tile 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "LibTiff の t2p_readwrite_pdf_image_tile 関数には、サービス運用妨害 (境界外書き込みおよびクラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、長さ 1 の TIFFTAG_JPEGTABLES を伴う JPEG ファイルを介して、サービス運用妨害 (境界外書き込みおよびクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 2579",
+      "url": "http://bugzilla.maptools.org/show_bug.cgi?id=2579"
+    },
+    {
+      "type": "vendor",
+      "name": "LibTIFF",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.libtiff.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:3035",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-12/msg00017.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9453",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9453"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9453",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9453"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年02月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-02-14T15:08:29+09:00",
+  "date_last_updated": "2017-02-14T15:08:29+09:00",
+  "date_public": "2016-10-08T00:00:00+09:00"
+}

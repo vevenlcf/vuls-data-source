@@ -1,0 +1,388 @@
+{
+  "vulinfo_id": "JVNDB-2015-001010",
+  "title": "OpenSSL の s3_srvr.c の ssl3_get_cert_verify 関数におけるアクセス権を取得される脆弱性",
+  "vulinfo_description": "OpenSSL の s3_srvr.c の ssl3_get_cert_verify 関数は、CertificateVerify メッセージを必要としない Diffie-Hellman (DH) 証明書を伴うクライアント認証を受け入れるため、アクセス権を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "1.0.0p 未満の 1.0.0",
+        "1.0.1k 未満の 1.0.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Integrated Lights Out Manager",
+      "version_number": [
+        "(Sun System Firmware) 8.7.2.b 未満",
+        "(Sun System Firmware) 9.4.2e 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:integrated_lights_out_manager_firmware"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "MySQL",
+      "version_number": [
+        "5.6.22 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:mysql"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Communications Core Session Manager",
+      "version_number": [
+        "7.2.5",
+        "7.3.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:communications_core_session_manager"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Fusion Middleware",
+      "version_number": [
+        "の Oracle Mobile Security Suite MSS 3.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:fusion_middleware"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "11.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Virtualization",
+      "version_number": [
+        "の Oracle Secure Global Desktop 4.63",
+        "の Oracle Secure Global Desktop 4.71",
+        "の Oracle Secure Global Desktop 5.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:virtualization_secure_global_desktop"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP ThinPro Linux",
+      "version_number": [
+        "(ARM)",
+        "(x86)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:thinpro_linux"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP Version Control Agent",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:version_control_agent"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP Virtual Connect Enterprise Manager SDK",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:virtual_connect_enterprise_manager_sdk"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Insight Control",
+      "version_number": [
+        "サーバープロビジョニング"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:insight_control"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Matrix Operating Environment",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:matrix_operating_environment"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Server Migration Pack",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:server_migration_pack"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Systems Insight Manager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:systems_insight_manager"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Version Control Repository Manager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:version_control_repository_manager"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "System Management Homepage",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:system_management_homepage"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、DH サポートを伴う認証局を認めるサーバへの巧妙に細工された TLS Handshake Protocol トラフィックを介して、秘密鍵の情報がない状態でアクセス権を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20150310-ssl",
+      "url": "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150310-ssl"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Unauthenticated DH client certificate fix.",
+      "url": "https://github.com/openssl/openssl/commit/1421e0c584ae9120ca1b88098f13d6d2e90b83a3"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBMU03413",
+      "url": "http://marc.info/?l=bugtraq\u0026m=144050254401665\u0026w=2"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBMU03380",
+      "url": "http://marc.info/?l=bugtraq\u0026m=143748090628601\u0026w=2"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBHF03289",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c04602055"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBMU03396",
+      "url": "http://marc.info/?l=bugtraq\u0026m=144050205101530\u0026w=2"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBMU03397",
+      "url": "http://marc.info/?l=bugtraq\u0026m=144050297101809\u0026w=2"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBMU03409",
+      "url": "http://marc.info/?l=bugtraq\u0026m=144050155601375\u0026w=2"
+    },
+    {
+      "type": "vendor",
+      "name": "HPE Security Bulletin",
+      "vulinfo_id": "HPSBMU03611",
+      "url": "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05150888"
+    },
+    {
+      "type": "vendor",
+      "name": "HPE Security Bulletin",
+      "vulinfo_id": "HPSBMU03612",
+      "url": "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05158380"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV15-017",
+      "url": "http://jpn.nec.com/security-info/secinfo/nv15-017.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "DH client certificates accepted without verification [Server] (CVE-2015-0205)",
+      "url": "https://www.openssl.org/news/secadv_20150108.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - July 2016",
+      "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - July 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - July 2016 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2016verbose-2881721.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - July 2015 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2015verbose-2367947.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - April 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - October 2015 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuoct2015verbose-2367954.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - April 2015 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpuapr2015verbose-2365613.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Third Party Bulletin - January 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjan2015-2370101.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0066",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0066.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "October 2015 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/october_2015_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "April 2015 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/april_2015_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "July 2016 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/july_2016_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "July 2015 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/july_2015_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "シスコ セキュリティアドバイザリ",
+      "vulinfo_id": "cisco-sa-20150310-ssl",
+      "url": "http://www.cisco.com/cisco/web/support/JP/112/1128/1128755_cisco-sa-20150310-ssl-j.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "株式会社バッファロー の告知ページ",
+      "url": "http://buffalo.jp/support_s/s20150327b.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0205",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0205"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98974537",
+      "url": "http://jvn.jp/cert/JVNVU98974537"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0205",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0205"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月13日]\\n  掲載\\n[2015年02月27日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Third Party Bulletin - January 2015) を追加\\n[2015年03月20日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：シスコシステムズ (cisco-sa-20150310-ssl) を追加\\n  ベンダ情報：レッドハット (RHSA-2015:0066) を追加\\n[2015年04月08日]\\n  ベンダ情報：ヒューレット・パッカード (HPSBHF03289) を追加\\n[2015年04月20日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - April 2015) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - April 2015 Risk Matrices) を追加\\n  ベンダ情報：オラクル (April 2015 Critical Patch Update Released) を追加\\n[2015年06月26日]\\n  ベンダ情報：バッファロー (株式会社バッファロー の告知ページ) を追加\\n[2015年07月29日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - July 2015) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - July 2015 Risk Matrices) を追加\\n  ベンダ情報：オラクル (July 2015 Critical Patch Update Released) を追加\\n[2015年10月27日]\\n  ベンダ情報：日本電気 (NV15-017) を追加\\n[2015年11月06日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - October 2015) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - October 2015 Risk Matrices) を追加\\n  ベンダ情報：オラクル (October 2015 Critical Patch Update Released) を追加\\n[2016年08月09日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - July 2016) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - July 2016 Risk Matrices) を追加\\n  ベンダ情報：オラクル (July 2016 Critical Patch Update Released) を追加\\n[2016年09月30日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：ヒューレット・パッカード・エンタープライズ (HPSBMU03612) を追加\\n  ベンダ情報：ヒューレット・パッカード・エンタープライズ (HPSBMU03611) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU03380) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU03409) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU03396) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU03413) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU03397) を追加"
+    }
+  ],
+  "date_first_published": "2015-01-13T16:49:30+09:00",
+  "date_last_updated": "2016-09-30T10:54:46+09:00",
+  "date_public": "2015-01-08T00:00:00+09:00"
+}

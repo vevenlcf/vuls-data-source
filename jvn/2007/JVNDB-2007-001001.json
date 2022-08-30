@@ -1,0 +1,161 @@
+{
+  "vulinfo_id": "JVNDB-2007-001001",
+  "title": "PCRE における POSIX 文字列処理の不備によるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Perl-Compatible Regular Expression (PCRE) には、正規表現中の POSIX 文字列の処理に不備があり、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "pcre.org",
+      "product_name": "PCRE",
+      "version_number": [
+        "6.7 未満のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pcre:pcre"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、PCRE を使用するアプリケーションをサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "pcre (V4.0)",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=1198"
+    },
+    {
+      "type": "vendor",
+      "name": "pcre.org",
+      "vulinfo_id": "Version 6.7 04-Jul-06",
+      "url": "http://www.pcre.org/changelog.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2007:1059",
+      "url": "https://rhn.redhat.com/errata/RHSA-2007-1059.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2007:1068",
+      "url": "https://rhn.redhat.com/errata/RHSA-2007-1068.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2007:1059",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2007-1059J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2007:1068",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2007-1068J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-7225",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7225"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-7225",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-7225"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA27582",
+      "url": "http://secunia.com/advisories/27582/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "26725",
+      "url": "http://www.securityfocus.com/bid/26725"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年12月17日]\\n  掲載\\n[2008年01月11日]\\n  影響を受けるシステム：ミラクル・リナックス (pcre (V4.0)) の情報追加。\\n  ベンダ情報：ミラクル・リナックス (pcre (V4.0)) 追加。"
+    }
+  ],
+  "date_first_published": "2007-12-17T15:48:25+09:00",
+  "date_last_updated": "2008-01-11T15:52:31+09:00",
+  "date_public": "2007-11-29T00:00:00+09:00"
+}

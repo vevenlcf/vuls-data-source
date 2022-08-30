@@ -1,0 +1,160 @@
+{
+  "vulinfo_id": "JVNDB-2011-001031",
+  "title": "Xen の fixup_page_fault 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Xen の arch/x86/traps.c 内にある fixup_page_fault 関数は、準仮想化処理が動作している際、カーネルモードから handle_gdt_ldt_mapping_fault 関数の呼び出しが正常に行われているか検証しないため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "シトリックス・システムズ",
+      "product_name": "Xen",
+      "version_number": [
+        "4.1.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:citrix:xen"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.1",
+        "vector": "AV:A/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ゲスト OS ユーザにより、巧妙に細工されたメモリアクセスを介して、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-194.11.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1420"
+    },
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-194.13.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1464"
+    },
+    {
+      "type": "vendor",
+      "name": "Citrix",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.citrix.co.jp"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0017",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0017.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0012",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2011-0012.html"
+    },
+    {
+      "type": "vendor",
+      "name": "XenSource",
+      "vulinfo_id": "Xen Hypervisor 4.1 Download",
+      "url": "http://www.xen.org/products/xen_source.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4255",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4255"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4255",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4255"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42884",
+      "url": "http://secunia.com/advisories/42884"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "45099",
+      "url": "http://www.securityfocus.com/bid/45099"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年02月03日]\\n  掲載\\n[2011年05月06日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-194.11.AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.11.AXS3) を追加\\n[2011年06月10日]\\n  影響を受けるシステム：Citrix Systems (Xen Hypervisor 4.1 Download) の情報を更新\\n  ベンダ情報：Citrix Systems (Xen Hypervisor 4.1 Download) を追加\\n[2011年08月24日]\\n　ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.11.AXS3) を更新\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.13.AXS3) を追加\\n[2012年12月25日]\\n  影響を受けるシステム：VMware (VMSA-2011-0012) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0012) を追加"
+    }
+  ],
+  "date_first_published": "2011-02-03T15:35:25+09:00",
+  "date_last_updated": "2012-12-25T18:28:49+09:00",
+  "date_public": "2011-01-13T00:00:00+09:00"
+}

@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2015-004515",
+  "title": "Linux Kernel の arch/x86/net/bpf_jit_comp.c の bpf_int_jit_compile 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の arch/x86/net/bpf_jit_comp.c の bpf_int_jit_compile 関数には、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-17: Code (コード) と識別されています。 http://cwe.mitre.org/data/definitions/17.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.0.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、パケットフィルタを作成され、その後、JIT コンパイラによる遅延するコンバージェンスを誘発する巧妙に細工された BPF 命令をロードされることで、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.0.6",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.0.6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "x86: bpf_jit: fix compilation of large bpf programs",
+      "url": "https://github.com/torvalds/linux/commit/3f7352bf21f8fd7ba3e2fcef9488756f188e12be"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "x86: bpf_jit: fix compilation of large bpf programs",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=3f7352bf21f8fd7ba3e2fcef9488756f188e12be"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1233615",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1233615"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4700",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4700"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4700",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4700"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年09月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-09-01T18:00:33+09:00",
+  "date_last_updated": "2015-09-01T18:00:33+09:00",
+  "date_public": "2015-06-22T00:00:00+09:00"
+}

@@ -1,0 +1,192 @@
+{
+  "vulinfo_id": "JVNDB-2011-001386",
+  "title": "MIT Kerberos 5 KDC に double free の脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 に同梱されている Key Distribution Center (KDC) には、脆弱性が存在します。  MIT Keberos 5 に同梱されている KDC には、double free の脆弱性が存在します。Public Key Cryptography for Initial Authentication (PKINIT) 機能が有効の場合のみ、本脆弱性の影響を受けます。  MIT のアドバイザリ (MIT krb5 Security Advisory 2011-003) には、以下のように記載されています。  \"The MIT Kerberos 5 Key Distribution Center (KDC) daemon is vulnerable to a double-free condition if the Public Key Cryptography for Initial Authentication (PKINIT) capability is enabled, resulting in daemon crash or arbitrary code execution (which is believed to be difficult).\"",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.7 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.6",
+        "vector": "AV:N/AC:H/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、KDC daemon をクラッシュさせられたり、任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "[パッチを適用する] 本脆弱性を修正した krb5-1.7 系、 krb5-1.8 系および krb5-1.9 系の製品が公開されるまでの間、MIT が提供するパッチを適用してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIT krb5 Security Advisory",
+      "vulinfo_id": "MITKRB5-SA-2011-003",
+      "url": "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2011-003.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT krb5 Security Advisory",
+      "vulinfo_id": "Patch for MITKRB5-SA-2011-003",
+      "url": "http://web.mit.edu/kerberos/advisories/2011-003-patch.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0356",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0356.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2011-0284 Resource Management Errors vulnerability in kerberos",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2011_0284_resource_management"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0284",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0284"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "66101",
+      "url": "http://xforce.iss.net/xforce/xfdb/66101"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#943220",
+      "url": "http://jvn.jp/cert/JVNVU943220"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0284",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0284"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "71183",
+      "url": "http://osvdb.org/71183"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43783",
+      "url": "http://secunia.com/advisories/43783"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43760",
+      "url": "http://secunia.com/advisories/43760"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "46881",
+      "url": "http://www.securityfocus.com/bid/46881"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1025216",
+      "url": "http://www.securitytracker.com/id?1025216"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#943220",
+      "url": "http://www.kb.cert.org/vuls/id/943220"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0672",
+      "url": "http://www.vupen.com/english/advisories/2011/0672"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0680",
+      "url": "http://www.vupen.com/english/advisories/2011/0680"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年04月21日]\\n  掲載\\n[2013年11月01日]\\n  ベンダ情報：オラクル (CVE-2011-0284 Resource Management Errors vulnerability in kerberos) を追加"
+    }
+  ],
+  "date_first_published": "2011-04-21T12:20:11+09:00",
+  "date_last_updated": "2013-11-01T14:59:09+09:00",
+  "date_public": "2011-03-16T00:00:00+09:00"
+}

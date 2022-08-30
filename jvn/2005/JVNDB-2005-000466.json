@@ -1,0 +1,126 @@
+{
+  "vulinfo_id": "JVNDB-2005-000466",
+  "title": "MySQL の init_syms() 関数におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "MySQL の UDF の作成時に使用される init_syms() 関数において、CREATE FUNCTION あるいは DROP FUNCTION で指定した function_name フィールドに対するチェックが不適切であるため、バッファオーバーフローが発生する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MySQL AB",
+      "product_name": "MySQL",
+      "version_number": [
+        "4.0.24 およびそれ以前",
+        "4.1.12 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mysql:mysql"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "10 (x64) ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "MySQL の実行権限で任意のコードが実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MySQL Documentation",
+      "vulinfo_id": "Changes in release 4.1.13",
+      "url": "http://dev.mysql.com/doc/refman/4.1/en/news-4-1-13.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MySQL Documentation",
+      "vulinfo_id": "Changes in release 4.0.25",
+      "url": "http://dev.mysql.com/doc/refman/4.1/en/news-4-0-25.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "236703",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-66-236703-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2006-11",
+      "url": "http://www.turbolinux.com/security/2006/TLSA-2006-11.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2006-11",
+      "url": "http://www.turbolinux.co.jp/security/2006/TLSA-2006-11j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-2558",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2558"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-2558",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-2558"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA16170",
+      "url": "http://secunia.com/advisories/16170/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "14509",
+      "url": "http://www.securityfocus.com/bid/14509"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載\\n[2008年05月09日]\\n  影響を受けるシステム：サン・マイクロシステムズ (236703) の情報追加。\\n  ベンダ情報: サン・マイクロシステムズス (236703) 追加。"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2008-05-09T13:49:40+09:00",
+  "date_public": "2005-08-03T00:00:00+09:00"
+}

@@ -1,0 +1,125 @@
+{
+  "vulinfo_id": "JVNDB-2016-004380",
+  "title": "Linux Kernel の OverlayFS ファイルシステムの実装の fs/overlayfs/dir.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の OverlayFS ファイルシステムの実装の fs/overlayfs/dir.c は、システムコールのリンク解除およびリネーム処理を進める前に、上位の dentry を適切に検証しないため、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:linux"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle VM サーバー",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:vm_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、自己のハードリンク (self-hardlink) を指定するリネームのシステムコールを介して、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ovl: verify upper dentry before unlink and rename",
+      "url": "https://github.com/torvalds/linux/commit/11f3710417d026ea2f4fcf362d866342c5274185"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ovl: verify upper dentry before unlink and rename",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=11f3710417d026ea2f4fcf362d866342c5274185"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinjul2016-3090544.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle VM Server for x86 Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/ovmbulletinjul2016-3090546.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1355650",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1355650"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6197",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6197"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6197",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6197"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月18日]\\n  掲載\\n[2016年11月16日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - July 2016) を追加\\n  ベンダ情報：オラクル (Oracle VM Server for x86 Bulletin - July 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-08-18T14:18:12+09:00",
+  "date_last_updated": "2016-11-16T16:09:48+09:00",
+  "date_public": "2016-03-21T00:00:00+09:00"
+}

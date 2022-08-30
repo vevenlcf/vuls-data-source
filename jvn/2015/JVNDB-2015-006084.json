@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-006084",
+  "title": "Ceph の Ceph Object Gateway における CRLF インジェクションの脆弱性",
+  "vulinfo_description": "Ceph の Ceph Object Gateway (別名 radosgw または RGW) には、CRLF インジェクションの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers (HTTP レスポンスの分割) と識別されています。 http://cwe.mitre.org/data/definitions/113.html",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Ceph Storage",
+      "version_number": [
+        "0.94.4 未満 (1.3.1 未満)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:ceph_storage"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された bucket 名を介して、任意の HTTP ヘッダを挿入され、HTTP レスポンス分割攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Ceph",
+      "vulinfo_id": "Ceph - Bug #12537",
+      "url": "http://tracker.ceph.com/issues/12537"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:2512",
+      "url": "https://access.redhat.com/errata/RHSA-2015:2512"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5245",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5245"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5245",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5245"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年12月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-12-07T17:25:47+09:00",
+  "date_last_updated": "2015-12-07T17:25:47+09:00",
+  "date_public": "2015-11-23T00:00:00+09:00"
+}

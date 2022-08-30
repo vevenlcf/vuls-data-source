@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2015-000090",
+  "title": "namshi/jose におけるトークンの署名検証回避の脆弱性",
+  "vulinfo_description": "namshi/jose は、JSON Web Token (JWT) を扱うための PHP ライブラリです。namshi/jose には、JWT のヘッダの処理に起因する、トークンの署名を適切に検証しない脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 株式会社ディー・エヌ・エー 杉山 俊春 氏",
+  "affected": [
+    {
+      "name": "Namshi",
+      "product_name": "namshi/jose",
+      "version_number": [
+        "2.2.1 およびそれ以前",
+        "3.0.0 およびそれ以前",
+        "4.0.0 およびそれ以前",
+        "5.0.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:namshi:namshi%2Fjose"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者によって細工された JWT のデータを、正しく署名されたトークンとして扱ってしまう可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Namshi",
+      "vulinfo_id": "namshi/jose",
+      "url": "https://github.com/namshi/jose"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2964",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2964"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#25336719",
+      "url": "https://jvn.jp/jp/JVN25336719/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2964",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2964"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月25日]\\n  掲載\\n[2015年07月14日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2015-2964) を追加"
+    }
+  ],
+  "date_first_published": "2015-06-25T14:02:47+09:00",
+  "date_last_updated": "2015-07-14T17:18:03+09:00",
+  "date_public": "2015-06-25T00:00:00+09:00"
+}

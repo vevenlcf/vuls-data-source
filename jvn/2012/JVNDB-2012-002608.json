@@ -1,0 +1,168 @@
+{
+  "vulinfo_id": "JVNDB-2012-002608",
+  "title": "Mozilla Network Security Services の ASN.1 デコーダにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "複数の Mozilla 製品で使用される Mozilla Network Security Services (NSS) の QuickDER デコーダ内の ASN.1 デコーダには、サービス運用妨害 (アプリケーションクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "4.x から 12.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox ESR",
+      "version_number": [
+        "10.0.5 未満の 10.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox_esr"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Network Security Services (NSS)",
+      "version_number": [
+        "3.13.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:network_security_services"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla SeaMonkey",
+      "version_number": [
+        "2.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:seamonkey"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Thunderbird",
+      "version_number": [
+        "5.0 から 12.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:thunderbird"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Thunderbird ESR",
+      "version_number": [
+        "10.0.5 未満の 10.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:thunderbird_esr"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、長さがゼロのアイテム (zero-length item) を介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation",
+      "vulinfo_id": "Network Security Services (NSS)",
+      "url": "http://www.mozilla.org/projects/security/pki/nss/"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "MFSA2012-39",
+      "url": "http://www.mozilla.org/security/announce/2012/mfsa2012-39.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "MFSA2012-39",
+      "url": "http://www.mozilla-japan.org/security/announce/2012/mfsa2012-39.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1540-1",
+      "url": "http://www.ubuntu.com/usn/USN-1540-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1540-2",
+      "url": "http://www.ubuntu.com/usn/USN-1540-2"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0016",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2012-0016.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0441",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0441"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0441",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0441"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月07日]\\n  掲載\\n[2012年10月22日]\\n  ベンダ情報：Ubuntu (USN-1540-1) を追加\\n  ベンダ情報：Ubuntu (USN-1540-2) を追加\\n[2012年12月26日]\\n  影響を受けるシステム：VMware (VMSA-2012-0016) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0016) を追加"
+    }
+  ],
+  "date_first_published": "2012-06-07T14:22:29+09:00",
+  "date_last_updated": "2012-12-26T18:11:51+09:00",
+  "date_public": "2012-06-05T00:00:00+09:00"
+}

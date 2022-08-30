@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2016-006629",
+  "title": "Docker 用 SwarmKit ツールキットにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "** 未確定 ** 本件は、脆弱性として確定していません。  Docker 用 SwarmKit ツールキットには、サービス運用妨害 (クラスタの join の阻害) 状態にされる脆弱性が存在します。  ベンダは、以下のように述べ、本脆弱性に対して異議を唱えています。 「当該のシーケンスは、古いノードが残したステートを削除しない。マネージャはメモリ不足の状態で稼動しているため、ある時点から新しいノードの受け取りができなくなるのは自明のことである。Docker Swarm および Docker Swarmkit 双方のノードが秘密トークンを提供することが \"必須\" であるため (実際にこれが唯一のオペレーションモードである)、ノードに join されるだけで管理リソースを枯渇させてしまうことはない。メモリ不足の状態で稼動していて、システムに新たな正規のノードを追加することのできないマネージャに関しては、我々は何もできない。本件はリソースのプロビジョニングの問題にすぎず、決して CVE を付与されるような脆弱性ではない。」  ",
+  "affected": [
+    {
+      "name": "Docker",
+      "product_name": "Docker",
+      "version_number": [
+        "1.12.0 (SwarmKit)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:docker:docker"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、過度に長い join および quit アクションのシーケンスを介して、サービス運用妨害 (クラスタの join の阻害) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Swarm: a Docker-native clustering system",
+      "url": "https://github.com/docker/swarm"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "SwarmKit",
+      "url": "https://github.com/docker/swarmkit"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6595",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6595"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6595",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6595"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: Re: cve request: docker swarmkit Dos occurs by repeatly joining and quitting swam cluster as a node (Fri, 2 Sep 2016)",
+      "url": "http://www.openwall.com/lists/oss-security/2016/09/02/8"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: cve request: docker swarmkit Dos occurs by repeatly joining and quitting swam cluster as a node (Thu, 1 Sep 2016)",
+      "url": "http://www.openwall.com/lists/oss-security/2016/09/02/1"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: cve request: docker swarmkit Dos occurs by repeatly joining and quitting swam cluster as a node (Thu,  4 Aug 2016)",
+      "url": "http://www.openwall.com/lists/oss-security/2016/08/04/1"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-17T16:03:33+09:00",
+  "date_last_updated": "2017-01-17T16:03:33+09:00",
+  "date_public": "2016-08-04T00:00:00+09:00"
+}

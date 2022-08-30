@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2014-004502",
+  "title": "Perl で使用される Data::Dumper の Dumper メソッドにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Perl で使用される Data::Dumper の Dumper メソッドには、サービス運用妨害 (スタックの消費およびクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Data Dumper project",
+      "product_name": "Data::Dumper",
+      "version_number": [
+        "2.154 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:data_dumper_project:data_dumper"
+      }
+    },
+    {
+      "name": "The Perl Foundation",
+      "product_name": "Perl",
+      "version_number": [
+        "5.20.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:perl:perl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、多くのネストされた Array-Reference を含む Array-Reference を介して、DD_dump 関数への大量の再帰的な呼び出しを誘発されることで、サービス運用妨害 (スタックの消費およびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "CPAN",
+      "vulinfo_id": "Perl Source",
+      "url": "http://www.cpan.org/src/README.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Data::Dumper",
+      "vulinfo_id": "Changes - public release history for Data::Dumper",
+      "url": "https://metacpan.org/pod/distribution/Data-Dumper/Changes"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2014-4330 Buffer Errors vulnerability in Perl",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2014_4330_buffer_errors"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-4330",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-4330"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-4330",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4330"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "LSE-2014-06-10",
+      "url": "https://www.lsexperts.de/advisories/lse-2014-06-10.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2014-0406",
+      "url": "http://advisories.mageia.org/MGASA-2014-0406.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月03日]\\n  掲載\\n[2014年12月02日]\\n  ベンダ情報：オラクル (CVE-2014-4330 Buffer Errors vulnerability in Perl) を追加\\n[2015年06月08日]\\n  参考情報：関連文書 (MGASA-2014-0406) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-03T16:26:36+09:00",
+  "date_last_updated": "2015-06-08T17:33:08+09:00",
+  "date_public": "2014-09-18T00:00:00+09:00"
+}

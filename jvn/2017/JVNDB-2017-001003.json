@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2017-001003",
+  "title": "iOS 用 ThreatMetrix SDK に SSL サーバ証明書の検証不備の脆弱性",
+  "vulinfo_description": "ThreatMetrix SDK は iOS プラットフォームにおいて、HTTPS 通信で使用される SSL サーバ証明書を検証しないため、中間者攻撃 (man-in-the-middle attack) が行われる可能性があります。  ThreatMetrix は、モバイルアプリケーションにセキュリティ関連の機能を提供するライブラリです。ThreatMetrix SDK は iOS プラットフォームにおいて、HTTPS 通信で使用される SSL サーバ証明書を検証しません。",
+  "affected": [
+    {
+      "name": "ThreatMetrix",
+      "product_name": "ThreatMetrix SDK",
+      "version_number": [
+        "3.2 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:threatmetrix:threatmetrix_sdk"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.8",
+        "vector": "AV:A/AC:L/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.2",
+        "vector": "CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "iOS デバイスと同一ネットワーク上または通信経路上に位置する攻撃者によって、ThreatMetrix が扱う HTTPS トラフィックの内容を取得されたり改ざんされたりする可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 この問題は、ThreatMetrix SDK 3.2 で修正されています。修正される前のバージョンを使用して作成された iOS アプリケーションは、修正済みバージョンのライブラリを組み込んで作成し直してください。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　　* 公共 Wi-Fi を含め、信頼できないネットワークに接続しない",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ThreatMetrix",
+      "vulinfo_id": "Mobile Protection",
+      "url": "https://www.threatmetrix.com/cyber-security-software/mobile-protection/"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Vulnerability Analysis",
+      "vulinfo_id": "CERT Tapioca",
+      "url": "https://vuls.cert.org/confluence/display/tools/CERT+Tapioca"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3182",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3182"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95516811",
+      "url": "http://jvn.jp/vu/JVNVU95516811/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3182",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3182"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#767208",
+      "url": "https://www.kb.cert.org/vuls/id/767208"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月12日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-24T05:13:01Z",
+      "description": "[2019年07月24日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3182) を追加"
+    }
+  ],
+  "date_first_published": "2017-01-12T11:00:47+09:00",
+  "date_last_updated": "2019-07-24T14:14:36+09:00",
+  "date_public": "2017-01-10T00:00:00+09:00"
+}

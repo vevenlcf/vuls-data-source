@@ -1,0 +1,110 @@
+{
+  "vulinfo_id": "JVNDB-2021-000004",
+  "title": "acmailer における複数の脆弱性",
+  "vulinfo_description": "株式会社シーズが提供する acmailer には、次の複数の脆弱性が存在します。 ・アクセス制限不備 (CWE-284) - CVE-2021-20617 ・権限昇格 (CWE-268) - CVE-2021-20618  この脆弱性情報は、次の方が開発者に報告、および製品利用者への周知を目的に IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: mala 氏",
+  "affected": [
+    {
+      "name": "株式会社シーズ",
+      "product_name": "acmailer",
+      "version_number": [
+        "ver. 4.0.1 およびそれ以前(CVE-2021-20617)",
+        "ver. 4.0.2 およびそれ以前(CVE-2021-20618)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:seeds:acmailer"
+      }
+    },
+    {
+      "name": "株式会社シーズ",
+      "product_name": "acmailer DB",
+      "version_number": [
+        "ver. 1.1.3 およびそれ以前(CVE-2021-20617)",
+        "ver. 1.1.4 およびそれ以前(CVE-2021-20618)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:seeds:acmailer_db"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、遠隔の第三者によって、次のような影響を受ける可能性があります。 ・任意の OS コマンドを実行されたり、管理者権限を取得され、サーバ上の機微な情報を窃取されたりする - CVE-2021-20617 ・管理者権限を取得され、サーバ上の機微な情報を窃取されたりする - CVE-2021-20618"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンにアップデートすることを推奨しています。 \u003cul style=\"margin-top: 0px; margin-bottom: 0px\"\u003e \u003cli\u003eacmailer ver. 4.0.3 以降のバージョン \u003cli\u003eacmailer DB ver. 1.1.5 以降のバージョン \u003c/li\u003e\u003c/li\u003e\u003c/ul\u003e\u003c/li\u003e\u003c/ul\u003e  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減できます。 CVE-2021-20617 \u003cul style=\"margin-top: 0px; margin-bottom: 0px\"\u003e \u003cli\u003e当該製品を設置している直下のディレクトリ内にある次のファイルを削除する。 \u003cul\u003e\u003cli\u003einit_ctl.cgi \u003c/li\u003e\u003c/ul\u003e\u003c/li\u003e\u003c/ul\u003e  CVE-2021-20618 \u003cul style=\"margin-top: 0px; margin-bottom: 0px\"\u003e \u003cli\u003e当該製品を設置している直下のディレクトリ内にある次のファイルを削除する。 \u003cul\u003e\u003cli\u003eenq_detail.cgi \u003cli\u003eenq_detail_mail.cgi \u003cli\u003eenq_edit.cgi \u003cli\u003eenq_form.cgi \u003cli\u003eenq_list.cgi \u003c/li\u003e\u003c/li\u003e\u003c/li\u003e\u003c/li\u003e\u003c/li\u003e\u003c/ul\u003e\u003c/li\u003e\u003c/ul\u003e",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "株式会社シーズからの情報",
+      "url": "https://jvn.jp/jp/JVN35906450/995580/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "株式会社シーズ",
+      "vulinfo_id": "acmailerおよびacmailer DBの脆弱性につきまして",
+      "url": "https://www.acmailer.jp/info/de.cgi?id=98"
+    },
+    {
+      "type": "vendor",
+      "name": "株式会社シーズ",
+      "vulinfo_id": "acmailerおよびacmailer DBの脆弱性につきまして（２）",
+      "url": "https://www.acmailer.jp/info/de.cgi?id=101"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20618",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20618"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20617",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20617"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#35906450",
+      "url": "https://jvn.jp/jp/JVN35906450/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-01-12T07:17:14Z",
+      "description": "[2021年01月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-01-14T12:06:35+09:00",
+  "date_last_updated": "2021-01-14T12:06:35+09:00",
+  "date_public": "2021-01-14T00:00:00+09:00"
+}

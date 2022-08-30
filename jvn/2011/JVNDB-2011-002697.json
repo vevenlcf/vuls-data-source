@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2011-002697",
+  "title": "Puppet および Puppet Enterprise Users における Puppet master になりすまされる脆弱性",
+  "vulinfo_description": "Puppet Labs の Puppet および Puppet Enterprise Users は、エージェントの証明書に署名する際、証明書の X.509 Subject Alternative Name フィールドに、Puppet master の certdnsnames 値を追加するため、Puppet master になりすまされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Puppet",
+      "product_name": "Puppet",
+      "version_number": [
+        "2.6.12 未満の 2.6.x",
+        "2.7.6 未満の 2.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:puppetlabs:puppet"
+      }
+    },
+    {
+      "name": "Puppet",
+      "product_name": "Puppet Enterprise",
+      "version_number": [
+        "Users 1.0",
+        "Users 1.1",
+        "Users 1.2.4 未満の 1.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:puppetlabs:puppet_enterprise"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、master の代替 DNS の名前を使用するエージェントに対する中間者攻撃 (MITM) を介して、Puppet master になりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Puppet",
+      "vulinfo_id": "Puppet Labs Hot Fixes",
+      "url": "http://puppetlabs.com/security/hotfixes"
+    },
+    {
+      "type": "vendor",
+      "name": "Puppet",
+      "vulinfo_id": "Index of /puppet",
+      "url": "http://downloads.puppetlabs.com/puppet"
+    },
+    {
+      "type": "vendor",
+      "name": "Puppet Blog",
+      "vulinfo_id": "Important Security Announcement: AltNames Vulnerability",
+      "url": "http://puppetlabs.com/blog/important-security-announcement-altnames-vulnerability/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3872",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3872"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3872",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3872"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年11月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-11-04T15:03:09+09:00",
+  "date_last_updated": "2011-11-04T15:03:09+09:00",
+  "date_public": "2011-10-24T00:00:00+09:00"
+}

@@ -1,0 +1,116 @@
+{
+  "vulinfo_id": "JVNDB-2016-006446",
+  "title": "PHPMailer の isMail トランスポートの mailSend 関数における mail コマンドに余分なパラメータを渡される脆弱性",
+  "vulinfo_description": "PHPMailer の isMail トランスポートの mailSend 関数には、Sender プロパティが設定されていない場合、mail コマンドに余分なパラメータを渡され、その結果、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "PHPMailer project",
+      "product_name": "PHPMailer",
+      "version_number": [
+        "5.2.18 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phpmailer_project:phpmailer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、\\\" (バックスラッシュダブルクオート) を含む巧妙に細工された From アドレスを介して、mail コマンドに余分なパラメータを渡され、その結果、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "PHPMailer 5.2.18",
+      "url": "https://github.com/PHPMailer/PHPMailer/releases/tag/v5.2.18"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "About the CVE 2016 10033 and CVE 2016 10045 vulnerabilities",
+      "url": "https://github.com/PHPMailer/PHPMailer/wiki/About-the-CVE-2016-10033-and-CVE-2016-10045-vulnerabilities"
+    },
+    {
+      "type": "vendor",
+      "name": "Joomla! Developer Network",
+      "vulinfo_id": "[20161205] - PHPMailer Security Advisory",
+      "url": "https://developer.joomla.org/security-centre/668-20161205-phpmailer-security-advisory.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security advisories",
+      "vulinfo_id": "DRUPAL-SA-PSA-2016-004",
+      "url": "https://www.drupal.org/psa-2016-004"
+    },
+    {
+      "type": "vendor",
+      "name": "WordPress Trac",
+      "vulinfo_id": "#37210",
+      "url": "https://core.trac.wordpress.org/ticket/37210"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-10033",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10033"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99931177",
+      "url": "http://jvn.jp/vu/JVNVU99931177/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-10033",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10033"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-78",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-78.html",
+      "title": "OSコマンドインジェクション"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-77",
+      "url": "https://cwe.mitre.org/data/definitions/77.html",
+      "title": "コマンドインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-04T11:29:06+09:00",
+  "date_last_updated": "2017-01-04T11:29:06+09:00",
+  "date_public": "2016-12-25T00:00:00+09:00"
+}

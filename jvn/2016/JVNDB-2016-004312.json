@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2016-004312",
+  "title": "OpenSSH の sshd の auth-passwd.c の auth_password 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSH の sshd の auth-passwd.c の auth_password 関数は、パスワード認証にパスワードの長さを制限しないため、サービス運用妨害 (暗号 CPU 資源の消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "7.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、過度に長い文字列を介して、サービス運用妨害 (暗号 CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-4a3debc3a6",
+      "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/X2L6RW34VFNXYNVVN2CN73YAGJ5VMTFU/"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "upstream commit",
+      "url": "https://github.com/openssh/openssh-portable/commit/fcd135c9df440bcd2d5870405ad3311743d78d97"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2016-21",
+      "url": "http://www.turbolinux.co.jp/security/2016/TLSA-2016-21j.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6515",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6515"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6515",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6515"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載\\n[2016年11月14日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Fedora Project (FEDORA-2016-4a3debc3a6) を追加\\n  ベンダ情報：ターボリナックス (TLSA-2016-21) を追加"
+    }
+  ],
+  "date_first_published": "2016-08-17T10:37:49+09:00",
+  "date_last_updated": "2016-11-14T16:41:59+09:00",
+  "date_public": "2016-07-21T00:00:00+09:00"
+}

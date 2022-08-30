@@ -1,0 +1,150 @@
+{
+  "vulinfo_id": "JVNDB-2015-007257",
+  "title": "TLS プロトコルにおける TLS サーバになりすまされる脆弱性",
+  "vulinfo_description": "TLS プロトコルは、ClientCertificateType の rsa_fixed_dh、dss_fixed_dh、rsa_fixed_ecdh、および ecdsa_fixed_ecdh 値をサポートしていますが、クライアントの秘密鍵、およびサーバの秘密鍵ではなく公開鍵を伴う特定の状況下におけるマスターシークレットを計算する機能 (ability to compute) について直接的に文書化していないため、TLS サーバになりすまされる可能性があります。  本脆弱性は、\"Key Compromise Impersonation (KCI) 攻撃\" と呼ばれています。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "Opera Software ASA",
+      "product_name": "Opera",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:opera:opera_browser"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Safari",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apple:safari"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Internet Explorer",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:microsoft:internet_explorer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、任意のインストールされたクライアントの X.509 証明書の秘密鍵の情報を利用されることで、TLS サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "https://www.google.com/intl/ja/chrome/browser/features.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation",
+      "vulinfo_id": "Firefox",
+      "url": "https://www.mozilla.org/ja/firefox/desktop/"
+    },
+    {
+      "type": "vendor",
+      "name": "Opera Software ASA",
+      "vulinfo_id": "Opera",
+      "url": "http://www.opera.com/ja"
+    },
+    {
+      "type": "vendor",
+      "name": "アップル",
+      "vulinfo_id": "Safari",
+      "url": "http://www.apple.com/jp/safari/"
+    },
+    {
+      "type": "vendor",
+      "name": "マイクロソフト株式会社",
+      "vulinfo_id": "Internet Explorer",
+      "url": "https://support.microsoft.com/ja-jp/products/internet-explorer"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8960",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8960"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8960",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8960"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "KCI Attacks against TLS",
+      "url": "https://kcitls.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Twitter：This attack is hilarious. Install a client cert in a browser, MITM any connection it makes to certain servers.",
+      "url": "https://twitter.com/matthew_d_green/statuses/630908726950674433"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Prying open Pandora’s box:KCI attacks against TLS",
+      "url": "https://www.usenix.org/system/files/conference/woot15/woot15-paper-hlauschek.pdf"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年09月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-09-27T12:03:56+09:00",
+  "date_last_updated": "2016-09-27T12:03:56+09:00",
+  "date_public": "2015-08-10T00:00:00+09:00"
+}

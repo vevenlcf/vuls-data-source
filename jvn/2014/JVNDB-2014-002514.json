@@ -1,0 +1,142 @@
+{
+  "vulinfo_id": "JVNDB-2014-002514",
+  "title": "X.Org libXfont における整数オーバーフローの脆弱性",
+  "vulinfo_description": "X.Org libXfont の (1) fs_get_reply、(2) fs_alloc_glyphs、および (3) fs_read_extent_info 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "12.04 LTS",
+        "12.10",
+        "13.10",
+        "14.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "X.Org Foundation",
+      "product_name": "libXfont",
+      "version_number": [
+        "1.4.8 未満",
+        "1.4.99.901 未満の 1.4.9x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:x.org:libxfont"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Virtualization",
+      "version_number": [
+        "の Oracle Secure Global Desktop 4.63",
+        "の Oracle Secure Global Desktop 4.71",
+        "の Oracle Secure Global Desktop 5.0",
+        "の Oracle Secure Global Desktop 5.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:virtualization_secure_global_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモートのフォントサーバにより、巧妙に細工された xfs の応答を介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - July 2014",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - July 2014 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2014verbose-1972958.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1893",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1893.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in X.Org",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_x_org2"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "July 2014 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/july_2014_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2211-1",
+      "url": "http://www.ubuntu.com/usn/USN-2211-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "X.Org Security Advisory",
+      "vulinfo_id": "Multiple issues in libXfont",
+      "url": "http://lists.x.org/archives/xorg-announce/2014-May/002431.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0211",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0211"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0211",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0211"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2014-0278",
+      "url": "http://advisories.mageia.org/MGASA-2014-0278.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年05月19日]\\n  掲載\\n[2014年07月18日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - July 2014) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - July 2014 Risk Matrices) を追加\\n  ベンダ情報：オラクル (July 2014 Critical Patch Update Released) を追加\\n[2014年07月25日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in X.Org) を追加\\n[2014年12月08日]\\n  ベンダ情報：レッドハット (RHSA-2014:1893) を追加\\n[2015年06月26日]\\n  参考情報：関連文書 (MGASA-2014-0278) を追加"
+    }
+  ],
+  "date_first_published": "2014-05-19T15:11:39+09:00",
+  "date_last_updated": "2015-06-26T16:23:11+09:00",
+  "date_public": "2014-05-13T00:00:00+09:00"
+}

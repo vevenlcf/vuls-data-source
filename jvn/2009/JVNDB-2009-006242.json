@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2009-006242",
+  "title": "SystemTap におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "SystemTap は、--unprivileged オプションが使用されている際、特定のデータサイズを適切に制限しない、および Common Information Entry (CIE) および Call Frame Instruction (CFI) レコードに関する処理に不備があるため、サービス運用妨害 (DoS) 状態となる、またはサービス運用妨害 (無限ループ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "SystemTap",
+      "product_name": "SystemTap",
+      "version_number": [
+        "1.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:systemtap:systemtap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、以下の影響を受ける可能性があります。 (1) 大量の引数を伴う印刷操作を介して、カーネルのスタックオーバーフローを誘発され、サービス運用妨害 (DoS) 状態にされる、または権限を取得される可能性 (2) 巧妙に細工された DWARF 表記を介して、カーネルのスタックフレームオーバーフローを誘発され、サービス運用妨害 (DoS) 状態にされる可能性 (3) 過度に大きい展開されたテーブルの作成を誘発され、サービス運用妨害 (無限ループ) 状態にされる可能性"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "SystemTap",
+      "vulinfo_id": "SystemTap",
+      "url": "http://sourceware.org/systemtap/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-2911",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2911"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-2911",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-2911"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T19:28:37+09:00",
+  "date_last_updated": "2012-12-20T19:28:37+09:00",
+  "date_public": "2009-10-22T00:00:00+09:00"
+}

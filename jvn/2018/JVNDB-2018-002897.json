@@ -1,0 +1,66 @@
+{
+  "vulinfo_id": "JVNDB-2018-002897",
+  "title": "統合型 GPU に対する WebGL を利用したサイドチャネル攻撃 および Rowhammer 攻撃",
+  "vulinfo_description": "スマートフォンなどの GPU が統合されたプラットフォームを利用する機器は、WebGL を利用した DRAM へのサイドチャネル攻撃 および Rowhammer 攻撃を実行される可能性があります。この攻撃は \"GLitch\" と呼ばれています。  GLitch と呼ばれる攻撃は、当該機器のWeb ブラウザで WebGL を利用させることにより下記の２つの異なるタイプの攻撃を組み合わせて実行します。  　* DRAM アクセスに対するサイドチャネル攻撃を実行し、物理的なメモリレイアウトを特定する 　* \u003ca href=\"https://en.wikipedia.org/wiki/Row_hammer\"target=\"blank\"\u003eRowhammer 攻撃\u003c/a\u003eを実行し、DRAM の物理メモリを数ビットを反転させる  WebGL が提供する高精度タイマーを利用し、キャッシュされた DRAM とキャッシュされていない DRAM へのアクセス時間の違いを計測することで Rowhammer 攻撃の実行に必要なメモリ領域の情報を特定します。この攻撃によって、Android プラットフォーム上の Firefox sandbox をバイパスできることが示されています。なお、この攻撃は CPU と GPU が同じメモリを共有するプラットフォーム（スマートフォンや類似の機器）に対してのみ適用可能です。 詳細は \u003ca href=\"https://www.kb.cert.org/vuls/id/283803\"target=\"blank\"\u003eVU#283803\u003c/a\u003e および \u003ca href=\"https://www.vusec.net/projects/glitch/\"target=\"blank\"\u003e発見者が提供する情報\u003c/a\u003eを参照して下さい。",
+  "affected": [
+    {
+      "name": "（複数のベンダ）",
+      "product_name": "（複数の製品）",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:multiple_vendors"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "当該機器で悪意のあるサイトにアクセスした場合、遠隔の第三者によってブラウザが提供するセキュリティ機能をバイパスされる可能性があります。"
+  },
+  "solution": "[アップデートする] Google Chrome および Mozilla Firefox はブラウザでの高精度タイマーを無効化したアップデートをリリースしています。",
+  "related": [
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-10229",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10229"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92147586",
+      "url": "https://jvn.jp/vu/JVNVU92147586/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-10229",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-10229"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#283803",
+      "url": "https://www.kb.cert.org/vuls/id/283803"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "GLitch - VUSec",
+      "url": "https://www.vusec.net/projects/glitch/"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-05-08T01:23:38Z",
+      "description": "[2018年05月08日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2018-08-30T03:06:18Z",
+      "description": "[2018年08月30日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-10229) を追加"
+    }
+  ],
+  "date_first_published": "2018-05-08T10:23:38+09:00",
+  "date_last_updated": "2018-08-30T12:06:35+09:00",
+  "date_public": "2018-05-03T00:00:00+09:00"
+}

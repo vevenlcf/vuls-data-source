@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-001867",
+  "title": "PowerPC プラットフォーム上で稼動する Linux Kernel におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "PowerPC プラットフォーム上で稼動する Linux Kernel の arch/powerpc/kernel/process.c の Transactional Memory (TM) の実装内の arch_dup_task_struct 関数は、クローンおよび fork システムコールと適切に対話処理しないため、サービス運用妨害 (プログラムチェックおよびシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.13.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、トランザクション状態のプロセッサで実行される特定の命令を介して、サービス運用妨害 (プログラムチェックおよびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.12.15",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.12.15"
+    },
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.13.7",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.13.7"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "powerpc/tm: Fix crash when forking inside a transaction",
+      "url": "https://github.com/torvalds/linux/commit/621b5060e823301d0cba4cb52a7ee3491922d291"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "powerpc/tm: Fix crash when forking inside a transaction",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=621b5060e823301d0cba4cb52a7ee3491922d291"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2673",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2673"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2673",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2673"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月03日]\\n  掲載\\n[2014年05月23日]\\n  ベンダ情報：kernel.org (ChangeLog-3.12.15) を追加"
+    }
+  ],
+  "date_first_published": "2014-04-03T11:36:40+09:00",
+  "date_last_updated": "2014-05-23T18:28:36+09:00",
+  "date_public": "2014-03-23T00:00:00+09:00"
+}

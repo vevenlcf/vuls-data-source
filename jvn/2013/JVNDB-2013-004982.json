@@ -1,0 +1,185 @@
+{
+  "vulinfo_id": "JVNDB-2013-004982",
+  "title": "SPICE の server/reds.c におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "SPICE の server/reds.c の reds_handle_ticket 関数には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Spice Project",
+      "product_name": "SPICE",
+      "version_number": [
+        "0.12.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:spice_project:spice"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 server"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5 client",
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6",
+        "AUS 6.4",
+        "EUS 6.4.z"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Virtualization",
+      "version_number": [
+        "3.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_virtualization"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Multi OS",
+      "version_number": [
+        "5 client"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_multi_os"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Virtualization",
+      "version_number": [
+        "5 server"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_virtualization"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、SPICE チケットの過度に長いパスワードを介して、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "Fix buffer overflow when decrypting client SPICE ticket",
+      "url": "http://cgit.freedesktop.org/spice/spice/commit/?id=8af619009660b24e0b41ad26b30289eea288fcc2"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1460",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1460.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1474",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1474.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1473",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1473.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2027-1",
+      "url": "http://www.ubuntu.com/usn/USN-2027-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4282",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4282"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4282",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4282"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月05日]\\n  掲載\\n[2013年12月26日]\\n  ベンダ情報：Ubuntu (USN-2027-1) を追加"
+    }
+  ],
+  "date_first_published": "2013-11-05T18:37:24+09:00",
+  "date_last_updated": "2013-12-26T17:44:45+09:00",
+  "date_public": "2013-10-29T00:00:00+09:00"
+}

@@ -1,0 +1,167 @@
+{
+  "vulinfo_id": "JVNDB-2010-002487",
+  "title": "OpenSSL クライアントの ssl3_get_key_exchange 関数における任意のコードを実行される脆弱性",
+  "vulinfo_description": "OpenSSL の OpenSSL クライアント (ssl/s3_clnt.c) 内にある ssl3_get_key_exchange 関数は、 ECDH を使用している際、秘密鍵に関する処理に不備があるため、サービス運用妨害 (DoS) 状態となる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.8o から 0.9.8p"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ACE",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:ace"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESXi",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esxi"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware Fusion",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:fusion"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware Player",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:player"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware vCenter",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:vcenter"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware Workstation",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、無効な素数が付与された巧妙に細工された秘密鍵を介して、サービス運用妨害 (DoS) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenSSL",
+      "vulinfo_id": "changelog",
+      "url": "http://www.openssl.org/news/changelog.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0003",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2011-0003.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2939",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2939"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2939",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2939"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA40906",
+      "url": "http://secunia.com/advisories/40906"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "42306",
+      "url": "http://www.securityfocus.com/bid/42306"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024296",
+      "url": "http://securitytracker.com/id?1024296"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-2038",
+      "url": "http://www.vupen.com/english/advisories/2010/2038"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年12月14日]\\n  掲載\\n[2011年02月28日]\\n  影響を受けるシステム：VMware (VMSA-2011-0003) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0003) を追加"
+    }
+  ],
+  "date_first_published": "2010-12-14T14:12:25+09:00",
+  "date_last_updated": "2011-02-28T14:39:01+09:00",
+  "date_public": "2010-08-17T00:00:00+09:00"
+}

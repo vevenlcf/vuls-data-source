@@ -1,0 +1,118 @@
+{
+  "vulinfo_id": "JVNDB-2012-003492",
+  "title": "Puppet および Puppet Enterprise におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "Puppet および Puppet Enterprise の lib/puppet/reports/store.rb には、auth.conf 内の Delete が有効である場合、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Puppet",
+      "product_name": "Puppet",
+      "version_number": [
+        "2.6.17 未満",
+        "2.7.18 未満の 2.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:puppetlabs:puppet"
+      }
+    },
+    {
+      "name": "Puppet",
+      "product_name": "Puppet Enterprise",
+      "version_number": [
+        "2.5.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:puppetlabs:puppet_enterprise"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、.. (ドットドット) を含むノード名を介して、Puppet マスターサーバ上の任意のファイルを削除される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2511",
+      "url": "http://www.debian.org/security/2012/dsa-2511"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Reject directory traversal in store report processor - 554eefc",
+      "url": "https://github.com/puppetlabs/puppet/commit/554eefc55f57ed2b76e5ee04d8f194d36f6ee67f"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Reject directory traversal in store report processor - d804782",
+      "url": "https://github.com/puppetlabs/puppet/commit/d80478208d79a3e6d6cb1fbc525e24817fe8c4c6"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2012:0983",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2012-08/msg00006.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Puppet",
+      "vulinfo_id": "CVE-2012-3865",
+      "url": "http://puppetlabs.com/security/cve/cve-2012-3865/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 839131",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=839131"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1506-1",
+      "url": "http://www.ubuntu.com/usn/USN-1506-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-3865",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3865"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-3865",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3865"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月09日]\\n  掲載\\n[2012年09月14日]\\n  ベンダ情報：Ubuntu (USN-1506-1) を追加\\n  ベンダ情報：Debian (DSA-2511) を追加\\n  ベンダ情報：openSUSE (SUSE-SU-2012:0983) を追加"
+    }
+  ],
+  "date_first_published": "2012-08-09T11:45:58+09:00",
+  "date_last_updated": "2012-09-14T16:01:17+09:00",
+  "date_public": "2012-08-06T00:00:00+09:00"
+}

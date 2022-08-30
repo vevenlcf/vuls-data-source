@@ -1,0 +1,139 @@
+{
+  "vulinfo_id": "JVNDB-2016-002991",
+  "title": "dosfstools の boot.c の read_boot 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "dosfstools の boot.c の read_boot 関数には、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10",
+        "16.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "dosfstools project",
+      "product_name": "dosfstools",
+      "version_number": [
+        "4.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dosfstools_project:dosfstools"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.2",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工されたファイルシステムを介して、(1) read_fat 関数におけるヒープベースのバッファオーバーフロー、または (2) get_fat 関数における境界外ヒープ読み取りを誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Heap overflow in function read_fat() #25",
+      "url": "https://github.com/dosfstools/dosfstools/issues/25"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "heap out of bounds read in get_fat() #26",
+      "url": "https://github.com/dosfstools/dosfstools/issues/26"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "read_boot(): Handle excessive FAT size specifications",
+      "url": "https://github.com/dosfstools/dosfstools/commit/e8eff147e9da1185f9afd5b25948153a3b97cf52"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:1461",
+      "url": "https://lists.opensuse.org/opensuse-updates/2016-06/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2986-1",
+      "url": "http://www.ubuntu.com/usn/USN-2986-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4804",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4804"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4804",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4804"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-06T16:04:28+09:00",
+  "date_last_updated": "2016-06-06T16:04:28+09:00",
+  "date_public": "2016-04-28T00:00:00+09:00"
+}

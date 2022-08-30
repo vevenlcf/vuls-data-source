@@ -1,0 +1,154 @@
+{
+  "vulinfo_id": "JVNDB-2009-001183",
+  "title": "Linux kernel の skfp_ioctl 関数におけるドライバの統計情報をリセットされる脆弱性",
+  "vulinfo_description": "Linux kernel の drivers/net/skfp/skfddi.c に内にある skfp_ioctl 関数には、CAP_NET_ADMIN ケーパビリティがない場合に SKFP_CLR_STATS リクエストを許可するため、ドライバの統計情報をリセットされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.28.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、ドライバの統計情報をリセットされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-53.22AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=425"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.28.6",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.28.6"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:0326",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-0326.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:0360",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-0360.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:0326",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-0326J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-0675",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0675"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-0675",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0675"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA34502",
+      "url": "http://secunia.com/advisories/34502"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA33938",
+      "url": "http://secunia.com/advisories/33938"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA33758",
+      "url": "http://secunia.com/advisories/33758"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年04月28日]\\n  掲載\\n[2009年06月24日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-53.22AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-53.22AXS3) を追加"
+    }
+  ],
+  "date_first_published": "2009-04-28T10:49:41+09:00",
+  "date_last_updated": "2009-06-24T10:48:28+09:00",
+  "date_public": "2009-02-22T00:00:00+09:00"
+}

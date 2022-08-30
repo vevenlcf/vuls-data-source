@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2022-001499",
+  "title": "光洋電子工業製 Screen Creator Advance 2 におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "光洋電子工業株式会社が提供する Screen Creator Advance 2 は、同社製 HMI の GC-A2 シリーズ用の画面開発ツールです。Screen Creator Advance 2 には、SCA2 ファイルを読み込む処理を行う際にデータの長さが適切に検証されないことより、スタックベースのバッファオーバーフロー（CWE-121、CVE-2022-27648）が発生する脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "光洋電子工業株式会社",
+      "product_name": "Screen Creator Advance 2",
+      "version_number": [
+        "Ver.0.1.1.1 Build02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:koyoelectronicsindustries_screen_creator_advance_2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者によって細工された SCA2 ファイルをユーザが Screen Creator Advance 2 で読み込むことにより、Screen Creator Advance 2 の実行権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンをリリースしています。  　* Screen Creator Advance 2 Ver.0.1.1.1 Build04 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "光洋電子工業株式会社",
+      "vulinfo_id": "GC-A2シリーズバージョンアップのお知らせ",
+      "url": "https://www.koyoele.co.jp/jp/topics/2022031511551/"
+    },
+    {
+      "type": "vendor",
+      "name": "光洋電子工業株式会社",
+      "vulinfo_id": "[Update notice] Screen Creator Advance 2 software of GC-A2 Series",
+      "url": "https://www.koyoele.co.jp/en/topics/202203154994/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-27648",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-27648"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98676431",
+      "url": "http://jvn.jp/vu/JVNVU98676431/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "ZDI-22-543 (KOYO Screen Creator SCA2 File Parsing Stack-based Buffer Overflow Remote Code Execution Vulnerability)",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-22-543/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-121",
+      "url": "https://cwe.mitre.org/data/definitions/121.html",
+      "title": "スタックベースのバッファオーバーフロー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-04-05T07:05:57Z",
+      "description": "[2022年04月05日]   掲載"
+    }
+  ],
+  "date_first_published": "2022-04-05T16:45:45+09:00",
+  "date_last_updated": "2022-04-05T16:45:45+09:00",
+  "date_public": "2022-04-01T00:00:00+09:00"
+}

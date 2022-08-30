@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2016-005409",
+  "title": "systemd の manager_invoke_notify_message 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "systemd の manager_invoke_notify_message 関数には、サービス運用妨害 (表明違反および PID 1 ハング) 状態にされる脆弱性が存在します。  ",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "16.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "systemd project",
+      "product_name": "systemd",
+      "version_number": [
+        "231 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:systemd_project:systemd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、notify ソケット経由で受信したゼロ長のメッセージを介して、サービス運用妨害 (表明違反および PID 1 ハング) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Assertion failure when PID 1 receives a zero-length message over notify socket #4234",
+      "url": "https://github.com/systemd/systemd/issues/4234"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3094-1",
+      "url": "https://www.ubuntu.com/usn/USN-3094-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7795",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7795"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7795",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7795"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年10月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-10-20T11:43:47+09:00",
+  "date_last_updated": "2016-10-20T11:43:47+09:00",
+  "date_public": "2016-09-29T00:00:00+09:00"
+}

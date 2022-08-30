@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2006-002375",
+  "title": "Linux kernel の drivers/isdn/isdn_ppp.c における脆弱性",
+  "vulinfo_description": "Linux kernel の drivers/isdn/isdn_ppp.c の isdn_ppp_ccp_reset_alloc_state 関数は、状態タイマーをリセットする ISDN PPP CCP に対して init_timer を呼び出さないため、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.4.34-rc4 未満の 2.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.7",
+        "vector": "AV:L/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "システムクラッシュを誘発され、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "kernel",
+      "vulinfo_id": "Call init_timer() for ISDN PPP CCP reset state timer",
+      "url": "http://www.kernel.org/git/?p=linux/kernel/git/wtarreau/linux-2.4.git;a=commitdiff;h=05dca9b77f99d80cf615075624666106d5b61727"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-5749",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5749"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-5749",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-5749"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T15:36:12+09:00",
+  "date_last_updated": "2012-09-25T15:36:12+09:00",
+  "date_public": "2006-12-19T00:00:00+09:00"
+}

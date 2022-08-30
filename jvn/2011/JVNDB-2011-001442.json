@@ -1,0 +1,143 @@
+{
+  "vulinfo_id": "JVNDB-2011-001442",
+  "title": "IPComp パケットの受信処理に脆弱性",
+  "vulinfo_description": "複数の IPComp 実装の受信処理には、メモリ破損の脆弱性が存在します。  IPComp (RFC 3173) は、一般的に IPsec の実装と共に使用されています。 KAME プロジェクトや NetBSD プロジェクトなどで IPComp および IPsec を実装しているコードには、細工された IPComp ペイロードを処理する際にスタックベースのバッファオーバーフローが発生する可能性があります。  なお、本脆弱性を使用した攻撃コードが公開されています。",
+  "affected": [
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/B1 ファームウェア",
+      "version_number": [
+        "1.00 から 3.20"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:iij:seil%252fb1_firmware"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/neu 2FE Plus ファームウェア",
+      "version_number": [
+        "1.00 から 2.11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:iij:seil%252fneu_2fe_plus_firmware"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/Turbo ファームウェア",
+      "version_number": [
+        "1.00 から 2.11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:iij:seil%252fturbo_firmware"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/X1 ファームウェア",
+      "version_number": [
+        "1.00 から 3.20"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:iij:seil%252fx1_firmware"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/X2 ファームウェア",
+      "version_number": [
+        "1.00 から 3.20"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:iij:seil%252fx2_firmware"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/x86 ファームウェア",
+      "version_number": [
+        "1.70"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:iij:seil%252fx86_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、サービス運用妨害 (DoS) 攻撃を受けたり、任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "[パッチを適用する] 各ベンダや配布元が提供する情報をもとに本脆弱性に対応したパッチを適用してください。  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  　IPComp (プロトコル番号 108) パケットをフィルタリングする",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "SEIL シリーズ セキュリティ\u0026脆弱性情報",
+      "vulinfo_id": "偽装されたIPCompパケットに対する受信処理の脆弱性",
+      "url": "http://www.seil.jp/support/security/a01024.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1547",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1547"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#668220",
+      "url": "http://jvn.jp/cert/JVNVU668220"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1547",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1547"
+    },
+    {
+      "type": "advisory",
+      "name": "Request for Comments (RFC)",
+      "vulinfo_id": "RFC 3173",
+      "url": "http://tools.ietf.org/html/rfc3173"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#668220",
+      "url": "http://www.kb.cert.org/vuls/id/668220"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年04月27日]\\n  掲載\\n[2013年10月28日]\\n  CVSS による深刻度：内容を更新\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加"
+    }
+  ],
+  "date_first_published": "2011-04-27T11:48:35+09:00",
+  "date_last_updated": "2013-10-28T18:22:39+09:00",
+  "date_public": "2011-04-06T00:00:00+09:00"
+}

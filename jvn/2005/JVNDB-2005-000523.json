@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2005-000523",
+  "title": "FreeRADIUS の rlm_sqlcounter モジュールにおけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  FreeRADIUS は、RADIUS プロトコルを実装したオープンソースのインターネット認証サーバです。  FreeRADIUS 1.0.4 以前に実装されている rlm_sqlcounter モジュールには、要求の処理に不備が存在するため、SQL インジェクションが可能となる、あるいはバッファオーバーフローが発生する問題が存在します。  現時点で詳細は不明ですが、これらの問題を利用するリモートの攻撃者は、意図的に作成した要求を FreeRADIUS サーバに送りつけることにより、結果として SQL インジェクションを実行し、バックエンドデータベースのデータを追加、変更、または削除する、あるいは FreeRADIUS サーバをクラッシュさせサービス不能状態に陥らせる可能性があります。  尚、上記の問題以外にも FreeRADIUS 1.0.4 以前に関するセキュリティ問題が SUSE Linux や Red Hat Bugzilla において報告されていますが、freeradius.org の分析によると、これらは攻撃者が悪用可能なセキュリティ上の問題ではなくバグであることが報告されています。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "4 (as) ",
+        "4 (es) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "167676",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=167676"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-4746",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4746"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-4746",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-4746"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "17294",
+      "url": "http://www.securityfocus.com/bid/17294"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "17293",
+      "url": "http://www.securityfocus.com/bid/17293"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-09-09T00:00:00+09:00"
+}

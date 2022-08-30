@@ -1,0 +1,266 @@
+{
+  "vulinfo_id": "JVNDB-2015-005957",
+  "title": "libxslt の preproc.c の xsltStylePreCompute 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libxslt の preproc.c の xsltStylePreCompute 関数は、親ノードがエレメントかどうかをチェックしないため、サービス運用妨害 (DoS) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-843:Access of Resource Using Incompatible Type (型の取り違え) と識別されています。 http://cwe.mitre.org/data/definitions/843.html",
+  "affected": [
+    {
+      "name": "xmlsoft.org",
+      "product_name": "libxslt",
+      "version_number": [
+        "1.1.28"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xmlsoft:libxslt"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.10.5",
+        "10.11.2 までの 10.11",
+        "10.9.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "iOS",
+      "version_number": [
+        "9.2.1 未満 (iPad 2 以降)",
+        "9.2.1 未満 (iPhone 4s 以降)",
+        "9.2.1 未満 (iPod touch 第 5 世代以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:iphone_os"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "tvOS",
+      "version_number": [
+        "9.1.1 未満 (Apple TV 第 4 世代)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:apple_tv"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "watchOS",
+      "version_number": [
+        "2.2 未満 (Apple Watch Edition)",
+        "2.2 未満 (Apple Watch Hermes)",
+        "2.2 未満 (Apple Watch Sport)",
+        "2.2 未満 (Apple Watch)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:watchos"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Insight Control",
+      "version_number": [
+        "サーバープロビジョニング"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:insight_control"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Server Migration Pack",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:server_migration_pack"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Systems Insight Manager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:systems_insight_manager"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Version Control Repository Manager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:version_control_repository_manager"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "System Management Homepage",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:system_management_homepage"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された XML ファイルを介して、 サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2016-01-25-1 tvOS 9.1.1",
+      "url": "http://lists.apple.com/archives/security-announce/2016/Jan/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2016-01-19-2 OS X El Capitan 10.11.3 and Security Update 2016-001",
+      "url": "http://lists.apple.com/archives/security-announce/2016/Jan/msg00003.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2016-01-19-1 iOS 9.2.1",
+      "url": "http://lists.apple.com/archives/security-announce/2016/Jan/msg00002.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2016-03-21-2 watchOS 2.2",
+      "url": "http://lists.apple.com/archives/security-announce/2016/Mar/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205729",
+      "url": "https://support.apple.com/en-us/HT205729"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205731",
+      "url": "https://support.apple.com/en-us/HT205731"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT206168",
+      "url": "https://support.apple.com/en-us/HT206168"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205732",
+      "url": "https://support.apple.com/en-us/HT205732"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT206168",
+      "url": "http://support.apple.com/ja-jp/HT206168"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205729",
+      "url": "https://support.apple.com/ja-jp/HT205729"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205731",
+      "url": "https://support.apple.com/ja-jp/HT205731"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205732",
+      "url": "https://support.apple.com/ja-jp/HT205732"
+    },
+    {
+      "type": "vendor",
+      "name": "GNOME GIT REPOSITORY",
+      "vulinfo_id": "Fix for type confusion in preprocessing attributes",
+      "url": "https://git.gnome.org/browse/libxslt/commit/?id=7ca19df892ca22d9314e95d59ce2abdeff46b617"
+    },
+    {
+      "type": "vendor",
+      "name": "HPE Security Bulletin",
+      "vulinfo_id": "HPSBMU03612",
+      "url": "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05158380"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1257962",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1257962"
+    },
+    {
+      "type": "vendor",
+      "name": "xmlsoft",
+      "vulinfo_id": "Top Page",
+      "url": "http://xmlsoft.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7995",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7995"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#90405245",
+      "url": "http://jvn.jp/vu/JVNVU90405245/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97668313",
+      "url": "http://jvn.jp/vu/JVNVU97668313/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7995",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7995"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月19日]\\n  掲載\\n[2016年01月28日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT205729) を追加\\n  ベンダ情報：アップル (HT205731) を追加\\n  ベンダ情報：アップル (HT205732) を追加\\n  ベンダ情報：アップル (APPLE-SA-2016-01-25-1 tvOS 9.1.1) を追加\\n  ベンダ情報：アップル (APPLE-SA-2016-01-19-2 OS X El Capitan 10.11.3 and Security Update 2016-001) を追加\\n  ベンダ情報：アップル (APPLE-SA-2016-01-19-1 iOS 9.2.1) を追加\\n  参考情報：JVN (JVNVU#90405245) を追加\\n[2016年03月29日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT206168) を追加\\n  ベンダ情報：アップル (APPLE-SA-2016-03-21-2 watchOS 2.2) を追加\\n  参考情報：JVN (JVNVU#97668313) を追加\\n[2016年09月08日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：ヒューレット・パッカード・エンタープライズ (HPSBMU03612) を追加"
+    }
+  ],
+  "date_first_published": "2015-11-19T13:54:42+09:00",
+  "date_last_updated": "2016-09-08T17:10:51+09:00",
+  "date_public": "2015-10-29T00:00:00+09:00"
+}

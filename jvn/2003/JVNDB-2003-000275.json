@@ -1,0 +1,307 @@
+{
+  "vulinfo_id": "JVNDB-2003-000275",
+  "title": "OpenSSH の複数の関数におけるサービス運用妨害 (DoS) および任意のコードを実行される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  OpenSSH Project より配布されている OpenSSH 3.7 (Portable 版 OpenSSH 3.7p1) 以前には、バッファの管理に不備が存在します。   リモートの攻撃者により、バッファの解放時に近接した他の領域も解放されるような意図的な長さのパケットを受信した場合、ヒープ領域が破壊される可能性が存在します。   この問題を利用するリモートの攻撃者は、結果として sshd をサービス不能状態に陥らせる可能性があり、また、任意のコードの実行も示唆されています。   尚、問題が存在するルーチンは OpenSSH の初期のリリースから利用されているため、同様のルーチンを利用している他の SSH の実装も影響を受ける可能性があります。   SSH Secure Shell/Ciso IOS に関しては、この問題の影響を受けないことがベンダより報告されています。  また、F-Secure SSH に関しては、1.3.14 (for Unix) 以前が影響を受け、2.x 以降は影響を受けないことがベンダより報告されています。   当初この問題 (CAN-2003-0693) は buffer.c 内の buffer_append_space() 関数に発見され、OpenSSH 3.7p1 で解消されました。  しかし、その後、同様の問題が他の箇所にも発見されため、この問題を解消する OpenSSH 3.7.1p1 がリリースされています。(CAN-2003-0695)   さらに、上記の問題とは異なるメモリ管理に関する問題 (CAN-2003-0682) も報告されており、この問題は OpenSSH 3.7.1p2 にアップデートすることで解消可能です。   尚、Red Hat Linux に関しては、ベンダより 2003 年 9 月 17 日付けで公開されたアドバイザリ (RHSA-2003:279-17) で示された RPM パッケージへのアップデート、Turboinux に関しては、ベンダより 2003 年 9 月 24 日付で公開されたアドバイザリ (TLSA-2003-53) で示されたパッケージへのアップデートにより、これら全ての問題 (CAN-2003-0682/CAN-2003-0693/CAN-2003-0695) を解消することが可能です。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "3.7.1p1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "1.1 ",
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ550",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_550"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "6.5  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.04 ",
+        "11.11 ",
+        "11.22 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  ",
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "F-Secure Support Center",
+      "vulinfo_id": "2003120401",
+      "url": "http://support.f-secure.com/enu/corporate/supportissue/ssh/comments/comments-issue-2003120401.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0311-302",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0311-302"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0309-282",
+      "url": "http://www2.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0309-282"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0311-302",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0311-302.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0309-282",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0309-282.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "openssh",
+      "url": "http://www.miraclelinux.com/support/update/data/openssh.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "buffer.adv",
+      "url": "http://www.openssh.com/txt/buffer.adv"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:279",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-279.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SSH Communications Security",
+      "vulinfo_id": "471",
+      "url": "http://www.ssh.com/company/newsroom/article/471/"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "56862",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-56862-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "56861",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-56861-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "56862",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-56862-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "56861",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-56861-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "550 OpenSSH Security Update",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raq550.eng\u0026amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-53",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-53.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-51",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-51.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:279",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-279J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-51",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-51j.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-53",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-53j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Advisory",
+      "vulinfo_id": "CA-2003-24",
+      "url": "http://www.cert.org/advisories/CA-2003-24.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "N-151",
+      "url": "http://www.ciac.org/ciac/bulletins/n-151.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0695",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0695"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT REPORT",
+      "vulinfo_id": "JPCERT-WR-2003-3801",
+      "url": "http://www.jpcert.or.jp/wr/2003/wr033801.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNCA-2003-24",
+      "url": "http://jvn.jp/cert/JVNCA-2003-24"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRCA-2003-24",
+      "url": "http://jvn.jp/tr/TRCA-2003-24"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0695",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0695"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "8628",
+      "url": "http://www.securityfocus.com/bid/8628"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#333628",
+      "url": "http://www.kb.cert.org/vuls/id/333628"
+    },
+    {
+      "type": "advisory",
+      "name": "X-Force Security Alerts and Advisories",
+      "vulinfo_id": "13191",
+      "url": "http://xforce.iss.net/xforce/xfdb/13191"
+    },
+    {
+      "type": "advisory",
+      "name": "X-Force Security Alerts and Advisories",
+      "vulinfo_id": "13215",
+      "url": "http://xforce.iss.net/xforce/xfdb/13215"
+    },
+    {
+      "type": "advisory",
+      "name": "X-Force セキュリティアラート＆アドバイザリ",
+      "vulinfo_id": "OpenSSH メモリ破損の脆弱性",
+      "url": "http://www.isskk.co.jp/support/techinfo/general/OpenSSH144.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-09-16T00:00:00+09:00"
+}

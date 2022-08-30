@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2016-008427",
+  "title": "ImageMagick の coders/rle.c の ReadPSDImage 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ImageMagick の coders/rle.c の ReadRLEImage 関数には、サービス運用妨害 (境界外読み取り) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ImageMagick",
+      "product_name": "ImageMagick",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:imagemagick:imagemagick"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、ピクセル数に関する処理を介して、サービス運用妨害 (境界外読み取り) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed check for the number of pixels that will be allocated.",
+      "url": "https://github.com/ImageMagick/ImageMagick/commit/2ad6d33493750a28a5a655d319a8e0b16c392de1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "out-of-bounds read in coders/rle.c:590 ReadRLEImage #82",
+      "url": "https://github.com/ImageMagick/ImageMagick/issues/82"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1533445",
+      "url": "https://bugs.launchpad.net/ubuntu/+source/imagemagick/+bug/1533445"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1378741",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1378741"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7515",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7515"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7515",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-7515"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-125",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "title": "境界外読み取り"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-18T11:30:11+09:00",
+  "date_last_updated": "2017-05-18T11:30:11+09:00",
+  "date_public": "2016-01-14T00:00:00+09:00"
+}

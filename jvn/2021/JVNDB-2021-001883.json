@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2021-001883",
+  "title": "Thales 製 Sentinel LDK Run-Time Environment における不十分なアンインストール処理の脆弱性",
+  "vulinfo_description": "Thales 社が提供する Sentinel LDK Run-Time Environment には、アンインストール時に当該製品で利用しているポートを開放したままにする脆弱性が存在します。  Thales 社が提供する Sentinel LDK Run-Time Environment は、インストール時に「Sentinel License Manager」という名前のファイアウォールルールを追加します。当該ルールは 1947/TCP ポートに対して、プライベートネットワークからの受信、接続を許可するものです。当該製品は、アンインストール時に 1947/TCP ポートの閉鎖に失敗し、開放した状態になる脆弱性 (CWE-459、CVE-2021-32928) が存在します。",
+  "affected": [
+    {
+      "name": "Thales Group",
+      "product_name": "Sentinel LDK Run-Time Environment",
+      "version_number": [
+        "Versions 7.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:thalesgroup:sentinel_ldk_run-time_environment"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.6",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、システムへ接続される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアを最新版にアップデートしてください。  [適切なオプションでアンインストールを行う] 当該製品の利用を停止する場合は、「purge option」を選択してアンインストールしてください。  [1947/TCP ポートを閉鎖する] 当該製品をすでにアンインストールしている場合は、1947/TCP ポートの閉鎖を行ってください。 また開発者は、当該ポートに対して、IDS/IPSによる保護を行うことを推奨しています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Thales",
+      "vulinfo_id": "Security Updates SM",
+      "url": "https://cpl.thalesgroup.com/software-monetization/security-updates"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-32928",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-32928"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-159-06",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-159-06"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95634783",
+      "url": "http://jvn.jp/cert/JVNVU95634783"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-459",
+      "url": "https://cwe.mitre.org/data/definitions/459.html",
+      "title": "不完全なクリーンアップ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-06-11T06:54:10Z",
+      "description": "[2021年06月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-06-11T15:54:10+09:00",
+  "date_last_updated": "2021-06-11T15:54:10+09:00",
+  "date_public": "2021-06-09T00:00:00+09:00"
+}

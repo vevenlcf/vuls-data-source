@@ -1,0 +1,77 @@
+{
+  "vulinfo_id": "JVNDB-2014-005084",
+  "title": "D-Bus におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "D-Bus には、 (1) サービス運用妨害 (新しい接続および接続中断の阻止) 状態にされる、または (2) サービス運用妨害 (切断) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "freedesktop.org",
+      "product_name": "D-Bus",
+      "version_number": [
+        "1.3.0 から 1.6.24 未満の 1.6.x",
+        "1.8.8 未満の 1.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:freedesktop:dbus"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、以下を実行される可能性があります。  (1) ファイル記述子の最大数をキューイングされることで、サービス運用妨害 　　(新しい接続および接続中断の阻止) 状態にされる可能性があります。  (2) 単一の sendmsg コールのために許容されている数よりも多いファイル記述 　　子を持って結合する複数のメッセージを介して、サービス運用妨害 (切断) 　　状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "Bug 82820",
+      "url": "https://bugs.freedesktop.org/show_bug.cgi?id=82820"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3636",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3636"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3636",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3636"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2014-0395",
+      "url": "http://advisories.mageia.org/MGASA-2014-0395.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月29日]\\n  掲載\\n[2015年06月22日]\\n  参考情報：関連文書 (MGASA-2014-0395) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-29T11:38:11+09:00",
+  "date_last_updated": "2015-06-22T18:12:33+09:00",
+  "date_public": "2014-09-12T00:00:00+09:00"
+}

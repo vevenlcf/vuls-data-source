@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-002200",
+  "title": "pimcore の Pimcore_Tool_Newsletter モジュールにおける PHP オブジェクトインジェクション攻撃を実行される脆弱性",
+  "vulinfo_description": "pimcore の Pimcore_Tool_Newsletter モジュール内の Newsletter.php の getObjectByToken 関数は、Lucene の検索データをアンシリアライズすることで取得されたオブジェクトを適切に処理しないため、PHP オブジェクトインジェクション攻撃を実行される、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "pimcore",
+      "product_name": "pimcore",
+      "version_number": [
+        "1.4.9 から 2.0.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pimcore:pimcore"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、末尾に \\0 文字を持つ Zend_Pdf_ElementFactory_Proxy オブジェクトおよびパス名に関する問題によって、PHP オブジェクトインジェクション攻撃を実行される、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "PoC / pimcore-2.1.0.txt",
+      "url": "https://github.com/pedrib/PoC/blob/master/pimcore-2.1.0.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "pimcore",
+      "vulinfo_id": "pimcore 2.2 released",
+      "url": "http://www.pimcore.org/en/resources/blog/pimcore+2.2+released_b442"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2921",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2921"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2921",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2921"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-24T10:21:25+09:00",
+  "date_last_updated": "2014-04-24T10:21:25+09:00",
+  "date_public": "2014-04-11T00:00:00+09:00"
+}

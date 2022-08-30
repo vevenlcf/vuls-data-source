@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2015-005676",
+  "title": "System Security Services Daemon の Privilege Attribute Certificate responder プラグインにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "System Security Services Daemon (SSSD) の Privilege Attribute Certificate (PAC) responder プラグイン (sssd_pac_plugin.so) には、メモリリークにより、サービス運用妨害 (メモリ消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "sssd",
+      "version_number": [
+        "1.13.1 未満の 1.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fedoraproject:sssd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、Kerberos 認証中に PAC ブロブ (blob) の構文解析を誘発する大量のログインを介して、サービス運用妨害 (メモリ消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Hosted",
+      "vulinfo_id": "Notes-1.13.1",
+      "url": "https://fedorahosted.org/sssd/wiki/Releases/Notes-1.13.1"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Hosted",
+      "vulinfo_id": "チケット #2803",
+      "url": "https://fedorahosted.org/sssd/ticket/2803"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1267580",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1267580"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY",
+      "vulinfo_id": "Fedora 23 Update: sssd-1.13.1-2.fc23",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-October/169110.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5292",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5292"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5292",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5292"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-02T16:31:55+09:00",
+  "date_last_updated": "2015-11-02T16:31:55+09:00",
+  "date_public": "2015-09-23T00:00:00+09:00"
+}

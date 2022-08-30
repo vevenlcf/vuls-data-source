@@ -1,0 +1,131 @@
+{
+  "vulinfo_id": "JVNDB-2016-005095",
+  "title": "GD Graphics ライブラリの gd_tga.c の read_image_tga 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "GD Graphics ライブラリ (別名 libgd) の gd_tga.c の read_image_tga 関数には、サービス運用妨害 (境界外読み取り) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-125: Out-of-bounds Read (境界外読み取り) と識別されています。 http://cwe.mitre.org/data/definitions/125.html",
+  "affected": [
+    {
+      "name": "LibGD project",
+      "product_name": "LibGD",
+      "version_number": [
+        "2.2.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libgd:libgd"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された TGA 画像を介して、サービス運用妨害 (境界外読み取り) 状態にされる可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Proper fix for #248",
+      "url": "https://github.com/libgd/libgd/commit/01c61f8ab110a77ae64b5ca67c244c728c506f03"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Out-Of-Bounds Read in function read_image_tga of gd_tga.c (CVE-2016-6905) #248",
+      "url": "https://github.com/libgd/libgd/issues/248"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "bug #248, fix Out-Of-Bounds Read in read_image_tga",
+      "url": "https://github.com/libgd/libgd/commit/3c2b605d72e8b080dace1d98a6e50b46c1d12186"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix 248 #251",
+      "url": "https://github.com/libgd/libgd/pull/251"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:2203",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-08/msg00121.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:2363",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-09/msg00078.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6905",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6905"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6905",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6905"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年10月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-10-06T13:57:22+09:00",
+  "date_last_updated": "2016-10-06T13:57:22+09:00",
+  "date_public": "2016-08-31T00:00:00+09:00"
+}

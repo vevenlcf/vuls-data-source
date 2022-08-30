@@ -1,0 +1,81 @@
+{
+  "vulinfo_id": "JVNDB-2021-005753",
+  "title": "三菱電機製 GX Works2 における長さパラメータの不整合時の不適切な取り扱いに関する脆弱性",
+  "vulinfo_description": "三菱電機株式会社が提供する GX Works2 には、長さパラメータの不整合時の不適切な取り扱いに関する脆弱性（CWE-130、CVE-2021-20608）が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "三菱電機",
+      "product_name": "GX Works2",
+      "version_number": [
+        "Ver.1.606G およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mitsubishielectric:gx_works2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.3",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって細工された不正なパケットを三菱電機製シーケンサへ送信され、改ざんされたシーケンサ内のプログラムファイルを GX Works2 が読み込むと、GX Works2 がサービス運用妨害（DoS）状態となる可能性があります。 開発者によると、本脆弱性によるシーケンサの誤動作は発生しないとのことです。 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、Ver.1.610L およびそれ以降にアップデートしてください。 アップデートは、\u003ca href=\"https://www.mitsubishielectric.co.jp/fa/download/index.html\" target=\"blank\"\u003eこちら\u003c/a\u003eから入手してください。  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  　* 制御システムデバイスやシステムのネットワークへの接続を制限し、信頼できないネットワークやホストからアクセスできないようにする 　* 制御システムネットワークとリモートデバイスをファイアウォールで防御し、OAネットワークから分離する 　* 三菱電機製シーケンサへのリモートアクセスが必要な場合は、仮想プライベートネットワーク（VPN）等を使用する  詳しくは、\u003ca href=\"https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-020.pdf\" target=\"blank\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "三菱電機株式会社",
+      "vulinfo_id": "GX Works2 におけるサービス拒否(DoS)の脆弱性",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-020.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20608",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20608"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-350-04",
+      "url": "https://www.cisa.gov/uscert/ics/advisories/icsa-21-350-04"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93019896",
+      "url": "https://jvn.jp/vu/JVNVU93019896/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-130",
+      "url": "https://cwe.mitre.org/data/definitions/130.html",
+      "title": "レングスパラメーターの不整合による不適切な処理"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-12-17T05:03:25Z",
+      "description": "[2021年12月17日]   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-12-24T05:31:32Z",
+      "description": "[2021年12月24日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-21-350-04) を追加"
+    }
+  ],
+  "date_first_published": "2021-12-17T15:02:59+09:00",
+  "date_last_updated": "2021-12-24T14:32:01+09:00",
+  "date_public": "2021-12-16T00:00:00+09:00"
+}

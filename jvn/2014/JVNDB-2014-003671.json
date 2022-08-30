@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2014-003671",
+  "title": "MSM デバイスなどの製品用の Qualcomm Innovation Center Android コントリビューションで使用される Linux Kernel 用 kgsl グラフィックドライバにおけるカスタムページテーブルを選択される脆弱性",
+  "vulinfo_description": "MSM デバイスおよびその他の製品用の Qualcomm Innovation Center (QuIC) Android コントリビューションで使用される Linux Kernel 3.x 用 kgsl グラフィックドライバは、IOMMU コンテキストレジスタに対する書き込みアクセスを適切に制限しないため、カスタムページテーブルを選択され、その結果、任意のメモリ領域に書き込まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Android for MSM",
+      "product_name": "Android for MSM",
+      "version_number": [
+        "3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:codeaurora:android-msm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、特定のレジスタのコンテンツを変更する巧妙に細工された GPU コマンドストリームを使用されることで、カスタムページテーブルを選択され、その結果、任意のメモリ領域に書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Aurora Forum",
+      "vulinfo_id": "Unprivileged GPU command streams can change the IOMMU page table (CVE-2014-0972)",
+      "url": "https://www.codeaurora.org/projects/security-advisories/unprivileged-gpu-command-streams-can-change-the-iommu-page-table-cve-2014-0972"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0972",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0972"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0972",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0972"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年08月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-08-04T18:17:58+09:00",
+  "date_last_updated": "2014-08-04T18:17:58+09:00",
+  "date_public": "2014-06-23T00:00:00+09:00"
+}

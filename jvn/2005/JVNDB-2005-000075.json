@@ -1,0 +1,177 @@
+{
+  "vulinfo_id": "JVNDB-2005-000075",
+  "title": "Squid における過大な HTTP リプライヘッダによるキャッシュ汚染の脆弱性",
+  "vulinfo_description": "Squid には、http.c 内の httpProcessReplyHeader() 関数の不備のため、異常に大きいサイズの HTTP リプライヘッダを受信した場合に、キャッシュ汚染を許してしまう脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Squid-cache.org",
+      "product_name": "Squid",
+      "version_number": [
+        "2.5 STABLE7 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:squid-cache:squid"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "悪意ある Web サーバから意図的に作成された HTTP リプライヘッダを送りつけられることにより、キャッシュが汚染される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "squid",
+      "url": "http://www.miraclelinux.com/support/update/data/squid.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:060",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-060.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:061",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-061.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Squid Bugzilla",
+      "vulinfo_id": "1216",
+      "url": "http://www.squid-cache.org/bugs/show_bug.cgi?id=1216"
+    },
+    {
+      "type": "vendor",
+      "name": "Squid Proxy Cache Security Update Advisory",
+      "vulinfo_id": "SQUID-2005_5",
+      "url": "http://www.squid-cache.org/Advisories/SQUID-2005_5.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Squid Proxy Cache Security Update Advisory",
+      "vulinfo_id": "squid-2.5.STABLE7-oversize_reply_headers",
+      "url": "http://www.squid-cache.org/Versions/v2/2.5/bugs/index.html#squid-2.5.STABLE7-oversize_reply_headers"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:061",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-061J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:060",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-060J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0241",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0241"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#823350",
+      "url": "http://jvn.jp/cert/JVNVU%23823350/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0241",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0241"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA14091",
+      "url": "http://secunia.com/advisories/14091/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13435",
+      "url": "http://www.securityfocus.com/bid/13435"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "12412",
+      "url": "http://www.securityfocus.com/bid/12412"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#823350",
+      "url": "http://www.kb.cert.org/vuls/id/823350"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-01-31T00:00:00+09:00"
+}

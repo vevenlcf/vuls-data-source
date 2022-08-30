@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-007435",
+  "title": "WordPress 用 VideoWhisper Live Streaming Integration プラグインの ls/vw_snapshots.php における任意の PHP コードを実行される脆弱性",
+  "vulinfo_description": "WordPress 用 VideoWhisper Live Streaming Integration プラグインの ls/vw_snapshots.php には、ファイルをアップロードされることにより、任意の PHP コードを実行され、その後、ファイルへアクセスされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-77: Improper Neutralization of Special Elements used in a Command (コマンドインジェクション) と識別されています。 http://cwe.mitre.org/data/definitions/77.html",
+  "affected": [
+    {
+      "name": "VideoWhisper.com",
+      "product_name": "VideoWhisper Live Streaming Integration",
+      "version_number": [
+        "4.27.3 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:videowhisper:live_streaming_integration_plugin"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、二重拡張子を持つファイルをアップロードされることで、任意の PHP コードを実行され、その後、wp-content/plugins/videowhisper-live-streaming-integration/ls/snapshots/ パス名への直接のリクエストを介して、ファイルへアクセスされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "VideoWhisper",
+      "vulinfo_id": "WordPress Live Streaming",
+      "url": "http://www.videowhisper.com/?p=WordPress+Live+Streaming"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-1905",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1905"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-1905",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1905"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "HTB23199",
+      "url": "https://www.htbridge.com/advisory/HTB23199"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-01-06T16:03:21+09:00",
+  "date_last_updated": "2015-01-06T16:03:21+09:00",
+  "date_public": "2014-02-06T00:00:00+09:00"
+}

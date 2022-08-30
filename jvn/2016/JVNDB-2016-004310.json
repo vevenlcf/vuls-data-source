@@ -1,0 +1,204 @@
+{
+  "vulinfo_id": "JVNDB-2016-004310",
+  "title": "複数の D-Link 製ルータにバッファオーバーフローの脆弱性",
+  "vulinfo_description": "D-Link が提供する複数のルータ製品には、スタックベースのバッファオーバーフローの脆弱性が存在します。  スタックベースのバッファオーバーフロー(CWE-121) - CVE-2016-5681 プログラム cgibin 内の関数に含まれるセッションクッキーを検証する処理には、スタックベースのバッファオーバーフローが存在します。 この関数は、WAN 側インターフェースの 8181/tcp で待ち受けるサービスでも使用されています。  CWE-121: Stack-based Buffer Overflow https://cwe.mitre.org/data/definitions/121.html",
+  "affected": [
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-817L(W)",
+      "version_number": [
+        "Rev. Ax"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-817l%28w%29"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-818L(W)",
+      "version_number": [
+        "Rev. Ax"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-818l%28w%29"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-822",
+      "version_number": [
+        "Rev. A1、Official FW v3.01 (v3.01WWb02) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-822"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-823",
+      "version_number": [
+        "Rev. A1、Official FW v1.00 (v1.00WWb05) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-823"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-850L",
+      "version_number": [
+        "Rev. B1、Official FW v2.07 (v2.07WWB05) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-850l"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-868L",
+      "version_number": [
+        "Rev. B1、Official FW v2.03 (v2.03WWb01) より前のバージョン",
+        "Rev. C1、Official FW v3.00 (v3.00WWb01) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-868l"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-880L",
+      "version_number": [
+        "Rev. A1、Official FW v1.07 (v1.07WWb08) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-880l"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-885L",
+      "version_number": [
+        "Rev. A1、Official FW v1.11 (v1.11WWb07) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-885l"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-890L",
+      "version_number": [
+        "Rev  A1、Official FW v1.09 (v1.09b14) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-890l"
+      }
+    },
+    {
+      "name": "D-Link Systems, Inc.",
+      "product_name": "DIR-895L",
+      "version_number": [
+        "Rev. A1、Official FW v1.11 (v1.11WWb04) より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:d-link:dir-895l"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "細工されたリクエストを処理することにより、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアをアップデートしてください。  D-Link 社の情報によると、DIR-817L および DIR-818L の対応については、8月末に提供予定とされています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "D-Link",
+      "vulinfo_id": "Technical Support",
+      "url": "http://support.dlink.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "Support Announcements",
+      "vulinfo_id": "SAP10063:CVE-2016-5681 - VU#332115 - Some D-Link routers are vulnerable to buffer overflow exploit.",
+      "url": "http://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10063"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5681",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5681"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94906777",
+      "url": "http://jvn.jp/vu/JVNVU94906777"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5681",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5681"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#332115",
+      "url": "https://www.kb.cert.org/vuls/id/332115"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月15日]\\n  掲載\\n[2016年08月29日]\\n  CVSS による深刻度：内容を更新\\n  CWE による脆弱性タイプ一覧：CWE-ID を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-5681) を追加"
+    }
+  ],
+  "date_first_published": "2016-08-15T18:17:54+09:00",
+  "date_last_updated": "2016-08-29T15:37:48+09:00",
+  "date_public": "2016-08-11T00:00:00+09:00"
+}

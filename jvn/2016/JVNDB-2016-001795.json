@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2016-001795",
+  "title": "Android の Conscrypt の TrustManagerImpl.java の TrustManagerImpl クラスにおけるサーバになりすまされる脆弱性",
+  "vulinfo_description": "Android の Conscrypt の TrustManagerImpl.java の TrustManagerImpl クラスのキャッシュ機能は、中間 CA と信頼できるルート CA との区別を誤って処理するため、サーバになりすまされる脆弱性が存在します。  ベンダは、本脆弱性を Bug 26232830 として公開しています。  補足情報 : CWE による脆弱性タイプは、CWE-254: Security Features (セキュリティ機能)、および CWE-345: Insufficient Verification of Data Authenticity (データの信頼性についての不十分な検証) と識別されています。 http://cwe.mitre.org/data/definitions/254.html http://cwe.mitre.org/data/definitions/345.html",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Android",
+      "version_number": [
+        "2016-03-01 より前の 6.x",
+        "4.4.4 未満の 4.x",
+        "5.1.1 LMY49H 未満の 5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:google:android"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、中間 CA へのアクセスを利用され、証明書を発行されることで、サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Android",
+      "vulinfo_id": "Prevent duplicate certificates in TrustedCertificateIndex",
+      "url": "https://android.googlesource.com/platform/external/conscrypt/+/4c9f9c2201116acf790fca25af43995d29980ee0"
+    },
+    {
+      "type": "vendor",
+      "name": "Android",
+      "vulinfo_id": "Cache intermediate CA separately",
+      "url": "https://android.googlesource.com/platform/external/conscrypt/+/c4ab1b959280413fb11bf4fd7f6b4c2ba38bd779"
+    },
+    {
+      "type": "vendor",
+      "name": "Android Open Source Project",
+      "vulinfo_id": "Nexus Security Bulletin - March 2016",
+      "url": "http://source.android.com/security/bulletin/2016-03-01.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-0818",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-0818"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-0818",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0818"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-22T15:57:21+09:00",
+  "date_last_updated": "2016-03-22T15:57:21+09:00",
+  "date_public": "2016-03-07T00:00:00+09:00"
+}

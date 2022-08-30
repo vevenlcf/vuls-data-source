@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2016-004523",
+  "title": "QEMU におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "QEMU (別名 Quick Emulator) には、VMware 準仮想化 SCSI (PVSCSI) バスのエミュレーションサポートを伴いビルドされている場合、サービス運用妨害 (配列の境界外アクセス) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-125: Out-of-bounds Read (境界外読み取り) と識別されています。 http://cwe.mitre.org/data/definitions/125.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.5",
+        "vector": "AV:L/AC:M/Au:S/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.3",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルのゲスト OS 管理者により、(1) PVSCSI_CMD_SETUP_RINGS または (2) PVSCSI_CMD_SETUP_MSG_RING SCSI コマンドに関する処理を介して、サービス運用妨害 (配列の境界外アクセス) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH] scsi: pvscsi: check command descriptor ring buffer",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-05/msg03774.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1334384",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1334384"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3047-1",
+      "url": "http://www.ubuntu.com/usn/USN-3047-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3047-2",
+      "url": "http://www.ubuntu.com/usn/USN-3047-2"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4952",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4952"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4952",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4952"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年09月05日]\\n  掲載\\n[2016年10月28日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Canonical (USN-3047-1) を追加\\n  ベンダ情報：Canonical (USN-3047-2) を追加"
+    }
+  ],
+  "date_first_published": "2016-09-05T15:20:42+09:00",
+  "date_last_updated": "2016-10-28T16:28:13+09:00",
+  "date_public": "2016-05-23T00:00:00+09:00"
+}

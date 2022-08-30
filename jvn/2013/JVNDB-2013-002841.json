@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2013-002841",
+  "title": "libvirt のストレージプールマネージャにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libvirt のストレージプールマネージャ (storage pool manager) の remoteDispatchStoragePoolListAllVolumes 関数には、サービス運用妨害 (ファイル記述子の消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "libvirt",
+      "version_number": [
+        "1.0.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:libvirt"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、「特定のプールにすべてのボリュームを一覧表示させる (to list all volumes for the particular pool) 」大量のリクエストを介して、サービス運用妨害 (ファイル記述子の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-8635",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-May/106906.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-8681",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-May/106921.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "daemon: fix leak after listing all volumes",
+      "url": "http://libvirt.org/git/?p=libvirt.git;a=commit;h=ca697e90d5bd6a6dfb94bfb6d4438bdf9a44b739"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0885",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-06/msg00022.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 953107",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=953107"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0831",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0831.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1895-1",
+      "url": "http://www.ubuntu.com/usn/USN-1895-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1962",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1962"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1962",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1962"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年05月30日]\\n  掲載\\n[2013年07月02日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:0885) を追加\\n[2013年12月06日]\\n  ベンダ情報：Fedora Project (FEDORA-2013-8635) を追加\\n  ベンダ情報：Fedora Project (FEDORA-2013-8681) を追加\\n  ベンダ情報：Ubuntu (USN-1895-1) を追加"
+    }
+  ],
+  "date_first_published": "2013-05-30T14:00:54+09:00",
+  "date_last_updated": "2013-12-06T15:33:14+09:00",
+  "date_public": "2013-05-16T00:00:00+09:00"
+}

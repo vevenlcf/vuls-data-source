@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2013-005494",
+  "title": "Dovecot の checkpassword-reply における認証を回避される脆弱性",
+  "vulinfo_description": "Dovecot の checkpassword-reply は、認証しているユーザへの setuid 操作を実行するため、認証を回避され、仮想電子メールアカウントにアクセスされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Timo Sirainen",
+      "product_name": "Dovecot",
+      "version_number": [
+        "2.2.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dovecot:dovecot"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、プロセスに接続され、dovecot-auth サーバへのレスポンスのアカウント情報を変更するために制限されたファイル記述子を使用されることで、認証を回避され、仮想電子メールアカウントにアクセスされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "dovecot",
+      "vulinfo_id": "CheckPassword",
+      "url": "http://wiki2.dovecot.org/AuthDatabase/CheckPassword#Security"
+    },
+    {
+      "type": "vendor",
+      "name": "dovecot",
+      "vulinfo_id": "[Dovecot-news] v2.2.7 released",
+      "url": "http://www.dovecot.org/list/dovecot-news/2013-November/000264.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6171",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6171"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6171",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6171"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-12-16T15:29:35+09:00",
+  "date_last_updated": "2013-12-16T15:29:35+09:00",
+  "date_public": "2013-11-03T00:00:00+09:00"
+}

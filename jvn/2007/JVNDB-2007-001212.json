@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2007-001212",
+  "title": "pyftpdlib の FTPServer.py におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "pyftpdlib の FTPServer.py には、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "g.rodola",
+      "product_name": "pyftpdlib",
+      "version_number": [
+        "0.2.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:g.rodola:pyftpdlib"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、LIST、STOR または RETR コマンド内の .. (ドットドット) を介して、任意のファイルおよびディレクトリにアクセスされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "g.rodola",
+      "vulinfo_id": "pyftpdlib google code Issue 9",
+      "url": "http://code.google.com/p/pyftpdlib/issues/detail?id=9"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-6736",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6736"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-6736",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-6736"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:01+09:00",
+  "date_last_updated": "2012-03-27T18:42:01+09:00",
+  "date_public": "2007-06-15T00:00:00+09:00"
+}

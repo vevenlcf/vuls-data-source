@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-006284",
+  "title": "bcron の bcron-exec におけるジョブファイルを変更される脆弱性",
+  "vulinfo_description": "bcron の bcron-exec は、cron ジョブの実行時に一時ファイルに関連付けられたファイル記述子を閉じないため、ジョブファイルを変更される、およびスパムメッセージを送信される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "untroubled.org",
+      "product_name": "bcron",
+      "version_number": [
+        "0.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bcron_project:bcron_exec"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、オープンファイル記述子にアクセスされることで、ジョブファイルを変更される、およびスパムメッセージを送信される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "686650",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=686650"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "bcron-exec: Mark all temporary files close-on-exec and close selfpipe",
+      "url": "https://github.com/bruceg/bcron/commit/7e3b8d7a82a6712f4607aae151a3ba8843dc6c86"
+    },
+    {
+      "type": "vendor",
+      "name": "untroubled.org",
+      "vulinfo_id": "Changes in version 0.10",
+      "url": "http://untroubled.org/bcron/NEWS"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-6110",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-6110"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-6110",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6110"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-10-02T16:10:50+09:00",
+  "date_last_updated": "2014-10-02T16:10:50+09:00",
+  "date_public": "2012-09-04T00:00:00+09:00"
+}

@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2006-002383",
+  "title": "OpenEMR における PHP リモートファイルインクルージョンの脆弱性",
+  "vulinfo_description": "OpenEMR には、register_globals が有効になっている際、PHP リモートファイルインクルージョンの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenEMR",
+      "product_name": "OpenEMR",
+      "version_number": [
+        "2.8.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:open-emr:openemr"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、以下のファイルの srcdir パラメータの URL を介して、任意の PHP コードを実行される可能性があります。 (a) interface/billing/ 配下の billing_process.php (b) interface/billing/ 配下の billing_report.php (c) interface/billing/ 配下の billing_report_xml.php (d) interface/billing/ 配下の print_billing_report.php (e) login.php (f) interface/main/ 配下の interface/batchcom/batchcom.php (g) interface/main/ 配下の interface/login/login.php (h) interface/main/ 配下の main_info.php and (i) interface/main/ 配下の main.php (j) interface/new/new_patient_save.php (k) interface/practice/ins_search.php (l) interface/logout.php (m) interface/reports/ 配下の custom_report_range.php (n) interface/reports/ 配下の players_report.php (o) interface/reports/ 配下の front_receipts_report.php (p) interface/usergroup/ 配下の facility_admin.php (q) interface/usergroup/ 配下の usergroup_admin.php (r) interface/usergroup/ 配下の user_info.php (s) custom/import_xml.php."
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenEMR",
+      "vulinfo_id": "Top page",
+      "url": "http://www.oemr.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-5795",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5795"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-5795",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-5795"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T15:36:12+09:00",
+  "date_last_updated": "2012-09-25T15:36:12+09:00",
+  "date_public": "2006-11-08T00:00:00+09:00"
+}

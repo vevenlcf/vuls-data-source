@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2013-001860",
+  "title": "OpenStack PackStack の puppetlabs-cinder における OpenStack の管理者パスワードを読み取られる脆弱性",
+  "vulinfo_description": "OpenStack PackStack で使用される puppetlabs-cinder モジュールの manifests/base.pp は、(1) cinder.conf、および (2) api-paste.ini 設定ファイルに world-readable パーミッション (誰でも読み取り可能な権限) を用いるため、OpenStack の管理者パスワードを読み取られる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Compute Folsom",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:folsom"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Essex",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:essex"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) cinder.conf、および (2) api-paste.ini 設定ファイルを読まれることで、OpenStack の管理者パスワードを読み取られる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Restrict permissions on cinder configuration",
+      "url": "https://github.com/puppetlabs/puppetlabs-cinder/commit/7da792fbd40c0e6eae1ee093aa00e0b177bd2ebc"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.openstack.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 908581",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=908581"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0595",
+      "url": "https://rhn.redhat.com/errata/RHSA-2013-0595.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0266",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0266"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0266",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0266"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-03-19T18:49:40+09:00",
+  "date_last_updated": "2013-03-19T18:49:40+09:00",
+  "date_public": "2013-03-05T00:00:00+09:00"
+}

@@ -1,0 +1,159 @@
+{
+  "vulinfo_id": "JVNDB-2015-001779",
+  "title": "複数の SolarWinds 製品で使用される Orion Platform の AccountManagement.asmx サービスの Manage アカウントページにおける SQL インジェクションの脆弱性",
+  "vulinfo_description": "複数の SolarWinds 製品で使用される Orion Platform の AccountManagement.asmx サービスの Manage アカウントページには、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion IP Address Manager",
+      "version_number": [
+        "4.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_ip_address_manager"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion NetFlow Traffic Analyzer",
+      "version_number": [
+        "4.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_netflow_traffic_analyzer"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion Network Configuration Manager",
+      "version_number": [
+        "7.3.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_network_configuration_manager"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion Network Performance Monitor",
+      "version_number": [
+        "11.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_network_performance_monitor"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion Server \u0026 Application Manager",
+      "version_number": [
+        "6.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_server_and_application_manager"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion User Device Tracker",
+      "version_number": [
+        "3.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_user_device_tracker"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion VoIP \u0026 Network Quality Manager",
+      "version_number": [
+        "4.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_voip_%26_network_quality_manager"
+      }
+    },
+    {
+      "name": "SolarWinds",
+      "product_name": "Orion Web Performance Monitor",
+      "version_number": [
+        "2.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:solarwinds:orion_web_performance_monitor"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、(a) GetAccounts エンドポイントまたは (b) GetAccountGroups エンドポイントの (1) dir パラメータまたは (2) sort パラメータを介して、任意の SQL コマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Solarwinds Core Orion Service SQL injection (CVE-2014-9566) #4836",
+      "url": "https://github.com/rapid7/metasploit-framework/pull/4836"
+    },
+    {
+      "type": "vendor",
+      "name": "SolarWinds",
+      "vulinfo_id": "SolarWinds Network Performance Monitor 11.5 Release Notes",
+      "url": "http://www.solarwinds.com/documentation/orion/docs/releasenotes/releasenotes.htm"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9566",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9566"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9566",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9566"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Authenticated Stacked SQL injection in core Solarwinds Orion service (CVE-2014-9566)",
+      "url": "http://volatile-minds.blogspot.jp/2015/02/authenticated-stacked-sql-injection-in.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年03月13日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-03-13T15:06:07+09:00",
+  "date_last_updated": "2015-03-13T15:06:07+09:00",
+  "date_public": "2015-02-25T00:00:00+09:00"
+}

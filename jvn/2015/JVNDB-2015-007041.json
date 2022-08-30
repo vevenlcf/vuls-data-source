@@ -1,0 +1,115 @@
+{
+  "vulinfo_id": "JVNDB-2015-007041",
+  "title": "Kubernetes における任意の pod ログが読まれる脆弱性",
+  "vulinfo_description": "Kubernetes には、任意の pod ログが読まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Kubernetes",
+      "version_number": [
+        "1.2.0-alpha.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:kubernetes"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat OpenShift",
+      "version_number": [
+        "3.0.0.0 x86_64",
+        "3.1 x86_64"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:openshift"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、コンテナ名を介して、任意の pod ログが読まれる可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "UPSTREAM: 17886: pod log location must validate container if provided #6113",
+      "url": "https://github.com/openshift/origin/pull/6113"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Release v1.2.0-alpha.5",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.2.0-alpha.5"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Pod log location must validate container if provided #17886",
+      "url": "https://github.com/kubernetes/kubernetes/pull/17886"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:2615-1",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-2615.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:2544",
+      "url": "https://access.redhat.com/errata/RHSA-2015:2544"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7528",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7528"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7528",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7528"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-18T14:47:55+09:00",
+  "date_last_updated": "2016-04-18T14:47:55+09:00",
+  "date_public": "2015-12-03T00:00:00+09:00"
+}

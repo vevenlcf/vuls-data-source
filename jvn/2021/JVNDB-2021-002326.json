@@ -1,0 +1,209 @@
+{
+  "vulinfo_id": "JVNDB-2021-002326",
+  "title": "OpenSSL に複数の脆弱性",
+  "vulinfo_description": "OpenSSL Project より、\u003ca href=\"https://www.openssl.org/news/secadv/20210824.txt\"target=\"blank\"\u003eOpenSSL Security Advisory [24 August 2021]\u003c/a\u003e が公開されました。 OpenSSL には、次の脆弱性が存在します。  深刻度 - 高（Severity: High） 　* SM2 暗号データの復号処理におけるバッファオーバーフロー （CWE-120）- CVE-2021-3711 　　* SM2 暗号データの復号処理を行うアプリケーションは、EVP_PKEY_decrypt() 関数を通常 2 回呼び出すが、1 回目の呼び出しで計算されるバッファサイズが 2 回目の呼び出しで必要なサイズより小さくなるような SM2 データがアプリケーションに渡された場合、バッファオーバーフローが発生する可能性がある 　　 深刻度 - 中（Severity: Moderate） 　* ASN.1 文字列処理におけるバッファエラー （CWE-119）- CVE-2021-3712 　　* OpenSSL において、ASN.1 形式の文字列は ASN1_STRING 構造で表され、その構造では NULL 終端が必須とはされていない。しかし、OpenSSL 内には NULL 終端を前提として処理を行う関数が複数存在するため、アプリケーション内で直接生成されるなどした NULL 終端を持たない ASN1_STRING 構造文字列を処理させられた場合、バッファエラーが発生する可能性がある",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "1.0.2y およびそれ以前のバージョン",
+        "1.1.1k およびそれ以前のバージョン",
+        "3.0 alpha/beta リリース （正式版リリース時までには修正予定）"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "NEC Cyber Security Platform",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:nec:nec_cyber_security_platform"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "UNIVERGE Integration Platform",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:nec:univerge_integration_platform"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "Hitachi Ops Center Viewpoint",
+      "version_number": [
+        "(国内販売のみ)"
+      ]
+    }
+  ],
+  "impact": {
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  　* 問題を引き起こす SM2 データがアプリケーションに渡されることで、アプリケーションの動作を変えられたり、クラッシュさせられたりする - CVE-2021-3711  　* 影響を受ける関数に NULL 終端を持たない ASN1_STRING 構造を処理させられることにより、アプリケーションがクラッシュさせられたり、メモリ内のデータが読み取られたりする - CVE-2021-3712 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は、本脆弱性への対策版として次のバージョンをリリースしています。  　* OpenSSL 1.1.1l  [アップグレードする] OpenSSL 1.1.0 および OpenSSL 1.0.2 はサポートが終了しているため、アップデートは配信されていません。 そのため、開発者は OpenSSL 1.0.2 プレミアムサポート契約ユーザを除き、OpenSSL 1.1.1l へのアップグレードを推奨しています。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Hitachi Software Vulnerability Information",
+      "vulinfo_id": "hitachi-sec-2021-134",
+      "url": "http://www.hitachi.co.jp/Prod/comp/soft1/global/security/info/vuls/hitachi-sec-2021-134/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Hitachi Software Vulnerability Information",
+      "vulinfo_id": "hitachi-sec-2021-144",
+      "url": "https://www.hitachi.co.jp/Prod/comp/soft1/global/security/info/vuls/hitachi-sec-2021-144/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "日本電気株式会社からの情報",
+      "url": "http://jvn.jp/vu/JVNVU99612123/6443/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV21-020",
+      "url": "https://jpn.nec.com/security-info/secinfo/nv21-020.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Project",
+      "vulinfo_id": "OpenSSL Security Advisory [24 August 2021]",
+      "url": "https://www.openssl.org/news/secadv/20210824.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "サーバ・クライアント製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2022-205",
+      "url": "https://www.hitachi.co.jp/products/it/server/security/info/vulnerable/hitachi_sec_2022_205.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ソフトウェア製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2021-134",
+      "url": "https://www.hitachi.co.jp/Prod/comp/soft1/security/info/vuls/hitachi-sec-2021-134/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ソフトウェア製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2021-144",
+      "url": "https://www.hitachi.co.jp/Prod/comp/soft1/security/info/vuls/hitachi-sec-2021-144/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "三菱電機株式会社",
+      "vulinfo_id": "脆弱性に関する情報",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-3711",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3711"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-3712",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3712"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 注意喚起",
+      "vulinfo_id": "JPCERT-AT-2021-0036",
+      "url": "https://www.jpcert.or.jp/at/2021/at210036.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98748974",
+      "url": "https://jvn.jp/vu/JVNVU98748974/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99612123",
+      "url": "https://jvn.jp/vu/JVNVU99612123/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-3711",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3711"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-3712",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3712"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-120",
+      "url": "https://cwe.mitre.org/data/definitions/120.html",
+      "title": "古典的バッファオーバーフロー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-08-26T04:54:47Z",
+      "description": "[2021年08月26日]   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-10-13T00:42:17Z",
+      "description": "[2021年10月13日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日立 (hitachi-sec-2021-134) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2021-3711 および CVE-2021-3712) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2021-11-29T05:08:18Z",
+      "description": "[2021年11月29日]\\n  ベンダ情報：日立 (hitachi-sec-2021-144) を追加"
+    },
+    {
+      "history_no": "4",
+      "date_time": "2022-01-26T08:55:36Z",
+      "description": "[2022年01月27日]\\n  ベンダ情報：日本電気 (NV21-020) を追加"
+    },
+    {
+      "history_no": "5",
+      "date_time": "2022-02-14T04:48:13Z",
+      "description": "[2022年02月14日]\\n  参考情報：JVN (JVNVU#98748974) を追加"
+    },
+    {
+      "history_no": "6",
+      "date_time": "2022-03-09T02:39:50Z",
+      "description": "[2022年03月09日]\\n  ベンダ情報：日立 (hitachi-sec-2022-205) を追加"
+    },
+    {
+      "history_no": "7",
+      "date_time": "2022-04-19T03:38:08Z",
+      "description": "[2022年04月19日]\\n  ベンダ情報：日本電気 (日本電気株式会社からの情報) を追加"
+    },
+    {
+      "history_no": "8",
+      "date_time": "2022-05-12T00:45:25Z",
+      "description": "[2022年05月12日]\\n  ベンダ情報：三菱電機 (脆弱性に関する情報) を追加\\n"
+    },
+    {
+      "history_no": "9",
+      "date_time": "2022-08-09T07:48:34Z",
+      "description": "[2022年08月09日]\\n  影響を受けるシステム：ベンダ情報 (NV21-020) の更新に伴い内容を更新"
+    }
+  ],
+  "date_first_published": "2021-08-26T16:51:53+09:00",
+  "date_last_updated": "2022-08-09T16:49:19+09:00",
+  "date_public": "2021-08-25T00:00:00+09:00"
+}

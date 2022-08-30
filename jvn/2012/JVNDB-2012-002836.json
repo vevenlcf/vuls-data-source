@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-002836",
+  "title": "Linux Kernel の rose_parse_ccitt 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の net/rose/rose_subr.c 内の rose_parse_ccitt 関数は、FAC_CCITT_DEST_NSAP および FAC_CCITT_SRC_NSAP フィールドを検証しないため、サービス運用妨害 (整数アンダーフロー、ヒープメモリ破損、およびパニック) 状態となる、またはスタックベースのバッファオーバーフロー攻撃を実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.39 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、(1) ROSE ソケットへ送信されたデータの小さな length 値を介して、サービス運用妨害 (整数アンダーフロー、ヒープメモリ破損、およびパニック) 状態にされる、または (2) ROSE ソケットへ送信されたデータの大きな length 値を介して、スタックベースのバッファオーバーフロー攻撃を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-2.6.39",
+      "url": "http://ftp.osuosl.org/pub/linux/kernel/v2.6/ChangeLog-2.6.39"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ROSE: prevent heap corruption with bad facilities",
+      "url": "https://github.com/torvalds/linux/commit/be20250c13f88375345ad99950190685eda51eb8"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git / commit",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=be20250c13f88375345ad99950190685eda51eb8"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 770777",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=770777"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-4913",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4913"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-4913",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4913"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-25T16:24:22+09:00",
+  "date_last_updated": "2012-06-25T16:24:22+09:00",
+  "date_public": "2012-06-21T00:00:00+09:00"
+}

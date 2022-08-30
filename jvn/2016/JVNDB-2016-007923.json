@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2016-007923",
+  "title": "PySAML2 における XML 外部エンティティの脆弱性",
+  "vulinfo_description": "PySAML2 には、XML 外部エンティティ (XXE) の脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "PySAML2 project",
+      "product_name": "PySAML2",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pysaml2_project:pysaml2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ホワイトリストにない第三者により、巧妙に細工された SAML XML リクエストまたは応答を介して、XML 外部エンティティ (XXE) 攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "PySAML vulnerable to XXE #366",
+      "url": "https://github.com/rohe/pysaml2/issues/366"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix XXE in XML parsing (related to #366)",
+      "url": "https://github.com/rohe/pysaml2/commit/6e09a25d9b4b7aa7a506853210a9a14100b8bc9b"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix XXE in XML parsing (related to #366) #379",
+      "url": "https://github.com/rohe/pysaml2/pull/379"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-10127",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10127"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-10127",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10127"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-611",
+      "url": "https://cwe.mitre.org/data/definitions/611.html",
+      "title": "XML 外部エンティティ参照の不適切な制限"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-29T17:49:10+09:00",
+  "date_last_updated": "2017-03-29T17:49:10+09:00",
+  "date_public": "2016-10-31T00:00:00+09:00"
+}

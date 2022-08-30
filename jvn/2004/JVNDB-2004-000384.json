@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2004-000384",
+  "title": "FreeRADIUS の USR VSA を含むパケットによるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  FreeRADIUS は、RADIUS プロトコルを実装したオープンソースのインターネット認証サーバであり、一部の Linux ディストリビューションに同梱されています。   FreeRADIUS 1.0.0 以前には、RADIUS パケットに含まれる RADIUS 属性をデコードする特定の関数において、以下の複数のセキュリティ上の問題が存在します。   ・Ascend-Send-Secret および Ascend-Recv-Secret 属性をデコードする前に、特定の前提条件が適切にチェックされないために、これらの属性を含む Access-Request または Accounting-Request パケットをサーバが受信すると、NULL ポインタがデリファレンスされ、サーバプロセスがクラッシュする問題 (CAN-2004-0938)   ・意図的に作成された USR VSA (ベンダ固有の RADIUS 属性) が適切にチェックされないため、USR VSA を含むパケットをサーバが受信すると、memcpy() に \"-1\" が引き渡され、サーバプロセスがクラッシュする問題 (CAN-2004-0960)   ・Ascend-Send-Secret、Ascend-Recv-Secret、または Tunnel-Password 属性を含む Access-Request パケットを受信すると、データ構造体がメモリ開放されず、メモリリークが発生し、サーバプロセスが停止する問題 (CAN-2004-0961)   これらの問題を利用するリモートの攻撃者は、意図的に作成した RADIUS パケットを標的のサーバに送りつけることにより、結果として RADIUS サーバをサービス不能状態に陥らせることが可能です。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2004:609",
+      "url": "http://rhn.redhat.com/errata/RHSA-2004-609.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2004:609",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2004-609J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2004-0960",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0960"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "17440",
+      "url": "http://xforce.iss.net/xforce/xfdb/17440"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2004-0960",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2004-0960"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA12570",
+      "url": "http://secunia.com/advisories/12570/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "11222",
+      "url": "http://www.securityfocus.com/bid/11222"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#541574",
+      "url": "http://www.kb.cert.org/vuls/id/541574"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2004-09-14T00:00:00+09:00"
+}

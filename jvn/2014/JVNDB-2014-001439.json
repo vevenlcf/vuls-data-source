@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2014-001439",
+  "title": "Ruby on Rails の Action View の actionpack/lib/action_view/template/text.rb におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Ruby on Rails の Action View の actionpack/lib/action_view/template/text.rb は、レンダメソッドの :text オプションを使用中に MIME タイプ の文字列をシンボルに変換するため、サービス運用妨害 (メモリ消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Ruby on Rails project",
+      "product_name": "Rails",
+      "version_number": [
+        "3.2.17 未満の 3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubyonrails:ruby_on_rails"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、MIME タイプ の文字列をヘッダにインクルードされることで、サービス運用妨害 (メモリ消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Chef",
+      "vulinfo_id": "Enterprise Chef 11.1.3 Release",
+      "url": "http://www.getchef.com/blog/2014/04/09/enterprise-chef-11-1-3-release/"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Use the reference for the mime type to get the format - 388d2f8",
+      "url": "https://github.com/rails/rails/commit/388d2f88886e4da8cc9fd9e14c80a4021ef47da1"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "Denial of Service Vulnerability in Action View when using render:text (CVE-2014-0082)",
+      "url": "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/LMxO_3_eCuc/ozGBEhKaJbIJ"
+    },
+    {
+      "type": "vendor",
+      "name": "Rails weblog",
+      "vulinfo_id": "Rails 3.2.17, 4.0.3 and 4.1.0.beta2 have been released!",
+      "url": "http://weblog.rubyonrails.org/2014/2/18/Rails_3_2_17_4_0_3_and_4_1_0_beta2_have_been_released/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1065538",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1065538"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:0306",
+      "url": "http://rhn.redhat.com/errata/RHSA-2014-0306.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:0215",
+      "url": "http://rhn.redhat.com/errata/RHSA-2014-0215.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0082",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0082"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0082",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0082"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年02月21日]\\n  掲載\\n[2014年04月08日]\\n  ベンダ情報：レッドハット (RHSA-2014:0306) を追加\\n  ベンダ情報：レッドハット (RHSA-2014:0215) を追加\\n[2014年05月14日]\\n  ベンダ情報：Opscode (Enterprise Chef 11.1.3 Release) を追加"
+    }
+  ],
+  "date_first_published": "2014-02-21T17:02:20+09:00",
+  "date_last_updated": "2014-05-14T17:53:03+09:00",
+  "date_public": "2014-02-18T00:00:00+09:00"
+}

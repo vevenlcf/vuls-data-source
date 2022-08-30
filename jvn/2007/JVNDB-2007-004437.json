@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2007-004437",
+  "title": "KAV などにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Kaspersky Anti-Virus (KAV) および Kaspersky Internet Security は、System Service Descriptor Table (SSDT) および Shadow SSDT 関数ハンドラへの特定のパラメータを適切に検証しないため、サービス運用妨害 (クラッシュ) 状態となる脆弱性が存在します。 NtCreateSection の脆弱性は、CVE-2007-5043.1 で報告されています。",
+  "affected": [
+    {
+      "name": "カスペルスキー",
+      "product_name": "Kaspersky Anti-Virus",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kaspersky:kaspersky_anti-virus"
+      }
+    },
+    {
+      "name": "カスペルスキー",
+      "product_name": "Kaspersky Internet Security",
+      "version_number": [
+        "7.0 build 125"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kaspersky:kaspersky_internet_security"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、以下のカーネル SSDT フックを介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。 (1) kylif.sys の NtUserSendInp カーネル SSDT フック (2) kylif.sys の LoadLibraryA カーネル SSDT フック (3) kylif.sys の NtOpenProcess カーネル SSDT フック (4) kylif.sys の NtOpenThread カーネル SSDT フック (5) kylif.sys の NtTerminateProcess カーネル SSDT フック (6) kylif.sys の NtUserFindWindowEx カーネル SSDT フック (7) kylif.sys の NtUserBuildHwndList カーネル SSDT フック (8) NtDuplicateObject (DuplicateHandle) カーネル SSDT フック"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Kaspersky Lab",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.kaspersky.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-5086",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5086"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-5086",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5086"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:59:14+09:00",
+  "date_last_updated": "2012-09-25T16:59:14+09:00",
+  "date_public": "2007-09-26T00:00:00+09:00"
+}

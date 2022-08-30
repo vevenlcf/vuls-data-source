@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2013-001232",
+  "title": "Linux Kernel の Reliable Datagram Sockets プロトコルの実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の Reliable Datagram Sockets (RDS) プロトコルの実装における net/rds/ib_send.c 内の rds_ib_xmit 関数には、サービス運用妨害 (BUG_ON およびカーネルパニック) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.7.4 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:S/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、IPoIB インターフェース独自の IP アドレスと同じ送信元 IP アドレスを用いて RDS 接続を確立されることで、サービス運用妨害 (BUG_ON およびカーネルパニック) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle",
+      "vulinfo_id": "redpatch.git / commit",
+      "url": "https://oss.oracle.com/git/?p=redpatch.git;a=commit;h=c7b6a0a1d8d636852be130fa15fa8be10d4704e8"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 822754",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=822754"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1540",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1540.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:0743",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-0743.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SUSE Security Update",
+      "vulinfo_id": "SUSE-SU-2012:1679",
+      "url": "https://www.suse.com/support/update/announcement/2012/suse-su-20121679-1.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1529-1",
+      "url": "http://ubuntu.com/usn/usn-1529-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2372",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2372"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2372",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2372"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年01月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-01-24T14:42:30+09:00",
+  "date_last_updated": "2013-01-24T14:42:30+09:00",
+  "date_public": "2013-01-22T00:00:00+09:00"
+}

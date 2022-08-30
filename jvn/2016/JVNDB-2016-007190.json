@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2016-007190",
+  "title": "LibTiff の TIFFFetchNormalTag 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "LibTiff の TIFFFetchNormalTag 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2016-9297 に対する修正が不完全だったことに起因する問題です。",
+  "affected": [
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "version_number": [
+        "4.0.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、ゼロバイトの配列にアクセスする値に TIFF_SETGET_C16ASCII または TIFF_SETGET_C32_ASCII タグを設定されることで、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 2593",
+      "url": "http://bugzilla.maptools.org/show_bug.cgi?id=2593"
+    },
+    {
+      "type": "vendor",
+      "name": "LibTIFF",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.libtiff.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:3035",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-12/msg00017.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9448",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9448"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9448",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9448"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-476",
+      "url": "http://cwe.mitre.org/data/definitions/476.html",
+      "title": "NULL ポインタデリファレンス"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年02月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-02-14T15:08:28+09:00",
+  "date_last_updated": "2017-02-14T15:08:28+09:00",
+  "date_public": "2016-11-16T00:00:00+09:00"
+}

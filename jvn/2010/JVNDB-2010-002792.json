@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2010-002792",
+  "title": "Linux kernel の ACPI サブシステムにおける権限を取得される脆弱性",
+  "vulinfo_description": "Linux kernel の ACPI サブシステムは、drivers/acpi/debugfs.c 内にある acpi_debugfs_init 関数の処理に関して不備があるため、 debugfs custom_method ファイルに対する 0222 パーミッションを使用により、権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.36.2 未満 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、ACPI インタープリタテーブル内にあるカスタム ACPI メソッドの配置を介して、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.36.2",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.36.2"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0330",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0330.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4347",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4347"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "64155",
+      "url": "http://xforce.iss.net/xforce/xfdb/64155"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4347",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4347"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "45408",
+      "url": "http://www.securityfocus.com/bid/45408"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年04月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-04-08T13:35:40+09:00",
+  "date_last_updated": "2011-04-08T13:35:40+09:00",
+  "date_public": "2010-12-09T00:00:00+09:00"
+}

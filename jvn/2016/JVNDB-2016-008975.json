@@ -1,0 +1,153 @@
+{
+  "vulinfo_id": "JVNDB-2016-008975",
+  "title": "LibTIFF における境界外書き込みに関する脆弱性",
+  "vulinfo_description": "LibTIFF には、境界外書き込みに関する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "version_number": [
+        "4.0.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "情報を取得される、情報を改ざんされる、およびサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3762",
+      "url": "https://www.debian.org/security/2017/dsa-3762"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "* libtiff/tif_pixarlog.c: fix potential buffer write overrun in PixarLogDecode() on corrupted/unexpected images (reported by Mathias Svensson)",
+      "url": "https://github.com/vadz/libtiff/commit/391e77fcd217e78b2c51342ac3ddb7100ecacdd2"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:3035",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-12/msg00017.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:1889",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-07/msg00087.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:2321",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-09/msg00060.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:2375",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-09/msg00090.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1346687",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1346687"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5314",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5314"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5314",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-5314"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2016-5314: libtiff 4.0.6 PixarLogDecode() out-of-bound writes",
+      "url": "http://bugzilla.maptools.org/show_bug.cgi?id=2554"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-04-24T09:17:38Z",
+      "description": "[2018年04月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2018-04-24T18:17:38+09:00",
+  "date_last_updated": "2018-04-24T18:17:38+09:00",
+  "date_public": "2016-06-29T00:00:00+09:00"
+}

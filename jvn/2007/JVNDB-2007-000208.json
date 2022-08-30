@@ -1,0 +1,142 @@
+{
+  "vulinfo_id": "JVNDB-2007-000208",
+  "title": "Xen の QEMU VNC Server におけるホスト OS 上のファイル開示の脆弱性",
+  "vulinfo_description": "Xen に実装される QEMU の VNC Server コード部に不備が存在するため、QEMU モニターモードが有効な場合に仮想マシン (ゲスト OS) 上のローカルユーザがホスト OS 上の任意のファイルを読み込み可能な脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Multi OS",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_multi_os"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Virtualization",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_virtualization"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "QEMU モニターモードを有効にしている場合、ゲスト OS 上のローカルユーザによりホスト OS 上の任意のファイルを閲覧される脆弱性が存在します。 レッドハットの情報によると、VNC server にアクセスすることでホスト OS 上の root として任意のファイルを読み込まれてしまう可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2007:0114",
+      "url": "https://rhn.redhat.com/errata/RHSA-2007-0114.html"
+    },
+    {
+      "type": "vendor",
+      "name": "XenSource",
+      "vulinfo_id": "Top Page",
+      "url": "http://xensource.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-0998",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0998"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-1019",
+      "url": "http://www.frsirt.com/english/advisories/2007/1019"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-0998",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-0998"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "22967",
+      "url": "http://www.securityfocus.com/bid/22967"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1017764",
+      "url": "http://www.securitytracker.com/id?1017764"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月23日]\\n  掲載 "
+    }
+  ],
+  "date_first_published": "2007-04-23T17:40:16+09:00",
+  "date_last_updated": "2007-04-23T17:40:16+09:00",
+  "date_public": "2007-03-20T00:00:00+09:00"
+}

@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2016-002721",
+  "title": "imlib2 の lib/updates.c の the __imlib_MergeUpdate 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "imlib2 の lib/updates.c の the __imlib_MergeUpdate 関数には、一つずれエラー (Off-by-One error) により、サービス運用妨害 (境界外読み取りおよびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Enlightenment",
+      "product_name": "imlib2",
+      "version_number": [
+        "1.4.9 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:enlightenment:imlib2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された座標を介して、サービス運用妨害 (境界外読み取りおよびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "819818",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=819818"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3555",
+      "url": "https://www.debian.org/security/2016/dsa-3555"
+    },
+    {
+      "type": "vendor",
+      "name": "Enlightened git repositories",
+      "vulinfo_id": "Fix off-by-one OOB read in __imlib_MergeUpdate().",
+      "url": "https://git.enlightenment.org/legacy/imlib2.git/commit/?id=ce94edca1ccfbe314cb7cd9453433fad404ec7ef"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "[Enlightenment-announce] imlib2 1.4.9",
+      "url": "https://sourceforge.net/p/enlightenment/mailman/message/35055012/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3993",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3993"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3993",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3993"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-18T17:18:34+09:00",
+  "date_last_updated": "2016-05-18T17:18:34+09:00",
+  "date_public": "2016-05-01T00:00:00+09:00"
+}

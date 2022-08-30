@@ -1,0 +1,421 @@
+{
+  "vulinfo_id": "JVNDB-2010-001537",
+  "title": "Adobe Flash ActionScript AVM2 newfunction 命令に脆弱性",
+  "vulinfo_description": "Adobe Flash には、ActionScript newfunction 命令の処理に脆弱性が存在します。  Adobe Flash 9 およびそれ以降では ActionScript 3 をサポートしており、そのバイトコードは ActionScript Virtual Machine 2 (AVM2) によって実行されます。細工された AVM2 newfunction 命令によって、任意のコードが実行される可能性があります。  なお、本脆弱性を使用した攻撃活動が確認されています。",
+  "affected": [
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.5.8",
+        "v10.6 から v10.6.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.5.8",
+        "v10.6 から v10.6.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe Acrobat",
+      "version_number": [
+        "9.3.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:acrobat"
+      }
+    },
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe AIR",
+      "version_number": [
+        "1.5.3.9130 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:adobe_air"
+      }
+    },
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe Flash Player",
+      "version_number": [
+        "10.0.45.2 およびそれ以前",
+        "9.0.262 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:flash_player"
+      }
+    },
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe Reader",
+      "version_number": [
+        "9.3.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:acrobat_reader"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "OpenSolaris",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:opensolaris"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Extras",
+      "version_number": [
+        "3 extras ",
+        "4 extras ",
+        "4.8.z extras "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Supplementary",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_desktop_supplementary"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Supplementary",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_supplementary"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Supplementary EUS",
+      "version_number": [
+        "5.4.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_supplementary_eus"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "SWF コンテンツを埋め込んだ細工されたファイルを閲覧することで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] Adobe が提供する情報をもとに Flash Player、Adobe AIR、Adobe Reader および Acrobat を最新版へアップデートしてください。  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  * ウェブブラウザで Flash を無効にする * Adobe Reader 9 で Flash と 3D \u0026 Multimedia サポートを無効にする * ウェブブラウザ上での PDF ファイルの自動表示を無効にする 　PDF の自動表示を無効にする設定方法は、ウェブブラウザにより異なります。 * Adobe Reader および Acrobat で JavaScript を無効にする * 不審な PDF ファイルを開かない 　不審なメールに添付されている PDF ファイルを開いたり、不審なウェブサイトに掲載されている PDF ファイルを開かないようにする。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Adobe Security Bulletin",
+      "vulinfo_id": "APSA10-01",
+      "url": "http://www.adobe.com/support/security/advisories/apsa10-01.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe Security Bulletin",
+      "vulinfo_id": "APSB10-14",
+      "url": "http://www.adobe.com/support/security/bulletins/apsb10-14.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe Security Bulletin",
+      "vulinfo_id": "APSB10-15",
+      "url": "http://www.adobe.com/support/security/bulletins/apsb10-15.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "cpsid_84948",
+      "url": "http://kb2.adobe.com/jp/cps/849/cpsid_84948.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "cpsid_85036",
+      "url": "http://kb2.adobe.com/jp/cps/850/cpsid_85036.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "APSA10-01",
+      "url": "http://www.adobe.com/jp/support/security/advisories/apsa10-01.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "APSB10-14",
+      "url": "http://www.adobe.com/jp/support/security/bulletins/apsb10-14.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "APSB10-15",
+      "url": "http://www.adobe.com/jp/support/security/bulletins/apsb10-15.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT4435",
+      "url": "http://support.apple.com/kb/HT4435"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT4435",
+      "url": "http://support.apple.com/kb/HT4435?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0503",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0503.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0464",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0464.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0470",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0470.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "cve_2010_1297_arbitrary_code",
+      "url": "http://blogs.sun.com/security/entry/cve_2010_1297_arbitrary_code"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "TA10-159A",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/ta10-159a.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "TA10-162A",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/ta10-162a.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1297",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1297"
+    },
+    {
+      "type": "advisory",
+      "name": "IPA 緊急対策情報",
+      "vulinfo_id": "20100611-adobe",
+      "url": "http://www.ipa.go.jp/security/ciadr/vul/20100611-adobe.html"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "59137",
+      "url": "http://xforce.iss.net/xforce/xfdb/59137"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "JPCERT-AT-2010-0015",
+      "url": "http://www.jpcert.or.jp/at/2010/at100015.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "JPCERT-AT-2010-0017",
+      "url": "https://www.jpcert.or.jp/at/2010/at100017.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#331391",
+      "url": "http://jvn.jp/cert/JVNVU331391"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#486225",
+      "url": "http://jvn.jp/cert/JVNVU486225"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA10-159A",
+      "url": "http://jvn.jp/cert/JVNTA10-159A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA10-162A",
+      "url": "http://jvn.jp/cert/JVNTA10-162A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "JVNTR-2010-16",
+      "url": "http://jvn.jp/tr/JVNTR-2010-16/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1297",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1297"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "65141",
+      "url": "http://www.osvdb.org/65141"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA40026",
+      "url": "http://secunia.com/advisories/40026"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA40034",
+      "url": "http://secunia.com/advisories/40034"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "40586",
+      "url": "http://www.securityfocus.com/bid/40586"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024058",
+      "url": "http://securitytracker.com/id?1024058"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024057",
+      "url": "http://securitytracker.com/id?1024057"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA10-162A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA10-162A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA10-159A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA10-159A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA10-162A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA10-162A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA10-159A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA10-159A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#486225",
+      "url": "http://www.kb.cert.org/vuls/id/486225"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-1349",
+      "url": "http://www.vupen.com/english/advisories/2010/1349"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-1348",
+      "url": "http://www.vupen.com/english/advisories/2010/1348"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "アドビシステムズ社の Adobe Flash Player のセキュリティ修正プログラムについて",
+      "url": "http://www.npa.go.jp/cyberpolice/#topics"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年06月17日]\\n  掲載\\n[2010年07月15日]\\n  対策：対策の情報を更新\\n  ベンダ情報：アドビシステムズ (APSB10-15) を追加\\n  ベンダ情報：レッドハット (RHSA-2010:0503) を追加\\n[2010年10月05日]\\n  影響を受けるシステム：オラクル (cve_2010_1297_arbitrary_code) の情報を追加\\n  ベンダ情報：オラクル (cve_2010_1297_arbitrary_code) を追加\\n[2010年11月26日]\\n  影響を受けるシステム：アップル (HT4435) の情報を追加\\n  ベンダ情報：アップル (HT4435) を追加"
+    }
+  ],
+  "date_first_published": "2010-06-17T18:56:21+09:00",
+  "date_last_updated": "2010-11-26T16:27:59+09:00",
+  "date_public": "2010-06-08T00:00:00+09:00"
+}

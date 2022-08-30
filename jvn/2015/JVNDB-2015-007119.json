@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2015-007119",
+  "title": "Linux Kernel の drivers/usb/core/hub.c の hub_activate 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/usb/core/hub.c の hub_activate 関数は、ハブインターフェースのデータ構造を適切に保持しないため、サービス運用妨害 (不正なメモリアクセスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.3.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "CVSS:3.0/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "物理的に端末の操作が可能な攻撃者により、USB ハブデバイスのプラグを抜かれることで、サービス運用妨害 (不正なメモリアクセスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.3.5",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.3.5"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "USB: fix invalid memory access in hub_activate()",
+      "url": "https://github.com/torvalds/linux/commit/e50293ef9775c5f1cf3fcc093037dd6a8c5684ea"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "USB: fix invalid memory access in hub_activate()",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e50293ef9775c5f1cf3fcc093037dd6a8c5684ea"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1311589",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1311589"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8816",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8816"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8816",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8816"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:09:15+09:00",
+  "date_last_updated": "2016-05-10T10:09:15+09:00",
+  "date_public": "2015-12-17T00:00:00+09:00"
+}

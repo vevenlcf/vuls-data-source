@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-003541",
+  "title": "Linux Kernel のブリッジのマルチキャストの実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel のブリッジのマルチキャストの実装は、net/bridge/br_mdb.c および net/bridge/br_multicast.c に関する処理に不備があり、タイマーのタイムアウト値を変更する前に、特定のタイマーが作動可能であるかどうかをチェックしないため、サービス運用妨害 (BUG およびシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.10.3 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、KVM 仮想マシンのシャットダウンに関する問題によって、サービス運用妨害 (BUG およびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "bridge: fix some kernel warning in multicast timer",
+      "url": "https://github.com/torvalds/linux/commit/c7e8e8a8f7a70b343ca1e0f90a31e35ab2d16de1"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "bridge: fix some kernel warning in multicast timer",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=c7e8e8a8f7a70b343ca1e0f90a31e35ab2d16de1"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 984743",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=984743"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4129",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4129"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4129",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4129"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年07月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-07-30T17:21:43+09:00",
+  "date_last_updated": "2013-07-30T17:21:43+09:00",
+  "date_public": "2013-07-07T00:00:00+09:00"
+}

@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2013-005274",
+  "title": "FFmpeg の libavcodec/error_resilience.c における NULL ポインタデリファレンスを誘発される脆弱性",
+  "vulinfo_description": "FFmpeg の libavcodec/error_resilience.c の ff_er_frame_end 関数は、フレームが完全に初期化されることを適切に検証しないため、NULL ポインタデリファレンスを誘発される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "1.0.4 未満",
+        "1.1.1 未満の 1.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された画像データを介して、NULL ポインタデリファレンスを誘発される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "FFmpeg Security",
+      "url": "http://www.ffmpeg.org/security.html"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "error_concealment: Check that the picture is not in a half setup state. (68a0477)",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=68a0477bc0af026db971ddba22541029a9e8715b"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "error_concealment: Check that the picture is not in a half setup state. (3e196e4)",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=3e196e4def03c7a91423803402f84d638d316c33"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0860",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0860"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0860",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0860"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-11-27T16:34:50+09:00",
+  "date_last_updated": "2013-11-27T16:34:50+09:00",
+  "date_public": "2013-01-20T00:00:00+09:00"
+}

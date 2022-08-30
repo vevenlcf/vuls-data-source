@@ -1,0 +1,121 @@
+{
+  "vulinfo_id": "JVNDB-2011-005177",
+  "title": "Linux Kernel の eCryptfs サブシステムにおけるファイルパーミッションを回避される脆弱性",
+  "vulinfo_description": "Linux Kernel の eCryptfs サブシステムの  fs/ecryptfs/main.c 内の ecryptfs_mount 関数には、ファイルパーミッションを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESXi",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esxi"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.3",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、不適合な uid を持つ mount.ecryptfs_private マウントを介して、意図されたファイルパーミッションを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.1",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Ecryptfs: Add mount option to check uid of device being mounted = exp…",
+      "url": "https://github.com/torvalds/linux/commit/764355487ea220fdc2faf128d577d7f679b91f97"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git / commit",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=764355487ea220fdc2faf128d577d7f679b91f97"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 731172",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=731172"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0013",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2012-0013.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1833",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1833"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1833",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1833"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年10月04日]\\n  掲載\\n[2012年11月02日]\\n  影響を受けるシステム：VMware (VMSA-2012-0013) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0013) を追加"
+    }
+  ],
+  "date_first_published": "2012-10-04T15:57:39+09:00",
+  "date_last_updated": "2012-11-02T17:51:57+09:00",
+  "date_public": "2011-10-24T00:00:00+09:00"
+}

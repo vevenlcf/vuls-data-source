@@ -1,0 +1,323 @@
+{
+  "vulinfo_id": "JVNDB-2010-001158",
+  "title": "libpng における圧縮された補助チャンクの処理に脆弱性",
+  "vulinfo_description": "libpng には、特定の PNG（Portable Network Graphics）ファイルの処理に問題があります。  libpng は、細工された補助チャンクが含まれている PNG ファイルを処理する際、膨大なメモリと CPU リソースを使用することがあります。 詳しくは、PNG Development Group が提供するセキュリティアドバイザリおよび Defending Libpng Applications Against Decompression Bombs をご確認ください。",
+  "affected": [
+    {
+      "name": "Lunascape",
+      "product_name": "Lunascape",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lunascape:lunascape"
+      }
+    },
+    {
+      "name": "PNG Development Group",
+      "product_name": "libpng",
+      "version_number": [
+        "1.4.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libpng:libpng"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware Player",
+      "version_number": [
+        "2.5.x",
+        "3.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:player"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:server"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware Workstation",
+      "version_number": [
+        "6.5.x",
+        "7.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:workstation"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.5.8",
+        "v10.6 から v10.6.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.5.8",
+        "v10.6 から v10.6.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10 ",
+        "11 Express",
+        "8 ",
+        "9 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "3.0 ",
+        "3.0 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "フェンリル株式会社",
+      "product_name": "PictBear",
+      "version_number": [
+        "2.01 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fenrir-inc:pictbear"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.8 (as) ",
+        "4.8 (es) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "3.0 ",
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "遠隔の第三者によるサービス運用妨害 (DoS) 攻撃が行われる可能性があります。"
+  },
+  "solution": "[アップデートする] PNG Development Group が提供する情報をもとに、1.4.1, 1.2.43, 1.0.53 にアップデートしてください。  [ワークアラウンドを実施する] PNG Development Group から回避策が提供されています。これら回避策を実施することで本脆弱性の影響を軽減することが可能です。  詳しくは、PNG Development Group が提供する Defending Libpng Applications Against Decompression Bombs をご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT4435",
+      "url": "http://support.apple.com/kb/HT4435"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT4435",
+      "url": "http://support.apple.com/kb/HT4435?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "libpng-1.2.10-7.1.3.0.1.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1210"
+    },
+    {
+      "type": "vendor",
+      "name": "libpng.org",
+      "vulinfo_id": "Security Advisory for libpng-1.4.0 and earlier, 27 February 2010",
+      "url": "http://libpng.sourceforge.net/ADVISORY-1.4.1.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libpng.org",
+      "vulinfo_id": "Defending Libpng Applications Against Decompression Bombs",
+      "url": "http://libpng.sourceforge.net/decompression_bombs.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Lunascape",
+      "vulinfo_id": "【JVN に掲載された脆弱性について】",
+      "url": "http://ja.bbs.luna.tv/viewtopic.php?f=68\u0026t=3721"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "2078",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=2078"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "2079",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=2079"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0534",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0534.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "multiple_vulnerabilities_in_libpng",
+      "url": "http://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_libpng"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2010-0014",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2010-0014.html"
+    },
+    {
+      "type": "vendor",
+      "name": "フェンリル株式会社",
+      "vulinfo_id": "pictbear",
+      "url": "http://www.fenrir.co.jp/pictbear/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-0205",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0205"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#576029",
+      "url": "http://jvn.jp/cert/JVNVU576029/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#331391",
+      "url": "http://jvn.jp/cert/JVNVU331391"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-0205",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0205"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA38774",
+      "url": "http://secunia.com/advisories/38774"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "38478",
+      "url": "http://www.securityfocus.com/bid/38478"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#576029",
+      "url": "http://www.kb.cert.org/vuls/id/576029"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-0517",
+      "url": "http://www.vupen.com/english/advisories/2010/0517"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年03月17日]\\n  掲載\\n[2010年07月30日]\\n  影響を受けるシステム：ミラクル・リナックス (libpng-1.2.10-7.1.3.0.1.AXS3) の情報を追加\\n  影響を受けるシステム：ミラクル・リナックス (2078) の情報を追加\\n  影響を受けるシステム：ミラクル・リナックス (2079) の情報を追加\\n  影響を受けるシステム：レッドハット (RHSA-2010:0534) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (libpng-1.2.10-7.1.3.0.1.AXS3) を追加\\n  ベンダ情報：ミラクル・リナックス (2078) を追加\\n  ベンダ情報：ミラクル・リナックス (2079) を追加\\n  ベンダ情報：レッドハット (RHSA-2010:0534) を追加\\n[2010年10月08日]\\n  影響を受けるシステム：VMware (VMSA-2010-0014) の情報を追加\\n  ベンダ情報：VMware (VMSA-2010-0014) を追加\\n[2010年11月25日]\\n  影響を受けるシステム：アップル (HT4435) の情報を追加\\n  ベンダ情報：アップル (HT4435) を追加\\n[2011年04月04日]\\n  影響を受けるシステム：オラクル (multiple_vulnerabilities_in_libpng) の情報を追加\\n  ベンダ情報：オラクル (multiple_vulnerabilities_in_libpng) を追加\\n[2012年03月27日]\\n  影響を受けるシステム：オラクル (multiple_vulnerabilities_in_libpng) の情報を更新"
+    }
+  ],
+  "date_first_published": "2010-03-17T12:21:59+09:00",
+  "date_last_updated": "2012-03-27T10:22:21+09:00",
+  "date_public": "2010-03-04T00:00:00+09:00"
+}

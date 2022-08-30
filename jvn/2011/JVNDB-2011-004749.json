@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2011-004749",
+  "title": "Mozilla Firefox および Thunderbird の nsCookieService::SetCookieStringInternal 関数における CRLF インジェクションの脆弱性",
+  "vulinfo_description": "Mozilla Firefox および Thunderbird の netwerk/cookie/nsCookieService.cpp の nsCookieService::SetCookieStringInternal 関数には、CRLF インジェクションの脆弱性が存在します。 本問題は、CVE-2011-2374 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "3.6.18 未満 および 4.x から 4.0.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Thunderbird",
+      "version_number": [
+        "3.1.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:thunderbird"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、JavaScript の document.cookie= 表現内で適切に処理されない \\n (newline) 文字を含む文字列を介して、アクセス制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mozilla",
+      "vulinfo_id": "Bug 643051",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=643051"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla",
+      "vulinfo_id": "Mozilla Foundation Security Advisory 2011-19",
+      "url": "http://www.mozilla.org/security/announce/2011/mfsa2011-19.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-2605",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2605"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-2605",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-2605"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:31+09:00",
+  "date_last_updated": "2012-03-27T18:43:31+09:00",
+  "date_public": "2011-06-30T00:00:00+09:00"
+}

@@ -1,0 +1,175 @@
+{
+  "vulinfo_id": "JVNDB-2010-002537",
+  "title": "Wireshark の LDSS 解析部の dissect_ldss_transfer 関数におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Wireshark の LDSS 解析部の dissect_ldss_transfer 関数には、ヒープベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.2.0 から 1.2.12",
+        "1.4.0 から 1.4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "11 Express"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、過度に長いダイジェストの列を付与された LDSS パケットを介して、メモリの破損を誘発され、サービス運用妨害 (DoS) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0924",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0924.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "buffer_overflow_vulnerability_in_wireshark",
+      "url": "http://blogs.sun.com/security/entry/buffer_overflow_vulnerability_in_wireshark"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "5318",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5318"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2010-13",
+      "url": "http://www.wireshark.org/security/wnpa-sec-2010-13.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2010-14",
+      "url": "http://www.wireshark.org/security/wnpa-sec-2010-14.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4300",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4300"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4300",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4300"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42290",
+      "url": "http://secunia.com/advisories/42290"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42411",
+      "url": "http://secunia.com/advisories/42411"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "44987",
+      "url": "http://www.securityfocus.com/bid/44987"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024762",
+      "url": "http://www.securitytracker.com/id?1024762"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-3093",
+      "url": "http://www.vupen.com/english/advisories/2010/3093"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-3038",
+      "url": "http://www.vupen.com/english/advisories/2010/3038"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年12月22日]\\n  掲載\\n[2011年03月17日]\\n  影響を受けるシステム：オラクル (buffer_overflow_vulnerability_in_wireshark) の情報を追加\\n  ベンダ情報：オラクル (buffer_overflow_vulnerability_in_wireshark) を追加"
+    }
+  ],
+  "date_first_published": "2010-12-22T14:13:47+09:00",
+  "date_last_updated": "2011-03-17T17:43:07+09:00",
+  "date_public": "2010-11-18T00:00:00+09:00"
+}

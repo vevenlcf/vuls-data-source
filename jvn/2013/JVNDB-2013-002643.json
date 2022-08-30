@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2013-002643",
+  "title": "Xen におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Xen は、Intel CPU を搭載した 64-bit ホスト上で稼働する場合、SYSENTER 命令の後で IRET を使用する際に NT フラグをクリアしないため、サービス運用妨害 (ハイパーバイザクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "3.1 から 4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "PV ゲストユーザにより、もう 1 つの IRET 命令を発生されることで、#GP フォルトを誘発され、サービス運用妨害 (ハイパーバイザクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian セキュリティ勧告",
+      "vulinfo_id": "DSA-2662",
+      "url": "http://www.debian.org/security/2013/dsa-2662"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-6723",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-May/104537.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201309-24",
+      "url": "http://security.gentoo.org/glsa/glsa-201309-24.xml"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0912",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-06/msg00049.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Announcements",
+      "vulinfo_id": "XSA 44 Xen PV DoS vulnerability with SYSENTER",
+      "url": "http://wiki.xen.org/wiki/Security_Announcements#XSA_44_Xen_PV_DoS_vulnerability_with_SYSENTER"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen-announce",
+      "vulinfo_id": "Xen Security Advisory 44 (CVE-2013-1917) - Xen PV DoS vulnerability with SYSENTER",
+      "url": "http://lists.xen.org/archives/html/xen-announce/2013-04/msg00005.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1917",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1917"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1917",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1917"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年05月15日]\\n  掲載\\n[2013年06月28日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:0912) を追加\\n[2013年11月08日]\\n  ベンダ情報：Gentoo Linux (GLSA 201309-24) を追加\\n[2013年12月05日]\\n  ベンダ情報：Fedora Project (FEDORA-2013-6723) を追加"
+    }
+  ],
+  "date_first_published": "2013-05-15T16:16:33+09:00",
+  "date_last_updated": "2013-12-05T12:30:30+09:00",
+  "date_public": "2013-04-18T00:00:00+09:00"
+}

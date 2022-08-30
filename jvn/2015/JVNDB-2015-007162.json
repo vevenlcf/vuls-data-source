@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2015-007162",
+  "title": "PHP の ext/xsl/xsltprocessor.c の xsl_ext_function_php 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "PHP の ext/xsl/xsltprocessor.c の xsl_ext_function_php 関数は、libxml2 2.9.2 未満が使用されている場合、最初のエラーチェック中、フリー操作を開始する前に NULL valuePop の戻り値の可能性を考慮しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2015-6838 とは異なる脆弱性です。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.45 未満",
+        "5.5.29 未満の 5.5.x",
+        "5.6.13 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "xmlsoft.org",
+      "product_name": "libxml2",
+      "version_number": [
+        "2.9.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xmlsoft:libxml2"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された XML ドキュメントを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #69782",
+      "url": "https://bugs.php.net/bug.php?id=69782"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-6837",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-6837"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-6837",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6837"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-19T17:45:20+09:00",
+  "date_last_updated": "2016-05-19T17:45:20+09:00",
+  "date_public": "2015-09-03T00:00:00+09:00"
+}

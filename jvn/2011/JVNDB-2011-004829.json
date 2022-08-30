@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2011-004829",
+  "title": "Mongoose などの put_dir 関数におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "(1) Mongoose の mongoose.c の put_dir 関数、(2) yaSSL Embedded Web Server (yasslEWS) の yasslEWS.c のput_dir 関数および (3) Simple HTTPD (shttpd) の io_dir.c の _shttpd_put_dir 関数には、スタックベースのバッファオーバーフローの脆弱性が存在します。 本脆弱性は、2011 年実環境で悪用されました。",
+  "affected": [
+    {
+      "name": "shttpd",
+      "product_name": "shttpd",
+      "version_number": [
+        "1.42"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:shttpd:shttpd"
+      }
+    },
+    {
+      "name": "valenok",
+      "product_name": "Mongoose",
+      "version_number": [
+        "3.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:valenok:mongoose"
+      }
+    },
+    {
+      "name": "yaSSL",
+      "product_name": "yasslews",
+      "version_number": [
+        "0.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yassl:yasslews"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、HTTP PUT リクエストを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "shttpd",
+      "vulinfo_id": "Top Page",
+      "url": "http://sourceforge.net/projects/shttpd/"
+    },
+    {
+      "type": "vendor",
+      "name": "valenok",
+      "vulinfo_id": "mongoose",
+      "url": "https://code.google.com/archive/p/mongoose/"
+    },
+    {
+      "type": "vendor",
+      "name": "yaSSL",
+      "vulinfo_id": "yaSSL Embedded Web Server",
+      "url": "http://www.yassl.com/yaSSL/Products-yassl-embedded-web-server.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-2900",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2900"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-2900",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-2900"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:35+09:00",
+  "date_last_updated": "2012-03-27T18:43:35+09:00",
+  "date_public": "2011-08-05T00:00:00+09:00"
+}

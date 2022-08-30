@@ -1,0 +1,158 @@
+{
+  "vulinfo_id": "JVNDB-2007-000127",
+  "title": "トレンドマイクロ ウイルス検索エンジンの UPX ファイル処理にバッファオーバーフローの脆弱性",
+  "vulinfo_description": "トレンドマイクロのウイルス対策製品で使用されるウイルス検索エンジンVSAPI には、不正な UPX 圧縮実行ファイルを適切に処理できないため、UPX 圧縮実行ファイルをスキャン処理することでバッファオーバーフローが発生する脆弱性が存在します。  2007/02/10 時点において、JPCERT よりサイバークリーンセンターにて 2007年1月25日より2007年2月9日までの間に提供された「CCCクリーナー」に本脆弱性の影響が受あることが報告されています。 ",
+  "affected": [
+    {
+      "name": "サイバークリーンセンター",
+      "product_name": "CCCクリーナー",
+      "version_number": [
+        "(CCCパターンVer:185) - 詳細は JPCERT コーディネーションセンターの情報をご確認ください"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:ccc_cleaner"
+      }
+    },
+    {
+      "name": "トレンドマイクロ",
+      "product_name": "Trend Micro Scan Engine",
+      "version_number": [
+        "8.000 (英語版) - 影響を受ける製品はベンダ情報 (英語サイト) をご確認ください",
+        "8.300 (英語版) - 影響を受ける製品はベンダ情報 (英語サイト) をご確認ください"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:trendmicro:scan_engine"
+      }
+    },
+    {
+      "name": "トレンドマイクロ",
+      "product_name": "ウイルス検索エンジンVSAPI",
+      "version_number": [
+        "8.0 以降 (日本語版) - 影響を受ける製品はベンダが提供する情報をご確認ください"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:trendmicro:virus_search_engine_vs_api"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.4",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "遠隔の第三者により細工された UPX 圧縮実行ファイルを送付されることにより、システム権限で任意のコードを実行されたり、サービス運用妨害 (DoS) 攻撃が行われたりする可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JPCERT コーディネーションセンター",
+      "vulinfo_id": "サイバークリーンセンターにおいて提供された「CCCクリーナー」の脆弱性についてのお知らせ",
+      "url": "http://www.jpcert.or.jp/pr/2007/pr070002.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "TrendMicro Solution",
+      "vulinfo_id": "Solution ID: 1034289",
+      "url": "http://esupport.trendmicro.com/support/viewxml.do?ContentID=EN-1034289\u0026id=EN-1034289"
+    },
+    {
+      "type": "vendor",
+      "name": "サイバークリーンセンター",
+      "vulinfo_id": "Top Page",
+      "url": "https://www.ccc.go.jp/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "サイバークリーンセンター",
+      "vulinfo_id": "ボットの駆除手順(ダウンロードページ)",
+      "url": "https://www.ccc.go.jp/flow/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "トレンドマイクロ サポート情報",
+      "vulinfo_id": "solution 2061390",
+      "url": "http://esupport.trendmicro.co.jp/supportjp/viewxml.do?ContentID=JP-2061390\u0026id=JP-2061390"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-0851",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0851"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-0522",
+      "url": "http://www.frsirt.com/english/advisories/2007/0522"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "JPCERT-PR-2007-0002",
+      "url": "http://www.jpcert.or.jp/pr/2007/pr070002.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#276432",
+      "url": "http://jvn.jp/cert/JVNVU%23276432/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#77366274",
+      "url": "http://jvn.jp/jp/JVN%2377366274/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-0851",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-0851"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA24087",
+      "url": "http://secunia.com/advisories/24087"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "22449",
+      "url": "http://www.securityfocus.com/bid/22449"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1017601",
+      "url": "http://securitytracker.com/id?1017601"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#276432",
+      "url": "http://www.kb.cert.org/vuls/id/276432"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2007-02-08T00:00:00+09:00"
+}

@@ -1,0 +1,173 @@
+{
+  "vulinfo_id": "JVNDB-2015-005936",
+  "title": "Linux Kernel の KVM サブシステムおよび Xen におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の KVM サブシステム、および Xen には、svm.c に関する処理に不備があるため、サービス運用妨害 (ホスト OS のパニックまたはハング) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.2.6 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "4.3.x から 4.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "11.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle VM VirtualBox",
+      "version_number": [
+        "4.0.36 未満",
+        "4.1.44 未満",
+        "4.2.36 未満",
+        "4.3.34 未満",
+        "5.0.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:vm_virtualbox"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ゲスト OS ユーザにより、多数の #DB (別名 デバッグ) の例外を誘発されることで、サービス運用妨害 (ホスト OS のパニックまたはハング) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Citrix Knowledge Center",
+      "vulinfo_id": "CTX203879",
+      "url": "http://support.citrix.com/article/CTX203879"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "KVM: svm: unconditionally intercept #DB",
+      "url": "https://github.com/torvalds/linux/commit/cbdb967af3d54993f5814f1cee0ed311a055377d"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "KVM: svm: unconditionally intercept #DB",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=cbdb967af3d54993f5814f1cee0ed311a055377d"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - July 2016",
+      "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - July 2016 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2016verbose-2881721.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - January 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - January 2016 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujan2016verbose-2367956.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1278496",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1278496"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "July 2016 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/july_2016_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "January 2016 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/january_2016_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen Security Advisory",
+      "vulinfo_id": "XSA-156",
+      "url": "http://xenbits.xen.org/xsa/advisory-156.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8104",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8104"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8104",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8104"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月17日]\\n  掲載\\n[2016年01月15日]\\n  ベンダ情報：シトリックス・システムズ (CTX203879) を追加\\n[2016年01月28日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - January 2016 Risk Matrices) を追加\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - January 2016) を追加\\n  ベンダ情報：オラクル (January 2016 Critical Patch Update Released) を追加\\n[2016年07月27日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - July 2016) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - July 2016 Risk Matrices) を追加\\n  ベンダ情報：オラクル (July 2016 Critical Patch Update Released) を追加"
+    }
+  ],
+  "date_first_published": "2015-11-17T16:17:32+09:00",
+  "date_last_updated": "2016-07-27T16:14:28+09:00",
+  "date_public": "2015-11-10T00:00:00+09:00"
+}

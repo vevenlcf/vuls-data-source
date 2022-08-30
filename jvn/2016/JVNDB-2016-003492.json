@@ -1,0 +1,137 @@
+{
+  "vulinfo_id": "JVNDB-2016-003492",
+  "title": "Node.js で使用される npm の CLI における重要な情報を取得される脆弱性",
+  "vulinfo_description": "Node.js で使用される npm の CLI は、任意のリクエストにベアラ (bearer) トークンを含めるため、重要な情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "IBM SDK",
+      "version_number": [
+        "for Node.js 1.1.0.20 およびそれ以前",
+        "for Node.js 1.2.0.10 およびそれ以前",
+        "for Node.js 4.4.1.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ibm:sdk"
+      }
+    },
+    {
+      "name": "Node.js Foundation",
+      "product_name": "Node.js",
+      "version_number": [
+        "0.10.44 未満の 0.10",
+        "0.12.13 未満の 0.12",
+        "4.4.2 未満の 4",
+        "5.10.0 未満の 5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nodejs:node.js"
+      }
+    },
+    {
+      "name": "npm, Inc.",
+      "product_name": "npm",
+      "version_number": [
+        "2.15.1 未満",
+        "3.8.3 未満の 3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:npmjs:npm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモートの HTTP サーバにより、Authorization ヘッダを読まれることで、重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "config: only send token to registry hosts (fea8cc9)",
+      "url": "https://github.com/npm/npm/commit/fea8cc92cee02c720b58f95f14d315507ccad401"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "npm uses auth token from registry on http[s]:// dependencies, breaking BitBucket URLs #8380",
+      "url": "https://github.com/npm/npm/issues/8380"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "config: only send token to registry hosts (f67ecad)",
+      "url": "https://github.com/npm/npm/commit/f67ecad59e99a03e5aad8e93cd1a086ae087cb29"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1980827",
+      "url": "http://www-01.ibm.com/support/docview.wss?uid=swg21980827"
+    },
+    {
+      "type": "vendor",
+      "name": "Node.js Foundation",
+      "vulinfo_id": "npm security updates v2.15.1 and v3.8.3",
+      "url": "https://nodejs.org/en/blog/vulnerability/npm-tokens-leak-march-2016/"
+    },
+    {
+      "type": "vendor",
+      "name": "The npm Blog",
+      "vulinfo_id": "fixing a bearer token vulnerability",
+      "url": "http://blog.npmjs.org/post/142036323955/fixing-a-bearer-token-vulnerability"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3956",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3956"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3956",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3956"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年07月12日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-07-12T10:08:15+09:00",
+  "date_last_updated": "2016-07-12T10:08:15+09:00",
+  "date_public": "2016-03-31T00:00:00+09:00"
+}

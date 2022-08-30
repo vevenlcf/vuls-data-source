@@ -1,0 +1,218 @@
+{
+  "vulinfo_id": "JVNDB-2009-002451",
+  "title": "Adobe Reader および Acrobat における解放済みメモリを使用する脆弱性",
+  "vulinfo_description": "Adobe Reader および Acrobat の Doc.media.newPlayer メソッドには、解放済みメモリを使用する (use-after-free) 脆弱性が存在します。  Adobe Reader および Acrobat は、JavaScript をサポートしています。Doc.media オブジェクトの newplayer() メソッドには、解放済みメモリを使用する (use-after-free) 脆弱性が存在します。  2009年12月16日現在、本脆弱性を使用した攻撃活動が観測されています。",
+  "affected": [
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe Acrobat",
+      "version_number": [
+        "9.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:acrobat"
+      }
+    },
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe Reader",
+      "version_number": [
+        "9.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:acrobat_reader"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Extras",
+      "version_number": [
+        "3 extras "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "細工された PDF ドキュメントを閲覧した場合に、アプリケーションがクラッシュしたり、任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "[アップデートする] Adobe が提供する情報をもとに最新版へアップデートしてください。  [ワークアラウンドを実施する] 対策版が公開されるまでの間、以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 ・Adobe Reader および Acrobat で JavaScript を無効にする ・ウェブブラウザ上での PDF ファイルの表示を無効にする 　PDF 表示を無効にする設定方法は、ウェブブラウザにより異なります。 ・不審な PDF ファイルを開かない 　不審なメールに添付されている PDF ファイルを開いたり、不審なウェブサイトに掲載されている PDF ファイルを開かないようにする。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Adobe Security Bulletin",
+      "vulinfo_id": "APSA09-07",
+      "url": "http://www.adobe.com/support/security/advisories/apsa09-07.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe Security Bulletin",
+      "vulinfo_id": "APSB10-02",
+      "url": "http://www.adobe.com/support/security/bulletins/apsb10-02.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "APSA09-07",
+      "url": "http://www.adobe.com/jp/support/security/advisories/apsa09-07.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe セキュリティ情報",
+      "vulinfo_id": "APSB10-02",
+      "url": "http://www.adobe.com/jp/support/security/bulletins/apsb10-02.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0060",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0060.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "TA10-013A",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/ta10-013a.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-4324",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4324"
+    },
+    {
+      "type": "advisory",
+      "name": "IPA 緊急対策情報",
+      "vulinfo_id": "20100113-adobe",
+      "url": "http://www.ipa.go.jp/security/ciadr/vul/20100113-adobe.html"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "54747",
+      "url": "http://xforce.iss.net/xforce/xfdb/54747"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "JPCERT-AT-2009-0027",
+      "url": "https://www.jpcert.or.jp/at/2009/at090027.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#508357",
+      "url": "http://jvn.jp/cert/JVNVU508357/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA10-013A",
+      "url": "http://jvn.jp/cert/JVNTA10-013A/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "JVNTR-2010-03",
+      "url": "http://jvn.jp/tr/JVNTR-2010-03/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-4324",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4324"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "60980",
+      "url": "http://osvdb.org/60980"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA37690",
+      "url": "http://secunia.com/advisories/37690"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "37331",
+      "url": "http://www.securityfocus.com/bid/37331"
+    },
+    {
+      "type": "advisory",
+      "name": "The SANS Institute Diary",
+      "vulinfo_id": "7747",
+      "url": "http://isc.sans.org/diary.html?storyid=7747"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA10-013A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA10-013A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA10-013A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA10-013A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#508357",
+      "url": "http://www.kb.cert.org/vuls/id/508357"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2009-3518",
+      "url": "http://www.vupen.com/english/advisories/2009/3518"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-0103",
+      "url": "http://www.vupen.com/english/advisories/2010/0103"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "アドビシステムズ社の Adobe Reader および Adobe Acrobat のセキュリティ修正プログラムについて",
+      "url": "http://www.cyberpolice.go.jp/index.html#topics"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年01月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2010-01-27T10:02:10+09:00",
+  "date_last_updated": "2010-01-27T10:02:10+09:00",
+  "date_public": "2009-12-16T00:00:00+09:00"
+}

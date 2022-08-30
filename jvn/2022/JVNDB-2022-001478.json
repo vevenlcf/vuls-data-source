@@ -1,0 +1,119 @@
+{
+  "vulinfo_id": "JVNDB-2022-001478",
+  "title": "Apache HTTP Server におけるランダムメモリ領域を読み取られる脆弱性",
+  "vulinfo_description": "Apache HTTP Server には、ランダムメモリ領域を読み取られ、プロセスをクラッシュされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache HTTP Server",
+      "version_number": [
+        "2.4.52 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:http_server"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "SpoolServer/ReportFiling",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:spoolserver_reportfiling"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Application Server",
+      "version_number": [
+        "Enterprise",
+        "Express",
+        "Standard"
+      ]
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "巧妙に細工されたリクエストボディを介して、ランダムメモリ領域を読み取られ、プロセスをクラッシュされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache httpd 2.4 vulnerabilities",
+      "vulinfo_id": "Fixed in Apache HTTP Server 2.4.53",
+      "url": "https://httpd.apache.org/security/vulnerabilities_24.html"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV22-0010",
+      "url": "https://jpn.nec.com/security-info/secinfo/nv22-010.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-22719",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-22719"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99602154",
+      "url": "https://jvn.jp/vu/JVNVU99602154/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2022-22719",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-22719"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2022-22719: Apache HTTP Server: mod_lua Use of uninitialized value of in r:parsebody",
+      "url": "https://www.openwall.com/lists/oss-security/2022/03/14/4"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-665",
+      "url": "https://cwe.mitre.org/data/definitions/665.html",
+      "title": "不適切な初期化"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-08-09T03:09:05Z",
+      "description": "[2022年03月23日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2022-08-09T03:09:31Z",
+      "description": "[2022年08月09日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日本電気 (NV22-010) を追加"
+    }
+  ],
+  "date_first_published": "2022-03-23T17:09:06+09:00",
+  "date_last_updated": "2022-08-09T17:22:56+09:00",
+  "date_public": "2022-03-14T00:00:00+09:00"
+}

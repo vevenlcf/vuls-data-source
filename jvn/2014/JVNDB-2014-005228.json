@@ -1,0 +1,191 @@
+{
+  "vulinfo_id": "JVNDB-2014-005228",
+  "title": "libxml2 の parser.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libxml2 の parser.c は、エンティティの置き換えが無効な場合でもエンティティの拡張を適切に制限しないため、サービス運用妨害 (CPU 資源の消費) 状態にされる脆弱性が存在します。  本脆弱性は Billion Laughs 攻撃から変異した脆弱性です。  補足情報 : CWE による脆弱性タイプは、CWE-611: Improper Restriction of XML External Entity Reference ('XXE') (XML 外部エンティティ参照の不適切な制限) と識別されています。 http://cwe.mitre.org/data/definitions/611.html",
+  "affected": [
+    {
+      "name": "xmlsoft.org",
+      "product_name": "libxml2",
+      "version_number": [
+        "2.9.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xmlsoft:libxml2"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.10 から 10.10.4",
+        "10.9.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "iOS",
+      "version_number": [
+        "8.4.1 未満 (iPad 2 以降)",
+        "8.4.1 未満 (iPhone 4s 以降)",
+        "8.4.1 未満 (iPod touch 第 5 世代以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:iphone_os"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10",
+        "11.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、多数のネストされたエンティティ参照を含む、巧妙に細工された XML 文書を介して、サービス運用妨害 (CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-08-13-2 OS X Yosemite v10.10.5 and Security Update 2015-006",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Aug/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-08-13-3 iOS 8.4.1",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Aug/msg00002.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205030",
+      "url": "https://support.apple.com/en-us/HT205030"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205031",
+      "url": "https://support.apple.com/en-us/HT205031"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205030",
+      "url": "https://support.apple.com/ja-jp/HT205030"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205031",
+      "url": "https://support.apple.com/ja-jp/HT205031"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2014:1330",
+      "url": "http://lists.opensuse.org/opensuse-updates/2014-10/msg00034.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Third Party Bulletin - January 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjan2015-2370101.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Attachment #944444",
+      "url": "https://bugzilla.redhat.com/attachment.cgi?id=944444\u0026action=diff"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1149084",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1149084"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1885",
+      "url": "http://rhn.redhat.com/errata/RHSA-2014-1885.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1655",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1655.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2389-1",
+      "url": "http://www.ubuntu.com/usn/USN-2389-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "xmlsoft.org",
+      "vulinfo_id": "Top Page",
+      "url": "http://xmlsoft.org/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3660",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3660"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3660",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3660"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "libxml2 issue: billioun laughs variant (CVE-2014-3660)",
+      "url": "http://www.openwall.com/lists/oss-security/2014/10/17/7"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年11月06日]\\n  掲載\\n[2014年12月08日]\\n  ベンダ情報：レッドハット (RHSA-2014:1885) を追加\\n[2015年01月09日]\\n  CWE による脆弱性タイプ一覧：内容を更新\\n[2015年01月30日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Third Party Bulletin - January 2015) を追加\\n[2015年08月31日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT205030) を追加\\n  ベンダ情報：アップル (HT205031) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-08-13-2 OS X Yosemite v10.10.5 and Security Update 2015-006) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-08-13-3 iOS 8.4.1) を追加"
+    }
+  ],
+  "date_first_published": "2014-11-06T19:08:07+09:00",
+  "date_last_updated": "2015-08-31T16:36:36+09:00",
+  "date_public": "2014-10-07T00:00:00+09:00"
+}

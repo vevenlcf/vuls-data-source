@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2011-004727",
+  "title": "Shibboleth などで使用されるApache XML Security for C++ の XML 署名における一つずれエラーの脆弱性",
+  "vulinfo_description": "Shibboleth などで使用される Apache XML Security for C++ の XML 署名には、サービス運用妨害 (クラッシュ) の状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Santuario XML Security for C++",
+      "version_number": [
+        "1.6.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:xml_security_for_c%2B%2B"
+      }
+    },
+    {
+      "name": "Shibboleth",
+      "product_name": "Shibboleth Service Provider",
+      "version_number": [
+        "2.4.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:shibboleth:shibboleth-sp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きい RSA 鍵を使用した署名を介して、バッファオーバーフローを引き起こすサービス運用妨害 (クラッシュ) の状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache",
+      "vulinfo_id": "SANTUARIO-271",
+      "url": "https://issues.apache.org/jira/browse/SANTUARIO-271"
+    },
+    {
+      "type": "vendor",
+      "name": "Shibboleth",
+      "vulinfo_id": "CVE-2011-2516",
+      "url": "http://santuario.apache.org/secadv/CVE-2011-2516.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-2516",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2516"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-2516",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-2516"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:29+09:00",
+  "date_last_updated": "2012-03-27T18:43:29+09:00",
+  "date_public": "2011-07-11T00:00:00+09:00"
+}

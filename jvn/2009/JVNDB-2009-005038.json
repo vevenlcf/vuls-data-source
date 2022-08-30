@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2009-005038",
+  "title": "incron における権限を取得される脆弱性",
+  "vulinfo_description": "incron は、ユーザの incrontab からのプロセスが稼動している際、補助グループが初期化されないため、プロセスが incrond 補助グループで稼動する状態となり、権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "inotify",
+      "product_name": "incron",
+      "version_number": [
+        "0.5.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:inotify:incron"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、incrontab テーブルを介して、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "inotify",
+      "vulinfo_id": "incron-0.5.5-2.el5 security update",
+      "url": "https://admin.fedoraproject.org/updates/incron-0.5.5-2.el5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-3589",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3589"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-3589",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3589"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:38:02+09:00",
+  "date_last_updated": "2012-09-25T17:38:02+09:00",
+  "date_public": "2009-10-02T00:00:00+09:00"
+}

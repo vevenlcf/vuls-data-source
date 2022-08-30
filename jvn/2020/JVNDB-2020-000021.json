@@ -1,0 +1,200 @@
+{
+  "vulinfo_id": "JVNDB-2020-000021",
+  "title": "ヤマハ製の複数のネットワーク機器におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ヤマハ株式会社が提供する複数のネットワーク機器には、受信したパケットの処理に起因するサービス運用妨害 (DoS) (CWE-400) の脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 慶應義塾大学 理工学部 情報工学科 天野研究室 丹羽 直也 氏",
+  "affected": [
+    {
+      "name": "ヤマハ",
+      "product_name": "FWX120",
+      "version_number": [
+        "ファームウェア Rev.11.03.27 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:fwx120"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "NVR500",
+      "version_number": [
+        "ファームウェア Rev.11.00.38 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:yamaha:nvr500_firmware"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "NVR510",
+      "version_number": [
+        "ファームウェア Rev.15.01.14 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:nvr510"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "NVR700W",
+      "version_number": [
+        "ファームウェア Rev.15.00.15 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:nvr700w"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX1200",
+      "version_number": [
+        "ファームウェア Rev.10.01.76 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx1200"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX1210",
+      "version_number": [
+        "ファームウェア Rev.14.01.33 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx1210"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX3500",
+      "version_number": [
+        "ファームウェア Rev.14.00.26 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:RTX3500"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX5000",
+      "version_number": [
+        "ファームウェア Rev.14.00.26 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:RTX5000"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX810",
+      "version_number": [
+        "ファームウェア Rev.11.01.33 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:yamaha:rtx810_firmware"
+      }
+    },
+    {
+      "name": "ヤマハ",
+      "product_name": "RTX830",
+      "version_number": [
+        "ファームウェア Rev.15.02.09 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:yamaha:rtx830"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、サービス運用妨害 (DoS) 攻撃を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアを最新版へアップデートしてください。  [ワークアラウンドを実施する] 対策を行ったファームウェアが入手できない、あるいは適用が困難な場合は、次のいずれかのワークアラウンドを実施して、フィルタのログの出力を停止することで、本脆弱性の影響を回避することが可能です。 ・ip filter コマンドで pass-nolog、reject-nolog および restrict-nolog を設定し、フィルタのログの出力を停止する ・syslog notice off を設定して NOTICE レベルのログの出力を停止する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "RTシリーズのセキュリティに関するFAQ",
+      "vulinfo_id": "「ヤマハ製の複数のネットワーク機器におけるサービス運用妨害 (DoS) の脆弱性」について ",
+      "url": "http://www.rtpro.yamaha.co.jp/RT/FAQ/Security/JVN38732359.html"
+    },
+    {
+      "type": "vendor",
+      "name": "西日本電信電話株式会社",
+      "vulinfo_id": "Biz Boxルータをご利用のお客さまへ",
+      "url": "https://flets-w.com/solution/kiki_info/info/200331.html"
+    },
+    {
+      "type": "vendor",
+      "name": "東日本電信電話株式会社",
+      "vulinfo_id": "BizBoxルータ・ヤマハルータをご利用のお客さまへ",
+      "url": "https://web116.jp/ced/support/news/contents/2020/20200331.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-5548",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5548"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#38732359",
+      "url": "https://jvn.jp/jp/JVN38732359/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-03-30T01:00:24Z",
+      "description": "[2020年03月31日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2020-04-01T09:20:29Z",
+      "description": "[2020年04月01日]\\n  東日本電信電話株式会社のベンダステータスが更新されました"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2020-04-01T09:20:42Z",
+      "description": "[2020年04月01日]\\n  西日本電信電話株式会社のベンダステータスが更新されました"
+    }
+  ],
+  "date_first_published": "2020-03-31T12:05:14+09:00",
+  "date_last_updated": "2020-04-01T18:20:54+09:00",
+  "date_public": "2020-03-31T00:00:00+09:00"
+}

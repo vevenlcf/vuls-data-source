@@ -1,0 +1,128 @@
+{
+  "vulinfo_id": "JVNDB-2006-000995",
+  "title": "Linux kernel の do_coredump 関数における任意のファイルを改ざんされる脆弱性",
+  "vulinfo_description": "Linux kernel の fs/exec.c の do_coredump 関数には、O_EXCL に flag 変数を設定するが使用しないため、任意のファイルを改ざんされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.19"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux EUS",
+      "version_number": [
+        "5.4.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Virtualization",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_virtualization"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、コアダンプ時の上書き攻撃を介して、任意のファイルを改ざんされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.19.1",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.19.1"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0046",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0046.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0095",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0095.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-6304",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6304"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-6304",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-6304"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA23349",
+      "url": "http://secunia.com/advisories/23349"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "21591",
+      "url": "http://www.securityfocus.com/bid/21591"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年02月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2010-02-18T14:28:15+09:00",
+  "date_last_updated": "2010-02-18T14:28:15+09:00",
+  "date_public": "2006-12-14T00:00:00+09:00"
+}

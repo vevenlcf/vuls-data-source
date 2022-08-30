@@ -1,0 +1,346 @@
+{
+  "vulinfo_id": "JVNDB-2009-002411",
+  "title": "BIND 9 の DNSSEC 検証処理における脆弱性",
+  "vulinfo_description": "DNSSEC を有効にしている BIND 9 において、再帰的なクライアントクエリを処理する際に脆弱性が存在します。  ISC によると 「DNSSEC を有効にしているネームサーバにおいて、DO (DNSSEC OK) ビットと CD (Checking Disabled) ビットの双方がセットされた再帰的なクライアントクエリを処理する際に、レスポンスパケットの additional section にあるレコードをキャッシュに追加する場合がある」と報告されています。",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "IBM AIX",
+      "version_number": [
+        "6.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:ibm:aix"
+      }
+    },
+    {
+      "name": "ISC, Inc.",
+      "product_name": "BIND",
+      "version_number": [
+        "9.0.x",
+        "9.1.x",
+        "9.2.x",
+        "9.3.x",
+        "9.4.0 から 9.4.3-P3",
+        "9.5.0",
+        "9.5.1",
+        "9.5.2",
+        "9.6.0",
+        "9.6.1-P1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:bind"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "OpenSolaris",
+      "version_number": [
+        "(sparc) ",
+        "(x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:opensolaris"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "3.0  ",
+        "3.0 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Client",
+      "version_number": [
+        "2008 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_client"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "11  ",
+        "11 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.11 ",
+        "11.23 ",
+        "11.31 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux EUS",
+      "version_number": [
+        "5.4.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって DNS キャッシュポイズニンングが行われる可能性があります。"
+  },
+  "solution": "[パッチを適用する] 影響を受けるシステムを利用している場合は、ISC (9.4.3-P4、9.5.2-P1、9.6.1-P2)もしくは、各ベンダから提供されるパッチを適用してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "bind-9.3.6-4.P1.1.1AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=775"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02546",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c02263226"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "5149",
+      "url": "http://www14.software.ibm.com/webapp/set2/subscriptions/pqvcmjd?mode=18\u0026ID=5149"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "504",
+      "url": "https://www.isc.org/node/504"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "506",
+      "url": "https://www.isc.org/node/506"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "507",
+      "url": "https://www.isc.org/node/507"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "509",
+      "url": "https://www.isc.org/node/509"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1620",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1620.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "273169",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-66-273169-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "275890",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-66-275890-1"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1620",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1620J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2009-33",
+      "url": "http://www.turbolinux.co.jp/security/2009/TLSA-2009-33j.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "VU#418861",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/vu418861.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-4022",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4022"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "54416",
+      "url": "http://xforce.iss.net/xforce/xfdb/54416"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#418861",
+      "url": "http://jvn.jp/cert/JVNVU418861/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-4022",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4022"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "60493",
+      "url": "http://osvdb.org/60493"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA38219",
+      "url": "http://secunia.com/advisories/38219/"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA37491",
+      "url": "http://secunia.com/advisories/37491"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "37118",
+      "url": "http://www.securityfocus.com/bid/37118"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#418861",
+      "url": "http://www.kb.cert.org/vuls/id/418861"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-0176",
+      "url": "http://www.vupen.com/english/advisories/2010/0176"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2009-3335",
+      "url": "http://www.vupen.com/english/advisories/2009/3335"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年01月15日]\\n  掲載\\n[2010年02月09日]\\n  ベンダ情報：サン・マイクロシステムズ (275890) を追加\\n[2010年08月11日]\\n  影響を受けるシステム：IBM (5149) の情報を追加\\n  ベンダ情報：IBM (5149) を追加\\n[2010年10月01日]\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBUX02546) の情報を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02546) を追加"
+    }
+  ],
+  "date_first_published": "2010-01-15T14:09:59+09:00",
+  "date_last_updated": "2010-10-01T17:39:27+09:00",
+  "date_public": "2009-12-02T00:00:00+09:00"
+}

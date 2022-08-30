@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2013-005626",
+  "title": "GNOME Office Gnumeric の plugins/excel/ms-escher.c におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "GNOME Office Gnumeric の plugins/excel/ms-escher.c の ms_escher_get_data 関数には、ヒープベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GNOME Project",
+      "product_name": "Gnumeric",
+      "version_number": [
+        "1.12.9 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnome:gnumeric"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された length 値を持つ巧妙に細工された xls ファイルを介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GNOME",
+      "vulinfo_id": "xls: fuzzed file crash.",
+      "url": "https://git.gnome.org/browse/gnumeric/commit/?id=b5480b69345b3c6d56ee0ed9c9e9880bb2a08cdc"
+    },
+    {
+      "type": "vendor",
+      "name": "GNOME",
+      "vulinfo_id": "Gnumeric 1.12.9 aka \"Turkey Time\" is now available.",
+      "url": "https://projects.gnome.org/gnumeric/announcements/1.12/gnumeric-1.12.9.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "GNOME Bugzilla",
+      "vulinfo_id": "Bug 712772",
+      "url": "https://bugzilla.gnome.org/show_bug.cgi?id=712772"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6836",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6836"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6836",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6836"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-12-20T18:47:53+09:00",
+  "date_last_updated": "2013-12-20T18:47:53+09:00",
+  "date_public": "2013-11-20T00:00:00+09:00"
+}

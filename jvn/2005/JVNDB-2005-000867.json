@@ -1,0 +1,112 @@
+{
+  "vulinfo_id": "JVNDB-2005-000867",
+  "title": "Perl モジュール Net::SSLeay.pm の entropy ソースの扱いに関する脆弱性",
+  "vulinfo_description": "Perl モジュール Net::SSLeay.pm には、entropy ソースを指定する EGD_PATH 環境変数が定義されていない際に、/tmp/entropy ファイルを entropy ソースとして使用してしまう問題が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "5.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Net_SSLeay",
+      "product_name": "Net::SSLeay",
+      "version_number": [
+        "1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:net_ssleay"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 ",
+        "3.0 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "悪意あるローカルユーザが作成した /tmp/entropy ファイルを entropy ソースとして使用し暗号化が行われることで、弱い強度で暗号化が行われる可能性があります。これにより、Net::SSLeay を利用した暗号が解読されやすくなる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "perl-Net-SSLeay (V3.0/V4.0)",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=965"
+    },
+    {
+      "type": "vendor",
+      "name": "search.cpan",
+      "vulinfo_id": "Net_SSLeay.pm",
+      "url": "http://search.cpan.org/~sampo/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu",
+      "vulinfo_id": "Ubuntuの入手",
+      "url": "http://www.ubuntulinux.jp/download"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0106",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0106"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0106",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0106"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA15207",
+      "url": "http://secunia.com/advisories/15207/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13471",
+      "url": "http://www.securityfocus.com/bid/13471"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年05月01日]\\n  掲載\\n[2012年04月26日]\\n  影響を受けるシステム：Ubuntu の情報を追加\\n  ベンダ情報：Ubuntu (Ubuntuの入手) を追加"
+    }
+  ],
+  "date_first_published": "2007-05-01T17:59:02+09:00",
+  "date_last_updated": "2012-04-27T14:12:44+09:00",
+  "date_public": "2005-05-03T00:00:00+09:00"
+}

@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-003157",
+  "title": "Yann Collet LZ4 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Yann Collet LZ4 は、0x80000000 を超えるメモリの割り当てをした特定の 32-bit プラットフォーム上で使用された場合、整数オーバーフローを適切に検出しないため、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  本脆弱性は、CVE-2014-4611 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Yann Collet",
+      "product_name": "LZ4",
+      "version_number": [
+        "r119 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:yann_collet:lz4"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された Literal Run を介して、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Issue 134: High Address allocation in 32-bits mode",
+      "url": "https://code.google.com/p/lz4/issues/detail?id=134"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Revision: r119",
+      "url": "https://code.google.com/p/lz4/source/detail?r=119"
+    },
+    {
+      "type": "vendor",
+      "name": "Yann Collet",
+      "vulinfo_id": "Vulnerabilities disclosure - how it's supposed to work",
+      "url": "http://fastcompression.blogspot.fr/2014/07/software-vulnerabilities-how-it-works.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-4715",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-4715"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-4715",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4715"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "I Was Wrong - Proving LZ4 Exploitable With Less Than 4MB",
+      "url": "http://blog.securitymouse.com/2014/07/i-was-wrong-proving-lz4-exploitable.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-07T16:47:25+09:00",
+  "date_last_updated": "2014-07-07T16:47:25+09:00",
+  "date_public": "2014-07-02T00:00:00+09:00"
+}

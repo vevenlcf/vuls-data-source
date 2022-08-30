@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-002951",
+  "title": "Linux Kernel の OZWPAN ドライバの drivers/staging/ozwpan/ozhcd.c における整数符号エラーの脆弱性",
+  "vulinfo_description": "Linux Kernel の OZWPAN ドライバの drivers/staging/ozwpan/ozhcd.c 内の oz_hcd_get_desc_cnf 関数には、整数符号エラーの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.0.5 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (システムクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ozwpan: Use unsigned ints to prevent heap overflow",
+      "url": "https://github.com/torvalds/linux/commit/b1bb5b49373b61bf9d2c73a4d30058ba6f069e4c"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ozwpan: Use unsigned ints to prevent heap overflow",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b1bb5b49373b61bf9d2c73a4d30058ba6f069e4c"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4001",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4001"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4001",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4001"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-06-09T11:10:50+09:00",
+  "date_last_updated": "2015-06-09T11:10:50+09:00",
+  "date_public": "2015-05-30T00:00:00+09:00"
+}

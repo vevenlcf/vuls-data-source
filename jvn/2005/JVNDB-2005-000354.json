@@ -1,0 +1,128 @@
+{
+  "vulinfo_id": "JVNDB-2005-000354",
+  "title": "GNU shtool における不適切な一時ファイルの作成によりシンボリックリンク攻撃を受ける脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  GNU shtool は libtool などと同様に、シェル上で使用する複数のコマンド群をマシンに依存しないようして一つにまとめたシェルスクリプトで、PHP や mm、nmap などのさまざまな製品に同梱されています。  GNU shtool 2.0.1 以前には、一時ファイルを取り扱う際に競合状態が発生してセキュリティ上不適切な方法で一時ファイルを作成してしまう不備が存在し、シンボリックリンク攻撃を受ける問題が存在します。(CAN-2005-1751)  この問題を利用するローカルの攻撃者は、shtool が使用される際にシンボリックリンク攻撃を試みることにより、shtool のスクリプトを実行するユーザの権限で任意のファイルを作成する、あるいは上書きする可能性があります。  尚、Gentoo Linux より、上記の問題とは異なる変種の問題が加えて報告されています。 (CAN-2005-1759)",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "4.3.11 およびそれ以前",
+        "5.0.4 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.2",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "ChangeLog-4",
+      "url": "http://jp2.php.net/ChangeLog-4.php"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "ChangeLog-5",
+      "url": "http://jp2.php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "33150",
+      "url": "http://bugs.php.net/bug.php?id=33150"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "159000",
+      "url": "http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=159000"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:564",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-564.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:564",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-564J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-1759",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1759"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-1759",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-1759"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA15496",
+      "url": "http://secunia.com/advisories/15496/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13767",
+      "url": "http://www.securityfocus.com/bid/13767"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1014059",
+      "url": "http://securitytracker.com/alerts/2005/May/1014059.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-05-25T00:00:00+09:00"
+}

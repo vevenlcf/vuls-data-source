@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-003160",
+  "title": "Linux Kernel の ALSA 制御の実装の sound/core/control.c 内の snd_ctl_elem_add 関数におけるカーネル制御を削除される脆弱性",
+  "vulinfo_description": "Linux Kernel の ALSA 制御の実装の sound/core/control.c 内の snd_ctl_elem_add 関数は、SNDRV_CTL_IOCTL_ELEM_REPLACE コマンドの認証をチェックしないため、カーネル制御を削除される、およびサービス運用妨害 (解放済みメモリの使用：use-after-free およびシステムクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.15.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、ioctl コールの /dev/snd/controlCX アクセスを利用されることで、カーネルの制御を削除される、およびサービス運用妨害 (解放済みメモリの使用：use-after-free およびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.15.2",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.15.2"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ALSA: control: Fix replacing user controls",
+      "url": "https://github.com/torvalds/linux/commit/82262a46627bebb0febcc26664746c25cef08563"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ALSA: control: Fix replacing user controls",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=82262a46627bebb0febcc26664746c25cef08563"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1113445",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1113445"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-4654",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-4654"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-4654",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4654"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-07T16:50:04+09:00",
+  "date_last_updated": "2014-07-07T16:50:04+09:00",
+  "date_public": "2014-06-26T00:00:00+09:00"
+}

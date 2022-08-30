@@ -1,0 +1,129 @@
+{
+  "vulinfo_id": "JVNDB-2003-000083",
+  "title": "Kerberos 4 における選択平文攻撃により特定の principal になりすまされる脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Kerberos 4 プロトコルの実装には、いくつかの暗号化方法における不備が存在します。この問題を利用することで、悪意ある特定の realm 内のユーザは、cross-realm 認証が行われている任意のリモートの realm 内の principal に成りすますことが可能です。  特定の principal に成りすました攻撃者は、結果として、ローカルの realm 内で管理されている任意のリモートの realm へのアクセス権限を奪取できる可能性があります。  さらに、Kerberos 4 プロトコルには、Triple DES 暗号化方式の実装上においての不備が存在します。Triple DES Kerberos 4 のサポートが有効化されている場合には、任意のユーザへの成りすましや、標的ユーザの Kerberos チケットを含む、ネットワークトラフィックを解析されてしまう可能性があります。  尚、これらの問題は Kerberos 4 プロトコルに存在するため、Kerberos 4 プロトコルをサポートした状態で MIT Kerberos 5 を実装している場合や、Kerberos 4 プロトコルで Kerberos 認証を使用しているアプリケーションにおいて影響を受ける可能性があります。",
+  "affected": [
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "6.2  ",
+        "7.0  ",
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  ",
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:091",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-091.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:051",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-051.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-29",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-29.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:051",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-051J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:091",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-091J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-29",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-29j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0138",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0138"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0138",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0138"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "7113",
+      "url": "http://www.securityfocus.com/bid/7113"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#623217",
+      "url": "http://www.kb.cert.org/vuls/id/623217"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#442569",
+      "url": "http://www.kb.cert.org/vuls/id/442569"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-03-17T00:00:00+09:00"
+}

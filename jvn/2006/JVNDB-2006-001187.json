@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2006-001187",
+  "title": "e107 における PHP リモートファイルインクルージョンの脆弱性",
+  "vulinfo_description": "e107 は、入力値に含まれる数値パラメータが英数値のパラメータのハッシュ値と一致する際、変数の設定解除を適切に処理しないため、PHP リモートファイルインクルージョンの脆弱性が存在します。 本脆弱性は、PHP コマンドの設定解除のバグ (CVE-2006-3017) に起因する可能性があり、PHP 側で修正する場合は、e107 の脆弱性ではありません。",
+  "affected": [
+    {
+      "name": "e107.org",
+      "product_name": "e107",
+      "version_number": [
+        "0.7.5 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:e107:e107"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、e107_handlers/tiny_mce/plugins/ibrowser/ibrowser.php 内の tinyMCE_imglib_include image/jpeg パラメータを介して、任意の PHP コードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "e107",
+      "vulinfo_id": "Top Page",
+      "url": "http://e107.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-4548",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4548"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-4548",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-4548"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:37:37+09:00",
+  "date_last_updated": "2012-06-26T15:37:37+09:00",
+  "date_public": "2006-09-05T00:00:00+09:00"
+}

@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2015-006022",
+  "title": "Windows および Linux 上で稼動する NVIDIA GPU グラフィックスドライバ用カーネルモードドライバにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "Windows および Linux 上で稼動する NVIDIA GPU グラフィックスドライバ用カーネルモードドライバには、整数オーバーフローの脆弱性が存在します。  本脆弱性は、脆弱性のタイプおよび影響を受けるバージョンが異なるため、分割されました。 Windows 用 NVIDIA ドライバの NVAPI サポートレイヤにおける脆弱性については、CVE-2015-8328 をご確認ください。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.04",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "NVIDIA",
+      "product_name": "NVIDIA GPU ディスプレイドライバ",
+      "version_number": [
+        "R304 304.131 未満 (Linux)",
+        "R340 340.96 未満 (Linux)",
+        "R340 341.92 未満 (Windows)",
+        "R352 352.63 未満 (Linux)",
+        "R352 354.35 未満 (Windows)",
+        "R358 358.16 未満 (Linux)",
+        "R358 358.87 未満 (Windows)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nvidia:gpu_driver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.6",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:P/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、初期化されていない、または領域外のメモリアクセスを誘発する不特定の要因を介して、重要な情報を取得される、サービス運用妨害 (クラッシュ) 状態にされる、または権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "NVIDIA SUPPORT",
+      "vulinfo_id": "CVE-2015-7869: Unsanitized User Mode Input",
+      "url": "http://nvidia.custhelp.com/app/answers/detail/a_id/3808/kw/security"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2814-1",
+      "url": "http://www.ubuntu.com/usn/usn-2814-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7869",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7869"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7869",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7869"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-26T14:41:39+09:00",
+  "date_last_updated": "2015-11-26T14:41:39+09:00",
+  "date_public": "2015-11-13T00:00:00+09:00"
+}

@@ -1,0 +1,201 @@
+{
+  "vulinfo_id": "JVNDB-2011-001724",
+  "title": "Cyrus IMAP Server の STARTTLS 実装における暗号化セッションにコマンドを挿入される脆弱性",
+  "vulinfo_description": "Cyrus IMAP Server の STARTTLS 実装は、I/O バッファリングを適切に制限しないため、暗号化セッションにコマンドを挿入される脆弱性が存在します。 本脆弱性は、CVE-2010-0411 と類似した脆弱性です。",
+  "affected": [
+    {
+      "name": "Carnegie Mellon University (Project Cyrus)",
+      "product_name": "Cyrus IMAP",
+      "version_number": [
+        "Server 2.4.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cmu:imap"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.8 (as) ",
+        "4.8 (es) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux EUS",
+      "version_number": [
+        "5.6.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Long Life",
+      "version_number": [
+        "(v. 5.6 server)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_long_life"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server EUS",
+      "version_number": [
+        "6.1.z  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_server_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、TLS 実施後のプロセスにおいて平文コマンドが送信されることにより、暗号化セッションにコマンドを挿入される脆弱性が存在します。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "cyrus-imapd-2.3.7-7.AXS3.4",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1446"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "2230",
+      "url": "https://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=2230"
+    },
+    {
+      "type": "vendor",
+      "name": "Project Cyrus",
+      "vulinfo_id": "Changes to the Cyrus IMAP Server since 2.4.6",
+      "url": "http://www.cyrusimap.org/docs/cyrus-imapd/2.4.7/changes.php"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0859",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0859.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1926",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1926"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1926",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1926"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#555316",
+      "url": "http://www.kb.cert.org/vuls/id/555316"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年06月21日]\\n  掲載\\n[2011年07月19日]\\n  影響を受けるシステム：ミラクル・リナックス (cyrus-imapd-2.3.7-7.AXS3.4) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (cyrus-imapd-2.3.7-7.AXS3.4) を追加\\n[2011年08月01日]\\n  影響を受けるシステム：ミラクル・リナックス (2230) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (2230) を追加"
+    }
+  ],
+  "date_first_published": "2011-06-21T07:59:30+09:00",
+  "date_last_updated": "2011-08-01T11:02:26+09:00",
+  "date_public": "2011-05-23T00:00:00+09:00"
+}

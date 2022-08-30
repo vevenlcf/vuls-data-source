@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-005542",
+  "title": "Quagga の bgp_attr.c の bgp_attr_unknown 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Quagga の bgp_attr.c の bgp_attr_unknown 関数は、total 変数を適切に初期化しないため、サービス運用妨害 (bgpd クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Quagga",
+      "product_name": "Quagga",
+      "version_number": [
+        "0.99.21"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:quagga:quagga"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された BGP アップデートを介して、サービス運用妨害 (bgpd クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#730513",
+      "url": "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=730513"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2803",
+      "url": "http://www.debian.org/security/2013/dsa-2803"
+    },
+    {
+      "type": "vendor",
+      "name": "Quagga",
+      "vulinfo_id": "Quagga Routing Suite",
+      "url": "http://www.nongnu.org/quagga/"
+    },
+    {
+      "type": "vendor",
+      "name": "Quagga",
+      "vulinfo_id": "bgpd: Fix regression in args consolidation, total should be inited from args",
+      "url": "http://git.savannah.gnu.org/gitweb/?p=quagga.git;a=commitdiff;h=8794e8d229dc9fe29ea31424883433d4880ef408"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6051",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6051"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6051",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6051"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-12-17T17:43:32+09:00",
+  "date_last_updated": "2013-12-17T17:43:32+09:00",
+  "date_public": "2013-11-26T00:00:00+09:00"
+}

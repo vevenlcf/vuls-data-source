@@ -1,0 +1,107 @@
+{
+  "vulinfo_id": "JVNDB-2016-001996",
+  "title": "Node.js の HTTP ヘッダ構文解析コードにおける HTTP レスポンス分割保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "Node.js の HTTP ヘッダ構文解析コードには、HTTP レスポンス分割保護メカニズムを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "22",
+        "23"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "Node.js Foundation",
+      "product_name": "Node.js",
+      "version_number": [
+        "0.10.42 未満の 0.10.x",
+        "0.11.6 から 0.11.16",
+        "0.12.10 未満の 0.12.x",
+        "4.3.0 未満の 4.x",
+        "5.6.0 未満の 5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nodejs:node.js"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、HTTP ヘッダ内の Unicode 文字でエンコードされた UTF-8 を介して、HTTP レスポンス分割の保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-8925b6119f",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177673.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-3102c11757",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177184.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Node.js Foundation",
+      "vulinfo_id": "February 2016 Security Release Summary",
+      "url": "https://nodejs.org/en/blog/vulnerability/february-2016-security-releases/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2216",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2216"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2216",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2216"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月12日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-12T17:51:02+09:00",
+  "date_last_updated": "2016-04-12T17:51:02+09:00",
+  "date_public": "2016-02-09T00:00:00+09:00"
+}

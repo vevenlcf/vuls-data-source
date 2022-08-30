@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2007-003899",
+  "title": "MadWifi の net80211/ieee80211_wireless.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MadWifi の net80211/ieee80211_wireless.c の (1) ieee80211_ioctl_getwmmparams および (2) ieee80211_ioctl_setwmmparams 関数には、配列インデックスエラーにより、サービス運用妨害 (システムクラッシュ) 状態となる、カーネルメモリの内容を取得される、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "madwifi",
+      "product_name": "madwifi",
+      "version_number": [
+        "0.9.3.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:madwifi:madwifi"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、過度に大きい負の配列インデックスの値を介して、サービス運用妨害 (システムクラッシュ) 状態にされる、カーネルメモリの内容を取得される、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "madwifi",
+      "vulinfo_id": "Top Page",
+      "url": "http://madwifi-project.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-2831",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2831"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-2831",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-2831"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:47:43+09:00",
+  "date_last_updated": "2012-09-25T16:47:43+09:00",
+  "date_public": "2007-05-23T00:00:00+09:00"
+}

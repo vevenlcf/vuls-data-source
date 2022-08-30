@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2016-004329",
+  "title": "Wireshark の NDS ディセクタの epan/dissectors/packet-ncp2222.inc におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の NDS ディセクタ (解析機能) の epan/dissectors/packet-ncp2222.inc は、ptvc データ構造を適切に維持しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.12.13 未満の 1.12.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "dissect_nds_request: Add NULL check",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=9eacbb4d48df647648127b9258f9e5aeeb0c7d99"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 12576",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=12576"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-40",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-40.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6504",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6504"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6504",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6504"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-08-17T12:32:52+09:00",
+  "date_last_updated": "2016-08-17T12:32:52+09:00",
+  "date_public": "2016-07-27T00:00:00+09:00"
+}

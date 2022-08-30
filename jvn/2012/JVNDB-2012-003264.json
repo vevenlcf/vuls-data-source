@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-003264",
+  "title": "ModSecurity におけるフィルタリングルールを回避される脆弱性",
+  "vulinfo_description": "ModSecurity は、リクエストパラメータの値にシングルクォートを含むファイルを扱うため、フィルタリングルールを回避される、およびクロスサイトスクリプティング (XSS) 攻撃などその他の攻撃を実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ModSecurity",
+      "product_name": "ModSecurity",
+      "version_number": [
+        "2.5.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:modsecurity:modsecurity"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、multipart/form-data Content-Type ヘッダを伴うリクエストの Content-Disposition フィールドのリクエストパラメータ内のシングルクォートを介して、フィルタリングルールを回避される、およびクロスサイトスクリプティング (XSS) 攻撃などその他の攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ModSecurity",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.modsecurity.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "ModSecurity",
+      "vulinfo_id": "2.6.x/CHANGES",
+      "url": "http://mod-security.svn.sourceforge.net/viewvc/mod-security/m2/branches/2.6.x/CHANGES"
+    },
+    {
+      "type": "vendor",
+      "name": "ModSecurity",
+      "vulinfo_id": "msc_multipart.c",
+      "url": "https://www.modsecurity.org/fisheye/browse/modsecurity/m2/branches/2.5.x/apache2/msc_multipart.c?r2=1419\u0026r1=1366"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-5031",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-5031"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-5031",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-5031"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年07月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-07-24T16:21:26+09:00",
+  "date_last_updated": "2012-07-24T16:21:26+09:00",
+  "date_public": "2012-07-22T00:00:00+09:00"
+}

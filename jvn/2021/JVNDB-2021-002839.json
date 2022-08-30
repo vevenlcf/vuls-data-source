@@ -1,0 +1,58 @@
+{
+  "vulinfo_id": "JVNDB-2021-002839",
+  "title": "Salesforce Developer Experience Command Line Interface におけるアクセス制限不備の問題",
+  "vulinfo_description": "Salesforce Developer Experience Command Line Interface を使用すると、認証されたユーザは自身と同じアクセス権で Salesforce GUI にアクセス可能な URL を生成できます。 この方法でアクセスした場合、ログに記録されません。 Salesforce のセキュリティ設定がデフォルトの場合、IPアドレスやデバイスなどの検証がされることなく、生成した URL を利用し、Salesforce GUI にアクセスすることが可能です。 その結果任意のユーザが、URL を生成したユーザと同じアクセス権で管理アクションを実行可能な問題が存在します。 ",
+  "affected": [
+    {
+      "name": "Salesforce.com, inc.",
+      "product_name": "Salesforce Developer Experience",
+      "version_number": [
+        "Command Line Interface で管理している Salesforce サービス"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:salesforce:salesforce_developer_experience"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "遠隔の第三者によって、ユーザアカウントの追加やアプリケーションの設定変更などをされる可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本問題の影響を軽減することが可能です。  　* セッションセキュリティ設定を利用して、IP アドレスまたはドメインによるセッション制限をする  上記の回避策を利用することで、利用している Salesforce に影響を与える可能性があります。詳しくは \u003ca href=\"https://help.salesforce.com/s/articleView?id=sf.admin_sessions.htm\u0026type=5\" target=\"blank\"\u003eSalesforce が公開している情報\u003c/a\u003eを参照し実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Help",
+      "vulinfo_id": "Configuration of Salesforce Developer Experience Command Line Interface",
+      "url": "https://help.salesforce.com/s/articleView?id=000363271\u0026type=1"
+    },
+    {
+      "type": "vendor",
+      "name": "Help",
+      "vulinfo_id": "Modify Session Security Settings",
+      "url": "https://help.salesforce.com/s/articleView?id=sf.admin_sessions.htm\u0026type=5"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97731134",
+      "url": "https://jvn.jp/vu/JVNVU97731134/"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#883754",
+      "url": "https://kb.cert.org/vuls/id/883754"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-10-06T02:39:02Z",
+      "description": "[2021年10月06日]   掲載"
+    }
+  ],
+  "date_first_published": "2021-10-06T11:54:36+09:00",
+  "date_last_updated": "2021-10-06T11:54:36+09:00",
+  "date_public": "2021-10-05T00:00:00+09:00"
+}

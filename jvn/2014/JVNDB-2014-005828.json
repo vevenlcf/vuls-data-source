@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-005828",
+  "title": "Hivex の lib/handle.c における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Hivex の lib/handle.c には、任意のコードを実行される、および権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "libguestfs",
+      "product_name": "hivex",
+      "version_number": [
+        "1.3.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libguestfs:hivex"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、過度に小さな hive ファイルを介して、out-of-bounds read および out-of-bounds write を誘発されることで、任意のコードを実行される、および権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "hivex：handle: Refuse to open files \u003c 8192 bytes in size.",
+      "url": "https://github.com/libguestfs/hivex/commit/357f26fa64fd1d9ccac2331fe174a8ee9c607adb"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "hivex：handle: Check that pages do not extend beyond the end of the file.",
+      "url": "https://github.com/libguestfs/hivex/commit/4bbdf555f88baeae0fa804a369a81a83908bd705"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat",
+      "vulinfo_id": "[Libguestfs] [libhivex] Undefined behavior when accessing invalid (too small) registry hives",
+      "url": "https://www.redhat.com/archives/libguestfs/2014-October/msg00235.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1167756",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1167756"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0301",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0301.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9273",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9273"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9273",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9273"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月10日]\\n  掲載\\n[2015年05月12日]\\n  ベンダ情報：レッドハット (RHSA-2015:0301) を追加"
+    }
+  ],
+  "date_first_published": "2014-12-10T16:45:18+09:00",
+  "date_last_updated": "2015-05-12T17:18:00+09:00",
+  "date_public": "2014-10-30T00:00:00+09:00"
+}

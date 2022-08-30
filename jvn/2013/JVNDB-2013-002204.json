@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-002204",
+  "title": "Ruby 用 httparty gem におけるオブジェクトインジェクション攻撃を実行される脆弱性",
+  "vulinfo_description": "Ruby 用 httparty gem は、文字列の値のキャストを適切に制限しないため、オブジェクトインジェクション攻撃を実行される、任意のコードを実行される、またはサービス運用妨害 (メモリおよび CPU 資源の消費) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2013-0156 と類似する脆弱性です。",
+  "affected": [
+    {
+      "name": "John Nunemaker",
+      "product_name": "httparty",
+      "version_number": [
+        "0.9.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:john_nunemaker:httparty"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、YAML 型変換に対する Action Pack サポートを利用されることで、オブジェクトインジェクション攻撃を実行される、任意のコードを実行される、またはサービス運用妨害 (メモリおよび CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Remove yaml due to possible security risk.",
+      "url": "https://github.com/jnunemaker/httparty/commit/53a812426dd32108d6cba4272b493aa03bc8c031"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 917229",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=917229"
+    },
+    {
+      "type": "vendor",
+      "name": "RubyGems",
+      "vulinfo_id": "httparty",
+      "url": "https://rubygems.org/gems/httparty/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1801",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1801"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1801",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1801"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "January 14, 2013: Security vulnerabilities: httparty, extlib, crack, nori: Update these gems immediately",
+      "url": "https://support.cloud.engineyard.com/entries/22915701-january-14-2013-security-vulnerabilities-httparty-extlib-crack-nori-update-these-gems-immediately"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-04-11T19:41:10+09:00",
+  "date_last_updated": "2013-04-11T19:41:10+09:00",
+  "date_public": "2013-01-14T00:00:00+09:00"
+}

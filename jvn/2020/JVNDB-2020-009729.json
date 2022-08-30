@@ -1,0 +1,122 @@
+{
+  "vulinfo_id": "JVNDB-2020-009729",
+  "title": "三菱電機製 GOT およびテンションコントローラにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "三菱電機株式会社が提供する GOT2000 シリーズ GT21 モデルおよび GOT SIMPLE シリーズ GS21 モデル、テンションコントローラには、境界外読み取り (CWE-125) に起因するサービス運用妨害 (DoS) の脆弱性が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "三菱電機",
+      "product_name": "GOT SIMPLE シリーズ GS21 モデル",
+      "version_number": [
+        "GS2107-WTBD V01.39.00 およびそれ以前",
+        "GS2107-WTBD-N V01.39.000 およびそれ以前",
+        "GS2110-WTBD V01.39.00 およびそれ以前",
+        "GS2110-WTBD-N V01.39.000 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:got_simple_series_gs21_model"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "GOT2000 シリーズ GT21 モデル",
+      "version_number": [
+        "GT2103-PMBD V01.39.00 およびそれ以前",
+        "GT2104-PMBD V01.39.00 およびそれ以前",
+        "GT2104-RTBD V01.39.00 およびそれ以前",
+        "GT2107-WTBD V01.39.00 およびそれ以前",
+        "GT2107-WTSD V01.39.00 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:got2000_series_gt21_model"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "LE7-40GU-L",
+      "version_number": [
+        "CC-Link IEF Basic 通信用画面パッケージデータ V1.00",
+        "MODBUS/TCP 通信用画面パッケージデータ V1.00",
+        "SLMP 通信用画面パッケージデータ V1.00"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:le7_40gu_l"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者によって細工されたパケットを受信した場合、通信性能が低下、または TCP 通信機能が停止する可能性があります。 なお、復旧には GOT またはテンションコントローラの電源を \"OFF\" にしてください。その後、電源を \"ON\" にする必要があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、適切な対策済みバージョンにアップデートしてください。  　* GOT2000 シリーズ GT21 モデル GT2107-WTBD V01.40.000 およびそれ以降 　* GOT2000 シリーズ GT21 モデル GT2107-WTSD V01.40.000 およびそれ以降 　* GOT2000 シリーズ GT21 モデル GT2104-RTBD V01.40.000 およびそれ以降 　* GOT2000 シリーズ GT21 モデル GT2104-PMBD V01.40.000 およびそれ以降 　* GOT2000 シリーズ GT21 モデル GT2103-PMBD V01.40.000 およびそれ以降 　* GOT SIMPLE シリーズ GS21 モデル GS2110-WTBD V01.40.000 およびそれ以降 　* GOT SIMPLE シリーズ GS21 モデル GS2107-WTBD V01.40.000 およびそれ以降 　* GOT SIMPLE シリーズ GS21 モデル GS2110-WTBD-N V01.40.000 およびそれ以降 　* GOT SIMPLE シリーズ GS21 モデル GS2107-WTBD-N V01.40.000 およびそれ以降   * LE7-40GU-L CC-Link IEF Basic 通信用画面パッケージデータ V1.01 およびそれ以降   * LE7-40GU-L MODBUS/TCP 通信用画面パッケージデータ V1.01 およびそれ以降   * LE7-40GU-L SLMP 通信用画面パッケージデータ V1.01 およびそれ以降    [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減できます。  　* 製品への接続は、信頼できるネットワークやホストからのアクセスに制限する  詳しくは\u003ca href=\"https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2020-017.pdf\" target=\"_blank\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "三菱電機株式会社",
+      "vulinfo_id": "GOT及びテンションコントローラのTCP/IPスタックにおけるサービス拒否(DoS)の脆弱性",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2020-017.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-5675",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5675"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-20-343-02",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-20-343-02"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99277775",
+      "url": "https://jvn.jp/vu/JVNVU99277775/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-125",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "title": "境界外読み取り"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-12-04T03:40:22Z",
+      "description": "[2020年12月04日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2020-12-11T05:12:51Z",
+      "description": "[2020年12月11日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-20-343-02) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2021-05-12T01:09:31Z",
+      "description": "[2021年05月12日]\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新"
+    },
+    {
+      "history_no": "4",
+      "date_time": "2022-01-21T02:38:34Z",
+      "description": "[2022年01月21日]\\n   影響を受けるシステム：内容を更新\\n   対策：内容を更新"
+    }
+  ],
+  "date_first_published": "2020-12-04T12:40:22+09:00",
+  "date_last_updated": "2022-01-21T14:32:10+09:00",
+  "date_public": "2020-12-03T00:00:00+09:00"
+}

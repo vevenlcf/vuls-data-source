@@ -1,0 +1,131 @@
+{
+  "vulinfo_id": "JVNDB-2021-000051",
+  "title": "複数のイーシーキューブ製 EC-CUBE 用プラグインにおける複数のクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "株式会社イーシーキューブが提供する複数の製品には、次に挙げる複数のクロスサイトスクリプティングの脆弱性が存在します。 ・クロスサイトスクリプティング (CWE-79) - CVE-2021-20742 ・クロスサイトスクリプティング (CWE-79) - CVE-2021-20743 ・クロスサイトスクリプティング (CWE-79) - CVE-2021-20744  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "株式会社イーシーキューブ",
+      "product_name": "カテゴリコンテンツプラグイン",
+      "version_number": [
+        "EC-CUBE 3.0 用プラグイン バージョン1.0.1 より前のバージョン(CVE-2021-20744)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lockon:category_contents_plugin"
+      }
+    },
+    {
+      "name": "株式会社イーシーキューブ",
+      "product_name": "メルマガ管理プラグイン",
+      "version_number": [
+        "EC-CUBE 3.0 用プラグイン バージョン1.0.4 より前のバージョン(CVE-2021-20743)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lockon:mail_magazine_management_plugin"
+      }
+    },
+    {
+      "name": "株式会社イーシーキューブ",
+      "product_name": "帳票出力プラグイン",
+      "version_number": [
+        "EC-CUBE 3.0 用プラグイン バージョン1.0.1 より前のバージョン(CVE-2021-20742)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lockon:form_output_plugin"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。 ・当該製品で作成された EC サイトにおいて、攻撃者が特定の入力欄にスクリプトを入力することにより、EC サイトの管理者のウェブブラウザ上で任意のスクリプトが実行される - CVE-2021-20742 ・攻撃者が当該製品のユーザを細工したページに誘導し、特定の操作を実行させることにより、ユーザのウェブブラウザ上で任意のスクリプトが実行される - CVE-2021-20743 ・攻撃者が当該製品の管理者またはユーザを細工したページに誘導し、特定の操作を実行させることにより、管理者またはユーザのウェブブラウザ上で任意のスクリプトが実行される - CVE-2021-20744"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "EC-CUBE",
+      "vulinfo_id": "メルマガ管理プラグイン",
+      "url": "https://www.ec-cube.net/products/detail.php?product_id=960"
+    },
+    {
+      "type": "vendor",
+      "name": "EC-CUBE",
+      "vulinfo_id": "カテゴリコンテンツプラグイン",
+      "url": "https://www.ec-cube.net/products/detail.php?product_id=1070"
+    },
+    {
+      "type": "vendor",
+      "name": "EC-CUBE",
+      "vulinfo_id": "帳票出力プラグイン",
+      "url": "https://www.ec-cube.net/products/detail.php?product_id=959"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20743",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20743"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20744",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20744"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20742",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20742"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 注意喚起",
+      "vulinfo_id": "複数のEC-CUBE 3.0系用プラグインにおけるクロスサイトスクリプティングの脆弱性に関する注意喚起",
+      "url": "https://www.jpcert.or.jp/at/2021/at210028.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#57524494",
+      "url": "https://jvn.jp/jp/JVN57524494/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-06-15T01:40:56Z",
+      "description": "[2021年06月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-06-16T12:00:45+09:00",
+  "date_last_updated": "2021-06-16T12:00:45+09:00",
+  "date_public": "2021-06-16T00:00:00+09:00"
+}

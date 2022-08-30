@@ -1,0 +1,138 @@
+{
+  "vulinfo_id": "JVNDB-2015-000066",
+  "title": "BGA32.DLL および QBga32.DLL における複数の脆弱性",
+  "vulinfo_description": "BGA32.DLL は、gza、bza 形式のファイルを圧縮・展開するためのライブラリです。BGA32.DLL には、旧バージョンの zlib ライブラリおよび bzip2 ライブラリの使用に起因するバッファオーバーフローの問題を含む複数の脆弱性が存在します。 また、BGA32.DLL のラッパ DLL である QBga32.DLL も、本脆弱性の影響を受けます。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 近藤和宏 氏 ",
+  "affected": [
+    {
+      "name": "Kazuhiro Inaba",
+      "product_name": "QBga32.DLL",
+      "version_number": [
+        "version 0.04 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:kazuhiro_inaba_qbga32.dll"
+      }
+    },
+    {
+      "name": "木村利靖",
+      "product_name": "BGA32.DLL",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:toshinobu_kimura_bga32.dll"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、細工されたファイルを展開することで、サービス運用妨害 (DoS) 攻撃を受けたり、任意のコードを実行されたりするなどの可能性があります。 "
+  },
+  "solution": "[最新版の QBga32.DLL を使用する] 本脆弱性は、BGA32.DLL のラッパ DLL である QBga32.DLL version 0.05 で修正されています。  [BGA32.DLL を使用しない] BGA32.DLL の開発および配布は既に終了しています。BGA32.DLL の使用を停止してください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Kazuhiro Inaba",
+      "vulinfo_id": "QBga32.DLL",
+      "url": "http://www.kmonos.net/lib/qbga32.ja.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Toshinobu Kimura",
+      "vulinfo_id": "Common Archivers Library: BGA32.DLL",
+      "url": "http://www.madobe.net/archiver/lib/bga32.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0953",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0953"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-1260",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1260"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-1849",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1849"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-2096",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2096"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0107",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0107"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#78689801",
+      "url": "https://jvn.jp/jp/JVN78689801/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0107",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2003-0107"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0953",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2005-0953"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-1260",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2005-1260"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-1849",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2005-1849"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-2096",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2005-2096"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年05月19日]\\n  掲載\\n[2015年05月22日]\\n  共通脆弱性識別子(CVE)：CVE-2003-0107 を追加\\n  共通脆弱性識別子(CVE)：CVE-2005-0953 を追加\\n  共通脆弱性識別子(CVE)：CVE-2005-1260 を追加\\n  共通脆弱性識別子(CVE)：CVE-2005-1849 を追加\\n  共通脆弱性識別子(CVE)：CVE-2005-2096 を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2003-0107) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2005-0953) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2005-1260) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2005-1849) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2005-2096) を追加"
+    }
+  ],
+  "date_first_published": "2015-05-19T12:03:13+09:00",
+  "date_last_updated": "2015-05-22T14:25:53+09:00",
+  "date_public": "2015-05-19T00:00:00+09:00"
+}

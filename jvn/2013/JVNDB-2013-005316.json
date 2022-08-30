@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2013-005316",
+  "title": "Linux Kernel の XFS の実装におけるバッファアンダーフローの脆弱性",
+  "vulinfo_description": "Linux Kernel の XFS の実装には、fs/xfs/xfs_ioctl.c の xfs_attrlist_by_handle 関数および fs/xfs/xfs_ioctl32.c の xfs_compat_attrlist_by_handle 関数に関する処理に不備があるため、バッファアンダーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.12.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された length 値を持つ (1) XFS_IOC_ATTRLIST_BY_HANDLE または (2) XFS_IOC_ATTRLIST_BY_HANDLE_32 ioctl コールについての CAP_SYS_ADMIN ケーパビリティを利用されることで、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1033603",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1033603"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6382",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6382"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6382",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6382"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[patch] xfs: underflow bug in xfs_attrlist_by_handle()",
+      "url": "http://www.spinics.net/lists/xfs/msg23343.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-11-28T18:27:23+09:00",
+  "date_last_updated": "2013-11-28T18:27:23+09:00",
+  "date_public": "2013-10-31T00:00:00+09:00"
+}

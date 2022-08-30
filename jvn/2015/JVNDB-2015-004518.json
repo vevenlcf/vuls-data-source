@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2015-004518",
+  "title": "Linux Kernel の udp_recvmsg および udpv6_recvmsg 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の (1) udp_recvmsg および (2) udpv6_recvmsg 関数は、不適切な -EAGAIN の戻り値を返すため、サービス運用妨害 (EPOLLET epoll のアプリケーションの読み込み停止) 状態にされる脆弱性が存在します。  本脆弱性は、CVE-2015-5364 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.0.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、UDP パケット内の不正なチェックサムを介して、サービス運用妨害 (EPOLLET epoll のアプリケーションの読み込み停止) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.0.6",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.0.6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "udp: fix behavior of wrong checksums",
+      "url": "https://github.com/torvalds/linux/commit/beb39db59d14990e401e235faf66a6b9b31240b0"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "udp: fix behavior of wrong checksums",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=beb39db59d14990e401e235faf66a6b9b31240b0"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1239029",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1239029"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5366",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5366"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5366",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5366"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年09月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-09-01T18:00:36+09:00",
+  "date_last_updated": "2015-09-01T18:00:36+09:00",
+  "date_public": "2015-06-22T00:00:00+09:00"
+}

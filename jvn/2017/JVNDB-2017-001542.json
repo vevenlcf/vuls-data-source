@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2017-001542",
+  "title": "GStreamer の gst-plugins-ugly の gst/asfdemux/gstasfdemux.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "GStreamer の gst-plugins-ugly の gst/asfdemux/gstasfdemux.c の gst_asf_demux_process_ext_content_desc 関数には、サービス運用妨害 (境界外ヒープ読み取り) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GStreamer",
+      "product_name": "GStreamer",
+      "version_number": [
+        "1.10.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gstreamer_project:gstreamer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、拡張されたコンテンツのディスクリプタに関する問題によって、サービス運用妨害 (境界外ヒープ読み取り) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "asfdemux: Check that we have enough data available before parsing bool/uint extended content descriptors",
+      "url": "https://github.com/GStreamer/gst-plugins-ugly/commit/d21017b52a585f145e8d62781bcc1c5fefc7ee37"
+    },
+    {
+      "type": "vendor",
+      "name": "GNOME Bugzilla",
+      "vulinfo_id": "Bug 777955",
+      "url": "https://bugzilla.gnome.org/show_bug.cgi?id=777955#c3"
+    },
+    {
+      "type": "vendor",
+      "name": "GStreamer",
+      "vulinfo_id": "Major bugfixes in 1.10.4",
+      "url": "https://gstreamer.freedesktop.org/releases/1.10/#1.10.4"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5847",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5847"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5847",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5847"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-125",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "title": "境界外読み取り"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年02月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-02-24T16:55:52+09:00",
+  "date_last_updated": "2017-02-24T16:55:52+09:00",
+  "date_public": "2017-02-23T00:00:00+09:00"
+}

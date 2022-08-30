@@ -1,0 +1,108 @@
+{
+  "vulinfo_id": "JVNDB-2015-007121",
+  "title": "Varnish における任意の HTTP ヘッダを挿入される脆弱性",
+  "vulinfo_description": "Varnish には、特定のスタックしたインストールに使用される場合、任意の HTTP ヘッダを挿入され、HTTP レスポンス分割攻撃を実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers (HTTP レスポンスの分割) と識別されています。 http://cwe.mitre.org/data/definitions/113.html",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "varnish-cache.org",
+      "product_name": "Varnish Cache",
+      "version_number": [
+        "3.0.7 未満の 3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:varnish-cache:varnish"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、HTTP リクエストの複数の Content-Length ヘッダに関連した \\r (キャリッジリターン）文字で終了されているヘッダラインを介して、任意の HTTP ヘッダを挿入され、HTTP レスポンス分割攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3553",
+      "url": "http://www.debian.org/security/2016/dsa-3553"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Check for duplicate Content-Length headers in requests",
+      "url": "https://github.com/varnish/Varnish-Cache/commit/29870c8fe95e4e8a672f6f28c5fbe692bea09e9c"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Do not consider a CR by itself as a valid line terminator",
+      "url": "https://github.com/varnish/Varnish-Cache/commit/85e8468bec9416bd7e16b0d80cb820ecd2b330c3"
+    },
+    {
+      "type": "vendor",
+      "name": "Varnish Cache",
+      "vulinfo_id": "Varnish 3.0.7 released.",
+      "url": "https://www.varnish-cache.org/lists/pipermail/varnish-announce/2015-March/000701.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8852",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8852"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8852",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8852"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T11:17:30+09:00",
+  "date_last_updated": "2016-05-10T11:17:30+09:00",
+  "date_public": "2015-03-23T00:00:00+09:00"
+}

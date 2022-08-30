@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2015-007154",
+  "title": "PHP の Fileinfo コンポーネントで使用される file の softmagic.c の mcopy 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "PHP の Fileinfo コンポーネントで使用される file の softmagic.c の mcopy 関数は、特定のオフセット値を適切に制限しないため、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "file project",
+      "product_name": "file",
+      "version_number": [
+        "5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:file_project:file"
+      }
+    },
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.40 未満",
+        "5.5.24 未満の 5.5.x",
+        "5.6.8 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、\"Python script text executable\" ルールによって誤って処理される巧妙に細工された文字列を介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #68819",
+      "url": "https://bugs.php.net/bug.php?id=68819"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Fix bug #68819 (Fileinfo on specific file causes spurious OOM and/or segfault)",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=f938112c495b0d26572435c0be73ac0bfe642ecd"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4605",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4605"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4605",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4605"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-19T17:42:30+09:00",
+  "date_last_updated": "2016-05-19T17:42:30+09:00",
+  "date_public": "2015-04-16T00:00:00+09:00"
+}

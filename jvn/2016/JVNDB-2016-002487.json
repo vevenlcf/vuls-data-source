@@ -1,0 +1,217 @@
+{
+  "vulinfo_id": "JVNDB-2016-002487",
+  "title": "Linux Kernel の drivers/usb/misc/iowarrior.c の iowarrior_probe 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/usb/misc/iowarrior.c の iowarrior_probe 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.5.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Debuginfo",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:linux_enterprise_debuginfo"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Desktop",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_desktop"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Live Patching",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:suse_linux_enterprise_live_patching"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Module for Public Cloud",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:suse_linux_enterprise_module_for_public_cloud"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Real Time Extension",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_real_time_extension"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_server"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Software Development Kit",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_software_development_kit"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Workstation Extension",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_workstation_extension"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "CVSS:3.0/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "物理的に端末の操作が可能な攻撃者により、USB デバイス記述子の巧妙に細工されたエンドポイント値を介して、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.5.1",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.5.1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "USB: iowarrior: fix oops with malicious USB descriptors",
+      "url": "https://github.com/torvalds/linux/commit/4ec0ef3a82125efc36173062a50624550a900ae0"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "USB: iowarrior: fix oops with malicious USB descriptors",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4ec0ef3a82125efc36173062a50624550a900ae0"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1707",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00059.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1764",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-07/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1672",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00052.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1690",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00054.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1696",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00056.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1317018",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1317018"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2996-1",
+      "url": "http://www.ubuntu.com/usn/USN-2996-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2997-1",
+      "url": "http://www.ubuntu.com/usn/USN-2997-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2188",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2188"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2188",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2188"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月11日]\\n  掲載\\n[2016年10月27日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Canonical (USN-2996-1) を追加\\n  ベンダ情報：Canonical (USN-2997-1) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1672) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1690) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1696) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1707) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1764) を追加"
+    }
+  ],
+  "date_first_published": "2016-05-11T16:57:09+09:00",
+  "date_last_updated": "2016-10-27T18:07:07+09:00",
+  "date_public": "2016-04-12T00:00:00+09:00"
+}

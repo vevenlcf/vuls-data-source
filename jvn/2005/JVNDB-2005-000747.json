@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2005-000747",
+  "title": "Cisco IOS のMD5 ハッシュ値を含む EIGRP が盗聴される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Cisco IOS には、ルーティング・プロトコルとして Cisco 独自の拡張ディスタンスベクタープロトコル EIGRP (Enhanced Interior Gateway Routing Protocol) を実装されています。   Cisco IOS に実装される EIGRP では、以下の複数の問題が存在します。   1) EIGRP ルーティング・プロセスが終了する際に隣接関係にあるデバイスに通知される Goodbye Message の取扱いが不適切である問題が存在します。   リモートの攻撃者により、意図的に作成された Goodbye Message が送信された場合、デバイスとの隣接関係が失われてしまう可能性があります。   2) 認証された EIGRP パケットの検証方法に不備が存在するため、MD5 ハッシュ値を含む EIGRP パケットを盗聴し、そのハッシュ値を再利用可能となる問題が存在します。   リモートの攻撃者により、不正な EIGRP HELLO パケットが標的デバイスに送信された場合、標的デバイスからの応答により EIGRP ドメインに関する情報を取得されてしまう可能性があります。  また、BID 6443 の問題と同様に、ネットワーク帯域を ARP リクエストで使い果たさせ、結果的にネットワークが利用不能となる可能性があります。",
+  "affected": [
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IOS",
+      "version_number": [
+        "12.0 ",
+        "12.1 ",
+        "12.2 ",
+        "12.3 ",
+        "12.4 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:cisco:ios"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Notice",
+      "vulinfo_id": "cisco-response-20051220-eigrp",
+      "url": "http://www.cisco.com/warp/public/707/cisco-response-20051220-eigrp.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-4437",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4437"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2005-3008",
+      "url": "http://www.frsirt.com/english/advisories/2005/3008"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-4437",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-4437"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "15978",
+      "url": "http://www.securityfocus.com/bid/15978"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "15970",
+      "url": "http://www.securityfocus.com/bid/15970"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-12-20T00:00:00+09:00"
+}

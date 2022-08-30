@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2015-001001",
+  "title": "Intel BIOS ロッキングメカニズムに競合状態の脆弱性",
+  "vulinfo_description": "BIOS ロッキングメカニズムとして BIOS_CNTL.BIOSWE と BIOS_CNTL.BLE のみを使用する Intel Corporation 製チップセットには、競合状態の脆弱性 (CWE-362) が存在します。  CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition') http://cwe.mitre.org/data/definitions/362.html  MITRE の Corey Kallenberg 氏は次のように述べています。  　\"When the BIOS_CNTL.BIOSWE bit is set to 1, the BIOS is made writable. Also contained with the BIOS_CNTL register is the BIOS_CNTL.BLE (\"BIOS Lock Enable\"). When BIOS_CNTL.BLE is set to 1, attempts to write enable the BIOS by setting BIOS_CNTL.BIOSWE to 1 will immediately generate a System Management Interrupt (SMI). It is the job of this SMI to determine whether or not it is permissible to write enable to the BIOS, and if not, immediately set BIOS_CNTL.BIOSWE back to 0; the end result being that the BIOS is not writable.\"  本脆弱性は、BIOS_CNTL.BIOSWE が 1 に設定されてから、SMI によって 0 に戻されるまでの間、BIOS への書き込みを可能にします。",
+  "affected": [
+    {
+      "name": "（複数のベンダ）",
+      "product_name": "（複数の製品）",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:multiple_vendors"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:L/AC:H/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "システムに物理アクセス可能なユーザによって、ファームウェアに悪意あるコードを書き込まれる可能性があります。また、SPI フラッシュの UEFI Variable 領域が、書き込み保護に BIOS_CNTL.BIOSLE のみを使用している場合、UEFI Secure Boot をバイパスされる可能性があります。さらに、ファームウェアを破壊されたり、システムを停止させられたりする可能性があります。"
+  },
+  "solution": "開発者が提供する情報や CERT/CC Vulnerability Note VU#766164 の Vendor Information に掲載されている情報を参考に、対策方法を検討してください。CERT/CC では、本脆弱性について開発者との調整を進めています。  VU#766164 の Vendor Information http://www.kb.cert.org/vuls/id/766164#vendors",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Intel",
+      "vulinfo_id": "Intel 8 Series/C220 Series Chipset Family Platform Controller Hub (PCH)",
+      "url": "http://www.intel.com/content/dam/www/public/us/en/documents/datasheets/8-series-chipset-pch-datasheet.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Intel",
+      "vulinfo_id": "Intel 6 Series Chipset/Intel C200 Series Chipset: Datasheet",
+      "url": "http://www.intel.com/content/www/us/en/chipsets/6-chipset-c200-chipset-datasheet.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8273",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8273"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96159942",
+      "url": "http://jvn.jp/vu/JVNVU96159942/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#766164",
+      "url": "http://www.kb.cert.org/vuls/id/766164"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-01-07T16:46:31+09:00",
+  "date_last_updated": "2015-01-07T16:46:31+09:00",
+  "date_public": "2015-01-05T00:00:00+09:00"
+}

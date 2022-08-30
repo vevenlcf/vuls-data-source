@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2007-006468",
+  "title": "RunCMS における任意の PHP コード挿入される脆弱性",
+  "vulinfo_description": "RunCMS は、直接静的コードを挿入される、および modules/ 配下の以下のスクリプトに PHP シーケンスを挿入される不備があるため、任意の PHP コード挿入される脆弱性が存在します。 (a) sections/cache/intro.php (b) mylinks/cache/disclaimer.php (c) mydownloads/cache/disclaimer.php (d) newbb_plus/cache/disclaimer.php (e) system/cache/disclaimer.php (f) system/cache/footer.php (g) system/cache/header.php (h) system/cache/maintenance.php",
+  "affected": [
+    {
+      "name": "runcms",
+      "product_name": "runcms",
+      "version_number": [
+        "1.6.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:runcms:runcms"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証された管理者により、以下のパラメータを介して、任意の PHP コード挿入される可能性があります。 (1) meta-generator アクションの modules/system/admin.php への header パラメータ (2) meta-generator アクションの modules/system/admin.php への footer パラメータ (3) disclaimer アクションの modules/system/admin.php への disclaimer パラメータ (4) mydownloadsConfigAdmin アクションの modules/mydownloads/admin/index.php への disclaimer パラメータ (5) modules/newbb_plus/admin/forum_config.php への disclaimer パラメータ (6) myLinksConfigAdmin アクションの modules/mylinks/admin/index.php への disclaimer パラメータ (7) secconfig アクションの modules/sections/admin/index.php への intro パラメータ"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "runcms",
+      "vulinfo_id": "Runcms 1.6.1",
+      "url": "http://linux.softpedia.com/get/Information-Management/Runcms-6706.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-6548",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6548"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-6548",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-6548"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T18:34:03+09:00",
+  "date_last_updated": "2012-12-20T18:34:03+09:00",
+  "date_public": "2007-12-27T00:00:00+09:00"
+}

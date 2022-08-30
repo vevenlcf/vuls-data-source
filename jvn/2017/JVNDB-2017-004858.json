@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2017-004858",
+  "title": "mruby の gc.c の mark_context_stack 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "mruby の gc.c の mark_context_stack 関数には、サービス運用妨害 (ヒープベースの解放済みメモリの使用 (use-after-free) およびアプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "mruby project",
+      "product_name": "mruby",
+      "version_number": [
+        "1.2.0 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mruby_project:mruby"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された .rb ファイルを介して、サービス運用妨害 (ヒープベースの解放済みメモリの使用 (use-after-free) およびアプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Clear unused stack region that may refer freed objects; fix #3596",
+      "url": "https://github.com/mruby/mruby/commit/5c114c91d4ff31859fcd84cf8bf349b737b90d99"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Heap use-after-free in mark_context_stack #3486",
+      "url": "https://github.com/mruby/mruby/issues/3486"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-9527",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9527"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-9527",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-9527"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-416",
+      "url": "https://cwe.mitre.org/data/definitions/416.html",
+      "title": "解放済みメモリの使用"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年07月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-07-10T15:51:41+09:00",
+  "date_last_updated": "2017-07-10T15:51:41+09:00",
+  "date_public": "2017-04-10T00:00:00+09:00"
+}

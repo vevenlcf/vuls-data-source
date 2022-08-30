@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2008-004264",
+  "title": "Undernet ircu などの s_user.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "(1) Undernet ircu、(2) snircd などの ircu デリバティブの s_user.c の send_user_mode 関数には、サービス運用妨害 (デーモンクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ircu",
+      "product_name": "ircu",
+      "version_number": [
+        "2.10.12.12 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ircu:ircu"
+      }
+    },
+    {
+      "name": "quakenet",
+      "product_name": "snircd",
+      "version_number": [
+        "1.3.4 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:quakenet:snircd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、不正な形式の MODE コマンドを介して、サービス運用妨害 (デーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ircu",
+      "vulinfo_id": "ircu",
+      "url": "http://ircu.sourceforge.net/"
+    },
+    {
+      "type": "vendor",
+      "name": "quakenet",
+      "vulinfo_id": "snircd / changeset",
+      "url": "http://hg.quakenet.org/snircd/rev/2da2b881d9f5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-1501",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1501"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-1501",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1501"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:16:50+09:00",
+  "date_last_updated": "2012-09-25T17:16:50+09:00",
+  "date_public": "2008-03-25T00:00:00+09:00"
+}

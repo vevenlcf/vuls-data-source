@@ -1,0 +1,108 @@
+{
+  "vulinfo_id": "JVNDB-2013-004407",
+  "title": "pyOpenSSL の X509Extension における任意の SSL サーバになりすまされる脆弱性",
+  "vulinfo_description": "pyOpenSSL の X509Extension は、X.509 証明書の Subject Alternative Name フィールド内のドメイン名に含まれる '\\0' 文字を適切に処理しないため、任意の SSL サーバになりすまされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "12.04 LTS",
+        "12.10",
+        "13.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Jean-Paul Calderone",
+      "product_name": "pyOpenSSL",
+      "version_number": [
+        "0.13.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:jean-paul_calderone:pyopenss"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、巧妙に細工された正規の認証局より発行された証明書を介して、任意の SSL サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2763",
+      "url": "http://www.debian.org/security/2013/dsa-2763"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1648",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-11/msg00015.html"
+    },
+    {
+      "type": "vendor",
+      "name": "pyOpenSSL-Users",
+      "vulinfo_id": "pyOpenSSL 0.13.1",
+      "url": "https://mail.python.org/pipermail/pyopenssl-users/2013-September/000478.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1005325",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1005325"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1965-1",
+      "url": "http://www.ubuntu.com/usn/USN-1965-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4314",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4314"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4314",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4314"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月02日]\\n  掲載\\n[2013年11月11日]\\n  ベンダ情報：Debian (DSA-2763) を追加\\n[2013年12月26日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:1648) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-02T20:02:14+09:00",
+  "date_last_updated": "2013-12-26T18:05:14+09:00",
+  "date_public": "2013-09-04T00:00:00+09:00"
+}

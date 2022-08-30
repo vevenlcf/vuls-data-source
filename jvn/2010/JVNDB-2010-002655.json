@@ -1,0 +1,145 @@
+{
+  "vulinfo_id": "JVNDB-2010-002655",
+  "title": "ISC DHCP にサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ISC DHCP サーバには、サービス運用妨害 (DoS) の脆弱性が存在します。  ISC から、以下の脆弱性情報が公開されています。  If a TCP connection is established to the server on a port which has been configured for communication with a failover peer, this can cause it to become non-responsive to all normal DHCP protocol traffic. The server will progress to a communications-interrupted state - but in addition will also cease to provide DHCP services to clients. The server must be restarted to resume normal operation.  This can be used as an attack vector against servers that are configured for failover partnerships.",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "ISC DHCP",
+      "version_number": [
+        "サーバ 4.2.0 および 4.2.0-P1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:dhcp"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "2.0  (延長メンテナンス)",
+        "3.0  ",
+        "3.0 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  (延長メンテナンス)",
+        "10 (x64) (延長メンテナンス)",
+        "11  ",
+        "11 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、サービス運用妨害 (DoS) を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] この問題は、使用している OS のベンダや配布元が提供する修正済みのバージョンに更新することで解決します。詳細については、ベンダや配布元が提供する情報を参照してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Internet Systems Consortium Security Advisory",
+      "vulinfo_id": "Guidance on the 10 Dec 2010 DHCP Security Advisory",
+      "url": "http://www.isc.org/announcement/guidance-10-dec-2010-dhcp-security-advisory"
+    },
+    {
+      "type": "vendor",
+      "name": "Knowledge Base",
+      "vulinfo_id": "CVE-2010-3616: DHCP: Server Hangs with TCP to Failover Peer Port",
+      "url": "https://www.isc.org/software/dhcp/advisories/cve-2010-3616"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2011-16",
+      "url": "http://www.turbolinux.co.jp/security/2011/TLSA-2011-16j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-3616",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3616"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#159528",
+      "url": "http://jvn.jp/cert/JVNVU159528"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-3616",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3616"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42618",
+      "url": "http://secunia.com/advisories/42618"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "45360",
+      "url": "http://www.securityfocus.com/bid/45360"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024862",
+      "url": "http://www.securitytracker.com/id?1024862"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#159528",
+      "url": "http://www.kb.cert.org/vuls/id/159528"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-3208",
+      "url": "http://www.vupen.com/english/advisories/2010/3208"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年01月19日]\\n  掲載\\n[2011年06月10日]\\n  影響を受けるシステム：ターボリナックス (TLSA-2011-16) の情報を追加\\n  ベンダ情報：ターボリナックス (TLSA-2011-16) を追加"
+    }
+  ],
+  "date_first_published": "2011-01-19T15:46:08+09:00",
+  "date_last_updated": "2011-06-10T10:04:00+09:00",
+  "date_public": "2010-12-14T00:00:00+09:00"
+}

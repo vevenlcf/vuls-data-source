@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2016-006529",
+  "title": "Cirrus CLGD 54xx VGA Emulator サポートでビルドされた Quick Emulator におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Cirrus CLGD 54xx VGA Emulator サポートでビルドされた Quick Emulator (Qemu) には、Cirrus のグラフィックスモードの設定が VGA の場合、VGA データをコピーする際、ゼロ除算エラーにより、サービス運用妨害 (ホストの Qemu プロセスクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ゲストの特権付きユーザにより、サービス運用妨害 (ホストの Qemu プロセスクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "display: cirrus: check vga bits per pixel(bpp) value",
+      "url": "http://git.qemu.org/?p=qemu.git;a=commit;h=4299b90e9ba9ce5ca9024572804ba751aa1a7e70"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PULL 4/4] display: cirrus: check vga bits per pixel(bpp) value",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00442.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH] display: cirrus: check vga bits per pixel(bpp) value",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg03968.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9921",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9921"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9921",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9921"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-369",
+      "url": "https://cwe.mitre.org/data/definitions/369.html",
+      "title": "ゼロ除算"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-10T17:32:08+09:00",
+  "date_last_updated": "2017-01-10T17:32:08+09:00",
+  "date_public": "2016-12-05T00:00:00+09:00"
+}

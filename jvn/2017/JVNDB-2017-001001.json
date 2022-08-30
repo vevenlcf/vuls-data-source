@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2017-001001",
+  "title": "スマートフォンアプリ「ShoreTel Mobility Client」に SSL サーバ証明書の検証不備の脆弱性",
+  "vulinfo_description": "スマートフォンアプリ「ShoreTel Mobility Client」は、HTTPS 通信で使用される SSL サーバ証明書を正しく検証しないため、中間者攻撃 (man-in-the-middle attack) が行われる可能性があります。",
+  "affected": [
+    {
+      "name": "ShoreTel, Inc.",
+      "product_name": "ShoreTel Mobility Client",
+      "version_number": [
+        "(Android 版) version 9.1.3.109 およびそれ以前",
+        "(iOS 版) version 9.1.5.104 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mitel:shortel_mobility_client"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.8",
+        "vector": "AV:A/AC:L/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+      }
+    ],
+    "impact_item": "当該アプリが動作する iOS デバイスと同一のネットワークに接続している攻撃者によって、HTTPS 通信の内容を盗聴されたり改ざんされたりする可能性があります。結果として、サーバにログインする際の認証情報など、機微な情報を取得される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は iOS アプリにおいては本脆弱性を修正した version 9.1.5.104 をリリースしています。 ただし、2017年2月8日現在、Android アプリの修正版は リリースされていないようです。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　　* 公共 Wi-Fi を含め、信頼できないネットワークに接続しない ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "App Store",
+      "vulinfo_id": "ShoreTel Mobility Client",
+      "url": "https://itunes.apple.com/us/app/shoretel-mobility-client/id479054518"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6562",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6562"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92879974",
+      "url": "http://jvn.jp/vu/JVNVU92879974/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6562",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-6562"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#475907",
+      "url": "http://www.kb.cert.org/vuls/id/475907"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-295",
+      "url": "https://cwe.mitre.org/data/definitions/295.html",
+      "title": "不正な証明書検証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月05日]\\n  掲載\\n[2017年02月15日]\\n  タイトル：内容を更新\\n  概要：内容を更新\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-05T07:49:49Z",
+      "description": "[2019年07月05日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-6562) を追加"
+    }
+  ],
+  "date_first_published": "2017-01-05T12:09:51+09:00",
+  "date_last_updated": "2019-07-05T16:50:41+09:00",
+  "date_public": "2017-01-03T00:00:00+09:00"
+}

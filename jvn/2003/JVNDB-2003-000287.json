@@ -1,0 +1,338 @@
+{
+  "vulinfo_id": "JVNDB-2003-000287",
+  "title": "OpenSSL における 不正な ASN.1 構造体によるメモリ二重開放の脆弱性",
+  "vulinfo_description": "OpenSSL の ASN.1 (Abstract Syntax Notation number One) 構造体 (ASN1_TYPE) の解釈部において、構造体用に確保したメモリの開放処理の不備があり、スタック内の値を破壊されてしまう脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.7b およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Application Server",
+      "version_number": [
+        "1.0.2.2",
+        "1.0.2.2s",
+        "9.0.2",
+        "9.0.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:application_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Database",
+      "version_number": [
+        "8.1.7",
+        "9.0.1",
+        "9.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:database_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle HTTP Server",
+      "version_number": [
+        "8.1.7",
+        "9.0.1",
+        "9.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:http_server"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "1.1 ",
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IOS",
+      "version_number": [
+        "12.1 ",
+        "12.2 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:cisco:ios"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco PIX Firewall",
+      "version_number": [
+        "6.0  ",
+        "6.1  ",
+        "6.2  ",
+        "6.3  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:pix_firewall"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.11 ",
+        "11.22 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX Apache-based Web Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:hp:apache-based_web_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "OpenSSL がサービス運用妨害 (DoS) 状態となる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20030930-ssl",
+      "url": "http://www.cisco.com/warp/public/707/cisco-sa-20030930-ssl.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX00288",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=c00891831"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX00290",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0310-290"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0310-284",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0310-284"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0310-284",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0310-284.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX00290",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0310-290.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "openssl",
+      "url": "http://www.miraclelinux.com/support/update/data/openssl.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "secadv_20030930",
+      "url": "http://www.openssl.org/news/secadv_20030930.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Security Alert",
+      "vulinfo_id": "#62",
+      "url": "http://otn.oracle.com/deploy/security/pdf/2003alert62.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "OTN セキュリティ・アラート",
+      "vulinfo_id": "#62",
+      "url": "http://support.oracle.co.jp/open/owa/external_krown.search_doc?c_document_id=70482"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:292",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-292.html"
+    },
+    {
+      "type": "vendor",
+      "name": "シスコ セキュリティアドバイザリ",
+      "vulinfo_id": "cisco-sa-20030930-ssl",
+      "url": "http://www.cisco.com/japanese/warp/public/3/jp/service/tac/707/cisco-sa-20030930-ssl-j.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:292",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-292J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT Advisory",
+      "vulinfo_id": "CA-2003-26",
+      "url": "http://www.cert.org/advisories/CA-2003-26.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "N-159",
+      "url": "http://www.ciac.org/ciac/bulletins/n-159.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "O-065",
+      "url": "http://www.ciac.org/ciac/bulletins/o-065.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0545",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0545"
+    },
+    {
+      "type": "advisory",
+      "name": "CPNI Vulnerability Advisory",
+      "vulinfo_id": "00753",
+      "url": "http://www.cpni.gov.uk/Products/vulnerabilitydisclosures/default.aspx?id=va-20031104-00753.xml"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "13315",
+      "url": "http://xforce.iss.net/xforce/xfdb/13315"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNCA-2003-26",
+      "url": "http://jvn.jp/cert/JVNCA-2003-26"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRCA-2003-26",
+      "url": "http://jvn.jp/tr/TRCA-2003-26"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0545",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0545"
+    },
+    {
+      "type": "advisory",
+      "name": "NISCC Vulnerability Advisory",
+      "vulinfo_id": "006489/OpenSSL",
+      "url": "http://www.cpni.gov.uk/docs/re-20031104-00753.pdf?lang=en"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "8732",
+      "url": "http://www.securityfocus.com/bid/8732"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#732952",
+      "url": "http://www.kb.cert.org/vuls/id/732952"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#104280",
+      "url": "http://www.kb.cert.org/vuls/id/104280"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#935264",
+      "url": "http://www.kb.cert.org/vuls/id/935264"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#686224",
+      "url": "http://www.kb.cert.org/vuls/id/686224"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "OpenSSLの脆弱性について(9/30)",
+      "url": "http://www.cyberpolice.go.jp/important/20031001_103420.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-09-30T00:00:00+09:00"
+}

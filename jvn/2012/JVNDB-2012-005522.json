@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2012-005522",
+  "title": "Xen の Transcendent Memory におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Xen の Transcendent Memory (TMEM) 内の下記の関数は、無効な ID プールを確認しないため、サービス運用妨害 (メモリの破損およびホストクラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。  (1) memc_save_get_next_page (2) tmemc_restore_put_page (3) tmemc_restore_flush_page  当初 CVE-2012-3497 の一部として発行された本問題は、CVE-2012-6036 を含む複数の CVE 識別番号に分割されています。",
+  "affected": [
+    {
+      "name": "シトリックス・システムズ",
+      "product_name": "Xen",
+      "version_number": [
+        "4.0",
+        "4.1",
+        "4.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:citrix:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルゲスト OS ユーザにより、サービス運用妨害 (メモリの破損およびホストクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Security Announcements",
+      "vulinfo_id": "XSA-15 multiple TMEM hypercall vulnerabilities",
+      "url": "http://wiki.xen.org/wiki/Security_Announcements#XSA-15_multiple_TMEM_hypercall_vulnerabilities"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen-announce",
+      "vulinfo_id": "Xen Security Advisory 15 (CVE-2012-3497) - multiple TMEM hypercall vulnerabilities",
+      "url": "http://lists.xen.org/archives/html/xen-announce/2012-09/msg00006.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-6036",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-6036"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-6036",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6036"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年11月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-11-27T16:48:13+09:00",
+  "date_last_updated": "2012-11-27T16:48:13+09:00",
+  "date_public": "2012-09-05T00:00:00+09:00"
+}

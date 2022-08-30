@@ -1,0 +1,191 @@
+{
+  "vulinfo_id": "JVNDB-2012-002392",
+  "title": "PHP の sapi/cgi/cgi_main.c における任意のコードを実行される脆弱性",
+  "vulinfo_description": "PHP の sapi/cgi/cgi_main.c は、CGI スクリプトとして設定される際、%3D 文字列を含み = (等号) 文字を含まないクエリ文字列を適切に処理しないため、任意のコードを実行される脆弱性が存在します。  本脆弱性は、CVE-2012-1823 に対する修正が不十分だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.3.13 未満",
+        "5.4.3 未満の 5.4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.6.8",
+        "v10.7 から v10.7.4",
+        "v10.8",
+        "v10.8.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.6.8",
+        "v10.7 から v10.7.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP System Management Homepage",
+      "version_number": [
+        "7.2.0 およびそれ以前 (Linux および Windows)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:system_management_homepage"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX Web Server Suite",
+      "version_number": [
+        "3.24 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:hp-ux_web_server_suite"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、クエリ文字列内にコマンドラインオプションを配置することで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2012-09-19-2",
+      "url": "http://lists.apple.com/archives/security-announce/2012/Sep/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT5501",
+      "url": "http://support.apple.com/kb/HT5501"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT5501",
+      "url": "http://support.apple.com/kb/HT5501?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Support document",
+      "vulinfo_id": "HPSBUX02791 SSRT100856",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03368475"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Support document",
+      "vulinfo_id": "HPSBMU02900 SSRT100992",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03839862"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2012:0866",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-07/msg00027.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #61910",
+      "url": "https://bugs.php.net/bug.php?id=61910"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Return to Bug #61910",
+      "url": "https://bugs.php.net/patch-display.php?bug_id=61910\u0026patch=cgi.diff-fix-check.patch\u0026revision=1336093719\u0026display=1"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog - Version 5.4.3",
+      "url": "http://www.php.net/ChangeLog-5.php#5.4.3"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5.3.12 and PHP 5.4.2 Released!",
+      "url": "http://www.php.net/archive/2012.php#id2012-05-08-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2311",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2311"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#520827",
+      "url": "http://jvn.jp/cert/JVNVU520827/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#381963",
+      "url": "http://jvn.jp/cert/JVNVU381963/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2311",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2311"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#520827",
+      "url": "http://www.kb.cert.org/vuls/id/520827"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年05月14日]\\n  掲載\\n[2012年07月26日]\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02791 SSRT100856) を追加\\n[2012年10月16日]\\n  ベンダ情報：アップル (HT5501) を追加\\n[2014年02月06日]\\n  影響を受けるシステム：アップル (HT5501) の情報を追加\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBUX02791 SSRT100856) の情報を追加\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBMU02900 SSRT100992) の情報を追加\\n  ベンダ情報：The PHP Group (Sec Bug #61910) を追加\\n  ベンダ情報：The PHP Group (Return to Bug #61910) を追加\\n  ベンダ情報：アップル (APPLE-SA-2012-09-19-2) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU02900 SSRT100992) を追加"
+    }
+  ],
+  "date_first_published": "2012-05-14T16:26:53+09:00",
+  "date_last_updated": "2014-02-06T17:34:20+09:00",
+  "date_public": "2012-05-11T00:00:00+09:00"
+}

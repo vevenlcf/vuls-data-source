@@ -1,0 +1,299 @@
+{
+  "vulinfo_id": "JVNDB-2015-007651",
+  "title": "SNTP の ntp.d の ULOGTOD 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "SNTP の ntp.d の ULOGTOD 関数は、精度値 (precision value) のダブル型への変換を適切に実行しないため、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "NTP Project",
+      "product_name": "NTP",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntp:ntp"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Debuginfo",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:linux_enterprise_debuginfo"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_server"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Manager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:manager"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Manager Proxy",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:manager_proxy"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE OpenStack Cloud",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:openstack_cloud"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工された NTP パケットを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3388",
+      "url": "https://www.debian.org/security/2015/dsa-3388"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-14212",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-October/169167.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-77bfbc1bcd",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/170926.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-14213",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-September/166992.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "[Bug 2382] Implement LOGTOD using ldexp() instead of shifting",
+      "url": "https://github.com/ntp-project/ntp/commit/5f295cd05c3c136d39f5b3e500a2d781bdbb59c8"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM SECURITY ADVISORY",
+      "vulinfo_id": "Vulnerabilities in NTP affect AIX",
+      "url": "http://aix.software.ibm.com/aix/efixes/security/ntp_advisory4.asc"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1989542",
+      "url": "https://www-01.ibm.com/support/docview.wss?uid=swg21989542"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1988706",
+      "url": "https://www-01.ibm.com/support/docview.wss?uid=swg21988706"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1986956",
+      "url": "https://www-01.ibm.com/support/docview.wss?uid=swg21986956"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1985122",
+      "url": "https://www-01.ibm.com/support/docview.wss?uid=swg21985122"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "T1024157",
+      "url": "https://www-01.ibm.com/support/docview.wss?uid=isg3T1024157"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "MIGR-5099409",
+      "url": "https://www.ibm.com/support/home/docdisplay?lndocid=migr-5099409"
+    },
+    {
+      "type": "vendor",
+      "name": "NTP Project",
+      "vulinfo_id": "ntp-dev/1.2943 changes",
+      "url": "http://bk1.ntp.org/ntp-dev/?PAGE=patch\u0026REV=51786731Gr4-NOrTBC_a_uXO4wuGhg"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1311",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-05/msg00048.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:3280",
+      "url": "https://lists.opensuse.org/opensuse-updates/2016-12/msg00153.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1255118",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1255118"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:2583",
+      "url": "https://access.redhat.com/errata/RHSA-2016:2583"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0780",
+      "url": "https://access.redhat.com/errata/RHSA-2016:0780"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2783-1",
+      "url": "https://usn.ubuntu.com/usn/USN-2783-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5219",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5219"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96269392",
+      "url": "https://jvn.jp/vu/JVNVU96269392/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5219",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-5219"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-704",
+      "url": "https://cwe.mitre.org/data/definitions/704.html",
+      "title": "不正な型変換またはキャスト"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年08月15日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-06-16T05:07:24Z",
+      "description": "[2021年06月16日]\\n  参考情報：JVN (JVNVU#96269392) を追加"
+    }
+  ],
+  "date_first_published": "2017-08-15T17:15:50+09:00",
+  "date_last_updated": "2021-06-16T14:07:51+09:00",
+  "date_public": "2015-08-19T00:00:00+09:00"
+}

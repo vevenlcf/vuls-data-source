@@ -1,0 +1,160 @@
+{
+  "vulinfo_id": "JVNDB-2009-002359",
+  "title": "Linux Kernel における権限昇格の脆弱性",
+  "vulinfo_description": "Linux Kernel には、ゼロページおよび他の低メモリアドレスをターゲットとする mmap 操作が適切に制御されないため、権限昇格の脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.31-rc7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux EUS",
+      "version_number": [
+        "5.2.z (server) ",
+        "5.3.z (server) ",
+        "5.4.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_eus"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "下記に関連した Null ポインタデリファレンスの脆弱性を利用することによりローカルユーザに権限を取得される可能性があります。 ・Red Hat Enterprise Linux (RHEL) 5 上で稼動する SELinux における allow_unconfined_mmap_low ブール型のデフォルト設定 ・aunconfined_t ドメインにおける allow_unconfined_mmap_low が無視されるエラー ・mmap 操作の CAP_SYS_RAWIO ケーパビリティの要件不足 ・mmap_min_addr 保護メカニズムと特定のアプリケーションプログラムの相互作用"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-128.13AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=804"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.31",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.31"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1548",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1548.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1540",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1540.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1672",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1672.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1587",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1587.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1548",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1548J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-2695",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2695"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-2695",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-2695"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "36051",
+      "url": "http://www.securityfocus.com/bid/36051"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年12月28日]\\n  掲載\\n[2010年01月26日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-128.13AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-128.13AXS3) を追加"
+    }
+  ],
+  "date_first_published": "2009-12-28T11:29:20+09:00",
+  "date_last_updated": "2010-01-26T11:38:01+09:00",
+  "date_public": "2009-08-28T00:00:00+09:00"
+}

@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2012-002718",
+  "title": "Linux Kernel の mm/hugetlb.c におけるサービス運用妨害 (メモリ消費またはシステムクラッシュ) の脆弱性",
+  "vulinfo_description": "Linux Kernel の mm/hugetlb.c には、メモリリークの発生によって、サービス運用妨害 (メモリ消費またはシステムクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.4.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、不正な MAP_HUGETLB の mmap 操作を介して、サービス運用妨害 (メモリ消費またはシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.4.2",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.4.2"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "hugetlb: fix resv_map leak in error path",
+      "url": "https://github.com/torvalds/linux/commit/c50ac050811d6485616a193eb0f37bfbd191cc89"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git / commit",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=c50ac050811d6485616a193eb0f37bfbd191cc89"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 824345",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=824345"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1515-1",
+      "url": "http://www.ubuntu.com/usn/USN-1515-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1535-1",
+      "url": "http://www.ubuntu.com/usn/USN-1535-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2390",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2390"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2390",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2390"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月15日]\\n  掲載\\n[2012年11月16日]\\n  ベンダ情報：Ubuntu (USN-1515-1) を追加\\n  ベンダ情報：Ubuntu (USN-1535-1) を追加"
+    }
+  ],
+  "date_first_published": "2012-06-15T14:59:40+09:00",
+  "date_last_updated": "2012-11-16T10:16:55+09:00",
+  "date_public": "2012-06-13T00:00:00+09:00"
+}

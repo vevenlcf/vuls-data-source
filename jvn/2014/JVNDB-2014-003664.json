@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-003664",
+  "title": "Wireshark の ASN.1 BER 解析機能の epan/dissectors/packet-ber.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の ASN.1 BER 解析機能の epan/dissectors/packet-ber.c 内の dissect_ber_constrained_bitstring 関数は、padding 値を適切に検証しないため、サービス運用妨害 (バッファアンダーフローおよびアプリケーションクラシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.10.9 未満の 1.10.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (バッファアンダーフローおよびアプリケーションクラシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple Buffer Errors vulnerabilities in Wireshark",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_buffer_errors_vulnerabilities_in3"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "fix underflow in BER constrained bitstrings",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=17a552666b50896a9b9dde8ee6a1052e7f9a622e"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "wnpa-sec-2014-11",
+      "url": "http://www.wireshark.org/security/wnpa-sec-2014-11.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 10187",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=10187"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5165",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5165"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5165",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5165"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年08月04日]\\n  掲載\\n[2014年10月06日]\\n  ベンダ情報：オラクル (Multiple Buffer Errors vulnerabilities in Wireshark) を追加"
+    }
+  ],
+  "date_first_published": "2014-08-04T14:11:57+09:00",
+  "date_last_updated": "2014-10-06T18:24:14+09:00",
+  "date_public": "2014-07-31T00:00:00+09:00"
+}

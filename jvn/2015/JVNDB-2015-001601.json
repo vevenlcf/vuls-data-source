@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2015-001601",
+  "title": "Mozilla Firefox で使用される OpenType Sanitiser における開発者コンソールの情報に問題を引き起こされる脆弱性",
+  "vulinfo_description": "Mozilla Firefox で使用される OpenType Sanitiser には、ots::ots_gasp_parse 関数に関する処理に不備があるため、解放済みメモリの使用 (Use-after-free) により、開発者コンソールの情報に問題を引き起こされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use After Free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "36.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "OpenType Sanitiser project",
+      "product_name": "OpenType Sanitiser",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:opentype_sanitiser_project:opentype_sanitiser"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、不正なマクロ展開を利用されることで、開発者コンソールの情報に問題を引き起こされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "[ots] Fix (potential) use-after-free bugs",
+      "url": "https://github.com/khaledhosny/ots/commit/003c62d28ae438aa8943cb31535563397f838a2c"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Bugzilla",
+      "vulinfo_id": "Bug 1098497",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=1098497"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "MFSA2015-23",
+      "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2015-23/"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "MFSA2015-23",
+      "url": "http://www.mozilla-japan.org/security/announce/2015/mfsa2015-23.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0823",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0823"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0823",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0823"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-02-26T15:07:31+09:00",
+  "date_last_updated": "2015-02-26T15:07:31+09:00",
+  "date_public": "2015-02-24T00:00:00+09:00"
+}

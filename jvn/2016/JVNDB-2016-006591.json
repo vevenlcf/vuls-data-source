@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2016-006591",
+  "title": "WampServer における任意のコードを実行される脆弱性",
+  "vulinfo_description": "** 未確定 ** 本件は、脆弱性として確定していません。  WampServer は、脆弱なファイルパーミッションを持ち、システム権限で稼動する 'wampapache' および 'wampmysqld' サービスをインストールするため、権限昇格により、任意のコードを実行される脆弱性が存在します。  本脆弱性は、mysqld.exe または httpd.exe ファイルを挿入され、元のファイルと置き換えられ、当該ファイルがシステムとして実行されることで悪用される可能性がありますが、ベンダは、\"'第三者' (攻撃者) が PC 上のファイルを置換できる\" 設定は、\"WampServer の欠陥\" ではないという立場を取っており、本脆弱性の妥当性に対して異議を申し立てています。 ",
+  "affected": [
+    {
+      "name": "WampServer",
+      "product_name": "WampServer",
+      "version_number": [
+        "3.0.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wampserver:wampserver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルの攻撃者により、mysqld.exe または httpd.exe ファイルを置き換えられ、システムとして実行されることで、任意のコードを実行される可能性があります。 "
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "WampServer",
+      "url": "https://sourceforge.net/p/wampserver/bugs/52/"
+    },
+    {
+      "type": "vendor",
+      "name": "WampServer",
+      "vulinfo_id": "Vulnerability reporting",
+      "url": "http://forum.wampserver.com/read.php?2,144473"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-10031",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10031"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-10031",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10031"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Wampserver 3.0.6 Privilege Escalation",
+      "url": "https://packetstormsecurity.com/files/140279/Wampserver-3.0.6-Privilege-Escalation.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月13日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-13T15:58:25+09:00",
+  "date_last_updated": "2017-01-13T15:58:25+09:00",
+  "date_public": "2016-12-13T00:00:00+09:00"
+}

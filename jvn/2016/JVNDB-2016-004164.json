@@ -1,0 +1,110 @@
+{
+  "vulinfo_id": "JVNDB-2016-004164",
+  "title": "Django の contrib/admin/static/admin/js/admin/RelatedObjectLookups.js におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "Django の contrib/admin/static/admin/js/admin/RelatedObjectLookups.js の dismissChangeRelatedObjectPopup 関数には、クロスサイトスクリプティングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Django Software Foundation",
+      "product_name": "Django",
+      "version_number": [
+        "1.10rc1 未満の 1.10.x",
+        "1.8.14 未満",
+        "1.9.8 未満の 1.9.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:djangoproject:django"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.1",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "第三者により、Element.innerHTML の安全でない使用に関する問題によって、任意の Web スクリプトまたは HTML を挿入される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3622",
+      "url": "https://www.debian.org/security/2016/dsa-3622"
+    },
+    {
+      "type": "vendor",
+      "name": "Django weblog",
+      "vulinfo_id": "Django security releases issued: 1.10 release candidate 1, 1.9.8, and 1.8.14",
+      "url": "https://www.djangoproject.com/weblog/2016/jul/18/security-releases/"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "[1.8.x] Fixed XSS in admin's add/change related popup.",
+      "url": "https://github.com/django/django/commit/f68e5a99164867ab0e071a936470958ed867479d"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "[1.9.x] Fixed XSS in admin's add/change related popup.",
+      "url": "https://github.com/django/django/commit/d03bf6fe4e9bf5b07de62c1a271c4b41a7d3d158"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6186",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6186"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6186",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6186"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-08-09T12:21:06+09:00",
+  "date_last_updated": "2016-08-09T12:21:06+09:00",
+  "date_public": "2016-07-18T00:00:00+09:00"
+}

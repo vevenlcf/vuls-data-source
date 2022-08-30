@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2015-005096",
+  "title": "Perl 用 Email::Address モジュールの Address.pm におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Perl 用 Email::Address モジュールの Address.pm には、サービス運用妨害 (CPU 資源の消費) 状態にされる脆弱性が存在します。  本脆弱性は、当該モジュールのバージョン 1.908 のデフォルト設定により緩和されますが、特定の実際のコメントを誤まって解析します。",
+  "affected": [
+    {
+      "name": "Ricardo SIGNES",
+      "product_name": "Email::Address",
+      "version_number": [
+        "1.908 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:email%3A%3Aaddress_module_project:email%3A%3Aaddress"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、ネストされたコメントに関連付けられた \"()\" (括弧) 文字を伴う電子メールアドレスのリストを含む巧妙に細工された文字列を介して、サービス運用妨害 (CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "default to one-level of comments",
+      "url": "https://github.com/rjbs/Email-Address/commit/3056b7d"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7686",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7686"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7686",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7686"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Subject: Re: DoS attack through Email-Address perl module v1.907 (CVE id request)",
+      "url": "http://www.openwall.com/lists/oss-security/2015/09/27/1"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Subject: DoS attack through Email-Address perl module v1.907 (CVE id request)",
+      "url": "http://www.openwall.com/lists/oss-security/2015/10/02/13"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年10月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-10-08T12:36:59+09:00",
+  "date_last_updated": "2015-10-08T12:36:59+09:00",
+  "date_public": "2015-09-18T00:00:00+09:00"
+}

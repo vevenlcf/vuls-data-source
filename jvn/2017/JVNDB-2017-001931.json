@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2017-001931",
+  "title": "libplist の plist.c の plist_free_data 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libplist の plist.c の plist_free_data 関数には、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "libimobiledevice",
+      "product_name": "libplist",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libimobiledevice:libplist"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、PLIST_KEY として扱われ、その後、不正な解放を誘発する整数ノードに関する問題によって、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Issue in plist_free_data plist.c:185 #86",
+      "url": "https://github.com/libimobiledevice/libplist/issues/86"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5836",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5836"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5836",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5836"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-415",
+      "url": "https://cwe.mitre.org/data/definitions/415.html",
+      "title": "二重解放"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-23T16:37:13+09:00",
+  "date_last_updated": "2017-03-23T16:37:13+09:00",
+  "date_public": "2017-01-16T00:00:00+09:00"
+}

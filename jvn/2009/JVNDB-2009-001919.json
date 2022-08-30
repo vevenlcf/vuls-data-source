@@ -1,0 +1,328 @@
+{
+  "vulinfo_id": "JVNDB-2009-001919",
+  "title": "ISC DHCP dhclient におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "ISC DHCP dhclient には、バッファオーバーフローの脆弱性が存在します。  ISC DHCP は RFC 2131 で規定されている DHCP プロトコルの実装であり、DHCP サーバ、DHCP クライアント、リレーエージェントを含んでいます。DHCP クライアントの実装である dhclient には、script_write_params() の処理に起因するスタックバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "ISC DHCP",
+      "version_number": [
+        "2.0 系",
+        "3.0 系",
+        "3.1 系",
+        "4.0 系",
+        "4.1 系"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:dhcp"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/B1",
+      "version_number": [
+        "1.00 〜 2.40"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/neu",
+      "version_number": [
+        "2FE Plus 1.00 〜 2.02"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/Turbo",
+      "version_number": [
+        "1.00 〜 2.02"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/X1,X2",
+      "version_number": [
+        "1.00 〜 2.40"
+      ]
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 ",
+        "3.0 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "センチュリー・システムズ",
+      "product_name": "Centurysys",
+      "version_number": [
+        "nxr-130%2FC ver5.1.1以前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:centurysys:centurysys"
+      }
+    },
+    {
+      "name": "センチュリー・システムズ",
+      "product_name": "XR-640",
+      "version_number": [
+        "ver1.0.0〜ver1.6.6のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:centurysys:xr-640"
+      }
+    },
+    {
+      "name": "センチュリー・システムズ",
+      "product_name": "XR-640-L2",
+      "version_number": [
+        "ver1.0.0〜ver1.6.1のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:centurysys:xr-640-l2"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "2.0  (延長メンテナンス)",
+        "3.0  ",
+        "3.0 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  (延長メンテナンス)",
+        "10 (x64) (延長メンテナンス)",
+        "11  ",
+        "11 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.7 (as) ",
+        "4.7 (es) ",
+        "4.8 (as) ",
+        "4.8 (es) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "3.0 ",
+        "4.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "不正な DHCP サーバによって、root 権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 該当製品を使用しているユーザは、ベンダが提供するアップデートを適用してください。  または、ISC が提供する情報をもとに最新版へアップデートしてください。  なお、ISC によると 3.0 系および 2.0 系はサポート対象外とのことです。詳しくは ISC が提供する情報をご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FutureNet サポート",
+      "vulinfo_id": "XRシリーズ DHCP クライアントに関する脆弱性（VU#410676）",
+      "url": "http://www.centurysys.co.jp/support/xr_common/VU410676.html"
+    },
+    {
+      "type": "vendor",
+      "name": "FutureNet サポート",
+      "vulinfo_id": "NXRシリーズ DHCP クライアントに関する脆弱性（VU#410676）",
+      "url": "http://www.centurysys.co.jp/support/nxr_common/VU410676.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC DHCP",
+      "vulinfo_id": "DHCP Stack Overflow in 'dhclient' script_write_params()",
+      "url": "https://www.isc.org/node/468"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "1752",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=1752"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "1753",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=1753"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1136",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1136.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1154",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1154.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SEIL シリーズ セキュリティ\u0026脆弱性情報",
+      "vulinfo_id": "偽装されたDHCPパケットに対する受信処理の脆弱性",
+      "url": "http://www.seil.jp/seilseries/security/2009/07091776.php"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2011-16",
+      "url": "http://www.turbolinux.co.jp/security/2011/TLSA-2011-16j.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1136",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1136J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1154",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1154J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-0692",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0692"
+    },
+    {
+      "type": "advisory",
+      "name": "IETF",
+      "vulinfo_id": "RFC 2131",
+      "url": "http://tools.ietf.org/html/rfc2131"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#410676",
+      "url": "http://jvn.jp/cert/JVNVU410676/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-0692",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0692"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "55819",
+      "url": "http://www.osvdb.org/55819"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA35850",
+      "url": "http://secunia.com/advisories/35850"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA35785",
+      "url": "http://secunia.com/advisories/35785"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA35831",
+      "url": "http://secunia.com/advisories/35831"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "35668",
+      "url": "http://www.securityfocus.com/bid/35668"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1022548",
+      "url": "http://www.securitytracker.com/id?1022548"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#410676",
+      "url": "http://www.kb.cert.org/vuls/id/410676"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2009-1891",
+      "url": "http://www.vupen.com/english/advisories/2009/1891"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年08月24日]\\n  掲載\\n[2011年06月10日]\\n  影響を受けるシステム：ターボリナックス (TLSA-2011-16) の情報を追加\\n  ベンダ情報：ターボリナックス (TLSA-2011-16) を追加"
+    }
+  ],
+  "date_first_published": "2009-08-24T14:38:39+09:00",
+  "date_last_updated": "2011-06-10T10:04:26+09:00",
+  "date_public": "2009-07-15T00:00:00+09:00"
+}

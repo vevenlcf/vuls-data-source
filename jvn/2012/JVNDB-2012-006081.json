@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2012-006081",
+  "title": "Samba の nsswitch/pam_winbind.c の winbind_name_list_to_sid_string_list 関数におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "Samba の nsswitch/pam_winbind.c 内の winbind_name_list_to_sid_string_list 関数は、すべてのユーザによる認証を受け入れることで無効な require_membership_of グループ名を処理するため、アクセス制限を回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Samba Project",
+      "product_name": "Samba",
+      "version_number": [
+        "4.1.2 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:samba:samba"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.6",
+        "vector": "AV:N/AC:H/Au:S/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、管理者の pam_winbind 設定ファイルの間違いを利用されることで、アクセス制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1036897",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1036897"
+    },
+    {
+      "type": "vendor",
+      "name": "samba-technical mailing list",
+      "vulinfo_id": "winbind pam security problem",
+      "url": "https://lists.samba.org/archive/samba-technical/2012-June/084593.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2012-6150 Input Validation vulnerability in Samba",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2012_6150_input_validation"
+    },
+    {
+      "type": "vendor",
+      "name": "The Samba-Bugzilla",
+      "vulinfo_id": "Bug 10300",
+      "url": "https://bugzilla.samba.org/show_bug.cgi?id=10300"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-6150",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-6150"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-6150",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6150"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月04日]\\n  掲載\\n[2014年03月05日]\\n  ベンダ情報：オラクル (CVE-2012-6150 Input Validation vulnerability in Samba) を追加"
+    }
+  ],
+  "date_first_published": "2013-12-04T15:03:22+09:00",
+  "date_last_updated": "2014-03-05T17:22:38+09:00",
+  "date_public": "2012-06-12T00:00:00+09:00"
+}

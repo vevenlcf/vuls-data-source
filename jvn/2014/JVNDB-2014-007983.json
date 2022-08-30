@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2014-007983",
+  "title": "NUMA システム上で稼動する Linux Kernel の include/asm-generic/pgtable.h におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "NUMA システム上で稼動する Linux Kernel の include/asm-generic/pgtable.h の pmd_none_or_trans_huge_or_clear_bad 関数は、Page Middle Directory (PMD) エントリが transparent huge-table エントリであるかどうかを適切に判定しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.13 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、page-table ロックの欠如を利用する巧妙に細工された MADV_WILLNEED madvise システムコールを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "mm: Fix NULL pointer dereference in madvise(MADV_WILLNEED) support",
+      "url": "https://github.com/torvalds/linux/commit/ee53664bda169f519ce3c6a22d378f0b946c8178"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "mm: Fix NULL pointer dereference in madvise(MADV_WILLNEED) support",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ee53664bda169f519ce3c6a22d378f0b946c8178"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1198457",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1198457"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0694",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0694.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0290",
+      "url": "https://rhn.redhat.com/errata/RHSA-2015-0290.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8173",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8173"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8173",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8173"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年03月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-03-18T12:20:45+09:00",
+  "date_last_updated": "2015-03-18T12:20:45+09:00",
+  "date_public": "2014-10-10T00:00:00+09:00"
+}

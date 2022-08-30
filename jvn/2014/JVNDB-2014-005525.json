@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2014-005525",
+  "title": "Ruby on Rails の Action Pack におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "Ruby on Rails の Action Pack の actionpack/lib/action_dispatch/middleware/static.rb には、serve_static_assets が有効になっている場合、ディレクトリトラバーサルの脆弱性が存在します。  本脆弱性は、CVE-2014-7818 と同様の問題です。",
+  "affected": [
+    {
+      "name": "Ruby on Rails project",
+      "product_name": "Rails",
+      "version_number": [
+        "3.2.21 未満の 3.x",
+        "4.0.12 未満の 4.0.x",
+        "4.1.8 未満の 4.1.x",
+        "4.2.0.beta4 未満の 4.2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubyonrails:ruby_on_rails"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、\\ (バックスラッシュ) 文字に関する問題によって、アプリケーションルート外のファイルの存在を特定される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "[rubyonrails-security] 20141117 [CVE-2014-7829] Arbitrary file existence disclosure in Action Pack",
+      "url": "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/rMTQy4oRCGk/loS_CRS8mNEJ"
+    },
+    {
+      "type": "vendor",
+      "name": "Ruby on Rails project",
+      "vulinfo_id": "Top Page",
+      "url": "http://rubyonrails.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7829",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7829"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7829",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7829"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年11月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-11-20T14:40:04+09:00",
+  "date_last_updated": "2014-11-20T14:40:04+09:00",
+  "date_public": "2014-11-17T00:00:00+09:00"
+}

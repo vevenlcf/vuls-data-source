@@ -1,0 +1,163 @@
+{
+  "vulinfo_id": "JVNDB-2016-002113",
+  "title": "libssh における SSH セッションを復号される脆弱性",
+  "vulinfo_description": "libssh は、(1) ディフィー・ヘルマン グループ 1 および (2) ディフィー・ヘルマン グループ 14 鍵交換メソッド用に生成された短期（ephemeral）秘密鍵を 128 ビットに不適切に切り詰めるため、SSH セッションを復号または傍受される脆弱性が存在します。  本脆弱性は、\"bits/bytes confusion bug\" と呼ばれています。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "22",
+        "23"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "libssh",
+      "product_name": "libssh",
+      "version_number": [
+        "0.7.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libssh:libssh"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "Extras (v. 7)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、SSH セッションを復号または傍受される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3488",
+      "url": "https://www.debian.org/security/2016/dsa-3488"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-d9f950c779",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/178058.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-dc9e8da03c",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/178822.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libssh",
+      "vulinfo_id": "Weakness in diffie-hellman secret key generation",
+      "url": "https://www.libssh.org/security/advisories/CVE-2016-0739.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "libssh",
+      "vulinfo_id": "libssh 0.7.3 (security and bugfix release)",
+      "url": "https://www.libssh.org/2016/02/23/libssh-0-7-3-security-and-bugfix-release/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0566",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0566.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2912-1",
+      "url": "http://www.ubuntu.com/usn/USN-2912-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-0739",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-0739"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-0739",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0739"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-20T14:42:15+09:00",
+  "date_last_updated": "2016-04-20T14:42:15+09:00",
+  "date_public": "2016-02-23T00:00:00+09:00"
+}

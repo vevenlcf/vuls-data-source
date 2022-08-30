@@ -1,0 +1,116 @@
+{
+  "vulinfo_id": "JVNDB-2021-001377",
+  "title": "三菱電機製 GOT の VNC サーバ機能におけるパスワード認証回避の脆弱性",
+  "vulinfo_description": "三菱電機株式会社が提供する GOT2000 シリーズおよび GOT SIMPLE シリーズの VNC サーバ機能には、不適切な認証（CWE-287）に起因する、VNC サーバへの接続時にパスワード認証が回避される脆弱性（CVE-2021-20590）が存在します。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "三菱電機",
+      "product_name": "GOT SIMPLE シリーズ GS21 モデル",
+      "version_number": [
+        "GS2107-WTBD-N VNC サーババージョン 01.40.000 およびそれ以前",
+        "GS2110-WTBD-N VNC サーババージョン 01.40.000 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:got_simple_series_gs21_model"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "GOT2000 シリーズ GT21 モデル",
+      "version_number": [
+        "GT2107-WTBD VNC サーババージョン 01.40.000 およびそれ以前",
+        "GT2107-WTSD VNC サーババージョン 01.40.000 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:got2000_series_gt21_model"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "GOT2000 シリーズ GT25 モデル",
+      "version_number": [
+        "全型名 VNC サーババージョン 01.39.010 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:got2000_series_gt25_model"
+      }
+    },
+    {
+      "name": "三菱電機",
+      "product_name": "GOT2000 シリーズ GT27 モデル",
+      "version_number": [
+        "全型名 VNC サーババージョン 01.39.010 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mitsubishielectric:got2000_series_gt27_model"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって送信された不正なパケットを受信した場合に、VNC サーバに不正アクセスされる可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、対策済みのバージョンにアップデートしてください。 　 　* GOT SIMPLE シリーズ GS21 モデル GS2110-WTBD-N VNC サーババージョン 01.41.000 およびそれ以降 　* GOT SIMPLE シリーズ GS21 モデル GS2107-WTBD-N VNC サーババージョン 01.41.000 およびそれ以降 　* GOT2000 シリーズ GT21 モデル GT2107-WTBD VNC サーババージョン 01.41.000 およびそれ以降 　* GOT2000 シリーズ GT21 モデル GT2107-WTSD VNC サーババージョン 01.41.000 およびそれ以降 　* GOT2000 シリーズ GT25 モデル 全型名 VNC サーババージョン 01.40.000 およびそれ以降 　* GOT2000 シリーズ GT27 モデル 全型名 VNC サーババージョン 01.40.000 およびそれ以降   [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  　* 当該製品への VNC によるアクセスを、信頼できるネットワークやホストからのアクセスのみに制限する  アップデート手順等の詳細については、\u003ca href=\"https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-001.pdf\" target=\"blank\"\u003e開発者が提供する情報\u003c/a\u003eを参照してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "三菱電機株式会社",
+      "vulinfo_id": "GOTのVNCサーバ機能におけるパスワード認証回避の脆弱性",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-001.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20590",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20590"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-112-02",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-112-02"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97615777",
+      "url": "http://jvn.jp/cert/JVNVU97615777"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-04-23T07:12:09Z",
+      "description": "[2021年04月23日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-07-29T00:19:05Z",
+      "description": "[2021年07月29日]\\n  影響を受けるシステム：内容を更新\\n  対策：内容を更新\\n\\n\\n"
+    }
+  ],
+  "date_first_published": "2021-04-23T16:12:09+09:00",
+  "date_last_updated": "2021-07-29T09:19:44+09:00",
+  "date_public": "2021-04-22T00:00:00+09:00"
+}

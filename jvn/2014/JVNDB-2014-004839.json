@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-004839",
+  "title": "Linux Kernel の fs/namespace.c 内の do_umount 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/namespace.c 内の do_umount 関数は、読み取り専用のルートファイルシステムを変更する do_remount_sb の呼び出しに対する CAP_SYS_ADMIN ケーパビリティを要求しないため、サービス運用妨害 (書き込み権限の損失) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.17 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、特定の共有されないシステムコールの作成、/ MNT_LOCKED のフラグの消去、および MNT_FORCE のアンマウントシステムコールの作成をされることで、サービス運用妨害 (書き込み権限の損失) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "Merge branch 'CVE-2014-7975' of git://git.kernel.org/pub/scm/linux/kernel/git/luto/linux",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef3a56b1c466629cd0bf482b09c7b0e5a085bb5"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1151108",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1151108"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7975",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7975"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7975",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7975"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月20日]\\n  掲載\\n[2014年11月12日]\\n  ベンダ情報：kernel.org (Merge branch 'CVE-2014-7975' of git://git.kernel.org/pub/scm/linux/kernel/git/luto/linux) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-20T18:13:01+09:00",
+  "date_last_updated": "2014-11-12T18:04:40+09:00",
+  "date_public": "2014-10-09T00:00:00+09:00"
+}

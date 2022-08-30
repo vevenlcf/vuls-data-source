@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2016-004338",
+  "title": "Wireshark の WBXML ディセクタの epan/dissectors/packet-wbxml.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の WBXML ディセクタ (解析機能) の epan/dissectors/packet-wbxml.c は、再帰の深さを制限しないため、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "2.0.5 未満の 2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "WBXML: limit the recursion level",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=347f071f1b9180563c28b0f3d0627b91eb456c72"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 12663",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=12663"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-49",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-49.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6513",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6513"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6513",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6513"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-08-17T12:33:00+09:00",
+  "date_last_updated": "2016-08-17T12:33:00+09:00",
+  "date_public": "2016-07-27T00:00:00+09:00"
+}

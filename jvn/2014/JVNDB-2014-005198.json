@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-005198",
+  "title": "rsyslog および sysklogd における整数オーバーフローの脆弱性",
+  "vulinfo_description": "rsyslog および sysklogd には、整数オーバーフローの脆弱性が存在します。  本脆弱性は、CVE-2014-3634 に対する修正が不十分だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "Adiscon",
+      "product_name": "rsyslog",
+      "version_number": [
+        "7.6.7 未満",
+        "8.4.2 未満の 8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rsyslog:rsyslog"
+      }
+    },
+    {
+      "name": "sysklogd project",
+      "product_name": "sysklogd",
+      "version_number": [
+        "1.5 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sysklogd_project:sysklogd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きな優先度 (PRI) 値を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html"
+    },
+    {
+      "type": "vendor",
+      "name": "rsyslog",
+      "vulinfo_id": "remote syslog PRI vulnerability - CVE: CVE-2014-3683",
+      "url": "http://www.rsyslog.com/remote-syslog-pri-vulnerability-cve-2014-3683/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3683",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3683"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3683",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3683"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年11月05日]\\n  掲載\\n[2015年10月30日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - October 2015) を追加"
+    }
+  ],
+  "date_first_published": "2014-11-05T14:53:15+09:00",
+  "date_last_updated": "2015-10-30T16:47:50+09:00",
+  "date_public": "2014-10-02T00:00:00+09:00"
+}

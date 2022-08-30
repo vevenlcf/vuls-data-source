@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2012-006428",
+  "title": "unixODBC の SQLDriverConnect 関数におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "** 未確定 ** 本件は、脆弱性として確定していません。  unixODBC の SQLDriverConnect 関数には、バッファオーバーフローの脆弱性が存在します。  なお、DRIVER オプションを設定できるということは、通常、攻撃者がすでに DoS 攻撃またはコードを実行する正当なアクセス権を持っていることを意味するため、権限の境界を越えておらず、本問題は脆弱性とはならない可能性があります。その他のより深刻な問題が露呈する恐れもありますが、isql コマンドラインオプションが攻撃者に知られたとしても、攻撃のシナリオは限定的であり、そのコンテキスト内において本問題が権限の境界を越えるとは限りません。",
+  "affected": [
+    {
+      "name": "unixODBC Project",
+      "product_name": "unixODBC",
+      "version_number": [
+        "2.3.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:unixodbc:unixodbc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、DRIVER オプションの過度に長い文字列を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "unixODBC Project",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.unixodbc.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2658",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2658"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2658",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2658"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE id request: Multiple buffer overflow in unixODBC (Tue, 29 May 2012)",
+      "url": "http://www.openwall.com/lists/oss-security/2012/05/29/10"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE id request: Multiple buffer overflow in unixODBC (Wed, 30 May 2012)",
+      "url": "http://www.openwall.com/lists/oss-security/2012/05/30/7"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE id request: Multiple buffer overflow in unixODBC (Thu, 31 May 2012)",
+      "url": "http://www.openwall.com/lists/oss-security/2012/05/31/2"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE id request: Multiple buffer overflow in unixODBC (Tue, 05 Jun 2012)",
+      "url": "http://www.openwall.com/lists/oss-security/2012/06/06/3"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE id request: Multiple buffer overflow in unixODBC",
+      "url": "http://www.openwall.com/lists/oss-security/2012/05/29/7"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2019-07-29T03:41:55Z",
+      "description": "[2019年07月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2019-07-29T12:41:55+09:00",
+  "date_last_updated": "2019-07-29T12:41:55+09:00",
+  "date_public": "2012-05-29T00:00:00+09:00"
+}

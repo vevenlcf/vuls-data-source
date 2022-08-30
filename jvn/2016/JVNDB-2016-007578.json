@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2016-007578",
+  "title": "libarchive の mtree bidder におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libarchive の mtree bidder は、先読みを拡張する際、行サイズの追跡を継続しないため、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "libarchive",
+      "product_name": "libarchive",
+      "version_number": [
+        "3.2.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libarchive:libarchive"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工されたファイルを介して、libarchive/archive_read_support_format_mtree.c の (1) detect_form または (2) bid_entry 関数での不正な読み込みを誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Issue 747 (and others?): Avoid OOB read when parsing multiple long lines",
+      "url": "https://github.com/libarchive/libarchive/commit/eec077f52bfa2d3f7103b4b74d52572ba8a15aca"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "1377923",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1377923"
+    },
+    {
+      "type": "vendor",
+      "name": "SUSE Security Update",
+      "vulinfo_id": "openSUSE-SU-2016:3002",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-12/msg00027.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-8688",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-8688"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-8688",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8688"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-125",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "title": "境界外読み取り"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-06T17:30:54+09:00",
+  "date_last_updated": "2017-03-06T17:30:54+09:00",
+  "date_public": "2016-09-19T00:00:00+09:00"
+}

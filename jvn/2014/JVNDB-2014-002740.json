@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2014-002740",
+  "title": "ownCloud Server で使用される PHPDocX における任意のファイルを読まれる脆弱性",
+  "vulinfo_description": "ownCloud Server で使用される PHPDocX には、任意のファイルを読まれる、サービス運用妨害 (DoS) 状態にされる、またはその他の影響を受ける可能性があります。  補足情報 : CWE による脆弱性タイプは、CWE-611: Improper Restriction of XML External Entity Reference ('XXE') (XML 外部エンティティ参照の不適切な制限) と識別されています。 http://cwe.mitre.org/data/definitions/611.html",
+  "affected": [
+    {
+      "name": "leonardofln",
+      "product_name": "PHPDocX",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phpdocx:phpdocx"
+      }
+    },
+    {
+      "name": "ownCloud",
+      "product_name": "ownCloud",
+      "version_number": [
+        "Server 5.0.15 未満",
+        "Server 6.0.2 未満の 6.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:owncloud:owncloud"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、XML 外部エンティティ (XXE) 攻撃を介して、任意のファイルを読まれる、サービス運用妨害 (DoS) 状態にされる、またはその他の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "owncloud-3rdparty/phpdocx",
+      "url": "https://github.com/leonardofln/owncloud-3rdparty/tree/master/phpdocx"
+    },
+    {
+      "type": "vendor",
+      "name": "ownCloud",
+      "vulinfo_id": "oC-SA-2014-006",
+      "url": "http://owncloud.org/about/security/advisories/oC-SA-2014-006/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2056",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2056"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2056",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2056"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-06-05T16:47:39+09:00",
+  "date_last_updated": "2014-06-05T16:47:39+09:00",
+  "date_public": "2014-03-07T00:00:00+09:00"
+}

@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2013-004015",
+  "title": "bitcoind および Bitcoin-Qt の Bloom Filter の実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "bitcoind および Bitcoin-Qt の Bloom Filter の実装には、サービス運用妨害 (ゼロ除算エラーおよびデーモンクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Bitcoin Project",
+      "product_name": "Bitcoin-Qt",
+      "version_number": [
+        "0.8.4rc1 未満の 0.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoin-qt"
+      }
+    },
+    {
+      "name": "Bitcoin Project",
+      "product_name": "bitcoind",
+      "version_number": [
+        "0.8.4rc1 未満の 0.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoind"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたメッセージシーケンスを介して、サービス運用妨害 (ゼロ除算エラーおよびデーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bitcoin Forum",
+      "vulinfo_id": "Bitcoin-Qt / bitcoind version 0.8.4 released, fixes critical DoS vulnerability",
+      "url": "https://bitcointalk.org/index.php?topic=287351.0"
+    },
+    {
+      "type": "vendor",
+      "name": "Common Vulnerabilities and Exposures",
+      "vulinfo_id": "CVE-2013-5700",
+      "url": "https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-5700"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-5700",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-5700"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-5700",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5700"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月11日]\\n  掲載\\n[2013年09月30日]\\n  CWE による脆弱性タイプ一覧：CWE-ID を変更"
+    }
+  ],
+  "date_first_published": "2013-09-11T14:47:21+09:00",
+  "date_last_updated": "2013-09-30T14:54:45+09:00",
+  "date_public": "2013-09-04T00:00:00+09:00"
+}

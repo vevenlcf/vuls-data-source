@@ -1,0 +1,150 @@
+{
+  "vulinfo_id": "JVNDB-2016-006096",
+  "title": "Mozilla Firefox における解放済みメモリ使用 (use-after-free) の脆弱性",
+  "vulinfo_description": "Mozilla Firefox には、解放済みメモリ使用 (use-after-free) の脆弱性が存在します。  Mozilla Firefox は SMIL (Synchronized Multimedia Integration Language) による SVG アニメーション機能をサポートしています。 この機能に関連する nsSMILTimeContainer オブジェクトには解放済みメモリ使用 (use-after-free) の脆弱性が存在します (CWE-416)。  なお、Firefox を使用した製品である Tor Browser をターゲットとしたエクスプロイトコードが公開されているとのことです。  SMIL https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL  CWE-416 https://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "バージョン 45.5.1 ESR より前のバージョン",
+        "バージョン 50.0.2 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "The Tor Project",
+      "product_name": "Tor Browser",
+      "version_number": [
+        "バージョン 6.0.7 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:torproject:tor_browser"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "細工されたウェブページを閲覧することで、遠隔の第三者によって任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　*JavaScript を無効化する (Firefox アドオン NoScript を使用するなど) 　*Microsoft Enhanced Mitigation Experience Toolkit (EMET) を利用する  NoScript https://addons.mozilla.org/firefox/addon/noscript/  Microsoft Enhanced Mitigation Experience Toolkit (EMET) https://support.microsoft.com/ja-jp/kb/2458544",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Firefox Add-ons",
+      "vulinfo_id": "NoScript Security Suite",
+      "url": "https://addons.mozilla.org/ja/firefox/addon/noscript/"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft サポート",
+      "vulinfo_id": "Enhanced Mitigation Experience Toolkit",
+      "url": "https://support.microsoft.com/ja-jp/kb/2458544"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Bugzilla",
+      "vulinfo_id": "Bug 1321066",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=1321066"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Developer Network",
+      "vulinfo_id": "SVG animation with SMIL",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "MFSA 2016-92",
+      "url": "http://www.mozilla-japan.org/security/announce/2016/mfsa2016-92.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Security Blog",
+      "vulinfo_id": "Fixing an SVG Animation Vulnerability",
+      "url": "https://blog.mozilla.org/security/2016/11/30/fixing-an-svg-animation-vulnerability/"
+    },
+    {
+      "type": "vendor",
+      "name": "Tor",
+      "vulinfo_id": "Tor Browser 6.0.7 is released",
+      "url": "https://blog.torproject.org/blog/tor-browser-607-released"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9079",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9079"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93847769",
+      "url": "http://jvn.jp/cert/JVNVU93847769"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9079",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-9079"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#791496",
+      "url": "https://www.kb.cert.org/vuls/id/791496"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Firefox 0-Day targeting Tor-Users",
+      "url": "https://blog.gdatasoftware.com/2016/11/29346-firefox-0-day-targeting-tor-users"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年12月02日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2018-08-30T09:05:33Z",
+      "description": "[2018年08月30日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-9079) を追加"
+    }
+  ],
+  "date_first_published": "2016-12-02T16:17:14+09:00",
+  "date_last_updated": "2018-08-30T18:05:50+09:00",
+  "date_public": "2016-11-30T00:00:00+09:00"
+}

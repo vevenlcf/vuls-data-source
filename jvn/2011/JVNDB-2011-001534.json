@@ -1,0 +1,64 @@
+{
+  "vulinfo_id": "JVNDB-2011-001534",
+  "title": "Wireshark に脆弱性",
+  "vulinfo_description": "Wireshark の Digital Enhanced Cordless Telecommunications (DECT) 分析処理には、任意のコードが実行される脆弱性が存在します。  Wireshark DECT パケットの分析処理に起因する脆弱性が存在し、任意のコードを実行される可能性があります。  Paul Makowski 氏の報告では以下のように記載されています。 /epan/dissectors/packet-dect.c contains a stack-based buffer overflow via a call to memcpy() whose length is controlled by the attacker. Absent exploit mitigations independant of Wireshark's default build options, an attacker is able to execute arbitrary code in the context of the user running a packet capture. On *NIX systems, such capability is frequently reserved for the root user. The overflowable buffer is pkt_bfield.Data.",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.4.5 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "遠隔の第三者によって、サービス運用妨害 (DoS) 攻撃を受けたり、ユーザの権限で任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートを行ってください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Wireshark 1.4.5 Release Notes",
+      "url": "http://www.wireshark.org/docs/relnotes/wireshark-1.4.5.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Download",
+      "url": "http://www.wireshark.org/download.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Wireshark-announce",
+      "url": "http://www.wireshark.org/lists/wireshark-announce/201104/msg00002.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#243670",
+      "url": "http://jvn.jp/cert/JVNVU243670"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#243670",
+      "url": "http://www.kb.cert.org/vuls/id/243670"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年05月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-05-11T10:51:24+09:00",
+  "date_last_updated": "2011-05-11T10:51:24+09:00",
+  "date_public": "2011-04-19T00:00:00+09:00"
+}

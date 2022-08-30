@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-003847",
+  "title": "WordPress の wp-includes/pluggable.php における CSRF 保護メカニズムを回避される脆弱性",
+  "vulinfo_description": "WordPress の wp-includes/pluggable.php は、CSRF トークン内の action 値と uid 値の結合時に、区切り文字を使用しないため、CSRF 保護メカニズムを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "WordPress.org",
+      "product_name": "WordPress",
+      "version_number": [
+        "3.9.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wordpress:wordpress"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、総当たり攻撃 (Brute force attack) を介して、CSRF 保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "WordPress.org",
+      "vulinfo_id": "Changeset 29408",
+      "url": "https://core.trac.wordpress.org/changeset/29408"
+    },
+    {
+      "type": "vendor",
+      "name": "WordPress.org",
+      "vulinfo_id": "WordPress 3.9.2 Security Release",
+      "url": "http://wordpress.org/news/2014/08/wordpress-3-9-2/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5205",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5205"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5205",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5205"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年08月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-08-19T16:39:39+09:00",
+  "date_last_updated": "2014-08-19T16:39:39+09:00",
+  "date_public": "2014-08-06T00:00:00+09:00"
+}

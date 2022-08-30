@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2013-003860",
+  "title": "Apache Qpid の Python クライアントにおける SSL サーバになりすまされる脆弱性",
+  "vulinfo_description": "Apache Qpid の Python クライアントは、サーバのホスト名が X.509 証明書の Subject の Common Name (CN) または subjectAltName フィールドのドメイン名と一致することを検証しないため、SSL サーバになりすまされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Qpid",
+      "version_number": [
+        "0.22 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:qpid"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "version_number": [
+        "v2 for Red Hat Enterprise Linux (version 6)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、任意の有効な証明書を介して、SSL サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Qpid",
+      "vulinfo_id": "Qpid 0.22 Release Notes",
+      "url": "http://qpid.apache.org/releases/qpid-0.22/release-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "QPID-4918",
+      "url": "https://issues.apache.org/jira/browse/QPID-4918"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache-SVN",
+      "vulinfo_id": "Revision 1460013",
+      "url": "http://svn.apache.org/viewvc?view=revision\u0026revision=1460013"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1024",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1024.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1909",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1909"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1909",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1909"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-08-27T12:25:11+09:00",
+  "date_last_updated": "2013-08-27T12:25:11+09:00",
+  "date_public": "2013-06-12T00:00:00+09:00"
+}

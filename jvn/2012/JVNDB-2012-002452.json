@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-002452",
+  "title": "Linux Kernel の regset 関数におけるサービス運用妨害 (NULL ポインタデリファレンス) の脆弱性",
+  "vulinfo_description": "Linux Kernel の regset 関数は、.get および .set メソッドが存在しない場合、適切に処理を行わないため、サービス運用妨害 (NULL ポインタデリファレンス) 状態となる、または詳細不明な影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.2.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) PTRACE_GETREGSET または (2) PTRACE_SETREGSET の ptrace コールを介して、サービス運用妨害 (NULL ポインタデリファレンス) 状態にされる、または詳細不明な影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-3.2.10",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.2.10"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:0481",
+      "url": "https://rhn.redhat.com/errata/RHSA-2012-0481.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1097",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1097"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1097",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1097"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年05月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-05-18T15:50:37+09:00",
+  "date_last_updated": "2012-05-18T15:50:37+09:00",
+  "date_public": "2012-05-17T00:00:00+09:00"
+}

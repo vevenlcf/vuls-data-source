@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-003360",
+  "title": "Linux Kernel の IPv6 スタックの net/ipv6/ip6_fib.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の IPv6 スタックの net/ipv6/ip6_fib.c 内の fib6_add_rt2node 関数は、一緒に設定された 2 つの ECMP (等コストマルチパス) ルートの内の 1 つに変更が発生した場合に、ルータ広告 (Router Advertisement、RA) メッセージを適切に処理しないため、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.10.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.4",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたメッセージシーケンスを介して、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ipv6: only static routes qualify for equal cost multipathing",
+      "url": "https://github.com/torvalds/linux/commit/307f2fb95e9b96b3577916e73d92e104f8f26494"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ipv6: only static routes qualify for equal cost multipathing",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=307f2fb95e9b96b3577916e73d92e104f8f26494"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 984664",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=984664"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4125",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4125"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4125",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4125"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年07月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-07-17T20:42:44+09:00",
+  "date_last_updated": "2013-07-17T20:42:44+09:00",
+  "date_public": "2013-07-12T00:00:00+09:00"
+}

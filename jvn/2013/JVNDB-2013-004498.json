@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2013-004498",
+  "title": "RealtimeKit におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "RealtimeKit (別名 rtkit) は、polkit authority との通信に D-Bus を適切に使用しないため、アクセス制限を回避される脆弱性が存在します。  本脆弱性は、CVE-2013-4288 と関連する問題です。",
+  "affected": [
+    {
+      "name": "Lennart Poettering",
+      "product_name": "RealtimeKit",
+      "version_number": [
+        "0.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:lennart_poettering:rkit"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) setuid プロセスまたは (2) pkexec プロセスを介して、PolkitUnixProcess PolkitSubject の競合状態を利用されることで、アクセス制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1548",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00022.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1597",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-10/msg00051.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1006677",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1006677"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1282",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1282.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4326",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4326"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4326",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4326"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月07日]\\n  掲載\\n[2013年11月12日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:1548) を追加\\n[2014年01月09日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:1597) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-07T19:34:15+09:00",
+  "date_last_updated": "2014-01-09T10:53:35+09:00",
+  "date_public": "2013-09-24T00:00:00+09:00"
+}

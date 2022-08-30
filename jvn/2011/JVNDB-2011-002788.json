@@ -1,0 +1,143 @@
+{
+  "vulinfo_id": "JVNDB-2011-002788",
+  "title": "Pidgin などの製品で使用される libpurple におけるサービス運用妨害 (クラッシュ) の脆弱性",
+  "vulinfo_description": "Pidgin などの製品で使用される libpurple の SILC プロトコル plug-in 内にある g_markup_escape_text 関数には、glib2 の特定バージョンとの相互作用に関する処理に不備があるため、サービス運用妨害 (クラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Pidgin",
+      "product_name": "libpurple",
+      "version_number": [
+        "2.10.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pidgin:libpurple"
+      }
+    },
+    {
+      "name": "Pidgin",
+      "product_name": "Pidgin",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pidgin:pidgin"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Optional Productivity Applications",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_optional_productivity_applications"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、不正なポインタの使用と out-of-bounds read を誘発する不正な UTF-8 シーケンスを介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Pidgin",
+      "vulinfo_id": "14636",
+      "url": "http://developer.pidgin.im/ticket/14636"
+    },
+    {
+      "type": "vendor",
+      "name": "Pidgin",
+      "vulinfo_id": "libpurple/protocols/silc/ops.c",
+      "url": "http://developer.pidgin.im/viewmtn/revision/diff/be5e66abad2af29604bc794cc4c6600ab12751f3/with/7eb1f6d56cc58bbb5b56b7df53955d36b9b419b8"
+    },
+    {
+      "type": "vendor",
+      "name": "Pidgin Security Advisories",
+      "vulinfo_id": "56",
+      "url": "http://pidgin.im/news/security/?id=56"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1371",
+      "url": "http://www.redhat.com/support/errata/RHSA-2011-1371.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3594",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3594"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3594",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3594"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年11月11日]\\n  掲載\\n[2012年01月06日]\\n  ベンダ情報：Pidgin (56) を追加"
+    }
+  ],
+  "date_first_published": "2011-11-11T11:21:33+09:00",
+  "date_last_updated": "2012-01-06T18:46:13+09:00",
+  "date_public": "2011-09-29T00:00:00+09:00"
+}

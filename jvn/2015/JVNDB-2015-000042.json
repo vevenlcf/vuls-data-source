@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-000042",
+  "title": "TERASOLUNA Server Framework for Java(WEB) の Validator に入力値検査回避の脆弱性",
+  "vulinfo_description": "株式会社エヌ・ティ・ティ・データが提供する TERASOLUNA Server Framework for Java(WEB) は、ウェブアプリケーションを作成するためのソフトウェアフレームワークです。TERASOLUNA Server Framework for Java(WEB) は、Apache Struts 1.2.9 を利用しているため、Apache Struts 1 の Validator に存在する脆弱性の影響を受けます。  Apache Struts 1.1 以降の Validator には、画面遷移における複数ページでの入力値検査ルールを効率的に定義する機能 (以下 MPV 機能とする) が存在します。 MPV 機能には、入力値検査が不正に回避される脆弱性が存在します。 Apache Struts 1 の Validator を使用している場合、MPV 機能を明示的に使用していなくても、本脆弱性の影響を受けます。",
+  "affected": [
+    {
+      "name": "株式会社エヌ・ティ・ティ・データ",
+      "product_name": "TERASOLUNA Server Framework for Java(Web)",
+      "version_number": [
+        "2.0.0.1 から 2.0.5.2 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nttdata:terasoluna_server_framework_for_java_web"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "アプリケーションの実装により異なりますが、入力値検査が回避されることで、想定外のデータがデータベースに登録されるなどの可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。  2015年3月24日、本脆弱性を修正した Apache Struts 1.2.9 with SP2 by TERASOLUNA を含む TERASOLUNA Server Framework for Java(Web) 2.0.5.3 が公開されました。 また、株式会社エヌ・ティ・ティ・データによると、本脆弱性を修正した Apache Struts 1.2.9 with SP2 by TERASOLUNA を単体でも公開したとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "株式会社エヌ・ティ・ティ・データ",
+      "vulinfo_id": "Apache Struts 1.2.9 with SP2 by TERASOLUNA",
+      "url": "http://sourceforge.jp/projects/terasoluna/wiki/StrutsPatch2-JP"
+    },
+    {
+      "type": "vendor",
+      "name": "株式会社エヌ・ティ・ティ・データ",
+      "vulinfo_id": "TERASOLUNA Framework",
+      "url": "https://sourceforge.jp/projects/terasoluna/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0899",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0899"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#86448949",
+      "url": "https://jvn.jp/jp/JVN86448949/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0899",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0899"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年03月24日]\\n  掲載\\n[2015年04月10日]\\n  概要：内容を更新\\n[2016年08月26日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2015-0899) を追加"
+    }
+  ],
+  "date_first_published": "2015-03-24T13:04:27+09:00",
+  "date_last_updated": "2016-08-26T16:31:27+09:00",
+  "date_public": "2015-03-24T00:00:00+09:00"
+}

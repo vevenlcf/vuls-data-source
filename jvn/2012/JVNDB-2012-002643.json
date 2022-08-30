@@ -1,0 +1,108 @@
+{
+  "vulinfo_id": "JVNDB-2012-002643",
+  "title": "MIT Kerberos の kadmind のcheck_1_6_dummy 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos の kadmind の lib/kadm5/srv/svr_principal.c 内の check_1_6_dummy 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびデーモンクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.10.2 未満の 1.10.x",
+        "5 1.8.x",
+        "5 1.9.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証された管理者により、パスワードのない KRB5_KDB_DISALLOW_ALL_TIX (属性定数の一つ) の作成要求を介して、サービス運用妨害 (NULL ポインタデリファレンスおよびデーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Null pointer deref in kadmind [CVE-2012-1013]",
+      "url": "https://github.com/krb5/krb5/commit/c5be6209311d4a8f10fda37d0d3f876c1b33b77b"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT Kerberos",
+      "vulinfo_id": "Kerberos 5 Release 1.10.2",
+      "url": "http://web.mit.edu/kerberos/krb5-1.10/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2012:0834-1",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-07/msg00014.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 827517",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=827517"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1131",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1131.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #7152 Null pointer deref in kadmind [CVE-2012-1013]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?user=guest\u0026pass=guest\u0026id=7152"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2012:102",
+      "url": "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:102"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1013",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1013"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1013",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1013"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月11日]\\n  掲載\\n[2012年07月24日]\\n  ベンダ情報：Mandriva, Inc. (MDVSA-2012:102) を追加\\n  ベンダ情報：openSUSE (openSUSE-SU-2012:0834-1) を追加\\n[2012年11月13日]\\n  ベンダ情報：レッドハット (RHSA-2012:1131) を追加"
+    }
+  ],
+  "date_first_published": "2012-06-11T15:24:22+09:00",
+  "date_last_updated": "2012-11-13T17:31:33+09:00",
+  "date_public": "2012-05-29T00:00:00+09:00"
+}

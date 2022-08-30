@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-006219",
+  "title": "Linux kernel の kernel/futex.c 内の futex_wait_requeue_pi 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux kernel の kernel/futex.c 内の futex_wait_requeue_pi 関数は、コールが二つの異なる futex のアドレスを持つことを確認しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.5.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された FUTEX_WAIT_REQUEUE_PI コマンドを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.5.1",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.5.1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "futex: Forbid uaddr == uaddr2 in futex_wait_requeue_pi()",
+      "url": "https://github.com/torvalds/linux/commit/6f7b0a2a5c0fb03be7c25bd1745baa50582348ef"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "futex: Forbid uaddr == uaddr2 in futex_wait_requeue_pi()",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=6f7b0a2a5c0fb03be7c25bd1745baa50582348ef"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1097746",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1097746"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-6647",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-6647"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-6647",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6647"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年05月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-05-28T18:19:07+09:00",
+  "date_last_updated": "2014-05-28T18:19:07+09:00",
+  "date_public": "2012-08-09T00:00:00+09:00"
+}

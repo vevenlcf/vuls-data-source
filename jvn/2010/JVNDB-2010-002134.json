@@ -1,0 +1,168 @@
+{
+  "vulinfo_id": "JVNDB-2010-002134",
+  "title": "Linux kernel のネットワークキューイング機能の実装における重要な情報を取得される脆弱性",
+  "vulinfo_description": "Linux kernel のネットワークキューイング機能の実装には、以下の関数の処理に関して不備があり、ダンプの操作が実行されている際、特定の構造体のメンバを初期化しないため、カーネルメモリから重要な情報を取得される脆弱性が存在します。 (1)net/sched/act_gact.c の tcf_gact_dump 関数 (2)net/sched/act_mirred.c の tcf_mirred_dump 関数 (3)net/sched/act_nat.c の tcf_nat_dump 関数 (4)net/sched/act_simple.c の tcf_simp_dump 関数 (5)net/sched/act_skbedit.c の tcf_skbedit_dump 関数",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.36-rc2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.8 (as) ",
+        "4.8 (es) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、カーネルメモリから重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-194.7.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1284"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "2149",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=2149"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0723",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0723.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0779",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0779.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0012",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2011-0012.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2942",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2942"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2942",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2942"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA41245",
+      "url": "http://secunia.com/advisories/41245"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "42529",
+      "url": "http://www.securityfocus.com/bid/42529"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年10月15日]\\n  掲載\\n[2010年11月04日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-194.7.AXS3) の情報を追加\\n  影響を受けるシステム：レッドハット (RHSA-2010:0779) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.7.AXS3) を追加\\n  ベンダ情報：レッドハット (RHSA-2010:0779) を追加\\n[2010年12月03日]\\n  影響を受けるシステム：ミラクル・リナックス (2149) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (2149) を追加\\n[2012年12月26日]\\n  影響を受けるシステム：VMware (VMSA-2011-0012) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0012) を追加"
+    }
+  ],
+  "date_first_published": "2010-10-15T13:25:00+09:00",
+  "date_last_updated": "2012-12-26T11:55:46+09:00",
+  "date_public": "2010-08-01T00:00:00+09:00"
+}

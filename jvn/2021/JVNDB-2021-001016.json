@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2021-001016",
+  "title": "Adobe ColdFusion にインストールディレクトリの ACL 設定不備による権限昇格の脆弱性",
+  "vulinfo_description": "Adobe ColdFusion には、デフォルトのインストールディレクトリにおいて ACL が適切に設定されないことに起因する権限昇格の脆弱性が存在します。  Adobe ColdFusion インストーラは、C:\\ColdFusion2021\\ のようなデフォルトのインストールディレクトリに対して ACL を適切に設定できません。そのため、管理者権限を持たない Windows ユーザによって当該フォルダに悪意のある DLL ファイルを配置され、SYSTEM 権限で任意のコードを実行してしまう可能性があります。",
+  "affected": [
+    {
+      "name": "アドビシステムズ",
+      "product_name": "Adobe ColdFusion",
+      "version_number": [
+        "2016",
+        "2018",
+        "2021"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:adobe:coldfusion"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "特別に細工された DLL ファイルを特定のパスに配置されることにより、当該製品がインストールされている Windows システムにおいて SYSTEM 権限で任意のコードが実行される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] ColdFusionServer でロックダウン機能を設定することで本脆弱性から保護することが可能です。 開発者が提供する情報を元に、利用しているバージョンに対応するワークアラウンドを実施してください。  　* Adobe ColdFusion 2016 　　* ColdFusion 2016 Lockdown Guide に記載されている設定を適用する 　* Adobe ColdFusion 2018 　　* ColdFusion 2018 Auto-Lockdown installer を実行し、エラーなしで完了することを確認する 　* Adobe ColdFusion 2021 　　* ColdFusion 2021 Auto-Lockdown installer を実行し、エラーなしで完了することを確認する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Adobe",
+      "vulinfo_id": "Server Auto-Lockdown",
+      "url": "https://helpx.adobe.com/coldfusion/user-guide.html/coldfusion/using/server-lockdown.ug.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe",
+      "vulinfo_id": "ColdFusion (2016 release) Lockdown Guide",
+      "url": "https://wwwimages.adobe.com/content/dam/acom/en/products/coldfusion/pdfs/coldfusion-2016-lockdown-guide.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe",
+      "vulinfo_id": "ColdFusion (2018 release) Server Auto-Lockdown",
+      "url": "https://www.adobe.com/support/coldfusion/downloads.html#cf2018ldg"
+    },
+    {
+      "type": "vendor",
+      "name": "Adobe",
+      "vulinfo_id": "ColdFusion (2021 release) Server Auto-Lockdown",
+      "url": "https://www.adobe.com/support/coldfusion/downloads.html#cf2021ldg"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-10145",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10145"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA#91240916",
+      "url": "https://jvn.jp/ta/JVNTA91240916/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91588948",
+      "url": "http://jvn.jp/cert/JVNVU91588948"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#125331",
+      "url": "https://kb.cert.org/vuls/id/125331"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "T1574.001 (Hijack Execution Flow: DLL Search Order Hijacking)",
+      "url": "https://attack.mitre.org/techniques/T1574/001/"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-02-03T02:54:41Z",
+      "description": "[2021年02月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-02-03T11:54:41+09:00",
+  "date_last_updated": "2021-02-03T11:54:41+09:00",
+  "date_public": "2021-02-02T00:00:00+09:00"
+}

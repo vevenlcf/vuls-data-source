@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2016-004134",
+  "title": "KDE Frameworks で使用される KArchive におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "KDE Frameworks で使用される KArchive には、KNewsstuff のダウンロードに関する処理に不備があるため、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "KDE project",
+      "product_name": "Karchive",
+      "version_number": [
+        "5.24 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kde:karchive"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、アーカイブファイルの ../ (ドットドットスラッシュ) を含むファイル名を介して、任意のファイルに書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "KDE QuickGit",
+      "vulinfo_id": "Ensure extraction location to be in subfolder",
+      "url": "https://quickgit.kde.org/?p=karchive.git\u0026a=commit\u0026h=0cb243f64eef45565741b27364cece7d5c349c37"
+    },
+    {
+      "type": "vendor",
+      "name": "KDE Security Advisory",
+      "vulinfo_id": "karchive: KNewstuff downloads can install files outside the extraction directory.",
+      "url": "https://www.kde.org/info/security/advisory-20160724-1.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3042-1",
+      "url": "http://www.ubuntu.com/usn/USN-3042-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6232",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6232"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6232",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6232"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-08-05T11:47:12+09:00",
+  "date_last_updated": "2016-08-05T11:47:12+09:00",
+  "date_public": "2016-07-24T00:00:00+09:00"
+}

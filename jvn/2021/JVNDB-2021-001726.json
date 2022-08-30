@@ -1,0 +1,194 @@
+{
+  "vulinfo_id": "JVNDB-2021-001726",
+  "title": "Hillrom 製 Welch Allyn medical device management tools に複数の脆弱性",
+  "vulinfo_description": "Hillrom が提供する Welch Allyn medical device management tools には、次の複数の脆弱性が存在します。  　* 境界外書き込み (CWE-787) - CVE-2021-27410 　* 境界外読み取り (CWE-125) - CVE-2021-27408",
+  "affected": [
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Connex Central Station (CS)",
+      "version_number": [
+        "v1.8.6 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:connex_central_station"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Connex Device Integration Suite - Network Connectivity Engine (NCE)",
+      "version_number": [
+        "v5.3 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:connex_device_integration_suite_network_connectivity_engine"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Connex Integrated Wall System (CIWS)",
+      "version_number": [
+        "v2.43.02 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:connex_integrated_wall_system"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Connex Spot Monitor (CSM)",
+      "version_number": [
+        "v1.52 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:connex_spot_monitor"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Connex Vital Signs Monitor (CVSM)",
+      "version_number": [
+        "v2.43.02 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:connex_vital_signs_monitor"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Service Monitor",
+      "version_number": [
+        "v1.7.0.0 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:service_monitor"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Service Tool",
+      "version_number": [
+        "v1.10 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:service_tool"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Software Development Kit (SDK)",
+      "version_number": [
+        "v3.2 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:software_development_kit"
+      }
+    },
+    {
+      "name": "Hillrom",
+      "product_name": "Welch Allyn Spot Vital Signs 4400 Device (Spot 4400) / Welch Allyn Spot 4400 Vital Signs Extended Care Device",
+      "version_number": [
+        "v1.11.00 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hillrom:spot_vital_signs_4400"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:A/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  　* 隣接するネットワーク上の第三者により、データを破損されたり、任意のコードを実行されたりする - CVE-2021-27410 　* 隣接するネットワーク上の第三者により、情報漏えいされたり、CVE-2021-27410と組み合わせることで任意のコードを実行されたりする - CVE-2021-27408"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンをリリースしています。  　* Welch Allyn Service Tool v1.10 　* Welch Allyn Connex Device Integration Suite - Network Connectivity Engine (NCE) v5.3 　* Welch Allyn Software Development Kit (SDK) v3.2 　* Welch Allyn Connex Central Station (CS) v1.8.6 (2022年春リリース予定) 　* Welch Allyn Service Monitor v1.7.0.0 　* Welch Allyn Connex Vital Signs Monitor (CVSM) v2.43.02 　* Welch Allen Connex Integrated Wall System (CIWS) v2.43.02 　* Welch Allyn Connex Spot Monitor (CSM) v1.52 　* Welch Allyn Spot Vital Signs 4400 Device (Spot 4400) / Welch Allyn Spot 4400 Vital Signs Extended Care Device v1.11.00  [ワークアラウンドを実施する] 開発者は次のワークアラウンドの適用を推奨しています。  　* ネットワークおよび物理的なセキュリティを適切に管理する 　* サーバーへのアクセスに認証を設定する 　* シェルコードの実行を防止するために、必要に応じて DEP (Data Execution Prevention) および ASLR (Address Space Layout Randomization) を有効にする。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Hillrom",
+      "vulinfo_id": "Customer Service Bulletin: CSB-Welch Allyn Product Security Vulnerability: 80027509",
+      "url": "https://www.hillrom.com/content/dam/hillrom-aem/us/en/sap-documents/LIT/80027/80027509LITPDF.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-27410",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27410"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-27408",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27408"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSMA-21-152-01",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsma-21-152-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94926489",
+      "url": "http://jvn.jp/cert/JVNVU94926489"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-27410",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27410"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-27408",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27408"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-125",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "title": "境界外読み取り"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-06-04T00:58:05Z",
+      "description": "[2021年06月04日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-12-17T01:22:12Z",
+      "description": "[2021年12月17日]\\n  対策：内容を更新\\n  参考情報：National Vulnerability Database (NVD) (CVE-2021-27410) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2021-27408) を追加"
+    }
+  ],
+  "date_first_published": "2021-06-04T09:59:17+09:00",
+  "date_last_updated": "2021-12-17T10:34:53+09:00",
+  "date_public": "2021-06-02T00:00:00+09:00"
+}

@@ -1,0 +1,86 @@
+{
+  "vulinfo_id": "JVNDB-2016-001701",
+  "title": "Asterisk Open Source および Certified Asterisk におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Asterisk Open Source および Certified Asterisk には、サービス運用妨害 (未初期化ポインタデリファレンスおよびクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Digium",
+      "product_name": "Asterisk Open Source",
+      "version_number": [
+        "1.8.x",
+        "11.21.1 未満の 11.x",
+        "12.x",
+        "13.7.1 未満の 13.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:digium:open_source"
+      }
+    },
+    {
+      "name": "Digium",
+      "product_name": "Certified Asterisk",
+      "version_number": [
+        "1.8.28",
+        "11.6-cert12 未満の 11.6",
+        "13.1-cert3 未満の 13.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:digium:certified_asterisk"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、損失した UDPTL FAX パケットの訂正用冗長パケットの長さゼロエラーを介して、サービス運用妨害 (未初期化ポインタデリファレンスおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asterisk Project Security Advisory",
+      "vulinfo_id": "AST-2016-003",
+      "url": "http://downloads.asterisk.org/pub/security/AST-2016-003.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2232",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2232"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2232",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2232"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月15日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-15T14:07:54+09:00",
+  "date_last_updated": "2016-03-15T14:07:54+09:00",
+  "date_public": "2016-02-03T00:00:00+09:00"
+}

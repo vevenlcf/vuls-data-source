@@ -1,0 +1,147 @@
+{
+  "vulinfo_id": "JVNDB-2013-005379",
+  "title": "Google Chrome で使用される Google V8 の hydrogen-dehoist.cc におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Google Chrome で使用される Google V8 の hydrogen-dehoist.cc の DehoistArrayIndex 関数には、サービス運用妨害 (out-of-bounds read) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "31.0.1650.63 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    },
+    {
+      "name": "Google",
+      "product_name": "V8 JavaScript Engine",
+      "version_number": [
+        "3.22.24.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:v8"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたインデックスを持つ配列要素の値に変数を設定した JavaScript コードを介して、サービス運用妨害 (out-of-bounds read) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian セキュリティ勧告",
+      "vulinfo_id": "DSA-2811",
+      "url": "http://www.debian.org/security/2013/dsa-2811"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "v8: backport fix for CVE-2013-6639 and CVE-2013-6640",
+      "url": "https://github.com/joyent/node/pull/6698"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "v8: backport fix for CVE-2013-6639 and CVE-2013-6640 (v0.10)",
+      "url": "https://github.com/joyent/node/pull/6699"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "http://www.google.co.jp/chrome/intl/ja/landing_ff_yt.html?hl=ja\u0026hl=ja"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Stable Channel Update",
+      "url": "http://googlechromereleases.blogspot.jp/2013/12/stable-channel-update.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Revision: r17801",
+      "url": "http://code.google.com/p/v8/source/detail?r=17801"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1927",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-12/msg00090.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1933",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-12/msg00096.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1960",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-12/msg00122.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1962",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-12/msg00124.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1039895",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1039895"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1039889 ",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1039889"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-6640",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6640"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-6640",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6640"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月10日]\\n  掲載\\n[2014年01月17日]\\n  ベンダ情報：Debian (DSA-2811) を追加\\n  ベンダ情報：Google (v8: backport fix for CVE-2013-6639 and CVE-2013-6640) を追加\\n  ベンダ情報：Google (v8: backport fix for CVE-2013-6639 and CVE-2013-6640 (v0.10)) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1927) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1933) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1960) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1962) を追加\\n  ベンダ情報：レッドハット (Bug 1039895) を追加\\n  ベンダ情報：レッドハット (Bug 1039889) を追加"
+    }
+  ],
+  "date_first_published": "2013-12-10T14:31:31+09:00",
+  "date_last_updated": "2014-01-17T11:08:37+09:00",
+  "date_public": "2013-12-04T00:00:00+09:00"
+}

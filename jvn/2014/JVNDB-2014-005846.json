@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-005846",
+  "title": "GNU Binutils の libbfd の bfd/elf.c 内の setup_group 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "GNU Binutils の libbfd の bfd/elf.c 内の setup_group 関数には、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GNU Project",
+      "product_name": "GNU Binutils",
+      "version_number": [
+        "2.24 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:binutils"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、ELF ファイルの巧妙に細工されたセクショングループヘッダを介して、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1157276",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1157276"
+    },
+    {
+      "type": "vendor",
+      "name": "Sourceware Bugzilla",
+      "vulinfo_id": "Bug 17510",
+      "url": "https://sourceware.org/bugzilla/show_bug.cgi?id=17510"
+    },
+    {
+      "type": "vendor",
+      "name": "sourceware.org",
+      "vulinfo_id": "This patch closes a potential security hole in applications that use",
+      "url": "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commit;h=493a33860c71cac998f1a56d6d87d6faa801fbaa"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8485",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8485"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8485",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8485"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-12-11T13:45:00+09:00",
+  "date_last_updated": "2014-12-11T13:45:00+09:00",
+  "date_public": "2014-10-27T00:00:00+09:00"
+}

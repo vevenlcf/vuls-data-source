@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2012-005208",
+  "title": "IrfanView 用 FlashPix PlugIn で使用される libfpx におけるメモリ二重解放の脆弱性",
+  "vulinfo_description": "IrfanView 用 FlashPix PlugIn で使用される libfpx の jpeg/dectile.c 内の Free_All_Memory 関数には、メモリを二重に解放する不備があるため、サービス運用妨害 (クラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Irfan Skiljan",
+      "product_name": "FPX/FlashPix PlugIn",
+      "version_number": [
+        "4.2.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:irfanview:flashpix_plugin"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された FPX 画像を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "IrfanView",
+      "vulinfo_id": "IrfanView PlugIns",
+      "url": "http://www.irfanview.com/plugins.htm"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0025",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0025"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0025",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0025"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年11月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-11-06T14:23:14+09:00",
+  "date_last_updated": "2012-11-06T14:23:14+09:00",
+  "date_public": "2012-11-02T00:00:00+09:00"
+}

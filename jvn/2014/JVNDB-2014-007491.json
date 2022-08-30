@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-007491",
+  "title": "Linux Kernel の B.A.T.M.A.N. の実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の B.A.T.M.A.N. の実装の net/batman-adv/fragmentation.c 内の batadv_frag_merge_packets 関数は、メモリ量の計算中に誤った length フィールドを使用するため、サービス運用妨害 (メッシュノードのシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.18.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、断片化されたパケットを介して、サービス運用妨害 (メッシュノードのシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#774155",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=774155"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "batman-adv: Calculate extra tail size based on queued fragments",
+      "url": "https://github.com/torvalds/linux/commit/5b6698b0e4a37053de35cc24ee695b98a7eb712b"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "batman-adv: Calculate extra tail size based on queued fragments",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5b6698b0e4a37053de35cc24ee695b98a7eb712b"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9428",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9428"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9428",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9428"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Stable fixes for batman-adv",
+      "url": "http://www.spinics.net/lists/netdev/msg309425.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-01-08T15:22:08+09:00",
+  "date_last_updated": "2015-01-08T15:22:08+09:00",
+  "date_public": "2014-12-24T00:00:00+09:00"
+}

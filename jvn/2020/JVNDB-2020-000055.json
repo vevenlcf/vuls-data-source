@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2020-000055",
+  "title": "Apache Struts 2 にサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Apache Struts 2 にはサービス運用妨害 (DoS) (CWE-400) の脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 三井物産セキュアディレクション 寺田 健 氏",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Struts",
+      "version_number": [
+        "2.0.0 から 2.5.20 までのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:struts"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者によって、サービス運用妨害 (DoS) 攻撃を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。  [ワークアラウンドを実施する] struts-default.xml の定数 struts.excludedPackageNames の Value 属性に java.io. と java.nio. を追加してください。 ただし、The Apache Software Foundation はワークアラウンドの実施よりもアップデートの実施を推奨しています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV20-017",
+      "url": "https://jpn.nec.com/security-info/secinfo/nv20-017.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletins",
+      "vulinfo_id": "S2-060 - Apache Struts 2 Wiki - Apache Software Foundation",
+      "url": "https://cwiki.apache.org/confluence/display/WW/S2-060"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2019-0233",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-0233"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#50890770",
+      "url": "https://jvn.jp/jp/JVN50890770/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-08-21T06:40:05Z",
+      "description": "[2020年08月25日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2022-08-09T01:33:57Z",
+      "description": "[2022年08月09日]\\n  ベンダ情報:日本電気 (NV20-017) を追加\\n"
+    }
+  ],
+  "date_first_published": "2020-08-25T12:10:40+09:00",
+  "date_last_updated": "2022-08-09T12:15:18+09:00",
+  "date_public": "2020-08-25T00:00:00+09:00"
+}

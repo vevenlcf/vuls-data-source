@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2010-004098",
+  "title": "Exim の transports/appendfile.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Exim の transports/appendfile.c には、MBX ロッキングが有効になっている際、任意のファイルのパーミッションを変更、または任意のファイルを作成される、およびサービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Exim Development",
+      "product_name": "Exim",
+      "version_number": [
+        "4.72 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:exim:exim"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、/tmp/ 配下の lockfile に対するシンボリックリンク攻撃を介して、任意のファイルのパーミッションを変更、または任意のファイルを作成される、およびサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Exim",
+      "vulinfo_id": "Security issues in exim4 local delivery",
+      "url": "https://lists.exim.org/lurker/message/20100524.175925.9a69f755.en.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2024",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2024"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2024",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2024"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T16:19:27+09:00",
+  "date_last_updated": "2012-06-26T16:19:27+09:00",
+  "date_public": "2010-05-25T00:00:00+09:00"
+}

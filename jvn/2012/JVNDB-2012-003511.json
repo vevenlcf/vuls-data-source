@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2012-003511",
+  "title": "libvirt の virTypedParameterArrayClear 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libvirt の virTypedParameterArrayClear 関数は、typed パラメータを含む virDomain* API コールを適切に処理しないため、サービス運用妨害 (libvirtd クラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "libvirt",
+      "version_number": [
+        "0.9.13"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:libvirt"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、領域外のメモリー参照または不正なポインタの解放を誘発する、ゼロに設定された nparam を含む RPC コマンドを介して、サービス運用妨害 (libvirtd クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2012:0991",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-08/msg00023.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat",
+      "vulinfo_id": "libvirt",
+      "url": "http://libvirt.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 844734",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=844734"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1202",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1202.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-3445",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3445"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-3445",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3445"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月09日]\\n  掲載\\n[2012年09月14日]\\n  ベンダ情報：openSUSE (openSUSE-SU-2012:0991) を追加\\n  ベンダ情報：レッドハット (RHSA-2012:1202) を追加"
+    }
+  ],
+  "date_first_published": "2012-08-09T16:47:37+09:00",
+  "date_last_updated": "2012-09-14T16:35:35+09:00",
+  "date_public": "2012-08-07T00:00:00+09:00"
+}

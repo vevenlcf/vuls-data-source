@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2021-001015",
+  "title": "Siemens 製 HMI 製品に重要な機能に対する認証の欠如の脆弱性",
+  "vulinfo_description": "Siemens 社が提供する当該 SIMATIC HMI 製品では、Telnet が有効になっている場合に認証を経ずにアクセスすることができる、重要な機能に対する認証の欠如の脆弱性 (CWE-306) が存在します。",
+  "affected": [
+    {
+      "name": "シーメンス",
+      "product_name": "SIMATIC HMI Comfort Panels",
+      "version_number": [
+        "(incl. SIPLUS variants) V16 Update 3a より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:siemens:simatic_hmi_comfort_panels"
+      }
+    },
+    {
+      "name": "シーメンス",
+      "product_name": "SIMATIC HMI KTP Mobile Panels",
+      "version_number": [
+        "V16 Update 3a より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:siemens:simatic_hmi_ktp_mobile_panels"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "当該製品で Telnet が有効になっている場合、遠隔の第三者によりアクセスされデバイスを不正に操作される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  　* Telnet を有効化しない 　　* 当該製品ではデフォルトの状態で Telnet は無効になっています ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Siemens",
+      "vulinfo_id": "Image downloads for HMI operator panels - ID: 109746530 - Industry Support Siemens",
+      "url": "https://support.industry.siemens.com/cs/document/109746530/image-downloads-for-hmi-operator-panels?dti=0\u0026lc=en-WW"
+    },
+    {
+      "type": "vendor",
+      "name": "Siemens Security Advisory",
+      "vulinfo_id": "SSA-520004:TelnetAuthenticationVulnerabilityinSIMATICHMIComfortPanels",
+      "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-520004.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-15798",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15798"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-033-02",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-033-02"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91051134",
+      "url": "https://jvn.jp/vu/JVNVU91051134/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92618342",
+      "url": "http://jvn.jp/cert/JVNVU92618342"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-306",
+      "url": "https://cwe.mitre.org/data/definitions/306.html",
+      "title": "重要な機能に対する認証の欠如"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-02-01T06:06:10Z",
+      "description": "[2021年02月01日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-02-04T01:20:01Z",
+      "description": "[2021年02月04日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-21-033-02) を追加"
+    },
+    {
+      "history_no": "4",
+      "date_time": "2021-05-19T07:05:19Z",
+      "description": "[2021年05月19日]\\n  参考情報：JVN (JVNVU#91051134) を追加"
+    }
+  ],
+  "date_first_published": "2021-02-01T15:06:10+09:00",
+  "date_last_updated": "2021-05-19T16:05:59+09:00",
+  "date_public": "2021-01-29T00:00:00+09:00"
+}

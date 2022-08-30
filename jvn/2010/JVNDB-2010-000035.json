@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2010-000035",
+  "title": "futomi's CGI Cafe 製高機能アクセス解析CGI におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "futomi's CGI Cafe が提供する高機能アクセス解析CGI には、ウェブページへの解析タグの埋め込み方法に起因するクロスサイトスクリプティングの脆弱性が存在します。  futomi's CGI Cafe が提供する高機能アクセス解析CGI は、ウェブページのアクセスログ解析を行うためのソフトウェアです。高機能アクセス解析CGI には、ウェブページへの解析タグの埋め込み方法に起因するクロスサイトスクリプティングの脆弱性が存在します。  なお、開発者によると Professional 版を利用しているユーザで、マニュアルに記載されている \"headタグ内に解析タグ用jsファイルをロードする方法\" を使用している場合、本脆弱性の影響を受けないとのことです。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: NRIセキュアテクノロジーズ 小林克巳 氏",
+  "affected": [
+    {
+      "name": "futomi",
+      "product_name": "高機能アクセス解析CGI Professional版",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:futomis_cgi_cafe:access_analyzer_cgi_professional"
+      }
+    },
+    {
+      "name": "futomi",
+      "product_name": "高機能アクセス解析CGI Standard版",
+      "version_number": [
+        "4.0.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:futomis_cgi_cafe:access_analyzer_cgi_standard"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ユーザのウェブブラウザ上で任意のスクリプトを実行される可能性があります。"
+  },
+  "solution": "[解析タグの埋め込み方法を変更する] マニュアルに従って、解析タグの埋め込み方法を \"headタグ内に解析タグ用jsファイルをロードする方法\" に変更してください。  なお、高機能アクセス解析CGI Standard 版を利用している場合、変更前に最新版にアップデートする必要があります。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "futomi's CGI Cafe",
+      "vulinfo_id": "高機能アクセス解析CGIをご利用の方へバージョンアップおよび解析タグ変更のお願い",
+      "url": "http://www.futomi.com/library/info/2010/20100910.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2366",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2366"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#35605523",
+      "url": "http://jvn.jp/jp/JVN35605523/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2366",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2366"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "43142",
+      "url": "http://www.securityfocus.com/bid/43142"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年09月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2010-09-10T12:01:16+09:00",
+  "date_last_updated": "2010-09-10T12:01:16+09:00",
+  "date_public": "2010-09-10T00:00:00+09:00"
+}

@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-001847",
+  "title": "Apache HTTP Server の mod_fcgid モジュールにおけるサービス運用妨害 (メモリ消費) の脆弱性",
+  "vulinfo_description": "Apache HTTP Server の mod_fcgid モジュール内の fcgid_spawn_ctl.c は、バーチャルホストに対する FcgidMaxProcessesPerClass ディレクティブを認識しないため、サービス運用妨害 (メモリ消費) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache mod_fcgid",
+      "version_number": [
+        "2.3.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:mod_fcgid"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、制限を超えるプロセスカウントを誘発する一連の HTTP リクエストを介して、サービス運用妨害 (メモリ消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Bugzilla",
+      "vulinfo_id": "Bug 49902",
+      "url": "https://issues.apache.org/bugzilla/show_bug.cgi?id=49902"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "Apache Module mod_fcgid",
+      "url": "http://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache-SVN",
+      "vulinfo_id": "Revision 1037727",
+      "url": "http://svn.apache.org/viewvc?view=revision\u0026revision=1037727"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#615814",
+      "url": "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=615814"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian セキュリティ勧告",
+      "vulinfo_id": "DSA-2436",
+      "url": "http://www.debian.org/security/2012/dsa-2436"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1181",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1181"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1181",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1181"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月22日]\\n  掲載\\n[2012年09月14日]\\n  ベンダ情報：Debian (DSA-2436) を追加"
+    }
+  ],
+  "date_first_published": "2012-03-22T18:00:59+09:00",
+  "date_last_updated": "2012-09-14T10:12:18+09:00",
+  "date_public": "2012-03-19T00:00:00+09:00"
+}

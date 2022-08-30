@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2013-003882",
+  "title": "Linux Kernel の kernel/user_namespace.c 内の unshare_userns 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の kernel/user_namespace.c 内の unshare_userns 関数には、メモリリークにより、サービス運用妨害 (メモリ消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.10.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、無効な CLONE_NEWUSER unshare コールを介して、サービス運用妨害 (メモリ消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.10.6",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.10.6"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "userns: unshare_userns(\u0026cred) should not populate cred on failure",
+      "url": "https://github.com/torvalds/linux/commit/6160968cee8b90a5dd95318d716e31d7775c4ef3"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "userns: unshare_userns(\u0026cred) should not populate cred on failure",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=6160968cee8b90a5dd95318d716e31d7775c4ef3"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1971-1",
+      "url": "http://www.ubuntu.com/usn/USN-1971-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1974-1",
+      "url": "http://www.ubuntu.com/usn/USN-1974-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4205",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4205"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4205",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4205"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月27日]\\n  掲載\\n[2013年10月28日]\\n  ベンダ情報：Ubuntu (USN-1971-1) を追加\\n  ベンダ情報：Ubuntu (USN-1974-1) を追加"
+    }
+  ],
+  "date_first_published": "2013-08-27T16:13:09+09:00",
+  "date_last_updated": "2013-10-28T15:31:46+09:00",
+  "date_public": "2013-08-11T00:00:00+09:00"
+}

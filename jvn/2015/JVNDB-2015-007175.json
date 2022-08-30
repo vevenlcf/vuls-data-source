@@ -1,0 +1,151 @@
+{
+  "vulinfo_id": "JVNDB-2015-007175",
+  "title": "PHP の Fileinfo コンポーネントで使用される file の funcs.c の file_check_mem 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "PHP の Fileinfo コンポーネントで使用される file の funcs.c の file_check_mem 関数は、継続レベルのジャンプ (continuation-level jumps) を誤って処理するため、サービス運用妨害 (バッファオーバーフローおよびアプリケーションクラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "file project",
+      "product_name": "file",
+      "version_number": [
+        "5.23 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:file_project:file"
+      }
+    },
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.5.34 未満",
+        "5.6.20 未満の 5.6.x",
+        "7.0.5 未満の 7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.11 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.3",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、功名に細工された magic ファイルを介して、サービス運用妨害 (バッファオーバーフローおよびアプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2016-05-16-4 OS X El Capitan 10.11.5 and Security Update 2016-003",
+      "url": "http://lists.apple.com/archives/security-announce/2016/May/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT206567",
+      "url": "https://support.apple.com/en-us/HT206567"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT206567",
+      "url": "https://support.apple.com/ja-jp/HT206567"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "PR/454: Fix memory corruption when the continuation level jumps by more than",
+      "url": "https://github.com/file/file/commit/6713ca45e7757297381f4b4cdb9cf5e624a9ad36"
+    },
+    {
+      "type": "vendor",
+      "name": "Mantis Bug Tracker",
+      "vulinfo_id": "0000522: Buffer over-write in PHP function finfo_open with malformed magic file. (uses libmagic)",
+      "url": "http://bugs.gw.com/view.php?id=522"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #71527",
+      "url": "https://bugs.php.net/bug.php?id=71527"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 7 ChangeLog",
+      "url": "http://php.net/ChangeLog-7.php"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Fixed bug #71527 Buffer over-write in finfo_open with malformed magic file",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=fe13566c93f118a15a96320a546c7878fd0cfc5e"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8865",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8865"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8865",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8865"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-25T16:28:45+09:00",
+  "date_last_updated": "2016-05-25T16:28:45+09:00",
+  "date_public": "2015-06-04T00:00:00+09:00"
+}

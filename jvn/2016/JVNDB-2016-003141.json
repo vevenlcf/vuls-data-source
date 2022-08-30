@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2016-003141",
+  "title": "LXD におけるコンテナディレクトリ内の任意の誰でも読み取り可能なパスにアクセスされる脆弱性",
+  "vulinfo_description": "LXD は、非特権のコンテナを特権モードに切り替える際、適切にパーミッションを設定しないため、コンテナディレクトリ内の任意の誰でも読み取り可能な (world-readable) パスにアクセスされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "LXD",
+      "version_number": [
+        "2.0.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:canonical:lxd"
+      }
+    },
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "15.10",
+        "16.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、コンテナディレクトリ内の任意の誰でも読み取り可能な (world-readable) パスにアクセスされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Containers",
+      "vulinfo_id": "LXD 2.0.2 release announcement",
+      "url": "https://linuxcontainers.org/lxd/news/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2988-1",
+      "url": "http://www.ubuntu.com/usn/USN-2988-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1582",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1582"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1582",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1582"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月15日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-15T14:51:46+09:00",
+  "date_last_updated": "2016-06-15T14:51:46+09:00",
+  "date_public": "2016-05-30T00:00:00+09:00"
+}

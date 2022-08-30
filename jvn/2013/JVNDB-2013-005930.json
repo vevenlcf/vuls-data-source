@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2013-005930",
+  "title": "Poppler の JBIG2Stream.cc 内の JBIG2Stream::readSegments メソッドにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Poppler の JBIG2Stream.cc 内の JBIG2Stream::readSegments メソッドは、フォーマットストリング内の正規の指定子を使用しないため、サービス運用妨害 (セグメンテーション違反およびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "freedesktop.org",
+      "product_name": "Poppler",
+      "version_number": [
+        "0.24.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:freedesktop:poppler"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された PDF ファイルを介して、サービス運用妨害 (セグメンテーション違反およびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "segExtraBytes is a goffset not an int so use lld",
+      "url": "http://cgit.freedesktop.org/poppler/poppler/commit/?id=58e04a08afee39370283c494ee2e4e392fd3b684"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1048199",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1048199"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7296",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7296"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7296",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7296"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Secunia Advisory SA56567",
+      "url": "http://secunia.com/advisories/56567"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年01月28日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-01-28T18:05:33+09:00",
+  "date_last_updated": "2014-01-28T18:05:33+09:00",
+  "date_public": "2013-12-07T00:00:00+09:00"
+}

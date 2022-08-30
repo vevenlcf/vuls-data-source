@@ -1,0 +1,148 @@
+{
+  "vulinfo_id": "JVNDB-2013-003543",
+  "title": "Linux Kernel の IPv6 の実装の net/ipv6/ip6_output.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の IPv6 の実装の net/ipv6/ip6_output.c 内の ip6_append_data_mtu 関数は、IPV6_MTU setsockopt オプションが指定されていたかどうかの情報を適切に管理しないため、サービス運用妨害 (BUG およびシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.10.3 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、setsockopt システムコールの UDP_CORK オプションを使用する巧妙に細工されたアプリケーションを介して、サービス運用妨害 (BUG およびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ipv6: ip6_append_data_mtu did not care about pmtudisc and frag_size",
+      "url": "https://github.com/torvalds/linux/commit/75a493e60ac4bbe2e977e7129d6d8cbb0dd236be"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ipv6: ip6_append_data_mtu did not care about pmtudisc and frag_size",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=75a493e60ac4bbe2e977e7129d6d8cbb0dd236be"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2013:1473",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-09/msg00003.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2013:1474",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-09/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 987633",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=987633"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1947-1",
+      "url": "http://www.ubuntu.com/usn/USN-1947-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1946-1",
+      "url": "http://www.ubuntu.com/usn/USN-1946-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1945-1",
+      "url": "http://www.ubuntu.com/usn/USN-1945-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1944-1",
+      "url": "http://www.ubuntu.com/usn/USN-1944-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1943-1",
+      "url": "http://www.ubuntu.com/usn/USN-1943-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1942-1",
+      "url": "http://www.ubuntu.com/usn/USN-1942-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1941-1",
+      "url": "http://www.ubuntu.com/usn/USN-1941-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1938-1",
+      "url": "http://www.ubuntu.com/usn/USN-1938-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4163",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4163"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4163",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4163"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年07月30日]\\n  掲載\\n[2013年11月01日]\\n  ベンダ情報：Novell (SUSE-SU-2013:1473) を追加\\n  ベンダ情報：Novell (SUSE-SU-2013:1474) を追加\\n  ベンダ情報：Ubuntu (USN-1947-1) を追加\\n  ベンダ情報：Ubuntu (USN-1946-1) を追加\\n  ベンダ情報：Ubuntu (USN-1945-1) を追加\\n  ベンダ情報：Ubuntu (USN-1944-1) を追加\\n  ベンダ情報：Ubuntu (USN-1943-1) を追加\\n  ベンダ情報：Ubuntu (USN-1942-1) を追加\\n  ベンダ情報：Ubuntu (USN-1941-1) を追加\\n  ベンダ情報：Ubuntu (USN-1938-1) を追加"
+    }
+  ],
+  "date_first_published": "2013-07-30T17:23:44+09:00",
+  "date_last_updated": "2013-11-01T10:43:17+09:00",
+  "date_public": "2013-07-02T00:00:00+09:00"
+}

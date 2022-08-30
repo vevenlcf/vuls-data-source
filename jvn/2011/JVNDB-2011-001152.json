@@ -1,0 +1,112 @@
+{
+  "vulinfo_id": "JVNDB-2011-001152",
+  "title": "SCADA Engine BACnet OPC Client におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "SCADA Engine BACnet OPC Client には、.csv ファイルの解析処理に起因するバッファオーバーフローの脆弱性が存在します。  SCADA Engine BACnet OPC Client には、細工された .csv ファイルの解析処理を行う際に、スタックバッファオーバーフローの脆弱性が存在します。本脆弱性は、WTclient.dll ライブラリに起因しています。  なお、本脆弱性を使用した攻撃コードが公開されています。",
+  "affected": [
+    {
+      "name": "SCADA Engine",
+      "product_name": "BACnet OPC Client",
+      "version_number": [
+        "バージョン 1.0.24"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:scadaengine:bacnet_opc_client"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "細工された .csv ファイルを解析することで、サービス運用妨害 (DoS) 攻撃を受けたり、任意のコードを実行されたりする可能性があります。"
+  },
+  "solution": "[アップデートする] SCADA Engine が提供する情報をもとに最新版にアップデートしてください。  なお、本脆弱性は以下のバージョンで修正されています。  BACnet OPC Client バージョン 1.0.25  [ワークアラウンドを適用する] アップデートを適用するまでの間、以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  不審な .csv ファイルを開かない",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Distributors",
+      "vulinfo_id": "Distributors",
+      "url": "http://www.scadaengine.com/distributor.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SCADA Engine",
+      "vulinfo_id": "SCADA Engine - Downloads",
+      "url": "http://www.scadaengine.com/downloads.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SCADA Engine",
+      "vulinfo_id": "SCADA Engine - Home",
+      "url": "http://www.scadaengine.com/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4740",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4740"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-10-264-01",
+      "url": "http://www.us-cert.gov/control_systems/pdf/ICSA-10-264-01.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#660688",
+      "url": "http://jvn.jp/cert/JVNVU660688"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4740",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4740"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA41466",
+      "url": "http://secunia.com/advisories/41466"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "43289",
+      "url": "http://www.securityfocus.com/bid/43289"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#660688",
+      "url": "http://www.kb.cert.org/vuls/id/660688"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年03月03日]\\n  掲載\\n[2012年02月07日]\\n　ベンダ情報：SCADA Engine (Distributors) を追加"
+    }
+  ],
+  "date_first_published": "2011-03-03T16:51:06+09:00",
+  "date_last_updated": "2011-03-03T16:51:06+09:00",
+  "date_public": "2011-02-07T00:00:00+09:00"
+}

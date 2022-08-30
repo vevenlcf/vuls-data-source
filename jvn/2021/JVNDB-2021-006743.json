@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2021-006743",
+  "title": "TensorFlow におけるゼロ除算に関する脆弱性",
+  "vulinfo_description": "TensorFlow には、ゼロ除算に関する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google TensorFlow",
+      "version_number": [
+        "2.5.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:tensorflow"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Don't do any work if output tensor is null (prevent div by 0)",
+      "url": "https://github.com/tensorflow/tensorflow/commit/376c352a37ce5a68b721406dc7e77ac4b6cf483d"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Division by 0 in `MaxPoolGradWithArgmax`",
+      "url": "https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9vpm-rcf4-9wqw"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-29573",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2021-29573"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2021-29573",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-29573"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-369",
+      "url": "https://cwe.mitre.org/data/definitions/369.html",
+      "title": "ゼロ除算"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-01-19T06:09:35Z",
+      "description": "[2022年01月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-01-19T15:09:35+09:00",
+  "date_last_updated": "2022-01-19T15:09:35+09:00",
+  "date_public": "2021-05-06T00:00:00+09:00"
+}

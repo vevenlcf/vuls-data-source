@@ -1,0 +1,73 @@
+{
+  "vulinfo_id": "JVNDB-2011-004395",
+  "title": "SCO SCOoffice Server の STARTTLS 実装における SMTP セッションにコマンドを挿入される脆弱性",
+  "vulinfo_description": "SCO SCOoffice Server の STARTTLS 実装は、I/O バッファリングを適切に制限しないため、暗号化された SMTP セッションにコマンドを挿入される脆弱性が存在します。 本脆弱性は、平文コマンドインジェクション攻撃と関連します。 本問題は、CVE-2011-0411 と類似する問題です。",
+  "affected": [
+    {
+      "name": "SCO",
+      "product_name": "scoofficeserver",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sco:scoofficeserver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、TLS が確立した後で実行される平文コマンドを送信されることで、暗号化された SMTP セッションにコマンドを挿入される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "sco",
+      "vulinfo_id": "officeserver",
+      "url": "http://www.sco.com/products/officeserver/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1432",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1432"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1432",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1432"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#555316",
+      "url": "http://www.kb.cert.org/vuls/id/555316"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:10+09:00",
+  "date_last_updated": "2012-03-27T18:43:10+09:00",
+  "date_public": "2011-03-16T00:00:00+09:00"
+}

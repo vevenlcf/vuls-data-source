@@ -1,0 +1,183 @@
+{
+  "vulinfo_id": "JVNDB-2006-000080",
+  "title": "Mozilla 製品における Gecko エンジンが開放されたメモリ領域で動作してしまう脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Mozilla Firefox、Thunderbird には、以下の複数のセキュリティ上の問題が存在します。  1) 要素のスタイルが position:relative から position:static へ動的に変更された場合に、Gecko エンジンが開放されたメモリ領域で動作してしまう問題が存在します。(CVE-2006-0294)  リモートの攻撃者に利用された場合、Firefox あるいは Thunderbird を実行する標的ユーザの権限で任意のコードを実行される可能性があります。  2) 組み込みオブジェクトの Location および Navigator で QueryInterface メソッドを呼び出した際にメモリ領域が破壊される問題が存在します。(CVE-2006-0295)  リモートの攻撃者に利用された場合、標的ユーザの権限で任意のコードを実行される可能性があります。  3) 新機能 E4X、SVG、Canvas において、整数オーバーフローが発生する問題が存在します。(CVE-2006-0297)  リモートの攻撃者に利用された場合、標的ユーザの権限で任意のコードを実行される可能性があります。  4) XML パーサにおいて、バッファの終端を超えて読み出すことが可能であるため、クラッシュが引き起こされる問題が存在します。(CVE-2006-0298)  リモートの攻撃者に利用された場合、Firefox、Thunderbird が異常終了させられてしまう可能性があります。  5) E4X の実装によって導入された \"AnyName\" 内部オブジェクトが、協力関係にある 2 つのドメイン間において同一生成元制限 (異なるウィンドウやフレームへの直接アクセスを防ぐための制限) を回避するための通信手段として利用可能である問題が存在します。(CVE-2006-0299)  リモートの攻撃者に利用された場合、同一生成元制限により本来アクセスが制限されているコンテンツにアクセスされてしまう可能性があります。",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "1.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.11 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02156",
+      "url": "http://www2.itrc.hp.com/service/cki/docDisplay.do?docId=c00774579"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX02156",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX02156.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "mfsa2006-04",
+      "url": "http://www.mozilla.org/security/announce/2006/mfsa2006-04.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "mfsa2006-06",
+      "url": "http://www.mozilla.org/security/announce/2006/mfsa2006-06.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "mfsa2006-07",
+      "url": "http://www.mozilla.org/security/announce/2006/mfsa2006-07.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "mfsa2006-02",
+      "url": "http://www.mozilla.org/security/announce/2006/mfsa2006-02.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "mfsa2006-08",
+      "url": "http://www.mozilla.org/security/announce/2006/mfsa2006-08.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "mfsa2006-04",
+      "url": "http://www.mozilla-japan.org/security/announce/2006/mfsa2006-04.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "mfsa2006-06",
+      "url": "http://www.mozilla-japan.org/security/announce/2006/mfsa2006-06.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "mfsa2006-07",
+      "url": "http://www.mozilla-japan.org/security/announce/2006/mfsa2006-07.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "mfsa2006-02",
+      "url": "http://www.mozilla-japan.org/security/announce/2006/mfsa2006-02.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "mfsa2006-08",
+      "url": "http://www.mozilla-japan.org/security/announce/2006/mfsa2006-08.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-0294",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0294"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2006-0413",
+      "url": "http://www.frsirt.com/english/advisories/2006/0413"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA06-038A",
+      "url": "http://jvn.jp/cert/JVNTA06-038A/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN Status Tracking Notes",
+      "vulinfo_id": "TRTA06-038A",
+      "url": "http://jvn.jp/tr/TRTA06-038A/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-0294",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-0294"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA18700",
+      "url": "http://secunia.com/advisories/18700/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "16476",
+      "url": "http://www.securityfocus.com/bid/16476"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "SA06-038A",
+      "url": "http://www.us-cert.gov/cas/alerts/SA06-038A.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "TA06-038A",
+      "url": "http://www.us-cert.gov/cas/techalerts/TA06-038A.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-02-02T00:00:00+09:00"
+}

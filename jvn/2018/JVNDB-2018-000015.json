@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2018-000015",
+  "title": "FS010W における複数の脆弱性",
+  "vulinfo_description": "富士ソフト株式会社が提供する FS010W は、WiFiルータです。FS010W には、次の複数の脆弱性が存在します。  ・格納型のクロスサイトスクリプティング (CWE-79) - CVE-2018-0519 ・クロスサイトリクエストフォージェリ (CWE-352) - CVE-2018-0520  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 小林 学 氏",
+  "affected": [
+    {
+      "name": "富士ソフト株式会社",
+      "product_name": "FS010W",
+      "version_number": [
+        "ファームウエア FS010W_00_V1.3.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fsi:fs010w"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  ・当該製品の設定ツールにログインしているユーザのウェブブラウザ上で、任意のスクリプトを実行される - CVE-2018-0519 ・当該製品の設定ツールにログインした状態のユーザが、細工されたページにアクセスした場合、意図せず当該製品の設定変更などをさせられる - CVE-2018-0520"
+  },
+  "solution": "[ワークアラウンドを実施する] 次のワークアラウンドをすべて実施することで、本脆弱性の影響を軽減することが可能です。  ・設定ツールのログインパスワードを初期の設定から変更する ・設定ツールにログインしている間、他のウェブサイトにアクセスしない ・設定ツールでの操作終了後は、ウェブブラウザを終了する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "富士ソフト株式会社",
+      "vulinfo_id": "富士ソフト株式会社の告知ページ",
+      "url": "https://www.fsi.co.jp/mobile/plusF/products/FS010W.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-0519",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-0519"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-0520",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-0520"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#83834277",
+      "url": "https://jvn.jp/jp/JVN83834277/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-0519",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-0519"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-0520",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-0520"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-02-20T08:01:37Z",
+      "description": "[2018年02月22日]\\n   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2018-04-11T02:24:18Z",
+      "description": "[2018年04月11日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-0519) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-0520) を追加"
+    }
+  ],
+  "date_first_published": "2018-02-22T12:01:36+09:00",
+  "date_last_updated": "2018-04-11T12:30:19+09:00",
+  "date_public": "2018-02-20T00:00:00+09:00"
+}

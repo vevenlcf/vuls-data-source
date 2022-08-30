@@ -1,0 +1,168 @@
+{
+  "vulinfo_id": "JVNDB-2010-001721",
+  "title": "Linux kernel における権限を取得される脆弱性",
+  "vulinfo_description": "Linux kernel には、mmap および mremap 関数の処理に関して不備があるため、権限を取得される、またはサービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.32.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "3.x",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、mmap または mremap 関数を呼び出すことにより、権限を取得される、またはサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-194.3.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1216"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "ChangeLog-2.6.32.4",
+      "url": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.32.4"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0161",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0161.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0504",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0504.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2010-0016",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2010-0016.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0003",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2011-0003.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-0291",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0291"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-0291",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0291"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA39033",
+      "url": "http://secunia.com/advisories/39033"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA38229",
+      "url": "http://secunia.com/advisories/38229"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "37906",
+      "url": "http://www.securityfocus.com/bid/37906"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年07月23日]\\n  掲載\\n[2010年08月18日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-194.3.AXS3) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.3.AXS3) を追加\\n[2010年12月07日]\\n  影響を受けるシステム：VMware (VMSA-2010-0016) の情報を追加\\n  ベンダ情報：VMware (VMSA-2010-0016) を追加\\n[2011年03月01日]\\n  影響を受けるシステム：VMware (VMSA-2011-0003) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0003) を追加"
+    }
+  ],
+  "date_first_published": "2010-07-23T18:57:18+09:00",
+  "date_last_updated": "2011-03-01T14:44:30+09:00",
+  "date_public": "2010-02-15T00:00:00+09:00"
+}

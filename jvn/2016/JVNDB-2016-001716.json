@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-001716",
+  "title": "DTE Insight に情報漏えいの脆弱性",
+  "vulinfo_description": "DTE Insight には、ユーザの情報が他のユーザに漏えいする脆弱性が存在します。  情報漏えい (CWE-200) - CVE-2016-1562 DTE Energy は、契約しているユーザがエネルギー使用に関する情報を閲覧するためのアプリケーション DTE Insight を提供しています。DTE Insight は、HTTP REST API 経由で情報を取得しています。  CWE-200: Information Exposure http://cwe.mitre.org/data/definitions/200.html  この API にはユーザが改ざん可能な filter パラメータが含まれています。このパラメータによって、サーバから返されるユーザ情報が決定されます。filter パラメータを改ざんすることで、ユーザは他のユーザの情報を取得することが可能です。  発見者はさらに詳しい情報をブログポストで公開しています。  ブログポスト http://jeffq.com/blog/dteenergy-insight/",
+  "affected": [
+    {
+      "name": "DTE Energy Company",
+      "product_name": "DTE Insight",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dteenergy:dte_insight"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "ユーザによって、他のユーザの情報を取得される可能性があります。"
+  },
+  "solution": "この問題はサーバ側で対策が完了しており、発見者は現時点で他者の情報にアクセスできなくなっていることを確認しています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "DTE Energy",
+      "vulinfo_id": "DTE Insight",
+      "url": "https://www2.dteenergy.com/wps/portal/splashpage/DTE%20Insight/!ut/p/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1562",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1562"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94680092",
+      "url": "http://jvn.jp/vu/JVNVU94680092/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1562",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1562"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#713312",
+      "url": "http://www.kb.cert.org/vuls/id/713312"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2016-1562: Unauthenticated “filter” parameter leads to customer information leak in the DTE Energy Insight app",
+      "url": "http://jeffq.com/blog/dteenergy-insight/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月15日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-15T17:12:01+09:00",
+  "date_last_updated": "2016-03-15T17:12:01+09:00",
+  "date_public": "2016-03-11T00:00:00+09:00"
+}

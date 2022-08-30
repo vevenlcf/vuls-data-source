@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2015-005019",
+  "title": "Android の libstagefright の MPEG4Extractor.cpp の MPEG4Extractor::parseChunk 関数における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Android の libstagefright の MPEG4Extractor.cpp の MPEG4Extractor::parseChunk 関数は、チャンクサイズとスキップサイズの関係を検証しないため、任意のコードを実行される、またはサービス運用妨害 (整数アンダーフローおよびメモリ破損) 状態にされる脆弱性が存在します。  ベンダは、本脆弱性を Bug: 20923261 として公開しています。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Android",
+      "version_number": [
+        "5.1.1 (LMY48I) 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:google:android"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された MPEG-4 covr atom を介して、任意のコードを実行される、またはサービス運用妨害 (整数アンダーフローおよびメモリ破損) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Bug: 20923261",
+      "url": "https://android.googlesource.com/platform/frameworks/av/+/f4a88c8ed4f8186b3d6e2852993e063fc33ff231"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "Nexus Security Bulletin (August 2015)",
+      "url": "https://groups.google.com/forum/message/raw?msg=android-security-updates/Ugvu3fi6RQM/yzJvoTVrIQAJ"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3827",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3827"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92141772",
+      "url": "http://jvn.jp/vu/JVNVU92141772/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3827",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3827"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#924951",
+      "url": "https://www.kb.cert.org/vuls/id/924951"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年10月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-10-02T14:58:36+09:00",
+  "date_last_updated": "2015-10-02T14:58:36+09:00",
+  "date_public": "2015-07-09T00:00:00+09:00"
+}

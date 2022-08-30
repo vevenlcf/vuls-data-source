@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-000133",
+  "title": "iLogScanner におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "iLogScanner には、クロスサイトスクリプティングの脆弱性が存在します。  独立行政法人情報処理推進機構 (IPA) が提供する iLogScanner は、ウェブサーバのアクセスログから攻撃と思われる痕跡を検出するためのツールです。iLogScanner には、解析結果を HTML ページに出力する際の処理に起因するクロスサイトスクリプティング (CWE-79) の脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき次の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 草野 一彦 氏、株式会社NTTネオメイト 水谷 真也 氏 ",
+  "affected": [
+    {
+      "name": "独立行政法人情報処理推進機構 (IPA)",
+      "product_name": "iLogScanner",
+      "version_number": [
+        "V4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ipa:ilogscanner"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "細工されたアクセスログファイルを解析することで、出力された HTML ページ上で任意のスクリプトを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] iLogScanner オフライン版を使用しているユーザは、開発者が提供する情報をもとに最新版をダウンロードして利用してください。  開発者によると、iLogScanner オンライン版は既に対策済みとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "IPA",
+      "vulinfo_id": "独立行政法人情報処理推進機構 (IPA) の告知ページ",
+      "url": "http://www.ipa.go.jp/security/vuln/iLogScanner/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7248",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7248"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#89852154",
+      "url": "http://jvn.jp/jp/JVN89852154/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7248",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7248"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年11月14日]\\n  掲載\\n[2014年11月18日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2014-7248) を追加"
+    }
+  ],
+  "date_first_published": "2014-11-14T12:10:38+09:00",
+  "date_last_updated": "2014-11-18T18:21:38+09:00",
+  "date_public": "2014-11-14T00:00:00+09:00"
+}

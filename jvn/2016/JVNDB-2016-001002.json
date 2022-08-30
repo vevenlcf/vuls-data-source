@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2016-001002",
+  "title": "古野電気製 Voyage Data Recorder (VDR) にユーザ入力値を適切に検証しない脆弱性",
+  "vulinfo_description": "古野電気株式会社が提供する Voyage Data Recorder (VDR) VR-3000/VR-3000S および VR-7000 のファームウェアアップデート機能 moduleserv には、ユーザの入力値を適切に検証しないため、root 権限で任意のコマンドを実行される脆弱性が存在します。  古野電気株式会社の製品ページには、この VDR は \"Records all crucial data to identify the cause of maritime casualty as well as contribute to the future prevention of the catastrophe of any kind. (海上災害の原因特定だけでなく、将来起こり得るあらゆる災害の防止に役立てるための重要なデータを全て記録しています。)\" と記載されています。 Voyage Data Recorder (VDR) VR-3000/VR-3000S および VR-7000 のファームウェアアップデート機能 moduleserv は、10110/TCP で通信を待ち受けています。moduleserv はユーザの入力値を適切に検証しないため、攻撃者は root 権限で任意のコマンドを実行することが可能です。詳しい情報は IOActive のブログ、Maritime Security: Hacking into a Voyage Data Recorder (VDR) をご確認ください。  Maritime Security: Hacking into a Voyage Data Recorder (VDR)  http://blog.ioactive.com/2015/12/maritime-security-hacking-into-voyage.html",
+  "affected": [
+    {
+      "name": "古野電気株式会社",
+      "product_name": "VR-3000/VR-3000S ファームウェア",
+      "version_number": [
+        "V1.50 から V1.54 まで",
+        "V1.61 およびそれ以前の V1.6 系",
+        "V2.06 から V2.54 まで",
+        "V2.60 から V2.61 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:furuno_vr-3000%2Fvr-3000s_firmware"
+      }
+    },
+    {
+      "name": "古野電気株式会社",
+      "product_name": "VR-7000 ファームウェア",
+      "version_number": [
+        "V1.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:furuno_vr-7000_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "当該機器にネットワークアクセス可能な攻撃者によって、root 権限で任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアをアップデートしてください。 開発者は、本脆弱性の対策版として次のファームウェアをリリースしています。  VR-3000/VR-3000S: * ファームウェアバージョン V1.50 向け対策版 V1.56 * ファームウェアバージョン V1.61 向け対策版 V1.62 * ファームウェアバージョン V2.06 から V2.54 までのバージョン向け対策版 V2.56 * ファームウェアバージョン V2.60 から V2.61 までのバージョン向け対策版 V2.62  VR-7000: * ファームウェアバージョン V1.02 向け対策版 V1.04",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "古野電気株式会社",
+      "vulinfo_id": "VDR",
+      "url": "http://www.furuno.com/jp/merchant/vdr/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98928449",
+      "url": "http://jvn.jp/vu/JVNVU98928449/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#820196",
+      "url": "https://www.kb.cert.org/vuls/id/820196\\"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Maritime Security: Hacking into a Voyage Data Recorder (VDR)",
+      "url": "http://blog.ioactive.com/2015/12/maritime-security-hacking-into-voyage.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年01月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-01-07T12:17:53+09:00",
+  "date_last_updated": "2016-01-07T12:17:53+09:00",
+  "date_public": "2016-01-04T00:00:00+09:00"
+}

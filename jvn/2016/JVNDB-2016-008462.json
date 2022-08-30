@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-008462",
+  "title": "Linux 上で稼動する Sudo の sudo_noexec.so における noexec コマンド制限を回避される脆弱性",
+  "vulinfo_description": "Linux 上で稼動する Sudo の sudo_noexec.so には、noexec コマンド制限を回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Todd C. Miller",
+      "product_name": "Sudo",
+      "version_number": [
+        "1.8.15 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:todd_miller:sudo"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) system または (2) popen 関数を呼び出すアプリケーションを介して、noexec コマンド制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1372830",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1372830"
+    },
+    {
+      "type": "vendor",
+      "name": "Sudo",
+      "vulinfo_id": "Potential bypass of sudo_noexec.so on Linux",
+      "url": "https://www.sudo.ws/alerts/noexec_bypass.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7032",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7032"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7032",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-7032"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-284",
+      "url": "https://cwe.mitre.org/data/definitions/284.html",
+      "title": "不適切なアクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-19T16:56:07+09:00",
+  "date_last_updated": "2017-05-19T16:56:07+09:00",
+  "date_public": "2016-10-26T00:00:00+09:00"
+}

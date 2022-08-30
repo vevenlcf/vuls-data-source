@@ -1,0 +1,116 @@
+{
+  "vulinfo_id": "JVNDB-2014-002775",
+  "title": "Linux Kernel におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel は、hugetlb エントリの存在を適切に考慮しないため、サービス運用妨害 (メモリ破損またはシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.14.5 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "version_number": [
+        "2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、特定のメモリ領域にアクセスされることで、サービス運用妨害 (メモリ破損またはシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "LKML.ORG",
+      "vulinfo_id": "[PATCH RESEND -mm 1/2] mm: add !pte_present() check on existing hugetlb_entry callbacks",
+      "url": "https://lkml.org/lkml/2014/3/18/784"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1104097",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1104097"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0290",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-0290.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "sol15685: Linux kernel vulnerabilities CVE-2014-3940 and CVE-2014-4027",
+      "url": "https://support.f5.com/kb/en-us/solutions/public/15000/600/sol15685.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3940",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3940"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3940",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3940"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月09日]\\n  掲載\\n[2014年11月26日]\\n  ベンダ情報：F5 Networks (sol15685: Linux kernel vulnerabilities CVE-2014-3940 and CVE-2014-4027) を追加\\n[2015年05月12日]\\n  ベンダ情報：レッドハット (RHSA-2015:0290) を追加"
+    }
+  ],
+  "date_first_published": "2014-06-09T18:34:37+09:00",
+  "date_last_updated": "2015-05-12T17:29:10+09:00",
+  "date_public": "2014-03-18T00:00:00+09:00"
+}

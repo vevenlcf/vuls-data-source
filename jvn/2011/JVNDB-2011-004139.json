@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2011-004139",
+  "title": "Asterisk Open Source の ast_uri_encode 関数におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Asterisk Open Source の main/utils.c の ast_uri_encode 関数には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Digium",
+      "product_name": "Asterisk",
+      "version_number": [
+        "Asterisk 1.4.38.1 未満、1.4.39.1、1.6.1.21、1.6.2.15.1、1.6.2.16.1、1.8.1.2、1.8.2、および Business Edition C.3.6.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:digium:asterisk"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工された以下を含む caller ID データを介して、任意のコマンドを実行される可能性があります。 (1) SIP チャネルドライバ (2) URIENCODE diaplan 関数 (3) AGI diaplan 関数"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asterisk Project Security Advisory",
+      "vulinfo_id": "AST-2011-001",
+      "url": "http://downloads.asterisk.org/pub/security/AST-2011-001.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0495",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0495"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0495",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0495"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:55+09:00",
+  "date_last_updated": "2012-07-10T14:35:56+09:00",
+  "date_public": "2011-01-18T00:00:00+09:00"
+}

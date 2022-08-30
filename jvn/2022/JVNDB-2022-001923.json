@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2022-001923",
+  "title": "コンテック製 SolarView Compact における複数の脆弱性",
+  "vulinfo_description": "株式会社コンテックが提供する SolarView Compact は、太陽光発電計測監視装置です。 SolarView Compact には、次の複数の脆弱性が存在します。  OS コマンドインジェクション (CWE-78) - CVE-2022-29303 SolarView Compact で提供される Web サーバーのテストメール送信画面において、入力した値が適切に検証されないことにより、OS コマンドが実行される  ディレクトリトラバーサル (CWE-23) - CVE-2022-29298 SolarView Compact で提供される Web サーバーのダウンロード画面において、URL が適切に検証されないことにより、意図しないファイルが参照される  情報漏えい (CWE-200) - CVE-2022-29302 SolarView Compact で提供される Web サーバーには、Web サーバーのコンテンツを編集可能な非公開の画面が存在し、それを経由して Web サーバー内のファイルを読み書きされる ",
+  "affected": [
+    {
+      "name": "株式会社コンテック",
+      "product_name": "SolarView Compact SV-CPT-MC310",
+      "version_number": [
+        "Ver.6.50 より前のバージョン (CVE-2022-29298、CVE-2022-29302)",
+        "Ver.7.21 より前のバージョン (CVE-2022-29303)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:contec:sv-cpt-mc310_firmware"
+      }
+    },
+    {
+      "name": "株式会社コンテック",
+      "product_name": "SolarView Compact SV-CPT-MC310F",
+      "version_number": [
+        "Ver.6.50 より前のバージョン (CVE-2022-29298、CVE-2022-29302)",
+        "Ver.7.21 より前のバージョン (CVE-2022-29303)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:contec:sv-cpt-mc310F_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  　* 設定画面にアクセス可能なユーザーによって、任意の OS コマンドを実行される - CVE-2022-29303 　* 遠隔の第三者によって、任意のファイルを窃取される - CVE-2022-29298 　* 遠隔の第三者によって、Web サーバー内のファイルを閲覧されたり、改ざんされたりする - CVE-2022-29302"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアを最新版にアップデートしてください。 開発者は、本脆弱性を修正した次のファームウェアをリリースしています。 \u003cul\u003e\u003cli\u003eSolarView Compact \u003cul\u003e\u003cli\u003eSV-CPT-MC310 Ver.7.21 \u003cli\u003eSV-CPT-MC310F Ver.7.21 \u003c/li\u003e\u003c/ul\u003e\u003c/li\u003e\u003c/ul\u003e  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 　* 本製品をスタンドアロンで運用している場合は、本製品をネットワーク接続しない 　* 本製品のネットワークの上流側にファイアウォールを設置する 　* 本製品のネットワークアクセスを信頼できる閉域網で構成する 　* 本製品の「ユーザー設定」にて「ユーザー認証範囲の設定」を「全画面を認証対象にする」で設定する 　* 本製品に初期設定されている認証情報を変更する  ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "株式会社コンテック",
+      "vulinfo_id": "SolarView Compact(SV-CPT-MC310)の脆弱性について（PDF）",
+      "url": "https://www.contec.com/jp/api/downloadlogger?download=https://www.contec.com/jp/-/media/contec/jp/support/security-info/contec_security_solarview_220526.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "株式会社コンテック",
+      "vulinfo_id": "SV-CPT-MC310 | ファームウェア",
+      "url": "https://www.contec.com/jp/download/donwload-list/?itemid=b28c8b7c-9f40-40b2-843c-b5b04c035b0e#firmware"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-29303",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-29303"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-29298",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-29298"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-29302",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-29302"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92327282",
+      "url": "https://jvn.jp/vu/JVNVU92327282/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-78",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-78.html",
+      "title": "OSコマンドインジェクション"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-23",
+      "url": "https://cwe.mitre.org/data/definitions/23.html",
+      "title": "相対パストラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-05-27T03:58:21Z",
+      "description": "[2022年05月27日]   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2022-06-10T02:38:43Z",
+      "description": "[2022年06月10日]\\n  タイトル：内容を更新\\n  概要：内容を更新\\n  CVSS による深刻度：内容を更新　　　\\n  想定される影響：内容を更新\\n  影響を受けるシステム：内容を更新\\n  参考情報：Common Vulnerabilities and Exposures (CVE) (CVE-2022-29298 および CVE-2022-29302) を追加\\n  CWE による脆弱性タイプ一覧：CWE-23 および CWE-200 を追加"
+    }
+  ],
+  "date_first_published": "2022-05-27T13:56:26+09:00",
+  "date_last_updated": "2022-06-10T14:19:02+09:00",
+  "date_public": "2022-05-26T00:00:00+09:00"
+}

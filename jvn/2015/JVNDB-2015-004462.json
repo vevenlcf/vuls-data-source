@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2015-004462",
+  "title": "RubyGems におけるリクエストを任意のドメインにリダイレクトされる脆弱性",
+  "vulinfo_description": "RubyGems は、gem をフェッチする、または API リクエストを生成する際、ホスト名を検証しないため、リクエストを任意のドメインにリダイレクトされる脆弱性が存在します。  本脆弱性は、DNS ハイジャック攻撃と呼ばれています。  本脆弱性は、CVE-2015-3900 に対する修正が不完全だったことによる問題です。",
+  "affected": [
+    {
+      "name": "RubyGems",
+      "product_name": "RubyGems",
+      "version_number": [
+        "2.0.17 未満の 2.0.x",
+        "2.2.5 未満の 2.2.x",
+        "2.4.8 未満の 2.4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubygems:rubygems"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、元のドメイン名が末尾に付加されているドメインを含む巧妙に細工された DNS SRV レコードを介して、リクエストを任意のドメインにリダイレクトされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix API endpoint domain clamping",
+      "url": "https://github.com/rubygems/rubygems/commit/5c7bfb5"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RubyGems.org",
+      "vulinfo_id": "2.2.5 Released",
+      "url": "http://blog.rubygems.org/2015/06/08/2.2.5-released.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RubyGems.org",
+      "vulinfo_id": "2.4.8 Released",
+      "url": "http://blog.rubygems.org/2015/06/08/2.4.8-released.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-4020",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4020"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-4020",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-4020"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Trustwave SpiderLabs Security Advisory TWSL2015-009",
+      "url": "https://www.trustwave.com/Resources/Security-Advisories/Advisories/TWSL2015-009/?fid=6478"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年08月28日]\\n  掲載\\n[2015年10月30日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - October 2015) を追加"
+    }
+  ],
+  "date_first_published": "2015-08-28T11:30:27+09:00",
+  "date_last_updated": "2015-10-30T16:37:22+09:00",
+  "date_public": "2015-06-08T00:00:00+09:00"
+}

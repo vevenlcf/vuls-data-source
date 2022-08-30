@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2010-004063",
+  "title": "Consona Dynamic Agent などの tgsrv.exe における任意のコードを実行される脆弱性",
+  "vulinfo_description": "Consona Dynamic Agent、Repair Manager、Subscriber Activation および Subscriber Agent の Repair Service の tgsrv.exe は、\\\\.\\pipe\\__RepairService_pipe__company named pipe への 入力検証に予測可能な timestamp フィールドに依存するため、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "コンソナ",
+      "product_name": "consona dynamic agent",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:consona:consona_dynamic_agent"
+      }
+    },
+    {
+      "name": "コンソナ",
+      "product_name": "consona repair manager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:consona:consona_repair_manager"
+      }
+    },
+    {
+      "name": "コンソナ",
+      "product_name": "consona subscriber activation",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:consona:consona_subscriber_activation"
+      }
+    },
+    {
+      "name": "コンソナ",
+      "product_name": "consona subscriber agent",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:consona:consona_subscriber_agent"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、(1) TCPIP.SYS または (2) SMB2 サービスから現在の時刻を取得されることで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "consona",
+      "vulinfo_id": "Security Vulnerabilities and Recommendations",
+      "url": "http://www.consona.com/Content/CRM/Support/SecurityBulletin_April2010.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1906",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1906"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1906",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1906"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#602801",
+      "url": "http://www.kb.cert.org/vuls/id/602801"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T16:19:25+09:00",
+  "date_last_updated": "2012-06-26T16:19:25+09:00",
+  "date_public": "2010-04-16T00:00:00+09:00"
+}

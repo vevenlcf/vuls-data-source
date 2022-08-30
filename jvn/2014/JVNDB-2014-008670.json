@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2014-008670",
+  "title": "Nagios Remote Plugin Executor の nrpe.c における任意のコマンドを実行される脆弱性",
+  "vulinfo_description": "** 未確定 ** 本件は、脆弱性として確定していません。  Nagios Remote Plugin Executor (NRPE) の nrpe.c には、不完全なブラックリストにより、任意のコマンドを実行される脆弱性が存在します。  なお、本問題には複数の関係者が異議を唱えています。ベンダは「予想される動作である」として改行を許容している、と報告されています。また、本問題は、管理者がコメント内の「高セキュリティリスク」の警告にも関わらず nrpe.conf で「dont_blame_nrpe」オプションを有効にした場合にのみ発生する可能性があります。  補足情報 : CWE による脆弱性タイプは、CWE-184: Incomplete Blacklist (不完全なブラックリスト) と識別されています。 https://cwe.mitre.org/data/definitions/184.html",
+  "affected": [
+    {
+      "name": "Nagios Enterprises, LLC",
+      "product_name": "Nagios Remote Plug-In Executor",
+      "version_number": [
+        "2.15 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nagios:remote_plugin_executor"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、libexec/check_nrpe の -a オプション内の改行文字を介して、任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Nagios",
+      "vulinfo_id": "Top Page",
+      "url": "https://www.nagios.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2014:0682-1",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2014-05/msg00011.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2014:0594-1",
+      "url": "http://lists.opensuse.org/opensuse-updates/2014-05/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2014:0603-1",
+      "url": "http://lists.opensuse.org/opensuse-updates/2014-05/msg00014.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2913",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2913"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2913",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2913"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "NRPE - Nagios Remote Plugin Executor \u003c= 2.15 Remote Command Execution",
+      "url": "https://seclists.org/fulldisclosure/2014/Apr/240"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2019-07-29T03:41:54Z",
+      "description": "[2019年07月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2019-07-29T12:41:54+09:00",
+  "date_last_updated": "2019-07-29T12:41:54+09:00",
+  "date_public": "2014-04-17T00:00:00+09:00"
+}

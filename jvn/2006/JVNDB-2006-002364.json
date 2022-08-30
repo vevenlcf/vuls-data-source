@@ -1,0 +1,80 @@
+{
+  "vulinfo_id": "JVNDB-2006-002364",
+  "title": "Fedora Core 5 などで使用される Linux kernel におけるメモリ二重解放の脆弱性",
+  "vulinfo_description": "Fedora Core 5 およびその他のディストリビューションで使用される Linux kernel の squashfs モジュールは、メモリを二重に解放する不備があるため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "fedora core",
+      "version_number": [
+        "5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:fedora_core"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された squashfs ファイルシステムをマウントされることで、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "kernel",
+      "vulinfo_id": "USN-395-1",
+      "url": "http://www.ubuntu.com/usn/usn-395-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat",
+      "vulinfo_id": "Top Page",
+      "url": "http://jp.redhat.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-5701",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5701"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-5701",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-5701"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T15:36:11+09:00",
+  "date_last_updated": "2012-09-25T15:36:11+09:00",
+  "date_public": "2006-11-03T00:00:00+09:00"
+}

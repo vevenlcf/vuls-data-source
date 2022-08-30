@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-006953",
+  "title": "Windows 上で稼動する JCraft JSch におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "Windows 上で稼動する JCraft JSch には、ChannelSftp.OVERWRITE モードの際、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "JCraft, Inc.",
+      "product_name": "JSch",
+      "version_number": [
+        "0.1.54 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:jcraft:jsch"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "リモートの SFTP サーバにより、再帰 GET コマンドのレスポンスの ..\\ (ドットドットバックスラッシュ) を介して、任意のファイルに書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JCraft",
+      "vulinfo_id": "JSch - Java Secure Channel",
+      "url": "http://www.jcraft.com/jsch/"
+    },
+    {
+      "type": "vendor",
+      "name": "JCraft",
+      "vulinfo_id": "ChangeLog of JSch",
+      "url": "http://www.jcraft.com/jsch/ChangeLog"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5725",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5725"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5725",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5725"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月31日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-31T14:01:20+09:00",
+  "date_last_updated": "2017-01-31T14:01:20+09:00",
+  "date_public": "2016-08-30T00:00:00+09:00"
+}

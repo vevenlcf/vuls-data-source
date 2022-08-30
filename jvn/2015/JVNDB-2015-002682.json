@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2015-002682",
+  "title": "GoAutoDial GoAdmin CE における SQL インジェクションの脆弱性",
+  "vulinfo_description": "GoAutoDial GoAdmin CE には、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Goautodial",
+      "product_name": "GoAdmin CE",
+      "version_number": [
+        "3.3-1421902800 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:goautodial:goadmin_ce"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、以下を介して、任意の SQL コマンドを実行される可能性があります。  (1) go_login.php の user_name パラメータ (2) go_login.php の user_pass パラメータ (3) go_login/validate_credentials/admin/ の PATH_INFO (4) index.php/go_site/go_get_user_info/ の PATH_INFO"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Goautodial",
+      "vulinfo_id": "GoAdmin CE Security Vulnerability",
+      "url": "http://goautodial.org/news/21"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2843",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2843"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2843",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2843"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年05月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-05-18T17:01:25+09:00",
+  "date_last_updated": "2015-05-18T17:01:25+09:00",
+  "date_public": "2015-01-27T00:00:00+09:00"
+}

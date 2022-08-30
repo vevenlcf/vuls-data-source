@@ -1,0 +1,126 @@
+{
+  "vulinfo_id": "JVNDB-2013-004797",
+  "title": "Ruby で使用される RubyGems の lib/rubygems/version.rb におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Ruby で使用される RubyGems の lib/rubygems/version.rb 内の Gem::Version::ANCHORED_VERSION_PATTERN には、アルゴリズムの複雑性により、サービス運用妨害 (CPU 資源の消費) 状態にされる脆弱性が存在します。  本問題は、CVE-2013-4287 の修正が不完全だったことによる問題です。",
+  "affected": [
+    {
+      "name": "Ruby-lang.org",
+      "product_name": "Ruby",
+      "version_number": [
+        "1.9.0 から 2.0.0p247"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ruby-lang:ruby"
+      }
+    },
+    {
+      "name": "RubyGems",
+      "product_name": "RubyGems",
+      "version_number": [
+        "1.8.23.2 未満",
+        "1.8.24 から 1.8.26",
+        "2.0.10 未満の 2.0.x",
+        "2.1.5 未満の 2.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rubygems:rubygems"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、正規表現の大量のバックトラッキングを誘発する巧妙に細工された gem バージョンを介して、サービス運用妨害 (CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1009720",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1009720"
+    },
+    {
+      "type": "vendor",
+      "name": "RubyGems.org",
+      "vulinfo_id": "CVE-2013-4287 Algorithmic complexity vulnerability in RubyGems 2.1.4 and older",
+      "url": "http://blog.rubygems.org/2013/09/24/CVE-2013-4363.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple Cryptographic Issues vulnerabilities in Ruby",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_cryptographic_issues_vulnerabilities_in"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in Ruby",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_ruby1"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple Cryptographic Issues vulnerabilities in RubyGems",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_cryptographic_issues_vulnerabilities_in1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4363",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4363"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4363",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4363"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE-2013-4287 Algorithmic complexity vulnerability in RubyGems 2.0.7 and older (2013/09/20)",
+      "url": "http://www.openwall.com/lists/oss-security/2013/09/20/1"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE-2013-4287 Algorithmic complexity vulnerability in RubyGems 2.0.7 and older (2013/09/18)",
+      "url": "http://www.openwall.com/lists/oss-security/2013/09/18/8"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE-2013-4287 Algorithmic complexity vulnerability in RubyGems 2.0.7 and older (2013/09/15)",
+      "url": "http://www.openwall.com/lists/oss-security/2013/09/14/3"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月21日]\\n  掲載\\n[2014年01月09日]\\n  ベンダ情報：オラクル (Multiple Cryptographic Issues vulnerabilities in Ruby) を追加\\n[2014年03月06日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in Ruby) を追加\\n  ベンダ情報：レッドハット (Bug 1009720) を追加\\n[2014年08月11日]\\n  ベンダ情報：オラクル (Multiple Cryptographic Issues vulnerabilities in RubyGems) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-21T19:07:26+09:00",
+  "date_last_updated": "2014-08-11T17:34:34+09:00",
+  "date_public": "2013-09-24T00:00:00+09:00"
+}

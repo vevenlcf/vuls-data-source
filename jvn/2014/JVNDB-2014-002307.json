@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-002307",
+  "title": "dompdf の dompdf.php における chroot の保護を回避される脆弱性",
+  "vulinfo_description": "dompdf の dompdf.php には、DOMPDF_ENABLE_PHP が有効になっている場合、chroot の保護を回避され、任意のファイルを読まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Digital Junkies",
+      "product_name": "dompdf",
+      "version_number": [
+        "0.6.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:digitaljunkies:dompdf"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "攻撃者により、input_file パラメータの PHP プロトコルおよびラッパーを介して、chroot の保護を回避され、任意のファイルを読まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Remove pre-processing of PHP code, disallow I/O streams as file input",
+      "url": "https://github.com/dompdf/dompdf/commit/23a693993299e669306929e3d49a4a1f7b3fb028"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-2383",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2383"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-2383",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2383"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Vulnerability title: Arbitrary file read in dompdf",
+      "url": "https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-2383/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年05月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-05-01T18:18:02+09:00",
+  "date_last_updated": "2014-05-01T18:18:02+09:00",
+  "date_public": "2014-03-11T00:00:00+09:00"
+}

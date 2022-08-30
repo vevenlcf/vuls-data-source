@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2015-007116",
+  "title": "Linux Kernel の fs/aio.c の aio_setup_single_vector 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/aio.c の aio_setup_single_vector 関数には、整数オーバーフローの脆弱性が存在します。  本脆弱性は、CVE-2012-6701 のリグレッションに起因した脆弱性です。   補足情報 : CWE による脆弱性タイプは、CWE-190: Integer Overflow or Wraparound (整数オーバーフローまたはラップアラウンド) と識別されています。 http://cwe.mitre.org/data/definitions/190.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、過度に大きな AIO iovec を介して、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "aio: lift iov_iter_init() into aio_setup_..._rw()",
+      "url": "https://github.com/torvalds/linux/commit/4c185ce06dca14f5cea192f5a2c981ef50663f2b"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "AIO: properly check iovec sizes",
+      "url": "https://github.com/torvalds/linux/commit/c4f4b82694fe48b02f7a881a1797131a6dad1364"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "aio: lift iov_iter_init() into aio_setup_..._rw()",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4c185ce06dca14f5cea192f5a2c981ef50663f2b"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "AIO: properly check iovec sizes",
+      "url": "https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit?id=c4f4b82694fe48b02f7a881a1797131a6dad1364"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1314275",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1314275"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8830",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8830"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8830",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8830"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:07:33+09:00",
+  "date_last_updated": "2016-05-10T10:07:33+09:00",
+  "date_public": "2015-04-12T00:00:00+09:00"
+}

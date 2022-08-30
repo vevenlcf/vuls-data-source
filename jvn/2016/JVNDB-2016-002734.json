@@ -1,0 +1,211 @@
+{
+  "vulinfo_id": "JVNDB-2016-002734",
+  "title": "QEMU の VGA モジュールにおけるホスト上で任意のコードを実行される脆弱性",
+  "vulinfo_description": "QEMU の VGA モジュールは、ビデオメモリへのバンクアクセスの境界チェックを適切に実行しないため、ホスト上で任意のコードを実行される脆弱性が存在します。  本脆弱性は、\"Dark Portal\" の問題と呼ばれています。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10",
+        "16.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード・エンタープライズ",
+      "product_name": "HPE Helion OpenStack",
+      "version_number": [
+        "2.0",
+        "2.1",
+        "2.1.2",
+        "2.1.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hp:helion_openstack"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルのゲスト OS ユーザにより、バンクレジスタ (bank register) を設定した後、アクセスモードを変更されることで、ホスト上で任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3573",
+      "url": "https://www.debian.org/security/2016/dsa-3573"
+    },
+    {
+      "type": "vendor",
+      "name": "HPE Security Bulletin",
+      "vulinfo_id": "HPSBGN03620",
+      "url": "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05164862"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinapr2016-2952096.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - October 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinoct2016-3090545.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle VM Server for x86 Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/ovmbulletinjul2016-3090546.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PULL 1/5] vga: fix banked access bounds checking (CVE-2016-3710)",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-05/msg01197.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1001",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1002",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1002.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1019",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1019.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0724",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0724.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1224",
+      "url": "https://access.redhat.com/errata/RHSA-2016:1224"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0725",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0725.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0997",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0997.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:0999",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-0999.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2016:1000",
+      "url": "http://rhn.redhat.com/errata/RHSA-2016-1000.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2974-1",
+      "url": "http://www.ubuntu.com/usn/USN-2974-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen Security Advisory",
+      "vulinfo_id": "XSA-179",
+      "url": "http://xenbits.xen.org/xsa/advisory-179.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3710",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3710"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3710",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3710"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月19日]\\n  掲載\\n[2016年06月24日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：ヒューレット・パッカード・エンタープライズ (HPSBGN03620) を追加\\n  ベンダ情報：Canonical (USN-2974-1) を追加\\n[2016年08月31日]\\n  ベンダ情報：レッドハット (RHSA-2016:0724) を追加 \\n  ベンダ情報：レッドハット (RHSA-2016:0725) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:0997) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:0999) を追加 \\n  ベンダ情報：レッドハット (RHSA-2016:1000) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:1001) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:1002) を追加 \\n  ベンダ情報：レッドハット (RHSA-2016:1019) を追加\\n  ベンダ情報：レッドハット (RHSA-2016:1224) を追加\\n[2016年11月17日]\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - April 2016) を追加\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - October 2016) を追加\\n  ベンダ情報：オラクル (Oracle VM Server for x86 Bulletin - July 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-05-19T11:42:33+09:00",
+  "date_last_updated": "2016-11-17T15:34:03+09:00",
+  "date_public": "2016-05-09T00:00:00+09:00"
+}

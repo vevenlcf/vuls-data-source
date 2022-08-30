@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2016-006978",
+  "title": "Linux Kernel の crypto/mcryptd.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の crypto/mcryptd.c には、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.8.15 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、互換性のないアルゴリズムを伴う AF_ALG ソケットを使用されることで、サービス運用妨害 (NULL ポインタデリファレンスおよびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.8.15",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.8.15"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "crypto: mcryptd - Check mcryptd algorithm compatibility",
+      "url": "https://github.com/torvalds/linux/commit/48a992727d82cb7db076fa15d372178743b1f4cd"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "crypto: mcryptd - Check mcryptd algorithm compatibility",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=48a992727d82cb7db076fa15d372178743b1f4cd"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1404200",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1404200"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-10147",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10147"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-10147",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10147"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-476",
+      "url": "http://cwe.mitre.org/data/definitions/476.html",
+      "title": "NULL ポインタデリファレンス"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月31日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-31T18:16:51+09:00",
+  "date_last_updated": "2017-01-31T18:16:51+09:00",
+  "date_public": "2016-12-15T00:00:00+09:00"
+}

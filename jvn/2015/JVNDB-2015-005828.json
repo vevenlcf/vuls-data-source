@@ -1,0 +1,117 @@
+{
+  "vulinfo_id": "JVNDB-2015-005828",
+  "title": "hostapd および wpa_supplicant の NDEF レコードパーサにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "hostapd および wpa_supplicant の NDEF レコードパーサには、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1",
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "w1.fi",
+      "product_name": "hostapd",
+      "version_number": [
+        "2.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:w1.fi:hostapd"
+      }
+    },
+    {
+      "name": "w1.fi",
+      "product_name": "wpa_supplicant",
+      "version_number": [
+        "2.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:w1.fi:wpa_supplicant"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、(1) WPS または (2) P2P NFC NDEF レコードの過度に大きな payload length フィールドの値を介して、out-of-bounds read を誘発されることで、サービス運用妨害 (プロセスクラッシュまたは無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog for hostapd",
+      "url": "https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog"
+    },
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog for wpa_supplicant",
+      "url": "https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2015:1920",
+      "url": "http://lists.opensuse.org/opensuse-updates/2015-11/msg00041.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2015:1912",
+      "url": "http://lists.opensuse.org/opensuse-updates/2015-11/msg00037.html"
+    },
+    {
+      "type": "vendor",
+      "name": "w1.fi",
+      "vulinfo_id": "Incomplete WPS and P2P NFC NDEF record payload length validation",
+      "url": "http://w1.fi/security/2015-5/incomplete-wps-and-p2p-nfc-ndef-record-payload-length-validation.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8041",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8041"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8041",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8041"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-11T15:11:22+09:00",
+  "date_last_updated": "2015-11-11T15:11:22+09:00",
+  "date_public": "2015-09-27T00:00:00+09:00"
+}

@@ -1,0 +1,152 @@
+{
+  "vulinfo_id": "JVNDB-2015-007077",
+  "title": "libssh の package_cb.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libssh の package_cb.c の (1) SSH_MSG_NEWKEYS および (2) SSH_MSG_KEXDH_REPLY パケットハンドラは、ステートを適切に検証しないため、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "21",
+        "22"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "libssh",
+      "product_name": "libssh",
+      "version_number": [
+        "0.6.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libssh:libssh"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された SSH パケットを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3488",
+      "url": "https://www.debian.org/security/2016/dsa-3488"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-10962",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/161802.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2015-7590",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/158013.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libssh",
+      "vulinfo_id": "libssh 0.6.5 (Security and bugfix release)",
+      "url": "https://www.libssh.org/2015/04/30/libssh-0-6-5-security-and-bugfix-release/"
+    },
+    {
+      "type": "vendor",
+      "name": "libssh",
+      "vulinfo_id": "CVE-2015-3146: Fix state validation in packet handlers",
+      "url": "https://git.libssh.org/projects/libssh.git/commit/?h=libssh-0.6.5\u0026id=94f6955fbaee6fda9385a23e505497efe21f5b4f"
+    },
+    {
+      "type": "vendor",
+      "name": "libssh",
+      "vulinfo_id": "Null pointer dereference in NEWKEYS + KEXDH_REPLY packet",
+      "url": "https://www.libssh.org/security/advisories/CVE-2015-3146.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2912-1",
+      "url": "http://www.ubuntu.com/usn/USN-2912-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3146",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3146"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3146",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3146"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-21T16:00:07+09:00",
+  "date_last_updated": "2016-04-21T16:00:07+09:00",
+  "date_public": "2015-04-30T00:00:00+09:00"
+}

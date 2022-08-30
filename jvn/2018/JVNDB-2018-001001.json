@@ -1,0 +1,255 @@
+{
+  "vulinfo_id": "JVNDB-2018-001001",
+  "title": "CPU に対するサイドチャネル攻撃",
+  "vulinfo_description": "投機的実行機能やアウトオブオーダー実行機能を持つ CPU に対してサイドチャネル攻撃を行う手法が複数の研究者によって報告されています。  投機的実行機能やアウトオブオーダー実行機能を持つ CPU に対してサイドチャネル攻撃を行う手法 (Spectre および Meltdown) が報告されています。  詳細については、Google Project Zero のブログ記事(\"Reading privileged memory with a side-channel\")や Graz University of Technology (TU Graz) の研究者による情報(\"Meltdown and Spectre\")を参照してください。  \"Reading privileged memory with a side-channel\" https://googleprojectzero.blogspot.jp/2018/01/reading-privileged-memory-with-side.html  \"Meltdown and Spectre\" https://meltdownattack.com/",
+  "affected": [
+    {
+      "name": "（複数のベンダ）",
+      "product_name": "（複数の製品）",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:multiple_vendors"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:S/C:C/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "ユーザ権限で実行中のプロセスから、機密情報を取得される可能性があります。  Spectre 攻撃に関しては、細工された Javascript コードによって、Javascript からは取得できないはずの web ブラウザプロセス中のデータを取得可能であると報告されています。"
+  },
+  "solution": "[アップデートする] OS カーネルやアプリケーションにおける対策が進められています。各 OS ベンダやアプリケーション開発者の提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "AMD",
+      "vulinfo_id": "An Update on AMD Processor Security",
+      "url": "https://www.amd.com/en/corporate/speculative-execution"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT208394",
+      "url": "https://support.apple.com/en-us/HT208394"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT208394",
+      "url": "https://support.apple.com/ja-jp/HT208394"
+    },
+    {
+      "type": "vendor",
+      "name": "Arm Developer",
+      "vulinfo_id": "Vulnerability of Speculative Processors to Cache Timing Side-Channel Mechanism",
+      "url": "https://developer.arm.com/support/security-update"
+    },
+    {
+      "type": "vendor",
+      "name": "Chromium",
+      "vulinfo_id": "Actions Required to Mitigate Speculative Side-Channel Attack Techniques",
+      "url": "https://www.chromium.org/Home/chromium-security/ssca"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google’s Mitigations Against CPU Speculative Execution Attack Methods",
+      "url": "https://support.google.com/faqs/answer/7622138"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Security Blog",
+      "vulinfo_id": "Today's CPU vulnerability: what you need to know",
+      "url": "https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-you-need.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Important notice",
+      "vulinfo_id": "Security Information: CPU Vulnerability Meltdown / Spectre",
+      "url": "https://www.yokogawa.com/solutions/products-platforms/announcements/important-notice/cpu-vulnerability/"
+    },
+    {
+      "type": "vendor",
+      "name": "Intel",
+      "vulinfo_id": "Intel Responds to Security Research Findings",
+      "url": "https://newsroom.intel.com/news/intel-responds-to-security-research-findings/"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "Merge branch 'x86-pti-for-linus' of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5aa90a84589282b87666f92b6c3c917c8080a9bf"
+    },
+    {
+      "type": "vendor",
+      "name": "LKML.ORG",
+      "vulinfo_id": "[PATCH 00/23] [v4] KAISER: unmap most of the kernel from userspace page tables",
+      "url": "https://lkml.org/lkml/2017/11/22/956"
+    },
+    {
+      "type": "vendor",
+      "name": "LWN.net",
+      "vulinfo_id": "The current state of kernel page-table isolation",
+      "url": "https://lwn.net/Articles/741878/"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Security Blog",
+      "vulinfo_id": "Mitigations landing for new class of timing attack",
+      "url": "https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "AV18-001",
+      "url": "http://jpn.nec.com/security-info/av18-001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security TechCenter",
+      "vulinfo_id": "ADV180002 | Guidance to mitigate speculative execution side-channel vulnerabilities",
+      "url": "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002"
+    },
+    {
+      "type": "vendor",
+      "name": "サーバ・クライアント製品セキュリティ情報",
+      "vulinfo_id": "hitachi-sec-2018-201",
+      "url": "http://www.hitachi.co.jp/products/it/server/security/info/vulnerable/jvnvu_93823979.html"
+    },
+    {
+      "type": "vendor",
+      "name": "重要なお知らせ",
+      "vulinfo_id": "セキュリティ情報：CPU脆弱性 Meltdown / Spectre について",
+      "url": "https://www.yokogawa.co.jp/solutions/products-platforms/announcements/important-notice/cpu-vulnerability/"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "JVNVU#93823979(CVE-2017-5715、CVE-2017-5753、CVE-2017-5754): 「投機的実行機能を持つ CPU に対するサイドチャネル攻撃」について",
+      "url": "http://www.fujitsu.com/jp/products/software/resources/condition/security/vulnerabilities/2018/jvn-93823979.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5754",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5715",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5753",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5753"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ALERT",
+      "vulinfo_id": "ICS-ALERT-18-011-01",
+      "url": "https://ics-cert.us-cert.gov/alerts/ICS-ALERT-18-011-01A"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93823979",
+      "url": "http://jvn.jp/vu/JVNVU93823979/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94630516",
+      "url": "http://jvn.jp/vu/JVNVU94630516/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5715",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5715"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5754",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5754"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5753",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5753"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Cyber Security Alerts",
+      "vulinfo_id": "TA18-004A",
+      "url": "https://www.us-cert.gov/ncas/alerts/TA18-004A"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#584653",
+      "url": "https://www.kb.cert.org/vuls/id/584653"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Meltdown",
+      "url": "http://blog.cyberus-technology.de/posts/2018-01-03-meltdown.html"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Meltdown and Spectre",
+      "url": "https://meltdownattack.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Project Zero",
+      "url": "https://googleprojectzero.blogspot.jp/2018/01/reading-privileged-memory-with-side.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2018年01月04日]\\n  掲載\\n[2018年01月09日]\\n  参考情報：US-CERT Cyber Security Alerts (TA18-004A) を追加\\n[2018年01月10日]\\n  タイトル：内容を更新\\n  概要：内容を更新\\n  CVSS による深刻度：内容を更新\\n  想定される影響：内容を更新\\n  対策：内容を更新\\n  ベンダ情報：アップル (HT208394) を追加\\n  ベンダ情報：富士通 (JVNVU#93823979(CVE-2017-5715、CVE-2017-5753、CVE-2017-5754): 「投機的実行機能を持つ CPU に対するサイドチャネル攻撃」について) を追加\\n  参考情報：JVN (JVNVU#94630516) を追加\\n[2018年01月12日]\\n  参考情報：ICS-CERT ALERT (ICS-ALERT-18-011-01) を追加\\n[2018年01月15日]\\n  ベンダ情報：日立 (hitachi-sec-2018-201) を追加\\n[2018年01月19日]\\n  ベンダ情報：日本電気 (AV18-001) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-5715) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-5754) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-5753) を追加"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2018-02-23T05:51:53Z",
+      "description": "[2018年02月23日]\\n  ベンダ情報：横河電機株式会社 (セキュリティ情報：CPU脆弱性 Meltdown / Spectre について) を追加\\n  ベンダ情報：横河電機株式会社 (Security Information: CPU Vulnerability Meltdown / Spectre) を追加"
+    }
+  ],
+  "date_first_published": "2018-01-04T18:47:01+09:00",
+  "date_last_updated": "2018-02-23T14:26:52+09:00",
+  "date_public": "2018-01-03T00:00:00+09:00"
+}

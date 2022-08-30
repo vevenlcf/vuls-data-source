@@ -1,0 +1,258 @@
+{
+  "vulinfo_id": "JVNDB-2016-003151",
+  "title": "GraphicsMagick および ImageMagick の blob.c の OpenBlob 関数における任意のコードを実行される脆弱性",
+  "vulinfo_description": "GraphicsMagick および ImageMagick の blob.c の OpenBlob 関数には、任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 http://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "GraphicsMagick",
+      "product_name": "GraphicsMagick",
+      "version_number": [
+        "1.3.24 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:graphicsmagick:graphicsmagick"
+      }
+    },
+    {
+      "name": "ImageMagick",
+      "product_name": "ImageMagick",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:imagemagick:imagemagick"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Debuginfo",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:linux_enterprise_debuginfo"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Desktop",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_desktop"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_server"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Software Development Kit",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_software_development_kit"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Workstation Extension",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_workstation_extension"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Studio Onsite",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:studio_onsite"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:linux"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、ファイル名の先頭にある | (パイプ) 文字を介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3591",
+      "url": "https://www.debian.org/security/2016/dsa-3591"
+    },
+    {
+      "type": "vendor",
+      "name": "GitLab",
+      "vulinfo_id": "Add support for SanitizeString() method",
+      "url": "http://git.imagemagick.org/repos/ImageMagick/commit/40639d173aa8c76b850d625c630b711fee4dcfb8"
+    },
+    {
+      "type": "vendor",
+      "name": "Mercurial",
+      "vulinfo_id": "ChangeLog",
+      "url": "http://hg.code.sf.net/p/graphicsmagick/code/file/41876934e762/ChangeLog"
+    },
+    {
+      "type": "vendor",
+      "name": "Mercurial",
+      "vulinfo_id": "Removed popen() support from OpenBlob().",
+      "url": "http://hg.code.sf.net/p/graphicsmagick/code/rev/ae3928faa858"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:1521",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-06/msg00008.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:1522",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-06/msg00009.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2016:1534",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-06/msg00011.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "SUSE-SU-2016:1570",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00021.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "SUSE-SU-2016:1614",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00032.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Linux Bulletin - April 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/linuxbulletinapr2016-2952096.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2016-3090568.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2990-1",
+      "url": "http://www.ubuntu.com/usn/USN-2990-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5118",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5118"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5118",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5118"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月16日]\\n  掲載\\n[2016年11月21日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1570) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1614) を追加\\n  ベンダ情報：Canonical (USN-2990-1) を追加 \\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2016) を追加\\n  ベンダ情報：オラクル (Oracle Linux Bulletin - April 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-06-16T11:33:14+09:00",
+  "date_last_updated": "2016-11-21T10:35:32+09:00",
+  "date_public": "2016-05-30T00:00:00+09:00"
+}

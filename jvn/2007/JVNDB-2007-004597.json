@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2007-004597",
+  "title": "netkit ftp の getreply 関数におけるメモリ二重解放の脆弱性",
+  "vulinfo_description": "netkit ftp (netkit-ftp) の ftp.c の getreply 関数には、メモリを二重に解放する不備があるため、サービス運用妨害 (アプリケーションクラッシュ) 状態となるなど、不特定の影響を受ける脆弱性が存在します。 netkit-ftpd の問題は、CVE-2007-6263 で報告されています。",
+  "affected": [
+    {
+      "name": "netkit-ftp",
+      "product_name": "netkit ftp",
+      "version_number": [
+        "0.17 20040614 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:netkit-ftp:netkit_ftp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモートの FTP サーバにより、FTP プロトコル動作の特定のタイプを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "netkit-ftp",
+      "vulinfo_id": "Bug 199206",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=199206"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-5769",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5769"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-5769",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5769"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:59:24+09:00",
+  "date_last_updated": "2012-09-25T16:59:24+09:00",
+  "date_public": "2007-11-15T00:00:00+09:00"
+}

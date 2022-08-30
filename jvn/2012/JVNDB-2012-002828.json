@@ -1,0 +1,125 @@
+{
+  "vulinfo_id": "JVNDB-2012-002828",
+  "title": "Linux Kernel の net/bluetooth/bnep/sock.c における重要な情報を取得される脆弱性",
+  "vulinfo_description": "Linux Kernel の net/bluetooth/bnep/sock.c 内の bnep_sock_ioctl 関数は、特定のデバイスフィールドが '\\0' の文字で終わることを保証しないため、カーネルスタックメモリから重要な情報を取得される、またはサービス運用妨害 (BUG およびシステムクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.39 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、BNEPCONNADD コマンドを介して、カーネルスタックメモリから重要な情報を取得される、またはサービス運用妨害 (BUG およびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "AVAYA",
+      "vulinfo_id": "ASA-2011-208",
+      "url": "http://downloads.avaya.com/css/P8/documents/100145416"
+    },
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-2.6.39",
+      "url": "http://ftp.osuosl.org/pub/linux/kernel/v2.6/ChangeLog-2.6.39"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Bluetooth: bnep: fix buffer overflow",
+      "url": "https://github.com/torvalds/linux/commit/43629f8f5ea32a998d06d1bb41eefa0e821ff573"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git / commit",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=43629f8f5ea32a998d06d1bb41eefa0e821ff573"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 681260",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=681260"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0833",
+      "url": "http://rhn.redhat.com/errata/RHSA-2011-0833.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0001",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2012-0001.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1079",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1079"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1079",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1079"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月25日]\\n  掲載\\n[2012年12月19日]\\n  影響を受けるシステム：VMware (VMSA-2012-0001) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0001) を追加\\n[2016年06月30日]\\n  ベンダ情報：レッドハット (RHSA-2011:0833) を追加\\n  ベンダ情報：アバイア (ASA-2011-208) を追加"
+    }
+  ],
+  "date_first_published": "2012-06-25T14:22:52+09:00",
+  "date_last_updated": "2016-06-30T14:33:29+09:00",
+  "date_public": "2012-06-21T00:00:00+09:00"
+}

@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2014-004545",
+  "title": "Rejetto HFS (HTTP File Server) に null バイトの取扱いに関する脆弱性",
+  "vulinfo_description": "Rejetto が提供する HFS (HTTP File Server) には、null バイトの取扱いに関する脆弱性が存在します。  Rejetto が提供する HFS (HTTP File Server) には、parserLib.pas の正規表現に null バイトを処理しない問題 (CWE-158) が存在します。検索文字列に null バイトが含まれている場合、その null バイトの後にくる文字列がコマンドの場合、そのコマンドが実行されてしまいます。  CWE-158:Improper Neutralization of Null Byte or NUL Character http://cwe.mitre.org/data/definitions/158.html  なお、本脆弱性を使用した攻撃コードが公開されており、攻撃活動が観測されているとのことです。",
+  "affected": [
+    {
+      "name": "Rejetto",
+      "product_name": "Http File Server",
+      "version_number": [
+        "2.3b およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:rejetto:http_file_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、サーバ上で任意の OS コマンドを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Http File Server Remote Command Exec #3793",
+      "url": "https://github.com/rapid7/metasploit-framework/pull/3793"
+    },
+    {
+      "type": "vendor",
+      "name": "HFS ~ Http File Server",
+      "vulinfo_id": "Download",
+      "url": "http://www.rejetto.com/hfs/?f=dl"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-6287",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6287"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95507011",
+      "url": "http://jvn.jp/vu/JVNVU95507011/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-6287",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6287"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#251276",
+      "url": "http://www.kb.cert.org/vuls/id/251276"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-10-08T13:44:46+09:00",
+  "date_last_updated": "2014-10-08T13:44:46+09:00",
+  "date_public": "2014-10-06T00:00:00+09:00"
+}

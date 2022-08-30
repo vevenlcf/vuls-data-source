@@ -1,0 +1,139 @@
+{
+  "vulinfo_id": "JVNDB-2009-002543",
+  "title": "Avahi の originates_from_local_legacy_unicast_socket 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Avahi の avahi-daemon の avahi-core/server.c 内にある originates_from_local_legacy_unicast_socket 関数には、マルチキャストパケットの受信処理を行う際、ポート番号のネットワークバイトオーダーを処理しない不備があるため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Avahi",
+      "product_name": "Avahi",
+      "version_number": [
+        "0.6.25 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:avahi:avahi"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたレガシーユニキャストの mDNS クエリパケットを介して、マルチキャストパケットストームを誘発され、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "avahi-0.6.16-9.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1209"
+    },
+    {
+      "type": "vendor",
+      "name": "Avahi",
+      "vulinfo_id": "Avahi 0.6.25",
+      "url": "http://avahi.org/milestone/Avahi%200.6.25"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0528",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0528.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-0758",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0758"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-0758",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0758"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA34083",
+      "url": "http://secunia.com/advisories/34083"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "33946",
+      "url": "http://www.securityfocus.com/bid/33946"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年08月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2010-08-10T18:49:41+09:00",
+  "date_last_updated": "2010-08-10T18:49:41+09:00",
+  "date_public": "2009-03-03T00:00:00+09:00"
+}

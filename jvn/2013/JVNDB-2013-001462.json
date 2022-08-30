@@ -1,0 +1,120 @@
+{
+  "vulinfo_id": "JVNDB-2013-001462",
+  "title": "GnuTLS の TLS の実装における識別攻撃およびプレーンテキストリカバリ攻撃を誘発される脆弱性",
+  "vulinfo_description": "GnuTLS の TLS の実装は、不正な形式の CBC パディングを処理している間、非準拠の MAC チェック操作へのタイミングサイドチャネル攻撃について適切に配慮しないため、識別攻撃、およびプレーンテキストリカバリ攻撃を誘発される脆弱性が存在します。  本脆弱性は、CVE-2013-0169 と関連する問題です。",
+  "affected": [
+    {
+      "name": "GNU Project",
+      "product_name": "GnuTLS",
+      "version_number": [
+        "2.12.23 未満",
+        "3.0.28 未満の 3.0.x",
+        "3.1.7 未満の 3.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:gnutls"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたパケットのタイミングデータの統計的分析を介して、識別攻撃、およびプレーンテキストリカバリ攻撃を誘発される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GnuTLS",
+      "vulinfo_id": "Commit b8391806cd79095fe566f2401d8c7ad85a64b198",
+      "url": "https://gitorious.org/gnutls/gnutls/commit/b8391806cd79095fe566f2401d8c7ad85a64b198"
+    },
+    {
+      "type": "vendor",
+      "name": "GnuTLS",
+      "vulinfo_id": "Commit 328ee22c1b3951e060c7124c7cb1cee592c59bc0",
+      "url": "https://gitorious.org/gnutls/gnutls/commit/328ee22c1b3951e060c7124c7cb1cee592c59bc0"
+    },
+    {
+      "type": "vendor",
+      "name": "GnuTLS",
+      "vulinfo_id": "GNUTLS-SA-2013-1",
+      "url": "http://www.gnutls.org/security.html#GNUTLS-SA-2013-1"
+    },
+    {
+      "type": "vendor",
+      "name": "GnuTLS",
+      "vulinfo_id": "nmav's Blog",
+      "url": "http://nmav.gnutls.org/2013/02/time-is-money-for-cbc-ciphersuites.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0807",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-05/msg00023.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0588",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0588.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2013-1619 Cryptographic Issues vulnerability in GnuTLS",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2013_1619_cryptographic_issues"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1752-1",
+      "url": "http://www.ubuntu.com/usn/USN-1752-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1619",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1619",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1619"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Lucky Thirteen: Breaking the TLS and DTLS Record Protocols",
+      "url": "http://www.isg.rhul.ac.uk/tls/TLStiming.pdf"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年02月12日]\\n  掲載\\n[2013年03月11日]\\n  ベンダ情報：レッドハット (RHSA-2013:0588) を追加\\n  ベンダ情報：Ubuntu (USN-1752-1) を追加\\n[2013年06月17日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:0807) を追加\\n[2013年10月31日]\\n  ベンダ情報：オラクル (CVE-2013-1619 Cryptographic Issues vulnerability in GnuTLS) を追加"
+    }
+  ],
+  "date_first_published": "2013-02-13T11:47:59+09:00",
+  "date_last_updated": "2013-10-31T19:14:33+09:00",
+  "date_public": "2013-02-08T00:00:00+09:00"
+}

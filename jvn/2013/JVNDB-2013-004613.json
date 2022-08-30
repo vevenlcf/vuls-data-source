@@ -1,0 +1,101 @@
+{
+  "vulinfo_id": "JVNDB-2013-004613",
+  "title": "Condor のポリシー定義エバリュエータにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Condor のポリシー定義エバリュエータ (policy definition evaluator) は、Unconfigured、Undefined、または Error 状態を評価する下記のポリシーの属性を適切に処理しないため、サービス運用妨害 (condor_startd の終了) 状態にされる脆弱性が存在します。  (1) PREEMPT (2) SUSPEND (3) CONTINUE (4) WANT_VACATE (5) KILL",
+  "affected": [
+    {
+      "name": "Condor Project",
+      "product_name": "Condor",
+      "version_number": [
+        "7.5.4 およびそれ以前",
+        "8.0.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:condor_project:condor"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "version_number": [
+        "v2 for Red Hat Enterprise Linux (version 5)",
+        "v2 for Red Hat Enterprise Linux (version 6)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、巧妙に細工されたジョブを介して、サービス運用妨害 (condor_startd の終了) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HTCondorWiki",
+      "vulinfo_id": "Ticket #1786: review treatment of undefined policy settings in startd",
+      "url": "https://htcondor-wiki.cs.wisc.edu/index.cgi/tktview?tn=1786"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 919401",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=919401"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1172",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1172.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1171",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1171.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4255",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4255"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4255",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4255"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-10-16T14:41:31+09:00",
+  "date_last_updated": "2013-10-16T14:41:31+09:00",
+  "date_public": "2013-08-21T00:00:00+09:00"
+}

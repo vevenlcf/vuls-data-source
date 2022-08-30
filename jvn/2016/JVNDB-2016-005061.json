@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-005061",
+  "title": "LibTIFF の bmp2tiff ツールの tif_lzw.c の LZWEncode 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "LibTIFF の bmp2tiff ツールの tif_lzw.c の LZWEncode 関数には、\"-c lzw\" オプションが使用される場合、サービス運用妨害 (バッファオーバーリード) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-125: Out-of-bounds Read (境界外読み取り) と識別されています。 http://cwe.mitre.org/data/definitions/125.html",
+  "affected": [
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "version_number": [
+        "4.0.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された BMP 画像を介して、サービス運用妨害 (バッファオーバーリード) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 2565",
+      "url": "http://bugzilla.maptools.org/show_bug.cgi?id=2565"
+    },
+    {
+      "type": "vendor",
+      "name": "LibTIFF",
+      "vulinfo_id": "Top Page",
+      "url": "http://libtiff.maptools.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3621",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3621"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3621",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3621"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年10月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-10-05T14:01:31+09:00",
+  "date_last_updated": "2016-10-05T14:01:31+09:00",
+  "date_public": "2016-06-27T00:00:00+09:00"
+}

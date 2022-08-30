@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2011-005351",
+  "title": "VideoLAN VLC media player におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "VideoLAN VLC media player には、下記の関数に不備があるため、スタックベースのバッファオーバーフローの脆弱性が存在します。  (1) modules/demux/asf/libasf.c の ASF_ObjectDumpDebug 関数 (2) modules/demux/avi/libavi.c の AVI_ChunkDumpDebug_level 関数 (3) modules/demux/mp4/libmp4.c の __MP4_BoxDumpStructure 関数 ",
+  "affected": [
+    {
+      "name": "VideoLAN",
+      "product_name": "VLC media player",
+      "version_number": [
+        "1.0.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:videolan:vlc_media_player"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された (1) ASF ファイル、(2) AVI ファイル、または (3) MP4 ファイルを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gentoo's Bugzilla",
+      "vulinfo_id": "Bug 285370",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=285370"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "VideoLAN-SA-0901",
+      "url": "http://www.videolan.org/security/sa0901.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3623",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3623"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3623",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3623"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-01-05T17:33:06+09:00",
+  "date_last_updated": "2015-01-05T17:33:06+09:00",
+  "date_public": "2011-09-21T00:00:00+09:00"
+}

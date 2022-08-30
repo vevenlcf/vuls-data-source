@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2014-003531",
+  "title": "Windows 上で稼動する Mozilla Firefox および Thunderbird の FontTableRec デストラクタにおける任意のコードを実行される脆弱性",
+  "vulinfo_description": "Windows 上で稼動する Mozilla Firefox および Thunderbird の FontTableRec デストラクタには、解放済みメモリの使用 (Use-after-free) により、任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox",
+      "version_number": [
+        "31.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Firefox ESR",
+      "version_number": [
+        "24.7 未満の 24.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:firefox_esr"
+      }
+    },
+    {
+      "name": "Mozilla Foundation",
+      "product_name": "Mozilla Thunderbird",
+      "version_number": [
+        "24.7 未満",
+        "31.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mozilla:thunderbird"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された MathML コンテンツのフォントの使用を介して、DirectWrite フォントフェイスオブジェクトの不適切な処理を引き起こされることで、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation Security Advisory",
+      "vulinfo_id": "MFSA2014-59",
+      "url": "https://www.mozilla.org/security/announce/2014/mfsa2014-59.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mozilla Foundation セキュリティアドバイザリ",
+      "vulinfo_id": "MFSA2014-59",
+      "url": "http://www.mozilla-japan.org/security/announce/2014/mfsa2014-59.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-1551",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1551"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-1551",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1551"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-24T14:48:52+09:00",
+  "date_last_updated": "2014-07-24T14:48:52+09:00",
+  "date_public": "2014-07-22T00:00:00+09:00"
+}

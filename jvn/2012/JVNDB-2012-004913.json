@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-004913",
+  "title": "openCryptoki における任意のファイルに誰でも書き込みできる権限 (world-writable permissions) を作成される脆弱性",
+  "vulinfo_description": "openCryptoki には、任意のファイルに誰でも書き込みできる権限 (world-writable permissions) を作成される、または設定される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "openCryptoki Project",
+      "product_name": "openCryptoki",
+      "version_number": [
+        "2.4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:opencryptoki_project:opencryptoki"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.2",
+        "vector": "AV:L/AC:H/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、/var/lock/ 内の (1) LCK..opencryptoki、または (2) LCK..opencryptoki_stdll ファイルへのシンボリックリンク攻撃を介して、任意のファイルに誰でも書き込みできる権限 (world-writable permissions) を作成される、または設定される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 730636",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=730636"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "[Opencryptoki-tech] opencryptoki release 2.4.2",
+      "url": "http://sourceforge.net/mailarchive/message.php?msg_id=29191022"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "Download Files List",
+      "url": "http://en.sourceforge.jp/projects/sfnet_opencryptoki/releases/?fulllist=1"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "openCryptoki",
+      "url": "http://sourceforge.net/projects/opencryptoki/"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "use DESTDIR when creating the locks directory",
+      "url": "http://opencryptoki.git.sourceforge.net/git/gitweb.cgi?p=opencryptoki/opencryptoki;a=commitdiff;h=5667edb52cd27b7e512f48f823b4bcc6b872ab15"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4455",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4455"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4455",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4455"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-59",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-59.html",
+      "title": "リンク解釈の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年10月15日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-10-15T13:55:28+09:00",
+  "date_last_updated": "2012-10-15T13:55:28+09:00",
+  "date_public": "2012-04-27T00:00:00+09:00"
+}

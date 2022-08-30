@@ -1,0 +1,183 @@
+{
+  "vulinfo_id": "JVNDB-2021-006117",
+  "title": "IDEC 製 PLC に複数の脆弱性",
+  "vulinfo_description": "IDEC 株式会社が提供する PLC には、次の複数の脆弱性が存在します。  　* 保護されていない認証情報の送信（CWE-523）- CVE-2021-37400 　* 認証情報の平文保存（CWE-256）- CVE-2021-374010 　* 保護されていない認証情報の送信（CWE-523）- CVE-2021-20826 　* 認証情報の平文保存（CWE-256） - CVE-2021-20827  この脆弱性情報は、次の報告者が製品開発者に直接届出をし、製品開発者から JPCERT/CC に調整依頼があり、JPCERT/CC が報告者、製品開発者、ICS-CERT との調整を行い公表に至りました。 報告者: FM Approvals Khalid Ansari 氏",
+  "affected": [
+    {
+      "name": "IDEC株式会社",
+      "product_name": "FC6A 形 MICROSmart All-in-One CPU モジュール",
+      "version_number": [
+        "v2.32 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_fc6a_microsmart_allinone_cpu_module"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "FC6A 形 MICROSmart Plus CPU モジュール",
+      "version_number": [
+        "v1.91 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_fc6a_microsmart_plus_cpu_module"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "FC6B 形 MICROSmart All-in-One CPU モジュール",
+      "version_number": [
+        "v2.31 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_fc6b_microsmart_allinone_cpu_module"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "FC6B 形 MICROSmart Plus CPU モジュール",
+      "version_number": [
+        "v2.31 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_fc6b_microsmart_plus_cpu_module"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "FT1A 形 コントローラ SmartAXIS Pro/Lite",
+      "version_number": [
+        "v2.31 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_ft1a_controller_smartaxis_pro_lite"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "WindEDIT Lite",
+      "version_number": [
+        "v1.3.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_windedit_lite"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "WindLDR",
+      "version_number": [
+        "v8.19.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_WindLDR"
+      }
+    },
+    {
+      "name": "IDEC株式会社",
+      "product_name": "データ ファイル マネージャー",
+      "version_number": [
+        "v2.12.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:idec_data_file_manager"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.6",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  　* 第三者によって PLC とソフトウエア間の通信からユーザーの認証情報が取得される。その結果、PLC ユーザープログラムをアップロード、改ざん、ダウンロードされたりする。 - CVE-2021-37400 　* ファイルサーバー、バックアップリポジトリ、SD カード等に保存された ZLD ファイルから、第三者によってユーザーの認証情報が取得される。その結果、PLC ユーザープログラムをアップロード、改ざん、ダウンロードされたりする。 - CVE-2021-37401 　* 第三者によって PLC とソフトウエア間の通信から PLC Web サーバーユーザーの認証情報が取得される。その結果、PLC Web サーバーへのフルアクセスを奪取され、PLC の出力を操作されたり、PLC を停止されたりする -  CVE-2021-20826 　* ファイルサーバー、バックアップリポジトリ、SD カード等に保存された ZLD ファイルから、第三者によって PLC Web サーバーユーザーの認証情報が取得される。その結果、PLC Web サーバーへ接続し、PLC を乗っ取られることで、PLC の出力を操作されたり、PLC を停止されたりする - CVE-2021-20827 　* データファイルマネージャー v2.13.0およびそれ以降 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。  　* FC6A 形 MICROSmart All-in-One CPU モジュール v2.40 およびそれ以降 　* FC6B 形 MICROSmart All-in-One CPU モジュール v2.40 およびそれ以降 　* FC6A 形 MICROSmart Plus CPU モジュール v2.00 およびそれ以降 　* FC6B 形 MICROSmart Plus CPU モジュール v2.40 およびそれ以降 　* FT1A 形コントローラ SmartAXIS Pro/Lite v2.40 およびそれ以降 　* WindLDR v8.20.0 およびそれ以降 　* WindEDIT Lite v1.4.0 およびそれ以降  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 　* ネットワークに不審な機器が接続されないようネットワークを適切に管理する 　* PLC にアクセスできる機器を制限する 　* ZLD ファイルを適切に管理する  詳しくは、\u003ca href=\"https://www.idec.com/home/lp/pdf/2021-12-24-PLC.pdf\" target=\"blank\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "IDEC株式会社",
+      "vulinfo_id": "弊社 PLC の脆弱性に関するご連絡",
+      "url": "https://support.quest.com/ja-jp/kb/288310/cert-coordination-center-report-update"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20827",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20827"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-37400",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37400"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-37401",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37401"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-20826",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-20826"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-22-006-03",
+      "url": "https://www.cisa.gov/uscert/ics/advisories/icsa-22-006-03"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92279973",
+      "url": "http://jvn.jp/cert/JVNVU92279973/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-256",
+      "url": "https://cwe.mitre.org/data/definitions/256.html",
+      "title": "認証情報の平文保存"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-523",
+      "url": "https://cwe.mitre.org/data/definitions/523.html",
+      "title": "認証情報の保護しない転送"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-12-27T05:52:35Z",
+      "description": "[2021年12月27日]   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2022-01-11T07:32:34Z",
+      "description": "[2022年1月11日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-22-006-03)を追加"
+    }
+  ],
+  "date_first_published": "2021-12-27T15:33:39+09:00",
+  "date_last_updated": "2022-01-11T16:34:22+09:00",
+  "date_public": "2021-12-24T00:00:00+09:00"
+}

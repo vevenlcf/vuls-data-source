@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2014-004360",
+  "title": "Squid の snmp_core.cc の snmpHandleUdp 関数 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Squid の snmp_core.cc の snmpHandleUdp 関数には、SNMP ポートが設定されている場合、一つずれエラー (Off-by-One error) により、サービス運用妨害 (クラッシュ) 状態にされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Squid-cache.org",
+      "product_name": "Squid",
+      "version_number": [
+        "2.x",
+        "3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:squid-cache:squid"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された UDP SNMP リクエストを介して、ヒープベースのバッファオーバーフローを誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 895773",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=895773"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2015-2511963.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1139967",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1139967"
+    },
+    {
+      "type": "vendor",
+      "name": "Squid-cache.org",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.squid-cache.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-6270",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6270"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-6270",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6270"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年09月24日]\\n  掲載\\n[2015年08月31日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2015) を追加"
+    }
+  ],
+  "date_first_published": "2014-09-24T16:16:07+09:00",
+  "date_last_updated": "2015-08-31T17:31:30+09:00",
+  "date_public": "2014-09-09T00:00:00+09:00"
+}

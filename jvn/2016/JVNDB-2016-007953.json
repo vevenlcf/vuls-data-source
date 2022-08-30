@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-007953",
+  "title": "Perl 用 DBD::mysql モジュールにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Perl 用 DBD::mysql モジュールには、サーバサイドが準備したステートメントサポートを使用する場合、サービス運用妨害 (境界外読み取り) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "DBD::mysql project",
+      "product_name": "DBD::mysql",
+      "version_number": [
+        "4.039 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dbd-mysql_project:dbd-mysql"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、サービス運用妨害 (境界外読み取り) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "CPAN",
+      "vulinfo_id": "DBD-mysql-4.039",
+      "url": "http://cpansearch.perl.org/src/CAPTTOFU/DBD-mysql-4.039/Changes"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Added Pali's fix for CVE-2016-1249",
+      "url": "https://github.com/perl5-dbi/DBD-mysql/commit/793b72b1a0baa5070adacaac0e12fd995a6fbabe"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1249",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1249"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1249",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-1249"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-125",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "title": "境界外読み取り"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月31日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-31T16:40:07+09:00",
+  "date_last_updated": "2017-03-31T16:40:07+09:00",
+  "date_public": "2016-11-15T00:00:00+09:00"
+}

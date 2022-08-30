@@ -1,0 +1,245 @@
+{
+  "vulinfo_id": "JVNDB-2012-004028",
+  "title": "Google Chrome で使用される libxml2 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Google Chrome で使用される libxml2 は、XSL 変換処理の間、不特定の変数のキャストを適切にサポートしないため、サービス運用妨害 (DoS) 状態となるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "Google Chrome",
+      "version_number": [
+        "21.0.1180.89 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:chrome"
+      }
+    },
+    {
+      "name": "xmlsoft.org",
+      "product_name": "libxml2",
+      "version_number": [
+        "2.9.0-rc1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xmlsoft:libxml2"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple TV",
+      "version_number": [
+        "6.0 未満 (Apple TV 第 2 世代以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apple:apple_tv"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "iOS",
+      "version_number": [
+        "7 未満 (iPad 2 以降)",
+        "7 未満 (iPhone 4 以降)",
+        "7 未満 (iPod touch 第 5 世代以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:iphone_os"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "iTunes",
+      "version_number": [
+        "11.1.4 未満 (Windows 7)",
+        "11.1.4 未満 (Windows 8)",
+        "11.1.4 未満 (Windows Vista)",
+        "11.1.4 未満 (Windows XP SP2 以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apple:itunes"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、include/libxml/tree.h の _xmlNs データ構造に関連する巧妙に細工されたドキュメントを介して、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2013-09-18-2",
+      "url": "http://lists.apple.com/archives/security-announce/2013/Sep/msg00006.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2013-10-22-8",
+      "url": "http://lists.apple.com/archives/security-announce/2013/Oct/msg00009.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2013-09-20-1",
+      "url": "http://lists.apple.com/archives/security-announce/2013/Sep/msg00008.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT5934",
+      "url": "http://support.apple.com/kb/HT5934"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT6001",
+      "url": "http://support.apple.com/kb/HT6001"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT5935",
+      "url": "http://support.apple.com/kb/HT5935"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT5934",
+      "url": "http://support.apple.com/kb/HT5934?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT6001",
+      "url": "http://support.apple.com/kb/HT6001?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT5935",
+      "url": "http://support.apple.com/kb/HT5935?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Chromium",
+      "vulinfo_id": "Log of /trunk/src/third_party/libxml/src/include/libxml/tree.h",
+      "url": "http://src.chromium.org/viewvc/chrome/trunk/src/third_party/libxml/src/include/libxml/tree.h?view=log"
+    },
+    {
+      "type": "vendor",
+      "name": "Chromium",
+      "vulinfo_id": "Diff of /trunk/src/third_party/libxml/src/include/libxml/tree.h",
+      "url": "http://src.chromium.org/viewvc/chrome/trunk/src/third_party/libxml/src/include/libxml/tree.h?r1=56276\u0026r2=149930"
+    },
+    {
+      "type": "vendor",
+      "name": "Chromium Code Reviews",
+      "vulinfo_id": "Issue 10824157: Fix namespace vs. node type issue in a generic way.",
+      "url": "https://chromiumcodereview.appspot.com/10824157"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2555",
+      "url": "http://www.debian.org/security/2012/dsa-2555"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Google Chrome",
+      "url": "http://www.google.co.jp/chrome/intl/ja/landing_ff_yt.html?hl=ja\u0026hl=ja"
+    },
+    {
+      "type": "vendor",
+      "name": "Google",
+      "vulinfo_id": "Stable Channel Update",
+      "url": "http://googlechromereleases.blogspot.jp/2012/08/stable-channel-update_30.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:1215",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00030.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2012:164",
+      "url": "http://www.mandriva.com/security/advisories?name=MDVSA-2012:164"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in libxslt",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_libxslt"
+    },
+    {
+      "type": "vendor",
+      "name": "xmlsoft.org",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.xmlsoft.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2871",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2871"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98681940",
+      "url": "http://jvn.jp/cert/JVNVU98681940/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95174988",
+      "url": "http://jvn.jp/cert/JVNVU95174988/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#94321146",
+      "url": "http://jvn.jp/vu/JVNVU94321146/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2871",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2871"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月04日]\\n  掲載\\n[2012年10月22日]\\n  ベンダ情報：Debian (DSA-2555) を追加\\n[2012年11月05日]\\n  ベンダ情報：Novell (openSUSE-SU-2012:1215) を追加\\n[2013年03月07日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in libxslt) を追加\\n[2013年10月15日]\\n  影響を受けるシステム：アップル (HT5934) の情報を追加\\n  影響を受けるシステム：アップル (HT5935) の情報を追加\\n  ベンダ情報：アップル (HT5934) を追加\\n  ベンダ情報：アップル (HT5935) を追加\\n  ベンダ情報：アップル (APPLE-SA-2013-09-18-2) を追加\\n  参考情報：JVN (JVNVU#98681940) を追加\\n[2013年11月08日]\\n  影響を受けるシステム：アップル (HT6001) の情報を追加\\n  ベンダ情報：Mandriva, Inc. (MDVSA-2012:164) を追加\\n  ベンダ情報：アップル (APPLE-SA-2013-10-22-8) を追加\\n  ベンダ情報：アップル (APPLE-SA-2013-09-20-1) を追加\\n  ベンダ情報：アップル (HT6001) を追加\\n  参考情報：JVN (JVNVU#95174988) を追加\\n[2014年02月03日]\\n  影響を受けるシステム：内容を更新\\n  参考情報：JVN (JVNVU#94321146) を追加"
+    }
+  ],
+  "date_first_published": "2012-09-04T15:45:25+09:00",
+  "date_last_updated": "2014-02-03T11:20:42+09:00",
+  "date_public": "2012-08-30T00:00:00+09:00"
+}

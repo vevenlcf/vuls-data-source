@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2011-005332",
+  "title": "BOINC におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "BOINC には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "University of California",
+      "product_name": "BOINC",
+      "version_number": [
+        "6.13.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:berkeley:boinc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、(1) client/cs_trickle.cpp または (2) db/db_base.cpp の過度に長い trickle-up を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "BOINC",
+      "vulinfo_id": "check in trickle crash fix",
+      "url": "http://boinc.berkeley.edu/gitweb/?p=boinc-v2.git;a=commitdiff;h=5b04b249db166ec38c1ee99a9eadcaa300c0f454"
+    },
+    {
+      "type": "vendor",
+      "name": "BOINC",
+      "vulinfo_id": "client: don't crash if trickle up exceeds 64KB",
+      "url": "http://boinc.berkeley.edu/gitweb/?p=boinc-v2.git;a=commitdiff;h=ae04b50a71f3e96ee1bc59b76fca97cf0fe976f7"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-5280",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-5280"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-5280",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-5280"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-06-04T14:45:11+09:00",
+  "date_last_updated": "2014-06-04T14:45:11+09:00",
+  "date_public": "2011-11-06T00:00:00+09:00"
+}

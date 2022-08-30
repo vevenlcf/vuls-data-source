@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2014-003506",
+  "title": "LimeSurvey の application/controllers/admin/participantsaction.php の CPDB における SQL インジェクションの脆弱性",
+  "vulinfo_description": "LimeSurvey の application/controllers/admin/participantsaction.php の CPDB には、search パラメータに関する処理に不備があるため、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LimeSurvey",
+      "product_name": "LimeSurvey",
+      "version_number": [
+        "2.05+ Build 140618"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:limesurvey:limesurvey"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、admin/participants/sa/getParticipants_json の JSON リクエストの sidx パラメータを介して、任意の SQL コマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed issue: Search parameter vulnerability in CPDB",
+      "url": "https://github.com/LimeSurvey/LimeSurvey/commit/9938bcd1df8ea27052557c722a67b00c0e7d6cb6"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5017",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5017"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5017",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5017"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-23T11:59:58+09:00",
+  "date_last_updated": "2014-07-23T11:59:58+09:00",
+  "date_public": "2014-07-02T00:00:00+09:00"
+}

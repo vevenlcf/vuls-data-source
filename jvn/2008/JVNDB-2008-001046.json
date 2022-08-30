@@ -1,0 +1,152 @@
+{
+  "vulinfo_id": "JVNDB-2008-001046",
+  "title": "MySQL で使用される yaSSL におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MySQL で使用されている yaSSL には、Hello パケットの取り扱いに不備があり、hash.cpp の HASHwithTransform::Update() 関数で、バッファ領域を超えてメモリ領域を参照するため、サービス運用妨害 (DoS) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MySQL AB",
+      "product_name": "MySQL",
+      "version_number": [
+        "5.1.23 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mysql:mysql"
+      }
+    },
+    {
+      "name": "MySQL AB",
+      "product_name": "MySQL Community Server",
+      "version_number": [
+        "5.0.51a 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mysql:mysql_community_server"
+      }
+    },
+    {
+      "name": "MySQL AB",
+      "product_name": "MySQL Enterprise Server",
+      "version_number": [
+        "5.0.50sp1a 未満",
+        "5.0.54a 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mysql:mysql_enterprise_server"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.5.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により MySQL サーバをサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT3216",
+      "url": "http://support.apple.com/kb/HT3216"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT3216",
+      "url": "http://support.apple.com/kb/HT3216?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "MySQL Documentation",
+      "vulinfo_id": "releasenotes-es-5-0-50sp1a",
+      "url": "http://dev.mysql.com/doc/refman/5.0/en/releasenotes-es-5-0-50sp1a.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MySQL Documentation",
+      "vulinfo_id": "Changes in MySQL 5.1.23",
+      "url": "http://dev.mysql.com/doc/refman/5.1/en/news-5-1-23.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MySQL Documentation",
+      "vulinfo_id": "releasenotes-cs-5-0-51a",
+      "url": "http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-51a.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MySQL Documentation",
+      "vulinfo_id": "releasenotes-es-5-0-54a",
+      "url": "http://dev.mysql.com/doc/refman/5.0/en/releasenotes-es-5-0-54a.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-0227",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0227"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2008-0560",
+      "url": "http://www.frsirt.com/english/advisories/2008/0560"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-0227",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-0227"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA28324",
+      "url": "http://secunia.com/advisories/28324/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "27140",
+      "url": "http://www.securityfocus.com/bid/27140"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年02月05日]\\n  掲載\\n[2008年06月17日]\\n  影響を受けるシステム：MySQL AB (releasenotes-es-5-0-50sp1a) の情報を追加\\n  ベンダ情報：MySQL AB (releasenotes-es-5-0-50sp1a) を追加\\n[2008年10月31日]\\n  影響を受けるシステム：アップル（HT3216）の情報を追加\\n  ベンダ情報：アップル（HT3216）を追加\\n[2010年02月19日]\\n  影響を受けるシステム：MySQL AB（Changes in MySQL 5.1.23）の情報を追加\\n  ベンダ情報：MySQL AB（Changes in MySQL 5.1.23）を追加"
+    }
+  ],
+  "date_first_published": "2008-02-05T16:02:55+09:00",
+  "date_last_updated": "2010-02-19T11:37:46+09:00",
+  "date_public": "2008-01-10T00:00:00+09:00"
+}

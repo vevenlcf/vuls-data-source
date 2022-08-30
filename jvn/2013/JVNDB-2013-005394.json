@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2013-005394",
+  "title": "Apache Subversion の mod_dav_svn の Apache HTTPD サーバモジュールにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Apache Subversion の mod_dav_svn の Apache HTTPD サーバモジュールの repos.c 内の get_parent_resource 関数には、アサーションが有効な状態でビルドされ、SVNAutoversionin が有効である場合、サービス運用妨害 (表明違反および Apache プロセスの異常終了) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Subversion",
+      "version_number": [
+        "1.7.11 から 1.7.13",
+        "1.8.1 から 1.8.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:subversion"
+      }
+    },
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "mod_dav_svn",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:mod_dav_svn"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、リクエスト内の非正規の URL を介して、サービス運用妨害 (表明違反および Apache プロセスの異常終了) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1836",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-12/msg00029.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:1860",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-12/msg00048.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1033431",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1033431"
+    },
+    {
+      "type": "vendor",
+      "name": "Subversion",
+      "vulinfo_id": "mod_dav_svn assertion triggered by non-canonical URLs in autoversioning commits.",
+      "url": "http://subversion.apache.org/security/CVE-2013-4558-advisory.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4558",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4558"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4558",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4558"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "100363 : Apache Subversion mod_dav_svn Crafted Request Handling httpd Process Remote DoS",
+      "url": "http://osvdb.org/100363"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年12月10日]\\n  掲載\\n[2014年01月09日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:1836) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:1860) を追加"
+    }
+  ],
+  "date_first_published": "2013-12-10T18:49:21+09:00",
+  "date_last_updated": "2014-01-09T19:36:51+09:00",
+  "date_public": "2013-11-25T00:00:00+09:00"
+}

@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2017-002498",
+  "title": "Capstone の winkernel_mm.c の cs_winkernel_malloc 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "Capstone の winkernel_mm.c の cs_winkernel_malloc 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Capstone engine",
+      "product_name": "Capstone",
+      "version_number": [
+        "3.0.4 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:capstone-engine:capstone"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、過度に大きな値を介して、サービス運用妨害 (カーネルドライバにおけるヒープベースのバッファオーバーフロー) 状態にされる、または不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "provide a validity check to prevent against Integer overflow conditions (#870)",
+      "url": "https://github.com/aquynh/capstone/commit/6fe86eef621b9849f51a5e1e5d73258a93440403"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-6952",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6952"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-6952",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6952"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-190",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "title": "整数オーバーフローまたはラップアラウンド"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-04-18T14:54:41+09:00",
+  "date_last_updated": "2017-04-18T14:54:41+09:00",
+  "date_public": "2017-03-14T00:00:00+09:00"
+}

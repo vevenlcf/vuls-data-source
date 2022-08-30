@@ -1,0 +1,300 @@
+{
+  "vulinfo_id": "JVNDB-2016-004782",
+  "title": "OpenSSL の crypto/mdc2/mdc2dgst.c の MDC2_Update 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "OpenSSL の crypto/mdc2/mdc2dgst.c の MDC2_Update 関数には、整数オーバーフローの脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-787: Out-of-bounds Write (境界外書き込み) と識別されています。 http://cwe.mitre.org/data/definitions/787.html",
+  "affected": [
+    {
+      "name": "Node.js Foundation",
+      "product_name": "Node.js",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nodejs:node.js"
+      }
+    },
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "1.1.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "CapsSuite",
+      "version_number": [
+        "V3.0 から V4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:capssuite"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "EnterpriseIdentityManager",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:enterpriseidentitymanager"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "ESMPRO/ServerAgent",
+      "version_number": [
+        "4.4.22-1以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:esmpro_serveragent"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "ESMPRO/ServerAgentService",
+      "version_number": [
+        "全バージョン (Linux版)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:esmpro_serveragentservice"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "Express5800",
+      "version_number": [
+        "SG3600全シリーズ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:express5800"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IX1000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ix1000"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IX2000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ix2000"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "IX3000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:nec:ix3000"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "SecureWare/PKIアプリケーション開発キット",
+      "version_number": [
+        "Ver3.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:secureware_pki_application_development_kit"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Application Server",
+      "version_number": [
+        "Enterprise V8.2 から V9.4",
+        "Express V8.2 から V9.4",
+        "Foundation V8.2 から V8.5",
+        "Standard V8.2 から V9.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_application_server"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Enterprise Service Bus",
+      "version_number": [
+        "V8.2 から V8.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_enterprise_service_bus"
+      }
+    },
+    {
+      "name": "日本電気",
+      "product_name": "WebOTX Portal",
+      "version_number": [
+        "V8.2 から V9.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nec:webotx_portal"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、サービス運用妨害 (境界外書き込みおよびアプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20160927-openssl",
+      "url": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160927-openssl"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM Support Document",
+      "vulinfo_id": "1995039",
+      "url": "http://www-01.ibm.com/support/docview.wss?uid=swg21995039"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV17-001",
+      "url": "http://jpn.nec.com/security-info/secinfo/nv17-001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "News",
+      "vulinfo_id": "OpenSSL 1.0.1 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.1-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "News",
+      "vulinfo_id": "OpenSSL 1.0.2 Series Release Notes",
+      "url": "https://www.openssl.org/news/openssl-1.0.2-notes.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Node.js Foundation",
+      "vulinfo_id": "Security updates for all active release lines, September 2016",
+      "url": "https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Project",
+      "vulinfo_id": "Avoid overflow in MDC2_Update()",
+      "url": "https://git.openssl.org/?p=openssl.git;a=commit;h=55d83bf7c10c7b205fffa23fa7c3977491e56c07"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - October 2016",
+      "url": "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1370146",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1370146"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "SA40312",
+      "url": "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA40312"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "SA132",
+      "url": "https://bto.bluecoat.com/security-advisory/sa132"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bulletin",
+      "vulinfo_id": "JSA10759",
+      "url": "http://kb.juniper.net/InfoCenter/index?page=content\u0026id=JSA10759"
+    },
+    {
+      "type": "vendor",
+      "name": "Tenable Network Security",
+      "vulinfo_id": "TNS-2016-16",
+      "url": "https://www.tenable.com/security/tns-2016-16"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory",
+      "vulinfo_id": "TLSA-2016-28",
+      "url": "http://www.turbolinux.co.jp/security/2016/TLSA-2016-28j.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6303",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6303"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98667810",
+      "url": "http://jvn.jp/vu/JVNVU98667810/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6303",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6303"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "BizMobile Go! 脆弱性対応状況",
+      "url": "http://www.bizmobile.co.jp/news_02.php?id=4069\u0026nc=1"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年09月21日]\\n  掲載\\n[2016年10月07日]\\n  ベンダ情報：OpenSSL Project (OpenSSL 1.0.1 Series Release Notes) を追加\\n  ベンダ情報：OpenSSL Project (OpenSSL 1.0.2 Series Release Notes) を追加\\n  ベンダ情報：シスコシステムズ (cisco-sa-20160927-openssl) を追加\\n  参考情報：JVN (JVNVU#98667810) を追加\\n[2016年11月17日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Node.js Foundation (Security updates for all active release lines, September 2016) を追加\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - October 2016) を追加\\n  ベンダ情報：ターボリナックス (TLSA-2016-28) を追加\\n  参考情報：関連文書 (BizMobile Go! 脆弱性対応状況) を追加\\n[2017年02月21日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：日本電気 (NV17-001) を追加\\n  ベンダ情報：パルスセキュア (SA40312) を追加\\n  ベンダ情報：ジュニパーネットワークス (JSA10759) を追加\\n  ベンダ情報：ブルーコートシステムズ (SA132) を追加\\n  ベンダ情報：IBM (1995039) を追加\\n  ベンダ情報：Tenable Network Security (TNS-2016-16) を追加\\n[2017年03月09日]\\n  影響を受けるシステム：ベンダ情報の更新に伴い内容を更新\\n[2017年07月25日]\\n  影響を受けるシステム：ベンダ情報 (NV17-001) の更新に伴い内容を更新\\n[2017年10月03日]\\n  影響を受けるシステム：ベンダ情報 (NV17-001) の更新に伴い内容を更新"
+    }
+  ],
+  "date_first_published": "2016-09-21T10:33:24+09:00",
+  "date_last_updated": "2017-10-03T14:28:48+09:00",
+  "date_public": "2016-08-24T00:00:00+09:00"
+}

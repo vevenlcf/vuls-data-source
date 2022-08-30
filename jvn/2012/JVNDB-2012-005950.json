@@ -1,0 +1,120 @@
+{
+  "vulinfo_id": "JVNDB-2012-005950",
+  "title": "Qt の XMLHttpRequest オブジェクトにおける任意のローカルファイルの読み取りを強制される脆弱性",
+  "vulinfo_description": "Qt の XMLHttpRequest オブジェクトは、ファイルスキーマへの HTTP リダイレクトが可能であるため、任意のローカルファイルの読み取りを強制され、重要な情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "11.10",
+        "12.04 LTS",
+        "12.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Digia",
+      "product_name": "Qt",
+      "version_number": [
+        "4.8.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:digia:qt"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、QML アプリケーションへの file: URL を介して、任意のローカルファイルの読み取りを強制され、重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "Change I7a3cec66: Make the rules for redirects a bit stricter.",
+      "url": "https://codereview.qt-project.org/#change,40034"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0157",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-01/msg00048.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0154",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-01/msg00045.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2013:0143",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-01/msg00034.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qt",
+      "vulinfo_id": "commit 96311def2466dd44de64d77a1c815b22fbf68f71",
+      "url": "http://qt.gitorious.org/qt/qt/commit/96311def2466dd44de64d77a1c815b22fbf68f71"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 883415",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=883415"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1723-1",
+      "url": "http://www.ubuntu.com/usn/USN-1723-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-5624",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5624"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-5624",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-5624"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年02月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-02-27T15:11:54+09:00",
+  "date_last_updated": "2013-02-27T15:11:54+09:00",
+  "date_public": "2012-11-20T00:00:00+09:00"
+}

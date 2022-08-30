@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2017-003361",
+  "title": "Linux Kernel の drivers/char/virtio_console.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/char/virtio_console.c は、適切に CONFIG_VMAP_STACK オプションとの対話処理を行わないため、サービス運用妨害 (システムクラッシュまたはメモリ破損) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.10.12 未満の 4.10.x",
+        "4.9.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、複数の DMA scatterlist の仮想ページの使用を利用されることで、サービス運用妨害 (システムクラッシュまたはメモリ破損) 状態にされるなど、不特定の影響を受ける可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "virtio-console: avoid DMA from stack",
+      "url": "https://github.com/torvalds/linux/commit/c4baad50297d84bde1a7ad45e50c73adae4a2192"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "virtio-console: avoid DMA from stack",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c4baad50297d84bde1a7ad45e50c73adae4a2192"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-8067",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8067"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-8067",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-8067"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Linux 4.10.12",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.10.12"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年05月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-05-25T16:25:12+09:00",
+  "date_last_updated": "2017-05-25T16:25:12+09:00",
+  "date_public": "2017-02-01T00:00:00+09:00"
+}

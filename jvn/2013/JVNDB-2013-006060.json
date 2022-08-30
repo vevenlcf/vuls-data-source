@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2013-006060",
+  "title": "PHP の ext/gd/gd.c の gdImageCrop 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "PHP の ext/gd/gd.c の gdImageCrop 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.5.9 未満の 5.5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、ヒープベースのバッファオーバーフローにつながる、過度に大きな x 次元の値を持つ imagecrop 関数の呼び出しを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed bug #66356 (Heap Overflow Vulnerability in imagecrop())",
+      "url": "https://github.com/php/php-src/commit/2938329ce19cb8c4197dec146c3ec887c6f61d01"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "Fixed bug #66356 (Heap Overflow Vulnerability in imagecrop())",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=8f4a5373bb71590352fd934028d6dde5bc18530b"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://www.php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #66356",
+      "url": "https://bugs.php.net/bug.php?id=66356"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1065108",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1065108"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7226",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7226"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7226",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7226"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年02月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-02-20T15:52:22+09:00",
+  "date_last_updated": "2014-02-20T15:52:22+09:00",
+  "date_public": "2013-12-26T00:00:00+09:00"
+}

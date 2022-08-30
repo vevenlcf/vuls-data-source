@@ -1,0 +1,202 @@
+{
+  "vulinfo_id": "JVNDB-2008-001327",
+  "title": "GraphicsMagick と Imagemagick の ReadPCXImage() 関数におけるヒープオーバーフローの脆弱性",
+  "vulinfo_description": "ImageMagick および GraphicsMagick の coders/pcx.c には PCX コーダの ReadPCXImage() 関数において、.pcx ファイルの scanline 配列のメモリ配置の処理に不備があり、ヒープベースのバッファオーバーフローが発生する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GraphicsMagick",
+      "product_name": "GraphicsMagick",
+      "version_number": [
+        "1.1.12 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:graphicsmagick:graphicsmagick"
+      }
+    },
+    {
+      "name": "ImageMagick",
+      "product_name": "ImageMagick",
+      "version_number": [
+        "6.2.8.3 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:imagemagick:imagemagick"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "3.0 ",
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux Advanced Workstation",
+      "version_number": [
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux_advanced_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者に巧妙に細工された .pcx ファイルによりサービス運用妨害 (DoS) 状態にされる、あるいは任意のコードを実行される可能性があります。   "
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GraphicsMagick",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.graphicsmagick.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "ImageMagick",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.imagemagick.org/script/index.php"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "ImageMagick (V2.x)",
+      "url": "http://www.miraclelinux.com/update/linux/list.php?errata_id=1275"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0145",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0145.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0165",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0165.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2008:0145",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2008-0145J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2008:0165",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2008-0165J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-1097",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1097"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "41193",
+      "url": "http://xforce.iss.net/xforce/xfdb/41193"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-1097",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1097"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "28822",
+      "url": "http://www.securityfocus.com/bid/28822"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1019881",
+      "url": "http://www.securitytracker.com/id?1019881"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年05月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2008-05-16T16:13:07+09:00",
+  "date_last_updated": "2008-05-16T16:13:07+09:00",
+  "date_public": "2008-03-06T00:00:00+09:00"
+}

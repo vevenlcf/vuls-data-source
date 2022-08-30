@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-000207",
+  "title": "e-Taxソフトのインストーラにおける DLL 読み込みに関する脆弱性",
+  "vulinfo_description": "国税庁が提供する e-Taxソフトのインストーラには、DLL を読み込む際の検索パスに関する処理に不備があり、意図しない DLL を読み込んでしまう脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CCが開発者との調整を行いました。 報告者: NTTコミュニケーションズ 東内 裕二 氏",
+  "affected": [
+    {
+      "name": "国税庁",
+      "product_name": "e-Taxソフト",
+      "version_number": [
+        "のインストーラ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:national_tax_agency:e-tax"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "次の条件を満たす場合に脆弱性が悪用されます。脆弱性が悪用された場合、インストーラを実行しているプロセスの権限で任意のコードを実行される可能性があります。 ・攻撃者の意図する場所に、細工された DLL ファイルが何らかの方法で配置されている"
+  },
+  "solution": "[新規インストールやバージョンアップには最新のインストーラを使用する] 当該製品を新規にインストールする場合やインストール済みの当該製品をバージョンアップする際には、開発者の提供する情報をもとに、最新のインストーラを使用してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "国税庁",
+      "vulinfo_id": "e-Taxソフト等の一部ダウンロード及びバージョンアップの再開について",
+      "url": "http://www.e-tax.nta.go.jp/topics/topics_281014.htm"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4901",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4901"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#63012325",
+      "url": "https://jvn.jp/jp/JVN63012325/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4901",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4901"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年10月19日]\\n  掲載\\n[2016年10月27日]\\n  対策：内容を更新\\n  ベンダ情報：リンクタイトルを更新\\n[2018年01月17日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-4901) を追加\\n"
+    }
+  ],
+  "date_first_published": "2016-10-19T12:00:20+09:00",
+  "date_last_updated": "2018-01-17T11:48:23+09:00",
+  "date_public": "2016-10-19T00:00:00+09:00"
+}

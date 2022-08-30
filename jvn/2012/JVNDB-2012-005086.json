@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2012-005086",
+  "title": "OpenStack Object Storage (swift) における任意のコードを実行される脆弱性",
+  "vulinfo_description": "OpenStack Object Storage (swift) は、memcached 内のメタデータを保存およびロードする際、安全でない pickle Python モジュールの loads 関数を使用するため、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Swift",
+      "version_number": [
+        "1.7.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:swift"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された pickle オブジェクトを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-15098",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-October/089472.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Do not use pickle for serialization in memcache, but JSON",
+      "url": "https://github.com/openstack/swift/commit/e1ff51c04554d51616d2845f92ab726cb0e5831a"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1006414",
+      "url": "https://bugs.launchpad.net/swift/+bug/1006414"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "1.7.0 : OpenStack Object Storage (swift)",
+      "url": "https://launchpad.net/swift/+milestone/1.7.0"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 854757",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=854757"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1379",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1379.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4406",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4406"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4406",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4406"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年10月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-10-24T11:07:54+09:00",
+  "date_last_updated": "2012-10-24T11:07:54+09:00",
+  "date_public": "2012-09-13T00:00:00+09:00"
+}

@@ -1,0 +1,179 @@
+{
+  "vulinfo_id": "JVNDB-2020-016879",
+  "title": "Apache HTTP Server の mod_auth_digest におけるスタックオーバーフローの脆弱性",
+  "vulinfo_description": "Apache HTTP Server の mod_auth_digest には、スタックオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache HTTP Server",
+      "version_number": [
+        "2.4.0 から 2.4.46"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:http_server"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Instantis EnterpriseTrack",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:instantis_enterprisetrack"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Enterprise Manager Ops Center",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:enterprise_manager_ops_center"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "ZFS Storage Appliance Kit",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:zfs_storage_appliance_kit"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "巧妙に細工された Digest ノンスを介して、スタックオーバーフローを引き起こされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache httpd 2.4 vulnerabilities",
+      "vulinfo_id": "Fixed in Apache HTTP Server 2.4.48",
+      "url": "http://httpd.apache.org/security/vulnerabilities_24.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "[SECURITY] [DLA 2706-1] apache2 security update",
+      "url": "https://lists.debian.org/debian-lts-announce/2021/07/msg00006.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-4937-1",
+      "url": "https://www.debian.org/security/2021/dsa-4937"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2021-dce7e7738e",
+      "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SPBR6WUYBJNACHKE65SPL7TJOHX7RHWD/"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2021-e3f6dd670d",
+      "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZNCYSR3BXT36FFF4XTCPL3HDQK4VP45R/"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - October 2021",
+      "url": "https://www.oracle.com/security-alerts/cpuoct2021.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Pony Mail",
+      "vulinfo_id": "Re: svn commit: r1890598 - in /httpd/site/trunk/content/security/json: CVE-2019-17567.json CVE-2020-13938.json CVE-2020-13950.json CVE-2020-35452.json CVE-2021-26690.json CVE-2021-26691.json CVE-2021-30641.json CVE-2021-31618.json",
+      "url": "https://lists.apache.org/thread.html/r7f2b70b621651548f4b6f027552f1dd91705d7111bb5d15cda0a68dd@%3Cdev.httpd.apache.org%3E"
+    },
+    {
+      "type": "vendor",
+      "name": "Pony Mail",
+      "vulinfo_id": "CVE-2020-35452: mod_auth_digest possible stack overflow by one nul byte",
+      "url": "https://lists.apache.org/thread.html/rccb1b8225583a48c6360edc7a93cc97ae8b0215791e455dc607e7602@%3Cannounce.httpd.apache.org%3E"
+    },
+    {
+      "type": "vendor",
+      "name": "Pony Mail",
+      "vulinfo_id": "svn commit: r48071 - in /release/httpd: Announcement2.4.html Announcement2.4.txt CHANGES_2.4 CHANGES_2.4.48 CURRENT-IS-2.4.46 CURRENT-IS-2.4.48",
+      "url": "https://lists.apache.org/thread.html/re026d3da9d7824bd93b9f871c0fdda978d960c7e62d8c43cba8d0bf3%40%3Ccvs.httpd.apache.org%3E"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-35452",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2020-35452"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96037838",
+      "url": "https://jvn.jp/vu/JVNVU96037838/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-35452",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-35452"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2020-35452: Apache httpd: mod_auth_digest possible stack overflow by one nul byte",
+      "url": "http://www.openwall.com/lists/oss-security/2021/06/10/5"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-02-24T06:32:29Z",
+      "description": "[2022年02月24日]   掲載"
+    }
+  ],
+  "date_first_published": "2022-02-25T11:36:44+09:00",
+  "date_last_updated": "2022-02-25T11:36:44+09:00",
+  "date_public": "2020-11-11T00:00:00+09:00"
+}

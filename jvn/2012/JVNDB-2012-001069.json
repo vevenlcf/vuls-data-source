@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2012-001069",
+  "title": "Perl の Encode モジュールにおける一つずれエラーの脆弱性",
+  "vulinfo_description": "Perl で使用される Encode モジュールの Unicode/Unicode.xs 内にある decode_xs 関数には、一つずれ (Off-by-one) エラーの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Dan Kogai",
+      "product_name": "Encode モジュール",
+      "version_number": [
+        "2.44 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dan_kogai:encode_module"
+      }
+    },
+    {
+      "name": "The Perl Foundation",
+      "product_name": "Perl",
+      "version_number": [
+        "5.15.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:perl:perl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された Unicode 文字列を介して、サービス運用妨害 (メモリ破損) 状態にされ、ヒープベースのバッファオーバーフローを誘発される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "CPAN",
+      "vulinfo_id": "Encode decode_xs n-byte heap-overflow (CVE-2011-2939)",
+      "url": "http://search.cpan.org/~flora/perl-5.14.2/pod/perldelta.pod#Encode_decode_xs_n-byte_heap-overflow_%28CVE-2011-2939%29"
+    },
+    {
+      "type": "vendor",
+      "name": "CPAN",
+      "vulinfo_id": "Encode-2.44",
+      "url": "http://search.cpan.org/~dankogai/Encode-2.44/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1424",
+      "url": "http://rhn.redhat.com/errata/RHSA-2011-1424.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in Perl 5.8",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_perl_5"
+    },
+    {
+      "type": "vendor",
+      "name": "The Perl Foundation",
+      "vulinfo_id": "e46d973584785af1f445c4dedbee4243419cb860#patch5",
+      "url": "http://perl5.git.perl.org/perl.git/commitdiff/e46d973584785af1f445c4dedbee4243419cb860#patch5"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-2939",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2939"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-2939",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-2939"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年01月17日]\\n  掲載\\n[2013年11月01日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in Perl 5.8) を追加"
+    }
+  ],
+  "date_first_published": "2012-01-17T16:37:27+09:00",
+  "date_last_updated": "2013-11-01T14:12:40+09:00",
+  "date_public": "2012-01-13T00:00:00+09:00"
+}

@@ -1,0 +1,320 @@
+{
+  "vulinfo_id": "JVNDB-2003-000041",
+  "title": "OpenSSL の ssl3_get_record に情報漏洩の脆弱性",
+  "vulinfo_description": "OpenSSL では、データの復号化を行う際に、ブロック暗号のパディングによるエラーを発見した後でのメッセージ認証コード (Message Authentication Code) の妥当性に対するチェックが省略されているため、ブロック暗号のパディングによるエラー、もしくはメッセージ認証コードが妥当でないために生じるエラーの 2 つの異なるエラーケースを見分けることが可能な脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.7a およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Application Server",
+      "version_number": [
+        "1.0.2.1s",
+        "1.0.2.2",
+        "9.0.2",
+        "9.0.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:application_server"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Database",
+      "version_number": [
+        "8.1.7",
+        "9.0.1",
+        "9.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:database_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ4",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_4"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ550",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_550"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQXTR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_xtr"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun ONE/iPlanet Web Server",
+      "version_number": [
+        "6.0 SP5 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sun:one_web_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "2.6 (sparc) ",
+        "2.6 (x86) ",
+        "7.0 (sparc) ",
+        "7.0 (x86) ",
+        "8 (sparc) ",
+        "8 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "6.5  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.04 ",
+        "11.11 ",
+        "11.20 ",
+        "11.22 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "6.2  ",
+        "7.0  ",
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "パディング内容に対する総当り攻撃を試みることで、ブロックの内容を取得される可能性が存在します。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX0303-248",
+      "url": "http://www2.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX0303-248"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX00280",
+      "url": "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=c00954663"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0309-280",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0309-280.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX0303-248",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX0303-248.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "secadv_20030219",
+      "url": "http://www.openssl.org/news/secadv_20030219.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:063",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-063.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:062",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-062.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:104",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-104.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:205",
+      "url": "http://rhn.redhat.com/errata/RHSA-2003-205.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "56380",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-56380-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "54147",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-54147-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "54147",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-54147-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification 日本語版",
+      "vulinfo_id": "56380",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-56380-3"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "XTR Apache \u0026amp; SSL Security 1.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raqxtr.eng\u0026amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "4 Apache \u0026amp; SSL Security 2.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raq4.eng\u0026amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-10",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-10.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "オラクル・セキュリティ・アラート",
+      "vulinfo_id": "#62",
+      "url": "http://otn.oracle.com/deploy/security/pdf/2003alert62.pdf"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:063",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-063J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:062",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-062J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:104",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-104J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:205",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-205J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-10",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-10j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0078",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0078"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0078",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0078"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6884",
+      "url": "http://www.securityfocus.com/bid/6884"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-02-19T00:00:00+09:00"
+}

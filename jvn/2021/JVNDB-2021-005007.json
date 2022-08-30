@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2021-005007",
+  "title": "Schneider Electric 製 Schneider Electric Software Update におけるエントロピー不足の脆弱性",
+  "vulinfo_description": "Schneider Electric 社が提供する Schneider Electric Software Update には、エントロピー不足の脆弱性 (CWE-331、CVE-2021-22799) が存在します。",
+  "affected": [
+    {
+      "name": "Schneider Electric",
+      "product_name": "Schneider Electric Software Update",
+      "version_number": [
+        "v2.3.0 から v2.5.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:schneider_electric:software_update_utility"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルのユーザによって、レジストリから SESU プロキシパスワードを復号された場合、内部ネットワークから外部ネットワークへの意図しない接続が行われる可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者は以下の対応を推奨しています。  　* SESU がインストールされている場合は、ダウンロードをクリックして SESU の新バージョンをインストールする 　* SESU がインストールされていない場合は、ベンダ情報より SESU をダウンロードしてインストール手順に従う  [ワークアラウンドを実施する] 開発者は以下のワークアラウンドの適用を推奨しています。  　* 制御およびセーフティネットワークおよびリモートデバイスをファイアウォールの内側に設置し、ビジネスネットワークから分離する 　* 権限のない人が産業用制御やセーフティシステム、コンポーネント、周辺機器およびネットワークに物理的にアクセスできないようにする 　* すべてのコントローラを鍵付きキャビネットに格納し、「プログラム」モードに設定したまま放置しない 　* デバイス用のネットワーク以外にプログラミングソフトウェアを接続しない 　* 分離したネットワーク間でデータをやり取りするためのリムーバブルメディア（CD や USB ドライブなど）はすべて、これらネットワークに接続される端末やノードで利用する前にスキャンする 　* 対象のネットワーク以外に接続しているモバイルデバイスは、適切な対処なしにセーフティおよび制御ネットワークへの接続を許可しない 　* すべての制御システムデバイスおよびシステムのネットワーク露出を最小限に抑え、インターネットからアクセスできないようにする 　* リモートアクセスが必要な場合は、仮想プライベートネットワーク (VPN) などの安全な方法を使用し、VPN は最新版を利用する   詳細は、Schneider Electric Security Notification \u003ca href=\"https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2021-313-02\"  target=\"_blank\"\u003eSEVD-2021-313-02\u003c/a\u003e を参照してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Security Notification",
+      "vulinfo_id": "SEVD-2021-313-02 Schneider Electric Software Update Security Notification（PDF）",
+      "url": "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2021-313-02"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-22799",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22799"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-336-01",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-336-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99493025",
+      "url": "http://jvn.jp/cert/JVNVU99493025"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-331",
+      "url": "https://cwe.mitre.org/data/definitions/331.html",
+      "title": "エントロピー不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-12-06T03:03:16Z",
+      "description": "[2021年12月06日]   掲載"
+    }
+  ],
+  "date_first_published": "2021-12-06T14:36:07+09:00",
+  "date_last_updated": "2021-12-06T14:36:07+09:00",
+  "date_public": "2021-12-03T00:00:00+09:00"
+}

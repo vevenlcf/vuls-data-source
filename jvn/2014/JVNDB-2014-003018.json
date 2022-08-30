@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-003018",
+  "title": "MIPS プラットフォーム上で稼動する Linux kernel の arch/mips/include/asm/thread_info.h における PR_SET_SECCOMP 制限を回避される脆弱性",
+  "vulinfo_description": "MIPS プラットフォーム上で稼動する Linux kernel の arch/mips/include/asm/thread_info.h は、高速のシステムコールのパスに _TIF_SECCOMP チェックを設定しないため、PR_SET_SECCOMP 制限を回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.14.8 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、トレースまたは監査サブシステムを起動せず、巧妙に細工されたアプリケーションを実行されることで、PR_SET_SECCOMP 制限を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.14.8",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.14.8"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#751417",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=751417"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "MIPS: asm: thread_info: Add _TIF_SECCOMP flag",
+      "url": "https://github.com/torvalds/linux/commit/137f7df8cead00688524c82360930845396b8a21"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "MIPS: asm: thread_info: Add _TIF_SECCOMP flag",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=137f7df8cead00688524c82360930845396b8a21"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-4157",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-4157"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-4157",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4157"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-06-24T16:07:50+09:00",
+  "date_last_updated": "2014-06-24T16:07:50+09:00",
+  "date_public": "2014-06-16T00:00:00+09:00"
+}

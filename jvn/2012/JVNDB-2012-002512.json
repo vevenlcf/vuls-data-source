@@ -1,0 +1,180 @@
+{
+  "vulinfo_id": "JVNDB-2012-002512",
+  "title": "PHP のファイルアップロードの実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "PHP の rfc1867.c 内のファイルアップロードの実装は、name 値に含まれる無効な [ (始め角括弧) の文字を適切に処理しないため、サービス運用妨害 (不正な $_FILES のインデックス) 状態となる、または複数のファイルがアップロードされる際に、ディレクトリトラバーサル攻撃を実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.6.8",
+        "v10.7 から v10.7.4",
+        "v10.8",
+        "v10.8.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.6.8",
+        "v10.7 から v10.7.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、ファイル名の制限を受けないスクリプトを利用されることで、サービス運用妨害状態 (不正な $_FILES のインデックス) にされる、または複数のファイルがアップロードされる際に、ディレクトリトラバーサル攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2012-09-19-2",
+      "url": "http://lists.apple.com/archives/security-announce/2012/Sep/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT5501",
+      "url": "http://support.apple.com/kb/HT5501"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT5501",
+      "url": "http://support.apple.com/kb/HT5501?viewlocale=ja_JP"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-6911",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-May/080037.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-6907",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-May/080041.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-6869",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-May/080070.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02791 SSRT100856",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03368475"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #54374",
+      "url": "https://bugs.php.net/bug.php?id=54374"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #49683",
+      "url": "https://bugs.php.net/bug.php?id=49683"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #48597",
+      "url": "https://bugs.php.net/bug.php?id=48597"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "[svn] Diff of /php/php-src/branches/PHP_5_4/main/rfc1867.c",
+      "url": "http://svn.php.net/viewvc/php/php-src/branches/PHP_5_4/main/rfc1867.c?r1=321664\u0026r2=321663\u0026pathrev=321664"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog - Version 5.4.0",
+      "url": "http://www.php.net/ChangeLog-5.php#5.4.0"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Revision 321664",
+      "url": "http://svn.php.net/viewvc?view=revision\u0026revision=321664"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1172",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1172"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#381963",
+      "url": "http://jvn.jp/cert/JVNVU381963/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1172",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1172"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Overriding $_FILES array during uploading multiple files in php. (Tested on php version 5.3.5)",
+      "url": "https://students.mimuw.edu.pl/~ai292615/php_multipleupload_overwrite.pdf"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年05月25日]\\n  掲載\\n[2012年07月25日]\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02791 SSRT100856) を追加\\n[2012年09月05日]\\n  ベンダ情報：Fedora Project (FEDORA-2012-6911) を追加\\n  ベンダ情報：Fedora Project (FEDORA-2012-6907) を追加\\n  ベンダ情報：Fedora Project (FEDORA-2012-6869) を追加\\n[2012年10月16日]\\n  ベンダ情報：アップル (HT5501) を追加\\n[2013年12月02日]\\n  影響を受けるシステム：アップル (HT5501) の情報を追加\\n  ベンダ情報：アップル (APPLE-SA-2012-09-19-2) を追加"
+    }
+  ],
+  "date_first_published": "2012-05-25T11:22:16+09:00",
+  "date_last_updated": "2013-12-02T17:58:09+09:00",
+  "date_public": "2012-03-01T00:00:00+09:00"
+}

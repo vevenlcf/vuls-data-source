@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2018-005352",
+  "title": "Kea にサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ISC (Internet Systems Consortium) が提供する Kea DHCP server には、サービス運用妨害 (DoS) の脆弱性が存在します。  Kea には特定の hook ライブラリを使用した際にメモリを多量に消費する問題が存在します。コールアウトを設定する処理において \"query4\" もしくは \"query6\" パラメータを使用する hook ライブラリがこの問題を誘発します。その結果使用可能なメモリが枯渇し、サーバの動作が停止する可能性があります。",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "ISC Kea",
+      "version_number": [
+        "1.4.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:kea"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.1",
+        "vector": "AV:A/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "当該製品が接続しているネットワークにアクセス可能な第三者によって、サービス運用妨害 (DoS) 攻撃が行われる可能性があります。本脆弱性は、当該製品の hook 機能を使用しているサーバのみ影響を受けます。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 開発者は、本脆弱性を修正した次のバージョンをリリースしています。  　* Kea 1.4.0-P1  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　* Kea DHCPv4 ならびに DHCPv6 のサービスを監視する、また定期的に再起動する 　* Callout store を使用する hook ライブラリを使用せずに Kea サーバを運用する 　* Kea 1.3.0 にロールバックする  詳細については、開発者が提供する\u003ca href=\"https://kb.isc.org/article/AA-01626\"\u003e情報\u003c/a\u003eをご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Knowledge Base",
+      "vulinfo_id": "CVE-2018-5739: ISC Kea 1.4.0 failure to release memory may exhaust system resources",
+      "url": "https://kb.isc.org/article/AA-01626"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-5739",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5739"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92683062",
+      "url": "https://jvn.jp/vu/JVNVU92683062/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-5739",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-5739"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-07-13T02:40:48Z",
+      "description": "[2018年07月13日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2019-08-28T00:47:10Z",
+      "description": "[2019年08月28日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-5739) を追加"
+    }
+  ],
+  "date_first_published": "2018-07-13T11:40:48+09:00",
+  "date_last_updated": "2019-08-28T09:47:45+09:00",
+  "date_public": "2018-07-12T00:00:00+09:00"
+}

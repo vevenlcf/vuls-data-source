@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2011-004180",
+  "title": "WWW::Mechanize などの製品で使用される LWP の Net::HTTPS モジュールにおけるサーバをなりすまされる脆弱性",
+  "vulinfo_description": "WWW::Mechanize、LWP::UserAgent および他の製品で使用される libwww-perl (LWP) の Net::HTTPS モジュールは、If-SSL-Cert-Subject ヘッダが設定されていない環境で実行される際、デフォルトで SSL 証明書の検証を有効にしないため、サーバをなりすまされる脆弱性が存在します。 本問題は、Net::HTTPS API の仕様によるものと考えられ、異なる実装には、この仕様の影響を受けない CVE が割り当てられるべきである。しかしながら、この API は LWP 内で変更されるため、単一 CVE が割り当てられています。",
+  "affected": [
+    {
+      "name": "Gisle Aas",
+      "product_name": "libwww-perl",
+      "version_number": [
+        "6.00 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:search.cpan:libwww-perl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、適切に検証されていないホスト名を含む中間者攻撃 (MITM attack) を介して、サーバをなりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "search.cpan",
+      "vulinfo_id": "Release 6.02",
+      "url": "http://cpansearch.perl.org/src/GAAS/libwww-perl-6.02/Changes"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0633",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0633"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0633",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0633"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:58+09:00",
+  "date_last_updated": "2012-03-27T18:42:58+09:00",
+  "date_public": "2011-03-27T00:00:00+09:00"
+}

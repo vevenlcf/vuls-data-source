@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2006-001876",
+  "title": "dhcpd サーバの memory.c の supersede_lease 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ISC DHCP (dhcpd) サーバの memory.c の supersede_lease 関数には、サービス運用妨害 (アプリケーションクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "ISC DHCP",
+      "version_number": [
+        "2.0pl5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:dhcp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、32 バイトクライアント ID を持つ DHCPDISCOVER パケットを介して、破損 uid として解釈されるパケットを誘発、および \"破損したリース uid\" でサーバ終了を誘発され、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "isc",
+      "vulinfo_id": "DHCP",
+      "url": "https://www.isc.org/software/dhcp"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-3122",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3122"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-3122",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-3122"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T15:35:48+09:00",
+  "date_last_updated": "2012-09-25T15:35:48+09:00",
+  "date_public": "2006-08-09T00:00:00+09:00"
+}

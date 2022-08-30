@@ -1,0 +1,125 @@
+{
+  "vulinfo_id": "JVNDB-2015-002000",
+  "title": "PHP の ext/standard/basic_functions.c の move_uploaded_file の実装における拡張子の制限を回避される脆弱性",
+  "vulinfo_description": "PHP の ext/standard/basic_functions.c の move_uploaded_file の実装は、\\x00 文字に遭遇した場合にパス名を切り捨てるため、拡張子の制限を回避され、想定外の名前のファイルを作成される脆弱性が存在します。  本脆弱性は、CVE-2006-7243 に対する修正が不十分だったことによる脆弱性です。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.39 未満",
+        "5.5.23 未満の 5.5.x",
+        "5.6.7 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.6.8 以上 10.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された第 2 引数を介して、拡張子の制限を回避され、想定外の名前のファイルを作成される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-30-3 OS X El Capitan 10.11",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00008.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205267",
+      "url": "https://support.apple.com/en-us/HT205267"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205267",
+      "url": "http://support.apple.com/ja-jp/HT205267"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2015-2511963.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #69207",
+      "url": "https://bugs.php.net/bug.php?id=69207"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Git Repositories",
+      "vulinfo_id": "Fix bug #69207 - move_uploaded_file allows nulls in path",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=1291d6bbee93b6109eb07e8f7916ff1b7fcc13e1"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2348",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2348"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97220341",
+      "url": "http://jvn.jp/vu/JVNVU97220341/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2348",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2348"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年04月02日]\\n  掲載\\n[2015年07月31日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2015) を追加\\n[2015年10月06日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT205267) を追加\\n  ベンダ情報：アップル (APPLE-SA-2015-09-30-3 OS X El Capitan 10.11) を追加\\n  参考情報：JVN (JVNVU#97220341) を追加"
+    }
+  ],
+  "date_first_published": "2015-04-02T12:15:46+09:00",
+  "date_last_updated": "2015-10-06T10:36:04+09:00",
+  "date_public": "2015-03-18T00:00:00+09:00"
+}

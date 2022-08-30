@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2009-005708",
+  "title": "SILC Toolkit の silcd におけるスタック領域を上書きされる脆弱性",
+  "vulinfo_description": "Secure Internet Live Conferencing (SILC) Toolkit の silcd の internal HTTP server の lib/silchttp/silchttpserver.c の silc_http_server_parse 関数は、%lu フォーマットストリングの間違った使用の不備があるため、スタック領域を上書きされる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "silcnet",
+      "product_name": "silc toolkit",
+      "version_number": [
+        "1.1.9 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:silcnet:silc_toolkit"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された Content-Length ヘッダを介して、スタック領域を上書きされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "silcnet",
+      "vulinfo_id": "Latest Toolkit News",
+      "url": "http://silcnet.org/general/news/news_toolkit.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-7160",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7160"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-7160",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-7160"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-134",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-134.html",
+      "title": "書式文字列の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T19:10:39+09:00",
+  "date_last_updated": "2012-12-20T19:10:39+09:00",
+  "date_public": "2009-09-10T00:00:00+09:00"
+}

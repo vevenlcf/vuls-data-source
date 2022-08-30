@@ -1,0 +1,144 @@
+{
+  "vulinfo_id": "JVNDB-2010-002485",
+  "title": "MIT Kerberos 5 の Key Distribution Center 内にある kdc_authdata.c における任意のコードを実行される脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 の Key Distribution Center (KDC) 内にある kdc_authdata.c の merge_authdata 関数には、authorization-data リストへのインデックスを適切に管理しないため、サービス運用妨害 (DoS) 状態となる、重要な情報を取得される、管理者になりすまされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.8.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、TGS リクエストを介して、サービス運用妨害 (DoS) 状態にされる、重要な情報を取得される、管理者になりすまされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIT Kerberos",
+      "vulinfo_id": "MITKRB5-SA-2010-006",
+      "url": "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2010-006.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0863",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0863.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2010-1322 Improper Input Validation vulnerability in kerberos",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2010_1322_improper_input"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1322",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1322"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1322",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1322"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA41684",
+      "url": "http://secunia.com/advisories/41684"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "43756",
+      "url": "http://www.securityfocus.com/bid/43756"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-2576",
+      "url": "http://www.vupen.com/english/advisories/2010/2576"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年12月13日]\\n  掲載\\n[2013年11月01日]\\n  ベンダ情報：オラクル (CVE-2010-1322 Improper Input Validation vulnerability in kerberos) を追加"
+    }
+  ],
+  "date_first_published": "2010-12-13T16:07:45+09:00",
+  "date_last_updated": "2013-11-01T14:57:11+09:00",
+  "date_public": "2010-10-05T00:00:00+09:00"
+}

@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2015-002488",
+  "title": "Paul's PPP Package の plugins/radius/util.c の rc_mksid 関数におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Paul's PPP Package (ppp) の plugins/radius/util.c の rc_mksid 関数には、pppd の PID が 65535 より大きな値である場合、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Samba Project",
+      "product_name": "PPP",
+      "version_number": [
+        "2.4.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:samba:ppp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、RADIUS サーバへの \"start\" アカウンティングメッセージを介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "782450",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782450"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3228",
+      "url": "https://www.debian.org/security/2015/dsa-3228"
+    },
+    {
+      "type": "vendor",
+      "name": "Samba",
+      "vulinfo_id": "ppp 2.4.7",
+      "url": "https://ppp.samba.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3310",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3310"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3310",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3310"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2015-0173",
+      "url": "http://advisories.mageia.org/MGASA-2015-0173.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年04月28日]\\n  掲載\\n[2015年05月20日]\\n  参考情報：関連文書 (MGASA-2015-0173) を追加"
+    }
+  ],
+  "date_first_published": "2015-04-28T15:49:22+09:00",
+  "date_last_updated": "2015-05-20T17:49:28+09:00",
+  "date_public": "2015-04-14T00:00:00+09:00"
+}

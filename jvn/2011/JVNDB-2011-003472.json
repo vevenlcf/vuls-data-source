@@ -1,0 +1,141 @@
+{
+  "vulinfo_id": "JVNDB-2011-003472",
+  "title": "Pidgin の silc_channel_message 関数におけるサービス運用妨害 (アプリケーションクラッシュ) の脆弱性",
+  "vulinfo_description": "Pidgin の libpurple 内にある SILC プロトコルプラグインの ops.c における silc_channel_message 関数は、メッセージデータにおける UTF-8 の検証を実行しないため、サービス運用妨害 (アプリケーションクラッシュ) 状態となる脆弱性が存在します。 本脆弱性は、CVE-2011-3594 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Pidgin",
+      "product_name": "Pidgin",
+      "version_number": [
+        "2.10.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pidgin:pidgin"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Optional Productivity Applications",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_optional_productivity_applications"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたメッセージを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Pidgin",
+      "vulinfo_id": "SILC remote crash",
+      "url": "http://www.pidgin.im/news/security/?id=59"
+    },
+    {
+      "type": "vendor",
+      "name": "Pidgin",
+      "vulinfo_id": "libpurple/protocols/silc/ops.c",
+      "url": "http://developer.pidgin.im/viewmtn/revision/diff/c7b95cc3be0590b52edc02d4750ae62844c1acb6/with/afb9ede3de989f217f03d5670cca00e628bd11f1/libpurple/protocols/silc/ops.c"
+    },
+    {
+      "type": "vendor",
+      "name": "Pidgin",
+      "vulinfo_id": "afb9ede3de989f217f03d5670cca00e628bd11f1",
+      "url": "http://developer.pidgin.im/viewmtn/revision/info/afb9ede3de989f217f03d5670cca00e628bd11f1"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1820",
+      "url": "http://rhn.redhat.com/errata/RHSA-2011-1820.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in Pidgin",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_pidgin1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-4603",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4603"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-4603",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4603"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年12月21日]\\n  掲載\\n[2012年01月06日]\\n  影響を受けるシステム：レッドハット (RHSA-2011:1820) の情報を追加\\n  ベンダ情報：レッドハット (RHSA-2011:1820) を追加\\n[2012年09月28日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in Pidgin) を追加"
+    }
+  ],
+  "date_first_published": "2011-12-21T15:22:30+09:00",
+  "date_last_updated": "2012-09-28T17:52:39+09:00",
+  "date_public": "2011-12-17T00:00:00+09:00"
+}

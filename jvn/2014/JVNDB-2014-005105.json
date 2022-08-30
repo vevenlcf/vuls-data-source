@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2014-005105",
+  "title": "chkrootkit の slapper 関数における任意のコードを実行される脆弱性",
+  "vulinfo_description": "chkrootkit の slapper 関数は、ファイルパスを適切に引用しないため、任意のコードを実行される脆弱性が存在します。  本件は、/tmp が、noexec オプションでマウントされない場合にのみ脆弱性となります。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "12.04 LTS",
+        "13.10",
+        "14.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Nelson Murilo",
+      "product_name": "chkrootkit",
+      "version_number": [
+        "0.50 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:chkrootkit_project:chkrootkit"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.7",
+        "vector": "AV:L/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、トロイの木馬の実行ファイルを介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "chkrootkit",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.chkrootkit.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2230-1",
+      "url": "http://www.ubuntu.com/usn/USN-2230-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0476",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0476"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0476",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0476"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-10-29T17:20:57+09:00",
+  "date_last_updated": "2014-10-29T17:20:57+09:00",
+  "date_public": "2014-06-04T00:00:00+09:00"
+}

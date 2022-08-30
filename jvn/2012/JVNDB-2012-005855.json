@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-005855",
+  "title": "ELinks の protocol/http/http_negotiate.c におけるクライアントとして認証される脆弱性",
+  "vulinfo_description": "ELinks の protocol/http/http_negotiate.c 内の http_negotiate_create_context 関数は、HTTP Negotiate または GSS-Negotiate 認証を使用する場合、ユーザの認証情報を GSSAPI へ委任するため、クライアントとして認証される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ELinks",
+      "product_name": "Elinks",
+      "version_number": [
+        "0.12pre6 未満の 0.12"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:elinks:elinks"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "委任された認証情報を介して、リモートサーバがクライアントとして認証される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bugzilla Bug 1124",
+      "url": "http://bugzilla.elinks.cz/show_bug.cgi?id=1124"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2592",
+      "url": "http://www.debian.org/security/2012/dsa-2592"
+    },
+    {
+      "type": "vendor",
+      "name": "ELinks",
+      "vulinfo_id": "repo.or.cz / elinks.git / blobdiff",
+      "url": "http://repo.or.cz/w/elinks.git/blobdiff/89056e21fc7ab8e1c2d4e06ec9d0c6d01e70669a..da18694ff7dd0b67dfcb3c417fb0579b1e7d02d7:/src/protocol/http/http_negotiate.c"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4545",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4545"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4545",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4545"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年01月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-01-07T11:45:27+09:00",
+  "date_last_updated": "2013-01-07T11:45:27+09:00",
+  "date_public": "2012-10-28T00:00:00+09:00"
+}

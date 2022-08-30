@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2015-007643",
+  "title": "phpMyBackupPro における任意の PHP スクリプトを挿入および実行される脆弱性",
+  "vulinfo_description": "phpMyBackupPro は、リクエストパラメータの . (ドット) 文字を適切にエスケープしないため、任意の PHP スクリプトを挿入および実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "phpMyBackupPro",
+      "product_name": "phpMyBackupPro",
+      "version_number": [
+        "2.5 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phpmybackuppro:phpmybackuppro"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "標的のシステム上の Web アクセス可能、かつ Web 書き込み可能なディレクトリの情報を持つリモート認証されたユーザにより、scheduled.php の path、filename、および dirs パラメータを介して、挿入されたスクリプトへのリクエストを作成されることで、任意の PHP スクリプトを挿入および実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "phpMyBackupPro",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.phpmybackuppro.net/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3640",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3640"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3640",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-3640"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE requests / Advisory: phpMyBackupPro",
+      "url": "http://www.openwall.com/lists/oss-security/2015/05/04/4"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-94",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-94.html",
+      "title": "コード・インジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年08月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-08-10T10:22:50+09:00",
+  "date_last_updated": "2017-08-10T10:22:50+09:00",
+  "date_public": "2015-05-04T00:00:00+09:00"
+}

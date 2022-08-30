@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2016-002101",
+  "title": "Xymon の lib/xymond_ipc.c における任意のメッセージを挿入される脆弱性",
+  "vulinfo_description": "Xymon の lib/xymond_ipc.c は、不特定の IPC メッセージキューに対して脆弱なパーミッション (666) を使用するため、任意のメッセージを挿入される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Xymon",
+      "product_name": "Xymon",
+      "version_number": [
+        "4.1.x",
+        "4.2.x",
+        "4.3.25 未満の 4.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xymon:xymon"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.3",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、当該のキューに書き込まれることで、任意のメッセージを挿入される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3495",
+      "url": "https://www.debian.org/security/2016/dsa-3495"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "Commit [r7891]",
+      "url": "https://sourceforge.net/p/xymon/code/7891/"
+    },
+    {
+      "type": "vendor",
+      "name": "Xymon",
+      "vulinfo_id": "Xymon 4.3.25 - Important Security Update",
+      "url": "http://lists.xymon.com/archive/2016-February/042986.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2057",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2057"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2057",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2057"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-19T17:37:14+09:00",
+  "date_last_updated": "2016-04-19T17:37:14+09:00",
+  "date_public": "2016-02-08T00:00:00+09:00"
+}

@@ -1,0 +1,199 @@
+{
+  "vulinfo_id": "JVNDB-2005-000282",
+  "title": "tcpdump における不正なパケットによるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  tcpdump はネットワークのトラフィックをキャプチャするための管理ツールで複数のプロトコルをサポートしています。  Tcpdump 3.7.x/3.8.x/3.9.x には、以下の複数のセキュリティ上の問題が存在します。  ・ print-isoclns.c の isis_print() 関数において、GRE パケットの解析処理が適切でないために無限ループに陥る問題 (CAN-2005-1278) (3.8.x/3.9.x)  ・ print-bgp.c の RT_ROUTING_INFO ルーチンにおいて、BGP パケットの解析処理が適切でないために無限ループに陥る問題 (CAN-2005-1279) (3.7.x/3.8.x/3.9.x)  ・ print-ldp.c の ldp_print() 関数において、LDP パケットの解析処理が適切でないために無限ループに陥る問題 (CAN-2005-1279) (3.8.x/3.9.x)  ・ print-rsvp.c の rsvp_print() 関数において、RSVP パケットの解析処理が適切でないために無限ループに陥る問題 (CAN-2005-1280) (3.8.x/3.9.x)  これらの問題を利用するリモートの攻撃者は、意図的に作成した GRE、BGP、LDP、あるいは RSVP パケットを送りつけることにより、tcpdump をサービス不能状態に陥らせることが可能です。",
+  "affected": [
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/B1",
+      "version_number": [
+        "2.00 〜 2.40"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/neu",
+      "version_number": [
+        "2FE Plus 2.00 〜 2.02"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/Turbo",
+      "version_number": [
+        "2.00 〜 2.02"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/X1,X2",
+      "version_number": [
+        "2.10 〜 2.40"
+      ]
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 ",
+        "3.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "257",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=257"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "156040",
+      "url": "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=156040"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:421",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-421.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:417",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-417.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SEIL シリーズ セキュリティ\u0026脆弱性情報",
+      "vulinfo_id": "tcpdump コマンド実行時における脆弱性",
+      "url": "http://www.seil.jp/seilseries/security/2009/07061763.php"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2005-63",
+      "url": "http://www.turbolinux.com/security/2005/TLSA-2005-63.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:421",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-421J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:417",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-417J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2005-63",
+      "url": "http://www.turbolinux.co.jp/security/2005/TLSA-2005-63j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-1279",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1279"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-1279",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-1279"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA15125",
+      "url": "http://secunia.com/advisories/15125"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13392",
+      "url": "http://www.securityfocus.com/bid/13392"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13390",
+      "url": "http://www.securityfocus.com/bid/13390"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13389",
+      "url": "http://www.securityfocus.com/bid/13389"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13380",
+      "url": "http://www.securityfocus.com/bid/13380"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載\\n[2009年08月10日]\\n  影響を受けるシステム：インターネットイニシアティブ (tcpdump コマンド実行時における脆弱性) の情報を追加\\n  ベンダ情報：インターネットイニシアティブ (tcpdump コマンド実行時における脆弱性) を追加"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2009-08-10T11:52:09+09:00",
+  "date_public": "2005-04-26T00:00:00+09:00"
+}

@@ -1,0 +1,177 @@
+{
+  "vulinfo_id": "JVNDB-2003-000317",
+  "title": "fileutils および coreutils の ls コマンドにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  GNU fileutils は、多くの Linux 製品で使用されている、一般的なファイル管理を行うユーティリティです。 GNU coreutils は fileutils、shellutils、textutils を統合した、標準ユーティリティです。 これらのユーティリティは、例えば以下のようなコマンドが同梱されています。  - ls - dir - vdir - chown - chmod  GNU coreutils/fileutils に同梱される ls コマンドは、-w オプションに引数を指定することにより、表示結果の横方向の文字数を指定可能です。  Coreutils 5.0/fileutils 4.1 以前に同梱される ls コマンドの init_column_info() 関数において、この -w オプションの引数に対し、妥当性の確認が適切に行われていない問題が存在します。  この問題を利用するローカルの攻撃者は、-w オプションに過度に大きな値を指定して ls コマンドを実行することにより、標的システムのメモリ資源を大量に消費させる、さらには整数桁あふれによるオーバフローを生じさせることで、標的システムを一時的にサービス不能状態に陥らせることが可能です。  また wu-ftpd は FTP の LIST コマンドを、GNU ls コマンドを呼び出すことで実装しているため、wu-ftpd へ anonymous ユーザでログインし、-w オプションに過度に大きな値を指定することで、リモートから同様の攻撃を行うことも可能です。  尚、攻撃を受けた後にカーネルが ls のプロセスを kill するため、システムは自動的に復旧します。  また、同様の問題が dir コマンドの -w オプションにも存在することが、報告されています。",
+  "affected": [
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "1.1 ",
+        "2.0 ",
+        "2.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ4",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_4"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ550",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_550"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQXTR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_xtr"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "7  ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  ",
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "fileutils",
+      "url": "http://www.miraclelinux.com/support/update/data/fileutils.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:309",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-309.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "550 Fileutils Security Update 0.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raq550.eng\u0026amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "4 Fileutils Security Update 2.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raq4.eng\u0026amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "XTR Fileutils Security Update 1.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raqxtr.eng\u0026amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2003-60",
+      "url": "http://www.turbolinux.com/security/2003/TLSA-2003-60.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:309",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-309J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2003-60",
+      "url": "http://www.turbolinux.co.jp/security/2003/TLSA-2003-60j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2003-0853",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0853"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2003-0853",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2003-0853"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "8875",
+      "url": "http://www.securityfocus.com/bid/8875"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9793",
+      "url": "http://www.securityfocus.com/bid/9793"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1007981",
+      "url": "http://www.securitytracker.com/alerts/2003/Oct/1007981.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-10-22T00:00:00+09:00"
+}

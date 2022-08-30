@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2015-003349",
+  "title": "unattended-upgrades における任意のパッケージをアップロードされる脆弱性",
+  "vulinfo_description": "unattended-upgrades は、DPkg::Options::* apt 設定の (1) force-confold、または (2) force-confnew dpkg オプションが有効になっている場合、パッケージを適切に認証しないため、任意のパッケージをアップロードされ、実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "14.10",
+        "15.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "unattended-upgrades",
+      "version_number": [
+        "0.86.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:debian:unattended-upgrades"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモートの中間者攻撃 (man-in-the-middle attack) により、任意のパッケージをアップロードされ、実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "unattended-upgrades_0.86.1_changelog",
+      "url": "http://metadata.ftp-master.debian.org/changelogs//main/u/unattended-upgrades/unattended-upgrades_0.86.1_changelog"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3297",
+      "url": "https://www.debian.org/security/2015/dsa-3297"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2657-1",
+      "url": "http://www.ubuntu.com/usn/USN-2657-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-1330",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1330"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-1330",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1330"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年07月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-07-03T14:07:46+09:00",
+  "date_last_updated": "2015-07-03T14:07:46+09:00",
+  "date_public": "2015-06-29T00:00:00+09:00"
+}

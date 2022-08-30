@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2014-002277",
+  "title": "Linux Kernel の Netlink の実装におけるアクセス制限を回避される脆弱性",
+  "vulinfo_description": "Linux Kernel の Netlink の実装は、ソケットの開放に基づいてソケット操作を認証するメカニズムを提供しないため、アクセス制限を回避され、ネットワークの設定を変更される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.14.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、setuid プログラムの (1) stdout または (2) stderr に Netlink ソケットを使用されることで、アクセス制限を回避され、ネットワークの設定を変更される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "kernel.org",
+      "vulinfo_id": "commit 7ab9233c18a4413c7db130c96aa16fae89e06547",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.10.45"
+    },
+    {
+      "type": "vendor",
+      "name": "kernel.org",
+      "vulinfo_id": "commit 47026b1fcb6328417277bb3a61b055f138d29eda",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.14.9"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "net: Use netlink_ns_capable to verify the permisions of netlink messages",
+      "url": "https://git.kernel.org/cgit/linux/kernel/git/davem/net.git/commit/?id=90f62cf30a78721641e08737bda787552428061e"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1959",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1959.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0181",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0181"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0181",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0181"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月30日]\\n  掲載\\n[2014年12月18日]\\n  ベンダ情報：レッドハット (RHSA-2014:1959) を追加\\n  ベンダ情報：kernel.org (commit 47026b1fcb6328417277bb3a61b055f138d29eda) を追加\\n  ベンダ情報：kernel.org (commit 7ab9233c18a4413c7db130c96aa16fae89e06547) を追加"
+    }
+  ],
+  "date_first_published": "2014-04-30T16:08:11+09:00",
+  "date_last_updated": "2014-12-18T18:05:12+09:00",
+  "date_public": "2014-04-24T00:00:00+09:00"
+}

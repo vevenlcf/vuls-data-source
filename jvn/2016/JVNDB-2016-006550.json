@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2016-006550",
+  "title": "VMware vCenter Server および vRealize Automation の Single Sign-On 機能における任意のファイルを読まれる脆弱性",
+  "vulinfo_description": "VMware vCenter Server および vRealize Automation の Single Sign-On 機能には、任意のファイルを読まれる、またはサービス運用妨害 (DOS) 状態にされる脆弱性が存在します。  本件は、XML 外部エンティティ (XXE) の問題に関する脆弱性です。",
+  "affected": [
+    {
+      "name": "VMware",
+      "product_name": "VMware vCenter Server",
+      "version_number": [
+        "5.5 U3e 未満の 5.5",
+        "6.0 U2a 未満の 6.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:vcenter_server"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware vRealize Automation",
+      "version_number": [
+        "6.2.5 未満の 6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:vrealize_automation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.1",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、エンティティ参照に関連する外部エンティティ宣言を含む XML ドキュメントを介して、任意のファイルを読まれる、またはサービス運用妨害 (DOS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2016-0022",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2016-0022.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7460",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7460"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7460",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7460"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-611",
+      "url": "https://cwe.mitre.org/data/definitions/611.html",
+      "title": "XML 外部エンティティ参照の不適切な制限"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-10T18:10:29+09:00",
+  "date_last_updated": "2017-01-10T18:10:29+09:00",
+  "date_public": "2016-11-22T00:00:00+09:00"
+}

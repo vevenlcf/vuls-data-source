@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2007-000339",
+  "title": "PHP の mail() 関数における ASCIIZ バイトを文字列の終端として処理する問題",
+  "vulinfo_description": "PHP の mail() 関数には、ASCIIZ バイトを文字列の終端として処理するために、電子メールメッセージの改ざんに悪用される問題があります。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "4.4.6 およびそれ以前",
+        "5.2.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:C/A:N"
+      }
+    ],
+    "impact_item": "第三者に ASCIIZ ('\\0') バイトを追加されることで、それを文字列の終端として処理してしまい、それ以降の電子メールメッセージを切り捨てられる可能性があります。結果として、メッセージの内容を不正に改ざんされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Month of PHP Bugs",
+      "vulinfo_id": "MOPB-33-2007",
+      "url": "http://www.php-security.org/MOPB/MOPB-33-2007.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "release notes 4.4.7",
+      "url": "http://www.php.net/release_4_4_7.php"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "release notes 5.2.2",
+      "url": "http://www.php.net/release_5_2_2.php"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "ChangeLog-4.4.7",
+      "url": "http://www.php.net/ChangeLog-4.php"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "ChangeLog-5.2.2",
+      "url": "http://www.php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-1717",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1717"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-1717",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-1717"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA25123",
+      "url": "http://secunia.com/advisories/25123/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "23146",
+      "url": "http://www.securityfocus.com/bid/23146"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年05月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-05-24T17:59:29+09:00",
+  "date_last_updated": "2007-05-24T17:59:29+09:00",
+  "date_public": "2007-03-26T00:00:00+09:00"
+}

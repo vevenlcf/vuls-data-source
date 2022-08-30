@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-007926",
+  "title": "Phusion Passenger における特定のファイルおよびディレクトリに書き込まれる脆弱性",
+  "vulinfo_description": "Phusion Passenger には、特定のファイルおよびディレクトリに書き込まれる脆弱性が存在します。  本脆弱性は、CVE-2014-1831 に対する修正が不十分だったことによる脆弱性です。  補足情報 : CWE による脆弱性タイプは、CWE-61: UNIX Symbolic Link Following (UNIX Symbolic Link のフォロー) と識別されています。 http://cwe.mitre.org/data/definitions/61.html",
+  "affected": [
+    {
+      "name": "Phusion B.V.",
+      "product_name": "Passenger",
+      "version_number": [
+        "4.0.37 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phusion:passenger"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、(1) control_process.pid または (2) generation-* ファイルへのシンボリックリンク攻撃を介して、特定のファイルおよびディレクトリに書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#736958",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=736958"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix a symlink-related security vulnerability",
+      "url": "https://github.com/phusion/passenger/commit/94428057c602da3d6d34ef75c78091066ecac5c0"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1058992",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1058992"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-1832",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1832"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-1832",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1832"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年02月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-02-24T09:52:23+09:00",
+  "date_last_updated": "2015-02-24T09:52:23+09:00",
+  "date_public": "2014-01-29T00:00:00+09:00"
+}

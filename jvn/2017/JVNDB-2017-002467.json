@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2017-002467",
+  "title": "Audio File Library の IMA.cpp の decodeSample 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Audio File Library (別名 audiofile) の IMA.cpp の decodeSample 関数には、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "68k.org",
+      "product_name": "audiofile",
+      "version_number": [
+        "0.3.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:68k:audiofile"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工されたファイルを介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Audio File Library",
+      "vulinfo_id": "Top Page",
+      "url": "https://audiofile.68k.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "clamp index values to fix index overflow in IMA.cpp",
+      "url": "https://github.com/antlarr/audiofile/commit/25eb00ce913452c2e614548d7df93070bf0d066f"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "global buffer overflow in decodeSample (IMA.cpp) #33",
+      "url": "https://github.com/mpruett/audiofile/issues/33"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-6829",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6829"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-6829",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6829"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-284",
+      "url": "https://cwe.mitre.org/data/definitions/284.html",
+      "title": "不適切なアクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-04-17T16:45:59+09:00",
+  "date_last_updated": "2017-04-17T16:45:59+09:00",
+  "date_public": "2017-03-07T00:00:00+09:00"
+}

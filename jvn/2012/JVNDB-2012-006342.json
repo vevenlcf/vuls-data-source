@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2012-006342",
+  "title": "ClipBucket における SQL インジェクションの脆弱性",
+  "vulinfo_description": "ClipBucket には、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ClipBucket",
+      "product_name": "ClipBucket",
+      "version_number": [
+        "2.6 Revision 738 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:clip-bucket:clipbucket"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、以下のパラメータを介して、任意の SQL コマンドを実行される可能性があります。  (1) ajax.php の add_friend アクションの uid パラメータ (2) ajax.php の share_object アクションの id パラメータ (3) ajax.php の add_to_fav アクションの id パラメータ (4) ajax.php の rating アクションの id パラメータ (5) ajax.php の flag_object アクションの id パラメータ (6) ajax.php の add_new_item アクションの cid パラメータ (7) ajax.php の remove_collection_item アクションの cid パラメータ (8) ajax.php の get_item アクションの cid パラメータ (9) ajax.php の load_more_items アクションの cid パラメータ (10) ajax.php の get_item アクションの ci_id パラメータ (11) user_contacts.php の user パラメータ (12) view_channel.php の user パラメータ (13) view_page.php の pid パラメータ (14) view_topic.php の tid パラメータ (15) watch_video.php の v パラメータ"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ClipBucket Forums",
+      "vulinfo_id": "[Security Fix] ClipBucket 2.6 SQL Injections fix (Updated)",
+      "url": "http://forums.clip-bucket.com/showthread.php?12527-Security-Fix-ClipBucket-2-6-SQL-Injections-fix-%28Updated%29"
+    },
+    {
+      "type": "vendor",
+      "name": "SourceForge",
+      "vulinfo_id": "ClipBucket",
+      "url": "http://sourceforge.net/projects/clipbucket/files/ClipBucket%20v2/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-5849",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-5849"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-5849",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-5849"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "HTB23125: Multiple SQL Injection vulnerabilities in ClipBucket",
+      "url": "https://www.htbridge.com/advisory/HTB23125"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年05月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-05-19T13:50:08+09:00",
+  "date_last_updated": "2015-05-19T13:50:08+09:00",
+  "date_public": "2012-11-29T00:00:00+09:00"
+}

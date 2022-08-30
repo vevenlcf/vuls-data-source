@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2013-004168",
+  "title": "複数の OpenStack 製品における任意のフレーバーをブートされる脆弱性",
+  "vulinfo_description": "OpenStack Compute (Nova) Folsom、Grizzly、および Havana の \"create an instance\" API は、os-flavor-access:is_public プロパティを適切に処理しないため、任意のフレーバーをブートされる脆弱性が存在します。  本問題は、CVE-2013-2256 に対する修正が不完全だったことによる問題です。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Compute Folsom",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:folsom"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Grizzly",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:grizzly"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "OpenStack Havana",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:havana"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、フレーバー ID を推測されることにより、任意のフレーバーをブートされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenStack",
+      "vulinfo_id": "Bug #1212179",
+      "url": "https://bugs.launchpad.net/ossa/+bug/1212179"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1199",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1199.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4278",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4278"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4278",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4278"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[openstack-announce] [OSSA 2013-024] Resource limit circumvention in Nova private flavors (CVE-2013-4278)",
+      "url": "http://lists.openstack.org/pipermail/openstack-announce/2013-August/000138.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-09-19T12:16:45+09:00",
+  "date_last_updated": "2013-09-19T12:16:45+09:00",
+  "date_public": "2013-08-28T00:00:00+09:00"
+}

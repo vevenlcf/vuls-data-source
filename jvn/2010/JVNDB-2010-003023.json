@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2010-003023",
+  "title": "Red Hat Enterprise MRG などで使用される Apache Qpid の sys/ssl/SslSocket.cpp におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Red Hat Enterprise MRG などで使用される Apache Qpid の sys/ssl/SslSocket.cpp には、SSL が有効の際に、サービス運用妨害 (デーモン停止) の状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Qpid",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:qpid"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "version_number": [
+        "1 1.2.2 未満およびその他の製品"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、SSL ハンドシェイクに参加せずに SSL ポートへの接続を介して、サービス運用妨害 (デーモン停止) の状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache",
+      "vulinfo_id": "790291、790290",
+      "url": "http://svn.apache.org/viewvc/qpid/trunk/qpid/cpp/src/qpid/sys/ssl/SslSocket.cpp?r1=790291\u0026r2=790290\u0026pathrev=790291\u0026view=patch"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat",
+      "vulinfo_id": "RHSA-2010:0757",
+      "url": "http://www.redhat.com/support/errata/RHSA-2010-0757.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat",
+      "vulinfo_id": "RHSA-2010:0756",
+      "url": "http://www.redhat.com/support/errata/RHSA-2010-0756.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-3083",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3083"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-3083",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3083"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:11+09:00",
+  "date_last_updated": "2012-03-27T18:42:11+09:00",
+  "date_public": "2010-10-07T00:00:00+09:00"
+}

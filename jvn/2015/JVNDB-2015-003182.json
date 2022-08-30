@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2015-003182",
+  "title": "FFmpeg および Libav の msrledec.c 内の msrle_decode_pal4 関数における脆弱性",
+  "vulinfo_description": "FFmpeg および Libav の msrledec.c 内の msrle_decode_pal4 関数は、ピクセルポインタに関する処理に不備があるため、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.0.7 未満",
+        "2.2.15 未満の 2.2.x",
+        "2.4.8 未満の 2.4.x",
+        "2.5.6 未満の 2.5.x",
+        "2.6.2 未満の 2.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    },
+    {
+      "name": "Libav",
+      "product_name": "Libav",
+      "version_number": [
+        "10.7 未満",
+        "11.4 未満の 11.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libav:libav"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された画像を介して、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "FFmpeg Security",
+      "url": "https://www.ffmpeg.org/security.html"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "avcodec/msrledec:restructure msrle_decode_pal4() based on the line number instead...",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=f7e1367f58263593e6cee3c282f7277d7ee9d553"
+    },
+    {
+      "type": "vendor",
+      "name": "Libav",
+      "vulinfo_id": "Changelog",
+      "url": "https://git.libav.org/?p=libav.git;a=blob;f=Changelog;hb=refs/tags/v11.4"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3395",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3395"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3395",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3395"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-06-18T18:24:52+09:00",
+  "date_last_updated": "2015-06-18T18:24:52+09:00",
+  "date_public": "2015-03-24T00:00:00+09:00"
+}

@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-001906",
+  "title": "Serendipity の templates/2k11/admin/entries.tpl におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "Serendipity の templates/2k11/admin/entries.tpl には、クロスサイトスクリプティングの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "s9y",
+      "product_name": "Serendipity",
+      "version_number": [
+        "2.0.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:s9y:serendipity"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.5",
+        "vector": "AV:N/AC:M/Au:S/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたエディタにより、新しいカテゴリを作成する際、serendipity_admin.php の serendipity[cat][name] パラメータを介して、任意の Web スクリプトまたは HTML を挿入される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix missing escaping (possible XSS) of category names in the Backend",
+      "url": "https://github.com/s9y/Serendipity/commit/a30886d3bb9d8eeb6698948864c77caaa982435d"
+    },
+    {
+      "type": "vendor",
+      "name": "s9y",
+      "vulinfo_id": "Serendipity 2.0.1 released",
+      "url": "http://blog.s9y.org/archives/263-Serendipity-2.0.1-released.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2289",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2289"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2289",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2289"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年03月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-03-25T11:30:03+09:00",
+  "date_last_updated": "2015-03-25T11:30:03+09:00",
+  "date_public": "2015-03-12T00:00:00+09:00"
+}

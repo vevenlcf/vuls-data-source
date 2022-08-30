@@ -1,0 +1,224 @@
+{
+  "vulinfo_id": "JVNDB-2017-003883",
+  "title": "libmtk 向けの httpd プラグインを使用する複数の WiMAX ルータに認証回避の脆弱性",
+  "vulinfo_description": "libmtk 向けの httpd プラグインを使用する複数の WiMAX ルータには認証回避の脆弱性が存在します。遠隔の第三者により認証を回避され、デバイスの管理者パスワードを変更される可能性があります。  重要な機能に対する認証欠如の問題 (CWE-306) - CVE-2017-3216 MediaTek SDK のライブラリ libmtk 向けの httpd プラグインを使用する複数の WiMAX ルータには認証回避の脆弱性があり、遠隔の第三者によりデバイスの管理者パスワードを変更される可能性があります。具体的には commit2.cgi に対して ADMIN_PASSWD パラメタを設定した POST リクエストを送ることにより、管理者パスワードの変更が可能です。 報告者によると、調査した製品のなかには初期状態でリモート管理機能が有効になっている製品もあるとのことです。この場合、インターネット側からの攻撃を受ける可能性があります。  MediaTek 社によれば、本脆弱性のあるファイルは MediaTek SDK 自体には含まれておらず、SDK を使用してファームウェアを開発した開発者によって提供されたと推測しているとのことです。  詳しくは報告者の blog 記事を参照してください。  blog 記事 http://blog.sec-consult.com/2017/06/ghosts-from-past-authentication-bypass.html",
+  "affected": [
+    {
+      "name": "Green Packet",
+      "product_name": "OX-350",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:greenpacket:ox-350_firmware"
+      }
+    },
+    {
+      "name": "Green Packet",
+      "product_name": "OX350",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:greenpacket:ox350_firmware"
+      }
+    },
+    {
+      "name": "Huawei",
+      "product_name": "BM2022",
+      "version_number": [
+        "(Version: v2.10.14)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:huawei:bm2022_firmware"
+      }
+    },
+    {
+      "name": "Huawei",
+      "product_name": "HES-309M",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:huawei:hes-309m_firmware"
+      }
+    },
+    {
+      "name": "Huawei",
+      "product_name": "HES-319M",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:huawei:hes-319m_firmware"
+      }
+    },
+    {
+      "name": "Huawei",
+      "product_name": "HES-319M2W",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:huawei:hes-319m2w_firmware"
+      }
+    },
+    {
+      "name": "Huawei",
+      "product_name": "HES-339M",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:huawei:hes-339m_firmware"
+      }
+    },
+    {
+      "name": "Mada",
+      "product_name": "SOHO Wireless Router",
+      "version_number": [
+        "(Version: v2.10.13)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:mada:soho_wireless_router_firmware"
+      }
+    },
+    {
+      "name": "ZTE",
+      "product_name": "OX-330P",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zte:ox-330p_firmware"
+      }
+    },
+    {
+      "name": "ZyXEL",
+      "product_name": "MAX218M",
+      "version_number": [
+        "(Version: 2.00(UXG.0)D0)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zyxel:max218m_firmware"
+      }
+    },
+    {
+      "name": "ZyXEL",
+      "product_name": "MAX218M1W",
+      "version_number": [
+        "(Version: 2.00(UXE.3)D0)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zyxel:max218m1w_firmware"
+      }
+    },
+    {
+      "name": "ZyXEL",
+      "product_name": "MAX218MW",
+      "version_number": [
+        "(Version: 2.00(UXD.2)D0)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zyxel:max218mw_firmware"
+      }
+    },
+    {
+      "name": "ZyXEL",
+      "product_name": "MAX308M",
+      "version_number": [
+        "(Version: 2.00(UUA.3)D0)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zyxel:max308m_fimware"
+      }
+    },
+    {
+      "name": "ZyXEL",
+      "product_name": "MAX318M",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zyxel:max318m_firmware"
+      }
+    },
+    {
+      "name": "ZyXEL",
+      "product_name": "MAX338M",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:zyxel:max338m_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者からの POST リクエストを処理することにより、デバイスの管理者パスワードを変更される可能性があります。結果として、デバイスの管理者権限を取得される可能性があります。"
+  },
+  "solution": "2017年6月8日現在、対策方法は不明です。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  　＊ ルータのウェブインターフェースへのアクセスを、信頼できるクライアントからのアクセスのみに制限する 　＊ リモート管理機能を無効にし、インターネット側からウェブインターフェースにアクセスできないようにする",
+  "related": [
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3216",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3216"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92606107",
+      "url": "http://jvn.jp/vu/JVNVU92606107/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3216",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3216"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#350135",
+      "url": "https://www.kb.cert.org/vuls/id/350135"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Ghosts from the past: Authentication bypass and OEM backdoors in WiMAX routers",
+      "url": "http://blog.sec-consult.com/2017/06/ghosts-from-past-authentication-bypass.html"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Various WiMAX CPEs Authentication Bypass ",
+      "url": "https://sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170607-0_Various_WiMAX_CPEs_Authentication_Bypass_v10.txt"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-306",
+      "url": "https://cwe.mitre.org/data/definitions/306.html",
+      "title": "重要な機能に対する認証の欠如"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年06月09日]\\n  掲載\\n[2018年02月07日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3216) を追加"
+    }
+  ],
+  "date_first_published": "2017-06-09T14:21:05+09:00",
+  "date_last_updated": "2018-02-07T13:44:33+09:00",
+  "date_public": "2017-06-07T00:00:00+09:00"
+}

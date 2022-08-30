@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2013-000080",
+  "title": "PHP OpenID Library における XML 外部実体参照に関する脆弱性",
+  "vulinfo_description": "PHP OpenID Library には、XML 外部実体参照に関する脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者：海老原 昂輔 氏、三井物産セキュアディレクション 寺田 健 氏",
+  "affected": [
+    {
+      "name": "JanRain",
+      "product_name": "PHP OpenID",
+      "version_number": [
+        "バージョン 2.2.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:janrain:php-openid"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:P"
+      }
+    ],
+    "impact_item": "細工された XRDS データを処理した際に、サーバ上の情報が漏えいする、またはサーバのリソースが過度に消費されるなどの可能性があります。"
+  },
+  "solution": "[パッチを適用する] リポジトリ上のソースコードは修正されています。開発者のコミット内容をもとに修正を行ってください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "janrain",
+      "vulinfo_id": "disable external XML entities and libxml errors",
+      "url": "https://github.com/openid/php-openid/commit/625c16bb28bb120d262b3f19f89c2c06cb9b0da9"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4701",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4701"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#24713981",
+      "url": "http://jvn.jp/jp/JVN24713981/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4701",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4701"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月21日]\\n  掲載\\n[2013年08月23日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2013-4701) を追加"
+    }
+  ],
+  "date_first_published": "2013-08-21T14:01:39+09:00",
+  "date_last_updated": "2013-08-23T18:37:57+09:00",
+  "date_public": "2013-08-21T00:00:00+09:00"
+}

@@ -1,0 +1,349 @@
+{
+  "vulinfo_id": "JVNDB-2010-002543",
+  "title": "ISC BIND におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Internet Systems Consortium (ISC) が提供する BIND ネームサーバには、サービス運用妨害 (DoS) 攻撃の脆弱性が存在します。  ISC から、以下の脆弱性情報が公開されています。  Adding certain types of signed negative responses to cache doesn't clear any matching RRSIG records already in cache. A subsequent lookup of the cached data can cause named to crash (INSIST).",
+  "affected": [
+    {
+      "name": "IBM",
+      "product_name": "IBM AIX",
+      "version_number": [
+        "5.3 ",
+        "6.1 ",
+        "7.1 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:ibm:aix"
+      }
+    },
+    {
+      "name": "ISC, Inc.",
+      "product_name": "BIND",
+      "version_number": [
+        "9.0.x から 9.7.2-P2",
+        "9.4-ESV から 9.4-ESV-R3",
+        "9.6-ESV から 9.6-ESV-R2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:bind"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESXi",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esxi"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "10 ",
+        "11 Express",
+        "8 ",
+        "9 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "3.0 ",
+        "3.0 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.11 ",
+        "11.23 ",
+        "11.31 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.8 (as) ",
+        "4.8 (es) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) ",
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、サービス運用妨害 (DoS) 攻撃を受ける可能性があります。 ISC によると、DNSSEC 検証の有効／無効に関係なく、再帰的問い合わせを受け付けるネームサーバ (recursive nameservers) は影響を受けるとのことです。"
+  },
+  "solution": "[アップデートする] この問題は、使用している OS のベンダや配布元が提供する修正済みのバージョンに更新することで解決します。詳細については、ベンダや配布元が提供する情報を参照してください。  ISC によると、EOL になっているバージョンの更新は行わないとの事です。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "bind-9.3.6-4.P1.3.0.1.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1324"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02655",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c02783438"
+    },
+    {
+      "type": "vendor",
+      "name": "IBM SECURITY ADVISORY",
+      "vulinfo_id": "bind9_advisory2.asc",
+      "url": "http://aix.software.ibm.com/aix/efixes/security/bind9_advisory2.asc"
+    },
+    {
+      "type": "vendor",
+      "name": "Internet Systems Consortium Security Advisory",
+      "vulinfo_id": "Guidance regarding Dec 1st 2010 Security Advisories (CVE-2010-3613)",
+      "url": "http://www.isc.org/announcement/guidance-regarding-dec-1st-2010-security-advisories"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "BIND-9.6-ESV-R3 Release Note",
+      "url": "http://ftp.isc.org/isc/bind9/9.6-ESV-R3/RELEASE-NOTES-BIND-9.6-ESV-R3.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "cve-2010-3613",
+      "url": "https://www.isc.org/software/bind/advisories/cve-2010-3613"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "BIND-9.7.2-P3 Release Note",
+      "url": "http://ftp.isc.org/isc/bind9/9.7.2-P3/RELEASE-NOTES-BIND-9.7.2-P3.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "BIND-9.6.2-P3 Release Note",
+      "url": "http://ftp.isc.org/isc/bind9/9.6.2-P3/RELEASE-NOTES-BIND-9.6.2-P3.html"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "2169",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=2169"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0975",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0975.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0976",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0976.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:1000",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-1000.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "multiple_vulnerabilities_in_bind_dns",
+      "url": "http://blogs.sun.com/security/entry/multiple_vulnerabilities_in_bind_dns"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0004",
+      "url": "http://www.vmware.com/security/advisories/VMSA-2011-0004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "VU#706148",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/vu706148.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-3613",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3613"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#706148",
+      "url": "http://jvn.jp/cert/JVNVU706148"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-3613",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3613"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "69558",
+      "url": "http://osvdb.org/69558"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA42374",
+      "url": "http://secunia.com/advisories/42374"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "45133",
+      "url": "http://www.securityfocus.com/bid/45133"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1024817",
+      "url": "http://securitytracker.com/id?1024817"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#706148",
+      "url": "http://www.kb.cert.org/vuls/id/706148"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-3102",
+      "url": "http://www.vupen.com/english/advisories/2010/3102"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年12月24日]\\n  掲載\\n[2011年01月12日]\\n  影響を受けるシステム：ミラクル・リナックス (2169) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (2169) を追加\\n[2011年03月28日]\\n  影響を受けるシステム：VMware (VMSA-2011-0004) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0004) を追加\\n[2011年04月05日]\\n  影響を受けるシステム：オラクル (multiple_vulnerabilities_in_bind_dns) の情報を追加\\n  ベンダ情報：オラクル (multiple_vulnerabilities_in_bind_dns) を追加\\n[2011年04月28日]\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBUX02655) の情報を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02655) を追加\\n[2011年07月27日]\\n  影響を受けるシステム：IBM (bind9_advisory2.asc) の情報を追加\\n  ベンダ情報：IBM (bind9_advisory2.asc) を追加"
+    }
+  ],
+  "date_first_published": "2010-12-24T15:19:06+09:00",
+  "date_last_updated": "2011-07-27T09:46:05+09:00",
+  "date_public": "2010-12-02T00:00:00+09:00"
+}

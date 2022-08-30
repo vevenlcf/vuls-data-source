@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2016-003171",
+  "title": "QEMU の hw/scsi/megasas.c の megasas_ctrl_get_info 関数における重要なホストメモリ情報を取得される脆弱性",
+  "vulinfo_description": "QEMU の hw/scsi/megasas.c の megasas_ctrl_get_info 関数には、重要なホストメモリ情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルのゲスト OS 管理者により、デバイス制御情報の読み取りに関する処理を介して、重要なホストメモリ情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "scsi: megasas: null terminate bios version buffer",
+      "url": "http://git.qemu.org/?p=qemu.git;a=commit;h=844864fbae66935951529408831c2f22367a57b6"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PULL 06/13] scsi: megasas: null terminate bios version buffer",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-06/msg01969.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3047-1",
+      "url": "http://www.ubuntu.com/usn/USN-3047-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3047-2",
+      "url": "http://www.ubuntu.com/usn/USN-3047-2"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5337",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5337"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5337",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5337"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月16日]\\n  掲載\\n[2016年10月28日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Canonical (USN-3047-1) を追加\\n  ベンダ情報：Canonical (USN-3047-2) を追加"
+    }
+  ],
+  "date_first_published": "2016-06-16T16:32:56+09:00",
+  "date_last_updated": "2016-10-28T16:27:29+09:00",
+  "date_public": "2016-06-07T00:00:00+09:00"
+}

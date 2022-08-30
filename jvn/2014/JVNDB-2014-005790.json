@@ -1,0 +1,71 @@
+{
+  "vulinfo_id": "JVNDB-2014-005790",
+  "title": "Apache Hadoop の YARN NodeManager デーモンにおけるファイルのパーミッションを変更される脆弱性",
+  "vulinfo_description": "Apache Hadoop の YARN NodeManager デーモンは、Kerberos 認証を使用する場合、分散キャッシュに関する処理に不備があるため、特定のファイルのパーミッションを誰でも読み取り可能な (world-readable) パーミッションに変更される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Hadoop",
+      "version_number": [
+        "0.23.0 から 0.23.11",
+        "2.5.2 未満の 2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:hadoop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモートクラスタユーザにより、ローカライゼーション中に適切に処理されない公開 tar アーカイブのシンボリックリンク攻撃を介して、特定のファイルのパーミッションを誰でも読み取り可能な (world-readable) パーミッションに変更される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mailing list archives",
+      "vulinfo_id": "[ANNOUNCE] Apache Hadoop 2.5.2 released",
+      "url": "http://mail-archives.apache.org/mod_mbox/hadoop-general/201411.mbox/%3CCALwhT97dOi04aC3VbekaB+zn2UAS_OZV2EAiP78GmjnMzfp2Ug@mail.gmail.com%3E"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-3627",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3627"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-3627",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3627"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-59",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-59.html",
+      "title": "リンク解釈の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-12-08T14:31:44+09:00",
+  "date_last_updated": "2014-12-08T14:31:44+09:00",
+  "date_public": "2014-11-21T00:00:00+09:00"
+}

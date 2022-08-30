@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2013-002161",
+  "title": "NVIDIA 製ビデオカードのディスプレイドライバにバッファオーバーフローの脆弱性",
+  "vulinfo_description": "NVIDIA が提供するビデオカードの UNIX 向けディスプレイドライバには、バッファオーバーフローの脆弱性が存在します。  NVIDIA が提供するビデオカードの UNIX 向けディスプレイドライバには、\"NoScanout\" モードで X Window System を使用する際の ARGB カーソルの処理に問題があり、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "NVIDIA",
+      "product_name": "NVIDIA GPU ディスプレイドライバ",
+      "version_number": [
+        "version 304.88 より前のバージョン",
+        "version 310.44 より前のバージョン",
+        "version 313.30 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nvidia:gpu_driver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "AV:N/AC:H/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "システムにログイン可能なユーザによって、任意のコードを実行されたり、サービス運用妨害 (DoS) 攻撃を受けたりする可能性があります。結果として、システムの root 権限を取得される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "NVIDIA",
+      "vulinfo_id": "CVE-2013-0131: NVIDIA UNIX GPU Driver ARGB Cursor Buffer Overflow in \"NoScanout\" Mode.",
+      "url": "https://nvidia.custhelp.com/app/answers/detail/a_id/3290"
+    },
+    {
+      "type": "vendor",
+      "name": "NVIDIA",
+      "vulinfo_id": "NVIDIA Driver Downloads",
+      "url": "http://www.nvidia.com/Download/index.aspx"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0131",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0131"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95651153",
+      "url": "http://jvn.jp/cert/JVNVU95651153/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0131",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0131"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#771620",
+      "url": "http://www.kb.cert.org/vuls/id/771620"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年04月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-04-10T12:23:20+09:00",
+  "date_last_updated": "2013-04-10T12:23:20+09:00",
+  "date_public": "2013-04-08T00:00:00+09:00"
+}

@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-005792",
+  "title": "MIT Kerberos 5 の lib/krb5/krb/bld_princ.c の build_principal_va 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 (別名 krb5) の lib/krb5/krb/bld_princ.c の build_principal_va 関数には、サービス運用妨害 (out-of-bounds read および KDC クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.14 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、TGS リクエスト内の過度に長い realm フィールドの最初の '\\0' 文字を介して、サービス運用妨害 (out-of-bounds read および KDC クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix build_principal memory bug [CVE-2015-2697]",
+      "url": "https://github.com/krb5/krb5/commit/f0c094a1b745d91ef2f9a4eae2149aac026a5789"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #8252 Fix build_principal memory bug [CVE-2015-2697]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?id=8252"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2697",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2697"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2697",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2697"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-10T16:46:15+09:00",
+  "date_last_updated": "2015-11-10T16:46:15+09:00",
+  "date_public": "2015-10-26T00:00:00+09:00"
+}

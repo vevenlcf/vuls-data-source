@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2016-007905",
+  "title": "OpenBSD の uvm/uvm_map.c の uvm_map_isavail 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "OpenBSD の uvm/uvm_map.c の uvm_map_isavail 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenBSD",
+      "version_number": [
+        "5.9"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:openbsd:openbsd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された mmap コールを介して、既存のマッピングと重複する新規のマッピングを誘発されることで、サービス運用妨害 (カーネルパニック) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "untrusted comment: signature from openbsd 5.9 base secret key",
+      "url": "http://ftp.openbsd.org/pub/OpenBSD/patches/5.9/common/023_uvmisavail.patch.sig"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6522",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6522"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6522",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6522"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-190",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "title": "整数オーバーフローまたはラップアラウンド"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-29T16:21:23+09:00",
+  "date_last_updated": "2017-03-29T16:21:23+09:00",
+  "date_public": "2016-08-02T00:00:00+09:00"
+}

@@ -1,0 +1,81 @@
+{
+  "vulinfo_id": "JVNDB-2003-000064",
+  "title": "SquirrelMail の read_body.php におけるスクリプトや HTML を注入される脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Squirrelmail は、PHP4 言語で開発 された Web メールパッケージです。  Squirrelmail 1.2.10 以前の read_body.php には、ユーザからの mailbox および passwd_id パラメータに対する入力値へのフィルタリングが適切に行われない問題が存在します。 そのため、この問題を利用することで、リモートの攻撃者はクロスサイトスクリプティング攻撃を行うことが可能です。  結果として、リモートの攻撃者は、問題を抱える Web サイトを介して標的ユーザに任意のスクリプトを実行させることが可能です。  この問題を修正する RPM が Red Hat Linux より提供されています。この RPM を適用することで、Squirrelmail 1.2.8 で不完全に修正されていた global.php 内の strip_tags() 関数に由来するクロスサイトスクリプティングの問題も解消することが可能です。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "8.0  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:042",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-042.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:042",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-042J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2002-1341",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1341"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2002-1341",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-1341"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6302",
+      "url": "http://www.securityfocus.com/bid/6302"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "7019",
+      "url": "http://www.securityfocus.com/bid/7019"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2003-03-05T00:00:00+09:00"
+}

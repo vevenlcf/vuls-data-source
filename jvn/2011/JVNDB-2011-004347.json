@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2011-004347",
+  "title": "SMF における SQL インジェクション攻撃を誘発する脆弱性",
+  "vulinfo_description": "Simple Machines Forum (SMF) は、start パラメータを適切に検証しないため、SQL インジェクション攻撃を誘発する、重要な情報を取得される、またはサービス運用妨害 (DoS) 状態となる脆弱性が存在します。 本脆弱性は、QueryString.php の cleanRequest 関数および Subs.php の constructPageIndex 関数の問題と関連します。",
+  "affected": [
+    {
+      "name": "Simple Machines",
+      "product_name": "Simple Machines Forum",
+      "version_number": [
+        "1.1.13 未満、および 2.0 RC5 未満の 2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:simple_machines:simple_machines_forum"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された値を介して、SQL インジェクション攻撃を誘発される、重要な情報を取得される、またはサービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "simplemachines",
+      "vulinfo_id": "topic 421547.0",
+      "url": "http://www.simplemachines.org/community/index.php?topic=421547.0"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1130",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1130"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1130",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1130"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:08+09:00",
+  "date_last_updated": "2012-03-27T18:43:08+09:00",
+  "date_public": "2011-02-11T00:00:00+09:00"
+}

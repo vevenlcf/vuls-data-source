@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2016-002471",
+  "title": "Apache Subversion の httpd サーバの mod_authz_svn モジュールの req_check_access 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Apache Subversion の httpd サーバの mod_authz_svn モジュールの req_check_access 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Subversion",
+      "version_number": [
+        "1.8.16 未満",
+        "1.9.4 未満の 1.9.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:subversion"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、認証チェックを伴う (1) MOVE または (2) COPY リクエストの巧妙に細工されたヘッダを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Mailing list archives",
+      "vulinfo_id": "[ANNOUNCE][SECURITY] Apache Subversion 1.8.16 released",
+      "url": "http://mail-archives.apache.org/mod_mbox/subversion-announce/201604.mbox/%3CCAP_GPNgJet+7_MAhomFVOXPgLtewcUw9w=k9zdPCkq5tvPxVMA@mail.gmail.com%3E"
+    },
+    {
+      "type": "vendor",
+      "name": "Mailing list archives",
+      "vulinfo_id": "[ANNOUNCE][SECURITY] Apache Subversion 1.9.4 released",
+      "url": "http://mail-archives.apache.org/mod_mbox/subversion-announce/201604.mbox/%3CCAP_GPNgfn1iKueW51EpmXzXi_URNfGNofZSgOyW1_jnSeNm5DQ@mail.gmail.com%3E"
+    },
+    {
+      "type": "vendor",
+      "name": "Subversion",
+      "vulinfo_id": "Remotely triggerable DoS vulnerability in mod_authz_svn during COPY/MOVE authorization check.",
+      "url": "http://subversion.apache.org/security/CVE-2016-2168-advisory.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2168",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2168"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2168",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2168"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T17:45:50+09:00",
+  "date_last_updated": "2016-05-10T17:45:50+09:00",
+  "date_public": "2016-04-28T00:00:00+09:00"
+}

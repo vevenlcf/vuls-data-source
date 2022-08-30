@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2022-000059",
+  "title": "Android アプリ「Hulu / フールー」に外部サービスの API キーがハードコードされている問題",
+  "vulinfo_description": "HJホールディングス株式会社が提供する Android アプリ「Hulu / フールー」には、外部サービスの API キーがハードコードされている問題 (CWE-798) が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 株式会社ブロードバンドセキュリティ 佐藤 竜 氏",
+  "affected": [
+    {
+      "name": "HJ ホールディングス株式会社",
+      "product_name": "Hulu / フールー",
+      "version_number": [
+        "Android アプリ バージョン 3.0.47 から 3.1.2 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:hj_holdings_hulu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+      }
+    ],
+    "impact_item": "アプリ内のデータを解析され、外部サービスと連携するための API キーが不正に窃取される可能性があります。 なお、この脆弱性によって、製品利用者が直接影響を受けることはありません。"
+  },
+  "solution": "当該 API キーは2022年6月7日に開発者によって無効化されており、バージョン 3.1.1 以前であっても本脆弱性の影響は受けません。そのため、ユーザは本脆弱性への対応について自発的行動を取る必要はありません。 なお、API キーを内包しないバージョン 3.1.2 が提供されています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "HJホールディングス株式会社からの情報",
+      "url": "https://jvn.jp/jp/JVN40907489/996644/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-35734",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-35734"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#40907489",
+      "url": "https://jvn.jp/jp/JVN40907489/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-07-22T02:18:00Z",
+      "description": "[2022年07月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-07-27T14:06:29+09:00",
+  "date_last_updated": "2022-07-27T14:06:29+09:00",
+  "date_public": "2022-07-27T00:00:00+09:00"
+}

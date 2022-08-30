@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2016-002857",
+  "title": "cURL および libcurl におけるサーバになりすまされる脆弱性",
+  "vulinfo_description": "cURL および libcurl の (1) lib/vtls/mbedtls.c の mbed_connect_step1 関数、および (2) lib/vtls/polarssl.c の polarssl_connect_step1 関数には、SSLv3 を使用する、または数値 IP アドレスを使用する URL に TLS 接続する場合、サーバになりすまされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Haxx",
+      "product_name": "cURL",
+      "version_number": [
+        "7.21.0 から 7.48.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:haxx:curl"
+      }
+    },
+    {
+      "name": "Haxx",
+      "product_name": "libcurl",
+      "version_number": [
+        "7.21.0 から 7.48.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:haxx:libcurl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:N/AC:H/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.3",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、任意の有効な証明書を介して、サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "cURL",
+      "vulinfo_id": "Fixed in 7.49.0 - May 18 2016",
+      "url": "https://curl.haxx.se/changes.html#7_49_0"
+    },
+    {
+      "type": "vendor",
+      "name": "cURL",
+      "vulinfo_id": "CVE-2016-3739.patch",
+      "url": "https://curl.haxx.se/CVE-2016-3739.patch"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "TLS certificate check bypass with mbedTLS/PolarSSL",
+      "url": "https://curl.haxx.se/docs/adv_20160518.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3739",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3739"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3739",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3739"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-24T15:08:53+09:00",
+  "date_last_updated": "2016-05-24T15:08:53+09:00",
+  "date_public": "2016-05-18T00:00:00+09:00"
+}

@@ -1,0 +1,166 @@
+{
+  "vulinfo_id": "JVNDB-2013-004592",
+  "title": "Linux Kernel の net/ipv6/ip6_output.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の net/ipv6/ip6_output.c は、過度に大きなパケットの UDP Fragmentation Offload (UFO) キューイングの後に小さなパケットの UFO プロセッシング要求を適切に判定しないため、サービス運用妨害 (メモリの破損およびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.11.4 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.1",
+        "vector": "AV:A/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きなレスポンスパケットを誘発するネットワークトラフィックを介して、サービス運用妨害 (メモリの破損およびシステムクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ipv6: udp packets following an UFO enqueued packet need also be handled by UFO",
+      "url": "https://github.com/torvalds/linux/commit/2811ebac2521ceac84f2bdae402455baa6a7fb47"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "index : kernel/git/torvalds/linux.git",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=2811ebac2521ceac84f2bdae402455baa6a7fb47"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1011927",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1011927"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:0284",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-0284.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1490",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1490.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:1645",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-1645.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2049-1",
+      "url": "http://www.ubuntu.com/usn/USN-2049-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2019-1",
+      "url": "http://www.ubuntu.com/usn/USN-2019-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2050-1",
+      "url": "http://www.ubuntu.com/usn/USN-2050-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2021-1",
+      "url": "http://www.ubuntu.com/usn/USN-2021-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2022-1",
+      "url": "http://www.ubuntu.com/usn/USN-2022-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2024-1",
+      "url": "http://www.ubuntu.com/usn/USN-2024-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2038-1",
+      "url": "http://www.ubuntu.com/usn/USN-2038-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2039-1",
+      "url": "http://www.ubuntu.com/usn/USN-2039-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2041-1",
+      "url": "http://www.ubuntu.com/usn/USN-2041-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2045-1",
+      "url": "http://www.ubuntu.com/usn/USN-2045-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4387",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4387"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4387",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4387"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月11日]\\n  掲載\\n[2014年01月09日]\\n  ベンダ情報：Ubuntu (USN-2019-1) を追加\\n  ベンダ情報：Ubuntu (USN-2021-1) を追加\\n  ベンダ情報：Ubuntu (USN-2022-1) を追加\\n  ベンダ情報：Ubuntu (USN-2024-1) を追加\\n  ベンダ情報：Ubuntu (USN-2038-1) を追加\\n  ベンダ情報：Ubuntu (USN-2039-1) を追加\\n  ベンダ情報：Ubuntu (USN-2041-1) を追加\\n  ベンダ情報：Ubuntu (USN-2045-1) を追加\\n  ベンダ情報：Ubuntu (USN-2049-1) を追加\\n  ベンダ情報：Ubuntu (USN-2050-1) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1490) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:1645) を追加\\n[2015年08月06日]\\n  ベンダ情報：レッドハット (RHSA-2014:0284) を追加"
+    }
+  ],
+  "date_first_published": "2013-10-11T19:10:11+09:00",
+  "date_last_updated": "2015-08-06T17:10:29+09:00",
+  "date_public": "2013-09-24T00:00:00+09:00"
+}

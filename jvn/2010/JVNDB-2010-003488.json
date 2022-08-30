@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2010-003488",
+  "title": "ClearSpot の iSpot における管理者の認証をクロスサイトリクエストフォージェリの脆弱性",
+  "vulinfo_description": "ClearSpot の iSpot にはクロスサイトリクエストフォージェリの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "clear",
+      "product_name": "clearspot",
+      "version_number": [
+        "2.0.0.0 R1512 および R1786"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:clear:clearspot"
+      }
+    },
+    {
+      "name": "clear",
+      "product_name": "clearspot firmware",
+      "version_number": [
+        "1.9.9.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:clear:clearspot_firmware"
+      }
+    },
+    {
+      "name": "clear",
+      "product_name": "ispot",
+      "version_number": [
+        "2.0.0.0 R1679"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:clear:ispot"
+      }
+    },
+    {
+      "name": "clear",
+      "product_name": "ispot firmware",
+      "version_number": [
+        "1.9.9.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:clear:ispot_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、以下のリクエストのため管理者の認証をハイジャックされる可能性があります。 (1) webmain.cgi への act_cmd_result アクションの cmd パラメータを介した任意のコマンド実行 (2) webmain.cgi への enable_remote_access act_network_set アクションを介したリモート管理の有効化 (3) webmain.cgi への ENABLE_TELNET act_set_wimax_etc_config アクションを介した TELNET サービスの有効化 (4) webmain.cgi への certain act_network_set アクションを介した TELNET セッションの有効化 (5) upgrademain.cgi への act_file_download アクションの FILE_PATH パラメータを介した任意のファイル読み込み"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "clear",
+      "vulinfo_id": "Clear Spot",
+      "url": "http://www.clear.com/devices/spot"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-4507",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4507"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-4507",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4507"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:38+09:00",
+  "date_last_updated": "2012-03-27T18:42:38+09:00",
+  "date_public": "2010-12-30T00:00:00+09:00"
+}

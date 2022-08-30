@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2016-002445",
+  "title": "libarchive の入力値検証不備に起因するバッファオーバーフローの脆弱性",
+  "vulinfo_description": "細工した ZIP ファイルを libarchive に解凍させることで、ユーザ権限で任意のコードを実行させることが可能です。  不適切な入力検査 (CWE-20) - CVE-2016-1541 圧縮後のサイズを細工した ZIP ファイルを libarchive に処理させることにより、ヒープ領域に任意のコードを配置し、libarchive を実行しているユーザの権限で、そのコードを実行することが可能です。  CWE-20: Improper Input Validation http://cwe.mitre.org/data/definitions/20.html",
+  "affected": [
+    {
+      "name": "libarchive",
+      "product_name": "libarchive",
+      "version_number": [
+        "version 3.2.0 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libarchive:libarchive"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "細工された ZIP ファイルを解凍することで、ユーザの権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 本脆弱性を修正した libarchive 3.2.0 がリリースされています。 開発者が提供する情報をもとに、最新版へアップデートしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Vulnerable code, CVE-2016-1541 #656",
+      "url": "https://github.com/libarchive/libarchive/issues/656"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Issue #656: Fix CVE-2016-1541, VU#862384",
+      "url": "https://github.com/libarchive/libarchive/commit/d0331e8e5b05b475f20b1f3101fe1ad772d7e7e7"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Groups",
+      "vulinfo_id": "Libarchive 3.2.0 released",
+      "url": "https://groups.google.com/forum/#!topic/libarchive-announce/qdeGf_DRvN4"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1541",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1541"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93657776",
+      "url": "http://jvn.jp/cert/JVNVU93657776"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#862384",
+      "url": "https://www.kb.cert.org/vuls/id/862384"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T09:47:11+09:00",
+  "date_last_updated": "2016-05-10T09:47:11+09:00",
+  "date_public": "2016-05-02T00:00:00+09:00"
+}

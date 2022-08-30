@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2004-000241",
+  "title": "Linux Kernel に含まれる bcm5820 ドライバの ubsec_ioctl() 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "Red Hat Enterprise Linux の Linux Kernel に含まれている bcm5820 ドライバには、 ubsec_ioctl() 関数において、カーネルメモリにコピーするデータ長の処理に不備があり、暗号鍵を設定する際に整数オーバーフローが発生する脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "2.1 (as) ",
+        "2.1 (es) ",
+        "2.1 (ws) ",
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、バッファオーバーフローを誘発する負の add_dsa_buf_bytes 変数を介して、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2004:549",
+      "url": "https://rhn.redhat.com/errata/RHSA-2004-549.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:283",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-283.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2004:549",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2004-549J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:283",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-283J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2004-0619",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0619"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2004-0619",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2004-0619"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA11936",
+      "url": "http://secunia.com/advisories/11936/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "10599",
+      "url": "http://www.securityfocus.com/bid/10599"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2004-06-24T00:00:00+09:00"
+}

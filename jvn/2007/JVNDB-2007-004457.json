@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2007-004457",
+  "title": "Fedora などで使用される ntfs-3g パッケージにおける任意のブロックデバイスに書き込まれる脆弱性",
+  "vulinfo_description": "Fedora および Ubuntu /Gutsy の ntfs-3g パッケージは、間違ったパーミッション (setuid root) を mount.ntfs-3g に割り当てるため、任意のブロックデバイスから読み込まれる、および任意のブロックデバイスに書き込まれる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Tuxera",
+      "product_name": "NTFS-3G",
+      "version_number": [
+        "1.913-2.fc7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntfs-3g:ntfs-3g"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "fuse グループメンバシップを伴うローカルユーザにより、ファイルディスクリプタリークが発生し、任意のブロックデバイスから読み込まれる、および任意のブロックデバイスに書き込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ntfs-3g",
+      "vulinfo_id": "Fedora 7 Update: ntfs-3g-1.913-2.fc7",
+      "url": "https://www.redhat.com/archives/fedora-package-announce/2007-September/msg00368.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-5159",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5159"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-5159",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5159"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:59:15+09:00",
+  "date_last_updated": "2012-09-25T16:59:15+09:00",
+  "date_public": "2007-09-25T00:00:00+09:00"
+}

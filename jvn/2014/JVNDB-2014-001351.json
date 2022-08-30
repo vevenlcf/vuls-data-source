@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-001351",
+  "title": "fwsnort における任意のコードを実行される脆弱性",
+  "vulinfo_description": "fwsnort には、root として実行していない場合、検索パスに関する処理に不備があるため、任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-426: Untrusted Search Path (信頼性のない検索パス) と識別されています。 http://cwe.mitre.org/data/definitions/426.html",
+  "affected": [
+    {
+      "name": "Michael Rash.",
+      "product_name": "fwsnort",
+      "version_number": [
+        "1.6.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cipherdyne:fwsnort"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、カレントワーキングディレクトリ内のトロイの木馬の fwsnort.conf を介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cipherdyne",
+      "vulinfo_id": "fwsnort: Application Layer IDS/IPS with iptables",
+      "url": "http://www.cipherdyne.org/fwsnort/"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Bug fix for CVE-2014-0039",
+      "url": "https://github.com/mrash/fwsnort/commit/fa977453120cc48e1654f373311f9cac468d3348"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "mrash February 08, 2014 (Paulo Bruck) Bug fix for --ulog-prefix option",
+      "url": "https://github.com/mrash/fwsnort/blob/master/ChangeLog"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0039",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0039"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0039",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0039"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年02月12日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-02-12T16:01:40+09:00",
+  "date_last_updated": "2014-02-12T16:01:40+09:00",
+  "date_public": "2014-02-01T00:00:00+09:00"
+}

@@ -1,0 +1,133 @@
+{
+  "vulinfo_id": "JVNDB-2005-000371",
+  "title": "Linux Kernel の ptrace() 関数においてセグメントレジスタにおける正規化チェックが適切に行われない脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Linux Kernel 2.4.31 以前、2.6.11.10 以前には x86-64 アーキテクチャ (AMD64 および AMD64 互換の 64 ビット機能 EM64T) においてカーネルがクラッシュする以下の複数の問題が存在します。  ・ptrace() 関数において、セグメントレジスタにおける正規化 (canonical) チェックが適切に行われていないため、カーネルがクラッシュする問題 (CAN-2005-0756)  ・ptrace() 関数において、命令ポインタ RIP のアドレスが正規化 (canonical) されているかどうかをチェックしていないため、カーネルがクラッシュする問題 (CAN-2005-1762)  これらの問題を利用するローカルの攻撃者は、非正規化のセグメントベースをセットした悪意あるプログラムを実行することによりカーネルをクラッシュさせ、標的システムをサービス不能状態に陥らせる可能性があります。",
+  "affected": [
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "kernel",
+      "url": "http://www.miraclelinux.com/support/update/list.php?errata_id=290"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "159917",
+      "url": "http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=159917"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "159915",
+      "url": "http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=159915"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:663",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-663.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2005:514",
+      "url": "https://rhn.redhat.com/errata/RHSA-2005-514.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:514",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-514J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2005:663",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2005-663J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2005-0756",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0756"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2005-0756",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2005-0756"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA15786",
+      "url": "http://secunia.com/advisories/15786"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13904",
+      "url": "http://www.securityfocus.com/bid/13904"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13891",
+      "url": "http://www.securityfocus.com/bid/13891"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-06-08T00:00:00+09:00"
+}

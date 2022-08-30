@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2014-007332",
+  "title": "libvirt の storage/storage_driver.c の storageVolUpload 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libvirt の storage/storage_driver.c の storageVolUpload 関数は、特定の戻り値をチェックしないため、サービス運用妨害 (NULL ポインタデリファレンスおよびデーモンクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "libvirt",
+      "version_number": [
+        "1.2.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:libvirt"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、\"virsh vol-upload\" コマンドの巧妙に細工された offset 値を介して、サービス運用妨害 (NULL ポインタデリファレンスおよびデーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Libvirt Security Notice",
+      "vulinfo_id": "LSN-2014-0009",
+      "url": "http://security.libvirt.org/2014/0009.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "storage: fix crash caused by no check return before set close",
+      "url": "http://libvirt.org/git/?p=libvirt.git;a=commit;h=87b9437f8951f9d24f9a85c6bbfff0e54df8c984"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1087104",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1087104"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8135",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8135"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8135",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8135"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月24日]\\n  掲載\\n[2015年01月14日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：libvirt.org (LSN-2014-0009) を追加\\n"
+    }
+  ],
+  "date_first_published": "2014-12-24T11:40:00+09:00",
+  "date_last_updated": "2015-01-14T17:21:55+09:00",
+  "date_public": "2014-12-03T00:00:00+09:00"
+}

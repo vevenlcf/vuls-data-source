@@ -1,0 +1,144 @@
+{
+  "vulinfo_id": "JVNDB-2013-006751",
+  "title": "複数の XChat 製品および HexChat の common/server.c の ssl_do_connect 関数における SSL サーバになりすまされる脆弱性",
+  "vulinfo_description": "XChat、XChat-GNOME および HexChat の common/server.c の ssl_do_connect 関数は、サーバホスト名が X.509 証明書のドメイン名と一致することを検証しないため、SSL サーバになりすまされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "HexChat",
+      "product_name": "HexChat",
+      "version_number": [
+        "2.10.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hexchat_project:hexchat"
+      }
+    },
+    {
+      "name": "XChat",
+      "product_name": "XChat",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xchat:xchat"
+      }
+    },
+    {
+      "name": "XChat",
+      "product_name": "XChat-GNOME",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xchat:xchat_gnome"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、任意の有効な証明書を介して、SSL サーバになりすまされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ssl: Validate hostnames",
+      "url": "https://github.com/hexchat/hexchat/commit/c9b63f7f9be01692b03fa15275135a4910a7e02d"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "SSL: The certificate's Common Name (CN) field is not verified",
+      "url": "https://github.com/hexchat/hexchat/issues/524"
+    },
+    {
+      "type": "vendor",
+      "name": "HexChat ChangeLog",
+      "vulinfo_id": "2.10.2 (2014-11-25)",
+      "url": "http://hexchat.readthedocs.io/en/latest/changelog.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OSDN",
+      "vulinfo_id": "XChat-GNOME",
+      "url": "https://osdn.jp/projects/freshmeat_xchat-gnome/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1081839",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1081839"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2945-1",
+      "url": "http://www.ubuntu.com/usn/USN-2945-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "XChat",
+      "vulinfo_id": "Top Page",
+      "url": "http://xchat.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-7449",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-7449"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-7449",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7449"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:41:14+09:00",
+  "date_last_updated": "2016-05-10T10:41:14+09:00",
+  "date_public": "2013-04-09T00:00:00+09:00"
+}

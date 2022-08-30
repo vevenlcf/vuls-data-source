@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-006172",
+  "title": "Tatsuya Kinoshita w3m フォークの renderTable 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "Tatsuya Kinoshita w3m フォークの renderTable 関数には、整数オーバーフローの脆弱性が存在します。  本脆弱性は、bdwgc のバグ (CVE-2016-9427) に関連する脆弱性です。",
+  "affected": [
+    {
+      "name": "w3m project",
+      "product_name": "w3m",
+      "version_number": [
+        "0.5.3-31 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:w3m_project:w3m"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工された HTML ページを介して、サービス運用妨害 (メモリ不足) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "heap corruption due to integer overflow in renderTable() #25",
+      "url": "https://github.com/tats/w3m/issues/25"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ChangeLog (CVE-2016-9426)",
+      "url": "https://github.com/tats/w3m/blob/master/ChangeLog"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9426",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9426"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9426",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9426"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-190",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "title": "整数オーバーフローまたはラップアラウンド"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年12月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-12-14T16:16:20+09:00",
+  "date_last_updated": "2016-12-14T16:16:20+09:00",
+  "date_public": "2016-08-24T00:00:00+09:00"
+}

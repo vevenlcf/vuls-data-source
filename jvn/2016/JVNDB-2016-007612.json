@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2016-007612",
+  "title": "libdwarf の dwarf_elf_access.c の WRITE_UNALIGNED 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "libdwarf の dwarf_elf_access.c の WRITE_UNALIGNED 関数には、サービス運用妨害 (境界外書き込みおよびクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "libdwarf project",
+      "product_name": "libdwarf",
+      "version_number": [
+        "20160923 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libdwarf_project:libdwarf"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工された DWARF セクションを介して、サービス運用妨害 (境界外書き込みおよびクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "David A's Libdwarf Vulnerabilities",
+      "vulinfo_id": "DW201605-001",
+      "url": "https://www.prevanders.net/dwarfbug.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5044",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5044"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5044",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5044"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-07T16:56:17+09:00",
+  "date_last_updated": "2017-03-07T16:56:17+09:00",
+  "date_public": "2016-05-02T00:00:00+09:00"
+}

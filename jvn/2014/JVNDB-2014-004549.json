@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2014-004549",
+  "title": "LibVNCServer の libvncserver/rfbserver.c の rfbProcessClientNormalMessage 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "LibVNCServer の libvncserver/rfbserver.c の rfbProcessClientNormalMessage 関数には、サービス運用妨害 (ゼロ除算エラーおよびサーバクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LibVNC",
+      "product_name": "LibVNCServer",
+      "version_number": [
+        "0.9.9 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libvncserver_project:libvncserver"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、(1) PalmVNCSetScaleFactor または (2) SetScale メッセージの倍率のゼロの値を介して、サービス運用妨害 (ゼロ除算エラーおよびサーバクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Do not accept a scaling factor of zero on PalmVNCSetScaleFactor and SetScale client-\u003eserver messages.",
+      "url": "https://github.com/newsoft/libvncserver/commit/05a9bd41a8ec0a9d580a8f420f41718bdd235446"
+    },
+    {
+      "type": "vendor",
+      "name": "LibVNC",
+      "vulinfo_id": "Top Page",
+      "url": "http://libvnc.github.io/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-6054",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6054"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-6054",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6054"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-10-08T14:28:43+09:00",
+  "date_last_updated": "2014-10-08T14:28:43+09:00",
+  "date_public": "2014-08-18T00:00:00+09:00"
+}

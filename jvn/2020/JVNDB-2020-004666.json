@@ -1,0 +1,87 @@
+{
+  "vulinfo_id": "JVNDB-2020-004666",
+  "title": "複数の Johnson Controls 製品に重要な情報の平文保存に関する脆弱性",
+  "vulinfo_description": "Johnson Controls が提供する複数の製品には、重要な情報の平文保存に関する脆弱性が存在します。  Johnson Controls が提供する Software House C CURE 9000 および American Dynamics victor VMS は産業用入退室管理システム、およびビデオ管理ソフトウエアです。当該製品には、重要な情報の平文保存の脆弱性 (CWE-312) が存在します。",
+  "affected": [
+    {
+      "name": "ジョンソンコントロールズ",
+      "product_name": "American Dynamics victor Video Management System",
+      "version_number": [
+        "Version 5.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:johnsoncontrols:american_dynamics_victor_vVideo_management_system"
+      }
+    },
+    {
+      "name": "ジョンソンコントロールズ",
+      "product_name": "Software House C CURE",
+      "version_number": [
+        "Version 2.70"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:johnsoncontrols:software_house_C_CURE"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.9",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "当該製品のインストールまたはアップグレードを実行したユーザの認証情報が、ログファイルに平文で保存され、インストール後も削除されないため、遠隔の第三者により認証情報を窃取される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 　　* c:program\\data\\tyco\\installertemp のログファイルを削除し、Windows アカウントのパスワードを変更する  詳細については、開発者が提供するアドバイザリ JCI-PSA-2020-4 を参照ください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Johnson Controls",
+      "vulinfo_id": "JCI-PSA-2020-4",
+      "url": "https://www.johnsoncontrols.com/cyber-solutions/security-advisories"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-9045",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9045"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-20-142-01",
+      "url": "https://www.us-cert.gov/ics/advisories/icsa-20-142-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91294008",
+      "url": "https://jvn.jp/vu/JVNVU91294008/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-312",
+      "url": "https://cwe.mitre.org/data/definitions/312.html",
+      "title": "重要な情報の平文保存"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-05-25T06:29:55Z",
+      "description": "[2020年05月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2020-05-25T15:29:55+09:00",
+  "date_last_updated": "2020-05-25T15:29:55+09:00",
+  "date_public": "2020-05-22T00:00:00+09:00"
+}

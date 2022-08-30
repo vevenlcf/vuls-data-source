@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-005808",
+  "title": "Linux Kernel と一緒に配布される hypervkvpd における Netlink 通信を偽装される脆弱性",
+  "vulinfo_description": "Linux Kernel と一緒に配布される hypervkvpd の tools/hv/hv_kvp_daemon.c 内の main 関数は、Netlink メッセージの発信元を検証しないため、Netlink 通信を偽装される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.4.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工されたコネクタメッセージを介して、Netlink 通信を偽装される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 761200 - VUL-1: hyper-v user space daemon netlink origin",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=761200"
+    },
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.4.5",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.4.5"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Tools: hv: verify origin of netlink connector message",
+      "url": "https://github.com/torvalds/linux/commit/bcc2c9c3fff859e0eb019fe6fec26f9b8eba795c"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git / commit",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=bcc2c9c3fff859e0eb019fe6fec26f9b8eba795c"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2669",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2669"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2669",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2669"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月28日]\\n  掲載\\n[2013年01月22日]\\n  CVSS による深刻度：基本値と可用性への影響を変更"
+    }
+  ],
+  "date_first_published": "2012-12-28T11:43:23+09:00",
+  "date_last_updated": "2013-01-22T17:11:17+09:00",
+  "date_public": "2012-07-16T00:00:00+09:00"
+}

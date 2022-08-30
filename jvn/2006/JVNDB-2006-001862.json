@@ -1,0 +1,77 @@
+{
+  "vulinfo_id": "JVNDB-2006-001862",
+  "title": "Gentoo などで使用される ftpd における gid 0 の権限を持つ任意のディレクトリを一覧にされる脆弱性",
+  "vulinfo_description": "Gentoo および Debian Linux で使用される ftpd には、/bin/ls をする前に gid に効果的なグループ id の代わりに効果的な uid を設定するため、gid 0 の権限を持つ任意のディレクトリを一覧にされる、および他の攻撃を有効にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "3.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Gentoo Linux",
+      "product_name": "Gentoo Linux",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:gentoo:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.5",
+        "vector": "AV:N/AC:M/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、gid 0 の権限を持つ任意のディレクトリを一覧にされる、および他の攻撃を有効にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "384454",
+      "url": "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=384454"
+    },
+    {
+      "type": "vendor",
+      "name": "gentoo",
+      "vulinfo_id": "Bug 155317",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=155317"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-7094",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7094"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-7094",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-7094"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:38:15+09:00",
+  "date_last_updated": "2012-06-26T15:38:15+09:00",
+  "date_public": "2006-11-15T00:00:00+09:00"
+}

@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2013-004999",
+  "title": "Linux Kernel の drivers/usb/chipidea/host.c の host_start 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/usb/chipidea/host.c の host_start 関数は、特定の non-streaming オプションを適切にサポートしないため、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.7.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.7",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、USB/Ethernet アダプタを通じて、大量のネットワークトラフィックを送信されることで、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "usb: chipidea: Allow disabling streaming not only in udc mode",
+      "url": "https://github.com/torvalds/linux/commit/929473ea05db455ad88cdc081f2adc556b8dc48f"
+    },
+    {
+      "type": "vendor",
+      "name": "kernel.org",
+      "vulinfo_id": "ChangeLog-3.7.4",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.7.4"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "usb: chipidea: Allow disabling streaming not only in udc mode",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=929473ea05db455ad88cdc081f2adc556b8dc48f"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 959210",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=959210"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2058",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2058"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2058",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2058"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月06日]\\n  掲載\\n[2013年11月28日]\\n  CVSS による深刻度：内容を更新"
+    }
+  ],
+  "date_first_published": "2013-11-06T17:32:14+09:00",
+  "date_last_updated": "2013-11-28T14:15:22+09:00",
+  "date_public": "2013-01-21T00:00:00+09:00"
+}

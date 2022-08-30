@@ -1,0 +1,129 @@
+{
+  "vulinfo_id": "JVNDB-2004-000022",
+  "title": "Gaim および Ultramagnetic における複数のバッファオーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Gaim は、Yahoo! Messenger や AOL Instant Messenger 等様々なプロトコルが利用可能な、IM (Instant Messenger) クライアントです。  Gaim 0.75 以前には、複数の個所に適切な引数の妥当性の確認を行わない問題が存在します。そのため、以下のような通信を行った場合結果としてバッファオーバーフローを引き起こす可能性があります。  ・Yahoo! Messenger サービスのログイン時に過剰に長い通信を受信する ・Yahoo! Messenger 経由で過剰に長い Cookie を受信する ・Yahoo! Messenger 経由で過剰に長い項目を含むパケットを受信する ・プロキシサーバ経由で過剰に長いヘッダ行を受信する ・過剰に長い URL を受信する   (CAN-2004-0006/Gaim 0.75 以前)  ・MSN Messenger/Yahoo! Messenger 経由で、get_user_info() 関数を用いた際過剰に長い応答を受信する   (CAN-2004-0007/Gaim 0.74 以前)  また、AOL Instant Messenger (Oscar) 経由で directIM 機能を利用してクライアント同士の通信を行った場合、妥当な引数の確認を行っていないために整数オーバーフローを引き起す可能性があります。 (CAN-2004-0008/Gaim 0.74 以前)  この問題を利用するリモートの攻撃者は、意図的に作成した通信を標的ユーザに送りつけることによりオーバーフローを引き起こし、結果として Gaim を実行しているユーザの権限で任意のコードを実行可能です。  尚、いくつかの問題においては、攻撃者はサーバと Gaim の間のセッションを乗っ取る、もしくはサーバを装う必要があります。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "9  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2004:032",
+      "url": "https://rhn.redhat.com/errata/RHSA-2004-032.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2004:032",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2004-032J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2004-0006",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0006"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2004-0006",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2004-0006"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "9489",
+      "url": "http://www.securityfocus.com/bid/9489"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1008850",
+      "url": "http://www.securitytracker.com/alerts/2004/Jan/1008850.htm"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#527142",
+      "url": "http://www.kb.cert.org/vuls/id/527142"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#197142",
+      "url": "http://www.kb.cert.org/vuls/id/197142"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#779614",
+      "url": "http://www.kb.cert.org/vuls/id/779614"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#871838",
+      "url": "http://www.kb.cert.org/vuls/id/871838"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#444158",
+      "url": "http://www.kb.cert.org/vuls/id/444158"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#503030",
+      "url": "http://www.kb.cert.org/vuls/id/503030"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#371382",
+      "url": "http://www.kb.cert.org/vuls/id/371382"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#297198",
+      "url": "http://www.kb.cert.org/vuls/id/297198"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2004-01-26T00:00:00+09:00"
+}

@@ -1,0 +1,111 @@
+{
+  "vulinfo_id": "JVNDB-2015-007074",
+  "title": "Redmine の app/controllers/application_controller.rb の valid_back_url 関数におけるオープンリダイレクトの脆弱性",
+  "vulinfo_description": "Redmine の app/controllers/application_controller.rb の valid_back_url 関数には、オープンリダイレクトの脆弱性が存在します。  本脆弱性は、CVE-2014-1985 とは異なる脆弱性です。  補足情報 : CWE による脆弱性タイプは、CWE-601: URL Redirection to Untrusted Site (オープンリダイレクト) と識別されています。 http://cwe.mitre.org/data/definitions/601.html",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Redmine",
+      "product_name": "Redmine",
+      "version_number": [
+        "2.6.7 未満",
+        "3.0.5 未満の 3.0.x",
+        "3.1.1 未満の 3.1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redmine:redmine"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.4",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された back_url パラメータを介して、ユーザを任意の Web サイトにリダイレクトされ、フィッシング攻撃を実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3529",
+      "url": "https://www.debian.org/security/2016/dsa-3529"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Open redirect vulnerability (#19577).",
+      "url": "https://github.com/redmine/redmine/commit/032f2c9be6520d9d1a1608aa4f1d5d1f184f2472"
+    },
+    {
+      "type": "vendor",
+      "name": "Redmine",
+      "vulinfo_id": "Defect #19577",
+      "url": "https://www.redmine.org/issues/19577"
+    },
+    {
+      "type": "vendor",
+      "name": "Redmine",
+      "vulinfo_id": "Redmine 3.1.1, 3.0.5 and 2.6.7 released",
+      "url": "http://www.redmine.org/news/101"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8474",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8474"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8474",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8474"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-21T15:47:35+09:00",
+  "date_last_updated": "2016-04-21T15:47:35+09:00",
+  "date_public": "2015-09-13T00:00:00+09:00"
+}

@@ -1,0 +1,100 @@
+{
+  "vulinfo_id": "JVNDB-2014-005584",
+  "title": "PHP の ext/xmlrpc/libxmlrpc/xmlrpc.c 内の date_from_ISO8601 関数におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "PHP の ext/xmlrpc/libxmlrpc/xmlrpc.c 内の date_from_ISO8601 関数には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.2.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、日付に timezone フィールドを含まれることで、不適切な XML-RPC エンコーディングをされ、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "MFH:",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=c818d0d01341907fee82bdb81cab07b7d93bb9db"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #45226",
+      "url": "https://bugs.php.net/bug.php?id=45226"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1155607",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1155607"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1824",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1824.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1825",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1825.html"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog - Version 5.6.3",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8626",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8626"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8626",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8626"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年11月25日]\\n  掲載\\n[2014年12月08日]\\n  ベンダ情報：レッドハット (RHSA-2014:1824) を追加\\n  ベンダ情報：レッドハット (RHSA-2014:1825) を追加"
+    }
+  ],
+  "date_first_published": "2014-11-25T14:32:48+09:00",
+  "date_last_updated": "2014-12-08T17:21:13+09:00",
+  "date_public": "2014-10-22T00:00:00+09:00"
+}

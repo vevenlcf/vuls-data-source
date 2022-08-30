@@ -1,0 +1,159 @@
+{
+  "vulinfo_id": "JVNDB-2008-002259",
+  "title": "PHP の ZipArchive::extractTo 関数における ZIP ファイルの処理に関するディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "PHP の ZipArchive::extractTo 関数には、ZIP ファイルの処理に不備があるため、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.2.6 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "1.0 (hosting) ",
+        "1.0 (workgroup) ",
+        "2.0  ",
+        "3.0  ",
+        "3.0 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Client",
+      "version_number": [
+        "2008 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_client"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "10 (x64) ",
+        "11  ",
+        "11 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.11 ",
+        "11.23 ",
+        "11.31 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "\"..\" を含むファイル名を持つ ZIP ファイルにより、任意のファイルを書込まれる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02431",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c01756421"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02465",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01905287"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "ChangeLog-5",
+      "url": "http://www.php.net/ChangeLog-5.php#5.2.7"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2009-7",
+      "url": "http://www.turbolinux.com/security/2009/TLSA-2009-7.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2009-7",
+      "url": "http://www.turbolinux.co.jp/security/2009/TLSA-2009-7j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-5658",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5658"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-5658",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5658"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "32625",
+      "url": "http://www.securityfocus.com/bid/32625"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1021303",
+      "url": "http://www.securitytracker.com/id?1021303"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年02月09日]\\n  掲載\\n[2009年03月27日]\\n  影響を受けるシステム：ターボリナックス (TLSA-2009-7) の情報を追加\\n  ベンダ情報：ターボリナックス (TLSA-2009-7) を追加\\n[2009年08月05日]\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBUX02431) の情報を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02431) を追加\\n[2009年11月16日]\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02465) を追加"
+    }
+  ],
+  "date_first_published": "2009-02-09T14:36:48+09:00",
+  "date_last_updated": "2009-11-16T11:36:53+09:00",
+  "date_public": "2008-12-17T00:00:00+09:00"
+}

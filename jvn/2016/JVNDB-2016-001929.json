@@ -1,0 +1,127 @@
+{
+  "vulinfo_id": "JVNDB-2016-001929",
+  "title": "PHP の PHAR エクステンションの zip.c 内の phar_parse_zipfile 関数における重要な情報を取得される脆弱性",
+  "vulinfo_description": "PHP の PHAR エクステンションの zip.c 内の phar_parse_zipfile 関数には、プロセスメモリから重要な情報を取得される、またはサービス運用妨害 (境界外読み取りおよびアプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.5.33 未満",
+        "5.6.19 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "10.11 およびそれ以降"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.2",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、不正なロケーションに PK\\x05\\x06 (PKバックスラッシュx05バックスラッシュx06) 署名を配置されることで、プロセスメモリから重要な情報を取得される、またはサービス運用妨害 (境界外読み取りおよびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2016-05-16-4 OS X El Capitan 10.11.5 and Security Update 2016-003",
+      "url": "http://lists.apple.com/archives/security-announce/2016/May/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT206567",
+      "url": "https://support.apple.com/en-us/HT206567"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT206567",
+      "url": "https://support.apple.com/ja-jp/HT206567"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #71498",
+      "url": "https://bugs.php.net/bug.php?id=71498"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Fix bug #71498: Out-of-Bound Read in phar_parse_zipfile()",
+      "url": "https://git.php.net/?p=php-src.git;a=commit;h=a6fdc5bb27b20d889de0cd29318b3968aabb57bd"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "https://secure.php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3142",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3142"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91632741",
+      "url": "http://jvn.jp/vu/JVNVU91632741/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3142",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3142"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月01日]\\n  掲載\\n[2016年06月01日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (HT206567) を追加\\n  ベンダ情報：アップル (APPLE-SA-2016-05-16-4 OS X El Capitan 10.11.5 and Security Update 2016-003) を追加\\n  参考情報：JVN (JVNVU#91632741) を追加\\n  CVSS による深刻度：内容を更新"
+    }
+  ],
+  "date_first_published": "2016-04-01T11:54:48+09:00",
+  "date_last_updated": "2016-06-01T17:18:35+09:00",
+  "date_public": "2016-03-03T00:00:00+09:00"
+}

@@ -1,0 +1,121 @@
+{
+  "vulinfo_id": "JVNDB-2013-000087",
+  "title": "複数のブロードバンドルータがオープンリゾルバとして機能してしまう問題",
+  "vulinfo_description": "複数のブロードバンドルータには、オープンリゾルバとして機能してしまう問題が存在します。  不特定の相手からの再帰的な DNS 問い合わせに対してDNS キャッシュサーバとして動作してしまう機器のことをオープンリゾルバと呼びます。 DNS キャッシュサーバとして働く複数のブロードバンドルータには、オープンリゾルバとして機能してしまう問題が存在します。  この脆弱性情報は、JPCERT/CC および IPA の調査によって複数ベンダに影響を受けることを確認し、JPCERT/CC が開発者との調整を行いました。 また、情報セキュリティ早期警戒パートナーシップに基づき下記の方から JPCERT/CC に報告がありました。 報告者: 株式会社日本レジストリサービス（JPRS）森下泰宏 氏",
+  "affected": [
+    {
+      "name": "（複数のベンダ）",
+      "product_name": "（複数の製品）",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:multiple_vendors"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "機器管理者が気付かないうちに、機器が DNS Amplification Attack に悪用され、DDoS 攻撃に加担してしまう可能性があります。 "
+  },
+  "solution": "[アップデートまたは設定を変更する] 各開発者が提供する情報をもとに適切な対策 (アップデート、パッチ、設定の変更など) を 適用してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "BUFFALO",
+      "vulinfo_id": "株式会社バッファロー の告知ページ",
+      "url": "http://buffalo.jp/support_s/20140802.html"
+    },
+    {
+      "type": "vendor",
+      "name": "FITELnet",
+      "vulinfo_id": "簡易DNS機能がオープンリゾルバとして機能する問題",
+      "url": "http://www.furukawa.co.jp/fitelnet/topic/vulnera_20130919.html"
+    },
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "ユミルリンク株式会社からの情報",
+      "url": "http://jvn.jp/jp/JVN62507275/99095/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "日本電気株式会社からの情報",
+      "url": "http://jvn.jp/jp/JVN62507275/6443/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "RTシリーズのセキュリティに関するFAQ",
+      "vulinfo_id": "ヤマハ株式会社 の告知ページ ",
+      "url": "http://www.rtpro.yamaha.co.jp/RT/FAQ/Security/open-resolver.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SEIL シリーズ セキュリティ\u0026脆弱性情報",
+      "vulinfo_id": "株式会社インターネットイニシアティブ の告知ページ ",
+      "url": "http://www.seil.jp/support/security/a01311.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JPCERT 緊急報告",
+      "vulinfo_id": "DNS の再帰的な問い合わせを使った DDoS 攻撃に関する注意喚起",
+      "url": "http://www.jpcert.or.jp/at/2013/at130022.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JPNIC",
+      "vulinfo_id": "オープンリゾルバ(Open Resolver)について",
+      "url": "https://www.nic.ad.jp/ja/dns/openresolver/"
+    },
+    {
+      "type": "advisory",
+      "name": "JPRS",
+      "vulinfo_id": "DNSサーバーの不適切な設定「オープンリゾルバー」について",
+      "url": "http://jprs.jp/important/2013/130418.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#62507275",
+      "url": "http://jvn.jp/jp/JVN62507275/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "Alert (TA13-088A) DNS Amplification Attacks",
+      "url": "https://www.us-cert.gov/ncas/alerts/TA13-088A"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Technical Cyber Security Alert",
+      "vulinfo_id": "Alert (TA14-017A) UDP-based Amplification Attacks",
+      "url": "http://www.us-cert.gov/ncas/alerts/TA14-017A"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月19日]\\n  掲載\\n[2014年02月18日]\\n  参考情報：US-CERT Technical Cyber Security Alert (Alert (TA14-017A) UDP-based Amplification Attacks) を追加\\n[2014年08月28日]\\n  ベンダ情報：バッファロー (株式会社バッファロー の告知ページ) を追加"
+    }
+  ],
+  "date_first_published": "2013-09-19T12:01:52+09:00",
+  "date_last_updated": "2014-08-28T19:50:26+09:00",
+  "date_public": "2013-09-19T00:00:00+09:00"
+}

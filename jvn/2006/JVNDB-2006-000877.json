@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2006-000877",
+  "title": "Mac OS X の Web ブラウザ Safari に任意のコード実行の脆弱性",
+  "vulinfo_description": "Mac OS X の Web ブラウザ Safari には、デフォルト設定において、任意のコード実行の脆弱性が存在します。  Safari ではデフォルト設定において、Resource forks で定められたファイルタイプを参照し、そのファイルタイプが、画像・動画・圧縮ファイルであった場合、\"Safe\" fileと判断し、自動的に処理を行ないます。  これにより、巧妙に細工されたファイルが \"Safe\" file と誤判断され、結果的に任意のコード実行をされる可能性があります。  この脆弱性を利用するエキスプロイトコードが既に公開されています。",
+  "affected": [
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.3.9",
+        "v10.4.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.3.9",
+        "v10.4.5"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者により、ログインしているユーザの権限で任意のコードが実行される可能性があります。管理者権限のアカウントでユーザがログインしている場合、結果として脆弱なシステムを完全に制御される可能性があります。"
+  },
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "TA23971",
+      "url": "http://support.apple.com/kb/TA23971"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "TA23971",
+      "url": "http://support.apple.com/kb/TA23971?viewlocale=ja_JP"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-0848",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-0848"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA06-053A",
+      "url": "http://jvn.jp/cert/JVNTA06-053A/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-0848",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-0848"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#999708",
+      "url": "http://www.kb.cert.org/vuls/id/999708"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年04月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2009-04-03T10:13:46+09:00",
+  "date_last_updated": "2009-04-03T10:13:46+09:00",
+  "date_public": "2006-02-23T00:00:00+09:00"
+}

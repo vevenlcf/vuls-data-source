@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2012-003771",
+  "title": "FFmpeg および Libav の libavcodec におけるサービス運用妨害 (クラッシュ) の脆弱性",
+  "vulinfo_description": "FFmpeg および Libav の libavcodec 内の KVG1 デコーダ (kgv1dec.c) の decode_frame 関数には、サービス運用妨害 (クラッシュ) 状態となる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "0.7.12 未満の 0.7.x",
+        "0.8.11 未満の 0.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    },
+    {
+      "name": "Libav",
+      "product_name": "Libav",
+      "version_number": [
+        "0.5.9 未満の 0.5.x",
+        "0.6.6 未満の 0.6.x",
+        "0.7.5 未満の 0.7.x",
+        "0.8.1 未満の 0.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libav:libav"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたメディアファイルを介して、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "Top Page",
+      "url": "http://ffmpeg.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "ffmpeg.git / commit",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=807a045ab7f51993a2c1b3116016cbbd4f3d20d6"
+    },
+    {
+      "type": "vendor",
+      "name": "Libav",
+      "vulinfo_id": "Top Page",
+      "url": "http://libav.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Libav",
+      "vulinfo_id": "libav.git / commit",
+      "url": "http://git.libav.org/?p=libav.git;a=commit;h=a02e8df973f5478ec82f4c507f5b5b191a5ecb6b"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2012:076",
+      "url": "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:076"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3945",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3945"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3945",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3945"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年08月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-08-22T15:23:09+09:00",
+  "date_last_updated": "2012-08-22T15:23:09+09:00",
+  "date_public": "2012-01-27T00:00:00+09:00"
+}

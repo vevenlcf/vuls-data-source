@@ -1,0 +1,169 @@
+{
+  "vulinfo_id": "JVNDB-2002-000193",
+  "title": "PostgreSQL のデータ解釈部におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  PostgreSQL 7.2.1 以前には複数のバッファオーバーフローの問題が存在します。 PostgreSQL 7.2.1 以前に実装されている date パーサ、SET TIME ZONE 構文の解釈部、TZ 環境変数の解釈部、および repeat() 関数には付与される引数の値の取り扱いに問題が存在します。  この問題を利用して、ローカルの攻撃者は、date パーサ、SET TIME ZONE 構文の解釈部、TZ 環境変数の解釈部に不適切な値を付与することにより、バッファオーバーフローを発生させ PostgreSQL の権限で任意のコードが実行出来る可能性が存在します。 同様に repeat() 関数の第 2 引数に非常に大きな値を指定して select 文を実行した場合にヒープ領域でオーバーフローが発生する問題が存在します。  結果として、ローカルの攻撃者は PostgreSQL の権限で任意のコードを実行することが可能です。",
+  "affected": [
+    {
+      "name": "PostgreSQL.org",
+      "product_name": "PostgreSQL",
+      "version_number": [
+        "v7.1.3 およびそれ以前",
+        "v7.2.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:postgresql:postgresql"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ4",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_4"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQ550",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_550"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Cobalt RaQXTR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:sun:sun_cobalt_raq_xtr"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "6.2  ",
+        "7.0  ",
+        "7.1  ",
+        "7.2  ",
+        "7.3  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PostgreSQL",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.postgresql.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:010",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-010.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2003:001",
+      "url": "https://rhn.redhat.com/errata/RHSA-2003-001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "550 PHP \u0026amp; PostgreSQL Security Update 0.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raq550.eng\u0026amp;amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Cobalt RaQ Patches",
+      "vulinfo_id": "4 PHP \u0026amp; PostgreSQL Security Update 2.0.1",
+      "url": "http://sunsolve.sun.com/pub-cgi/show.pl?target=cobalt/raq4.eng\u0026amp;amp;nav=patchpage"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:010",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-010J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2003:001",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2003-001J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2002-1398",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1398"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2002-1398",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-1398"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6613",
+      "url": "http://www.securityfocus.com/bid/6613"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6612",
+      "url": "http://www.securityfocus.com/bid/6612"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6611",
+      "url": "http://www.securityfocus.com/bid/6611"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "5528",
+      "url": "http://www.securityfocus.com/bid/5528"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "5527",
+      "url": "http://www.securityfocus.com/bid/5527"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2002-08-18T00:00:00+09:00"
+}

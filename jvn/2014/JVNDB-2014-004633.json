@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2014-004633",
+  "title": "MIT Kerberos 5 の kadmind の lib/kadm5/srv/svr_principal.c の kadm5_randkey_principal_3 関数におけるチケットを偽造される脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 (別名 krb5) の kadmind の lib/kadm5/srv/svr_principal.c の kadm5_randkey_principal_3 関数は、-randkey -keepold リクエストに対するレスポンスに古いキーを送信するため、チケットを偽造される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.13 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:N/AC:H/Au:S/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、管理アクセス権を利用されることで、チケットを偽造される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Return only new keys in randkey [CVE-2014-5351]",
+      "url": "https://github.com/krb5/krb5/commit/af0ed4df4dfae762ab5fb605f5a0c8f59cb4f6ca"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1145425",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1145425"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #8018 Return only new keys in randkey [CVE-2014-5351]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?id=8018"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5351",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5351"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5351",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5351"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2014-0477",
+      "url": "http://advisories.mageia.org/MGASA-2014-0477.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-255",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-255.html",
+      "title": "証明書・パスワードの管理"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月14日]\\n  掲載\\n[2014年11月17日]\\n  ベンダ情報：レッドハット (Bug 1145425) を追加\\n[2014年12月26日]\\n  参考情報：関連文書 (MGASA-2014-0477) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-14T14:05:47+09:00",
+  "date_last_updated": "2014-12-26T09:57:00+09:00",
+  "date_public": "2014-09-22T00:00:00+09:00"
+}

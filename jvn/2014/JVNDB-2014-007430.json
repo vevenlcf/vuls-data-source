@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2014-007430",
+  "title": "libssh の kex.c 内の ssh_packet_kexinit 関数におけるメモリ二重解放の脆弱性",
+  "vulinfo_description": "libssh の kex.c 内の ssh_packet_kexinit 関数には、メモリを二重に解放する不備があるため、サービス運用妨害 (DoS) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-415: Double Free (二重解放) と識別されています。 http://cwe.mitre.org/data/definitions/415.html",
+  "affected": [
+    {
+      "name": "libssh",
+      "product_name": "libssh",
+      "version_number": [
+        "0.5.x",
+        "0.6.4 未満の 0.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libssh:libssh"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された kexinit パケットを介して、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "libssh",
+      "vulinfo_id": "libssh 0.6.4 (Security and bugfix release)",
+      "url": "http://www.libssh.org/2014/12/19/libssh-0-6-4-security-and-bugfix-release/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1158089",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1158089"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8132",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8132"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8132",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8132"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2015-0014",
+      "url": "http://advisories.mageia.org/MGASA-2015-0014.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月06日]\\n  掲載\\n[2015年06月04日]\\n  参考情報：関連文書 (MGASA-2015-0014) を追加"
+    }
+  ],
+  "date_first_published": "2015-01-06T13:58:34+09:00",
+  "date_last_updated": "2015-06-04T18:00:01+09:00",
+  "date_public": "2014-12-19T00:00:00+09:00"
+}

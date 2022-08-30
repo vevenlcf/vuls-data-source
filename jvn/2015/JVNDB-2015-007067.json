@@ -1,0 +1,120 @@
+{
+  "vulinfo_id": "JVNDB-2015-007067",
+  "title": "Claws Mail の codeconv.c におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Claws Mail の codeconv.c の (1) conv_jistoeuc、(2) conv_euctojis、および (3) conv_sjistoeuc 関数には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Claws Mail",
+      "product_name": "Claws Mail",
+      "version_number": [
+        "3.13.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:claws_mail:claws_mail"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1",
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:opensuse"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "version_number": [
+        "42.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "第三者により、日本語文字セット変換された巧妙に細工された電子メールを介して、不特定の影響を受ける可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Claws Mail",
+      "vulinfo_id": "Make sure we don't run out of the output buffer. Maybe fixes bug #3557",
+      "url": "http://git.claws-mail.org/?p=claws.git;a=commit;h=d390fa07f5548f3173dd9cc13b233db5ce934c82"
+    },
+    {
+      "type": "vendor",
+      "name": "Claws Mail",
+      "vulinfo_id": "Claws Mail 3.13.2",
+      "url": "http://www.claws-mail.org/news.php"
+    },
+    {
+      "type": "vendor",
+      "name": "Claws Mail Bugzilla",
+      "vulinfo_id": "Bug 3557",
+      "url": "http://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=3557"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:0002",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-01/msg00000.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8614",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8614"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8614",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8614"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-21T14:58:31+09:00",
+  "date_last_updated": "2016-04-21T14:58:31+09:00",
+  "date_public": "2015-11-05T00:00:00+09:00"
+}

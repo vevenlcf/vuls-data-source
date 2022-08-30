@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2015-000124",
+  "title": "Apache Struts におけるクロスサイトスクリプティングの脆弱性",
+  "vulinfo_description": "Apache Software Foundation が提供する Apache Struts は、Java のウェブアプリケーションを開発するためのソフトウェアフレームワークです。Apache Struts には、JSP ファイルに対し直接アクセスが可能な場合、クロスサイトスクリプティングの脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 三井物産セキュアディレクション 諌山貴由 氏",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache Struts",
+      "version_number": [
+        "2.3.20 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:struts"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "XSS フィルタが無効になっているユーザの Internet Explorer 上で、任意のスクリプトを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに最新版へアップデートしてください。  また、開発者はさらに以下の対応も推奨しています：   - 直接アクセスできないように JSP ファイルを WEB-INF フォルダ内に移動する   - web.xml にセキュリティ設定を追記する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "S2-025 - Cross-Site Scripting Vulnerability in Debug Mode and in exposed JSP files",
+      "url": "https://struts.apache.org/docs/s2-025.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "Apache Struts2 Core Developers Guide / Security",
+      "url": "https://struts.apache.org/docs/security.html#Security-NeverexposeJSPfilesdirectly"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Software Foundation",
+      "vulinfo_id": "Announcements - 26 August 2015",
+      "url": "https://struts.apache.org/announce.html#a20150826"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache Struts",
+      "vulinfo_id": "Apache Struts 1 End-Of-Life (EOL) Announcement",
+      "url": "https://struts.apache.org/struts1eol-announcement.html"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV15-020",
+      "url": "http://jpn.nec.com/security-info/secinfo/nv15-020.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2992",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2992"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#88408929",
+      "url": "https://jvn.jp/jp/JVN88408929/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-79",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-79.html",
+      "title": "クロスサイトスクリプティング"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年09月04日]\\n  掲載\\n[2015年09月07日]\\n  影響を受けるシステム：内容を更新\\n  ベンダ情報：Apache Software Foundation (Apache Struts 1 End-Of-Life (EOL) Announcement) を追加\\n[2015年12月25日]\\n  ベンダ情報：日本電気 (NV15-020) を追加"
+    }
+  ],
+  "date_first_published": "2015-09-04T12:03:33+09:00",
+  "date_last_updated": "2015-12-25T13:45:23+09:00",
+  "date_public": "2015-09-04T00:00:00+09:00"
+}

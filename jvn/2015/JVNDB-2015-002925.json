@@ -1,0 +1,112 @@
+{
+  "vulinfo_id": "JVNDB-2015-002925",
+  "title": "複数の SAP 製品の LZH 解凍の実装におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "複数の SAP 製品の LZH 解凍の実装 (vpa108csulzh.cpp の CsObjectInt::BuildHufTree 関数) には、non-simple コードのルックアップに関する処理に不備があるため、サービス運用妨害 (out-of-bounds read) 状態にされる脆弱性が存在します。  ベンダは、本脆弱性を SAP Security Note 2124806、2121661、2127995、および 2125316 として公開しています。",
+  "affected": [
+    {
+      "name": "SAP",
+      "product_name": "SAP GUI",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sap:gui"
+      }
+    },
+    {
+      "name": "SAP",
+      "product_name": "SAP MaxDB",
+      "version_number": [
+        "7.5",
+        "7.6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sap:maxdb"
+      }
+    },
+    {
+      "name": "SAP",
+      "product_name": "SAP Netweaver Application Server ABAP",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sap:netweaver_abap_application_server"
+      }
+    },
+    {
+      "name": "SAP",
+      "product_name": "SAP Netweaver Application Server Java",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sap:netweaver_java_application_server"
+      }
+    },
+    {
+      "name": "SAP",
+      "product_name": "SAP NetWeaver RFC SDK",
+      "version_number": [
+        "　"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sap:netweaver_rfc_sdk"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、サービス運用妨害 (out-of-bounds read) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Acknowledgments to Security Researchers",
+      "vulinfo_id": "SAP Security Note 2124806/2121661/2127995/2125316",
+      "url": "http://scn.sap.com/docs/DOC-55451"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-2278",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2278"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-2278",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2278"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "SAP LZC LZH Compression Multiple Vulnerabilities",
+      "url": "http://www.coresecurity.com/advisories/sap-lzc-lzh-compression-multiple-vulnerabilities"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-06-04T14:09:56+09:00",
+  "date_last_updated": "2015-06-04T14:09:56+09:00",
+  "date_public": "2015-05-12T00:00:00+09:00"
+}

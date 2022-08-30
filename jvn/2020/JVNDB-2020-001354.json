@@ -1,0 +1,132 @@
+{
+  "vulinfo_id": "JVNDB-2020-001354",
+  "title": "OpenSMTPD に権限昇格と任意コード実行の脆弱性",
+  "vulinfo_description": "OpenSMTPD には、権限昇格や任意のコード実行が可能な脆弱性が存在します。  \u003ca href=\"https://www.opensmtpd.org/\"target=\"blank\"\u003eOpenSMTPD\u003c/a\u003e は、\u003ca href=\"https://www.openbsd.org/\"target=\"blank\"\u003eOpenBSD Project\u003c/a\u003e が提供するオープンソースの SMTP サーバです。OpenSMTPD は smtp_mailaddr() 関数により送信者と受信者のメールアドレスを検証します。メールアドレスのローカルパートが無効な文字列で、かつドメイン名の文字列が空白となるような、本来ならば無効なアドレスであった場合、smtp_mailaddr() 関数はこれにデフォルトのドメイン名を付け加えますが、エラーとして扱いません。このため、無効なアドレスであっても関数による検証が行われない状況が生じます。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSMTPD",
+      "version_number": [
+        "6.4.0 から 6.6.1 までのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:opensmtpd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者が smtp_mailaddr() 関数による検証を回避して任意のコードを実行する不正な SMTP メッセージを送信した場合、ローカルの第三者が権限昇格を行ったり、ローカルもしくはリモートの第三者が root 権限で任意のコードを実行したりする可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者はこの問題に対処したパッチ \u003ca href=\"https://github.com/OpenSMTPD/OpenSMTPD/releases/tag/6.6.2p1\"target=\"blank\"\u003eOpenSMTPD version 6.6.2p1\u003c/a\u003e (portable version) をリリースしています。 開発者が提供する情報をもとに、最新版にアップデートしてください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "OpenSMTPD 6.6.2p1 portable release",
+      "url": "https://github.com/OpenSMTPD/OpenSMTPD/releases/tag/6.6.2p1"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "OpenBSD 6.6 Errata",
+      "url": "https://www.openbsd.org/errata66.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSMTPD",
+      "vulinfo_id": "OpenSMTPD",
+      "url": "https://www.opensmtpd.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSMTPD",
+      "vulinfo_id": "OpenSMTPD Security",
+      "url": "https://www.opensmtpd.org/security.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-7247",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-7247"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#90495537",
+      "url": "https://jvn.jp/vu/JVNVU90495537/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2020-7247",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-7247"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#390745",
+      "url": "https://kb.cert.org/vuls/id/390745/"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "LPE and RCE in OpenSMTPD (CVE-2020-7247)",
+      "url": "https://www.qualys.com/2020/01/28/cve-2020-7247/lpe-rce-opensmtpd.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "OpenBSD OpenSMTPD Remote Code Execution Vulnerability (CVE-2020-7247)",
+      "url": "https://blog.qualys.com/laws-of-vulnerabilities/2020/01/29/openbsd-opensmtpd-remote-code-execution-vulnerability-cve-2020-7247"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "OpenSMTPD advisory dissected",
+      "url": "https://poolp.org/posts/2020-01-30/opensmtpd-advisory-dissected/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-252",
+      "url": "https://cwe.mitre.org/data/definitions/252.html",
+      "title": "未チェックの戻り値"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-02-04T05:37:56Z",
+      "description": "[2020年02月04日]\\n  掲載"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2020-06-01T04:47:00Z",
+      "description": "[2020年06月01日]\\n  参考情報：関連文書 (OpenSMTPD advisory dissected) を追加"
+    }
+  ],
+  "date_first_published": "2020-02-04T14:37:56+09:00",
+  "date_last_updated": "2020-06-01T14:09:43+09:00",
+  "date_public": "2020-01-31T00:00:00+09:00"
+}

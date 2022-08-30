@@ -1,0 +1,79 @@
+{
+  "vulinfo_id": "JVNDB-2016-005708",
+  "title": "DokuWiki におけるフィッシング攻撃を実行される脆弱性",
+  "vulinfo_description": "DokuWiki は、パスワードリセットの URL として baseurl 設定の代わりに $_SERVER[HTTP_HOST] を使用するため、フィッシング攻撃を実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Andreas Gohr",
+      "product_name": "DokuWiki",
+      "version_number": [
+        "2016-06-26a およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:andreas_gohr:dokuwiki"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "第三者により、HTTP ホストヘッダを介して、URL のホスト名を変更される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Password Reset Address Spoof Vulnerability in DokuWiki #1709",
+      "url": "https://github.com/splitbrain/dokuwiki/issues/1709"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7965",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7965"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7965",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7965"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-07T10:54:10+09:00",
+  "date_last_updated": "2016-11-07T10:54:10+09:00",
+  "date_public": "2016-10-04T00:00:00+09:00"
+}

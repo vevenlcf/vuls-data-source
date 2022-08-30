@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-005184",
+  "title": "Linux Kernel の net/ipv6/udp_offload.c の udp6_ufo_fragment 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の net/ipv6/udp_offload.c の udp6_ufo_fragment 関数は、UDP Fragmentation Offload (UFO) が有効な場合、フラグメントヘッダを挿入する前に特定のサイズ比較を適切に実行しないため、サービス運用妨害 (パニック) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.12 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.1",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "第三者により、過度に大きな IPv6 UDP パケットを介して、サービス運用妨害 (パニック) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ipv6: fix headroom calculation in udp6_ufo_fragment",
+      "url": "https://github.com/torvalds/linux/commit/0e033e04c2678dbbe74a46b23fffb7bb918c288e"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "ipv6: fix headroom calculation in udp6_ufo_fragment",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0e033e04c2678dbbe74a46b23fffb7bb918c288e"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1030015",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1030015"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4563",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4563"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4563",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4563"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-11-21T15:55:09+09:00",
+  "date_last_updated": "2013-11-21T15:55:09+09:00",
+  "date_public": "2013-11-05T00:00:00+09:00"
+}

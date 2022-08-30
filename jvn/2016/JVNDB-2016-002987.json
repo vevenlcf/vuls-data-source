@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2016-002987",
+  "title": "GNU C Library の glob の実装におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "GNU C Library (別名 glibc) の glob の実装には、GLOB_ALTDIRFUNC が使用されている場合、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "23"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "GNU Project",
+      "product_name": "GNU C Library",
+      "version_number": [
+        "2.24 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:glibc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、過度に長い名前を介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-68abc0be35",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/184626.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GNU Project",
+      "vulinfo_id": "CVE-2016-1234: glob: Do not copy d_name field of struct dirent [BZ #19779]",
+      "url": "https://sourceware.org/git/gitweb.cgi?p=glibc.git;h=5171f3079f2cc53e0548fc4967361f4d1ce9d7ea"
+    },
+    {
+      "type": "vendor",
+      "name": "Sourceware Bugzilla",
+      "vulinfo_id": "Bug 19779",
+      "url": "https://sourceware.org/bugzilla/show_bug.cgi?id=19779"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1234",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1234"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1234",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1234"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-06T13:55:16+09:00",
+  "date_last_updated": "2016-06-06T13:55:16+09:00",
+  "date_public": "2016-05-04T00:00:00+09:00"
+}

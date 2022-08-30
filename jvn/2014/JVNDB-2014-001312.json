@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2014-001312",
+  "title": "Open Ticket Request System の Kernel/Modules/ 内の複数の .pm ファイルにおけるクロスサイトリクエストフォージェリの脆弱性",
+  "vulinfo_description": "Open Ticket Request System (OTRS) の Kernel/Modules/ 内の以下の .pm ファイルには、クロスサイトリクエストフォージェリの脆弱性が存在します。  (1) CustomerPreferences.pm (2) CustomerTicketMessage.pm (3) CustomerTicketProcess.pm (4) CustomerTicketZoom.pm",
+  "affected": [
+    {
+      "name": "OTRS プロジェクト",
+      "product_name": "OTRS",
+      "version_number": [
+        "3.1.19 未満の 3.1.x",
+        "3.2.14 未満の 3.2.x",
+        "3.3.4 未満の 3.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:otrs:otrs"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、任意のユーザの認証をハイジャックされ、(1) チケットを作成される、または (2) 既存のチケットのフォローアップを送信される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed bug#10099: Missing challenge token checks on customer interface - commit ca2c339",
+      "url": "https://github.com/OTRS/otrs/commit/ca2c3390fd60d9a3f810ed2c22cbc2c193457b77"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed bug#10099: Missing challenge token checks on customer interface - commit 92f4172",
+      "url": "https://github.com/OTRS/otrs/commit/92f417277f43832f1a0462f2485fe1fd3fd52312"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed bug#10099: Missing challenge token checks on customer interface - commit 6f324aa",
+      "url": "https://github.com/OTRS/otrs/commit/6f324aaf8647729d509eebf063a0181f9f9196f7"
+    },
+    {
+      "type": "vendor",
+      "name": "OTRS",
+      "vulinfo_id": "Release Notes: OTRS Help Desk 3.3.4",
+      "url": "https://www.otrs.com/release-notes-otrs-help-desk-3-3-4/"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "2014-01 - CSRF issue in customer web interface",
+      "url": "https://www.otrs.com/security-advisory-2014-01-csrf-issue-customer-web-interface/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-1694",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1694"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-1694",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1694"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年02月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-02-06T14:08:21+09:00",
+  "date_last_updated": "2014-02-06T14:08:21+09:00",
+  "date_public": "2014-01-28T00:00:00+09:00"
+}

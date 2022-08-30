@@ -1,0 +1,120 @@
+{
+  "vulinfo_id": "JVNDB-2015-003532",
+  "title": "Node.js などの製品で使用される Google V8 の unicode-decoder.cc におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Node.js およびその他の製品で使用される Google V8 の unicode-decoder.cc の Utf8DecoderBase::WriteUtf16Slow 関数は、UTF-16 サロゲートペアに使用可能なメモリがあることを検証しないため、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Google",
+      "product_name": "V8 JavaScript Engine",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:google:v8"
+      }
+    },
+    {
+      "name": "io.js",
+      "product_name": "io.js",
+      "version_number": [
+        "1.8.3 未満",
+        "2.3.3 未満の 2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:iojs:io.js"
+      }
+    },
+    {
+      "name": "Node.js Foundation",
+      "product_name": "Node.js",
+      "version_number": [
+        "0.12.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nodejs:node.js"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたバイトシーケンスを介して、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Chromium Code Reviews",
+      "vulinfo_id": "Issue 1226493003",
+      "url": "https://codereview.chromium.org/1226493003"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Segfault on node 0.12.4, to do with unicode and buffers #25583",
+      "url": "https://github.com/joyent/node/issues/25583"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "V8 JavaScript Engine",
+      "url": "http://code.google.com/p/v8/"
+    },
+    {
+      "type": "vendor",
+      "name": "io.js",
+      "vulinfo_id": "Top Page",
+      "url": "https://iojs.org/en/index.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Joyent",
+      "vulinfo_id": "Node v0.12.6 (Stable)",
+      "url": "http://blog.nodejs.org/2015/07/03/node-v0-12-6-stable/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5380",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5380"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5380",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5380"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Current Activity",
+      "vulinfo_id": "Security Updates for Node.js and io.js",
+      "url": "https://www.us-cert.gov/ncas/current-activity/2015/07/06/Security-Updates-Nodejs-and-iojs"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年07月13日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-07-13T18:05:28+09:00",
+  "date_last_updated": "2015-07-13T18:05:28+09:00",
+  "date_public": "2015-07-04T00:00:00+09:00"
+}

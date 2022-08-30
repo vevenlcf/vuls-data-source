@@ -1,0 +1,109 @@
+{
+  "vulinfo_id": "JVNDB-2013-004531",
+  "title": "GNU C Library および Embedded GLIBC の PTR_MANGLE の実装における実行フローを制御される脆弱性",
+  "vulinfo_description": "GNU C Library (別名 glibc または libc6) および Embedded GLIBC (EGLIBC) の PTR_MANGLE の実装は、ポインタガード (pointer guard) のランダム値を初期化しないため、実行フローを制御される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GNU Project",
+      "product_name": "Embedded GLIBC",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:eglibc"
+      }
+    },
+    {
+      "name": "GNU Project",
+      "product_name": "GNU C Library",
+      "version_number": [
+        "2.17 およびそれ以前",
+        "2.4"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnu:glibc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.1",
+        "vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、アプリケーションのバッファオーバーフローの脆弱性を利用され、ポインタアドレスの計算に既知のゼロ値のポインタガード (pointer guard) を使用されることで、実行フローを制御される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GnuPG Project",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.gnu.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 985625",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=985625"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2013:283",
+      "url": "http://www.mandriva.com/security/advisories?name=MDVSA-2013:283"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2013:284",
+      "url": "http://www.mandriva.com/security/advisories?name=MDVSA-2013:284"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4788",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4788"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4788",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4788"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: CVE-2013-4788 - Eglibc PTR MANGLE bug",
+      "url": "http://www.openwall.com/lists/oss-security/2013/07/15/9"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2013-4788 - Eglibc PTR MANGLE bug",
+      "url": "http://hmarco.org/bugs/CVE-2013-4788.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年10月09日]\\n  掲載\\n[2013年12月26日]\\n  ベンダ情報：Mandriva, Inc. (MDVSA-2013:283) を追加\\n  ベンダ情報：Mandriva, Inc. (MDVSA-2013:284) を追加\\n  参考情報：関連文書 (Re: CVE-2013-4788 - Eglibc PTR MANGLE bug) の情報を更新"
+    }
+  ],
+  "date_first_published": "2013-10-09T12:22:44+09:00",
+  "date_last_updated": "2013-12-26T17:42:39+09:00",
+  "date_public": "2013-07-15T00:00:00+09:00"
+}

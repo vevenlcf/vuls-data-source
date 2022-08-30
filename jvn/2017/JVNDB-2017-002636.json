@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2017-002636",
+  "title": "Google gRPC の core/lib/support/alloc.c の gpr_free 関数における境界外書き込みの脆弱性",
+  "vulinfo_description": "Google gRPC の core/lib/support/alloc.c の gpr_free 関数には、境界外書き込みの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "gRPC",
+      "product_name": "gRPC",
+      "version_number": [
+        "2017-02-22 より前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:grpc:grpc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "境界外書き込みを引き起こされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Chromium",
+      "vulinfo_id": "Issue 655",
+      "url": "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=655"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fixed Heap-buffer-overflow in parse_unix via clusterfuzz #9833",
+      "url": "https://github.com/grpc/grpc/pull/9833"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-7861",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7861"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-7861",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-7861"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-787",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "title": "境界外書き込み"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年04月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-04-24T16:48:49+09:00",
+  "date_last_updated": "2017-04-24T16:48:49+09:00",
+  "date_public": "2017-02-22T00:00:00+09:00"
+}

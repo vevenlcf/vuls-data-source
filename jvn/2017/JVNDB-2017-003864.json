@@ -1,0 +1,134 @@
+{
+  "vulinfo_id": "JVNDB-2017-003864",
+  "title": "dotCMS に複数の脆弱性",
+  "vulinfo_description": "dotCMS の管理画面には、クロスサイトリクエストフォージェリの脆弱性が存在します。また、dotCMS Enterprise Pro の \"Push Publishing\" 機能にはパストラバーサルならびに任意のファイルアップロードの脆弱性が存在します。  クロスサイトリクエストフォージェリ (CWE-352) - CVE-2017-3187 dotCMS の管理画面には、クロスサイトリクエストフォージェリの脆弱性が存在します。当該製品にログインした状態のユーザが細工されたページにアクセスすることで、ユーザの権限で意図しない操作が行われる可能性があります。  ディレクトリトラバーサル (CWE-22) - CVE-2017-3188 \"Push Publishing\" 機能によりアップロードされた \"Bundle\" ファイル (tar.gz アーカイブファイル) を展開する際、アーカイブに含まれているファイル名のチェックが適切に行われないため、任意のディレクトリにファイルが書き出される可能性があります。これらのアーカイブファイルのアップロードは当該製品の管理画面から行うことができますが、クロスサイトリクエストフォージェリの脆弱性 (CVE-2017-3187) を使用することで、ログイン状態のユーザがアップロード操作をさせられる可能性があります。  危険なタイプのファイルの無制限アップロード (CWE-434) - CVE-2017-3189 \"Push Publishing\" 機能によりアップロードされた \"Bundle\" ファイル (tar.gz アーカイブファイル) を展開する際、アーカイブに含まれているファイルの種類のチェックが適切に行われません。ディレクトリトラバーサルの脆弱性 (CVE-2017-3188) と組み合わせることで、dotCMS アプリケーションの実行権限で任意のコマンドを実行される可能性があります。",
+  "affected": [
+    {
+      "name": "dotCMS",
+      "product_name": "dotCMS",
+      "version_number": [
+        "version 3.7.1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dotcms:dotcms"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、管理画面を操作されたり、dotCMS アプリケーションの実行権限で任意のコマンドを実行されたりする可能性があります。"
+  },
+  "solution": "2017年3月7日現在、本脆弱性に対する有効な対策方法は不明です。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  * ログイン中は信頼できないウェブサイトを閲覧しない",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "dotCMS",
+      "vulinfo_id": "Top Page",
+      "url": "https://dotcms.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3187",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3187"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3188",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3188"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-3189",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-3189"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96566737",
+      "url": "http://jvn.jp/vu/JVNVU96566737/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3187",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3187"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3188",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3188"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-3189",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-3189"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#168699",
+      "url": "https://www.kb.cert.org/vuls/id/168699"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-352",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-352.html",
+      "title": "クロスサイトリクエストフォージェリ"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-434",
+      "url": "https://cwe.mitre.org/data/definitions/434.html",
+      "title": "危険なタイプのファイルの無制限アップロード"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年06月08日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-05T02:47:49Z",
+      "description": "[2019年07月05日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3187) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3188) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2017-3189) を追加"
+    }
+  ],
+  "date_first_published": "2017-06-08T17:00:47+09:00",
+  "date_last_updated": "2019-07-05T18:02:33+09:00",
+  "date_public": "2017-03-06T00:00:00+09:00"
+}

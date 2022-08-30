@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2016-003352",
+  "title": "cURL および libcurl における任意のコードを実行される脆弱性",
+  "vulinfo_description": "cURL および libcurl には、SSPI、または Telnet を使用してビルドされている場合、検索パスに関する処理に不備があるため、DLL ハイジャック攻撃を実行され、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Haxx",
+      "product_name": "cURL",
+      "version_number": [
+        "7.49.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:haxx:curl"
+      }
+    },
+    {
+      "name": "Haxx",
+      "product_name": "libcurl",
+      "version_number": [
+        "7.49.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:haxx:libcurl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、アプリケーションまたはカレントワーキングディレクトリ内の、トロイの木馬の (1) security.dll、(2) secur32.dll、または (3) ws2_32.dll を介して、DLL ハイジャック攻撃を実行され、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "Windows DLL hijacking",
+      "url": "https://curl.haxx.se/docs/adv_20160530.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4802",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4802"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4802",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4802"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-29T11:45:03+09:00",
+  "date_last_updated": "2016-06-29T11:45:03+09:00",
+  "date_public": "2016-05-30T00:00:00+09:00"
+}

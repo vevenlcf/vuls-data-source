@@ -1,0 +1,183 @@
+{
+  "vulinfo_id": "JVNDB-2015-002844",
+  "title": "PostgreSQL におけるメモリ二重解放の脆弱性",
+  "vulinfo_description": "PostgreSQL には、メモリを二重に解放する不備があるため、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-415: Double Free (二重解放) と識別されています。 http://cwe.mitre.org/data/definitions/415.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "14.10",
+        "15.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "PostgreSQL.org",
+      "product_name": "PostgreSQL",
+      "version_number": [
+        "9.0.20 未満",
+        "9.1.16 未満の 9.1.x",
+        "9.2.11 未満の 9.2.x",
+        "9.3.7 未満の 9.3.x",
+        "9.4.2 未満の 9.4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:postgresql:postgresql"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "macOS Server (旧 OS X Server)",
+      "version_number": [
+        "5.0.3 未満 (OS X Yosemite v10.10.5 以降)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:os_x_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、セッションのシャットダウンシーケンス中、認証のタイムアウトが期限切れになる際に SSL セッションを閉じられることで、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Mailing Lists",
+      "vulinfo_id": "APPLE-SA-2015-09-16-4 OS X Server 5.0.3",
+      "url": "http://lists.apple.com/archives/security-announce/2015/Sep/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT205219",
+      "url": "https://support.apple.com/en-us/HT205219"
+    },
+    {
+      "type": "vendor",
+      "name": "Apple セキュリティアップデート",
+      "vulinfo_id": "HT205219",
+      "url": "http://support.apple.com/ja-jp/HT205219"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3269",
+      "url": "https://www.debian.org/security/2015/dsa-3269"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3270",
+      "url": "https://www.debian.org/security/2015/dsa-3270"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL NEWS",
+      "vulinfo_id": "PostgreSQL 9.4.2, 9.3.7, 9.2.11, 9.1.16, and 9.0.20 released!",
+      "url": "http://www.postgresql.org/about/news/1587/"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.3.7",
+      "url": "http://www.postgresql.org/docs/9.3/static/release-9-3-7.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.0.20",
+      "url": "http://www.postgresql.org/docs/9.0/static/release-9-0-20.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.1.16",
+      "url": "http://www.postgresql.org/docs/9.1/static/release-9-1-16.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.4.2",
+      "url": "http://www.postgresql.org/docs/9.4/static/release-9-4-2.html"
+    },
+    {
+      "type": "vendor",
+      "name": "PostgreSQL Release Notes",
+      "vulinfo_id": "Release 9.2.11",
+      "url": "http://www.postgresql.org/docs/9.2/static/release-9-2-11.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2621-1",
+      "url": "http://www.ubuntu.com/usn/USN-2621-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-3165",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3165"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99970459",
+      "url": "http://jvn.jp/vu/JVNVU99970459/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-3165",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3165"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年06月01日]\\n  掲載\\n[2015年10月05日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：アップル (APPLE-SA-2015-09-16-4 OS X Server 5.0.3) を追加\\n  ベンダ情報：アップル (HT205219) を追加\\n  参考情報：JVN (JVNVU#99970459) を追加"
+    }
+  ],
+  "date_first_published": "2015-06-01T12:11:13+09:00",
+  "date_last_updated": "2015-10-05T16:14:42+09:00",
+  "date_public": "2015-05-22T00:00:00+09:00"
+}

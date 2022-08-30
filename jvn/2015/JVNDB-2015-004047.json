@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2015-004047",
+  "title": "OpenSAML-C および Shibboleth Service Provider で使用される XMLTooling-C におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSAML-C および Shibboleth Service Provider (SP) で使用される XMLTooling-C には、サービス運用妨害 (クラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Shibboleth",
+      "product_name": "OpenSAML",
+      "version_number": [
+        "-C 2.5.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:shibboleth:opensaml"
+      }
+    },
+    {
+      "name": "Shibboleth",
+      "product_name": "Shibboleth Service Provider",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:shibboleth:shibboleth-sp"
+      }
+    },
+    {
+      "name": "Shibboleth",
+      "product_name": "XMLTooling",
+      "version_number": [
+        "-C 1.5.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:shibboleth:xmltooling"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、無効なスキーマ (schema-invalid) の XML データを介して、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Shibboleth",
+      "vulinfo_id": "cpp-xmltooling.git / commitdiff",
+      "url": "https://git.shibboleth.net/view/?p=cpp-xmltooling.git;a=commitdiff;h=2d795c731e6729309044607154978696a87fd900"
+    },
+    {
+      "type": "vendor",
+      "name": "Shibboleth Service Provider Security Advisory",
+      "vulinfo_id": "[21 July 2015]",
+      "url": "http://shibboleth.net/community/advisories/secadv_20150721.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0851",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0851"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0851",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0851"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年08月13日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-08-13T12:36:58+09:00",
+  "date_last_updated": "2015-08-13T12:36:58+09:00",
+  "date_public": "2015-07-21T00:00:00+09:00"
+}

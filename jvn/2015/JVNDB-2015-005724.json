@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2015-005724",
+  "title": "Commvault Edge Server に Cookie のデシリアライズ処理に関する脆弱性",
+  "vulinfo_description": "Commvault Edge Server 10 R2 は、ユーザから渡された信頼できない Cookie データをデシリアライズして使用しています。結果としてウェブサーバの権限で任意の OS コマンドを実行される可能性があります。  信頼していないデータのデシリアライゼーション (CWE-502) - CVE-2015-7253 Commvault Edge Server 10 R2 は、ユーザから渡された信頼できない Cookie データをデシリアライズし、適切な検証を行わないまま使用しています。CommVault Edge Server のウェブ管理画面にアクセス可能な攻撃者は、細工した Cookie を当該製品にデシリアライズさせることで、ウェブサーバの権限で任意の OS コマンドを実行することが可能です。  CWE-502: Deserialization of Untrusted Data http://cwe.mitre.org/data/definitions/502.html",
+  "affected": [
+    {
+      "name": "Commvault Systems, Inc",
+      "product_name": "Commvault Edge Server",
+      "version_number": [
+        "10 R2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:commvault:edge_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "遠隔の攻撃者によって細工された Cookie を受信してデシリアライズすることで、ウェブサーバの権限で任意の OS コマンドを実行される可能性があります。"
+  },
+  "solution": "2015年11月4日現在、対策方法は不明です。  [ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。  * 信頼できない通信を制限する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Commvault",
+      "vulinfo_id": "Data and Information Management Software",
+      "url": "http://www.commvault.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7253",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7253"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#95366824",
+      "url": "http://jvn.jp/vu/JVNVU95366824/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7253",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7253"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#866432",
+      "url": "http://www.kb.cert.org/vuls/id/866432"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-78",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-78.html",
+      "title": "OSコマンドインジェクション"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-05T13:47:28+09:00",
+  "date_last_updated": "2015-11-05T13:47:28+09:00",
+  "date_public": "2015-11-03T00:00:00+09:00"
+}

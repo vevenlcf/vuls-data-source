@@ -1,0 +1,250 @@
+{
+  "vulinfo_id": "JVNDB-2013-001452",
+  "title": "libvirt におけるサービス運用妨害 (クラッシュ) の脆弱性",
+  "vulinfo_description": "libvirt の rpc/virnetserverclient.c 内の virNetMessageFree 関数には、解放済みメモリの使用 (Use-after-free) により、サービス運用妨害 (クラッシュ) 状態となる、および任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 -(lts) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu_linux"
+      }
+    },
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "17",
+        "18"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "12.1",
+        "12.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "SUSE Linux",
+      "version_number": [
+        "Enterprise Desktop 11",
+        "Enterprise Server 11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:suse_linux"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "SUSE Linux Enterprise Software Development Kit",
+      "version_number": [
+        "11 SP2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:novell:suse_linux_enterprise_software_development_kit"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "libvirt",
+      "version_number": [
+        "0.10.2.3 未満の 0.10.2",
+        "0.9.11.9 未満の 0.9.11",
+        "0.9.6.4 未満の 0.9.6",
+        "1.0.2 未満の 1.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:libvirt"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6",
+        "EUS 6.3.z"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、RPC 接続の際に特定のエラーを誘発され、メッセージがメッセージキューから削除されずに解放されることで、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-1642",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098370.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-1644",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098326.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2013-1626",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098398.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "Releases",
+      "url": "http://libvirt.org/news.html"
+    },
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "Maintenance Releases",
+      "url": "http://wiki.libvirt.org/page/Maintenance_Releases"
+    },
+    {
+      "type": "vendor",
+      "name": "libvirt.org",
+      "vulinfo_id": "rpc: Fix crash on error paths of message dispatching",
+      "url": "http://libvirt.org/git/?p=libvirt.git;a=commit;h=46532e3e8ed5f5a736a02f67d6c805492f9ca720"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2013:0320",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00016.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2013:0274",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2013:0275",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00002.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 893450",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=893450"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0199",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0199.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1708-1",
+      "url": "http://www.ubuntu.com/usn/USN-1708-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-0170",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-0170"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-0170",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0170"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年02月12日]\\n  掲載\\n[2013年04月08日]\\n  ベンダ情報：openSUSE (SUSE-SU-2013:0320) を追加\\n  ベンダ情報：openSUSE (openSUSE-SU-2013:0274) を追加\\n  ベンダ情報：openSUSE (openSUSE-SU-2013:0275) を追加\\n  ベンダ情報：Ubuntu (USN-1708-1) を追加\\n[2013年11月01日]\\n  影響を受けるシステム：内容を更新"
+    }
+  ],
+  "date_first_published": "2013-02-12T16:54:45+09:00",
+  "date_last_updated": "2013-11-01T15:58:41+09:00",
+  "date_public": "2013-01-28T00:00:00+09:00"
+}

@@ -1,0 +1,116 @@
+{
+  "vulinfo_id": "JVNDB-2016-002933",
+  "title": "pgpdump の buffer.c の read_binary 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "pgpdump の buffer.c の read_binary 関数には、サービス運用妨害 (無限ループおよび CPU 資源の消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "22",
+        "23",
+        "24"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "Kazu Yamamoto",
+      "product_name": "pgpdump",
+      "version_number": [
+        "0.30 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pgpdump:pgpdump"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、巧妙に細工された入力を介して、サービス運用妨害 (無限ループおよび CPU 資源の消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-6fd7a31d36",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/184617.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-8f4b54b005",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/183750.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2016-5733ad20f5",
+      "url": "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/184689.html"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "fix endless loop on invalid 2 Byte input \\xa3\\x03 (SYSS-16-030) #16",
+      "url": "https://github.com/kazu-yamamoto/pgpdump/pull/16"
+    },
+    {
+      "type": "vendor",
+      "name": "pgpdump",
+      "vulinfo_id": "pgpdump",
+      "url": "http://www.mew.org/~kazu/proj/pgpdump/ja/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-4021",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4021"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-4021",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4021"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-30T14:07:16+09:00",
+  "date_last_updated": "2016-05-30T14:07:16+09:00",
+  "date_public": "2016-04-13T00:00:00+09:00"
+}

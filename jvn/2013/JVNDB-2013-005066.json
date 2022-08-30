@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2013-005066",
+  "title": "Linux Kernel の Alchemy LCD フレームバッファドライバにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "Linux Kernel の Alchemy LCD フレームバッファドライバには、(1) drivers/video/au1100fb.c の au1100fb_fb_mmap 関数、および (2) drivers/video/au1200fb.c の au1200fb_fb_mmap 関数に関する処理に不備があるため、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.12 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、巧妙に細工された mmap 操作を介して、カーネルメモリ全体に対して読み書き可能なメモリマッピングを作成され、その結果、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix a few incorrectly checked [io_]remap_pfn_range() calls",
+      "url": "https://github.com/torvalds/linux/commit/7314e613d5ff9f0934f7a0f74ed7973b903315d1"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "patch-3.12.bz2",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.12.bz2"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "Fix a few incorrectly checked [io_]remap_pfn_range() calls",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7314e613d5ff9f0934f7a0f74ed7973b903315d1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4511",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4511"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4511",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4511"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月13日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-11-13T14:46:59+09:00",
+  "date_last_updated": "2013-11-13T14:46:59+09:00",
+  "date_public": "2013-10-29T00:00:00+09:00"
+}

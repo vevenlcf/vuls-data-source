@@ -1,0 +1,136 @@
+{
+  "vulinfo_id": "JVNDB-2016-005560",
+  "title": "Synology 製の複数の NAS サーバに機器共通の認証情報が設定されている問題",
+  "vulinfo_description": "Synology 製の複数の NAS サーバには、機器共通の認証情報が設定されています。  証明書やパスワードの管理 (CWE-255) - CVE-2016-6554 Synology 製の NAS サーバ である DS107、DS116 および DS213 の初期設定では、認証情報として \"guest:(パスワードなし)\" および \"admin:(パスワードなし)\" が設定されています。",
+  "affected": [
+    {
+      "name": "Synology Inc.",
+      "product_name": "Disk Station DS107 firmware",
+      "version_number": [
+        "3.1-1639 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:synology:ds107_firmware"
+      }
+    },
+    {
+      "name": "Synology Inc.",
+      "product_name": "DiskStation DS116 firmware",
+      "version_number": [
+        "5.2-5644-1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:synology:ds116_firmware"
+      }
+    },
+    {
+      "name": "Synology Inc.",
+      "product_name": "DiskStation DS213 firmware",
+      "version_number": [
+        "5.2-5644-1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:synology:ds213_firmware"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.4",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、管理者権限で機器にアクセスされる可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、ファームウェアを最新版へアップデートしてください。 DS116 および DS213 では firmware version 5.2-5644-1 で、初期設定で存在する管理者アカウント \"admin\" を有効にする場合にはパスワードの設定を要求するように変更されています。  [ワークアラウンドを実施する] DS107 およびアカウント \"guest\" に対しては、次のワークアラウンドを実施してください。  　* 初期設定で存在しているアカウントを無効にする 　　これら対象製品全てにおいて最新のファームウェアではアカウント \"guest\" を無効に設定することが可能です。 　　DS116 および DS213 向けの最新のファームウェアではアカウント \"admin\" も無効に設定することが可能です。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Synology",
+      "vulinfo_id": "DS213 Release Notes",
+      "url": "https://www.synology.com/en-global/releaseNote/DS213"
+    },
+    {
+      "type": "vendor",
+      "name": "Synology",
+      "vulinfo_id": "DS107 Release Notes",
+      "url": "https://www.synology.com/en-global/releaseNote/DS107"
+    },
+    {
+      "type": "vendor",
+      "name": "Synology",
+      "vulinfo_id": "DS116 Release Notes",
+      "url": "https://www.synology.com/en-global/releaseNote/DS116"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6554",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6554"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#93774715",
+      "url": "http://jvn.jp/vu/JVNVU93774715/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6554",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-6554"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#404187",
+      "url": "http://www.kb.cert.org/vuls/id/404187"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "SSHowDowN: Exploitation of IoT devices for Launching Mass-Scale Attack Campaigns",
+      "url": "https://www.akamai.com/us/en/multimedia/documents/state-of-the-internet/sshowdown-exploitation-of-iot-devices-for-launching-mass-scale-attack-campaigns.pdf"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-255",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-255.html",
+      "title": "証明書・パスワードの管理"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年10月24日]\\n  掲載"
+    },
+    {
+      "history_no": "1",
+      "date_time": "2019-07-11T08:18:45Z",
+      "description": "[2019年07月11日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-6554) を追加"
+    }
+  ],
+  "date_first_published": "2016-10-24T16:58:34+09:00",
+  "date_last_updated": "2016-10-24T16:58:34+09:00",
+  "date_public": "2016-10-20T00:00:00+09:00"
+}

@@ -1,0 +1,123 @@
+{
+  "vulinfo_id": "JVNDB-2013-003801",
+  "title": "PuTTY および WinSCP などの製品における整数オーバーフローの脆弱性",
+  "vulinfo_description": "PuTTY、WinSCP および PuTTY を使用するその他の製品には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "6.0",
+        "7.0",
+        "7.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "12.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "Simon Tatham",
+      "product_name": "PuTTY",
+      "version_number": [
+        "0.62 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:simon_tatham:putty"
+      }
+    },
+    {
+      "name": "WinSCP",
+      "product_name": "WinSCP",
+      "version_number": [
+        "5.1.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:winscp:winscp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート SSH サーバにより、SSH ハンドシェイク時の RSA 鍵署名用の負のサイズ値を介して、ヒープベースのバッファオーバーフローを誘発されることで、PuTTy を使用する特定のアプリケーションにおいて、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "718779",
+      "url": "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=718779"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-2736",
+      "url": "http://www.debian.org/security/2013/dsa-2736"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2013:1355",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-08/msg00041.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Simon Tatham",
+      "vulinfo_id": "PuTTY vulnerability vuln-signature-stringlen",
+      "url": "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-signature-stringlen.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4852",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4852"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4852",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4852"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-08-21T20:03:45+09:00",
+  "date_last_updated": "2013-08-21T20:03:45+09:00",
+  "date_public": "2013-07-09T00:00:00+09:00"
+}

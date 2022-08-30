@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2010-002961",
+  "title": "MailEnable の SMTP サービス (MESMTPC.exe) におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MailEnable の SMTP サービス (MESMTPC.exe) は、長さのチェックを適切に実行しないため、サービス運用妨害 (クラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MailEnable",
+      "product_name": "MailEnable",
+      "version_number": [
+        "3.x および 4.25"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mailenable:mailenable"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、(1) 過度に長い MAIL FROM コマンドの電子メールアドレスまたは (2) RCPT TO コマンドのドメイン名を介して、「未処理の無効なパラメータエラー」を誘発され、サービス運用妨害 (クラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MailEnable",
+      "vulinfo_id": "ME-10044",
+      "url": "http://www.mailenable.com/hotfix/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2580",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2580"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2580",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2580"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:42:07+09:00",
+  "date_last_updated": "2012-03-27T18:42:07+09:00",
+  "date_public": "2010-09-13T00:00:00+09:00"
+}

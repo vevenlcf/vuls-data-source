@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2013-003945",
+  "title": "ID-software などの製品で使用される libdigidoc における絶対パストラバーサルの脆弱性",
+  "vulinfo_description": "ID-software およびその他の製品で使用される libdigidoc の DigiDocSAXParser.c 内の handleStartDataFile 関数には、絶対パストラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Id Software",
+      "product_name": "ID-software",
+      "version_number": [
+        "3.7.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:id:id-software"
+      }
+    },
+    {
+      "name": "Id Software",
+      "product_name": "libdigidoc",
+      "version_number": [
+        "3.6.0.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:id:libdigidoc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、DDOC ファイル内の / (スラッシュ) または \\ (バックスラッシュ) で始まるファイル名を介して、任意のファイルを上書きされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ID",
+      "vulinfo_id": "ID-software ver. 3.7.2",
+      "url": "http://www.id.ee/?lang=en\u0026id=34283#3_7_2"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1002299",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1002299"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-5648",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-5648"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-5648",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5648"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Contents of /updates/3/libdigidoc/current/SOURCES/libdigidoc-3.6.0.0-security-fix-DataFile-name-tag.patch",
+      "url": "http://svnweb.mageia.org/packages/updates/3/libdigidoc/current/SOURCES/libdigidoc-3.6.0.0-security-fix-DataFile-name-tag.patch?revision=472660\u0026view=markup"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Mageia Bugzilla - Bug 11100",
+      "url": "https://bugs.mageia.org/show_bug.cgi?id=11100"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-09-02T15:33:46+09:00",
+  "date_last_updated": "2013-09-02T15:33:46+09:00",
+  "date_public": "2013-08-22T00:00:00+09:00"
+}

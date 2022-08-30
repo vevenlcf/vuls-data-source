@@ -1,0 +1,93 @@
+{
+  "vulinfo_id": "JVNDB-2018-000051",
+  "title": "Visual C++ 再頒布可能パッケージのインストーラにおける DLL 読み込みの脆弱性",
+  "vulinfo_description": "Microsoft が提供する Visual C++ 再頒布可能パッケージのインストーラには、DLL を読み込む際の検索パスに関する処理に不備があり、インストーラと同一のディレクトリ内に存在する特定の DLL ファイルを読み込んでしまう脆弱性 (CWE-427) が存在します。 開発者によると、本件は「アプリケーション ディレクトリにおける DLL の植え付け」の問題であり、実際の攻撃実現性は限定的であるため、セキュリティ更新プログラムによる対応は行わないとのことです。  開発者による「アプリケーション ディレクトリにおける DLL の植え付け」への対応については、開発者が提供する情報をご確認ください。",
+  "affected": [
+    {
+      "name": "マイクロソフト",
+      "product_name": "Visual C++ 再頒布可能パッケージ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:microsoft:visual_c%2B%2B_redistributable_package"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "インストーラを実行している権限で、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[ワークアラウンドを実施する] 次のワークアラウンドを実施することで、本脆弱性の影響を軽減することが可能です。 ・インストーラは新たに作成したディレクトリに保存し、他の無関係なファイルが存在しない状態で実行する ・インストーラを保存したディレクトリに信用できないファイルが存在しないことを確認する",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Microsoft TechNet",
+      "vulinfo_id": "DLL の植え付けの脆弱性のトリアージ",
+      "url": "https://blogs.technet.microsoft.com/jpsecurity/2018/04/10/triaging-a-dll-planting-vulnerability/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-0599",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-0599"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#81196185",
+      "url": "https://jvn.jp/jp/JVN81196185/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNTA#91240916",
+      "url": "https://jvn.jp/ta/JVNTA91240916/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-0599",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-0599"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-05-11T05:58:33Z",
+      "description": "[2018年05月17日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2019-07-05T07:35:48Z",
+      "description": "[2019年07月05日]\\n  参考情報：National Vulnerability Database (NVD) (CVE-2018-0599) を追加"
+    }
+  ],
+  "date_first_published": "2018-05-17T12:03:39+09:00",
+  "date_last_updated": "2019-07-05T16:36:16+09:00",
+  "date_public": "2018-05-17T00:00:00+09:00"
+}

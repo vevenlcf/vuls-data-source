@@ -1,0 +1,114 @@
+{
+  "vulinfo_id": "JVNDB-2018-003386",
+  "title": "投機的実行機能を持つ CPU に対するキャッシュサイドチャネル攻撃",
+  "vulinfo_description": "投機的実行機能を持つ CPU はキャッシュサイドチャネル攻撃に対して脆弱性があります。\"Variant 4\" あるいは \"SpectreNG\" と呼ばれています。  投機的実行機能を持つ CPU に対してキャッシュタイミングサイドチャネル攻撃を行う下記の脆弱性が報告されています。  * CVE-2018-3639 (Variant 4 \"SpectreNG\") : Speculative Store Bypass (SSB) * CVE-2018-3640 (Variant 3a) : Rogue System Register Read (RSRE)  詳細については、Project Zero \u003ca href=\"https://bugs.chromium.org/p/project-zero/issues/detail?id=1528\"\u003ebug report\u003c/a\u003e、Intel security advisory \u003ca href=\"https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00115.html\"\u003eINTEL-SA-00115\u003c/a\u003e および ARM \u003ca href=\"https://developer.arm.com/support/arm-security-updates/speculative-processor-vulnerability\"\u003ewhitepaper\u003c/a\u003e を参照してください。  本脆弱性は、過去に公表された\u003ca href=\"https://www.kb.cert.org/vuls/id/584653\"\u003e脆弱性\u003c/a\u003e CVE-2017-5753 (Variant 1 \"Spectre\")、 CVE-2017-5715 (Variant 2 \"Spectre\")、 CVE-2017-5754 (Variant 3 \"Meltdown\") と類似するため \"SpectreNG\" という名称で報じられています。",
+  "affected": [
+    {
+      "name": "（複数のベンダ）",
+      "product_name": "（複数の製品）",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:multiple_vendors"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "ローカルユーザとしてアクセス可能な第三者に、キャッシュタイミングサイドチャネル攻撃を利用されることによって、任意の特権データやシステムレジスタ値を読まれる可能性があります。"
+  },
+  "solution": "[システムソフトウェアをアップデートする] OEM およびシステムソフトウェアベンダの提供する情報をもとに最新版へアップデートしてください。  [ブラウザをアップデートする] ブラウザを最新版へアップデートしてください。主要なブラウザでは、ブラウザを利用したサイドチャネル攻撃の実行を難しくする緩和策が適用されています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Arm Developer",
+      "vulinfo_id": "Speculative Processor Vulnerability - Arm Developer",
+      "url": "https://developer.arm.com/support/arm-security-updates/speculative-processor-vulnerability"
+    },
+    {
+      "type": "vendor",
+      "name": "Intel",
+      "vulinfo_id": "INTEL-SA-00115",
+      "url": "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00115.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Intel",
+      "vulinfo_id": "Side Channel Methods - Analysis, News and Updates",
+      "url": "https://www.intel.com/content/www/us/en/architecture-and-technology/facts-about-side-channel-analysis-and-intel-products.html"
+    },
+    {
+      "type": "vendor",
+      "name": "NEC製品セキュリティ情報",
+      "vulinfo_id": "NV18-012",
+      "url": "https://jpn.nec.com/security-info/secinfo/nv18-012.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "「投機的実行機能を持つ CPU に対するサイドチャネル攻撃」について",
+      "url": "http://www.fujitsu.com/jp/products/software/resources/condition/security/vulnerabilities/2018/cve-2018-3639.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-3639",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2018-3640",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#97971879",
+      "url": "https://jvn.jp/vu/JVNVU97971879/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-3639",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-3639"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2018-3640",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-3640"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#180049",
+      "url": "https://www.kb.cert.org/vuls/id/180049"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "speculative execution, variant 4: speculative store bypass",
+      "url": "https://bugs.chromium.org/p/project-zero/issues/detail?id=1528"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Side-Channel Vulnerability Variants 3a and 4",
+      "url": "https://www.us-cert.gov/ncas/alerts/TA18-141A"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2018-05-23T02:08:08Z",
+      "description": "[2018年05月23日]   掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2018-07-31T02:42:17Z",
+      "description": "[2018年07月31日]\\n  ベンダ情報：日本電気 (NV18-012) を追加"
+    }
+  ],
+  "date_first_published": "2018-05-23T13:34:24+09:00",
+  "date_last_updated": "2018-07-31T12:33:46+09:00",
+  "date_public": "2018-05-21T00:00:00+09:00"
+}

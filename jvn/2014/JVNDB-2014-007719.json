@@ -1,0 +1,114 @@
+{
+  "vulinfo_id": "JVNDB-2014-007719",
+  "title": "libsndfile の sd2.c の sd2_parse_rsrc_fork 関数における脆弱性",
+  "vulinfo_description": "libsndfile の sd2.c の sd2_parse_rsrc_fork 関数には、不特定の影響を受ける脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Erik de Castro Lopo",
+      "product_name": "libsndfile",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mega-nerd:libsndfile"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "13.1",
+        "13.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Solaris",
+      "version_number": [
+        "11.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:oracle:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "攻撃者により、(1) map オフセットまたは (2) rsrc マーカの設定に関する処理により、out-of-bounds read を誘発されることで、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "sd2.c: 2 buffer overruns #93",
+      "url": "https://github.com/erikd/libsndfile/issues/93"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "src/sd2.c : Fix two potential buffer read overflows.",
+      "url": "https://github.com/erikd/libsndfile/commit/dbe14f00030af5d3577f4cabbf9861db59e9c378"
+    },
+    {
+      "type": "vendor",
+      "name": "openSUSE",
+      "vulinfo_id": "openSUSE-SU-2015:0041-1: moderate: Security update for libsndfile",
+      "url": "http://lists.opensuse.org/opensuse-updates/2015-01/msg00016.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Third Party Bulletin - January 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjan2015-2370101.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9496",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9496"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9496",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9496"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2015-0015",
+      "url": "http://advisories.mageia.org/MGASA-2015-0015.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年01月23日]\\n  掲載\\n[2015年03月02日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Third Party Bulletin - January 2015) を追加\\n[2015年05月14日]      \\n  参考情報：関連文書 (MGASA-2015-0015) を追加"
+    }
+  ],
+  "date_first_published": "2015-01-23T10:34:10+09:00",
+  "date_last_updated": "2015-05-14T17:57:31+09:00",
+  "date_public": "2014-12-23T00:00:00+09:00"
+}

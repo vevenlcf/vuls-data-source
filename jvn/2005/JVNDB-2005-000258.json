@@ -1,0 +1,802 @@
+{
+  "vulinfo_id": "JVNDB-2005-000258",
+  "title": "TCP 実装における ICMP エラーメッセージ処理による TCP コネクション切断の脆弱性",
+  "vulinfo_description": "複数のベンダ製品における TCP の実装には、ICMP エラーメッセージに含まれる IP アドレスと TCP ポートの妥当性だけが検証され、シーケンス番号が適切な範囲内にあるかチェックしない不備が存在します。これにより、不正な ICMP hard error メッセージの処理により、TCP コネクションがリセットされる脆弱性が存在します。  なお、本脆弱性は ICMP メッセージ処理に起因する脆弱性 (CVE-2004-0790, CVE-2004-0791, CVE-2004-1060) のうち、CVE-2004-0790 として公開されている脆弱性です。 TCP 実装に影響がある脆弱性であるため、これら脆弱性を影響を受ける製品は広範囲に及びます。詳細については、NISCC-532967 (JVN)、NISCC Advisory 532967/NISCC/ICMP (CPNI Advisory 00303) を併せてご確認ください。",
+  "affected": [
+    {
+      "name": "アライドテレシス",
+      "product_name": "SwitchBlade 5400Sシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:allied_telesis_k.k.:switchblade_5400s"
+      }
+    },
+    {
+      "name": "アライドテレシス",
+      "product_name": "SwitchBlade 7800Sシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:allied_telesis_k.k.:switchblade_7800s"
+      }
+    },
+    {
+      "name": "アライドテレシス",
+      "product_name": "SwitchBlade4000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:allied_telesis_k.k.:switchblade4000"
+      }
+    },
+    {
+      "name": "アライドテレシス",
+      "product_name": "スイッチ",
+      "version_number": [
+        "CentreCOM 8624XLシリーズ",
+        "CentreCOM 8724SLシリーズ",
+        "CentreCOM 8724XLシリーズ",
+        "CentreCOM 9606シリーズ",
+        "CentreCOM 9800シリーズ"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:allied_telesis_k.k.:switch"
+      }
+    },
+    {
+      "name": "アライドテレシス",
+      "product_name": "ルーター",
+      "version_number": [
+        "AR130、AR160",
+        "AR300v2、AR300Lv2、AR320",
+        "AR450S、AR410v2",
+        "AR720、AR740"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:allied_telesis_k.k.:router"
+      }
+    },
+    {
+      "name": "アラクサラネットワークス",
+      "product_name": "AX5400Sシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:alaxala:ax5400s"
+      }
+    },
+    {
+      "name": "アラクサラネットワークス",
+      "product_name": "AX7800Rシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:alaxala:ax7800r"
+      }
+    },
+    {
+      "name": "アラクサラネットワークス",
+      "product_name": "AX7800Sシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:alaxala:ax7800s"
+      }
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/neu",
+      "version_number": [
+        "ATM  ファームウェアバージョン 1.10 (POGO) 〜 1.39 (Smith Grind)",
+        "Ver. 1.x  ファームウェアバージョン 1.52 (Inkknot) 〜 1.93 (Harness)",
+        "Ver. 2.x  ファームウェアバージョン 2.00 (Belay) 〜 2.27 (Ridge)"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/Plus",
+      "version_number": [
+        "ファームウェアバージョン 1.00 (Snappy) 〜 1.51 (SwissSingle)"
+      ]
+    },
+    {
+      "name": "インターネットイニシアティブ",
+      "product_name": "SEIL/Turbo",
+      "version_number": [
+        "ファームウェアバージョン 1.00 (Union) 〜 1.51 (RioDell)"
+      ]
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) ",
+        "7.0 (sparc) ",
+        "7.0 (x86) ",
+        "8 (sparc) ",
+        "8 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Call Manager (CCM)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:call_manager"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Catalyst 6500 シリーズ",
+      "version_number": [
+        "Catalyst  6608 Voice Gateway"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:catalyst_6500"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Conference Connection (CCC)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:conference_connection"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco CRS-1",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:crs-1"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Emergency Responder",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:emergency_responder"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Internet Service Node (ISN)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:internet_service_node"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IOS XR",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:cisco:ios_xr"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IP Contact Center (IPCC) Express",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cisco:ip_contact_center_express"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IP Interactive Voice Response (IP IVR)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cisco:ip_interactive_voice_response"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IP Phone 7900 シリーズ",
+      "version_number": [
+        "7940/7960 SCCP firmware",
+        "7940/7960 SIP firmware",
+        "7970 SCCP firmware"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:ip_phone_7900"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco IP Queue Manager (IP QM)",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:ip_queue_manager"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco MGX 8250 シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:mgx_8250"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco MGX 8850 シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:mgx_8850"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "Cisco Personal Assistant",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cisco:personal_assistant"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "WS-X6608-E1",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:ws-x6608-e1"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "WS-X6608-T1",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:ws-x6608-t1"
+      }
+    },
+    {
+      "name": "シスコシステムズ",
+      "product_name": "WS-X6624-FXS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:cisco:ws-x6624-fxs"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Nexland ISB SOHO Firewall Appliance",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:symantec:nexland_isb_soho_firewall_appliance"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Nexland Pro Series Firewall Appliance",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:symantec:nexland_pro_firewall_appliance"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Symantec Enterprise Firewall",
+      "version_number": [
+        "7.0",
+        "7.0.4",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:symantec:enterprise_firewall"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Symantec Firewall/VPN Appliance",
+      "version_number": [
+        "100/200/200R"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:symantec:firewall_vpn_appliance"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Symantec Gateway Security 300 Series",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:symantec:gateway_security_300"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Symantec Gateway Security 400 Series",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:symantec:gateway_security_400"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Symantec Gateway Security 5300 Series",
+      "version_number": [
+        "v1.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:symantec:gateway_security_5300"
+      }
+    },
+    {
+      "name": "シマンテック",
+      "product_name": "Symantec Gateway Security 5400 Series",
+      "version_number": [
+        "v2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:symantec:gateway_security_5400"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.00 ",
+        "11.04 ",
+        "11.11 ",
+        "11.22 ",
+        "11.23 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows 2000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_2000"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows 9X",
+      "version_number": [
+        "98  ",
+        "98 scd ",
+        "me  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows-9x"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows Server 2003",
+      "version_number": [
+        "(itanium) ",
+        "(x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_server_2003"
+      }
+    },
+    {
+      "name": "マイクロソフト",
+      "product_name": "Microsoft Windows XP",
+      "version_number": [
+        "(x64) ",
+        "sp3 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:microsoft:windows_xp"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "GR2000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:hitachi:gr2000"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "GR4000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:hitachi:gr4000"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "GS3000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:hitachi:gs3000"
+      }
+    },
+    {
+      "name": "日立",
+      "product_name": "GS4000",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:hitachi:gs4000"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "IP テレフォニー PSTN ゲートウェイ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:pstn_gateway"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "IP テレフォニー 電話機",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:ip_telephony"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "IP-PBX IP MEDIASERVE",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:ip-pbx_ip_mediaserve"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "IP-PBX IP Pathfinderシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:ip_pathfinder"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "PBX E-200シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:pbx_e-200"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "PBX E-3000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:pbx_e-3000"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "PBX ES200 シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:pbx_es200"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "PBX ES3000シリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:pbx_es3000"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "VoIPゲートウェイ EW30IP",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:voip_gateway_ew30ip"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "VoIPゲートウェイ GeoStreamSi-Vシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:geostreamsi-v"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "VoIPルータ LR-Vシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:voip_router_lr-v"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "スイッチ SBシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:switch_sb"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "スイッチ SHシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:switch_sh"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "スイッチ Si-Rシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:switch_si-r"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "スイッチ SR-Sシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:switch_sr-s"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "スイッチ SRシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:switch_sr"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "ルータ GeoStream Si-Rシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:geostream_si-r"
+      }
+    },
+    {
+      "name": "富士通",
+      "product_name": "ルータ NetVehicleシリーズ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:fujitsu:netvehicle"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "不正な ICMP エラーメッセージを処理することで TCP コネクションがリセットされてしまい、結果としてサービス運用妨害 (DoS) 状態を引き起こされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Cisco Security Advisory",
+      "vulinfo_id": "cisco-sa-20050412-icmp",
+      "url": "http://www.cisco.com/warp/public/707/cisco-sa-20050412-icmp.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX01164",
+      "url": "http://www2.itrc.hp.com/service/cki/docDisplay.do?docId=c00576017"
+    },
+    {
+      "type": "vendor",
+      "name": "HP セキュリティ報告",
+      "vulinfo_id": "HPSBUX01164",
+      "url": "http://h50221.www5.hp.com/upassist/itrc_japan/assist2/secbltn/HP-UX/HPSBUX01164.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft Security Bulletin",
+      "vulinfo_id": "MS05-019",
+      "url": "http://www.microsoft.com/technet/security/bulletin/MS05-019.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft Security Bulletin",
+      "vulinfo_id": "MS06-064",
+      "url": "http://www.microsoft.com/technet/security/bulletin/MS06-064.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "SEIL シリーズ セキュリティ\u0026脆弱性情報",
+      "vulinfo_id": "[影響：極小] TCP実装のICMPエラーメッセージの処理に関する脆弱性",
+      "url": "http://www.seil.jp/seilseries/news/snote/_snote_20050727.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "101658",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-26-101658-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Symantec Security Advisory",
+      "vulinfo_id": "SYM05-008",
+      "url": "http://securityresponse.symantec.com/avcenter/security/Content/2005.05.02.html"
+    },
+    {
+      "type": "vendor",
+      "name": "シスコ セキュリティアドバイザリ",
+      "vulinfo_id": "cisco-sa-20050412-icmp",
+      "url": "http://www.cisco.com/japanese/warp/public/3/jp/service/tac/707/cisco-sa-20050412-icmp-j.shtml"
+    },
+    {
+      "type": "vendor",
+      "name": "シマンテック製品に関するセキュリティ・アドバイザリー",
+      "vulinfo_id": "SYM05-008",
+      "url": "http://www.symantec.com/region/jp/avcenter/security/content/2005.05.02.html"
+    },
+    {
+      "type": "vendor",
+      "name": "セキュリティ・脆弱性について",
+      "vulinfo_id": "ICMP+TCPの脆弱性について",
+      "url": "http://www.allied-telesis.co.jp/support/list/faq/vuls/20050412.html"
+    },
+    {
+      "type": "vendor",
+      "name": "セキュリティ情報",
+      "vulinfo_id": "AX-VU2005-01",
+      "url": "http://www.alaxala.com/jp/support/security/ICMP-20050412.html"
+    },
+    {
+      "type": "vendor",
+      "name": "セキュリティ情報",
+      "vulinfo_id": "HCVU000000001",
+      "url": "http://www.hitachi-cable.co.jp/infosystem/support/security/HCVU000000001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "マイクロソフト セキュリティ情報",
+      "vulinfo_id": "MS06-064",
+      "url": "http://www.microsoft.com/japan/technet/security/bulletin/MS06-064.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "マイクロソフト セキュリティ情報",
+      "vulinfo_id": "MS05-019",
+      "url": "http://www.microsoft.com/japan/technet/security/bulletin/MS05-019.mspx"
+    },
+    {
+      "type": "vendor",
+      "name": "株式会社日立製作所",
+      "vulinfo_id": "「TCP実装におけるICMPエラーメッセージ処理に関する脆弱性」対策について",
+      "url": "http://www.hitachi.co.jp/Prod/comp/network/notice/NISCC-532967.html"
+    },
+    {
+      "type": "vendor",
+      "name": "脆弱性問題に関するお知らせ",
+      "vulinfo_id": "「TCP実装におけるICMPエラーメッセージ処理に関する脆弱性について」",
+      "url": "http://www.nec.co.jp/ip88n/icmp.html"
+    },
+    {
+      "type": "vendor",
+      "name": "脆弱性問題に関するお知らせ",
+      "vulinfo_id": "IX5000/IX5500シリーズ TCP実装のICMPエラーメッセージの処理に関する脆弱性についての報告",
+      "url": "http://www.nec.co.jp/ixseries/ix5k/tcp/tcp20050415.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "ICMP使用時にTCPセッションが阻害される脆弱性に関する対応について",
+      "url": "http://fenics.fujitsu.com/products/support/2006/icmp_0119.html"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 公開脆弱性情報",
+      "vulinfo_id": "532967/NISCC/ICMP",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/niscc532967.html"
+    },
+    {
+      "type": "advisory",
+      "name": "CIAC Bulletins",
+      "vulinfo_id": "p-177",
+      "url": "http://www.ciac.org/ciac/bulletins/p-177.shtml"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2004-0790",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0790"
+    },
+    {
+      "type": "advisory",
+      "name": "CPNI Vulnerability Advisory",
+      "vulinfo_id": "00303",
+      "url": "http://www.cpni.gov.uk/Products/vulnerabilitydisclosures/default.aspx?id=va-20050412-00303.xml"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2005-0344",
+      "url": "http://www.frsirt.com/english/advisories/2005/0344"
+    },
+    {
+      "type": "advisory",
+      "name": "IETF",
+      "vulinfo_id": "draft-gont-tcpm-icmp-attacks-03",
+      "url": "http://tools.ietf.org/html/draft-gont-tcpm-icmp-attacks-03"
+    },
+    {
+      "type": "advisory",
+      "name": "IPA セキュリティセンター",
+      "vulinfo_id": "20050413-ms05-019",
+      "url": "http://www.ipa.go.jp/security/ciadr/vul/20050413-ms05-019.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "NISCC-532967",
+      "url": "http://jvn.jp/niscc/NISCC-532967/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2004-0790",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2004-0790"
+    },
+    {
+      "type": "advisory",
+      "name": "NISCC Vulnerability Advisory",
+      "vulinfo_id": "532967/NISCC/ICMP",
+      "url": "http://www.cpni.gov.uk/docs/re-20050412-00303.pdf?lang=en"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "13124",
+      "url": "http://www.securityfocus.com/bid/13124"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#222750",
+      "url": "http://www.kb.cert.org/vuls/id/222750"
+    },
+    {
+      "type": "advisory",
+      "name": "警察庁 @police",
+      "vulinfo_id": "TCP実装におけるICMPパケットの処理に関する脆弱性",
+      "url": "http://www.cyberpolice.go.jp/important/2005/20050414_195834.html"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2005-04-13T00:00:00+09:00"
+}

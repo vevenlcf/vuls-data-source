@@ -1,0 +1,115 @@
+{
+  "vulinfo_id": "JVNDB-2007-001178",
+  "title": "MySQL の item_cmpfunc.cc にある in_decimal::set 関数 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MySQL の item_cmpfunc.cc にある in_decimal::set 関数には、巧妙に細工された IF 節によって、ゼロ除算または、Null ポインタデリファレンスが発生する脆弱性があります。",
+  "affected": [
+    {
+      "name": "MySQL AB",
+      "product_name": "MySQL",
+      "version_number": [
+        "5.0.40 以前",
+        "5.1.18-beta 以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mysql:mysql"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "悪意あるローカルユーザにより、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "MySQL BUGS",
+      "vulinfo_id": "Bug #27513",
+      "url": "http://bugs.mysql.com/bug.php?id=27513"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2008:0364",
+      "url": "https://rhn.redhat.com/errata/RHSA-2008-0364.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-2583",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2583"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2007-1731",
+      "url": "http://www.frsirt.com/english/advisories/2007/1731"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-2583",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2583"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA25188",
+      "url": "http://secunia.com/advisories/25188"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2008年06月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2008-06-17T14:28:10+09:00",
+  "date_last_updated": "2008-06-17T14:28:10+09:00",
+  "date_public": "2007-05-09T00:00:00+09:00"
+}

@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2010-004828",
+  "title": "Linux kernel の fs/btrfs/acl.c におけるファイルパーミッションを回避される脆弱性",
+  "vulinfo_description": "Linux kernel の fs/btrfs/acl.c の btrfs_xattr_set_acl 関数は、ACL 設定前にファイルの所有権をチェックしないため、ファイルパーミッションを回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.34 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、任意の ACL を設定されることで、ファイルパーミッションを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "kernel",
+      "vulinfo_id": "Btrfs: should add a permission check for setfacl",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=2f26afba"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2071",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2071"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2071",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2071"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:38:41+09:00",
+  "date_last_updated": "2012-09-25T17:38:41+09:00",
+  "date_public": "2010-05-18T00:00:00+09:00"
+}

@@ -1,0 +1,200 @@
+{
+  "vulinfo_id": "JVNDB-2010-002301",
+  "title": "Linux カーネルにおける RDS プロトコルの実装に脆弱性",
+  "vulinfo_description": "Linux カーネルの RDS プロトコル実装には、権限昇格の脆弱性が存在します。  Linux カーネルには、ユーザが指定したメモリアドレスを正しく検証しないことに起因する権限昇格の脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.30 から 2.6.38-rc8 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.0.3",
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) ",
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザによって Root 権限を取得される可能性があります。"
+  },
+  "solution": "[アップデートする] それぞれの Distribution が提供する情報をもとに最新版へアップデートしてください。  なお、以下のコマンドを Root で実行することで、RDS プロトコルを無効にすることが可能です。  echo \"alias net-pf-21 off\" \u003e /etc/modprobe.d/disable-rds",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "kernel-2.6.18-194.8.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=1302"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "De-pessimize rds_page_copy_user",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=799c10559d60f159ab2232203f222f18fa3c4a5f"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0792",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0792.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0842",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0842.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2011-0012",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2011-0012.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-3904",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3904"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#362983",
+      "url": "http://jvn.jp/cert/JVNVU362983"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-3904",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3904"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "44219",
+      "url": "http://www.securityfocus.com/bid/44219"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#362983",
+      "url": "http://www.kb.cert.org/vuls/id/362983"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-2750",
+      "url": "http://www.vupen.com/english/advisories/2010/2750"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年11月16日]\\n  掲載\\n[2010年12月07日]\\n  影響を受けるシステム：ミラクル・リナックス (kernel-2.6.18-194.8.AXS3) の情報を追加\\n  影響を受けるシステム：レッドハット (RHSA-2010:0842) の情報を追加\\n  ベンダ情報：ミラクル・リナックス (kernel-2.6.18-194.8.AXS3) を追加\\n  ベンダ情報：レッドハット (RHSA-2010:0842) を追加\\n[2010年12月10日]\\n  CVSS による深刻度の内容を更新しました\\n[2012年12月21日]\\n  影響を受けるシステム：VMware (VMSA-2011-0012) の情報を追加\\n  ベンダ情報：VMware (VMSA-2011-0012) を追加"
+    }
+  ],
+  "date_first_published": "2010-11-16T14:48:06+09:00",
+  "date_last_updated": "2012-12-21T15:40:03+09:00",
+  "date_public": "2010-10-26T00:00:00+09:00"
+}

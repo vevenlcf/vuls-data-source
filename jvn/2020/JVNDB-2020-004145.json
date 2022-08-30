@@ -1,0 +1,95 @@
+{
+  "vulinfo_id": "JVNDB-2020-004145",
+  "title": "Fazecast 製 jSerialComm にDLL 読み込みに関する脆弱性",
+  "vulinfo_description": "Fazecast が提供する jSerialComm には、DLL 読み込みに関する脆弱性が存在します。  jSerialComm は、Fazecast が提供するプラットフォームに依存しないシリアル通信を提供する Java ライブラリです。jSerialComm には、DLL を読み込む際の検索パスに問題があり、ソフトウェアの DLL ファイルと同名の悪意のある DLL ファイルを読み込んでしまう脆弱性 (CWE-427) が存在します。",
+  "affected": [
+    {
+      "name": "Fazecast",
+      "product_name": "jSerialComm",
+      "version_number": [
+        "2.2.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:fazecast_jserialcomm"
+      }
+    },
+    {
+      "name": "Schneider Electric",
+      "product_name": "EcoStruxure IT Gateway",
+      "version_number": [
+        "1.5.x 系",
+        "1.6.x 系",
+        "1.7.x 系"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:schneider_electric:ecostruxure_it_gateway"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "認証されていない第三者によって、任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "jSerialComm",
+      "url": "https://github.com/Fazecast/jSerialComm/releases"
+    },
+    {
+      "type": "vendor",
+      "name": "Schneider Electric",
+      "vulinfo_id": "Installing and setting up EcoStruxure IT Gateway",
+      "url": "https://github.com/Fazecast/jSerialComm/releases"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-10626",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10626"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-20-126-01",
+      "url": "https://www.us-cert.gov/ics/advisories/ICSA2012601"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98082388",
+      "url": "http://jvn.jp/cert/JVNVU98082388"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-427",
+      "url": "https://cwe.mitre.org/data/definitions/427.html",
+      "title": "制御されていない検索パスの要素"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-05-08T05:43:14Z",
+      "description": "[2020年05月08日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2020-05-08T14:43:14+09:00",
+  "date_last_updated": "2020-05-08T14:43:14+09:00",
+  "date_public": "2020-05-07T00:00:00+09:00"
+}

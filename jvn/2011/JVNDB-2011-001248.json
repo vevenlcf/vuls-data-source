@@ -1,0 +1,107 @@
+{
+  "vulinfo_id": "JVNDB-2011-001248",
+  "title": "OpenSSH の key_certify 関数におけるスタックメモリ領域の重要なコンテンツ情報を取得される脆弱性",
+  "vulinfo_description": "OpenSSH の usr.bin/ssh/key.c 内にある ssh-keygen の key_certify 関数は、-t command-line option の使用を伴う古い形式の証明書を生成する際、nonce フィールドの初期化を行わないため、スタックメモリ領域の重要なコンテンツ情報を取得される、またはハッシュ衝突攻撃を誘導される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenSSH",
+      "version_number": [
+        "5.6",
+        "5.7"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openbsd:openssh"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、スタックメモリ領域の重要なコンテンツ情報を取得される、またはハッシュ衝突攻撃を誘導される可能性があります。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.openssh.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSH",
+      "vulinfo_id": "legacy-cert.adv",
+      "url": "http://www.openssh.com/txt/legacy-cert.adv"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0539",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0539"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "65163",
+      "url": "http://xforce.iss.net/xforce/xfdb/65163"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0539",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0539"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43181",
+      "url": "http://secunia.com/advisories/43181"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "46155",
+      "url": "http://www.securityfocus.com/bid/46155"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1025028",
+      "url": "http://www.securitytracker.com/id?1025028"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0284",
+      "url": "http://www.vupen.com/english/advisories/2011/0284"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年03月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2011-03-17T16:24:52+09:00",
+  "date_last_updated": "2011-03-17T16:24:52+09:00",
+  "date_public": "2011-02-10T00:00:00+09:00"
+}

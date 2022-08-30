@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2017-005072",
+  "title": "Piwigo の管理バックエンドにおける SQL インジェクションの脆弱性",
+  "vulinfo_description": "Piwigo の管理バックエンドには、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Piwigo",
+      "product_name": "Piwigo",
+      "version_number": [
+        "2.9.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:piwigo:piwigo"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートのユーザにより、cat_options.php の comments または status ページの cat_false または cat_true パラメータを介して、任意の SQL コマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "check input parameter for cat_options pages",
+      "url": "https://github.com/Piwigo/Piwigo/commit/3dd6812412289a199564e63fffd0a9754010b9e0"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Bug Report: SQL injection in page cat_options #724",
+      "url": "https://github.com/Piwigo/Piwigo/issues/724"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-10682",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-10682"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-10682",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-10682"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年07月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-07-14T11:53:38+09:00",
+  "date_last_updated": "2017-07-14T11:53:38+09:00",
+  "date_public": "2017-06-29T00:00:00+09:00"
+}

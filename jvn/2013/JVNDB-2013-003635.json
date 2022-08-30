@@ -1,0 +1,101 @@
+{
+  "vulinfo_id": "JVNDB-2013-003635",
+  "title": "複数の Bitcoin 製品におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "bitcoind、Bitcoin-Qt および wxBitcoin は、ブロックサイズが過剰な数のデータベースロックを必要とするかどうか適切に配慮しないため、サービス運用妨害 (分割) 状態にされる、および特定の二重支払 (double-spending) 機能を有効にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Bitcoin Project",
+      "product_name": "Bitcoin-Qt",
+      "version_number": [
+        "0.4.9rc2 未満",
+        "0.5.8rc2 未満の 0.5.x",
+        "0.6.5rc2 未満の 0.6.x",
+        "0.7.3rc2 未満の 0.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoin-qt"
+      }
+    },
+    {
+      "name": "Bitcoin Project",
+      "product_name": "bitcoind",
+      "version_number": [
+        "0.4.9rc2 未満",
+        "0.5.8rc2 未満の 0.5.x",
+        "0.6.5rc2 未満の 0.6.x",
+        "0.7.3rc2 未満の 0.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoind"
+      }
+    },
+    {
+      "name": "Bitcoin Project",
+      "product_name": "wxBitcoin",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:wxbitcoin"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、不正な Berkeley DB ロッキングを誘発する過度に大きなブロックを介して、サービス運用妨害 (分割) 状態にされる、および特定の二重支払 (double-spending) 機能を有効にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "BIP 0050",
+      "url": "https://en.bitcoin.it/wiki/BIP_0050"
+    },
+    {
+      "type": "vendor",
+      "name": "Bitcoin Project",
+      "vulinfo_id": "Common Vulnerabilities and Exposures - CVE-2013-3220",
+      "url": "https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3220"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-3220",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-3220"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-3220",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3220"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月05日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-08-05T14:46:46+09:00",
+  "date_last_updated": "2013-08-05T14:46:46+09:00",
+  "date_public": "2013-03-11T00:00:00+09:00"
+}

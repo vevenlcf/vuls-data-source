@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2016-007778",
+  "title": "GraphicsMagick および ImageMagick におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "GraphicsMagick の magick/render.c の DrawDashPolygon 関数、および ImageMagick の SVG レンダラには、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "GraphicsMagick",
+      "product_name": "GraphicsMagick",
+      "version_number": [
+        "1.3.24 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:graphicsmagick:graphicsmagick"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、循環的に定義された SVG ファイルをコンバートされることで、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GraphicsMagick",
+      "vulinfo_id": "ChangeLog-2016",
+      "url": "http://www.graphicsmagick.org/ChangeLog-2016.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Mercurial",
+      "vulinfo_id": "Detect and reject negative stroke-dasharray arguments which were resulting in endless looping",
+      "url": "http://hg.graphicsmagick.org/hg/GraphicsMagick?cmd=changeset;node=ddc999ec896c"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5240",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5240"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5240",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5240"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-16T16:58:46+09:00",
+  "date_last_updated": "2017-03-16T16:58:46+09:00",
+  "date_public": "2016-05-30T00:00:00+09:00"
+}

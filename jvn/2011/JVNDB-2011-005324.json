@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2011-005324",
+  "title": "router advertisement daemon の device-linux.c におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "router advertisement daemon (radvd) の device-linux.c には、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Litech Systems Design",
+      "product_name": "Router Advertisement Daemon",
+      "version_number": [
+        "1.8.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:litech:router_advertisement_daemon"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:P/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、任意のファイルを上書きされる、および第三者により、.. (ドットドット) を含むインターフェース名を介して、特定のファイルを上書きされる可能性があります。  また、シンボリックリンクを悪用されることで、任意のファイルを上書きされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "set_interface_var() doesn't check interface name and blindly does",
+      "url": "https://github.com/reubenhwk/radvd/commit/92e22ca23e52066da2258df8c76a2dca8a428bcc"
+    },
+    {
+      "type": "vendor",
+      "name": "Litech Systems Design",
+      "vulinfo_id": "CHANGES",
+      "url": "http://www.litech.org/radvd/CHANGES"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3602",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3602"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3602",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3602"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年05月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-05-01T10:00:37+09:00",
+  "date_last_updated": "2014-05-01T10:00:37+09:00",
+  "date_public": "2011-10-04T00:00:00+09:00"
+}

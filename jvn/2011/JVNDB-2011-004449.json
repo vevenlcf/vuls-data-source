@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2011-004449",
+  "title": "Pure-FTPd の STARTTLS 実装における暗号化された FTP セッションにコマンドを挿入される脆弱性",
+  "vulinfo_description": "Pure-FTPd の ftp_parser.c の STARTTLS 実装は、I/O バッファリングを適切に制限しないため、暗号化された FTP セッションにコマンドを挿入される脆弱性が存在します。 本脆弱性は、平文コマンド挿入の問題と関連します。 本脆弱性は、CVE-2011-0411 と類似する脆弱性です。",
+  "affected": [
+    {
+      "name": "pureftpd",
+      "product_name": "Pure-FTPd",
+      "version_number": [
+        "1.0.30 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:pureftpd:pure-ftpd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、TLS 確立後に実行される平文コマンドを介して、暗号化された FTP セッションにコマンドを挿入される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "pureftpd",
+      "vulinfo_id": "Pure-FTPd",
+      "url": "http://www.pureftpd.org/project/pure-ftpd/news"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1575",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1575"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1575",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1575"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:13+09:00",
+  "date_last_updated": "2012-03-27T18:43:13+09:00",
+  "date_public": "2011-05-23T00:00:00+09:00"
+}

@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2016-001004",
+  "title": "Ipswitch WhatsUp Gold の XML オブジェクトのデシリアライズ処理に脆弱性",
+  "vulinfo_description": "Ipswitch, Inc が提供する WhatsUp Gold は、SOAP リクエスト経由で受信した XML オブジェクトのデシリアライズの際、データを適切に検証しません。  信頼できないデータのデシリアライズ (CWE-502) - CVE-2015-8261 WhatsUp Gold には、SOAP リクエストハンドラ DroneDeleteOldMeasurements が存在します。SOAP リクエストを介することで、シリアライズした XML オブジェクトに含まれたユーザ指定のデータがサニタイジングやエスケープ処理が行われないまま直接 SQL 文に含まれるため、結果として攻撃者が SQL インジェクションを実行することが可能となります。  CWE-502: Deserialization of Untrusted Data http://cwe.mitre.org/data/definitions/502.html",
+  "affected": [
+    {
+      "name": "Ipswitch, Inc.",
+      "product_name": "WhatsUp Gold",
+      "version_number": [
+        "version 16.3"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ipswitch:whatsup_gold"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "遠隔の攻撃者によって、データベース上で SQL 文を実行される可能性があります。"
+  },
+  "solution": "[アップデートする] Ipswitch, Inc が提供する情報をもとに、最新版へアップデートしてください。 Ipswitch, Inc はこれらの脆弱性を修正した WhatsUp Gold 16.4 をリリースしています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Ipswitch",
+      "vulinfo_id": "WhatsUp Gold",
+      "url": "http://www.whatsupgold.com/jp/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8261",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8261"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#90674343",
+      "url": "http://jvn.jp/vu/JVNVU90674343/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8261",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8261"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#753264",
+      "url": "https://www.kb.cert.org/vuls/id/753264"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年01月12日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-01-12T15:20:39+09:00",
+  "date_last_updated": "2016-01-12T15:20:39+09:00",
+  "date_public": "2016-01-07T00:00:00+09:00"
+}

@@ -1,0 +1,112 @@
+{
+  "vulinfo_id": "JVNDB-2006-000528",
+  "title": "Mailman における MIME マルチパートメッセージの処理におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  GNU Mailman は、電子メールのメーリングリストを管理するためのソフトウェアで、Web インタフェースより各種設定を行うことが可能です。  GNU Mailman には、以下の複数の問題が存在します。  1) MIME マルチパートメッセージの処理に不備が存在するため、RFC 2231 に準拠していない電子メールを処理したメーリングリストがサービス不能状態に陥る問題が存在します。(CVE-2006-2941)  リモートの攻撃者に悪用された場合、特定のメーリングリストへのメール配信が停止される、さらには Mailman がサービス不能状態に陥る可能性があります。  2) Web インタフェースの複数の箇所において、入力値の妥当性の確認が不適切なため、クロスサイトスクリプティング攻撃を受ける問題が存在します。(CVE-2006-3636)  リモートの攻撃者に悪用された場合、Mailman の管理用ページ上で任意のスクリプトを実行される可能性があります。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "3 (as) ",
+        "3 (es) ",
+        "3 (ws) ",
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2006:0600",
+      "url": "https://rhn.redhat.com/errata/RHSA-2006-0600.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2006:0600",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2006-0600J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-2941",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2941"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2006-3446",
+      "url": "http://www.frsirt.com/english/advisories/2006/3446"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-2941",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-2941"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA21732",
+      "url": "http://secunia.com/advisories/21732"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "20021",
+      "url": "http://www.securityfocus.com/bid/20021"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "19831",
+      "url": "http://www.securityfocus.com/bid/19831"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-09-04T00:00:00+09:00"
+}

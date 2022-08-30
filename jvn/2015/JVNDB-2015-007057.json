@@ -1,0 +1,151 @@
+{
+  "vulinfo_id": "JVNDB-2015-007057",
+  "title": "Xen の PCI バックエンドドライバにおける WARN メッセージの連続ストリームを生成される脆弱性",
+  "vulinfo_description": "Xen の PCI バックエンドドライバは、x86 システム上で稼動し、かつドライバドメインとして Linux を使用する場合、WARN メッセージの連続ストリームを生成され、サービス運用妨害 (ディスクの消費) 状態にされる脆弱性が存在します。  本脆弱性は、\"Linux pciback missing sanity checks\" と呼ばれています。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "6.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.1.x から 4.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.7",
+        "vector": "AV:L/AC:L/Au:S/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルのゲスト管理者により、パススルーされた MSI または MSI-X 対応の物理 PCI デバイスへのアクセス権を持つシステム、および XEN_PCI_OP_enable_msi オペレーションを利用されることで、WARN メッセージの連続ストリームを生成され、サービス運用妨害 (ディスクの消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "https://www.kernel.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Bug Tracker",
+      "vulinfo_id": "CVE-2015-8552",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2015-8552"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2846-1",
+      "url": "http://www.ubuntu.com/usn/usn-2846-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2848-1",
+      "url": "http://www.ubuntu.com/usn/usn-2848-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2850-1",
+      "url": "http://www.ubuntu.com/usn/usn-2850-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2851-1",
+      "url": "http://www.ubuntu.com/usn/usn-2851-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen Security Advisory",
+      "vulinfo_id": "XSA-157",
+      "url": "http://xenbits.xen.org/xsa/advisory-157.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8552",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8552"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8552",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8552"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Xen MSI Call Processing Bugs Let Local Users on the Guest System Deny Service on the Target Host System",
+      "url": "http://www.securitytracker.com/id/1034480"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-04-20T11:46:13+09:00",
+  "date_last_updated": "2016-04-20T11:46:13+09:00",
+  "date_public": "2015-12-17T00:00:00+09:00"
+}

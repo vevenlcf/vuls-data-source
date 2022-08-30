@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2002-000292",
+  "title": "Red Hat Linux が実装する Canna の リクエスト処理におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Canna 3.6 以前には irw_through 関数に不備が存在し、バッファオーバーフローを引き起こす可能性があります。このヒープ領域のバッファオーバーフローを発生させることにより、リモートの攻撃者は Canna の実行権限 (通常 bin) で任意のコードを実行することが可能です。   また、Canna 3.6 以前にはユーザから与えられたリクエストの妥当性の確認に不備が存在します。リモートの攻撃者は、標的ホストに意図的に作成したリクエストを送信することで上記のバッファオーバーフロー攻撃に利用可能な情報を奪取する、あるいは Canna をサービス不能状態に陥らせることが可能です。  尚、Red Hat Linux 7.x (除く 7.0) および 8.0 においてインストール時に日本語環境をサポートするよう選択した場合、この問題の影響を受ける Canna 3.5b2 が同梱されます。",
+  "affected": [
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Linux",
+      "version_number": [
+        "7.1  ",
+        "7.2  ",
+        "7.3  ",
+        "8.0  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.4",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:P"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2002:246",
+      "url": "http://rhn.redhat.com/errata/RHSA-2002-246.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2002:246",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2002-246J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2002-1159",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-1159"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2002-1159",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-1159"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6351",
+      "url": "http://www.securityfocus.com/bid/6351"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "6354",
+      "url": "http://www.securityfocus.com/bid/6354"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2002-12-02T00:00:00+09:00"
+}

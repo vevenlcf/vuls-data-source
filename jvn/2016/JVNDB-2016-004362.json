@@ -1,0 +1,122 @@
+{
+  "vulinfo_id": "JVNDB-2016-004362",
+  "title": "GD Graphics Library の gd_tga.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "GD Graphics Library (別名 libgd) の gd_tga.c には、サービス運用妨害 (境界外読み取り) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-125: Out-of-bounds Read (境界外読み取り) と識別されています。 http://cwe.mitre.org/data/definitions/125.html",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "LibGD project",
+      "product_name": "LibGD",
+      "version_number": [
+        "2.2.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libgd:libgd"
+      }
+    },
+    {
+      "name": "openSUSE project",
+      "product_name": "openSUSE Leap",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:opensuse_project:leap"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された TGA ファイルを介して、サービス運用妨害 (境界外読み取り) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3619",
+      "url": "https://www.debian.org/security/2016/dsa-3619"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Unsupported TGA bpp/alphabit combinations should error gracefully",
+      "url": "https://github.com/libgd/libgd/commit/10ef1dca63d62433fda13309b4a228782db823f7"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "[CVE-2016-6132]: A read out-of-bands was found in the parsing of TGA files #247",
+      "url": "https://github.com/libgd/libgd/issues/247#issuecomment-232084241"
+    },
+    {
+      "type": "vendor",
+      "name": "News",
+      "vulinfo_id": "LibGD 2.2.3 release",
+      "url": "https://libgd.github.io/release-2.2.3.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2016:2363",
+      "url": "http://lists.opensuse.org/opensuse-updates/2016-09/msg00078.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6214",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6214"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6214",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6214"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載\\n[2016年11月21日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：openSUSE project (openSUSE-SU-2016:2363) を追加"
+    }
+  ],
+  "date_first_published": "2016-08-17T17:50:10+09:00",
+  "date_last_updated": "2016-11-21T11:00:30+09:00",
+  "date_public": "2016-07-22T00:00:00+09:00"
+}

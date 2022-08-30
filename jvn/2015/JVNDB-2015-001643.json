@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-001643",
+  "title": "ffmpeg の libavformat/segment.c の seg_write_packet 関数 におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ffmpeg の libavformat/segment.c の seg_write_packet 関数は、正しいメモリ領域を解放しないため、サービス運用妨害 (\"無効なメモリハンドラ\") 状態にされる、および任意のコードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use-after-free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.1.4 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、解放済みメモリの使用 (Use-after-free) を誘発する巧妙に細工された動画を介して、サービス運用妨害 (\"無効なメモリハンドラ\") 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.ffmpeg.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9676",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9676"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9676",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9676"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "【Vulnerability Report 】 - from QIHU 360 China",
+      "url": "http://seclists.org/oss-sec/2015/q1/38"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年03月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-03-03T14:25:36+09:00",
+  "date_last_updated": "2015-03-03T14:25:36+09:00",
+  "date_public": "2015-01-04T00:00:00+09:00"
+}

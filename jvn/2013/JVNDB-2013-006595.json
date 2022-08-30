@@ -1,0 +1,90 @@
+{
+  "vulinfo_id": "JVNDB-2013-006595",
+  "title": "JogAmp で使用される JOAL の OpenAL32.dll における任意のコードを実行される脆弱性",
+  "vulinfo_description": "JogAmp で使用される JOAL の OpenAL32.dll には、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "JogAmp.org",
+      "product_name": "JOAL",
+      "version_number": [
+        "2.0-rc11"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:jogamp:joal"
+      }
+    },
+    {
+      "name": "JogAmp.org",
+      "product_name": "JogAmp",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:jogamp:jogamp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "攻撃者により、jogamp.openal.ALImpl.dispatch の下記のメソッドの巧妙に細工されたパラメータを介して、任意のコードを実行される可能性があります。  (1) alAuxiliaryEffectSlotf1 (2) alBuffer3f1 (3) alBufferfv1 (4) alDeleteEffects1 (5) alEffectf1 (6) alEffectfv1 (7) alEffectiv1 (8) alEnable1 (9) alFilterfv1 (10) alFilteriv1 (11) alGenAuxiliaryEffectSlots1 (12) alGenEffects1 (13) alGenFilters1 (14) alGenSources1 (15) alGetAuxiliaryEffectSlotiv1 (16) alGetBuffer3f1 (17) alGetBuffer3i1 (18) alGetBufferf1 (19) alGetBufferiv1 (20) alGetDoublev1 (21) alGetEffectf1 (22) alGetEffectfv1 (23) alGetEffectiv1 (24) alGetEnumValue1 (25) alGetFilteri1 (26) alGetFilteriv1 (27) alGetFloat1 (28) alGetFloatv1 (29) alGetListener3f1 (30) alGetListener3i1 (31) alGetListenerf1 (32) alGetListeneri1 (33) alGetListeneriv1 (34) alGetProcAddress1 (35) alGetProcAddressStatic (36) alGetSource3f1 (37) alGetSource3i1 (38) alGetSourcef! 1 (39) alGetSourcefv1 (40) alGetSourcei1 (41) alGetSourceiv1 (42) alGetString1java/lang/String (43) alIsAuxiliaryEffectSlot1 (44) alIsBuffer1 (45) alIsEffect1 (46) alIsExtensionPresent1 (47) alIsFilter1 (48) alListener3f1 (49) alListener3i1 (50) alListenerf1 (51) alListenerfv1 (52) alListeneri1 (53) alListeneriv1 (54) alSource3f1 (55) alSource3i1 (56) alSourcef1 (57) alSourcefv1 (58) alSourcei1 (59) alSourceiv1 (60) alSourcePause1 (61) alSourcePausev1 (62) alSourcePlay1 (63) alSourcePlayv1 (64) alSourceQueueBuffers1 (65) alSourceRewindv1 (66) alSourceStop1 (67) alSourceStopv1 (68) alSourceUnqueueBuffers1 (69) alSpeedOfSound1"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JogAmp.org",
+      "vulinfo_id": "Top Page",
+      "url": "http://jogamp.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4099",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4099"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4099",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4099"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[SECURITY] JogAmp 2.0.2-rc12 JOGL JOAL JOCL \u0026 Gluegen Released!",
+      "url": "http://labb.zafena.se/?p=799"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "JOAL 2.0-rc11 - Multiple Remote Code Execution Vulnerabilities",
+      "url": "http://www.fuzzmyapp.com/advisories/FMA-2012-038/FMA-2012-038-EN.xml"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-noinfo",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEnoinfo",
+      "title": "情報不足"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年06月16日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-06-16T18:12:44+09:00",
+  "date_last_updated": "2014-06-16T18:12:44+09:00",
+  "date_public": "2013-06-27T00:00:00+09:00"
+}

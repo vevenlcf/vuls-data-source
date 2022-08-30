@@ -1,0 +1,110 @@
+{
+  "vulinfo_id": "JVNDB-2014-003548",
+  "title": "sgminer などの製品におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "sgminer、cgminer および BFGMiner には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "BFGMiner project",
+      "product_name": "BFGMiner",
+      "version_number": [
+        "3.3.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bfgminer:bfgminer"
+      }
+    },
+    {
+      "name": "Con Kolivas",
+      "product_name": "cgminer",
+      "version_number": [
+        "4.3.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cgminer_project:cgminer"
+      }
+    },
+    {
+      "name": "sgminer project",
+      "product_name": "sgminer",
+      "version_number": [
+        "4.2.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sgminer_project:sgminer"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモートプールサーバにより、util.c の (1) extract_sockaddr または (2) parse_reconnect 関数の client.reconnect stratum message の過度に長い URL を介して、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "sgminer-dev/sgminer (78cc408)",
+      "url": "https://github.com/sgminer-dev/sgminer/commit/78cc408369bdbbd440196c93574098d1482efbce"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "sgminer-dev/sgminer (b65574b)",
+      "url": "https://github.com/sgminer-dev/sgminer/commit/b65574bef233474e915fdf18614aa211e31cc6c2\\"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ckolivas/cgminer",
+      "url": "https://github.com/ckolivas/cgminer/commit/e1c5050734123973b99d181c45e74b2cbb00272e"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "luke-jr/bfgminer",
+      "url": "https://github.com/luke-jr/bfgminer/commit/c80ad8548251eb0e15329fc240c89070640c9d79"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-4501",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-4501"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-4501",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4501"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年07月24日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-07-24T17:59:19+09:00",
+  "date_last_updated": "2014-07-24T17:59:19+09:00",
+  "date_public": "2014-06-06T00:00:00+09:00"
+}

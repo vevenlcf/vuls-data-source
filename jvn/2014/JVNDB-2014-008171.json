@@ -1,0 +1,110 @@
+{
+  "vulinfo_id": "JVNDB-2014-008171",
+  "title": "PHP の ext/zip/php_zip.c および HHVM の ext/zip/ext_zip.cpp の ZipArchive::extractTo 関数におけるディレクトリトラバーサルの脆弱性",
+  "vulinfo_description": "PHP の ext/zip/php_zip.c および HHVM の ext/zip/ext_zip.cpp の ZipArchive::extractTo 関数には、ディレクトリトラバーサルの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Facebook",
+      "product_name": "HipHop Virtual Machine (HHVM)",
+      "version_number": [
+        "3.12.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:facebook:hiphop_virtual_machine"
+      }
+    },
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.45 未満",
+        "5.5.29 未満の 5.5.x",
+        "5.6.13 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された ZIP アーカイブを介して、任意の空のディレクトリを作成される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "ZipArchive::extractTo bug 70350",
+      "url": "https://github.com/facebook/hhvm/commit/65c95a01541dd2fbc9c978ac53bed235b5376686"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #70350",
+      "url": "https://bugs.php.net/bug.php?id=70350"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Bug #67996",
+      "url": "https://bugs.php.net/bug.php?id=67996"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9767",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9767"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9767",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9767"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-22",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-22.html",
+      "title": "パス・トラバーサル"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-25T16:55:43+09:00",
+  "date_last_updated": "2016-05-25T16:55:43+09:00",
+  "date_public": "2014-09-10T00:00:00+09:00"
+}

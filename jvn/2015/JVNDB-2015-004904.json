@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-004904",
+  "title": "WordPress 用 CP Reservation Calendar プラグインの dex_reservations.php における SQL インジェクションの脆弱性",
+  "vulinfo_description": "WordPress 用 CP Reservation Calendar プラグインの dex_reservations.php には、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "CP Reservation Calendar project",
+      "product_name": "CP Reservation Calendar",
+      "version_number": [
+        "1.1.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:cp_reservation_calender_project:cp_reservation_calender"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、デフォルト URI へのリクエストの以下のパラメータを介して、任意の SQL コマンドを実行される可能性があります。  (1) dex_reservations_calendar_load2 アクションの id パラメータ (2) dex_reservations_check_posted_data アクションの dex_item パラメータ"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "WordPress Plugin Changeset",
+      "vulinfo_id": "Changeset 1104099 for cp-reservation-calendar",
+      "url": "https://plugins.trac.wordpress.org/changeset/1104099/cp-reservation-calendar"
+    },
+    {
+      "type": "vendor",
+      "name": "WordPress Plugin Directory",
+      "vulinfo_id": "CP Reservation Calendar",
+      "url": "https://wordpress.org/plugins/cp-reservation-calendar/changelog/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7235",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7235"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7235",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7235"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年09月29日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-09-29T15:12:25+09:00",
+  "date_last_updated": "2015-09-29T15:12:25+09:00",
+  "date_public": "2015-03-03T00:00:00+09:00"
+}

@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2015-006052",
+  "title": "Dell Foundation Services (DFS) がルート証明書と秘密鍵 (eDellRoot) をインストールする問題",
+  "vulinfo_description": "Dell Foundation Services (DFS) は、信頼されたルート証明書として eDellRoot を Windows にインストールします。この証明書は秘密鍵を含んでいます。攻撃者は信頼された証明書を作成することで、ユーザになりすましたり、中間者 (man-in-the-middle) 攻撃により、通信内容を解読したりすることが可能となります。結果として、機密情報が漏えいする可能性があります。  Dell Foundation Services (DFS) は、いくつかの Dell 製の機器にプリインストールされている、遠隔サポート用のコンポーネントです。DFS は、秘密鍵を含む eDellRoot を信頼されたルート証明書としてインストールします。",
+  "affected": [
+    {
+      "name": "デル",
+      "product_name": "Dell Foundation Services",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dell:dell_foundation_services"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.4",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:N"
+      }
+    ],
+    "impact_item": "攻撃者は eDellRoot CA で署名した証明書を作成することが可能です。eDellRoot CA を信頼するシステムはこの CA が署名したどのような証明書も信用します。攻撃者はウェブサイトや他のサービスになりすましたり、ソフトウェアやメールに署名したり、通信内容を解読したりすることが可能です。 一般的な攻撃シナリオとして、中間者 (man-in-the-middle) 攻撃によって HTTPS の通信内容を解読されたり、悪意のソフトウェアをインストールさせられたりする可能性があります。"
+  },
+  "solution": "[eDellRoot を無効にする] Windows の証明書 MMC スナップイン (certmgr.msc) を使用して、eDellRoot を信頼されていない証明書に移動してください。この証明書を無効にしておくと、DFS を再インストールした際に eDellRoot が再度信頼された証明書としてインストールされることを防ぐことが可能です。  移動 http://huagati.blogspot.com/2015/07/do-you-know-which-cas-can-issue-ssltls.html  [eDellRoot を削除する] Dell はこの問題について、eDellRoot を削除するようブログで言及しています。eDellRoot だけでなく、eDellRoot を再インストールしようとする DFS も削除する必要があります。Dell は、eDellRoot の削除用ツールを提供しています。  eDellRoot を削除する https://dellupdater.dell.com/Downloads/APP009/eDellRootCertRemovalInstructions.docx  ブログ http://en.community.dell.com/dell-blogs/direct2dell/b/direct2dell/archive/2015/11/23/response-to-concerns-regarding-edellroot-certificate  eDellRoot の削除用ツール https://dellupdater.dell.com/Downloads/APP009/eDellRootCertFix.exe  管理者は、管理対象システムの信頼されたルートおよび許可されない証明書を構成することが可能です。  信頼されたルートおよび許可されない証明書を構成する https://technet.microsoft.com/ja-jp/library/dn265983.aspx ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Dell",
+      "vulinfo_id": "eDellRoot Certificate Removal Instructions (Microsoft Word)",
+      "url": "https://dellupdater.dell.com/Downloads/APP009/eDellRootCertRemovalInstructions.docx"
+    },
+    {
+      "type": "vendor",
+      "name": "Dell",
+      "vulinfo_id": "eDellRootCertFix.exe (実行ファイル)",
+      "url": "https://dellupdater.dell.com/Downloads/APP009/eDellRootCertFix.exe"
+    },
+    {
+      "type": "vendor",
+      "name": "Dell",
+      "vulinfo_id": "Direct2Dell - Response to Concerns Regarding eDellroot Certificate",
+      "url": "http://en.community.dell.com/dell-blogs/direct2dell/b/direct2dell/archive/2015/11/23/response-to-concerns-regarding-edellroot-certificate"
+    },
+    {
+      "type": "vendor",
+      "name": "Microsoft",
+      "vulinfo_id": "信頼されたルートおよび許可されない証明書を構成する",
+      "url": "https://technet.microsoft.com/ja-jp/library/dn265983.aspx"
+    },
+    {
+      "type": "advisory",
+      "name": "CERT/CC blog",
+      "vulinfo_id": "The Risks of SSL Inspection",
+      "url": "http://insights.sei.cmu.edu/cert/2015/03/the-risks-of-ssl-inspection.html"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#91791008",
+      "url": "http://jvn.jp/vu/JVNVU91791008/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#870761",
+      "url": "http://www.kb.cert.org/vuls/id/870761"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-30T17:45:43+09:00",
+  "date_last_updated": "2015-11-30T17:45:43+09:00",
+  "date_public": "2015-11-24T00:00:00+09:00"
+}

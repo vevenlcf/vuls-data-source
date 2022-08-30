@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2016-006530",
+  "title": "'chardev' バックエンドサポートでビルドされた Quick Emulator におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "'chardev' バックエンドサポートでビルドされた Quick Emulator (Qemu) には、解放済みメモリの使用 (Use-after-free) により、ゲストのデバイスのホットプラグおよびアンプラグの際に、サービス運用妨害 (ホストの Qemu プロセスクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ゲストのユーザ/プロセスにより、サービス運用妨害 (ホストの Qemu プロセスクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "char: move front end handlers in CharBackend",
+      "url": "http://git.qemu.org/?p=qemu.git;a=commit;h=a4afa548fc6dd9842ed86639b4d37d4d1c4ad480"
+    },
+    {
+      "type": "vendor",
+      "name": "Qemu-devel",
+      "vulinfo_id": "[PATCH 21/38] char: move front end handlers in CharBack",
+      "url": "https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg05597.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9923",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9923"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9923",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9923"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-416",
+      "url": "https://cwe.mitre.org/data/definitions/416.html",
+      "title": "解放済みメモリの使用"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年01月10日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-01-10T17:32:09+09:00",
+  "date_last_updated": "2017-01-10T17:32:09+09:00",
+  "date_public": "2016-10-24T00:00:00+09:00"
+}

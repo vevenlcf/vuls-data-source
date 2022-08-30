@@ -1,0 +1,77 @@
+{
+  "vulinfo_id": "JVNDB-2007-001816",
+  "title": "ファイルの GNU 正規表現コードにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ファイルの GNU 正規表現コードは、AMaViSで当初報告されたように、OS/2 REXX の正規表現でワイルドカードを使用することで適切に処理されないため、サービス運用妨害 (CPU 消費) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "amavis",
+      "product_name": "virus scanner",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:amavis:virus_scanner"
+      }
+    },
+    {
+      "name": "Gentoo Linux",
+      "product_name": "file",
+      "version_number": [
+        "4.20"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gentoo:file"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "攻撃者により、ラインフィードの文字数が過度に多い巧妙に細工された文書を介して、サービス運用妨害 (CPU 消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "amavis",
+      "vulinfo_id": "Virus Scanner",
+      "url": "http://amavis.org/#faq-avscan"
+    },
+    {
+      "type": "vendor",
+      "name": "gentoo",
+      "vulinfo_id": "174217",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=174217"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-2026",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2026"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-2026",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-2026"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:46:19+09:00",
+  "date_last_updated": "2012-06-26T15:46:19+09:00",
+  "date_public": "2007-04-11T00:00:00+09:00"
+}

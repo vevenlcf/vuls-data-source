@@ -1,0 +1,78 @@
+{
+  "vulinfo_id": "JVNDB-2013-001858",
+  "title": "Spree における任意のロールを割り当てられる脆弱性",
+  "vulinfo_description": "Spree の spree_auth_devise 内の app/models/spree/user.rb は、ユーザをアップデートする際、マスアサインメントを安全に実行しないため、リモート認証されたユーザに任意のロールを割り当てられる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Spree Commerce",
+      "product_name": "Spree",
+      "version_number": [
+        "1.1.6 未満の 1.1.x",
+        "1.2.x",
+        "1.3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:spreecommerce:spree"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、彼ら自身に任意のロールを割り当てられる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Remove Mass Assignment of Role IDs",
+      "url": "https://github.com/spree/spree_auth_devise/commit/038d74771d3b5c13d13b738b73dfda1033a99f65"
+    },
+    {
+      "type": "vendor",
+      "name": "Spree Commerce",
+      "vulinfo_id": "Multiple Security Vulnerabilities Fixed - Spree Roles Mass-assignment Vulnerability",
+      "url": "http://spreecommerce.com/blog/multiple-security-vulnerabilities-fixed"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-2506",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2506"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-2506",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2506"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-03-19T18:34:45+09:00",
+  "date_last_updated": "2013-03-19T18:34:45+09:00",
+  "date_public": "2013-02-21T00:00:00+09:00"
+}

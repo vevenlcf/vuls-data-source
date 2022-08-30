@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2012-002781",
+  "title": "MantisBT の mc_issue_note_update 関数における任意の bugnote を編集される脆弱性",
+  "vulinfo_description": "MantisBT の SOAP API 内の mc_issue_note_update 関数は、権限を適切にチェックしないため、任意の bugnote を編集される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "MantisBT Group",
+      "product_name": "MantisBT",
+      "version_number": [
+        "1.2.11 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mantisbt:mantisbt"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "バグ報告の権限を持つ第三者により、SOAP リクエストを介して、任意の bugnote を編集される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "mc_issue_note_update passing wrong param to access check function",
+      "url": "https://github.com/mantisbt/mantisbt/commit/175d973105fe9f03a37ced537b742611631067e0"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix #14340: Reporters can use SOAP to update bugnotes without permission",
+      "url": "https://github.com/mantisbt/mantisbt/commit/edc8142bb8ac0ac0df1a3824d78c15f4015d959e"
+    },
+    {
+      "type": "vendor",
+      "name": "MantisBT",
+      "vulinfo_id": "Change Log - 1.2.11",
+      "url": "http://www.mantisbt.org/bugs/changelog_page.php?version_id=148"
+    },
+    {
+      "type": "vendor",
+      "name": "MantisBT",
+      "vulinfo_id": "0014340",
+      "url": "http://www.mantisbt.org/bugs/view.php?id=14340"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-2691",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2691"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-2691",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2691"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-20T15:09:57+09:00",
+  "date_last_updated": "2012-06-20T15:09:57+09:00",
+  "date_public": "2012-06-03T00:00:00+09:00"
+}

@@ -1,0 +1,91 @@
+{
+  "vulinfo_id": "JVNDB-2022-000062",
+  "title": "Kaitai Struct: compiler におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Kaitai team が提供する Kaitai Struct: compiler は、.ksy ファイル (YAML 形式ファイル) の解析処理に SnakeYAML ライブラリ 1.25 を使用しています。 このバージョンの SnakeYAML ライブラリは再帰的なエイリアスの展開を無制限に行うため (CWE-674)、Billion Laughs Attack によるサービス運用妨害 (DoS) 攻撃を受ける可能性があります。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: 株式会社ステラセキュリティ / 株式会社アカツキゲームス 小竹 泰一 氏",
+  "affected": [
+    {
+      "name": "Kaitai team",
+      "product_name": "Kaitai Struct: compiler",
+      "version_number": [
+        "0.9 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:kaitai_team_kaitai_struct_compiler"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "信頼できない相手から受け取った .ksy ファイルを処理することにより、サービス運用妨害 (DoS) 攻撃を受ける可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。 開発者によると、バージョン 0.10 では、バンドルしている SnakeYAML ライブラリを更新して本脆弱性を修正したとのことです。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Kaitai team",
+      "vulinfo_id": "kaitai-io / kaitai_struct_compiler",
+      "url": "https://github.com/kaitai-io/kaitai_struct_compiler"
+    },
+    {
+      "type": "vendor",
+      "name": "Kaitai team",
+      "vulinfo_id": "Update SnakeYAML to 1.29 (was 1.25: vulnerable to \"billion laughs\")",
+      "url": "https://github.com/kaitai-io/kaitai_struct_compiler/commit/50f80d7eca36983ca0b7f354d12656ec62e639eb"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-18640",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2017-18640"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#42883072",
+      "url": "https://jvn.jp/jp/JVN42883072/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Preventing YAML parsing vulnerabilities with snakeyaml in Java",
+      "url": "https://snyk.io/blog/java-yaml-parser-with-snakeyaml/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-08-02T08:12:49Z",
+      "description": "[2022年08月04日]\\n  掲載\\n\\n"
+    }
+  ],
+  "date_first_published": "2022-08-04T12:03:28+09:00",
+  "date_last_updated": "2022-08-04T12:03:28+09:00",
+  "date_public": "2022-08-04T00:00:00+09:00"
+}

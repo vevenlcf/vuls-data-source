@@ -1,0 +1,134 @@
+{
+  "vulinfo_id": "JVNDB-2012-004457",
+  "title": "International Color Consortium Format library における整数アンダーフローの脆弱性",
+  "vulinfo_description": "Ghostscript および Argyll Color Management System で使用される International Color Consortium (ICC) Format library (icclib) の icmLut_allocate 関数には、整数アンダーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Argyll CMS",
+      "product_name": "Argyll CMS",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:argyllcms:argyllcms"
+      }
+    },
+    {
+      "name": "Artifex Software",
+      "product_name": "Ghostscript",
+      "version_number": [
+        "9.06"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:artifex:ghostscript"
+      }
+    },
+    {
+      "name": "International Color Consortium (ICC)",
+      "product_name": "icclib",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:color:icclib"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、埋め込まれた画像を含む、巧妙に細工された (1) PostScript、または (2) PDF ファイルを介して、ヒープベースのバッファオーバーフローを誘発されることで、サービス運用妨害 (クラッシュ) 状態にされる、および任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "argyllcms.com",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.argyllcms.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "ghostscript.com",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.ghostscript.com/"
+    },
+    {
+      "type": "vendor",
+      "name": "ICC",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.color.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2012:1289",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2012-10/msg00001.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2012:1222",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00031.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-updates",
+      "vulinfo_id": "openSUSE-SU-2012:1290",
+      "url": "http://lists.opensuse.org/opensuse-updates/2012-10/msg00015.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1256",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1256.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2012:151",
+      "url": "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:151"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1581-1",
+      "url": "http://www.ubuntu.com/usn/USN-1581-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-4405",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4405"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-4405",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4405"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月20日]\\n  掲載\\n[2012年10月23日]\\n  ベンダ情報：Ubuntu (USN-1581-1) を追加\\n[2012年11月13日]\\n  ベンダ情報：openSUSE (openSUSE-SU-2012:1289) を追加\\n  ベンダ情報：openSUSE (SUSE-SU-2012:1222) を追加\\n  ベンダ情報：openSUSE (openSUSE-SU-2012:1290) を追加"
+    }
+  ],
+  "date_first_published": "2012-09-20T15:56:17+09:00",
+  "date_last_updated": "2012-11-13T10:25:49+09:00",
+  "date_public": "2012-09-18T00:00:00+09:00"
+}

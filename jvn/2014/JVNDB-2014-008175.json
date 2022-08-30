@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2014-008175",
+  "title": "FreeType の type42/t42parse.c の t42_parse_encoding 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FreeType の type42/t42parse.c の t42_parse_encoding 関数は、immediates-only モードのカレントポジションを適切に更新しないため、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "FreeType Project",
+      "product_name": "FreeType",
+      "version_number": [
+        "2.5.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:freetype:freetype"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、Type42 フォントを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3370",
+      "url": "https://www.debian.org/security/2015/dsa-3370"
+    },
+    {
+      "type": "vendor",
+      "name": "freetype",
+      "vulinfo_id": "freetype/freetype2.git",
+      "url": "http://git.savannah.gnu.org/cgit/freetype/freetype2.git/tree/src/type42/t42parse.c?id=8b281f83e8516535756f92dbf90940ac44bd45e1"
+    },
+    {
+      "type": "vendor",
+      "name": "GNU Savannah",
+      "vulinfo_id": "bug #41309: Use of uninitialized memory in ps_parser_load_field, t42_parse_font_matrix and t1_parse_font_matrix",
+      "url": "https://savannah.nongnu.org/bugs/?41309"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-9747",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9747"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-9747",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9747"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-09T14:38:02+09:00",
+  "date_last_updated": "2016-06-09T14:38:02+09:00",
+  "date_public": "2014-01-23T00:00:00+09:00"
+}

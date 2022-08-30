@@ -1,0 +1,237 @@
+{
+  "vulinfo_id": "JVNDB-2011-001246",
+  "title": "OpenSSL の ssl/t1_lib.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSL の ssl/t1_lib.c には、ClientHello ハンドシェイクメッセージに関する処理に不備があるため、サービス運用妨害 (DoS) 状態となる、または OpenSSL を使用するアプリケーションの重要な情報を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.8h から 0.9.8q",
+        "1.0.0 から 1.0.0c"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESXi",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1",
+        "5.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esxi"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X",
+      "version_number": [
+        "v10.6 から v10.6.7"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x"
+      }
+    },
+    {
+      "name": "アップル",
+      "product_name": "Apple Mac OS X Server",
+      "version_number": [
+        "v10.6 から v10.6.7"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:apple:mac_os_x_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.11 ",
+        "11.23 ",
+        "11.31 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、不正な形式の ClientHello ハンドシェイクメッセージを介して、サービス運用妨害 (DoS) 状態にされる、または OpenSSL を使用するアプリケーションの重要な情報を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apple Security Updates",
+      "vulinfo_id": "HT4723",
+      "url": "http://support.apple.com/kb/HT4723"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02689",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c02896506"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL Security Advisory",
+      "vulinfo_id": "secadv_20110208",
+      "url": "http://www.openssl.org/news/secadv_20110208.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0677",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-0677.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0013",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2012-0013.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-0014",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0014"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#976710",
+      "url": "http://jvn.jp/cert/JVNVU976710"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-0014",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0014"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "70847",
+      "url": "http://osvdb.org/70847"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA43227",
+      "url": "http://secunia.com/advisories/43227"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "46264",
+      "url": "http://www.securityfocus.com/bid/46264"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1025050",
+      "url": "http://www.securitytracker.com/id?1025050"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2011-0342",
+      "url": "http://www.vupen.com/english/advisories/2011/0342"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年03月17日]\\n  掲載\\n[2011年05月27日]\\n  影響を受けるシステム：レッドハット (RHSA-2011:0677) の情報を更新\\n  ベンダ情報：レッドハット (RHSA-2011:0677) を更新\\n[2011年06月30日]\\n  影響を受けるシステム：アップル (HT4723) の情報を追加\\n  ベンダ情報：アップル (HT4723) を追加\\n[2011年07月13日]\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBUX02689) の情報を追加\\n  ベンダ情報：ヒューレット・パッカード (RHPSBUX02689) を追加\\n[2012年11月02日]\\n  影響を受けるシステム：VMware (VMSA-2012-0013) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0013) を追加"
+    }
+  ],
+  "date_first_published": "2011-03-17T16:18:16+09:00",
+  "date_last_updated": "2012-11-02T17:37:03+09:00",
+  "date_public": "2011-02-08T00:00:00+09:00"
+}

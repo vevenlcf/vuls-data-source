@@ -1,0 +1,308 @@
+{
+  "vulinfo_id": "JVNDB-2010-001043",
+  "title": "BIND 9 の DNSSEC 検証コードに脆弱性",
+  "vulinfo_description": "BIND 9 に含まれている DNSSEC の検証コードに脆弱性が存在します。  実際に存在するレコードに対し、不正な NXDOMAIN レスポンスを返すように仕向けることが可能です。ISC によると:  There was an error in the DNSSEC NSEC/NSEC3 validation code that could cause bogus NXDOMAIN responses (that is, NXDOMAIN responses for records proven by NSEC or NSEC3 to exist) to be cached as if they had validated correctly, so that future queries to the resolver would return the bogus NXDOMAIN with the AD flag set.",
+  "affected": [
+    {
+      "name": "ISC, Inc.",
+      "product_name": "BIND",
+      "version_number": [
+        "9.0.x",
+        "9.1.x",
+        "9.2.x",
+        "9.3.x",
+        "9.4.0 から 9.4.3-P4 まで",
+        "9.5.0 から 9.5.2-P1 まで",
+        "9.6.0 から 9.6.1-P2 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:isc:bind"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "OpenSolaris",
+      "version_number": [
+        "(sparc) ",
+        "(x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:opensolaris"
+      }
+    },
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "10 (sparc) ",
+        "10 (x86) ",
+        "9 (sparc) ",
+        "9 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "3.0  ",
+        "3.0 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Client",
+      "version_number": [
+        "2008 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_client"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "11  ",
+        "11 (x64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ヒューレット・パッカード",
+      "product_name": "HP-UX",
+      "version_number": [
+        "11.11 ",
+        "11.23 ",
+        "11.31 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:hp:hp-ux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux EUS",
+      "version_number": [
+        "5.4.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、不正な NXDOMAIN レコードをキャッシュに追加される可能性があります。"
+  },
+  "solution": "[パッチを適用する] 影響を受けるシステムを利用している場合は、 ISC (9.4.3-P5、9.5.2-P2、9.6.1-P3) もしくは、各ベンダから提供されるパッチを適用してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "bind-9.3.6-4.P1.2.1.AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=935"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBUX02519",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en\u0026cc=us\u0026objectID=c02097674"
+    },
+    {
+      "type": "vendor",
+      "name": "ISC BIND",
+      "vulinfo_id": "CVE-2010-0097",
+      "url": "https://www.isc.org/advisories/CVE-2010-0097"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2010:0062",
+      "url": "https://rhn.redhat.com/errata/RHSA-2010-0062.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Alert Notification",
+      "vulinfo_id": "275890",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-66-275890-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2010-5",
+      "url": "http://www.turbolinux.com/security/2010/TLSA-2010-5.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux サポート",
+      "vulinfo_id": "TLSA-2010-5",
+      "url": "http://www.turbolinux.co.jp/security/2010/TLSA-2010-5j.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "富士通 セキュリティ情報",
+      "vulinfo_id": "VU#360341",
+      "url": "http://software.fujitsu.com/jp/security/vulnerabilities/vu360341.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-0097",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0097"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "55753",
+      "url": "http://xforce.iss.net/xforce/xfdb/55753"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#360341",
+      "url": "http://jvn.jp/cert/JVNVU360341/"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-0097",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0097"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "61853",
+      "url": "http://www.osvdb.org/61853"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA38219",
+      "url": "http://secunia.com/advisories/38219"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA38251",
+      "url": "http://secunia.com/advisories/38251"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "37865",
+      "url": "http://www.securityfocus.com/bid/37865"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1023474",
+      "url": "http://securitytracker.com/id?1023474"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#360341",
+      "url": "http://www.kb.cert.org/vuls/id/360341"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-0176",
+      "url": "http://www.vupen.com/english/advisories/2010/0176"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2010-0201",
+      "url": "http://www.vupen.com/english/advisories/2010/0201"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年02月16日]\\n  掲載\\n[2010年05月19日]\\n  影響を受けるシステム：ヒューレット・パッカード (HPSBUX02519) の情報を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBUX02519) を追加"
+    }
+  ],
+  "date_first_published": "2010-02-16T11:46:19+09:00",
+  "date_last_updated": "2010-05-19T17:42:39+09:00",
+  "date_public": "2010-01-20T00:00:00+09:00"
+}

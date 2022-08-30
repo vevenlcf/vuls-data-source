@@ -1,0 +1,124 @@
+{
+  "vulinfo_id": "JVNDB-2014-004013",
+  "title": "Linux Kernel の fs/isofs/rock.c 内の parse_rock_ridge_inode_internal 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の fs/isofs/rock.c 内の parse_rock_ridge_inode_internal 関数には、スタックの消費により、サービス運用妨害 (制御されていない再帰、およびシステムクラッシまたはリブート) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.16.1 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、CL エントリを持つディレクトリエントリを参照する別の CL エントリを伴う巧妙に細工された ISO9660 イメージを介して、サービス運用妨害 (制御されていない再帰、およびシステムクラッシまたはリブート) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "isofs: Fix unbounded recursion when processing relocated directories",
+      "url": "https://github.com/torvalds/linux/commit/410dd3cf4c9b36f27ed4542ee18b1af5e68645a4"
+    },
+    {
+      "type": "vendor",
+      "name": "Google Code",
+      "vulinfo_id": "Issue 88:  Linux kernel stack overflow when mounting ISO9660 image, including via a USB stick",
+      "url": "https://code.google.com/p/google-security-research/issues/detail?id=88"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "isofs: Fix unbounded recursion when processing relocated directories",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=410dd3cf4c9b36f27ed4542ee18b1af5e68645a4"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1134099",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1134099"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1318",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1318.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0102",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-0102.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0782",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-0782.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0695",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-0695.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0803",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-0803.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-5471",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-5471"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-5471",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5471"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年09月03日]\\n  掲載\\n[2014年11月21日]\\n  ベンダ情報：レッドハット (RHSA-2014:1318) を追加\\n[2015年05月13日]\\n  ベンダ情報：レッドハット (RHSA-2015:0782) を追加\\n  ベンダ情報：レッドハット (RHSA-2015:0102) を追加\\n[2015年06月08日]\\n  ベンダ情報：レッドハット (RHSA-2015:0695) を追加\\n  ベンダ情報：レッドハット (RHSA-2015:0803) を追加"
+    }
+  ],
+  "date_first_published": "2014-09-03T15:16:25+09:00",
+  "date_last_updated": "2015-06-08T17:35:20+09:00",
+  "date_public": "2014-08-17T00:00:00+09:00"
+}

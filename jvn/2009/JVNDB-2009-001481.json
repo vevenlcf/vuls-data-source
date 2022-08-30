@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2009-001481",
+  "title": "Linux-PAM (別名 pam) の _pam_StrTok 関数における整数符号エラーの脆弱性",
+  "vulinfo_description": "Linux-PAM (別名 pam) の _pam_StrTok 関数 (libpam/pam_misc.c) には、設定ファイルが非 ASCII 文字のユーザ名を含んでいる場合に、整数符号エラーの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "kernel.org",
+      "product_name": "Linux-PAM",
+      "version_number": [
+        "1.0.3 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kernel:linux-pam"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.6",
+        "vector": "AV:L/AC:M/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、ログイン試行を介して、サービス運用妨害 (DoS) 状態にされる可能性、およびリモート認証されたユーザにより、ログイン試行を介して、非 ASCII 文字のユーザ名を持つ他のユーザとしてログインされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "The Linux Kernel Archives",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.kernel.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-0887",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0887"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-0887",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0887"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年06月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2009-06-30T11:43:51+09:00",
+  "date_last_updated": "2009-06-30T11:43:51+09:00",
+  "date_public": "2009-03-12T00:00:00+09:00"
+}

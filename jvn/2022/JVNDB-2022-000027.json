@@ -1,0 +1,85 @@
+{
+  "vulinfo_id": "JVNDB-2022-000027",
+  "title": "AssetView における重要な機能に対する認証の欠如の脆弱性",
+  "vulinfo_description": "株式会社ハンモックが提供する AssetView には、管理サーバ上の重要な機能に対する認証の欠如 (CWE-306) の脆弱性が存在します。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: GMOサイバーセキュリティ byイエラエ デニス ファウストヴ 氏、ルスラン サイフィエフ 氏",
+  "affected": [
+    {
+      "name": "株式会社ハンモック",
+      "product_name": "AssetView",
+      "version_number": [
+        "Ver.13.2.0 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hammock:assetview"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "当該システムの設定情報を知っている遠隔の第三者によって細工されたファイルを管理サーバにアップロードされると、当該サーバで管理されているクライアント上において管理者権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[パッチを適用する] 開発者が提供する情報をもとにパッチを適用してください。 開発者は本脆弱性の対策として次のパッチをリリースしています。 \u003cul\u003e\u003cli\u003eAssetView サーバー通信モジュール Hotfix\u003c/li\u003e\u003c/ul\u003e なお開発者によると、AssetView Ver.11.0.0 より前のバージョンはすでに保守期間が終了しているため、対策は提供されません。 AssetView を Ver.11.0.0 およびそれ以降のバージョンにアップデートした上で、パッチを適用してください。  詳しくは\u003ca href=\"https://assetview.hammock.jp/hc/ja/articles/5527356312089\"\u003e開発者が提供する情報\u003c/a\u003eをご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "HAMMOCK",
+      "vulinfo_id": "JVN#54857505 : AssetView サーバー通信モジュールの脆弱性",
+      "url": "https://www.hammock.jp/assetview/info/220422.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HAMMOCK",
+      "vulinfo_id": "AssetView サーバー通信モジュール Hotfix（JVN#54857505）(要ログイン)",
+      "url": "https://assetview.hammock.jp/hc/ja/articles/5527356312089"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-28719",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-28719"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#54857505",
+      "url": "https://jvn.jp/jp/JVN54857505/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-04-14T01:31:25Z",
+      "description": "[2022年04月22日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-04-22T12:04:45+09:00",
+  "date_last_updated": "2022-04-22T12:04:45+09:00",
+  "date_public": "2022-04-22T00:00:00+09:00"
+}

@@ -1,0 +1,138 @@
+{
+  "vulinfo_id": "JVNDB-2007-000739",
+  "title": "NFSv4 ID mapper の getpwnam_r() 関数におけるファイル所有者の取り扱いの問題",
+  "vulinfo_description": "NFSv4 ID mapper (nfsidmap) には、username の取り扱いの際、getpwnam_r() 関数からの返り値の取り扱いに不備があり、任意のファイルの所有者を root に変更される問題が存在します。",
+  "affected": [
+    {
+      "name": "CITI",
+      "product_name": "libnfsidmap"
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "任意のファイルを root 権限にされることで、権限昇格に悪用される可能性があります。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "nfs-utils-lib-1.0.8-7.2.z2",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=43"
+    },
+    {
+      "type": "vendor",
+      "name": "citi.umich.edu",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.citi.umich.edu/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2007:0951",
+      "url": "https://rhn.redhat.com/errata/RHSA-2007-0951.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2007:0951",
+      "url": "http://www.jp.redhat.com/support/errata/RHSA/RHSA-2007-0951J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-4135",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4135"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "36396",
+      "url": "http://xforce.iss.net/xforce/xfdb/36396"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-4135",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-4135"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA26674",
+      "url": "http://secunia.com/advisories/26674"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-DesignError",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEDesignError",
+      "title": "設計上の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年10月16日]\\n  掲載\\n[2007年12月03日]\\n  影響を受けるシステム：ミラクル・リナックス (nfs-utils-lib-1.0.8-7.2.z2) の情報追加。\\n  ベンダ情報：ミラクル・リナックス (nfs-utils-lib-1.0.8-7.2.z2) 追加。"
+    }
+  ],
+  "date_first_published": "2007-10-16T16:14:12+09:00",
+  "date_last_updated": "2007-12-03T16:57:24+09:00",
+  "date_public": "2007-08-31T00:00:00+09:00"
+}

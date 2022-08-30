@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2007-005676",
+  "title": "PhpWiki の lib/WikiUser/LDAP.php における認証を回避される脆弱性",
+  "vulinfo_description": "PhpWiki の lib/WikiUser/LDAP.php には、設定にゼロ以外の PASSWORD_LENGTH_MINIMUM がない場合、認証を回避される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "PhpWiki",
+      "product_name": "PhpWiki",
+      "version_number": [
+        "1.3.13p1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phpwiki_project:phpwiki"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、空のパラメータを介して、特定の LDAP 実装で使用した場合に ldap_bind が真を返す状態となり、認証を回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PhpWiki",
+      "vulinfo_id": "Release Name: phpwiki-1.3.13p1",
+      "url": "http://phpwiki.sourceforge.net/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-3193",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3193"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-3193",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-3193"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年12月20日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-12-20T18:19:25+09:00",
+  "date_last_updated": "2012-12-20T18:19:25+09:00",
+  "date_public": "2007-06-12T00:00:00+09:00"
+}

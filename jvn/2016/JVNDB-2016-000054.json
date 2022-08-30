@@ -1,0 +1,97 @@
+{
+  "vulinfo_id": "JVNDB-2016-000054",
+  "title": "Electron における Node モジュール読み込みに関する問題",
+  "vulinfo_description": "Electron には、Node モジュール読み込みのパスを適切に制限していない問題が存在します。その結果、任意の JavaScript を実行される可能性があります。  Electron は、HTML、CSS、JavaScript with Chromium や Node.js のようなウェブテクノロジを使ったクロスプラットフォームのデスクトップアプリケーションを開発するためのソフトウエアフレームワークです。Electron は、Atom エディタ、Microsoft Visual Studio Code などのアプリケーションで利用されています。Electron には、Node モジュールを読み込む際の検索パスに問題があります。この問題は、require 関数の処理を行う際、モジュールが存在するディレクトリの親ディレクトリをすべて検索パスに加えてしまうことに起因しています。攻撃者によって、これらの検索パスに細工された Node モジュールを置かれていた場合、この Node モジュールが読み込まれます。  この脆弱性情報は、情報セキュリティ早期警戒パートナーシップに基づき下記の方が IPA に報告し、JPCERT/CC が開発者との調整を行いました。 報告者: (株)セキュアスカイ・テクノロジー 長谷川陽介 氏",
+  "affected": [
+    {
+      "name": "Electron",
+      "product_name": "Electron",
+      "version_number": [
+        "0.33.5 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:electron:electron"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.3",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+      }
+    ],
+    "impact_item": "攻撃者によって細工された Node モジュールを読み込むことで、Electron で開発されたアプリケーションが持つ権限で任意の JavaScript コードを実行される可能性があります。"
+  },
+  "solution": "[Electron をアップデートし、アプリケーションをリビルドする] Electron を使用したアプリケーションを開発している場合、Electron をアップデートしてからアプリケーションをリビルドしてください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Electron",
+      "vulinfo_id": "Merge pull request #2976 from atom/node_modules_paths",
+      "url": "https://github.com/electron/electron/commit/9a2e2b365d061ec10cd861391fd5b1344af7194d"
+    },
+    {
+      "type": "vendor",
+      "name": "Electron",
+      "vulinfo_id": "Prevent Node from adding paths outside the app to search paths",
+      "url": "https://github.com/electron/electron/pull/2976"
+    },
+    {
+      "type": "vendor",
+      "name": "Github",
+      "vulinfo_id": "electron@0.33.5",
+      "url": "https://github.com/atom/atom/commit/bbf25e7da15e4759341ffad26299639a1cc788ab"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-1202",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1202"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#00324715",
+      "url": "https://jvn.jp/jp/JVN00324715/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-1202",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1202"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年04月22日]\\n  掲載\\n[2016年06月01日]\\n  ベンダ情報：Electron (Merge pull request #2976 from atom/node_modules_paths) を追加\\n  参考情報：National Vulnerability Database (NVD) (CVE-2016-1202) を追加"
+    }
+  ],
+  "date_first_published": "2016-04-22T12:02:22+09:00",
+  "date_last_updated": "2016-06-01T15:55:38+09:00",
+  "date_public": "2016-04-22T00:00:00+09:00"
+}

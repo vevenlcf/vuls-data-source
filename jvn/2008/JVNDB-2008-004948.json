@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2008-004948",
+  "title": "Debian GNU/Linux 上の Cirrus VGA の実装におけるヒープベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Debian GNU/Linux 上および Ubuntu 上の (1) KVM および (2) QEMU の Cirrus VGA の実装には、ヒープベースのバッファオーバーフローの脆弱性が存在します。 本問題は、CVE-2007-1320 に対応した誤った修正が原因で存在しています。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    },
+    {
+      "name": "KVM",
+      "product_name": "KVM",
+      "version_number": [
+        "kvm-82 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:kvm_qumranet:kvm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、接続用の VNC コンソールを使用されることで、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "kvm qumranet",
+      "vulinfo_id": "KVM",
+      "url": "http://www.linux-kvm.org/page/Main_Page"
+    },
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "QEMU",
+      "url": "http://wiki.qemu.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2008-4539",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4539"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2008-4539",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4539"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:17:22+09:00",
+  "date_last_updated": "2012-09-25T17:17:22+09:00",
+  "date_public": "2008-12-29T00:00:00+09:00"
+}

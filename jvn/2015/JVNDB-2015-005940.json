@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2015-005940",
+  "title": "ATutor の mods/_standard/gradebook/edit_marks.php における任意の PHP コードを実行される脆弱性",
+  "vulinfo_description": "ATutor の mods/_standard/gradebook/edit_marks.php には、Eval インジェクションにより、任意の PHP コードを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code (Eval インジェクション) と識別されています。 https://cwe.mitre.org/data/definitions/95.html",
+  "affected": [
+    {
+      "name": "ATutor",
+      "product_name": "ATutor",
+      "version_number": [
+        "2.2 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:atutor:atutor"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "AT_PRIV_GRADEBOOK 権限を持つリモート認証されたユーザにより、(1) asc または (2) desc パラメータを介して、任意の PHP コードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ATutor",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.atutor.ca/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7712",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7712"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7712",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7712"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "ATutor \u003c= 2.2 (edit_marks.php) PHP Code Injection Vulnerability",
+      "url": "http://karmainsecurity.com/KIS-2015-08"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-18T11:17:58+09:00",
+  "date_last_updated": "2015-11-18T11:17:58+09:00",
+  "date_public": "2015-11-04T00:00:00+09:00"
+}

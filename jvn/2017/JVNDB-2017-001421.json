@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2017-001421",
+  "title": "Linux Kernel の VideoCore DRM ドライバの drivers/gpu/drm/vc4/vc4_gem.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の VideoCore DRM ドライバの drivers/gpu/drm/vc4/vc4_gem.c の vc4_get_bcl 関数は、特定のオーバーフローの検出に errno 値を設定しないため、サービス運用妨害 (不正なポインタデリファレンスおよび OOPS) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.9.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、VC4_SUBMIT_CL ioctl コールの整合性のないサイズ値を介して、サービス運用妨害 (不正なポインタデリファレンスおよび OOPS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.9.7",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.9.7"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "drm/vc4: Return -EINVAL on the overflow checks failing.",
+      "url": "https://github.com/torvalds/linux/commit/6b8ac63847bc2f958dd93c09edc941a0118992d9"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "drm/vc4: Return -EINVAL on the overflow checks failing.",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=6b8ac63847bc2f958dd93c09edc941a0118992d9"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1416437",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1416437"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5577",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5577"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5577",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5577"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-388",
+      "url": "https://cwe.mitre.org/data/definitions/388.html",
+      "title": "エラー処理"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年02月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-02-17T11:45:04+09:00",
+  "date_last_updated": "2017-02-17T11:45:04+09:00",
+  "date_public": "2017-02-01T00:00:00+09:00"
+}

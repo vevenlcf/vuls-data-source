@@ -1,0 +1,84 @@
+{
+  "vulinfo_id": "JVNDB-2009-003853",
+  "title": "WordPress 用 WP-Forum プラグインにおける SQL インジェクションの脆弱性",
+  "vulinfo_description": "WordPress 用 WP-Forum プラグインには、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "fahlstad",
+      "product_name": "wp-forum",
+      "version_number": [
+        "2.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:fahlstad:wp-forum"
+      }
+    },
+    {
+      "name": "WordPress.org",
+      "product_name": "WordPress",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wordpress:wordpress"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、以下のパラメータを介して、任意の SQL コマンドを実行される可能性があります。 (1) wpf.class.php に関連するデフォルト URI への search アクション内の search_max パラメータ (2) wpf.class.php に関連するコンポーネントへの forum パラメータ (3) wpf.class.php 内の remove_topic 関数に関連するデフォルト URI への viewforum アクション内の topic パラメータ (4) wpf-post.php に関連するデフォルト URI 内の editpost アクション内の id パラメータ (5) wpf-post.php に関連するデフォルト URI 内の viewtopic アクション内の id パラメータ"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "fahlstad",
+      "vulinfo_id": "Top Page",
+      "url": "http://fahlstad.se/wp-forum/"
+    },
+    {
+      "type": "vendor",
+      "name": "WordPress",
+      "vulinfo_id": "Top Page",
+      "url": "http://wordpress.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-3703",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3703"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-3703",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3703"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T16:18:51+09:00",
+  "date_last_updated": "2012-06-26T16:18:51+09:00",
+  "date_public": "2009-12-18T00:00:00+09:00"
+}

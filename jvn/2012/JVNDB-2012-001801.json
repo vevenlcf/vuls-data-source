@@ -1,0 +1,131 @@
+{
+  "vulinfo_id": "JVNDB-2012-001801",
+  "title": "OpenSSL の crypto/asn1/asn_mime.c にある mime_param_cmp 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSL の crypto/asn1/asn_mime.c にある mime_param_cmp 関数には、サービス運用妨害 (NULL ポインタデリファレンスおよびアプリケーションクラッシュ) 状態となる脆弱性が存在します。  本脆弱性は、CVE-2006-7250 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.8u 未満",
+        "1.0.0h 未満の 1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された S/MIME メッセージを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびアプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian セキュリティ勧告",
+      "vulinfo_id": "DSA-2454",
+      "url": "http://www.debian.org/security/2012/dsa-2454"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-4630",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/077666.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2012-4665",
+      "url": "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/077086.html"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBMU02786 SSRT100877",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03360041"
+    },
+    {
+      "type": "vendor",
+      "name": "HP Security Bulletin",
+      "vulinfo_id": "HPSBOV02793 SSRT100891",
+      "url": "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03383940"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenSSL",
+      "vulinfo_id": "22252",
+      "url": "http://cvs.openssl.org/chngview?cn=22252"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1306",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1306.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1307",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1307.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:1308",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-1308.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2012-1165 Denial of Service (DoS) vulnerability in OpenSSL",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2012_1165_denial_of"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1424-1",
+      "url": "http://www.ubuntu.com/usn/USN-1424-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1165",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1165"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1165",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1165"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月19日]\\n  掲載\\n[2012年05月14日]\\n  ベンダ情報：オラクル (CVE-2012-1165 Denial of Service (DoS) vulnerability in OpenSSL) を追加\\n[2012年07月25日]\\n  ベンダ情報：ヒューレット・パッカード (HPSBOV02793 SSRT100891) を追加\\n  ベンダ情報：ヒューレット・パッカード (HPSBMU02786 SSRT100877) を追加\\n[2012年09月05日]\\n  ベンダ情報：Ubuntu (USN-1424-1) を追加\\n  ベンダ情報：Debian (DSA-2454) を追加\\n  ベンダ情報：Fedora Project (FEDORA-2012-4665) を追加\\n[2012年11月08日]\\n  ベンダ情報：レッドハット (RHSA-2012:1306) を追加\\n  ベンダ情報：レッドハット (RHSA-2012:1307) を追加\\n  ベンダ情報：レッドハット (RHSA-2012:1308) を追加\\n[2012年11月13日]\\n  ベンダ情報：Fedora Project (FEDORA-2012-4630) を追加"
+    }
+  ],
+  "date_first_published": "2012-03-19T12:07:02+09:00",
+  "date_last_updated": "2012-11-13T17:38:23+09:00",
+  "date_public": "2012-03-15T00:00:00+09:00"
+}

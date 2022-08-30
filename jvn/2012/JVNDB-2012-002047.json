@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2012-002047",
+  "title": "Wireshark の reassemble_message 関数におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Wireshark の RLC 解析機能の epan/dissectors/packet-rlc.c 内の reassemble_message 関数には、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.4.11 未満の 1.4.x",
+        "1.6.5 未満の 1.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:A/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、一連の断片化された RLC パケットを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple Denial of Service vulnerabilities in Wireshark",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_denial_of_service_vulnerabilities2"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "wnpa-sec-2012-03",
+      "url": "http://www.wireshark.org/security/wnpa-sec-2012-03.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Bug 6391",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=6391"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark",
+      "vulinfo_id": "Revision 40266",
+      "url": "http://anonsvn.wireshark.org/viewvc?view=revision\u0026revision=40266"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0043",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0043"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0043",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0043"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年04月12日]\\n  掲載\\n[2012年04月16日]\\n  ベンダ情報：オラクル (Multiple Denial of Service vulnerabilities in Wireshark) を追加"
+    }
+  ],
+  "date_first_published": "2012-04-12T16:29:10+09:00",
+  "date_last_updated": "2012-04-16T16:52:46+09:00",
+  "date_public": "2012-01-10T00:00:00+09:00"
+}

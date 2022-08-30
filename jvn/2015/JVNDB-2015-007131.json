@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2015-007131",
+  "title": "Cool Projects TarDiff における任意のコマンドを実行される脆弱性",
+  "vulinfo_description": "Cool Projects TarDiff には、任意のコマンドを実行される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-77: Improper Neutralization of Special Elements used in a Command (コマンドインジェクション) と識別されています。 http://cwe.mitre.org/data/definitions/77.html",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "TarDiff project",
+      "product_name": "TarDiff",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:tardiff_project:tardiff"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "第三者により、(1) tar ファイル名、または (2) tar ファイル内のファイル名のシェルのメタ文字を介して、任意のコマンドを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Alioth",
+      "vulinfo_id": "Add patches to fix two security issues (CVE-2015-0857, CVE-2015-0858)",
+      "url": "https://anonscm.debian.org/cgit/collab-maint/tardiff.git/commit/?id=9bd6a07bc204472ac27242cea16f89943b43003a"
+    },
+    {
+      "type": "vendor",
+      "name": "Alioth",
+      "vulinfo_id": "Don't use backticks at all to fix CVE-2015-0857",
+      "url": "https://anonscm.debian.org/cgit/collab-maint/tardiff.git/commit/?id=a18e8df51511df276e61dbccdbe1714fc53af965"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3562",
+      "url": "http://www.debian.org/security/2016/dsa-3562"
+    },
+    {
+      "type": "vendor",
+      "name": "TarDiff",
+      "vulinfo_id": "Top Page",
+      "url": "http://tardiff.coolprojects.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-0857",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0857"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-0857",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0857"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-11T17:48:38+09:00",
+  "date_last_updated": "2016-05-11T17:48:38+09:00",
+  "date_public": "2015-10-17T00:00:00+09:00"
+}

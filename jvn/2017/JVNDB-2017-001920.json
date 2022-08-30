@@ -1,0 +1,102 @@
+{
+  "vulinfo_id": "JVNDB-2017-001920",
+  "title": "gtk-vnc における任意のコードを実行される脆弱性",
+  "vulinfo_description": "gtk-vnc は、subrectangle-containing タイルの境界を適切にチェックしないため、任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Fedora Project",
+      "product_name": "Fedora",
+      "version_number": [
+        "25"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:fedoraproject:fedora"
+      }
+    },
+    {
+      "name": "GNOME Project",
+      "product_name": "gtk-vnc",
+      "version_number": [
+        "0.7.0 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:gnome:gtk-vnc"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、巧妙に細工された (1) rre、(2) hextile、または (3) copyrect タイルの src x、y 座標を介して、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 778048",
+      "url": "https://bugzilla.gnome.org/show_bug.cgi?id=778048"
+    },
+    {
+      "type": "vendor",
+      "name": "Fedora Update Notification",
+      "vulinfo_id": "FEDORA-2017-ab04a91edd",
+      "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/LGPQ5MQR6SN4DYTEFACHP2PP5RR26KYK/"
+    },
+    {
+      "type": "vendor",
+      "name": "GNOME GIT REPOSITORY",
+      "vulinfo_id": "Fix bounds checking for RRE, hextile \u0026 copyrect encodings",
+      "url": "https://git.gnome.org/browse/gtk-vnc/commit/?id=ea0386933214c9178aaea9f2f85049ea3fa3e14a"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-5884",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5884"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-5884",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5884"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-118",
+      "url": "https://cwe.mitre.org/data/definitions/118.html",
+      "title": "インデックス化が可能なリソースの不適切なアクセス (範囲エラー)"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-23T12:29:14+09:00",
+  "date_last_updated": "2017-03-23T12:29:14+09:00",
+  "date_public": "2017-02-07T00:00:00+09:00"
+}

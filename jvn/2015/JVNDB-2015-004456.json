@@ -1,0 +1,96 @@
+{
+  "vulinfo_id": "JVNDB-2015-004456",
+  "title": "Django の contrib.sessions.backends.base.SessionBase.flush 関数および cache_db.SessionStore.flush 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Django の (1) contrib.sessions.backends.base.SessionBase.flush 関数および (2) cache_db.SessionStore.flush 関数は、特定の状況で空のセッションを作成するため、サービス運用妨害 (セッションストアの消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "12.04 LTS",
+        "14.04 LTS",
+        "15.04"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Django Software Foundation",
+      "product_name": "Django",
+      "version_number": [
+        "1.4.22 未満の 1.4.x",
+        "1.7.10 未満の 1.7.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:djangoproject:django"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、サービス運用妨害 (セッションストアの消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Django weblog",
+      "vulinfo_id": "Security releases issued: 1.8.4, 1.7.10, 1.4.22",
+      "url": "https://www.djangoproject.com/weblog/2015/aug/18/security-releases/"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2720-1",
+      "url": "http://www.ubuntu.com/usn/USN-2720-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5964",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5964"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5964",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5964"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年08月27日]\\n  掲載\\n[2015年11月06日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - October 2015) を追加"
+    }
+  ],
+  "date_first_published": "2015-08-27T16:28:53+09:00",
+  "date_last_updated": "2015-11-06T15:43:44+09:00",
+  "date_public": "2015-08-18T00:00:00+09:00"
+}

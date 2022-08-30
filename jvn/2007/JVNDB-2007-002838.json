@@ -1,0 +1,77 @@
+{
+  "vulinfo_id": "JVNDB-2007-002838",
+  "title": "QEMU の NE2000 エミュレータにおける任意のコードを実行される脆弱性",
+  "vulinfo_description": "QEMU の NE2000 エミュレータには、任意のコードを実行される脆弱性が存在します。 本問題は、\"NE2000 ネットワークドライバおよびソケットコード\" の一部として、CVE-2007-1321 で参照されている場合がありますが、mtu オーバーフローの脆弱性は本 CVE が正しい記述です。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "version_number": [
+        "0.8.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.6",
+        "vector": "AV:L/AC:M/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、MTU よりも大きいサイズの Ethernet フレームを EN0_TCNT レジスタに書き込まれることで、slirp ライブラリでヒープベースのバッファオーバーフローを誘発され、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "Top Page",
+      "url": "http://wiki.qemu.org/Index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-5729",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5729"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-5729",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5729"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-26T15:54:41+09:00",
+  "date_last_updated": "2012-06-26T15:54:41+09:00",
+  "date_public": "2007-10-30T00:00:00+09:00"
+}

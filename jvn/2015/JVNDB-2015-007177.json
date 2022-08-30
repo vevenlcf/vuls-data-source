@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2015-007177",
+  "title": "PHP の ext/openssl/openssl.c の openssl_random_pseudo_bytes 関数における暗号保護メカニズムを破られる脆弱性",
+  "vulinfo_description": "PHP の ext/openssl/openssl.c の openssl_random_pseudo_bytes 関数は、誤って非推奨の RAND_pseudo_bytes 関数に依存するため、暗号保護メカニズムを破られる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.4.44 未満",
+        "5.5.28 未満の 5.5.x",
+        "5.6.12 未満の 5.6.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、暗号保護メカニズムを破られる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugs",
+      "vulinfo_id": "Bug #1534203",
+      "url": "https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1534203"
+    },
+    {
+      "type": "vendor",
+      "name": "PHP Bugs",
+      "vulinfo_id": "Sec Bug #70014",
+      "url": "https://bugs.php.net/bug.php?id=70014"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "Fix bug #70014 - use RAND_bytes instead of deprecated RAND_pseudo_bytes",
+      "url": "http://git.php.net/?p=php-src.git;a=commit;h=16023f3e3b9c06cf677c3c980e8d574e4c162827"
+    },
+    {
+      "type": "vendor",
+      "name": "The PHP Group",
+      "vulinfo_id": "PHP 5 ChangeLog",
+      "url": "http://php.net/ChangeLog-5.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8867",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8867"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8867",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8867"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-05-25T16:28:47+09:00",
+  "date_last_updated": "2016-05-25T16:28:47+09:00",
+  "date_public": "2015-08-06T00:00:00+09:00"
+}

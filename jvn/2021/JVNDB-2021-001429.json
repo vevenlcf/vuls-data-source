@@ -1,0 +1,142 @@
+{
+  "vulinfo_id": "JVNDB-2021-001429",
+  "title": "OPC 製品における複数の脆弱性",
+  "vulinfo_description": "OPC Foundation が提供する OPC UA 製品および Unified Automation が提供する OPC UA クライアント / サーバの SDK バンドルには、次の複数の脆弱性が存在します。  　* 不適切な再帰制御 (CWE-674) - CVE-2021-27432 　* 情報漏えい (CWE-200) - CVE-2021-27434",
+  "affected": [
+    {
+      "name": "OPC Foundation",
+      "product_name": "UA .NET Legacy",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:opcfoundation:ua-.net-legacy"
+      }
+    },
+    {
+      "name": "OPC Foundation",
+      "product_name": "UA .NET Standard",
+      "version_number": [
+        "1.4.365.48 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:opcfoundation:ua-.netstandard"
+      }
+    },
+    {
+      "name": "Unified Automation GmbH",
+      "product_name": ".NET ベースの OPC UA クライアント / サーバの SDK バンドル",
+      "version_number": [
+        "3.0.7 およびそれ以前（.NET 4.5、4.0 および 3.5 Framework バージョンのみ)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:unified_automation_.net_based_opc_ua_client_server_sdk_bundle"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、次のような影響を受ける可能性があります。  　* 遠隔の第三者によって、スタックオーバーフローを引き起こされる。 - CVE-2021-27432 　* 遠隔の第三者によって、ファイルシステム上のアクセスを許可していない機密情報を窃取される。 - CVE-2021-27434"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートまたはソフトウェアの更新をしてください。  　* CVE-2021-27432 　　　* OPC Foundation が提供する OPC UA .NET Standard 1.4.365.48 にアップデートする。 　* CVE-2021-27434 　　　* Unified Automation が提供する OPC UA クライアント / サーバの SDK バンドルを最新にアップデートする。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "OPC UA .NET Standard stack update",
+      "url": "https://github.com/OPCFoundation/UA-.NETStandard/releases/tag/1.4.365.48"
+    },
+    {
+      "type": "vendor",
+      "name": "Unified Automation",
+      "vulinfo_id": "OPC UA Development - Downloads (要ログイン)",
+      "url": "https://www.unified-automation.com/downloads/opc-ua-development.html"
+    },
+    {
+      "type": "vendor",
+      "name": "三菱電機株式会社",
+      "vulinfo_id": "三菱電機株式会社 の告知ページ",
+      "url": "https://www.mitsubishielectric.co.jp/psirt/vulnerability/pdf/2021-016.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-27434",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27434"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-27432",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27432"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-133-03",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-133-03"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-133-04",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-133-04"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-294-03",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-294-03"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98588994",
+      "url": "http://jvn.jp/cert/JVNVU98588994"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-674",
+      "url": "https://cwe.mitre.org/data/definitions/674.html",
+      "title": "不適切な再帰制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-05-17T08:33:46Z",
+      "description": "[2021年05月17日]\\n  掲載"
+    },
+    {
+      "history_no": "2",
+      "date_time": "2021-10-22T02:05:31Z",
+      "description": "[2021年10月22日]\\n  参考情報：ICS-CERT ADVISORY (ICSA-21-294-03) を追加"
+    },
+    {
+      "history_no": "3",
+      "date_time": "2021-10-25T04:49:29Z",
+      "description": "[2021年10月25日]\\n  ベンダ情報：三菱電機 (三菱電機株式会社 の告知ページ) を追加"
+    }
+  ],
+  "date_first_published": "2021-05-17T17:33:46+09:00",
+  "date_last_updated": "2021-10-25T13:50:16+09:00",
+  "date_public": "2021-05-14T00:00:00+09:00"
+}

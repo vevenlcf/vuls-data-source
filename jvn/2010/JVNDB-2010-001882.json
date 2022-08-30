@@ -1,0 +1,55 @@
+{
+  "vulinfo_id": "JVNDB-2010-001882",
+  "title": "Wind River Systems VxWorks の認証 API (loginLib) における問題",
+  "vulinfo_description": "VxWorks の認証 API (loginLib) で使用されているハッシュ関数には、衝突耐性の不備が存在します。正規のパスワードと同一のハッシュ値が算出される文字列を見つけることが比較的容易です。",
+  "affected": [
+    {
+      "name": "ウインドリバー株式会社",
+      "product_name": "VxWorks",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:windriver:vxworks"
+      }
+    }
+  ],
+  "impact": {
+    "impact_item": "攻撃者によって、認証 API (loginLib) を使用しているサービスへアクセスされる可能性があります。"
+  },
+  "solution": "[使用するハッシュ関数を置き換える] 認証 API (loginLib) で使用されているデフォルトのハッシュ関数 (loginDefaultEncrypt()) の使用を停止し、より安全なハッシュ関数を使用してください。loginEncryptInstall() を使用することで、新たな暗号アルゴリズムを追加することが可能です。  詳しくは Wind River Systems が提供する情報および VU#840249 をご確認ください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Wind River Support",
+      "vulinfo_id": "Top Page",
+      "url": "http://windriver.com/"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#840249",
+      "url": "http://jvn.jp/cert/JVNVU840249"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#840249",
+      "url": "http://www.kb.cert.org/vuls/id/840249"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "MAPG-863QH9",
+      "url": "http://www.kb.cert.org/vuls/id/MAPG-863QH9"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2010年08月26日]\\n  掲載 "
+    }
+  ],
+  "date_first_published": "2010-08-26T16:57:33+09:00",
+  "date_last_updated": "2010-08-26T16:57:33+09:00",
+  "date_public": "2010-08-03T00:00:00+09:00"
+}

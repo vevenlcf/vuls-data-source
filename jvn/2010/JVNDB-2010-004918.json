@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2010-004918",
+  "title": "tiff2ps で使用される LibTIFF におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "tiff2ps で使用されるの LibTIFF の tif_ojpeg.c の OJPEGPostDecode 関数は、\"ダウンサンプリング OJPEG 入力\" の処理に不備があるため、サービス運用妨害 (アサーションの失敗およびアプリケーションの終了) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "version_number": [
+        "3.9.0 および 3.9.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された TIFF イメージを介して、サービス運用妨害 (アサーションの失敗およびアプリケーションの終了) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 2209",
+      "url": "http://bugzilla.maptools.org/show_bug.cgi?id=2209"
+    },
+    {
+      "type": "vendor",
+      "name": "LibTIFF",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.libtiff.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 583081",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=583081"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2596",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2596"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2596",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2596"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載\\n[2016年03月02日]\\n  ベンダ情報：MapTools.org (Bug 2209) を追加"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:38:46+09:00",
+  "date_last_updated": "2016-03-02T16:59:33+09:00",
+  "date_public": "2010-04-16T00:00:00+09:00"
+}

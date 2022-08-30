@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2022-001376",
+  "title": "GE Digital 製 Proficy CIMPLICITY における機微な情報の平文通信の脆弱性",
+  "vulinfo_description": "GE Digital 社が提供する HMI および SCADA プラットフォームである Proficy CIMPLICITY には、機微な情報の平文通信の脆弱性（CWE-319、CVE-2022-21798）が存在します。CIMPLICITY ネットワーク上では、認証情報を平文で通信しています。",
+  "affected": [
+    {
+      "name": "GE デジタル",
+      "product_name": "Proficy CIMPLICITY",
+      "version_number": [
+        "すべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ge_digital:proficy_cimplicity"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "平文で送られた認証情報を窃取され、機器を不正に操作される可能性があります。  "
+  },
+  "solution": "[ワークアラウンドを実施する] GE Digital 社は通信の暗号化を設定することを推奨しています。 通信の暗号化の設定方法は、\u003ca href=\"https://digitalsupport.ge.com/communities/cc_login?startURL=%2Fen_US%2FDocumentation%2FiFIX-Secure-Deployment-Guide\" target=\"blank\"\u003eSecure Deployment Guide\u003c/a\u003eを参照ください。 また CIMPLICITY \u003ca href=\"https://digitalsupport.ge.com/communities/cc_login?startURL=%2Fen_US%2FDocumentation%2FWINDOWS-HARDENING-GUIDE-and-RECOMMENDATIONS-WINDOWS-SERVER-2012-R2\" target=\"blank\"\u003eWindows Hardening Guide and Recommendations\u003c/a\u003eの項目「Appendix A IPSEC Configuration」にある IPSEC 設定についても参照することを推奨しています。 ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GE Digital",
+      "vulinfo_id": "Secure Deployment Guide（要ログイン）",
+      "url": "https://digitalsupport.ge.com/communities/cc_login?startURL=%2Fen_US%2FDocumentation%2FiFIX-Secure-Deployment-Guide"
+    },
+    {
+      "type": "vendor",
+      "name": "GE Digital",
+      "vulinfo_id": "Windows Hardening Guide and Recommendations（要ログイン）",
+      "url": "https://digitalsupport.ge.com/communities/cc_login?startURL=%2Fen_US%2FDocumentation%2FWINDOWS-HARDENING-GUIDE-and-RECOMMENDATIONS-WINDOWS-SERVER-2012-R2"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-21798",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-21798"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-22-053-02",
+      "url": "https://www.cisa.gov/uscert/ics/advisories/icsa-22-053-02"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#96846804",
+      "url": "https://jvn.jp/vu/JVNVU96846804/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-319",
+      "url": "https://cwe.mitre.org/data/definitions/319.html",
+      "title": "重要な情報の平文での送信"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-02-28T06:00:31Z",
+      "description": "[2022年02月28日]   掲載"
+    }
+  ],
+  "date_first_published": "2022-02-28T16:33:09+09:00",
+  "date_last_updated": "2022-02-28T16:33:09+09:00",
+  "date_public": "2022-02-25T00:00:00+09:00"
+}

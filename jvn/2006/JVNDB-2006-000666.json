@@ -1,0 +1,172 @@
+{
+  "vulinfo_id": "JVNDB-2006-000666",
+  "title": "PHP の symlink() 関数における open_basedir 制限回避の脆弱性",
+  "vulinfo_description": "PHP に実装されている symlink() 関数には、引数として渡されるファイルパスのチェックに不備が存在するため、ディレクトリトラバーサル攻撃を介して、open_basedir やセーフモードによる制限を回避可能となる脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "4.4.4 およびそれ以前",
+        "5.2.0 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux",
+      "version_number": [
+        "10_f "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Appliance Server",
+      "version_number": [
+        "1.0 (hosting) ",
+        "1.0 (workgroup) ",
+        "2.0  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_appliance_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Desktop",
+      "version_number": [
+        "10 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_desktop"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Multimedia",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_multimedia"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Personal",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_personal"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "Turbolinux Server",
+      "version_number": [
+        "10  ",
+        "10 (x64) ",
+        "8  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_server"
+      }
+    },
+    {
+      "name": "ターボリナックス",
+      "product_name": "ターボリナックス ホーム ",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:turbolinux:turbolinux_home"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.6",
+        "vector": "AV:L/AC:H/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "PHP スクリプトによるアクセス制限を回避され、重要な情報が取得されてしまう可能性があります。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。 なお、Hardened-PHP Project より symlink() 関数を無効化する、最新の Suhosin エクステンションの利用が回避策として示されています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.php.net/"
+    },
+    {
+      "type": "vendor",
+      "name": "Turbolinux Security Advisory (英語)",
+      "vulinfo_id": "TLSA-2006-38",
+      "url": "http://www.turbolinux.com/security/2006/TLSA-2006-38.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "製品セキュリティ情報",
+      "vulinfo_id": "TLSA-2006-38",
+      "url": "http://www.turbolinux.co.jp/security/2006/TLSA-2006-38j.txt"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2006-5178",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5178"
+    },
+    {
+      "type": "advisory",
+      "name": "FrSIRT Advisories",
+      "vulinfo_id": "FrSIRT/ADV-2006-3901",
+      "url": "http://www.frsirt.com/english/advisories/2006/3901"
+    },
+    {
+      "type": "advisory",
+      "name": "Hardened-PHP Project",
+      "vulinfo_id": "advisory_082006.132",
+      "url": "http://www.hardened-php.net/advisory_082006.132.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2006-5178",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-5178"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA22235",
+      "url": "http://secunia.com/advisories/22235/"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "20326",
+      "url": "http://www.securityfocus.com/bid/20326"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2006-10-04T00:00:00+09:00"
+}

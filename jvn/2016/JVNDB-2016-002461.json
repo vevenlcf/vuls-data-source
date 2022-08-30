@@ -1,0 +1,227 @@
+{
+  "vulinfo_id": "JVNDB-2016-002461",
+  "title": "Linux Kernel の arch/x86/mm/mmap.c の arch_pick_mmap_layout 関数における ADDR_NO_RANDOMIZE フラグの制限を無効にされる脆弱性",
+  "vulinfo_description": "Linux Kernel の arch/x86/mm/mmap.c の arch_pick_mmap_layout 関数は、レガシーのベースアドレスを適切にランダム化しないため、ADDR_NO_RANDOMIZE フラグの制限を無効にされ、setuid または setgid プログラムの ASLR 保護メカニズムを回避される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-254: Security Features (セキュリティ機能) と識別されています。 http://cwe.mitre.org/data/definitions/254.html",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.5.2 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Desktop",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_desktop"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Live Patching",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:suse_linux_enterprise_live_patching"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Module for Public Cloud",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:suse:suse_linux_enterprise_module_for_public_cloud"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Real Time Extension",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_real_time_extension"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Server",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_server"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Software Development Kit",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_software_development_kit"
+      }
+    },
+    {
+      "name": "SUSE",
+      "product_name": "SUSE Linux Enterprise Workstation Extension",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:suse:linux_enterprise_workstation_extension"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.6",
+        "vector": "AV:L/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、スタック消費のリソースの制限を無効にされることで、ADDR_NO_RANDOMIZE フラグの制限を無効にされ、setuid または setgid プログラムの ASLR 保護メカニズムを回避される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "x86/mm/32: Enable full randomization on i386 and X86_32",
+      "url": "https://github.com/torvalds/linux/commit/8b8addf891de8a00e4d39fc32f93f7c5eb8feceb"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "x86/mm/32: Enable full randomization on i386 and X86_32",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=8b8addf891de8a00e4d39fc32f93f7c5eb8feceb"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1690",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-06/msg00054.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2016:1937",
+      "url": "https://lists.opensuse.org/opensuse-security-announce/2016-08/msg00000.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1324749",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1324749"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3002-1",
+      "url": "http://www.ubuntu.com/usn/USN-3002-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3003-1",
+      "url": "http://www.ubuntu.com/usn/USN-3003-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2989-1",
+      "url": "http://www.ubuntu.com/usn/USN-2989-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3004-1",
+      "url": "http://www.ubuntu.com/usn/USN-3004-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2996-1",
+      "url": "http://www.ubuntu.com/usn/USN-2996-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2997-1",
+      "url": "http://www.ubuntu.com/usn/USN-2997-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-2998-1",
+      "url": "http://www.ubuntu.com/usn/USN-2998-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3000-1",
+      "url": "http://www.ubuntu.com/usn/USN-3000-1/"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-3001-1",
+      "url": "http://www.ubuntu.com/usn/USN-3001-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-3672",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3672"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-3672",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3672"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載\\n[2016年10月28日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：Canonical (USN-2989-1) を追加\\n  ベンダ情報：Canonical (USN-2996-1) を追加\\n  ベンダ情報：Canonical (USN-2997-1) を追加\\n  ベンダ情報：Canonical (USN-2998-1) を追加\\n  ベンダ情報：Canonical (USN-3000-1) を追加\\n  ベンダ情報：Canonical (USN-3001-1) を追加\\n  ベンダ情報：Canonical (USN-3002-1) を追加\\n  ベンダ情報：Canonical (USN-3003-1) を追加\\n  ベンダ情報：Canonical (USN-3004-1) を追加  \\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1690) を追加\\n  ベンダ情報：openSUSE project (SUSE-SU-2016:1937) を追加"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:09:21+09:00",
+  "date_last_updated": "2016-10-28T16:59:39+09:00",
+  "date_public": "2016-03-11T00:00:00+09:00"
+}

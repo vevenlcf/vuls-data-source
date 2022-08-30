@@ -1,0 +1,115 @@
+{
+  "vulinfo_id": "JVNDB-2016-002456",
+  "title": "Linux Kernel の security/integrity/evm/evm_main.c の evm_verify_hmac 関数における MAC 値を偽造される脆弱性",
+  "vulinfo_description": "Linux Kernel の security/integrity/evm/evm_main.c の evm_verify_hmac 関数は、データを適切にコピーしないため、MAC 値を偽造される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-19: Data Handling (データ処理) と識別されています。 http://cwe.mitre.org/data/definitions/19.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "2.1",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:P/A:N"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、タイミングサイドチャネル攻撃を介して、MAC 値を偽造される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "CVE-2016-2085",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2016-2085"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "EVM: Use crypto_memneq() for digest comparisons",
+      "url": "https://github.com/torvalds/linux/commit/613317bd212c585c20796c10afe5daaa95d4b0a1"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "EVM: Use crypto_memneq() for digest comparisons",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=613317bd212c585c20796c10afe5daaa95d4b0a1"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1324867",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1324867"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu",
+      "vulinfo_id": "CVE-2016-2085",
+      "url": "https://people.canonical.com/~ubuntu-security/cve/2016/CVE-2016-2085.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2085",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2085"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2085",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2085"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2016-2085",
+      "url": "https://people.canonical.com/~ubuntu-security/cve/2016/CVE-2016-2085.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年05月10日]\\n  掲載\\n[2016年09月06日]\\n  ベンダ情報：Canonical (CVE-2016-2085) を追加"
+    }
+  ],
+  "date_first_published": "2016-05-10T10:09:17+09:00",
+  "date_last_updated": "2016-09-06T09:45:12+09:00",
+  "date_public": "2016-02-12T00:00:00+09:00"
+}

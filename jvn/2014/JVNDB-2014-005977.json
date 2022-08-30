@@ -1,0 +1,142 @@
+{
+  "vulinfo_id": "JVNDB-2014-005977",
+  "title": "複数の X.Org 製品の Render エクステンションにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "XFree86、X.Org X Window System (別名 X11 または X)、および X.Org Server (別名 xserver および xorg-server) の Render エクステンションには、サービス運用妨害 (out-of-bounds read および out-of-bounds write) 状態にされる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "X.Org Foundation",
+      "product_name": "X Window System",
+      "version_number": [
+        "X11R6.7"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:x.org:x_window_system"
+      }
+    },
+    {
+      "name": "X.Org Foundation",
+      "product_name": "X.Org Server",
+      "version_number": [
+        "1.16.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:x.org:xorg-server"
+      }
+    },
+    {
+      "name": "XFree86 Project",
+      "product_name": "XFree86",
+      "version_number": [
+        "4.0.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:xfree86_project:xfree86"
+      }
+    },
+    {
+      "name": "オラクル",
+      "product_name": "Oracle Virtualization",
+      "version_number": [
+        "の Oracle Secure Global Desktop 4.63",
+        "の Oracle Secure Global Desktop 4.71",
+        "の Oracle Secure Global Desktop 5.1",
+        "の Oracle Secure Global Desktop 5.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:oracle:virtualization_secure_global_desktop"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、以下の関数に対する巧妙に細工された length 値または index 値を介して、サービス運用妨害 (out-of-bounds read および out-of-bounds write) 状態にされる、または任意のコードを実行される可能性があります。  (1) ProcRenderQueryVersion (2) SProcRenderQueryVersion (3) SProcRenderQueryPictFormats (4) SProcRenderQueryPictIndexValues (5) SProcRenderCreatePicture (6) SProcRenderChangePicture (7) SProcRenderSetPictureClipRectangles (8) SProcRenderFreePicture (9) SProcRenderComposite (10) SProcRenderScale (11) SProcRenderCreateGlyphSet (12) SProcRenderReferenceGlyphSet (13) SProcRenderFreeGlyphSet (14) SProcRenderFreeGlyphs (15) SProcRenderCompositeGlyphs"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Oracle Critical Patch Update Advisory - July 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Critical Patch Update",
+      "vulinfo_id": "Text Form of Oracle Critical Patch Update - July 2015 Risk Matrices",
+      "url": "http://www.oracle.com/technetwork/topics/security/cpujul2015verbose-2367947.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - October 2015",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "July 2015 Critical Patch Update Released",
+      "url": "https://blogs.oracle.com/security/entry/july_2015_critical_patch_update"
+    },
+    {
+      "type": "vendor",
+      "name": "X.Org Security Advisory",
+      "vulinfo_id": "Advisory-2014-12-09",
+      "url": "http://www.x.org/wiki/Development/Security/Advisory-2014-12-09/"
+    },
+    {
+      "type": "vendor",
+      "name": "XFree86",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.xfree86.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-8100",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8100"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-8100",
+      "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8100"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2014-0532",
+      "url": "http://advisories.mageia.org/MGASA-2014-0532.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年12月15日]\\n  掲載\\n[2015年06月04日]\\n  参考情報：関連文書 (MGASA-2014-0532) を追加\\n[2015年07月29日]\\n  影響を受けるシステム：ベンダ情報の追加に伴い内容を更新\\n  ベンダ情報：オラクル (Oracle Critical Patch Update Advisory - July 2015) を追加\\n  ベンダ情報：オラクル (Text Form of Oracle Critical Patch Update - July 2015 Risk Matrices) を追加\\n  ベンダ情報：オラクル (July 2015 Critical Patch Update Released) を追加\\n[2015年11月06日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - October 2015) を追加"
+    }
+  ],
+  "date_first_published": "2014-12-15T19:04:40+09:00",
+  "date_last_updated": "2015-11-06T15:19:12+09:00",
+  "date_public": "2014-12-09T00:00:00+09:00"
+}

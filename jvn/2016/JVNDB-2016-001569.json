@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2016-001569",
+  "title": "FFmpeg の libavcodec/tiff.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FFmpeg の libavcodec/tiff.c は、RowsPerStrip 値および YCbCr クロミナンスサブサンプリングファクタを適切に検証しないため、サービス運用妨害 (out-of-bounds array access) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。 ",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.8.6 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された TIFF ファイルを介して、サービス運用妨害 (out-of-bounds array access) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "avcodec/tiff: Check subsample \u0026 rps values more completely",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=89f464e9c229006e16f6bb5403c5529fdd0a9edd"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2329",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2329"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2329",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2329"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-04T12:25:45+09:00",
+  "date_last_updated": "2016-03-04T12:25:45+09:00",
+  "date_public": "2016-01-18T00:00:00+09:00"
+}

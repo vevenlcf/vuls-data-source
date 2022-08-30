@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2011-005053",
+  "title": "X.Org xserver の os/utils.c における情報漏えいの脆弱性",
+  "vulinfo_description": "X.Org xserver の os/utils.c 内の LockServer 関数には、ファイルが存在する場合に存在しない場合とは異なる処理が行われるため、任意のファイルの存在が漏えいする脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "X.Org Foundation",
+      "product_name": "X.Org X Server",
+      "version_number": [
+        "1.11.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:x.org:x_server"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.2",
+        "vector": "AV:L/AC:H/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、一時的なロックファイルへのシンボリックリンク攻撃 (symlink attack) を介して、任意のファイルの存在を知られる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "freedesktop.org",
+      "vulinfo_id": "Fix CVE-2011-4028: File disclosure vulnerability.",
+      "url": "http://cgit.freedesktop.org/xorg/xserver/commit/?id=6ba44b91e37622ef8c146d8f2ac92d708a18ed34"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:0939",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-0939.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2011-4028 Information Disclosure vulnerability in X.org",
+      "url": "http://blogs.oracle.com/sunsecurity/entry/cve_2011_4028_information_disclosure"
+    },
+    {
+      "type": "vendor",
+      "name": "X.Org Foundation",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.x.org/wiki/"
+    },
+    {
+      "type": "vendor",
+      "name": "X.Org Security Advisory",
+      "vulinfo_id": "xserver locking code issues",
+      "url": "http://lists.freedesktop.org/archives/xorg/2011-October/053680.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-4028",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4028"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-4028",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4028"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-59",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-59.html",
+      "title": "リンク解釈の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年07月04日]\\n  掲載\\n[2012年08月03日]\\n  ベンダ情報：オラクル (CVE-2011-4028 Information Disclosure vulnerability in X.org) を追加"
+    }
+  ],
+  "date_first_published": "2012-07-04T16:52:41+09:00",
+  "date_last_updated": "2012-08-03T14:48:48+09:00",
+  "date_public": "2011-10-18T00:00:00+09:00"
+}

@@ -1,0 +1,127 @@
+{
+  "vulinfo_id": "JVNDB-2017-003727",
+  "title": "Linux Kernel の KEYS サブシステムにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の KEYS サブシステムには、サービス運用妨害 (メモリ消費) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.10.13 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、一連の KEY_REQKEY_DEFL_THREAD_KEYRING keyctl_set_reqkey_keyring コールを介して、サービス運用妨害 (メモリ消費) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 1034862",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=1034862"
+    },
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.10.13",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.10.13"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "KEYS: fix keyctl_set_reqkey_keyring() to not leak thread keyrings",
+      "url": "https://github.com/torvalds/linux/commit/c9f838d104fed6f2f61d68164712e3204bf5271b"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "KEYS: fix keyctl_set_reqkey_keyring() to not leak thread keyrings",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c9f838d104fed6f2f61d68164712e3204bf5271b"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1442086",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1442086"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2017-7472",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7472"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2017-7472",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-7472"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "CVE-2017-7472 Linux kernel: KEYS: fix keyctl_set_reqkey_keyring() to not leak thread keyrings",
+      "url": "http://openwall.com/lists/oss-security/2017/05/11/1"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[PATCH] KEYS: fix keyctl_set_reqkey_keyring() to not leak thread keyrings",
+      "url": "https://lkml.org/lkml/2017/4/1/235"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "[PATCH v2] KEYS: fix keyctl_set_reqkey_keyring() to not leak thread keyrings",
+      "url": "https://lkml.org/lkml/2017/4/3/724"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年06月06日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-06-06T16:14:57+09:00",
+  "date_last_updated": "2017-06-06T16:14:57+09:00",
+  "date_public": "2017-04-27T00:00:00+09:00"
+}

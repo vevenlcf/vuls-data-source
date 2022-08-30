@@ -1,0 +1,219 @@
+{
+  "vulinfo_id": "JVNDB-2011-002221",
+  "title": "Samba の smbfs における /etc/mtab ファイルを改ざんされる脆弱性",
+  "vulinfo_description": "Samba の smbfs は、(1) /etc/mtab ファイルへの mount.cifs の追加、および (2) /etc/mtab.tmp ファイルへの umount.cifs の追加の際に、リソースリミットの干渉について、最初のチェックを行わないため、/etc/mtab ファイルを改ざんされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Samba Project",
+      "product_name": "Samba",
+      "version_number": [
+        "3.5.8 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:samba:samba"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) ",
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux HPC Node",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_hpc_node"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Server EUS",
+      "version_number": [
+        "6.1.z  "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_server_eus"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Workstation",
+      "version_number": [
+        "6 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_workstation"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Workstation",
+      "version_number": [
+        "5 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_workstation"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "3.3",
+        "vector": "AV:L/AC:M/Au:N/C:P/I:P/A:N"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、過度に小さな RLIMIT_FSIZE 値を介して、/etc/mtab ファイルを改ざんされる可能性があります。"
+  },
+  "solution": "ベンダ情報及び参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1221",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-1221.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1219",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-1219.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011-1220",
+      "url": "https://rhn.redhat.com/errata/RHSA-2011-1220.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Samba",
+      "vulinfo_id": "Release History",
+      "url": "http://samba.org/samba/history/"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0001",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2012-0001.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-1678",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1678"
+    },
+    {
+      "type": "advisory",
+      "name": "ISS X-Force Database",
+      "vulinfo_id": "66702",
+      "url": "http://xforce.iss.net/xforce/xfdb/66702"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-1678",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-1678"
+    },
+    {
+      "type": "advisory",
+      "name": "OPEN SOURCE VULNERABILITY DATABASE (OSVDB)",
+      "vulinfo_id": "74872",
+      "url": "http://osvdb.org/74872"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA45760",
+      "url": "http://secunia.com/advisories/45760"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA45798",
+      "url": "http://secunia.com/advisories/45798"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA45806",
+      "url": "http://secunia.com/advisories/45806"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-16",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-16.html",
+      "title": "環境設定"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2011年09月16日]\\n  掲載\\n[2012年12月26日]\\n  影響を受けるシステム：VMware (VMSA-2012-0001) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0001) を追加"
+    }
+  ],
+  "date_first_published": "2011-09-16T11:50:11+09:00",
+  "date_last_updated": "2012-12-26T10:24:24+09:00",
+  "date_public": "2011-04-10T00:00:00+09:00"
+}

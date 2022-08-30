@@ -1,0 +1,64 @@
+{
+  "vulinfo_id": "JVNDB-2007-004479",
+  "title": "FSD におけるスタックベースのバッファオーバーフローの脆弱性",
+  "vulinfo_description": "FSD には、スタックベースのバッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "mcdu",
+      "product_name": "fsd",
+      "version_number": [
+        "2.052 d9 およびそれ以前、3.000 d9 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mcdu:fsd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "以下の影響を受ける可能性があります。 (1) 第三者により、sysuser.cc の sysuser::exechelp 関数への TCP ポート 3010 上の過度に長い HELP コマンドを介して、任意のコードを実行される (2) リモート認証されたユーザにより、servinterface.cc 内の servinterface::sendmulticast 関数への TCP ポート 6809 上の過度に長いコマンドを介して、任意のコードを実行される"
+  },
+  "solution": "参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-5256",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5256"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-5256",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5256"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:59:16+09:00",
+  "date_last_updated": "2012-09-25T16:59:16+09:00",
+  "date_public": "2007-10-06T00:00:00+09:00"
+}

@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2013-006022",
+  "title": "MSM デバイス用 Qualcomm Innovation Center Android コントリビューションなどで使用される Linux Kernel 用 MSM カメラドライバにおける整数オーバーフローの脆弱性",
+  "vulinfo_description": "MSM デバイス用 Qualcomm Innovation Center (QuIC) Android コントリビューション、およびその他の製品で使用される Linux Kernel 3.x 用 MSM カメラドライバの JPEG エンジンドライバには、以下に関する処理に不備があるため、整数オーバーフローの脆弱性が存在します。  (1) camera_v1/gemini/msm_gemini_sync.c (2) camera_v2/gemini/msm_gemini_sync.c (3) camera_v2/jpeg_10/msm_jpeg_sync.c (4) gemini/msm_gemini_sync.c (5) jpeg_10/msm_jpeg_sync.c (6) mercury/msm_mercury_sync.c",
+  "affected": [
+    {
+      "name": "Android for MSM",
+      "product_name": "Android for MSM",
+      "version_number": [
+        "3.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:codeaurora:android-msm"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "攻撃者により、ioctl コールの大量のコマンドを介して、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Aurora Forum",
+      "vulinfo_id": "QCIR-2013-00005-1",
+      "url": "https://www.codeaurora.org/projects/security-advisories/integer-overflow-and-signedness-issue-camera-jpeg-engines-cve-2013-4736"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4736",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4736"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4736",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4736"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年02月12日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-02-12T18:45:19+09:00",
+  "date_last_updated": "2014-02-12T18:45:19+09:00",
+  "date_public": "2013-08-29T00:00:00+09:00"
+}

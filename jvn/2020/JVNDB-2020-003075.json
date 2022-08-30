@@ -1,0 +1,208 @@
+{
+  "vulinfo_id": "JVNDB-2020-003075",
+  "title": "HiOS および HiSecOS におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Hirschmann (Belden 社傘下) が提供する HiOS および HiSecOS を搭載した製品の Web サーバには、バッファオーバーフローの脆弱性 (CWE-120) が存在します。この脆弱性は、URL パラメータの不適切な処理に起因しており、認証されていない遠隔の攻撃者が、細工した HTTP リクエストを送信することで、バッファオーバーフローを発生させることが可能です。",
+  "affected": [
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann EAGLE20",
+      "version_number": [
+        "バージョン 03.2.00 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_eagle20"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann EAGLE30",
+      "version_number": [
+        "バージョン 03.2.00 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_eagle30"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann EES",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_ees"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann EESX",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_eesx"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann GRS",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_grs"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann MSP",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_msp"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann OS",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_OS"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann RED",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_red"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann RSP",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_rsp"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann RSPE",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_rspe"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann RSPL",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_rspl"
+      }
+    },
+    {
+      "name": "Belden Inc.",
+      "product_name": "Hirschmann RSPS",
+      "version_number": [
+        "バージョン 07.0.02 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/h:belden:hirschmann_rsps"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "細工された HTTP リクエストを処理することで、任意のコードを実行される可能性があります。 "
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版へアップデートしてください。 本脆弱性を修正した HiOS バージョン 07.0.03 および HiSecOS バージョン 03.3.00 がリリースされています。  [ワークアラウンドを実施する] 次の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  * 当該製品の IP アクセス制限機能 (\"IP Access Restriction\") を使用して、アクセス元を信頼できる IPアドレスに制限する * Web サーバ機能 (HTTP および HTTPS) を無効化する  CISA は以下の防御策の実行を推奨しています。  * すべての制御システムおよび製品について、ネットワークへの露出を最小限に抑え、インターネットからアクセスできないようにする * 制御システムのネットワークおよびデバイスをファイアウォールの内側に設置し、業務ネットワークから分離する * リモートアクセスが必要な場合は、VPN などの安全な方法を使用する。その際は利用可能な最新のバージョンを用いる ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Belden Inc.",
+      "vulinfo_id": "Belden Security Bulletin-Industrial ITBSECV-2020-01",
+      "url": "https://www.belden.com/hubfs/support/security/bulletins/Belden_Security_Bulletin_BSECV-2020-01_1v2_FINAL.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-6994",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6994"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT",
+      "vulinfo_id": "Control systems security recommended practices",
+      "url": "https://www.us-cert.gov/ics/Recommended-Practices"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT",
+      "vulinfo_id": "Recommended Practice: Improving Industrial Control System Cybersecurity with Defense-in-Depth Strategies",
+      "url": "https://www.us-cert.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT",
+      "vulinfo_id": "ICS-TIP-12-146-01B -- Targeted Cyber Intrusion Detection and Mitigation Strategies",
+      "url": "https://www.us-cert.gov/ics/tips/ICS-TIP-12-146-01B"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-20-091-01",
+      "url": "https://www.us-cert.gov/ics/advisories/icsa-20-091-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#99486919",
+      "url": "https://jvn.jp/vu/JVNVU99486919/"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-04-03T05:08:49Z",
+      "description": "[2020年04月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2020-04-03T14:08:49+09:00",
+  "date_last_updated": "2020-04-03T14:08:49+09:00",
+  "date_public": "2020-04-02T00:00:00+09:00"
+}

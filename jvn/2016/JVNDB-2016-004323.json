@@ -1,0 +1,104 @@
+{
+  "vulinfo_id": "JVNDB-2016-004323",
+  "title": "Wireshark の Toshiba ファイルパーサの wiretap/toshiba.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の Toshiba ファイルパーサの wiretap/toshiba.c は、sscanf の符号なし整数を誤って処理するため、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "1.12.12 未満の 1.12.x",
+        "2.0.4 未満の 2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたファイルを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix packet length handling.",
+      "url": "https://github.com/wireshark/wireshark/commit/5efb45231671baa2db2011d8f67f9d6e72bc455b"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Don't treat the packet length as unsigned.",
+      "url": "https://github.com/wireshark/wireshark/commit/3270dfac43da861c714df76513456b46765ff47f"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle Technology Network",
+      "vulinfo_id": "Oracle Solaris Third Party Bulletin - July 2016",
+      "url": "http://www.oracle.com/technetwork/topics/security/bulletinjul2016-3090568.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 12394",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=12394"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-34",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-34.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5355",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5355"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5355",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5355"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月17日]\\n  掲載\\n[2016年11月16日]\\n  ベンダ情報：オラクル (Oracle Solaris Third Party Bulletin - July 2016) を追加"
+    }
+  ],
+  "date_first_published": "2016-08-17T12:27:09+09:00",
+  "date_last_updated": "2016-11-16T17:21:21+09:00",
+  "date_public": "2016-06-07T00:00:00+09:00"
+}

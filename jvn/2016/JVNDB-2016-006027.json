@@ -1,0 +1,110 @@
+{
+  "vulinfo_id": "JVNDB-2016-006027",
+  "title": "Linux Kernel の drivers/vfio/pci/vfio_pci.c における整数オーバーフローのチェックを回避される脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/vfio/pci/vfio_pci.c には、整数オーバーフローのチェックを回避され、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける脆弱性が存在します。  本脆弱性は、\"ステートマシンの混乱のバグ\" と呼ばれています。  補足情報 : CWE による脆弱性タイプは、CWE-190: Integer Overflow or Wraparound (整数オーバーフローまたはラップアラウンド) と識別されています。 https://cwe.mitre.org/data/definitions/190.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.8.11 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、VFIO_DEVICE_SET_IRQS ioctl コールの vfio PCI デバイスファイルへのアクセスを利用されることで、整数オーバーフローのチェックを回避され、サービス運用妨害 (メモリ破損) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "vfio/pci: Fix integer overflows, bitmask check",
+      "url": "https://github.com/torvalds/linux/commit/05692d7005a364add85c6e25a6c4447ce08f913a"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "vfio/pci: Fix integer overflows, bitmask check",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=05692d7005a364add85c6e25a6c4447ce08f913"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1389258",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1389258"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9083",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9083"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9083",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9083"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": " Patchwork [v3] vfio/pci: Fix integer overflows, bitmask check",
+      "url": "https://patchwork.kernel.org/patch/9373631/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-30T15:49:21+09:00",
+  "date_last_updated": "2016-11-30T15:49:21+09:00",
+  "date_public": "2016-10-13T00:00:00+09:00"
+}

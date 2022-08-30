@@ -1,0 +1,222 @@
+{
+  "vulinfo_id": "JVNDB-2009-001538",
+  "title": "ntpd autokey におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "ntpd にはバッファオーバーフローの脆弱性が存在します。  NTP (Network Time Protocol) はシステムが持つ時計をネットワーク経由で同期させるためのプロトコルです。NTP を実装した ntpd (NTP daemon) には OpenSSL サポート付でコンパイルした場合に、バッファオーバーフローの脆弱性が存在します。本脆弱性は ntp/ntp.crypto.c に含まれる crypto_recv() 関数内にある sprintf() の使用に起因し、autokey が有効な場合にのみ、本脆弱性の影響を受けます。  バージョン 4.2.5 系においては、2009年5月18日における開発者からの最新情報 (ChangeLog および RSS) では p177 で本脆弱性を修正したと記載されていますが、実際には 2007年9月にリリースされた p74 で修正されていました。",
+  "affected": [
+    {
+      "name": "NTP Project",
+      "product_name": "NTP",
+      "version_number": [
+        "4.2.4p7 より前のバージョン",
+        "4.2.5p74 より前のバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ntp:ntp"
+      }
+    },
+    {
+      "name": "サイバートラスト株式会社",
+      "product_name": "Asianux Server",
+      "version_number": [
+        "3 (x86) ",
+        "3 (x86-64) ",
+        "4.0 ",
+        "4.0 (x86-64) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:misc:miraclelinux_asianux_server"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "4 (as) ",
+        "4 (es) ",
+        "4 (ws) ",
+        "4.7 (as) ",
+        "4.7 (es) ",
+        "4.8 (as) ",
+        "4.8 (es) ",
+        "5 (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "4.0 ",
+        "5.0 (client) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux EUS",
+      "version_number": [
+        "5.3.z (server) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_eus"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、NTP daemon が持つ権限で任意のコードを実行される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに最新版へアップデートしてください。  [ワークアラウンドを実施する] 対策版を適用するまでの間、以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。  ・autokey を無効化する   設定ファイル (ntp.conf) に含まれている \"crypto\" ではじまる設定をすべて削除する ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Asianux Technical Support Network",
+      "vulinfo_id": "ntp-4.2.2p1-9.2.1AXS3",
+      "url": "https://tsn.miraclelinux.com/tsn_local/index.php?m=errata\u0026a=detail\u0026eid=435"
+    },
+    {
+      "type": "vendor",
+      "name": "MIRACLE LINUX アップデート情報",
+      "vulinfo_id": "1719",
+      "url": "http://www.miraclelinux.com/support/index.php?q=node/99\u0026errata_id=1719"
+    },
+    {
+      "type": "vendor",
+      "name": "ntp.org",
+      "vulinfo_id": "NTP Software Downloads",
+      "url": "http://www.ntp.org/downloads.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ntp.org",
+      "vulinfo_id": "t if autokeSecurity Notice - Remote exploiy is enabled",
+      "url": "http://support.ntp.org/bin/view/Main/SecurityNotice#Remote_exploit_if_autokey_is_ena"
+    },
+    {
+      "type": "vendor",
+      "name": "ntp.org",
+      "vulinfo_id": "Stable Release NEWS",
+      "url": "http://support.ntp.org/bin/view/Main/SoftwareDownloads#Stable_Release_NEWS"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1039",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1039.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2009:1040",
+      "url": "https://rhn.redhat.com/errata/RHSA-2009-1040.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1040",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1040J.html"
+    },
+    {
+      "type": "vendor",
+      "name": "レッドハット セキュリティーアップデート",
+      "vulinfo_id": "RHSA-2009:1039",
+      "url": "https://www.jp.redhat.com/support/errata/RHSA/RHSA-2009-1039J.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-1252",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1252"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#853097",
+      "url": "http://jvn.jp/cert/JVNVU853097/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-1252",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1252"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA35130",
+      "url": "http://secunia.com/advisories/35130"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA35166",
+      "url": "http://secunia.com/advisories/35166"
+    },
+    {
+      "type": "advisory",
+      "name": "Secunia Advisory",
+      "vulinfo_id": "SA35138",
+      "url": "http://secunia.com/advisories/35138"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "35017",
+      "url": "http://www.securityfocus.com/bid/35017"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityTracker",
+      "vulinfo_id": "1022243",
+      "url": "http://www.securitytracker.com/id?1022243"
+    },
+    {
+      "type": "advisory",
+      "name": "US-CERT Vulnerability Note",
+      "vulinfo_id": "VU#853097",
+      "url": "http://www.kb.cert.org/vuls/id/853097"
+    },
+    {
+      "type": "advisory",
+      "name": "VUPEN Security",
+      "vulinfo_id": "VUPEN/ADV-2009-1361",
+      "url": "http://www.vupen.com/english/advisories/2009/1361"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2009年06月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2009-06-30T12:03:47+09:00",
+  "date_last_updated": "2009-06-30T12:03:47+09:00",
+  "date_public": "2009-05-19T00:00:00+09:00"
+}

@@ -1,0 +1,88 @@
+{
+  "vulinfo_id": "JVNDB-2016-008860",
+  "title": "OpenSSL におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenSSL は、接続ハンドシェイク中に TLS/SSL プロトコルによる ALERT パケットの処理を適切に定義しないため、サービス運用妨害 (DoS) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenSSL Project",
+      "product_name": "OpenSSL",
+      "version_number": [
+        "0.9.8",
+        "1.0.1",
+        "1.0.2 から 1.0.2h",
+        "1.1.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openssl:openssl"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5",
+        "vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "リモートの攻撃者により、TLS/SSL サーバでの CPU の大量消費を引き起こされ、他のクライアントからの接続承認の失敗を引き起こされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenSSL Project",
+      "vulinfo_id": "Don't allow too many consecutive warning alerts",
+      "url": "https://git.openssl.org/gitweb/?p=openssl.git;a=commit;h=af58be768ebb690f78530f796e92b8ae5c9a4401"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1384743",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2016-8610"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-8610",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-8610"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-8610",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-8610"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年12月01日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-12-01T11:31:25+09:00",
+  "date_last_updated": "2017-12-01T11:31:25+09:00",
+  "date_public": "2016-09-22T00:00:00+09:00"
+}

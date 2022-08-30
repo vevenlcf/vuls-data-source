@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2016-006036",
+  "title": "Linux Kernel の TCP スタックにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の TCP スタックは、skb トランケーションを誤って処理するため、サービス運用妨害 (システムクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-284: Improper Access Control (不適切なアクセス制御) と識別されています。 https://cwe.mitre.org/data/definitions/284.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.8.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.5",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、sendto システムコールを実行する巧妙に細工されたアプリケーションを介して、サービス運用妨害 (システムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.8.10",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.8.10"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "tcp: take care of truncations done by sk_filter()",
+      "url": "https://github.com/torvalds/linux/commit/ac6e780070e30e4c35bd395acfe9191e6268bdd3"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "tcp: take care of truncations done by sk_filter()",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ac6e780070e30e4c35bd395acfe9191e6268bdd"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1393904",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1393904"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-8645",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-8645"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-8645",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8645"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-30T16:32:59+09:00",
+  "date_last_updated": "2016-11-30T16:32:59+09:00",
+  "date_public": "2016-11-21T00:00:00+09:00"
+}

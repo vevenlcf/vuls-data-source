@@ -1,0 +1,152 @@
+{
+  "vulinfo_id": "JVNDB-2013-001718",
+  "title": "Linux Kernel の drivers/usb/serial/io_ti.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/usb/serial/io_ti.c 内の chase_port 関数には、サービス運用妨害 (Null ポインタデリファレンスおよびシステムクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.7.4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "6"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise MRG",
+      "version_number": [
+        "2.0 "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:enterprise_mrg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、接続されていない Edgeport USB シリアルコンバータ上での /dev/ttyUSB の読み込みまたは書き込み操作の試行を介して、サービス運用妨害 (Null ポインタデリファレンスおよびシステムクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.7.4",
+      "url": "https://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.7.4"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "USB: io_ti: Fix NULL dereference in chase_port()",
+      "url": "https://github.com/torvalds/linux/commit/1ee0a224bc9aad1de496c795f96bc6ba2c394811"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux.git /commit",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1ee0a224bc9aad1de496c795f96bc6ba2c394811"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2013:0847",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-05/msg00018.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2013:0925",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-06/msg00005.html"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2013:1474",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-09/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 916191",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=916191"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2013:0744",
+      "url": "http://rhn.redhat.com/errata/RHSA-2013-0744.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1808-1",
+      "url": "http://www.ubuntu.com/usn/USN-1808-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1805-1",
+      "url": "http://www.ubuntu.com/usn/USN-1805-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1774",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1774"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1774",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1774"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月04日]\\n  掲載\\n[2013年06月19日]\\n  ベンダ情報：Ubuntu (USN-1808-1) を追加\\n  ベンダ情報：Ubuntu (USN-1805-1) を追加\\n  ベンダ情報：レッドハット (RHSA-2013:0744) を追加\\n  ベンダ情報：Novell (openSUSE-SU-2013:0847) を追加\\n[2013年06月28日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:0925) を追加\\n[2013年10月29日]\\n  ベンダ情報：Novell (SUSE-SU-2013:1474) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-04T15:59:41+09:00",
+  "date_last_updated": "2013-10-29T18:51:59+09:00",
+  "date_public": "2013-01-21T00:00:00+09:00"
+}

@@ -1,0 +1,86 @@
+{
+  "vulinfo_id": "JVNDB-2002-000122",
+  "title": "Sun Solaris の MIB 処理機能におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "------------ 本脆弱性情報は、同時期に公開された複数の脆弱性について、まとめて解説したものです。タイトル以外の他の脆弱性情報の内容が含まれていますので予めご了承ください。 ------------  Solaris には SNMP コンポーネントである snmpdx (Sun Solstice Enterprise Master Agent)がデフォルトで実装され、デーモンプロセスとして稼動し、UDP (User Datagram Protocol)161 番ポートで SNMP リクエストを待ちうけます。  この snmpdx デーモンは、別のポートを開いてエージェントからの SNMP トラップを受信し、設定ファイルで指定されているマネージャに通知します。   更に、snmpdx デーモンは /etc/snmp/conf/mibiisa.rsrc ファイルを読み込み、mibiisa プロセスを起動し、関連のある SNMP リクエストを SNMP エージェントである mibiisa デーモンに転送します。   Snmpdx デーモンと mibiisa デーモンは、通常、/etc/rc3.d/S76snmpdxスクリプトにおいて root 権限で起動します。この snmpdx にフォーマットストリングの脆弱性が存在し、mibiisa にはバッファオーバフローの問題が存在します。   この問題を利用することにより、リモートの攻撃者もしくはローカルの攻撃者により、root 権限で任意のコードを実行されてしまう可能性が存在します。   尚、snmpdx と mibiisa を稼動していないシステムには影響がありません。",
+  "affected": [
+    {
+      "name": "サン・マイクロシステムズ",
+      "product_name": "Sun Solaris",
+      "version_number": [
+        "2.6 (sparc) ",
+        "2.6 (x86) ",
+        "7.0 (sparc) ",
+        "7.0 (x86) ",
+        "8 (sparc) ",
+        "8 (x86) "
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:sun:solaris"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "本脆弱性に伴う影響については、「概要」をご参照ください。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Sun Security Bulletin",
+      "vulinfo_id": "#00219",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-22-00219-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Sun Security Bulletin 日本語版",
+      "vulinfo_id": "#00219",
+      "url": "http://sunsolve.sun.com/search/document.do?assetkey=1-22-00219-3"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2002-0797",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0797"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2002-0797",
+      "url": "http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-0797"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "4932",
+      "url": "http://www.securityfocus.com/bid/4932"
+    },
+    {
+      "type": "advisory",
+      "name": "SecurityFocus",
+      "vulinfo_id": "4933",
+      "url": "http://www.securityfocus.com/bid/4933"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2007年04月01日]   掲載"
+    }
+  ],
+  "date_first_published": "2007-04-01T00:00:00+09:00",
+  "date_last_updated": "2007-04-01T00:00:00+09:00",
+  "date_public": "2002-06-04T00:00:00+09:00"
+}

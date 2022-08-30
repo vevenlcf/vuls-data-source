@@ -1,0 +1,81 @@
+{
+  "vulinfo_id": "JVNDB-2010-004776",
+  "title": "OPIE の __opiereadrec 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "FreeBSD などのプラットフォーム上で稼動する OPIE の libopie の readrec.c の __opiereadrec 関数には、一つずれエラー (Off-by-one) が発生するため、サービス運用妨害 (デーモンクラッシュ) 状態となる、または任意のコードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FreeBSD",
+      "product_name": "FreeBSD",
+      "version_number": [
+        "5.3 6.4 から 8.1-PRERELEASE およびその他のプラットフォーム"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:freebsd:freebsd"
+      }
+    },
+    {
+      "name": "NRL",
+      "product_name": "opie",
+      "version_number": [
+        "2.4.1-test1 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:nrl:opie"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、過度に長いユーザ名を介して、サービス運用妨害 (デーモンクラッシュ) 状態にされる、または任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FreeBSD",
+      "vulinfo_id": "OPIE off-by-one stack overflow",
+      "url": "http://security.freebsd.org/advisories/FreeBSD-SA-10:05.opie.asc"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-1938",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1938"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-1938",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1938"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:38:38+09:00",
+  "date_last_updated": "2012-09-25T17:38:38+09:00",
+  "date_public": "2010-05-27T00:00:00+09:00"
+}

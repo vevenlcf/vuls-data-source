@@ -1,0 +1,99 @@
+{
+  "vulinfo_id": "JVNDB-2016-005903",
+  "title": "Wireshark の DTN ディセクタにおけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Wireshark の DTN ディセクタには、サービス運用妨害 (無限ループ) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Wireshark",
+      "product_name": "Wireshark",
+      "version_number": [
+        "2.0.8 未満の 2.0.x",
+        "2.2.2 未満の 2.2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:wireshark:wireshark"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.9",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "ネットワークトラフィックまたはファイルのキャプチャを介して、サービス運用妨害 (無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "packet-dtn.c break loop if evaluate_sdnv doesn't succeed.",
+      "url": "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=commit;h=be6a10afc59f8182b9884d02f9857d547539fe8a"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Bug Database",
+      "vulinfo_id": "Bug 13097",
+      "url": "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=13097"
+    },
+    {
+      "type": "vendor",
+      "name": "Wireshark Security Advisories",
+      "vulinfo_id": "wnpa-sec-2016-62",
+      "url": "https://www.wireshark.org/security/wnpa-sec-2016-62.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-9375",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9375"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-9375",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9375"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-18T16:12:14+09:00",
+  "date_last_updated": "2016-11-18T16:12:14+09:00",
+  "date_public": "2016-11-16T00:00:00+09:00"
+}

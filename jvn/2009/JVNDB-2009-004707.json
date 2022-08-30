@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2009-004707",
+  "title": "Linux kernel の fs/ocfs2/file.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux kernel の fs/ocfs2/file.c の inode double locking code には、サービス運用妨害 (ファイル作成および削除の阻止) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.30-rc3 未満の 2.6.30、2.6.27.24 未満の 2.6.27、2.6.29.4 未満の 2.6.29、および 2.6.19 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Low"
+        },
+        "base": "1.9",
+        "vector": "AV:L/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、一連の splice システム呼び出しを介して、generic_file_splice_write、splice_from_pipe、および ocfs2_file_splice_write 関数の間にデッドロックを誘発され、サービス運用妨害 (ファイル作成および削除の阻止) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "kernel",
+      "vulinfo_id": "splice: fix deadlock in splicing to file",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=7bfac9ecf0585962fe13584f5cf526d8c8e76f17"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2009-1961",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1961"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2009-1961",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1961"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:27:29+09:00",
+  "date_last_updated": "2012-09-25T17:27:29+09:00",
+  "date_public": "2009-04-06T00:00:00+09:00"
+}

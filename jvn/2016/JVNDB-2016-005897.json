@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2016-005897",
+  "title": "Linux Kernel の block/genhd.c の disk_seqf_stop 関数における権限を取得される脆弱性",
+  "vulinfo_description": "Linux Kernel の block/genhd.c の disk_seqf_stop 関数には、解放済みメモリの使用 (Use-after-free) により、権限を取得される脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use After Free (解放済みメモリの使用) と識別されています。 https://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "4.7.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、特定の開始操作が失敗しているにも関わらず実行される停止操作を利用されることで、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Android Open Source Project",
+      "vulinfo_id": "Android Security Bulletin-November 2016",
+      "url": "http://source.android.com/security/bulletin/2016-11-01.html"
+    },
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-4.7.1",
+      "url": "https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.7.1"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "block: fix use-after-free in seq file",
+      "url": "https://github.com/torvalds/linux/commit/77da160530dd1dc94f6ae15a981f24e5f0021e84"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "block: fix use-after-free in seq file",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=77da160530dd1dc94f6ae15a981f24e5f0021e84"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-7910",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7910"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-7910",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7910"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年11月17日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-11-17T14:41:50+09:00",
+  "date_last_updated": "2016-11-17T14:41:50+09:00",
+  "date_public": "2016-08-16T00:00:00+09:00"
+}

@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2013-003636",
+  "title": "bitcoind の bitcoinrpc.cpp の HTTPAuthorized 関数におけるパスワードを断定される脆弱性",
+  "vulinfo_description": "bitcoind の bitcoinrpc.cpp の HTTPAuthorized 関数は、パスワードと異なるバイト (文字) を検出すると認証失敗についての情報を返すため、パスワードを断定される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Bitcoin Project",
+      "product_name": "bitcoind",
+      "version_number": [
+        "0.8.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:bitcoin:bitcoind"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "第三者により、タイミングサイドチャネル攻撃 (timing side-channel attack) を介して、パスワードを断定される可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Mitigate Timing Attacks On Basic RPC Authorization",
+      "url": "https://github.com/bitcoin/bitcoin/pull/2845"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Timing leak in RPC authentication",
+      "url": "https://github.com/bitcoin/bitcoin/issues/2838"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4165",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4165"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4165",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4165"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-200",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-200.html",
+      "title": "情報漏えい"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年08月05日]\\n  掲載\\n[2013年10月24日]\\n  CVSS による深刻度：内容を更新"
+    }
+  ],
+  "date_first_published": "2013-08-05T14:58:05+09:00",
+  "date_last_updated": "2013-10-24T17:08:22+09:00",
+  "date_public": "2013-07-20T00:00:00+09:00"
+}

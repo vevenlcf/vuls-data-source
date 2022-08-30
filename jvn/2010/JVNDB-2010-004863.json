@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2010-004863",
+  "title": "ImageMagick で使用される LibTIFF の tif_getimage.c におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "ImageMagick で使用される 64 ビットプラットフォーム上で稼動する LibTIFF の tif_getimage.c は、垂直反転を適切に実行しない、および \"ダウンサンプリング OJPEG 入力\" の処理に不備があるため、サービス運用妨害 (アプリケーションクラッシュ) 状態となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "LibTIFF",
+      "product_name": "LibTIFF",
+      "version_number": [
+        "3.9.0 および 3.9.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:libtiff_project:libtiff"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された TIFF イメージを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "LibTIFF",
+      "vulinfo_id": "Bug 607198",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=607198"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2010-2233",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2233"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2010-2233",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2233"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T17:38:43+09:00",
+  "date_last_updated": "2012-09-25T17:38:43+09:00",
+  "date_public": "2010-06-23T00:00:00+09:00"
+}

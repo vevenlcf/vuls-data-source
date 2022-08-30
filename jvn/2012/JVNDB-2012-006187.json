@@ -1,0 +1,83 @@
+{
+  "vulinfo_id": "JVNDB-2012-006187",
+  "title": "Advanced Package Tool の apt-pkg/acquire-item.cc における任意のパッケージをインストールされる脆弱性",
+  "vulinfo_description": "Advanced Package Tool (APT) の apt-pkg/acquire-item.cc の pkgAcqMetaClearSig::Failed メソッドには、InRelease ファイルを使用するリポジトリを更新する場合、任意のパッケージをインストールされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Advanced Packaging Tool",
+      "product_name": "Advanced Packaging Tool",
+      "version_number": [
+        " 0.8.16~exp13 未満の 0.8.15.10",
+        "0.8.11 から 0.8.15.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:advanced_package_tool:advanced_package_tool"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "中間者攻撃 (man-in-the-middle attack) により、ユーザが新しい InRelease ファイルをダウンロードすることを阻止されることで、元のアクティブな InRelease ファイルが残存され、それによりパッケージファイルが変更されている、および符号が無いことの検出を困難にされることで、任意のパッケージをインストールされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "apt/apt.git/commitdiff-de498a5",
+      "url": "http://anonscm.debian.org/gitweb/?p=apt/apt.git;a=commitdiff;h=de498a528cd6fc36c4bb22bf8dec6558e21cc9b6"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian",
+      "vulinfo_id": "apt/apt.git/commitdiff-b7a6594",
+      "url": "http://anonscm.debian.org/gitweb/?p=apt/apt.git;a=commitdiff;h=b7a6594d1e5ed199a7a472b78b33e070375d6f92"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1385-1",
+      "url": "http://www.ubuntu.com/usn/USN-1385-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0214",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0214"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0214",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0214"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月21日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-21T12:18:12+09:00",
+  "date_last_updated": "2014-04-21T12:18:12+09:00",
+  "date_public": "2012-03-04T00:00:00+09:00"
+}

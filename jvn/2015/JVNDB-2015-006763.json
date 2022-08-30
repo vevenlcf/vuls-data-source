@@ -1,0 +1,89 @@
+{
+  "vulinfo_id": "JVNDB-2015-006763",
+  "title": "Phusion Passenger の agent/Core/Controller/SendRequest.cpp におけるアプリケーションに渡されるヘッダを偽造される脆弱性",
+  "vulinfo_description": "Phusion Passenger の agent/Core/Controller/SendRequest.cpp には、Apache の統合 (integration) モード、またはフィルタリングプロキシ無しのスタンドアロンモードで使用される場合、アプリケーションに渡されるヘッダを偽造される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Phusion B.V.",
+      "product_name": "Passenger",
+      "version_number": [
+        "4.0.60 未満",
+        "5.0.22 未満の 5.0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:phusion:passenger"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、HTTP ヘッダ内で - (ダッシュ) 文字の代わりに _ (アンダースコア) 文字を使用されることで、アプリケーションに渡されるヘッダを偽造される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 956281",
+      "url": "https://bugzilla.suse.com/show_bug.cgi?id=956281"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix CVE-2015-7519 header collision vulnerability",
+      "url": "https://github.com/phusion/passenger/commit/ddb8ecc4ebf260e4967f57f271d4f5761abeac3e"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "SUSE-SU-2015:2337",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2015-12/msg00024.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Phusion Blog",
+      "vulinfo_id": "Security advisory: CVE-2015-7519 header overwriting (medium severity)",
+      "url": "https://blog.phusion.nl/2015/12/07/cve-2015-7519/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-7519",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7519"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-7519",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7519"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年01月14日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-01-14T18:01:44+09:00",
+  "date_last_updated": "2016-01-14T18:01:44+09:00",
+  "date_public": "2015-12-07T00:00:00+09:00"
+}

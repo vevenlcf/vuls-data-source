@@ -1,0 +1,153 @@
+{
+  "vulinfo_id": "JVNDB-2012-005951",
+  "title": "Qt の QSslSocket::sslErrors 関数における誤ったエラーを報告される脆弱性",
+  "vulinfo_description": "Qt の QSslSocket::sslErrors 関数は、openSSL の特定のバージョンを使用している場合、間違ったロケーションからメモリを読むことができる \"互換性のない構造のレイアウト (incompatible structure layout)\" を使用するため、証明書の検証が失敗した場合に Qt が誤ったエラーを報告し、ユーザが証明書を受け入れてしまう危険なセキュリティ上の意思決定を行う原因となる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Canonical",
+      "product_name": "Ubuntu",
+      "version_number": [
+        "10.04 LTS",
+        "11.10",
+        "12.04 LTS",
+        "12.10"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:canonical:ubuntu"
+      }
+    },
+    {
+      "name": "Digia",
+      "product_name": "Qt",
+      "version_number": [
+        "4.6.5 未満",
+        "4.7.6 未満の 4.7.x",
+        "4.8.5 未満の 4.8.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:digia:qt"
+      }
+    },
+    {
+      "name": "Novell",
+      "product_name": "openSUSE",
+      "version_number": [
+        "11.4",
+        "12.1",
+        "12.2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:novell:opensuse"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N"
+      }
+    ],
+    "impact_item": "証明書の検証が失敗した場合に Qt が誤ったエラーを報告することで、ユーザが証明書を受け入れてしまう危険なセキュリティ上の意思決定を行う原因となる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Code Review",
+      "vulinfo_id": "Change I47fc2433: Fix binary incompatibility between openssl versions",
+      "url": "https://codereview.qt-project.org/#change,42461"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Bug report logs",
+      "vulinfo_id": "#697582",
+      "url": "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=697582"
+    },
+    {
+      "type": "vendor",
+      "name": "openSUSE",
+      "vulinfo_id": "openSUSE-SU-2013:0256",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-02/msg00014.html"
+    },
+    {
+      "type": "vendor",
+      "name": "openSUSE",
+      "vulinfo_id": "openSUSE-SU-2013:0211",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-01/msg00089.html"
+    },
+    {
+      "type": "vendor",
+      "name": "openSUSE",
+      "vulinfo_id": "openSUSE-SU-2013:0204",
+      "url": "http://lists.opensuse.org/opensuse-updates/2013-01/msg00086.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Qt",
+      "vulinfo_id": "Commit (4.8)",
+      "url": "http://qt.gitorious.org/qt/qt/commit/691e78e5061d4cbc0de212d23b06c5dffddf2098"
+    },
+    {
+      "type": "vendor",
+      "name": "Qt",
+      "vulinfo_id": "Commit (4.7)",
+      "url": "http://qt.gitorious.org/qt/qt/commit/3b14dc93cf0ef06f1424d7d6319a1af4505faa53"
+    },
+    {
+      "type": "vendor",
+      "name": "Qt Project Security Advisory",
+      "vulinfo_id": "QSslSocket may report incorrect errors when certificate",
+      "url": "http://lists.qt-project.org/pipermail/announce/2013-January/000020.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 891955",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=891955"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1723-1",
+      "url": "http://www.ubuntu.com/usn/USN-1723-1/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-6093",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-6093"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-6093",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6093"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年02月27日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-02-27T15:13:13+09:00",
+  "date_last_updated": "2013-02-27T15:13:13+09:00",
+  "date_public": "2012-12-12T00:00:00+09:00"
+}

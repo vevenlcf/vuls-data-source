@@ -1,0 +1,82 @@
+{
+  "vulinfo_id": "JVNDB-2015-005951",
+  "title": "Ipsilon の Identity Provider サーバの providers/saml2/admin.py におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Ipsilon の Identity Provider (IdP) サーバの providers/saml2/admin.py は、SAML2 サービスプロバイダ (SP) の所有者の更新に対するパーミッションを適切にチェックしないため、サービス運用妨害 (DoS) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Ipsilon project",
+      "product_name": "Ipsilon",
+      "version_number": [
+        "0.1.0 以上 1.0.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ipsilon_project:ipsilon"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:N/AC:L/Au:S/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "リモート認証されたユーザにより、重複する SP 名を介して、サービス運用妨害 (DoS) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Ipsilon project",
+      "vulinfo_id": "Releases v1.0.1",
+      "url": "https://fedorahosted.org/ipsilon/wiki/Releases/v1.0.1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ipsilon project",
+      "vulinfo_id": "Fix permission check on SP update",
+      "url": "https://pagure.io/ipsilon/826e6339441546f596320f3d73304ab5f7c10de6"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1255172",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1255172"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5217",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5217"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5217",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5217"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2015年11月19日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2015-11-19T13:41:45+09:00",
+  "date_last_updated": "2015-11-19T13:41:45+09:00",
+  "date_public": "2015-09-08T00:00:00+09:00"
+}

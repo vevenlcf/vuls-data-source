@@ -1,0 +1,124 @@
+{
+  "vulinfo_id": "JVNDB-2013-001714",
+  "title": "Linux Kernel の net/core/sock_diag.c における権限を取得される脆弱性",
+  "vulinfo_description": "Linux Kernel の net/core/sock_diag.c 内の __sock_diag_rcv_msg 関数には、配列のインデックスエラーにより、権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.7.10 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、Netlink メッセージに含まれた過度に大きな family 値を介して、権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-3.7.10",
+      "url": "http://www.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.7.10"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "sock_diag: Fix out-of-bounds access to sock_diag_handlers[]",
+      "url": "https://github.com/torvalds/linux/commit/6e601a53566d84e1ffd25e7b6fe0b6894ffd79c0"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "linux/kernel/git/torvalds/linux-2.6.git / commit",
+      "url": "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=6e601a53566d84e1ffd25e7b6fe0b6894ffd79c0"
+    },
+    {
+      "type": "vendor",
+      "name": "opensuse-security-announce",
+      "vulinfo_id": "openSUSE-SU-2013:0395",
+      "url": "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00004.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 915052",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=915052"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisories",
+      "vulinfo_id": "MDVSA-2013:176",
+      "url": "http://www.mandriva.com/en/support/security/advisories/advisory/MDVSA-2013:176/?name=MDVSA-2013:176"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1750-1",
+      "url": "http://www.ubuntu.com/usn/USN-1750-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1751-1",
+      "url": "http://www.ubuntu.com/usn/USN-1751-1"
+    },
+    {
+      "type": "vendor",
+      "name": "Ubuntu Security Notice",
+      "vulinfo_id": "USN-1749-1",
+      "url": "http://www.ubuntu.com/usn/USN-1749-1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1763",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1763"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1763",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1763"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年03月04日]\\n  掲載\\n[2013年03月11日]\\n  ベンダ情報：Ubuntu (USN-1749-1) を追加\\n  ベンダ情報：Ubuntu (USN-1750-1) を追加\\n  ベンダ情報：Ubuntu (USN-1751-1) を追加\\n[2013年04月09日]\\n  ベンダ情報：Novell (openSUSE-SU-2013:0395) を追加\\n[2013年12月05日]\\n  ベンダ情報：Mandriva, Inc. (MDVSA-2013:176) を追加"
+    }
+  ],
+  "date_first_published": "2013-03-04T15:53:34+09:00",
+  "date_last_updated": "2013-12-05T12:19:15+09:00",
+  "date_public": "2013-02-27T00:00:00+09:00"
+}

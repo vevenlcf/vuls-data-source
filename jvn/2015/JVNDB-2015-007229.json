@@ -1,0 +1,108 @@
+{
+  "vulinfo_id": "JVNDB-2015-007229",
+  "title": "DBD::mysql の my_login 関数における脆弱性",
+  "vulinfo_description": "DBD::mysql の my_login 関数には、解放済みメモリの使用 (Use-after-free) により、不特定の影響を受ける脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-416: Use After Free (解放済みメモリの使用) と識別されています。 http://cwe.mitre.org/data/definitions/416.html",
+  "affected": [
+    {
+      "name": "DBD::mysql project",
+      "product_name": "DBD::mysql",
+      "version_number": [
+        "4.033_01 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:dbd-mysql_project:dbd-mysql"
+      }
+    },
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "10",
+        "vector": "AV:N/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、my_login の失敗後に mysql_errno の呼び出しを利用されることで、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3635",
+      "url": "https://www.debian.org/security/2016/dsa-3635"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Release 4.033_01",
+      "url": "https://github.com/perl5-dbi/DBD-mysql/blob/4.033_01/Changes"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Merge pull request #45 from hannob/master",
+      "url": "https://github.com/perl5-dbi/DBD-mysql/commit/cf0aa7751f6ef8445e9310a64b14dc81460ca156"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Fix use after free error. #45",
+      "url": "https://github.com/perl5-dbi/DBD-mysql/pull/45"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-8949",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8949"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-8949",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8949"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年08月23日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-08-23T16:57:39+09:00",
+  "date_last_updated": "2016-08-23T16:57:39+09:00",
+  "date_public": "2015-12-15T00:00:00+09:00"
+}

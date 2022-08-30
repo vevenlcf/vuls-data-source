@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2016-001674",
+  "title": "FFmpeg の libavformat/asfenc.c の asf_write_packet 関数における整数オーバーフローの脆弱性",
+  "vulinfo_description": "FFmpeg の libavformat/asfenc.c の asf_write_packet 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "FFmpeg",
+      "product_name": "FFmpeg",
+      "version_number": [
+        "2.8.5 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:ffmpeg:ffmpeg"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、.mov ファイルの巧妙に細工された PTS (別名 Presentation Time Stamp) 値を介して、サービス運用妨害 (DoS) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "FFmpeg",
+      "vulinfo_id": "avformat/asfenc: Check pts",
+      "url": "http://git.videolan.org/?p=ffmpeg.git;a=commit;h=7c0b84d89911b2035161f5ef51aafbfcc84aa9e2"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-2326",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2326"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-2326",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2326"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年03月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-03-11T15:54:59+09:00",
+  "date_last_updated": "2016-03-11T15:54:59+09:00",
+  "date_public": "2016-01-13T00:00:00+09:00"
+}

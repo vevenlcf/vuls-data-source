@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2012-004170",
+  "title": "TagLib の toolkit/tbytevector.cpp における整数オーバーフローの脆弱性",
+  "vulinfo_description": "TagLib の toolkit/tbytevector.cpp 内の mid 関数には、整数オーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "TagLib",
+      "product_name": "TagLib",
+      "version_number": [
+        "1.7 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:taglib:taglib"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、大量のメモリの割り当てを誘発する巧妙に細工された media ファイルの file header フィールドを介して、サービス運用妨害 (アプリケーションクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Gentoo Linux Security Advisory",
+      "vulinfo_id": "GLSA 201206-16",
+      "url": "http://www.gentoo.org/security/en/glsa/glsa-201206-16.xml"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Avoid uint overflow in case the length + index is over UINT_MAX",
+      "url": "https://github.com/taglib/taglib/commit/dcdf4fd954e3213c355746fa15b7480461972308"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-1584",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1584"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-1584",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1584"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-189",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-189.html",
+      "title": "数値処理の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月11日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-11T09:56:50+09:00",
+  "date_last_updated": "2012-09-11T09:56:50+09:00",
+  "date_public": "2012-09-06T00:00:00+09:00"
+}

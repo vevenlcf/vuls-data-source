@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2014-002401",
+  "title": "Linux Kernel の drivers/tty/n_tty.c の n_tty_write 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux Kernel の drivers/tty/n_tty.c の n_tty_write 関数は、\"LECHO \u0026 !OPOST\" の場合における tty ドライバアクセスを適切に管理しないため、サービス運用妨害 (メモリ破損およびシステムクラッシュ) 状態にされる、または権限を取得される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "3.14.3 まで"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.9",
+        "vector": "AV:L/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、過度に長い文字列を伴う読み込みおよび書き込み操作を含む競合状態を誘発されることで、サービス運用妨害 (メモリ破損およびシステムクラッシュ) 状態にされる、または権限を取得される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Bugzilla",
+      "vulinfo_id": "Bug 875690",
+      "url": "https://bugzilla.novell.com/show_bug.cgi?id=875690"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "n_tty: Fix n_tty_write crash when echoing in raw mode",
+      "url": "https://github.com/torvalds/linux/commit/4291086b1f081b869c6d79e5b7441633dc3ace00"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux Kernel",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "n_tty: Fix n_tty_write crash when echoing in raw mode",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4291086b1f081b869c6d79e5b7441633dc3ace00"
+    },
+    {
+      "type": "vendor",
+      "name": "Oracle",
+      "vulinfo_id": "ELSA-2014-0771",
+      "url": "http://linux.oracle.com/errata/ELSA-2014-0771.html "
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1094232",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1094232"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:0512",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-0512.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-0196",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0196"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-0196",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0196"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-362",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-362.html",
+      "title": "競合状態"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年05月08日]\\n  掲載\\n[2014年06月17日]\\n  ベンダ情報：レッドハット (RHSA-2014:0512) を追加\\n[2014年07月28日]\\n  ベンダ情報：オラクル (ELSA-2014-0771) を追加"
+    }
+  ],
+  "date_first_published": "2014-05-08T16:57:49+09:00",
+  "date_last_updated": "2014-07-28T17:17:24+09:00",
+  "date_public": "2014-05-04T00:00:00+09:00"
+}

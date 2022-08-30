@@ -1,0 +1,63 @@
+{
+  "vulinfo_id": "JVNDB-2007-003511",
+  "title": "PHP のフィルタリングエクステンションにおけるバッファアンダーフローの脆弱性",
+  "vulinfo_description": "PHP のフィルタリングエクステンション (ext/filter) の PHP_FILTER_TRIM_DEFAULT マクロには、バッファアンダーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "The PHP Group",
+      "product_name": "PHP",
+      "version_number": [
+        "5.2.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:php:php"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "攻撃者により、FILTER_VALIDATE_INT などの特定のモードを伴う filter_var を呼び出すことで、フィルタがバッファの前の空白スペースに NULL バイトを書き込む状態となり、任意のコードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "PHP",
+      "vulinfo_id": "PHP 5.2.1 Release Announcement",
+      "url": "http://www.php.net/releases/5_2_1.php"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-1453",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1453"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-1453",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-1453"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:47:21+09:00",
+  "date_last_updated": "2012-09-25T16:47:21+09:00",
+  "date_public": "2007-03-14T00:00:00+09:00"
+}

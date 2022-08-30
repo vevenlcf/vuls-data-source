@@ -1,0 +1,103 @@
+{
+  "vulinfo_id": "JVNDB-2021-000001",
+  "title": "UNIVERGE SV9500/SV8500 シリーズにおける複数の脆弱性",
+  "vulinfo_description": "NECプラットフォームズ株式会社が提供する UNIVERGE SV9500 シリーズ主装置および UNIVERGE SV8500 シリーズ主装置の「保守用 Web コンソール」によるリモート保守機能には、次の複数の脆弱性が存在します。 ・OS コマンドインジェクション (CWE-78) - CVE-2020-5685 ・認証アルゴリズムの不適切な実装 (CWE-303) - CVE-2020-5686  この脆弱性情報は、製品利用者への周知を目的に、開発者が IPA に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "NECプラットフォームズ株式会社",
+      "product_name": "UNIVERGE SV8500 シリーズ",
+      "version_number": [
+        "S6 から S8 までのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:necplatforms:univerge_sv8500"
+      }
+    },
+    {
+      "name": "NECプラットフォームズ株式会社",
+      "product_name": "UNIVERGE SV9500 シリーズ",
+      "version_number": [
+        "V1 から V7 までのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:necplatforms:univerge_sv9500"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "5.8",
+        "vector": "AV:A/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.6",
+        "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "想定される影響は各脆弱性により異なりますが、当該製品へアクセス可能な第三者によって特定の URL に対して細工されたリクエストを送信されることで、次のような影響を受ける可能性があります。 ・任意のコマンドを実行されたり、システムがサービス運用妨害（DoS）状態にされたりする - CVE-2020-5685 ・保守機能へ不正にアクセスされ、情報が窃取される - CVE-2020-5686"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報を元に、ソフトウェアのアップデートを行ってください。 対策の詳細は製品の販売店へご確認ください。  [ワークアラウンドを実施する] 以下の回避策を適用することで、本脆弱性の影響を軽減することが可能です。 ・インターネット等の外部ネットワークへ機器を直接接続しない ・機器へのネットワーク接続に対して、送信元 IP アドレス / 宛先 IP アドレス / ポート番号に基づくアクセスルールを明示的に作成する ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "JVN",
+      "vulinfo_id": "NECプラットフォームズ株式会社からの情報",
+      "url": "https://jvn.jp/jp/JVN38784555/6443/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-5685",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5685"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2020-5686",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5686"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#38784555",
+      "url": "https://jvn.jp/jp/JVN38784555/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-78",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-78.html",
+      "title": "OSコマンドインジェクション"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-287",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-287.html",
+      "title": "不適切な認証"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2020-12-23T01:01:14Z",
+      "description": "[2021年01月04日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-01-04T12:11:23+09:00",
+  "date_last_updated": "2021-01-04T12:11:23+09:00",
+  "date_public": "2021-01-04T00:00:00+09:00"
+}

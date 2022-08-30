@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2013-004120",
+  "title": "Xen の xenlight ライブラリにおける権限を取得される脆弱性",
+  "vulinfo_description": "Xen の xenlight ライブラリ (libxl) は、IOMMU が無効になっている場合、IOMMU のセットアップが完了する前にバスマスタリングが可能な PCI パススルーデバイスへのアクセスを提供するため、権限を取得される、またはサービス運用妨害状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "version_number": [
+        "4.0.x から 4.2.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.5",
+        "vector": "AV:A/AC:H/Au:S/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "ローカル HVM ゲストドメインにより、DMA 命令を介して、権限を取得される、またはサービス運用妨害状態にされる可能性があります。"
+  },
+  "solution": "ベンダ情報および参考情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Xen-announce",
+      "vulinfo_id": "libxl: suppress device assignment to HVM guest when there is no IOMMU",
+      "url": "http://lists.xen.org/archives/html/xen-devel/2013-07/msg00066.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-4329",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4329"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-4329",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4329"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年09月18日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2013-09-18T10:40:51+09:00",
+  "date_last_updated": "2013-09-18T10:40:51+09:00",
+  "date_public": "2013-09-12T00:00:00+09:00"
+}

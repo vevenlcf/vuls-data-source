@@ -1,0 +1,76 @@
+{
+  "vulinfo_id": "JVNDB-2021-002244",
+  "title": "Hitachi ABB Power Grids 製 eSOMS に認証情報が十分に保護されていない問題",
+  "vulinfo_description": "Hitachi ABB Power Grids が提供する eSOMS の Web アプリケーションには、ユーザが入力したパスワード情報が、十分に保護されない状態でブラウザに保存される問題が存在します (CWE-522、CVE-2021-35527)。",
+  "affected": [
+    {
+      "name": "日立エナジー (旧 日立ABBパワーグリッド)",
+      "product_name": "eSOMS",
+      "version_number": [
+        "6.3 およびそれ以前のすべてのバージョン"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:hitachi_abb_power_grids:esoms"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      }
+    ],
+    "impact_item": "ユーザのシステムに侵入した第三者、または他のアプリケーションにおけるクロスサイトスクリプティング（XSS）の脆弱性を利用した第三者によってパスワード情報を窃取される可能性があります。"
+  },
+  "solution": "[アップデートする] 開発者が提供する情報をもとに、最新版にアップデートしてください。  　* eSOMS バージョン 6.3.1 およびそれ以降  [ワークアラウンドを実施する] 開発者は次のワークアラウンドの適用を推奨しています。  　* 重要なアプリケーションやシステムは、インターネットに直接接続せずファイアウォールによって他のネットワークから分離させ、権限のないユーザが直接アクセスできないように物理的に保護する 　* ファイアウォールは、最小限のポートを公開するように設定し、公開されたポートは正当性を確認して文書化する 　* 重要なシステムは、インターネット上の Web サイトの閲覧、インスタントメッセージ、電子メールの受信等に使用しない 　* ポータブルコンピュータやリムーバブルストレージメディアは、制御システムに接続する前にウイルススキャンを行う 　* ユーザにセキュリティ意識向上のトレーニングを実施し、一般的な攻撃やフィッシングメール、悪意のあるウェブページなどのコンテンツを識別できるようにする ",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Hitachi ABB Power Grids",
+      "vulinfo_id": "Cybersecurity Advisory: Password Autocomplete Vulnerability in Hitachi ABB Power Grids eSOMS Application",
+      "url": "https://search.abb.com/library/Download.aspx?DocumentID=9AKK107992A0957\u0026LanguageCode=en\u0026Action=Launch"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-35527",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-35527"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-210-01",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-210-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#98329583",
+      "url": "https://jvn.jp/vu/JVNVU98329583/"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-522",
+      "url": "https://cwe.mitre.org/data/definitions/522.html",
+      "title": "認証情報の不十分な保護"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-08-03T01:59:30Z",
+      "description": "[2021年08月03日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2021-08-03T10:59:40+09:00",
+  "date_last_updated": "2021-08-03T10:59:40+09:00",
+  "date_public": "2021-07-30T00:00:00+09:00"
+}

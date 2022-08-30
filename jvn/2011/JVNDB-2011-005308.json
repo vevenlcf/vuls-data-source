@@ -1,0 +1,152 @@
+{
+  "vulinfo_id": "JVNDB-2011-005308",
+  "title": "QEMU の SCSI サブシステムの hw/scsi-disk.c におけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "QEMU の SCSI サブシステムの hw/scsi-disk.c には、Xen で使用される際、バッファオーバーフローの脆弱性が存在します。  本件は、ルートが特定のパーミッションまたは ACL を手動で変更した場合にのみ脆弱性となります。",
+  "affected": [
+    {
+      "name": "Fabrice Bellard",
+      "product_name": "QEMU",
+      "version_number": [
+        "0.15.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:qemu:qemu"
+      }
+    },
+    {
+      "name": "Xen プロジェクト",
+      "product_name": "Xen",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:xen:xen"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux",
+      "version_number": [
+        "v. 5 server"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "Red Hat Enterprise Linux Desktop",
+      "version_number": [
+        "v. 5 client"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:enterprise_linux_desktop"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Desktop Multi OS",
+      "version_number": [
+        "v. 5 client"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:redhat:rhel_desktop_multi_os"
+      }
+    },
+    {
+      "name": "レッドハット",
+      "product_name": "RHEL Virtualization",
+      "version_number": [
+        "v. 5 server"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:redhat:rhel_virtualization"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4",
+        "vector": "AV:L/AC:H/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "CD-ROM へのアクセス権限を持つローカルのゲストユーザにより、巧妙に細工された SAI READ CAPACITY SCSI コマンドを介して、サービス運用妨害 (ゲストクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "scsi-disk: lazily allocate bounce buffer",
+      "url": "https://github.com/bonzini/qemu/commit/7285477ab11831b1cf56e45878a89170dd06d9b9"
+    },
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "scsi-disk: commonize iovec creation between reads and writes",
+      "url": "https://github.com/bonzini/qemu/commit/103b40f51e4012b3b0ad20f615562a1806d7f49a"
+    },
+    {
+      "type": "vendor",
+      "name": "QEMU",
+      "vulinfo_id": "qemu-stable-0.15.git/log",
+      "url": "http://git.qemu.org/?p=qemu-stable-0.15.git;a=log"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 736038",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=736038"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:1401",
+      "url": "http://rhn.redhat.com/errata/RHSA-2011-1401.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Xen",
+      "vulinfo_id": "Top Page",
+      "url": "http://www.xen.org/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-3346",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3346"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-3346",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3346"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年04月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2014-04-02T16:16:56+09:00",
+  "date_last_updated": "2014-04-02T16:16:56+09:00",
+  "date_public": "2011-09-16T00:00:00+09:00"
+}

@@ -1,0 +1,70 @@
+{
+  "vulinfo_id": "JVNDB-2007-004691",
+  "title": "netkit ftpd の dataconn 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "netkit ftpd (netkit-ftpd) の ftpd.c の dataconn 関数は、導入済みのSSL 対応に特定の変更がされた際、未初期化のファイルストリーム上で fclose を呼び出すため、サービス運用妨害 (デーモンクラッシュ) 状態となるなど、不特定の影響を受ける脆弱性が存在します。 netkit ftp の問題は、CVE-2007-5769 で報告されています。",
+  "affected": [
+    {
+      "name": "netkit-ftp",
+      "product_name": "netkit ftp",
+      "version_number": [
+        "0.17"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:netkit-ftp:netkit_ftp"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.3",
+        "vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C"
+      }
+    ],
+    "impact_item": "第三者により、FTP over SSL プロトコル動作の特定のタイプを介して、サービス運用妨害 (デーモンクラッシュ) 状態にされるなど、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "netkit-ftp",
+      "vulinfo_id": "Bug 199206",
+      "url": "https://bugs.gentoo.org/show_bug.cgi?id=199206"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2007-6263",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6263"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2007-6263",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-6263"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年09月25日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-09-25T16:59:29+09:00",
+  "date_last_updated": "2012-09-25T16:59:29+09:00",
+  "date_public": "2007-11-15T00:00:00+09:00"
+}

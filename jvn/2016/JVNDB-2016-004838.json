@@ -1,0 +1,92 @@
+{
+  "vulinfo_id": "JVNDB-2016-004838",
+  "title": "Apache Zookeeper の C cli シェルにおけるバッファオーバーフローの脆弱性",
+  "vulinfo_description": "Apache Zookeeper の C cli シェルには、\"cmd:\" のバッチモードシンタックスを使用する場合、バッファオーバーフローの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Apache Software Foundation",
+      "product_name": "Apache ZooKeeper",
+      "version_number": [
+        "3.4.9 未満",
+        "3.5.3 未満の 3.5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:apache:zookeeper"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "6.8",
+        "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "8.1",
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "攻撃者により、過度に長いコマンド文字列を介して、不特定の影響を受ける可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Apache ZooKeeper",
+      "vulinfo_id": "Fix command handling in the C client shell (phunt via fpj)(27ecf98)",
+      "url": "https://git-wip-us.apache.org/repos/asf?p=zookeeper.git;a=commitdiff;h=27ecf981a15554dc8e64a28630af7a5c9e2bdf4f"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache ZooKeeper",
+      "vulinfo_id": "CVE-2016-5017: Buffer overflow vulnerability in ZooKeeper C cli shell",
+      "url": "https://zookeeper.apache.org/security.html#CVE-2016-5017"
+    },
+    {
+      "type": "vendor",
+      "name": "Apache ZooKeeper",
+      "vulinfo_id": "Fix command handling in the C client shell (phunt via fpj)(f09154d)",
+      "url": "https://git-wip-us.apache.org/repos/asf?p=zookeeper.git;a=commitdiff;h=f09154d6648eeb4ec5e1ac8a2bacbd2f8c87c14a"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-5017",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5017"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-5017",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5017"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-119",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-119.html",
+      "title": "バッファエラー"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年09月26日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-09-26T17:57:19+09:00",
+  "date_last_updated": "2016-09-26T17:57:19+09:00",
+  "date_public": "2016-08-10T00:00:00+09:00"
+}

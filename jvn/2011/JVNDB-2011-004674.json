@@ -1,0 +1,126 @@
+{
+  "vulinfo_id": "JVNDB-2011-004674",
+  "title": "Linux kernel の inet_diag_bc_audit 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "Linux kernel の net/ipv4/inet_diag.c の inet_diag_bc_audit 関数は、INET_DIAG バイトコードを適切に監査しないため、サービス運用妨害 (カーネル無限ループ) 状態となる脆弱性が存在します。  本問題は、CVE-2010-3880 とは異なる脆弱性です。",
+  "affected": [
+    {
+      "name": "Linux",
+      "product_name": "Linux Kernel",
+      "version_number": [
+        "2.6.39.3 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:linux:linux_kernel"
+      }
+    },
+    {
+      "name": "VMware",
+      "product_name": "VMware ESX",
+      "version_number": [
+        "3.5",
+        "4.0",
+        "4.1"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:vmware:esx"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、netlink メッセージ内の巧妙に細工された INET_DIAG_REQ_BYTECODE 命令を介して、サービス運用妨害 (カーネル無限ループ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ChangeLog",
+      "vulinfo_id": "ChangeLog-2.6.39",
+      "url": "http://mirror.linux.org.au/linux/kernel/v2.6/ChangeLog-2.6.39"
+    },
+    {
+      "type": "vendor",
+      "name": "Gmane",
+      "vulinfo_id": "[PATCH] inet_diag: fix inet_diag_bc_audit()",
+      "url": "http://article.gmane.org/gmane.linux.network/198809"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux",
+      "vulinfo_id": "Linux Kernel Archives",
+      "url": "http://www.kernel.org/"
+    },
+    {
+      "type": "vendor",
+      "name": "Linux kernel source tree",
+      "vulinfo_id": "inet_diag: fix inet_diag_bc_audit()",
+      "url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=eeb1497277d6b1a0a34ed36b97e18f2bd7d6de0d"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 714536",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=714536"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2011:0927",
+      "url": "http://rhn.redhat.com/errata/RHSA-2011-0927.html"
+    },
+    {
+      "type": "vendor",
+      "name": "VMware Security Advisories",
+      "vulinfo_id": "VMSA-2012-0001",
+      "url": "http://www.vmware.com/jp/support/support-resources/advisories/VMSA-2012-0001.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2011-2213",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2213"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2011-2213",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-2213"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-399",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-399.html",
+      "title": "リソース管理の問題"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年03月27日]\\n  掲載\\n[2012年12月20日]\\n  影響を受けるシステム：VMware (VMSA-2012-0001) の情報を追加\\n  ベンダ情報：VMware (VMSA-2012-0001) を追加\\n[2016年06月30日]\\n  ベンダ情報：kernel.org (ChangeLog-2.6.39) を追加\\n  ベンダ情報：kernel.org (inet_diag: fix inet_diag_bc_audit()) を追加\\n  ベンダ情報：GNU Project ([PATCH] inet_diag: fix inet_diag_bc_audit()) を追加\\n  ベンダ情報：レッドハット (Bug 714536) を追加\\n  ベンダ情報：レッドハット (RHSA-2011:0927) を追加"
+    }
+  ],
+  "date_first_published": "2012-03-27T18:43:26+09:00",
+  "date_last_updated": "2016-06-30T14:07:56+09:00",
+  "date_public": "2011-08-29T00:00:00+09:00"
+}

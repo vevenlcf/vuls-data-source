@@ -1,0 +1,94 @@
+{
+  "vulinfo_id": "JVNDB-2012-002621",
+  "title": "Keystone で使用される SQLAlchemy における SQL インジェクションの脆弱性",
+  "vulinfo_description": "Keystone で使用される SQLAlchemy には、SQL インジェクションの脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "SQLAlchemy",
+      "product_name": "SQLAlchemy",
+      "version_number": [
+        "0.7.0b4 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:sqlalchemy:sqlalchemy"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      }
+    ],
+    "impact_item": "第三者により、以下の関数に渡される値を介して、任意の SQL コマンドを実行される可能性があります。  (1) select 関数に対する limit キーワード (2) select 関数に対する offset キーワード (3) select.limit 関数に対する不特定の値 (4) select.offset 関数に対する不特定の値"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Debian セキュリティ勧告",
+      "vulinfo_id": "DSA-2449",
+      "url": "http://www.debian.org/security/2012/dsa-2449"
+    },
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "OpenStack Identity (Keystone) - SQL injection through limit parameter",
+      "url": "https://bugs.launchpad.net/keystone/+bug/918608"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2012:0369",
+      "url": "http://rhn.redhat.com/errata/RHSA-2012-0369.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SQLAlchemy",
+      "vulinfo_id": "Changeset 7504:852b6a1a87e7",
+      "url": "http://www.sqlalchemy.org/trac/changeset/852b6a1a87e7/"
+    },
+    {
+      "type": "vendor",
+      "name": "SQLAlchemy",
+      "vulinfo_id": "CHANGES 0.7.0",
+      "url": "http://www.sqlalchemy.org/changelog/CHANGES_0_7_0"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2012-0805",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0805"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2012-0805",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0805"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-89",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-89.html",
+      "title": "SQLインジェクション"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2012年06月07日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2012-06-07T15:17:27+09:00",
+  "date_last_updated": "2012-06-07T15:17:27+09:00",
+  "date_public": "2012-06-05T00:00:00+09:00"
+}

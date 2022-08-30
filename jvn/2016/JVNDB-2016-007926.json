@@ -1,0 +1,98 @@
+{
+  "vulinfo_id": "JVNDB-2016-007926",
+  "title": "OpenBSD におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "OpenBSD には、サービス運用妨害 (カーネルパニック) 状態にされる脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenBSD",
+      "product_name": "OpenBSD",
+      "version_number": [
+        "5.8",
+        "5.9"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:openbsd:openbsd"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.9",
+        "vector": "AV:L/AC:L/Au:N/C:N/I:N/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.4",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "impact_item": "kern.usermount 権限を持つ特定のローカルユーザにより、root ノードの (1) ユーザ名、(2) グループ名、または (3) device name の VNOVAL を伴う tmpfs をマウントされることで、サービス運用妨害 (カーネルパニック) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "OpenBSD 5.9 Errata",
+      "url": "http://www.openbsd.org/errata59.html"
+    },
+    {
+      "type": "vendor",
+      "name": "OpenBSD",
+      "vulinfo_id": "OpenBSD 5.8 Errata",
+      "url": "http://www.openbsd.org/errata58.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2016-6246",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6246"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2016-6246",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6246"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Multiple Bugs in OpenBSD Kernel",
+      "url": "http://www.openwall.com/lists/oss-security/2016/07/14/5"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Re: Multiple Bugs in OpenBSD Kernel",
+      "url": "http://www.openwall.com/lists/oss-security/2016/07/17/7"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-20",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-20.html",
+      "title": "不適切な入力確認"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2017年03月30日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2017-03-30T11:54:03+09:00",
+  "date_last_updated": "2017-03-30T11:54:03+09:00",
+  "date_public": "2016-07-14T00:00:00+09:00"
+}

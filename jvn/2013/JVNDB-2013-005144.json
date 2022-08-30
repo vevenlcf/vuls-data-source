@@ -1,0 +1,106 @@
+{
+  "vulinfo_id": "JVNDB-2013-005144",
+  "title": "MIT Kerberos の鍵配布センタの main.c 内の setup_server_realm 関数におけるサービス運用妨害 (DoS) の脆弱性",
+  "vulinfo_description": "MIT Kerberos 5 (別名 krb5) の鍵配布センタ (KDC) の main.c 内の setup_server_realm 関数には、複数のレルムが構成されている場合、サービス運用妨害 (NULL ポインタデリファレンスおよびデーモンクラッシュ) 状態にされる脆弱性が存在します。  補足情報 : CWE による脆弱性タイプは、CWE-476: NULL Pointer Dereference (NULL ポインタデリファレンス) と識別されています。 http://cwe.mitre.org/data/definitions/476.html",
+  "affected": [
+    {
+      "name": "MIT Kerberos",
+      "product_name": "Kerberos",
+      "version_number": [
+        "5 1.10.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:mit:kerberos"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工されたリクエストを介して、サービス運用妨害 (NULL ポインタデリファレンスおよびデーモンクラッシュ) 状態にされる可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "GitHub",
+      "vulinfo_id": "Multi-realm KDC null deref [CVE-2013-1418]",
+      "url": "https://github.com/krb5/krb5/commit/c2ccf4197f697c4ff143b8a786acdd875e70a89d"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT Kerberos",
+      "vulinfo_id": "Kerberos Version 5, Release 1.10",
+      "url": "http://web.mit.edu/kerberos/krb5-1.10/README-1.10.7.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "MIT Kerberos",
+      "vulinfo_id": "Kerberos Version 5, Release 1.11",
+      "url": "http://web.mit.edu/kerberos/krb5-1.11/README-1.11.4.txt"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Bugzilla",
+      "vulinfo_id": "Bug 1026942",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1026942"
+    },
+    {
+      "type": "vendor",
+      "name": "RT/krbdev.mit.edu",
+      "vulinfo_id": "Ticket #7757 Multi-realm KDC null deref [CVE-2013-1418]",
+      "url": "http://krbdev.mit.edu/rt/Ticket/Display.html?id=7757"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "Multiple vulnerabilities in Kerberos",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/multiple_vulnerabilities_in_kerberos1"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2013-1418",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1418"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2013-1418",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1418"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "MGASA-2013-0335",
+      "url": "http://advisories.mageia.org/MGASA-2013-0335.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2013年11月19日]\\n  掲載\\n[2014年02月26日]\\n  ベンダ情報：MIT Kerberos (Kerberos Version 5, Release 1.11) を追加\\n  ベンダ情報：レッドハット (Bug 1026942) を追加\\n  参考情報：関連文書 (MGASA-2013-0335) を追加\\n[2014年03月05日]\\n  ベンダ情報：オラクル (Multiple vulnerabilities in Kerberos) を追加"
+    }
+  ],
+  "date_first_published": "2013-11-19T16:52:07+09:00",
+  "date_last_updated": "2014-03-05T17:33:17+09:00",
+  "date_public": "2013-11-04T00:00:00+09:00"
+}

@@ -1,0 +1,105 @@
+{
+  "vulinfo_id": "JVNDB-2014-004520",
+  "title": "OpenStack keystonemiddleware における中間者攻撃を実行される脆弱性",
+  "vulinfo_description": "OpenStack keystonemiddleware (旧 python-keystoneclient) は、ペーストの設定ファイル (paste.ini) でその値に関係なく \"insecure\" オプションが設定されている場合、証明書の検証を無効にするため、中間者攻撃 (man-in-the-middle attack) を実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "OpenStack",
+      "product_name": "keystonemiddleware",
+      "version_number": [
+        "1.2.0 未満の 1.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:keystonemiddleware"
+      }
+    },
+    {
+      "name": "OpenStack",
+      "product_name": "python-keystoneclient",
+      "version_number": [
+        "0.11.0 未満の 0.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:openstack:python-keystoneclient"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "Medium"
+        },
+        "base": "4.3",
+        "vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N"
+      }
+    ],
+    "impact_item": "第三者により、巧妙に細工された証明書を介して、中間者攻撃 (man-in-the-middle attack) を実行される可能性があります。 "
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Launchpad",
+      "vulinfo_id": "Bug #1353315",
+      "url": "https://bugs.launchpad.net/neutron/+bug/1353315"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2015:0020",
+      "url": "http://rhn.redhat.com/errata/RHSA-2015-0020.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1784",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1784.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Red Hat Security Advisory",
+      "vulinfo_id": "RHSA-2014:1783",
+      "url": "https://rhn.redhat.com/errata/RHSA-2014-1783.html"
+    },
+    {
+      "type": "vendor",
+      "name": "SECURITY BLOG",
+      "vulinfo_id": "CVE-2014-7144 Cryptographic Issues vulnerability in OpenStack keystonemiddleware",
+      "url": "https://blogs.oracle.com/sunsecurity/entry/cve_2014_7144_cryptographic_issues"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2014-7144",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7144"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2014-7144",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7144"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-310",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-310.html",
+      "title": "暗号の問題"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2014年10月06日]\\n  掲載\\n[2014年11月27日]\\n  ベンダ情報：レッドハット (RHSA-2014:1784) を追加\\n  ベンダ情報：レッドハット (RHSA-2014:1783) を追加\\n[2014年12月02日]\\n  ベンダ情報：オラクル (CVE-2014-7144 Cryptographic Issues vulnerability in OpenStack keystonemiddleware) を追加\\n[2015年06月02日]\\n  ベンダ情報：レッドハット (RHSA-2015:0020) を追加"
+    }
+  ],
+  "date_first_published": "2014-10-06T16:49:57+09:00",
+  "date_last_updated": "2015-06-02T17:31:37+09:00",
+  "date_public": "2014-09-25T00:00:00+09:00"
+}

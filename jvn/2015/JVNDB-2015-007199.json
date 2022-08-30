@@ -1,0 +1,189 @@
+{
+  "vulinfo_id": "JVNDB-2015-007199",
+  "title": "複数の Doctrine 製品における追加の権限で任意の PHP コードを実行される脆弱性",
+  "vulinfo_description": "複数の Doctrine 製品は、キャッシュディレクトリに誰でも書き込み可能な (world-writable) パーミッションを使用するため、追加の権限で任意の PHP コードを実行される脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "Debian",
+      "product_name": "Debian GNU/Linux",
+      "version_number": [
+        "7.0",
+        "8.0"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/o:debian:debian_linux"
+      }
+    },
+    {
+      "name": "Doctrine Project",
+      "product_name": "Annotations",
+      "version_number": [
+        "1.2.7 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:doctrine-project:annotations"
+      }
+    },
+    {
+      "name": "Doctrine Project",
+      "product_name": "Cache",
+      "version_number": [
+        "1.3.2 未満",
+        "1.4.2 未満の 1.4.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:doctrine-project:cache"
+      }
+    },
+    {
+      "name": "Doctrine Project",
+      "product_name": "Common",
+      "version_number": [
+        "2.4.3 未満",
+        "2.5.1 未満の 2.5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:doctrine-project:common"
+      }
+    },
+    {
+      "name": "Doctrine Project",
+      "product_name": "MongoDB ODM",
+      "version_number": [
+        "1.0.2 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:doctrine-project:mongodb-odm"
+      }
+    },
+    {
+      "name": "Doctrine Project",
+      "product_name": "MongoDB ODM Bundle",
+      "version_number": [
+        "3.0.1 未満"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:doctrine-project:doctrinemongodbbundle"
+      }
+    },
+    {
+      "name": "Doctrine Project",
+      "product_name": "ORM",
+      "version_number": [
+        "2.4.8 未満",
+        "2.5.1 未満の 2.5.x"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:doctrine-project:object_relational_mapper"
+      }
+    },
+    {
+      "name": "Zend Technologies Ltd.",
+      "product_name": "Zend Framework",
+      "version_number": [
+        "1",
+        "2"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zend:zend_framework"
+      }
+    },
+    {
+      "name": "Zend Technologies Ltd.",
+      "product_name": "zend-cache",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zend:zend-cache"
+      }
+    },
+    {
+      "name": "Zend Technologies Ltd.",
+      "product_name": "zf-apigility-doctrine",
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:zend:zf-apigility-doctrine"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.2",
+        "vector": "AV:L/AC:L/Au:N/C:C/I:C/A:C"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.8",
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "ローカルユーザにより、0 に設定された umask を持ち、キャッシュエントリをコードとして実行するアプリケーションを利用されることで、追加の権限で任意の PHP コードを実行される可能性があります。"
+  },
+  "solution": "ベンダより正式な対策が公開されています。ベンダ情報を参照して適切な対策を実施してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "Blog",
+      "vulinfo_id": "Security Misconfiguration Vulnerability in various Doctrine projects",
+      "url": "http://www.doctrine-project.org/2015/08/31/security_misconfiguration_vulnerability_in_various_doctrine_projects.html"
+    },
+    {
+      "type": "vendor",
+      "name": "Debian Security Advisory",
+      "vulinfo_id": "DSA-3369",
+      "url": "http://www.debian.org/security/2015/dsa-3369"
+    },
+    {
+      "type": "vendor",
+      "name": "Security Advisory",
+      "vulinfo_id": "ZF2015-07",
+      "url": "http://framework.zend.com/security/advisory/ZF2015-07"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2015-5723",
+      "url": "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5723"
+    },
+    {
+      "type": "advisory",
+      "name": "National Vulnerability Database (NVD)",
+      "vulinfo_id": "CVE-2015-5723",
+      "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5723"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-264",
+      "url": "https://jvndb.jvn.jp/ja/cwe/CWE-264.html",
+      "title": "認可・権限・アクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "0",
+      "date_time": "2018-02-17T01:37:52Z",
+      "description": "[2016年06月09日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2016-06-09T16:00:17+09:00",
+  "date_last_updated": "2016-06-09T16:00:17+09:00",
+  "date_public": "2015-08-31T00:00:00+09:00"
+}

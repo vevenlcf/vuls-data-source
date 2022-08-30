@@ -1,0 +1,86 @@
+{
+  "vulinfo_id": "JVNDB-2021-002281",
+  "title": "ThroughTek 製 Kalay P2P SDK におけるアクセス制限不備の脆弱性",
+  "vulinfo_description": "Kalay P2P Software Development Kit （SDK） は、インターネット経由でオーディオストリームやビデオストリームにアクセスするための機能を提供する、ThroughTek 社製の開発キットです。 Kalay P2P Software Development Kit （SDK） には、アクセス制限不備 （CWE-284、CVE-2021-28372） の脆弱性が存在します。",
+  "affected": [
+    {
+      "name": "ThroughTek Co., Ltd.",
+      "product_name": "P2P Software Development Kit",
+      "version_number": [
+        "DTLS を有効にしないで AVAPI モジュールを使用するデバイスのファームウェア",
+        "IOTC への接続に AuthKey を使用しないデバイスのファームウェア",
+        "nossl タグが付いた SDK バージョン",
+        "P2PTunnel または RDT モジュールを使用するデバイスのファームウェア",
+        "v3.1.5 およびそれ以前"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:throughtek_p2p_software_development_kit"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.6",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、カメラフィードのような機微な情報にアクセスされたり、任意のコードを実行されたりする可能性があります。 "
+  },
+  "solution": "[アップグレートする] SDK が v3.1.10 より前の場合、開発者はライブラリを v3.3.1.0 または v3.4.2.0 にアップグレードし、Authkey と DTLS を有効にすることを推奨しています。  [ワークアラウンドを実施する] SDK が v3.1.10 およびそれ以降の場合、開発者は Authkey と DTLS を有効にすることを推奨しています。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "ThroughTek",
+      "vulinfo_id": "About ThroughTek’s Kalay Platform Security Mechanism",
+      "url": "https://www.throughtek.com/about-throughteks-kalay-platform-security-mechanism/"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2021-28372",
+      "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-28372"
+    },
+    {
+      "type": "advisory",
+      "name": "ICS-CERT ADVISORY",
+      "vulinfo_id": "ICSA-21-229-01",
+      "url": "https://us-cert.cisa.gov/ics/advisories/icsa-21-229-01"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVNVU#92334702",
+      "url": "https://jvn.jp/vu/JVNVU92334702/index.html"
+    },
+    {
+      "type": "advisory",
+      "name": "関連文書",
+      "vulinfo_id": "Mandiant Discloses Critical Vulnerability Affecting Millions of IoT Devices",
+      "url": "https://www.fireeye.com/blog/threat-research/2021/08/mandiant-discloses-critical-vulnerability-affecting-iot-devices.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-284",
+      "url": "https://cwe.mitre.org/data/definitions/284.html",
+      "title": "不適切なアクセス制御"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2021-08-19T03:25:46Z",
+      "description": "[2021年08月19日]   掲載"
+    }
+  ],
+  "date_first_published": "2021-08-19T13:58:40+09:00",
+  "date_last_updated": "2021-08-19T13:58:40+09:00",
+  "date_public": "2021-08-18T00:00:00+09:00"
+}
