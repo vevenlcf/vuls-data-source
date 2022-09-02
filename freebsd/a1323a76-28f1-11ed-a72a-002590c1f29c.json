@@ -1,0 +1,38 @@
+{
+  "vid": "a1323a76-28f1-11ed-a72a-002590c1f29c",
+  "topic": "FreeBSD -- zlib heap buffer overflow",
+  "description": "\n\t\u003ch1\u003eProblem Description:\u003c/h1\u003e\n\t\u003cp\u003ezlib through 1.2.12 has a heap-based buffer over-read or buffer\n\toverflow in inflate in inflate.c via a large gzip header extra\n\tfield.\u003c/p\u003e\n\t\u003ch1\u003eImpact:\u003c/h1\u003e\n\t\u003cp\u003eApplications that call inflateGetHeader may be vulnerable to a\n\tbuffer overflow.  Note that inflateGetHeader is not used by anything\n\tin the FreeBSD base system, but may be used by third party\n\tsoftware.\u003c/p\u003e\n      ",
+  "affects": [
+    {
+      "name": "FreeBSD",
+      "range": [
+        {
+          "lt": "13.1_2",
+          "ge": "13.1"
+        },
+        {
+          "lt": "13.0_13",
+          "ge": "13.0"
+        },
+        {
+          "lt": "12.3_7",
+          "ge": "12.3"
+        }
+      ]
+    }
+  ],
+  "dates": {
+    "discovery": "2022-08-30T00:00:00Z",
+    "entry": "2022-08-31T00:00:00Z"
+  },
+  "references": [
+    {
+      "source": "CVE",
+      "text": "CVE-2022-37434"
+    },
+    {
+      "source": "FreebsdSA",
+      "text": "SA-22:13.zlib"
+    }
+  ]
+}
