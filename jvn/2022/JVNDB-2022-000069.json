@@ -1,0 +1,81 @@
+{
+  "vulinfo_id": "JVNDB-2022-000069",
+  "title": "PowerCMS の XMLRPC API におけるコマンドインジェクションの脆弱性",
+  "vulinfo_description": "アルファサード株式会社が提供する PowerCMS の XMLRPC API には、コマンドインジェクション (CWE-74) の脆弱性が存在します。 PowerCMS の XMLRPC API に細工したメッセージを POST メソッドで送信することで、任意の Perl スクリプトを実行可能であり、これを通じて OS コマンドの実行も可能です。 開発者によると、本脆弱性を悪用してもコマンドの引数に任意の値を与えて実行することはできないとのことです。  この脆弱性情報は、製品利用者への周知を目的に、開発者が JPCERT/CC に報告し、JPCERT/CC が開発者との調整を行いました。",
+  "affected": [
+    {
+      "name": "アルファサード株式会社",
+      "product_name": "PowerCMS",
+      "version_number": [
+        "4.51 およびそれ以前のバージョン (PowerCMS 4 系)",
+        "5.21 およびそれ以前のバージョン (PowerCMS 5 系)",
+        "6.021 およびそれ以前のバージョン (PowerCMS 6 系)"
+      ],
+      "cpe": {
+        "version": "2.2",
+        "text": "cpe:/a:misc:alfasado_powercms"
+      }
+    }
+  ],
+  "impact": {
+    "cvss": [
+      {
+        "version": "2.0",
+        "severity": {
+          "type": "Base",
+          "text": "High"
+        },
+        "base": "7.5",
+        "vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P"
+      },
+      {
+        "version": "3.0",
+        "severity": {
+          "type": "Base",
+          "text": "Critical"
+        },
+        "base": "9.8",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "impact_item": "遠隔の第三者によって、任意の Perl スクリプトを実行される可能性があります。またその結果、任意の OS コマンドを実行される可能性があります。"
+  },
+  "solution": "XMLRPC API を利用しない場合：XMLRPC API 機能を無効化する\u003cul\u003e\u003cli\u003ePowerCMS を CGI/FastCGI を用いて利用している場合\u003c/li\u003e\u003cul\u003e\u003cli\u003emt-xmlrpc.cgi ファイルをサーバから削除、またはファイルの実行権限を外す\u003c/li\u003e\u003cul\u003e\u003cli\u003ePowerCMS の環境変数 XMLRPCScript を設定している場合、mt-xmlrpc.cgi がリネームされた状態である可能性があるため、リネーム後のファイルに対して本対策を実施するよう呼び掛けています\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cli\u003ePowerCMS を PSGI を用いて利用している場合\u003c/li\u003e\u003cul\u003e\u003cli\u003e環境変数 RestrictedPSGIApp xmlrpc を設定し、XMLRPC アプリケーションの利用を禁止する\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003eXMLRPC API を利用する場合：修正ファイルを適用する 開発者が提供する情報をもとに、修正ファイルを適用してください。",
+  "related": [
+    {
+      "type": "vendor",
+      "name": "アルファサード株式会社",
+      "vulinfo_id": "XMLRPC API におけるコマンド・インジェクションの脆弱性対策",
+      "url": "https://www.powercms.jp/news/xmlrpc-api-provision-202208.html"
+    },
+    {
+      "type": "advisory",
+      "name": "Common Vulnerabilities and Exposures (CVE)",
+      "vulinfo_id": "CVE-2022-33941",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2022-33941"
+    },
+    {
+      "type": "advisory",
+      "name": "JVN",
+      "vulinfo_id": "JVN#76024879",
+      "url": "https://jvn.jp/jp/JVN76024879/index.html"
+    },
+    {
+      "type": "cwe",
+      "name": "JVNDB",
+      "vulinfo_id": "CWE-Other",
+      "url": "https://www.ipa.go.jp/security/vuln/CWE.html#CWEOther",
+      "title": "その他"
+    }
+  ],
+  "history": [
+    {
+      "history_no": "1",
+      "date_time": "2022-09-01T01:21:17Z",
+      "description": "[2022年09月02日]\\n  掲載"
+    }
+  ],
+  "date_first_published": "2022-09-02T14:09:02+09:00",
+  "date_last_updated": "2022-09-02T14:09:02+09:00",
+  "date_public": "2022-09-02T00:00:00+09:00"
+}
